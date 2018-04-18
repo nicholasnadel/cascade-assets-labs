@@ -78,13 +78,13 @@ $(function () {
                     for (var i = 0; i < data.length; i++) {
                         var v_photo;
                         if (!data[i].ThumbnailPhoto) {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
                         else if (data[i].ThumbnailPhoto == '/') {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
                         else if (data[i].ThumbnailPhoto == '') {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
                         else {
                             v_photo = data[i].ThumbnailPhoto;
@@ -246,9 +246,8 @@ $(function () {
         function formatResult(result) {
             var formattedResult =
                 '<div class="result" itemscope itemtype="http://schema.org/Person">' +
-                    (result.link ? '<a class="directorySearchButton button red" href="' + result.link + '" itemprop="url">View Profile</a>' : '') +
-                    (result.image ? '<div class="profilePicture"><img class="image" width="80px" src="' + result.image + '"alt="' + result.name + '" itemprop="image"/></div>' : '') +
-                    (result.name ? '<div class="name" itemprop="name">' + result.name + '</div>' : '') +
+                    (result.image ? '<div class="profilePicture"><img class="image" src="' + result.image + '"alt="' + result.name + '" itemprop="image"/></div>' : '') +
+                    (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '</h2>' : '') +
                     (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                     (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
                     (result.affiliation ? '<div class="affiliation" itemprop="affiliation">' + result.affiliation + '</div>' : '') +
