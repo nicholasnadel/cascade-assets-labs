@@ -133,37 +133,37 @@
       float:left;
       margin:0 10px 0 0;
       text-indent:-999em;
-      height:26px;
-      width:26px;
-      background-image: image-url('social_icons_faculty_profile.png');
+      height:24px;
+      width:24px;
+      background-image: image-url('social_icons_faculty_profile_red.png');
       background-repeat:no-repeat;
     }
     & .facebook{
       background-position:left top;
     }    
     & .twitter{
-      background-position:-30px top;
+      background-position:-24px top;
     }
     & .linkedIn{
-      background-position:-60px top;
+      background-position:-48px top;
     }
     & .rss{
-      background-position:-90px top;
+      background-position:-72px top;
     }
     & .flickr{
+      background-position:-96px top;
+    }    
+    & .vimeo{
       background-position:-120px top;
     }
     & .youTube{
-      background-position:-150px top;
-    }
-    & .vimeo{
-      background-position:-180px top;
+      background-position:-144px top;
     }
     & .googlePlus{
-      background-position:-210px top;
+      background-position:-168px top;
     }
     & .instagram{
-      background-position:-240px top;
+      background-position:-190px top;
     } 
   }
 
