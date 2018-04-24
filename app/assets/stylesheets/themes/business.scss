@@ -1,7 +1,10 @@
 #theme.business {
   @include theme-color-classes($asbe-primary);
 
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .nameBar, .rightColumn .styleTwo {
     background: $asbe-primary; /* Old browsers */
   }
 
@@ -19,17 +22,23 @@
   }
 
   .expandedNameBarContainer {
-    h2, a {
+
+    h2,
+    a {
       color: #95d2e8;
     }
   }
 
   #social_follow_us {
+
     .banner {
       background-image: image-url('asbe_follow_us.png');
     }
+
     li span {
-      &.hover_state, &.inactive_state {
+
+      &.hover_state,
+      &.inactive_state {
         background-image: image-url('asbe_icons.png');
       }
     }
@@ -41,9 +50,11 @@
 
   .newbutton a {
     background-color: $asbe-primary;
+
     &:hover {
       background-color: $asbe-secondary;
     }
+
     &:active {
       background-color: $asbe-tertiary;
     }
@@ -60,15 +71,19 @@
   }
 
   .leftNavSubContent .callout .view-more-expander {
+
     .view-more {
       background-color: $asbe-primary;
     }
+
     .view-more-link {
       background-color: $asbe-primary;
     }
+
     .view-less-link {
       background-color: $asbe-primary;
     }
+    
     .icon-triangle-up {
       color: $asbe-primary;
     }

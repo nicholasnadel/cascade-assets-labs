@@ -2138,31 +2138,6 @@ html{
     overflow:visible !important;
 }
 
-.smallMasthead .masthead-old{
-    max-width:1024px;
-    min-height:83px;
-    background-color: #02bac1;
-    background: -ms-radial-gradient(circle, #02bac1, #01cdd4);
-    background: -webkit-radial-gradient(circle, #02bac1, #01cdd4);
-    background: -moz-radial-gradient(circle, #02bac1, #01cdd4);
-    background: radial-gradient(circle, #02bac1, #01cdd4);
-}
-
-.smallMasthead .masthead-old>div{
-    font-family:"futura-pt", sans-serif;
-    font-weight:600px;
-    font-size:19px;
-    color:White;
-    text-align:center;
-    padding:15px 15% 15px 15%;
-    max-width: 70%;
-    width: 100%;
-}
-
-.smallMasthead .masthead-old>div.oneLine {
-    padding-top: 27px;
-}
-
 /* removed (in new masthead css file now)
     .bigMasthead .masthead>img{
         width:100%;
@@ -2754,31 +2729,8 @@ html{
         padding: 0 0 0 0;
     }
 
-    .smallMasthead .masthead-old{
-        position:relative;
-        top: -30px;
-        margin: 0 auto 0 auto;
-    }
-
-    .smallMasthead .masthead-old>div{
-        position:absolute;
-    }
-
     .oneColumn .smallMasthead .masthead>div{
         position:relative;
-    }
-
-    .smallMasthead .masthead-old:before{
-        content:'';
-        position:absolute;
-        top:0;
-        right:0;
-        bottom:0;
-        left:0;
-        background-color:transparent;
-        background-image: url("../level/img/masthead_bg_small.png");
-        background-repeat:no-repeat;
-        background-position:left top;
     }
 
     .oneColumn .smallMasthead .masthead:before{

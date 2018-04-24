@@ -1,7 +1,10 @@
 #theme.wilkinson {
   @include theme-color-classes($wilkinson-primary);
 
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .nameBar, .rightColumn .styleTwo {
     background: $wilkinson-primary; /* Old browsers */
   }
 
@@ -23,11 +26,15 @@
   }
 
   #social_follow_us {
+
     .banner {
       background-image: image-url('wilkinson_follow_us.png');
     }
+
     li span {
-      &.hover_state, &.inactive_state {
+
+      &.hover_state,
+      &.inactive_state {
         background-image: image-url('wilkinson_icons.png');
       }
     }
@@ -39,9 +46,11 @@
 
   .newbutton a {
     background-color: $wilkinson-primary;
+
     &:hover {
       background-color: $wilkinson-secondary;
     }
+
     &:active {
       background-color: $wilkinson-tertiary;
     }
@@ -51,22 +60,28 @@
     background-color: $wilkinson-primary;
   }
 
-    .photoCallouts {
-      .caption, .rollover {
+  .photoCallouts {
+
+    .caption,
+    .rollover {
       background-color: $wilkinson-primary;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
+
     .view-more {
       background-color: $wilkinson-primary;
     }
+
     .view-more-link {
       background-color: $wilkinson-primary;
     }
+
     .view-less-link {
       background-color: $wilkinson-primary;
     }
+    
     .icon-triangle-up {
       color: $wilkinson-primary;
     }

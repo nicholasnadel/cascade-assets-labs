@@ -1,7 +1,10 @@
 #theme.dodge {
   @include theme-color-classes($dodge-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .nameBar, .rightColumn .styleTwo {
     background: $dodge-primary; /* Old browsers */
   }
 
@@ -10,9 +13,15 @@
   }
 
   .styleTwo {
-    p, li, div, h2, h3 {
+
+    p,
+    li,
+    div,
+    h2,
+    h3 {
       color: $white;
     }
+
     a {
       color: $white;
       border-bottom: 2px dotted #676767;
@@ -29,17 +38,24 @@
   }
 
   #social_follow_us {
+
     li span {
-      &.hover_state, &.inactive_state {
+
+      &.hover_state,
+      &.inactive_state {
         background-image: image-url('dodge_icons.png');
       }
     }
+
     .banner {
       background: image-url('dodge_follow_us.png');
       background-image: image-url('dodge_follow_us.png');
     }
+
     li span {
-      &.hover_state, &.inactive_state {
+
+      &.hover_state,
+      &.inactive_state {
         background-image: image-url('dodge_icons.png');
       }
     }
@@ -51,9 +67,11 @@
 
   .newbutton a {
     background-color: $dodge-primary;
+    
     &:hover {
       background-color: $dodge-secondary;
     }
+
     &:active {
       background-color: $dodge-tertiary;
     }
@@ -64,21 +82,27 @@
   }
 
   .photoCallouts {
-    .caption, .rollover {
+
+    .caption,
+    .rollover {
       background-color: $dodge-primary;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
+
     .view-more {
       background-color: $dodge-primary;
     }
+
     .view-more-link {
       background-color: $dodge-primary;
     }
+
     .view-less-link {
       background-color: $dodge-primary;
     }
+
     .icon-triangle-up {
       color: $dodge-primary;
     }

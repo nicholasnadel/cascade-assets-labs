@@ -1,6 +1,9 @@
 #theme.copa {
   @include theme-color-classes($copa-primary);
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .nameBar, .rightColumn .styleTwo {
     background: $copa-primary; /* Old browsers */
 
   }
@@ -23,11 +26,15 @@
   }
 
   #social_follow_us {
+
     .banner {
       background-image: image-url('copa_follow_us.png');
     }
+
     li span {
-      &.hover_state, &.inactive_state {
+
+      &.hover_state,
+      &.inactive_state {
         background-image: image-url('copa_icons.png');
       }
     }
@@ -39,9 +46,11 @@
 
   .newbutton a {
     background-color: $copa-primary;
+
     &:hover {
       background-color: $copa-secondary;
     }
+
     &:active {
       background-color: $copa-tertiary;
     }
@@ -52,21 +61,26 @@
   }
 
   .photoCallouts {
+
     .caption, .rollover {
       background-color: $copa-primary;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
+
     .view-more {
       background-color: $copa-primary;
     }
+
     .view-more-link {
       background-color: $copa-primary;
     }
+
     .view-less-link {
       background-color: $copa-primary;
     }
+
     .icon-triangle-up {
       color: $copa-primary;
     }
