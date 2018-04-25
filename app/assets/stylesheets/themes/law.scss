@@ -181,16 +181,6 @@
     background-image: image-url('law_icons.png');
   }
 
-  .rounded-slider .info-container .blue{
-    background-color: $law-primary;
-    background-image: -webkit-gradient(linear, left top, left bottom, from($law-primary), to($law-secondary));
-    background-image: -webkit-linear-gradient(top, $law-primary, $law-secondary);
-    background-image: -moz-linear-gradient(top, $law-primary, $law-secondary);
-    background-image: -o-linear-gradient(top, $law-primary, $law-secondary);
-    background-image: linear-gradient(to bottom, $law-primary, $law-secondary);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
-  }
-
   .newbutton a {
     background-color: $law-primary;
     

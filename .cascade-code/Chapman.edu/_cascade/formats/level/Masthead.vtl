@@ -3,12 +3,10 @@
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
 #set ( $masthead = $currentPage.getChild('system-data-structure').getChild('masthead') )
 #set ( $mastheadType = $masthead.getChild('mastheadType').value )
-## #set ( $brandedMastheadDisplaysImage = $masthead.getChild('branded-masthead').getChild('display-image').value )
-## #set ( $displaySlider = $masthead.getChild('slider').getChild('display-slider').value )
 #set ( $showBoxes = $masthead.getChild('boxes').getChild('show').value )
 
 #if ( $mastheadType == 'No Masthead' )
-   <!-- mastheadType: "No Masthead" -->
+	<!-- mastheadType: "No Masthead" -->
 
 ## Branded Masthead design added Nov 2016.
 #elseif ( $mastheadType == 'Branded - New' )
@@ -98,117 +96,6 @@
 
 	</div>
 
-## Old (as of Nov 2016) Branded Masthead.
-## #elseif ( $mastheadType == 'Branded Masthead' && $brandedMastheadDisplaysImage == 'Yes' )
-##  <!-- mastheadType: legacy Branded Masthead -->
-##  #set ( $brandedMastheadHeader = $masthead.getChild('branded-masthead').getChild('header').value )
-##  #set ( $brandedMastheadSubtitle = $masthead.getChild('branded-masthead').getChild('sub-title').value )
-##  #set ( $brandedMastheadImagePath = $masthead.getChild('branded-masthead').getChild('image').getChild('path').value )
-##  #set ( $brandedMastheadAltText = $masthead.getChild('branded-masthead').getChild('altText').value )
-##  #set ( $brandedMastheadClass = "#if($brandedMastheadSubtitle != '')masthead-new captionOnTop#{else}masthead-new#end")
-
-##  <div class="brandedMastheadContainer">
-##      <div class="${_EscapeTool.xml($brandedMastheadClass)}">
-##          <img alt="${_EscapeTool.xml($brandedMastheadAltText)}"
-##               src="[system-asset]${brandedMastheadImagePath}[/system-asset]"/>
-##          <div class="caption">
-##          #if ($brandedMastheadSubtitle != '')
-##              <p class="subTitle">$_EscapeTool.xml($brandedMastheadSubtitle)</p>
-##          #end
-##          #if ($brandedMastheadHeader != '')
-##              <h2>$_EscapeTool.xml($brandedMastheadHeader)</h2>
-##          #end
-##          </div>
-##      </div>
-##  </div>
-
-## Old (as of Nov 2016) Slider Masthead.
-## #elseif ( $mastheadType == 'Slider' &&  $displaySlider == 'Yes' )
-##  <!-- mastheadType: legacy Slider -->
-##  #set ( $slides = $_XPathTool.selectNodes($masthead, 'slider/slides/slide') )
-
-##  <div class="hidden slideOptions">
-##      <div class="autoRotate">On</div>
-##  </div>
-
-##  <div class="rounded-slider">
-##      <div class="rotatorContainer">
-##          <div class="flex-container">
-##              <div class="flexslider">
-##                  <ul class="slides">
-##                      #foreach($slide in $slides)
-##                          #set ( $slideLinkLink = $_XPathTool.selectSingleNode($slide, 'link/link').value )
-##                          #set ( $slideInternalLinkPath = $_XPathTool.selectSingleNode($slide, 'link/internalLink/path').value )
-##                          #set ( $slideFileLinkPath = $_XPathTool.selectSingleNode($slide, 'link/fileLink/path').value )
-##                          #set ( $slideImagePath = $_XPathTool.selectSingleNode($slide, 'image/path').value )
-##                          #set ( $slideImageAltText = $_XPathTool.selectSingleNode($slide, 'altText').value )
-##                          #set ( $slideBackground = $_XPathTool.selectSingleNode($slide, 'text-background').value )
-##                          #set ( $slideHeader = $_XPathTool.selectSingleNode($slide, 'header').value )
-##                          #set ( $slideSubtitle = $_XPathTool.selectSingleNode($slide, 'sub-title').value )
-##                          #set ( $slideDescription = $_XPathTool.selectSingleNode($slide, 'description').value )
-##                          #set ( $slideQuoteAuthor = $_XPathTool.selectSingleNode($slide, 'quote-author').value )
-##                          #set ( $slideCaptionAlign = $_XPathTool.selectSingleNode($slide, 'align').value )
-
-##                          #**
-##                              Compute slide href. HTML comments here useful in debugging migration
-##                              from XSLT to Velocity. They can be removed in the future when UAT
-##                              is complete but shouldn't hurt anything in the meantime.
-##                          *#
-##                          #if ( $slideInternalLinkPath != '/' )
-##                              <!-- slideInternalLinkPath -->
-##                              #set ( $slideCaptionHref = $slideInternalLinkPath )
-##                          #elseif ( $slideInternalLinkPath == '/' && $slideLinkLink != '' )
-##                              <!-- slideLinkLink -->
-##                              #set ( $slideCaptionHref = $slideLinkLink )
-##                          #elseif ( $slideInternalLinkPath == '/' && $slideLinkLink == '' && $slideFileLinkPath != '/' )
-##                              <!-- slideFileLinkPath -->
-##                              #set ( $slideCaptionHref = $slideFileLinkPath )
-##                          #else
-##                              <!-- slideLinkNone -->
-##                              #set ( $slideCaptionHref = '' )
-##                          #end
-
-##                          #if ( $slideBackground == 'Transparent Black' )
-##                              #set ( $slideMastheadClass = 'masthead-new quote' )
-##                          #elseif ( $slideBackground == 'Solid Red' && $slideSubtitle != '' )
-##                              #set ( $slideMastheadClass = 'masthead-new captionOnTop' )
-##                          #else
-##                              #set ( $slideMastheadClass = 'masthead-new' )
-##                          #end
-
-##                          <li class="slide">
-##                              <div class="${_EscapeTool.xml($slideMastheadClass)}">
-##                                  <img alt="${_EscapeTool.xml($slideImageAltText)}"
-##                                       src="[system-asset]${slideImagePath}[/system-asset]"/>
-
-##                                  <div class="caption align-${_EscapeTool.xml($slideCaptionAlign)}">
-##                                      #if ( $slideHeader != '' )
-##                                          #if ( $slideCaptionHref != '' )
-##                                              <a href="${_EscapeTool.xml($slideCaptionHref)}">
-##                                                  <h2>${_EscapeTool.xml($slideHeader)}&#160;»</h2>
-##                                              </a>
-##                                          #else
-##                                              <h2>${_EscapeTool.xml($slideHeader)}</h2>
-##                                          #end
-##                                      #end
-
-##                                      #if ( $slideDescription != '' )
-##                                          <p>${_EscapeTool.xml($slideDescription)}</p>
-
-##                                          #if ( $slideQuoteAuthor != '' )
-##                                              <span class="author">${_EscapeTool.xml($slideQuoteAuthor)}</span>
-##                                          #end
-##                                      #end
-##                                  </div>
-##                              </div>
-##                          </li>
-##                      #end
-##                  </ul>
-##              </div>
-##          </div>
-##      </div>
-##  </div>
-
 ## Boxes Masthead
 #elseif ( $mastheadType == 'Boxes' &&  $showBoxes == 'Yes' )
 	<!-- mastheadType: Boxes -->
@@ -290,5 +177,4 @@
 
 #else
 	<!-- mastheadType: base case (no match, no masthead) -->
-
 #end

@@ -169,10 +169,6 @@ $(function () {
         else{
             $('.rounded-slider').find('.red').addClass("no-link");
         }
-        
-        if (!$(".rounded-slider .info-container .red p").text()) {
-            $(".rounded-slider .info-container .red").hide();
-        }
 
         $('.flexslider').flexslider({
             animation: "slide",
