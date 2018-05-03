@@ -137,24 +137,15 @@
     background-color: #002663;
   }
 
-  .styleTwo p {
-    color: $white;
-  }
+  .styleTwo {
 
-  .styleTwo li {
-    color: $white;
-  }
-
-  .styleTwo div {
-    color: $white;
-  }
-
-  .styleTwo h2 {
-    color: $white;
-  }
-
-  .styleTwo h3 {
-    color: $white;
+    p,
+    li,
+    div,
+    h2,
+    h3 {
+      color: $white;
+    }
   }
 
   .rightColumn .styleTwo a {
