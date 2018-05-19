@@ -1,5 +1,4 @@
-/* For individual faculty profile pages (not listing pages)
-   from old profile_2013.css and one class from level_2013.css */ 
+/* For individual faculty profile pages (not listing pages) */ 
 
   .primaryContent .facultyProfile {
     width:79%;
@@ -91,7 +90,7 @@
   .video {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 30px;
+    padding-top: 5px;
     height: 0;
     overflow: hidden;
   }
@@ -137,33 +136,34 @@
       width:24px;
       background-image: image-url('social_icons_faculty_profile_red.png');
       background-repeat:no-repeat;
+      border-bottom: 0;
     }
     & .facebook{
       background-position:left top;
     }    
     & .twitter{
-      background-position:-24px top;
+      background-position:-25px top;
     }
     & .linkedIn{
-      background-position:-48px top;
+      background-position:-50px top;
     }
     & .rss{
-      background-position:-72px top;
+      background-position:-75px top;
     }
     & .flickr{
-      background-position:-96px top;
+      background-position:-100px top;
     }    
     & .vimeo{
-      background-position:-120px top;
+      background-position:-125px top;
     }
     & .youTube{
-      background-position:-144px top;
+      background-position:-150px top;
     }
     & .googlePlus{
-      background-position:-168px top;
+      background-position:-175px top;
     }
     & .instagram{
-      background-position:-190px top;
+      background-position:-200px top;
     } 
   }
 
