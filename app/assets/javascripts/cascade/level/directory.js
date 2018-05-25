@@ -23,6 +23,7 @@ $(function () {
             },
             applyUserInput = function () {
                 // A little bit of session storage to rememeber form state
+                alert("applyUserInput function")
                 if (window.sessionStorage) {
                     var directorySearchBox = document.getElementById("directorySearchBox"),
                         collegeFilterSelect = document.getElementById("collegeFilter"),
@@ -50,17 +51,18 @@ $(function () {
                         sessionStorage.departmentFilter = departmentFilterSelect.value;
                     });
                 }
-                var allFaculty = $("#allFaculty:checked").length,
-                    searchString = $("#directorySearchBox").val();
+                //var allFaculty = $("#allFaculty:checked").length,
+                //    searchString = $("#directorySearchBox").val();
+                var  searchString = $("#directorySearchBox").val();
                 schoolFilter = $("#collegeFilter option:selected").val();
                 departmentFilter = $("#departmentFilter option:selected").val();
-                if ($("#allFaculty:checked").length) {
+                /*if ($("#allFaculty:checked").length) {
                     schoolFilter = '';
                     departmentFilter = '';
                 }
                 if (!(searchString)) {
                     allFaculty = true;
-                }
+                } 
                 if (allFaculty) {
                     scope = "_faculty/all";
                     keywords = '';
@@ -68,6 +70,14 @@ $(function () {
                 else {
                     scope = "_search";
                     keywords = $.trim(searchString);
+                }*/
+                if ($.trim(searchString) != "") {
+                    scope = "_search";
+                    keywords = $.trim(searchString);                    
+                }
+                else {
+                    scope = "_faculty/all";
+                    keywords = '';
                 }
             },
             populateResults = function () {
@@ -188,10 +198,13 @@ $(function () {
         $('#directorySearchBox').on('keyup', debounce(fetchNewResults, 400));
         $('#collegeFilter').on('change', fetchNewResults);
         $('#departmentFilter').on('change', fetchNewResults);
-        $('#allFaculty').on('change', fetchNewResults);
+        //$('#allFaculty').on('change', fetchNewResults);
+        $('#allFaculty').on('click', clearFilters);
+        //$('#allFaculty').on('click', fetchNewResults);
         $('.directorySearchButton').on('click', scrollToResultTop);
         //
         function fetchNewResults() {
+            alert("fetchNewResults");
             applyUserInput();
             page = 0;
             populateResults();
@@ -203,18 +216,38 @@ $(function () {
                 jQuery('.directorySearchButton').focus().click();
             }
         });
-        $("#allFaculty").click(function () {
-            if ($("#allFaculty:checked").length) {
+        //is now a link with X (not a checkbox form field):
+        //$("#allFaculty").click(function () {
+        function clearFilters() {
+            alert("clearFilters)");
+            /*if ($("#allFaculty:checked").length) {
                 $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
             }
             else{            
                 $("#directorySearchBox, #collegeFilter, #departmentFilter").removeAttr("disabled");
             }
-
             if (window.sessionStorage) {
                 sessionStorage.allFaculty = $("#allFaculty:checked").length;
             }
-        });
+            */
+            document.getElementById("collegeFilter").selectedIndex = "0";
+            document.getElementById("departmentFilter").selectedIndex = "0";
+            document.getElementById("directorySearchBox").value = "";
+            collegeFilterSelect.value = "";
+            departmentFilterSelect.value = "";
+            directorySearchBox.value = "";
+            if (window.sessionStorage) {
+                sessionStorage.collegeFilter = "";
+                sessionStorage.departmentFilter = "";
+                sessionStorage.keywords = "";
+            }
+            alert("before")
+            applyUserInput();
+            page = 0;
+            populateResults();
+            alert("after")
+        //});
+        }
         $(".first").click(function () {
             if (page != 0) scrollToResultTop(populateResults, true);
             page = 0;
