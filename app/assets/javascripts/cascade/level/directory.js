@@ -219,7 +219,7 @@ $(function () {
         //is now a link with X (not a checkbox form field):
         //$("#allFaculty").click(function () {
         function clearFilters() {
-            alert("clearFilters)");
+            alert("clearFilters");
             /*if ($("#allFaculty:checked").length) {
                 $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
             }
