@@ -23,7 +23,7 @@ $(function () {
             },
             applyUserInput = function () {
                 // A little bit of session storage to rememeber form state
-                alert("applyUserInput function")
+                //alert("applyUserInput function")
                 if (window.sessionStorage) {
                     var directorySearchBox = document.getElementById("directorySearchBox"),
                         collegeFilterSelect = document.getElementById("collegeFilter"),
@@ -37,14 +37,16 @@ $(function () {
                     }
                     // All faculty checkbox session storage handled in onclick function
                     // College Filter
-                    if (sessionStorage.collegeFilter && !$("#allFaculty:checked").length) {
+                    //if (sessionStorage.collegeFilter && !$("#allFaculty:checked").length) {
+                    if (sessionStorage.collegeFilter) {    
                         collegeFilterSelect.value = sessionStorage.collegeFilter;
                     }
                     $(collegeFilterSelect).bind("change", function () {
                         sessionStorage.collegeFilter = collegeFilterSelect.value;
                     });
                     // Department Filter
-                    if (sessionStorage.departmentFilter && !$("#allFaculty:checked").length) {
+                    //if (sessionStorage.departmentFilter && !$("#allFaculty:checked").length) {
+                    if (sessionStorage.departmentFilter) {
                         departmentFilterSelect.value = sessionStorage.departmentFilter;
                     }
                     $(departmentFilterSelect).bind("change", function () {
@@ -204,7 +206,7 @@ $(function () {
         $('.directorySearchButton').on('click', scrollToResultTop);
         //
         function fetchNewResults() {
-            alert("fetchNewResults");
+            //alert("fetchNewResults");
             applyUserInput();
             page = 0;
             populateResults();
@@ -219,7 +221,6 @@ $(function () {
         //is now a link with X (not a checkbox form field):
         //$("#allFaculty").click(function () {
         function clearFilters() {
-            alert("clearFilters");
             /*if ($("#allFaculty:checked").length) {
                 $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
             }
@@ -233,19 +234,29 @@ $(function () {
             document.getElementById("collegeFilter").selectedIndex = "0";
             document.getElementById("departmentFilter").selectedIndex = "0";
             document.getElementById("directorySearchBox").value = "";
-            collegeFilterSelect.value = "";
-            departmentFilterSelect.value = "";
-            directorySearchBox.value = "";
+            //collegeFilterSelect.value = "";
+            //departmentFilterSelect.value = "";
+            //directorySearchBox.value = "";
+            schoolFilter = "";
+            departmentFilter = "";
+            allFaculty = true;
+            scope = "_faculty/all";
+            keywords = "";
             if (window.sessionStorage) {
+                var directorySearchBox = document.getElementById("directorySearchBox"),
+                    collegeFilterSelect = document.getElementById("collegeFilter"),
+                    departmentFilterSelect = document.getElementById("departmentFilter");
+                directorySearchBox.value = "";
+                collegeFilterSelect.value = "";
+                departmentFilterSelect.value = "";
                 sessionStorage.collegeFilter = "";
                 sessionStorage.departmentFilter = "";
                 sessionStorage.keywords = "";
-            }
-            alert("before")
+                sessionStorage.allFaculty = true;
+            }           
             applyUserInput();
             page = 0;
             populateResults();
-            alert("after")
         //});
         }
         $(".first").click(function () {
