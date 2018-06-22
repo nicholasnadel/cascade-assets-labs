@@ -13,6 +13,14 @@ $(function () {
     $(this).toggleClass("open").parent("a").toggleClass("is-open").siblings("ul").slideToggle().toggleClass("is-open");
   });
 
+  $(".leftNav .plus").keydown(function (e) {
+    if (e.keyCode === 32 || e.keyCode === 13) {
+      $(this).toggleClass("open").parent("a").toggleClass("is-open").siblings("ul").slideToggle().toggleClass("is-open");
+      return false
+    }
+    return true
+  });
+
   $(".leftNav ul li .show, .leftNav ul li .hide").click(function () {
     $(this).parent("li").toggleClass("active");
   });
