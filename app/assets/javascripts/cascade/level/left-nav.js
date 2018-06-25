@@ -28,5 +28,4 @@ $(function () {
   $(".leftNav").on("click", ".newbutton a", function () {
     recordOutboundLink($(this)[0], "Outbound-link_" + document.title.replace(" | Chapman University", ''), $(this).attr("href"), $(this).text());     
   });
-
 });
