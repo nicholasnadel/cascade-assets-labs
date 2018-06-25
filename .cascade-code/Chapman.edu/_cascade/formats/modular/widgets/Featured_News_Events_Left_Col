@@ -14,9 +14,9 @@
   ## Static HTML output.
   <div class="news-events-widget news-events-widget--left newsEvents">
     <ul class="newsEventsNav">
-      <li class="active">Featured</li>
-      <li>News</li>
-      <li>Events</li>
+      <li tabindex="0" role="button" class="active">Featured</li>
+      <li tabindex="0" role="button">News</li>
+      <li tabindex="0" role="button">Events</li>
     </ul>
 
     #buildContentList()

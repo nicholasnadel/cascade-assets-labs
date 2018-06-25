@@ -1,0 +1,31 @@
+#macro(outputTabs $element)  
+##
+    #set ($tabs = $_XPathTool.selectNodes($element.getChild('tabs'), "tab") )
+##    
+    <div class="tabs-widget">
+        <ul class="tabs-nav">
+            #foreach ($tab in $tabs)
+                #set ($name = $tab.getChild('name').value )
+            
+                #if ($foreach.index == 0)
+                    <li tabindex="0" role="button" class="active">${_EscapeTool.xml($name)}</li>
+                #else    
+                    <li tabindex="0" role="button">${_EscapeTool.xml($name)}</li>
+                #end
+            #end
+        </ul>
+        
+        <ul class="tabs-content editableContent clearfix">
+            #foreach ($tab in $tabs)
+                #set ($content = $_SerializerTool.serialize($tab.getChild('content'), true) )
+            
+                #if ($foreach.index == 0)
+                    <li class="active">$content</li>
+                #else
+                    <li>$content</li>
+                #end
+            #end
+        </ul>
+    </div>
+##    
+#end 

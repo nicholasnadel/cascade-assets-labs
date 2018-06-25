@@ -16,18 +16,10 @@ $(function() {
   $tabNavLi = $('.tabs-widget .tabs-nav > li');
   $tabNavLi.on('click', TabsWidget.onTabClicked);
 
-  $tabNavLi.keydown((e) => {
+  $tabNavLi.keydown(function(e) {
     if (e.keyCode === 32 || e.keyCode === 13) {
       TabsWidget.onTabClicked.call(e.currentTarget);
       return false
     }
   })
 })
-
-// $(document).on('click', '.tabs-widget .tabs-nav > li', TabsWidget.onTabClicked);
-// $(document).on('keydown', 'tabs-widget .tabs-nav > li', function(e) {
-//   if (e.keyCode === 32 || e.keyCode === 13) {
-//     TabsWidget.onTabClicked()
-//     return false
-//   }
-// })
