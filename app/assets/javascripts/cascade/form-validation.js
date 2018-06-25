@@ -1,4 +1,4 @@
-<!--
+// <!--
   //this copy of js file from _chapman_common
   
     //added so can replace (dynamically when page is viewed in browser) with domain of server that webpage is being viewed on. will put V_HTTP_HOST in redirect_url field in hidden form field:
@@ -184,10 +184,10 @@
         }
     }
     
-    <!-- This script and many more are available free online at -->
-<!-- The JavaScript Source. http://javascript.internet.com -->
+    // <!-- This script and many more are available free online at -->
+// <!-- The JavaScript Source. http://javascript.internet.com -->
 
-<!-- Begin
+// <!-- Begin
 function checkEmail_OLD(frmFld) {
 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(frmFld.value)){
 return (true)
@@ -197,7 +197,7 @@ return (false)
 }
 //  End -->
 
-<!-- Begin (9/21/12 added trimmed_email to remove leading and trailing spaces)
+// <!-- Begin (9/21/12 added trimmed_email to remove leading and trailing spaces)
 function checkEmail(frmFld) {
 var trimmed_email = frmFld.value.replace(/^\s+|\s+$/g,"");
 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(trimmed_email)){
@@ -209,8 +209,8 @@ return (false)
 //  End -->
 
 
-<!-- These DATE VALIDATION scripts and many more are available free online at -->
-<!-- The JavaScript Source. http://javascript.internet.com -->
+// <!-- These DATE VALIDATION scripts and many more are available free online at -->
+// <!-- The JavaScript Source. http://javascript.internet.com -->
 
 //  Beginning of Date Validaton routines 
 function checkdate(objName,fldNam) {
