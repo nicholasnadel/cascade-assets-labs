@@ -152,4 +152,12 @@
 
 .primary-content.one-column {
   background-color: $bg-platinum-gray;
+
+  a {
+    border-bottom: 2px dotted #c1c1c1;
+  }
+
+  .social-link {
+    border-bottom: none;
+  }
 }
