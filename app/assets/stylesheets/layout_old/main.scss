@@ -12,7 +12,9 @@
 }
 
 /* center column CSS */
-.main {
+.main, 
+.primary-content.one-column, 
+.primary-content.landing {
   body.personnel & {
     margin-left: 0;
   }
@@ -62,4 +64,9 @@
       padding: 5px 0 0 0;
     }
   }
+
+  .social-link,
+  .cd-hero a,
+  .box,
+  .fact-card a { border-bottom: none; }
 }

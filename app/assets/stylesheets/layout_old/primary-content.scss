@@ -150,15 +150,6 @@
   top: 0;
 }
 
-.primary-content.one-column, .primary-content.landing {
+.primary-content.one-column {
   background-color: $bg-platinum-gray;
-
-  a {
-    border-bottom: 2px dotted #c1c1c1;
-  }
-
-  .social-link, .cd-hero a, 
-  .box, .fact-card a {
-    border-bottom: none;
-  }
 }
