@@ -592,7 +592,7 @@ html.omni-nav-v2 {
             white-space: nowrap;
           }
 
-          &:hover {
+          &:hover, &[aria-expanded="true"] {
             .global-nav-dropdown {
               visibility: visible;
               opacity: 1;
