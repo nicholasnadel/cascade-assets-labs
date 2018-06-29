@@ -23,7 +23,6 @@ $(function () {
             },
             applyUserInput = function () {
                 // A little bit of session storage to rememeber form state
-                //alert("applyUserInput function")
                 if (window.sessionStorage) {
                     var directorySearchBox = document.getElementById("directorySearchBox"),
                         collegeFilterSelect = document.getElementById("collegeFilter"),
@@ -206,7 +205,6 @@ $(function () {
         $('.directorySearchButton').on('click', scrollToResultTop);
         //
         function fetchNewResults() {
-            //alert("fetchNewResults");
             applyUserInput();
             page = 0;
             populateResults();
