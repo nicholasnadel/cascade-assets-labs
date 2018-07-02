@@ -61,7 +61,7 @@ $tile_width: 335px;
 
 	.view-all-link {
 		@include hyperlinks;
-		display: block;
+		display: inline-block;
 		margin-top: $base-spacing*4;
 	}
 
