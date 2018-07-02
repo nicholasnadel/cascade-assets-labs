@@ -470,7 +470,6 @@ var OmniNav2 = (function() {
       init: initialize
     };
   })();
-  
   // Return for OmniNav2 module
   return {
     init: initialize
@@ -482,89 +481,4 @@ $(document).ready(function () {
   if($('#omni-nav-v2').length) {
     OmniNav2.init($('#omni-nav-v2'));
   }
-  
-  $("#primary-nav").on("keydown mouseenter", ".primary-link.has-dropdown a", function (e) {
-    if ($(this).parent().attr('aria-expanded') == "true") {
-      if (e.keyCode === 40 ) { //down arrow key
-        // $(this).next().find("a").first().focus();
-        focusNextElement($(this)).focus();
-        return false;
-      }
-    }
-    else {
-      //Spacebar, Down, or Enter Key
-      if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "mouseenter")) {
-        $(this).parent().attr('aria-expanded', 'true');
-        return false;
-      }
-    }
-  });
-
-  $(".primary-link.has-dropdown .global-nav-dropdown a").on("keydown mouseenter", function (e) {
-    if (e.keyCode === 38 ) { //up arrow key
-      focusPrevElement($(this)).focus();
-      return false;
-    }    
-    else if (e.keyCode === 40 ) { //down arrow key
-      focusNextElement($(this)).focus();
-      return false;
-    }
-  });
-  
-  $("#primary-nav").on("keydown", ".primary-link", function (e) {  
-    //Need to explicitly find an element that's focusable, in this case the top level anchor
-    if (e.keyCode === 37 ) { //left arrow key
-      $(this).prev().find("a").first().focus();
-      return false;
-    }    
-    else if (e.keyCode === 39 ) { //left arrow key
-      $(this).next().find("a").first().focus();
-      return false;
-    }
-  });
-
-  $(".primary-link.has-dropdown").on("focusout mouseleave", function() {
-    //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
-    //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
-    var that = $(this);
-    setTimeout(function() {
-      if (that.find(":focus").length === 0) {
-        that.attr('aria-expanded', 'false');
-      }
-    }, 50);
-  });
-  
-  
-  // $( '#primary-nav' ).on( 'mouseenter focus', '.primary-link.has-dropdown > a', function( e ) {
-  //       var el = $( this );
-  //       el.toggleClass( 'has-focus' );
-  //       // Show sub-menu
-  //       el.parents( '.primary-link.has-dropdown' ).attr( 'aria-expanded', 'true' );
-  //     }).on( 'mouseleave blur', '.menu-level-0.menu-item-has-children > .menu-item-link', function( e ) {
-  //       var el = $( this );
-  //       el.toggleClass( 'has-focus' );
-  //       // Only hide sub-menu after a short delay, so links get a chance to catch focus from tabbing
-  //       setTimeout( function() {
-  //         if ( el.siblings( '.global-nav-dropdown' ).attr( 'data-has-focus' ) !== 'true' ) {
-  //           el.parents( '.primary-link.has-dropdown' ).attr( 'aria-expanded', 'false' );
-  //         }
-  //       }, 100 );
-  //     }).on( 'mouseenter focusin', '.global-nav-dropdown', function( e ) {
-  //       var el = $( this );
-  //       el.attr( 'data-has-focus', 'true' );
-  //     }).on( 'mouseleave focusout', '.global-nav-dropdown', function( e ) {
-  //       var el = $( this );
-  //       setTimeout( function() {
-  //         // Check if anything else has picked up focus (i.e. next link in sub-menu)
-  //         if ( el.find( ':focus' ).length === 0 ) {
-  //           el.attr( 'data-has-focus', 'false' );
-  //           // Hide sub-menu on the way out if parent link doesn't have focus now
-  //           if ( el.siblings( 'a.has-focus' ).length === 0 ) {
-  //             el.parents( '.primary-link.has-dropdown' ).attr( 'aria-expanded', 'false' );
-  //           }
-  //         }
-  //       }, 100 );
-  //     });
-      
-  
 });

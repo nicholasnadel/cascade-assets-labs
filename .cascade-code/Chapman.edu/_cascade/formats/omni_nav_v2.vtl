@@ -247,7 +247,7 @@
 #macro ( buildPrimaryNavRightContainer )
   <div class="nav-container right-nav-container">
     <div class="primary-nav-action utility-nav-trigger">
-      <a tabindex="0" class="primary-nav-icon" aria-label="Search Nav">
+      <a class="primary-nav-icon">
         <svg width="32" height="32" viewBox="0 0 16 16" class="icon-open-search">
           <g>
             <path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path>
@@ -356,15 +356,14 @@
       <nav aria-label="global navigation">
         <ul class="global-nav-links">
           #foreach( $link in $globalNavLinks )
-            #if( $link.dropdown.size() > 0 )
-            <li class="primary-link has-dropdown" aria-expanded="false">
-              <a tabindex="0">$link.sectionTitle</a>
-              #buildGlobalNavDropdown( $link.dropdown $link.sectionLink $link.sectionTitle)
-            #else
             <li class="primary-link">
-              ## Primary links with no dropdown have a link with the title
-              <a href="site://Chapman.edu/$link.sectionLink">$link.sectionTitle</a>
-            #end
+              #if( $link.dropdown.size() > 0 )
+                <a>$link.sectionTitle</a>
+                #buildGlobalNavDropdown( $link.dropdown $link.sectionLink)
+              #else
+                ## Primary links with no dropdown have a link with the title
+                <a href="site://Chapman.edu/$link.sectionLink">$link.sectionTitle</a>
+              #end
             </li>
           #end
         </ul>
@@ -373,7 +372,7 @@
   </div>
 #end
 
-#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink $sectionTitle)
+#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink)
   ## Law global nav dropdowns don't have icons
   #if( $umbrellaDirectory != 'law' )
     #set ( $overviewIconClass = "icon-file-text" )
@@ -385,14 +384,14 @@
     <ul>
       ## First list item is always Overview
       <li>
-        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink" aria-label="$sectionTitle Overview">Overview</a>
+        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
           #if($dropdownLink.link.toString().contains("http"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="${_EscapeTool.xml( $dropdownLink.text )}">
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
           #else
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link" aria-label="${_EscapeTool.xml( $dropdownLink.text )}">          
+            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
           #end
             ${_EscapeTool.xml( $dropdownLink.text )}
           </a>
