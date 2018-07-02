@@ -20,7 +20,7 @@
   <div class="side-panel-hero">
 
     <div class="hero-content">
-      <section class="hero-content-panel">
+      <section aria-labelledby="herocontentpanel" class="hero-content-panel">
         <h1>$_EscapeTool.xml($panelTitle)</h1>
         #if ($panelSubtitle != "")
           <h2>$_EscapeTool.xml($panelSubtitle)</h2>
