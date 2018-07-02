@@ -36,7 +36,6 @@ $(function () {
                     }
                     // All faculty checkbox session storage handled in onclick function
                     // College Filter
-                    //if (sessionStorage.collegeFilter && !$("#allFaculty:checked").length) {
                     if (sessionStorage.collegeFilter) {    
                         collegeFilterSelect.value = sessionStorage.collegeFilter;
                     }
@@ -44,7 +43,6 @@ $(function () {
                         sessionStorage.collegeFilter = collegeFilterSelect.value;
                     });
                     // Department Filter
-                    //if (sessionStorage.departmentFilter && !$("#allFaculty:checked").length) {
                     if (sessionStorage.departmentFilter) {
                         departmentFilterSelect.value = sessionStorage.departmentFilter;
                     }
@@ -52,26 +50,9 @@ $(function () {
                         sessionStorage.departmentFilter = departmentFilterSelect.value;
                     });
                 }
-                //var allFaculty = $("#allFaculty:checked").length,
-                //    searchString = $("#directorySearchBox").val();
                 var  searchString = $("#directorySearchBox").val();
                 schoolFilter = $("#collegeFilter option:selected").val();
                 departmentFilter = $("#departmentFilter option:selected").val();
-                /*if ($("#allFaculty:checked").length) {
-                    schoolFilter = '';
-                    departmentFilter = '';
-                }
-                if (!(searchString)) {
-                    allFaculty = true;
-                } 
-                if (allFaculty) {
-                    scope = "_faculty/all";
-                    keywords = '';
-                }
-                else {
-                    scope = "_search";
-                    keywords = $.trim(searchString);
-                }*/
                 if ($.trim(searchString) != "") {
                     scope = "_search";
                     keywords = $.trim(searchString);                    
@@ -192,16 +173,13 @@ $(function () {
                     totalPages = data[data.length - 1] ? (data[data.length - 1].TotalPages) : 0;
                 });
             };
-        //
         applyUserInput();
         populateResults();
         // Bind some functions to run automatically
         $('#directorySearchBox').on('keyup', debounce(fetchNewResults, 400));
         $('#collegeFilter').on('change', fetchNewResults);
         $('#departmentFilter').on('change', fetchNewResults);
-        //$('#allFaculty').on('change', fetchNewResults);
         $('#allFaculty').on('click', clearFilters);
-        //$('#allFaculty').on('click', fetchNewResults);
         $('.directorySearchButton').on('click', scrollToResultTop);
         //
         function fetchNewResults() {
@@ -217,24 +195,10 @@ $(function () {
             }
         });
         //is now a link with X (not a checkbox form field):
-        //$("#allFaculty").click(function () {
         function clearFilters() {
-            /*if ($("#allFaculty:checked").length) {
-                $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
-            }
-            else{            
-                $("#directorySearchBox, #collegeFilter, #departmentFilter").removeAttr("disabled");
-            }
-            if (window.sessionStorage) {
-                sessionStorage.allFaculty = $("#allFaculty:checked").length;
-            }
-            */
             document.getElementById("collegeFilter").selectedIndex = "0";
             document.getElementById("departmentFilter").selectedIndex = "0";
             document.getElementById("directorySearchBox").value = "";
-            //collegeFilterSelect.value = "";
-            //departmentFilterSelect.value = "";
-            //directorySearchBox.value = "";
             schoolFilter = "";
             departmentFilter = "";
             allFaculty = true;
@@ -255,7 +219,6 @@ $(function () {
             applyUserInput();
             page = 0;
             populateResults();
-        //});
         }
         $(".first").click(function () {
             if (page != 0) scrollToResultTop(populateResults, true);
