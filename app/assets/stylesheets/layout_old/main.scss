@@ -19,7 +19,7 @@
     margin-left: 0;
   }
   a {
-      border-bottom: 2px dotted #c1c1c1;
+      border-bottom: 1px dotted #a50034;
   }
   .ie7 & {
     h2 {
@@ -64,9 +64,4 @@
       padding: 5px 0 0 0;
     }
   }
-
-  .social-link,
-  .cd-hero a,
-  .box,
-  .fact-card a { border-bottom: none; }
 }
