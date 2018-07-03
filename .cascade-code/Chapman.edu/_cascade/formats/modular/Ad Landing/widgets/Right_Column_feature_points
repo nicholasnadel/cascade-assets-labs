@@ -1,0 +1,32 @@
+#import( "/_cascade/formats/helpers.velocity" )
+#macro(outputFeaturePoints $element)
+    #set ($points = $_XPathTool.selectNodes($element, 'featurePoints/point'))
+    
+    <div class="feature-points">
+        <div class="outer-container">
+            <ul class="feature-points-list">
+                #foreach($point in $points)
+                    #outputPoints($point)
+                #end
+            </ul>
+        </div>
+    </div>
+#end
+    
+#macro(outputPoints $point)
+    #set ($iconClasses = {
+        "Bookmark" : "icon-bookmark",
+        "Calendar" : "icon-calendar4",
+        "Earth"    : "icon-earth",
+        "Leaf"     : "icon-leaf",
+        "Library"  : "icon-library2"
+    
+    })
+    #set ($message = $point.getChild('message').value)
+    #set ($icon = $point.getChild('icon').value)
+    
+    <li class="point-item">
+        <div class="item-wrap"><span class="icon $iconClasses.get($icon)"></span></div>
+        <div class="item-wrap">$message</div>
+    </li>
+#end

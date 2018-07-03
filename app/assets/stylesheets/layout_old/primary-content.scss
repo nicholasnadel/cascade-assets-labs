@@ -152,4 +152,15 @@
 
 .primary-content.one-column {
   background-color: $bg-platinum-gray;
+
+  .messaging-widget a,
+  .chapman-events-feed-widget a {
+    border-bottom: 1px dotted #a50034;
+  }
+
+  .social-link,
+  .cd-hero a,
+  .box,
+  .fact-card a,
+  .slider-controls a{ border-bottom: none; }
 }
