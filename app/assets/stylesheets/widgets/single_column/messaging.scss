@@ -321,7 +321,8 @@
 
   /* Updated for accessibility. See:
      https://github.com/chapmanu/cascade-assets/issues/207 */
-  a {
+  a,
+  &.messaging-widget__text-left .editableContent a {
     /* Indeed, neither white or #adadad is defined in colors.scss. */
     color: white;
     border-bottom: 2px dotted #adadad;

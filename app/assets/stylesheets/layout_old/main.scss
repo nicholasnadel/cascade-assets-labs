@@ -12,12 +12,14 @@
 }
 
 /* center column CSS */
-.main {
+.main, 
+.primary-content.one-column, 
+.primary-content.landing {
   body.personnel & {
     margin-left: 0;
   }
   a {
-      border-bottom: 2px dotted #c1c1c1;
+      border-bottom: 1px dotted #a50034;
   }
   .ie7 & {
     h2 {
