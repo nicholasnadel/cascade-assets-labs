@@ -36,38 +36,30 @@ $(function () {
                     }
                     // All faculty checkbox session storage handled in onclick function
                     // College Filter
-                    if (sessionStorage.collegeFilter && !$("#allFaculty:checked").length) {
+                    if (sessionStorage.collegeFilter) {    
                         collegeFilterSelect.value = sessionStorage.collegeFilter;
                     }
                     $(collegeFilterSelect).bind("change", function () {
                         sessionStorage.collegeFilter = collegeFilterSelect.value;
                     });
                     // Department Filter
-                    if (sessionStorage.departmentFilter && !$("#allFaculty:checked").length) {
+                    if (sessionStorage.departmentFilter) {
                         departmentFilterSelect.value = sessionStorage.departmentFilter;
                     }
                     $(departmentFilterSelect).bind("change", function () {
                         sessionStorage.departmentFilter = departmentFilterSelect.value;
                     });
                 }
-                var allFaculty = $("#allFaculty:checked").length,
-                    searchString = $("#directorySearchBox").val();
+                var  searchString = $("#directorySearchBox").val();
                 schoolFilter = $("#collegeFilter option:selected").val();
                 departmentFilter = $("#departmentFilter option:selected").val();
-                if ($("#allFaculty:checked").length) {
-                    schoolFilter = '';
-                    departmentFilter = '';
-                }
-                if (!(searchString)) {
-                    allFaculty = true;
-                }
-                if (allFaculty) {
-                    scope = "_faculty/all";
-                    keywords = '';
+                if ($.trim(searchString) != "") {
+                    scope = "_search";
+                    keywords = $.trim(searchString);                    
                 }
                 else {
-                    scope = "_search";
-                    keywords = $.trim(searchString);
+                    scope = "_faculty/all";
+                    keywords = '';
                 }
             },
             populateResults = function () {
@@ -78,13 +70,13 @@ $(function () {
                     for (var i = 0; i < data.length; i++) {
                         var v_photo;
                         if (!data[i].ThumbnailPhoto) {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
                         else if (data[i].ThumbnailPhoto == '/') {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
                         else if (data[i].ThumbnailPhoto == '') {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
                         else {
                             v_photo = data[i].ThumbnailPhoto;
@@ -181,14 +173,13 @@ $(function () {
                     totalPages = data[data.length - 1] ? (data[data.length - 1].TotalPages) : 0;
                 });
             };
-        //
         applyUserInput();
         populateResults();
         // Bind some functions to run automatically
         $('#directorySearchBox').on('keyup', debounce(fetchNewResults, 400));
         $('#collegeFilter').on('change', fetchNewResults);
         $('#departmentFilter').on('change', fetchNewResults);
-        $('#allFaculty').on('change', fetchNewResults);
+        $('#allFaculty').on('click', clearFilters);
         $('.directorySearchButton').on('click', scrollToResultTop);
         //
         function fetchNewResults() {
@@ -203,18 +194,32 @@ $(function () {
                 jQuery('.directorySearchButton').focus().click();
             }
         });
-        $("#allFaculty").click(function () {
-            if ($("#allFaculty:checked").length) {
-                $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
-            }
-            else{            
-                $("#directorySearchBox, #collegeFilter, #departmentFilter").removeAttr("disabled");
-            }
-
+        //is now a link with X (not a checkbox form field):
+        function clearFilters() {
+            document.getElementById("collegeFilter").selectedIndex = "0";
+            document.getElementById("departmentFilter").selectedIndex = "0";
+            document.getElementById("directorySearchBox").value = "";
+            schoolFilter = "";
+            departmentFilter = "";
+            allFaculty = true;
+            scope = "_faculty/all";
+            keywords = "";
             if (window.sessionStorage) {
-                sessionStorage.allFaculty = $("#allFaculty:checked").length;
-            }
-        });
+                var directorySearchBox = document.getElementById("directorySearchBox"),
+                    collegeFilterSelect = document.getElementById("collegeFilter"),
+                    departmentFilterSelect = document.getElementById("departmentFilter");
+                directorySearchBox.value = "";
+                collegeFilterSelect.value = "";
+                departmentFilterSelect.value = "";
+                sessionStorage.collegeFilter = "";
+                sessionStorage.departmentFilter = "";
+                sessionStorage.keywords = "";
+                sessionStorage.allFaculty = true;
+            }           
+            applyUserInput();
+            page = 0;
+            populateResults();
+        }
         $(".first").click(function () {
             if (page != 0) scrollToResultTop(populateResults, true);
             page = 0;
@@ -246,9 +251,8 @@ $(function () {
         function formatResult(result) {
             var formattedResult =
                 '<div class="result" itemscope itemtype="http://schema.org/Person">' +
-                    (result.link ? '<a class="directorySearchButton button red" href="' + result.link + '" itemprop="url">View Profile</a>' : '') +
-                    (result.image ? '<div class="profilePicture"><img class="image" width="80px" src="' + result.image + '"alt="' + result.name + '" itemprop="image"/></div>' : '') +
-                    (result.name ? '<div class="name" itemprop="name">' + result.name + '</div>' : '') +
+                    (result.image ? '<div class="profilePicture"><img class="image" src="' + result.image + '"alt="' + result.name + '" itemprop="image"/></div>' : '') +
+                    (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '</h2>' : '') +
                     (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                     (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
                     (result.affiliation ? '<div class="affiliation" itemprop="affiliation">' + result.affiliation + '</div>' : '') +

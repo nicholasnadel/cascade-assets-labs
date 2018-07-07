@@ -1,34 +1,25 @@
-/* For individual faculty profile pages (not listing pages)
-   from old profile_2013.css and one class from level_2013.css */ 
+/* For individual faculty profile pages (not listing pages) */ 
+
+  .primaryContent .facultyProfile {
+    width:79%;
+  }
 
 .facultyProfile { 
 
-  h2 {
-    font-size: 14px;
+  img.smallPhoto {
+    margin-left:1px;
+    max-width:130px;
+    @include media($medium-screen) {
+      float:left;
+    }
   }
 
-  .profilePicture {
-    margin:10px 10px 10px 0;
-    overflow:hidden;
-    width: 130px;
-    height:150px;
-    clear:both;
-    position:relative;
-
-    .noPhoto {
-      height: 75px;
-      width: 65px;
+  img.largePhoto {  
+    margin-left:1px;
+    max-width:206px;
+    @include media($medium-screen) {
+      float:left;
     }
-
-    img {
-      position:absolute;
-      max-width:206px;
-      border: 10px solid #ffffff;
-      -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-      -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-      box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-    }
-
   }
 
   .credit {
@@ -36,41 +27,55 @@
   } 
 
   .jobTitle{
-    font-weight:normal;
-    font-size:16px; //set because part of h1 with name so need to be smaller
-    margin-top: 3px;
-    line-height:17px;
-  }
-
-  div[itemprop="affiliation"]{
-    max-width:600px;
-  }
-
-  div[itemprop="affiliation"]:first-child{
-    margin: 15px 0 0 0;
-  }
-
-  .college {
-    padding-bottom:5px; 
-    font-size:14px;
     line-height:15px;
   }
 
-  .honors{
-    margin:10px 0 0 0;
+  ul.contactButtons {
+    list-style-type: none;
+    margin: 14px 0 14px 0;
+    padding: 25px 25px 15px 25px;
+    overflow: hidden;
+    background-color: #2f2f2f;
+    width:100%;
+    & li {      
+      background-color: white;
+      margin-right:20px;
+      margin-bottom: 10px;
+      width:100%;
+      @include media($medium-screen) {
+        float:left;
+        max-width: 206px;
+      }
+      & a {
+        display: inline-block;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        border-bottom: none;
+      }
+    } 
+  }
+
+  .college {
+    margin-top:8px; 
+    line-height:13px;
   }
 
   dl{
-    margin:10px 0 10px 0;
+    margin-top:16px;
+  }
+
+  .newSection {
+    margin-top:16px;  
   }
 
   .noFloat{
     margin: 10px 0 10px 0;
-    width: 70%;
+    width: 79%;
   }
 
   dt{
-    font-weight:bold;
+    font-weight:800;
     float:left;
     clear:left;
     margin:0 5px 5px 0;
@@ -85,7 +90,7 @@
   .video {
     position: relative;
     padding-bottom: 56.25%;
-    padding-top: 30px;
+    padding-top: 5px;
     height: 0;
     overflow: hidden;
   }
@@ -98,17 +103,15 @@
     height: 100%;
   }
 
-  .social{
-    margin:10px 0 0 0;
-  }
-
   .contactInfo {
-     max-width: 500px; 
+    max-width:100%;
+    margin-top:20px; 
   }
 
   dd.scholarlyWork {
-    padding: 10px 15px 10px 30px;
+    padding: 10px 0 10px 20px;
     text-indent: -15px;
+    clear: both;
   }
 
   dd.scholarlyWork div {
@@ -123,61 +126,49 @@
     content:'';
   }
 
-  //copied these social icon classes from level_2013.css. also new name and folder for image:
   .social {
-    a {
+    margin:10px 0 0 0;
+    & a {
       float:left;
       margin:0 10px 0 0;
       text-indent:-999em;
-      height:26px;
-      width:26px;
-      background-image: image-url('social_icons_faculty_profile.png');
+      height:24px;
+      width:24px;
+      background-image: image-url('social_icons_faculty_profile_red.png');
       background-repeat:no-repeat;
+      border-bottom: 0;
     }
-    .facebook{
+    & .facebook{
       background-position:left top;
+    }    
+    & .twitter{
+      background-position:-25px top;
     }
-    
-    .twitter{
-      background-position:-30px top;
+    & .linkedIn{
+      background-position:-50px top;
     }
-
-    .linkedIn{
-      background-position:-60px top;
+    & .rss{
+      background-position:-75px top;
     }
-
-    .rss{
-      background-position:-90px top;
+    & .flickr{
+      background-position:-100px top;
+    }    
+    & .vimeo{
+      background-position:-125px top;
     }
-
-    .flickr{
-      background-position:-120px top;
-    }
-
-    .youTube{
+    & .youTube{
       background-position:-150px top;
     }
-
-    .vimeo{
-      background-position:-180px top;
+    & .googlePlus{
+      background-position:-175px top;
     }
-
-    .social .googlePlus{
-      background-position:-210px top;
-    }
-
-    .instagram{
-      background-position:-240px top;
+    & .instagram{
+      background-position:-200px top;
     } 
   }
 
   @include bp(m) {
-    .profilePicture {
-      position: absolute;
-      top: 65px;
-      right: 10px;
-      float: none;
-    }
+    
   }
 
 } 
