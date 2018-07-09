@@ -21,7 +21,7 @@
 
     <div class="hero-content">
       <section aria-labelledby="herocontentpanel" class="hero-content-panel">
-        <h1>$_EscapeTool.xml($panelTitle)</h1>
+        <h1 id="herocontentpanel">$_EscapeTool.xml($panelTitle)</h1>
         #if ($panelSubtitle != "")
           <h2>$_EscapeTool.xml($panelSubtitle)</h2>
         #end
