@@ -1,0 +1,207 @@
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+    <xsl:template match="/">
+        <xsl:call-template name="previousResults"/>
+        <xsl:apply-templates select="system-index-block/calling-page/system-page/system-data-structure"/>
+    </xsl:template>
+    <xsl:template match="system-index-block/calling-page/system-page/system-data-structure">
+        <xsl:variable name="section" select="section"/>
+        <xsl:variable name="backgroundImage" select="backgroundImage/link"/>
+        <xsl:variable name="altText" select="altText"/>
+        <xsl:variable name="backgroundVideoMp4">
+            <xsl:choose>
+                <xsl:when test="mp4Video/internalLink/link != ''">
+                    <xsl:value-of select="mp4Video/internalLink/link"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="mp4Video/externalLink"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="backgroundVideoWebM">
+            <xsl:choose>
+                <xsl:when test="webmVideo/internalLink/link != ''">
+                    <xsl:value-of select="webmVideo/internalLink/link"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="webmVideo/externalLink"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <section class="banner clearfix">
+            <xsl:attribute name="class">
+                <xsl:text>banner clearfix </xsl:text>
+                <xsl:value-of select="$section"/>
+            </xsl:attribute>
+            <header class="header max-width clearfix" role="header">
+                <a class="header-home-btn" href="/discover/index" title="Go back to the home page">
+                    <img alt="Discover Chapman Logo" class="header-logo" height="112" src="/_files/discover/img/logo_discover.png" width="112"/>
+                </a>
+                <nav class="main-menu" id="main-menu">
+                    <a class="popover-toggle-btn main-menu-toggle-btn icon icon-bars" href="#main-menu-list">
+                        <span class="caption">Menu</span>
+                    </a>
+                    <ul class="popover-toggle main-menu-list navigation-list" role="navigation">
+                        <li>
+                            <a class="main-menu-list-btn first" href="/discover/who-are-you/index">Who Are You?</a>
+                        </li>
+                        <li>
+                            <a class="main-menu-list-btn second" href="/discover/what-interests-you/index">What Interests You?</a>
+                        </li>
+                        <li>
+                            <a class="main-menu-list-btn third" href="/discover/discover-southern-california/index">Discover Southern California</a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <section class="banner-panel">
+                <xsl:attribute name="class">
+                    <xsl:choose>
+                        <xsl:when test="$section = 'geolocationResult'">
+                            <xsl:text>banner-panel </xsl:text>
+                            <xsl:text>result </xsl:text>
+                            <xsl:value-of select="$section"/>
+                        </xsl:when>
+                        <xsl:when test="$section = 'result'">
+                            <xsl:text>banner-panel </xsl:text>
+                            <xsl:text>result </xsl:text>
+                            <xsl:value-of select="$section"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:text>banner-panel </xsl:text>
+                            <xsl:value-of select="$section"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <div class="banner-content max-width">
+                    <xsl:if test="$section != 'home'">
+                        <h1>
+                            <system-page-title/>
+                        </h1>
+                    </xsl:if>
+                    <xsl:copy-of select="content/node()"/>
+                    <xsl:if test="$section = 'geolocationResult'">
+                        <div id="geolocate-copy">
+                            Loading...
+                        </div>
+                    </xsl:if>
+                    <xsl:apply-templates select="questions"/>
+                </div>
+                <div id="hero">
+                    <div class="masthead-gradient">
+                        <xsl:text/>
+                    </div>
+                    <div id="mastheadBackground">
+                        <xsl:if test="$backgroundVideoMp4 != '' or $backgroundVideoWebM != ''">
+                            <xsl:attribute name="style">background-image: url([system-asset]
+                                <xsl:value-of select="$backgroundImage"/>[/system-asset]);
+                            </xsl:attribute>
+                            <video autoplay="true" class="masthead-video" id="mastheadVideo" loop="loop" muted="muted" preload="metadata">
+                                <xsl:if test="$backgroundVideoMp4 != ''">
+                                    <source src="{$backgroundVideoMp4}"/>
+                                </xsl:if>
+                                <xsl:if test="$backgroundVideoWebM != ''">
+                                    <source src="[system-asset]{$backgroundVideoWebM}[/system-asset]"/>
+                                </xsl:if>
+                            </video>
+                        </xsl:if>
+                        <!-- determine the section and display the proper sized placeholder and background image -->
+                        <xsl:choose>
+                            <!-- if this has a video display the image at 1200x675 -->
+                            <xsl:when test="$backgroundVideoMp4 != '' or $backgroundVideoWebM != ''">
+                                <img alt="{$altText}" class="masthead-image unveil" data-src="[system-asset]{$backgroundImage}[/system-asset]" height="675" id="mastheadImage" src="/_files/discover/img/masthead_unveil_placeholder_1200x675.gif" width="1200"/>
+                                <noscript>
+                                    <img alt="{$altText}" class="masthead-image" height="675" id="mastheadImage" src="[system-asset]{$backgroundImage}[/system-asset]" width="1200"/>
+                                </noscript>
+                            </xsl:when>
+                            <!-- handle every other case -->
+                            <xsl:otherwise>
+                                <xsl:choose>
+                                    <!-- result page -->
+                                    <xsl:when test="$section = 'result'">
+                                        <img alt="{$altText}" class="masthead-image unveil" data-src="[system-asset]{$backgroundImage}[/system-asset]" height="666" id="mastheadImage" src="/_files/discover/img/masthead_unveil_placeholder_1200x800.gif" width="1200"/>
+                                        <noscript>
+                                            <img alt="{$altText}" class="masthead-image" height="666" id="mastheadImage" src="[system-asset]{$backgroundImage}[/system-asset]" width="1200"/>
+                                        </noscript>
+                                    </xsl:when>
+                                    <!-- all other pages, home page, question page -->
+                                    <xsl:otherwise>
+                                        <img alt="{$altText}" class="masthead-image unveil" data-src="[system-asset]{$backgroundImage}[/system-asset]" height="800" id="mastheadImage" src="/_files/discover/img/masthead_unveil_placeholder_1200x800.gif" width="1200"/>
+                                        <noscript>
+                                            <img alt="{$altText}" class="masthead-image" height="800" id="mastheadImage" src="[system-asset]{$backgroundImage}[/system-asset]" width="1200"/>
+                                        </noscript>
+                                    </xsl:otherwise>
+                                </xsl:choose>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </xsl:template>
+    <!-- renders the questions, if there are any -->
+    <xsl:template match="questions">
+        <nav>
+            <ul class="choice-list navigation-list">
+                <xsl:apply-templates select="question"/>
+            </ul>
+        </nav>
+    </xsl:template>
+    <!-- renders a single question -->
+    <xsl:template match="question">
+        <xsl:variable name="title" select="title"/>
+        <xsl:variable name="link" select="link/link"/>
+        <li>
+            <a class="basic-btn choice" href="{$link}" title="{$title}">
+                <xsl:value-of select="$title"/>
+            </a>
+        </li>
+    </xsl:template>
+    <!-- renders the recent results -->
+    <xsl:template name="previousResults">
+        <section class="previous-result clearfix" id="previous-result">
+            <div class="previous-result-toggle-container max-width clearfix" id="previous-result-toggle-container">
+                <div class="previous-result-no-results">
+                    <p class="caption">Hi, it doesn't look like you've visited any of our content yet. Please check out the other sections of this website to learn more about Chapman and Southern California. We'll keep track of your favorite sections in this space.</p>
+                    <ul class="choice-list navigation-list">
+                        <li>
+                            <a class="basic-btn choice" href="/discover/who-are-you/index">Who Are You?</a>
+                        </li>
+                        <li>
+                            <a class="basic-btn choice" href="/discover/what-interests-you/index">What Interests You?</a>
+                        </li>
+                        <li>
+                            <a class="basic-btn choice" href="/discover/discover-southern-california/index">Discover Southern California</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="previous-result-loading">
+                    <img alt="image with a loading symbol" src="/_files/discover/css/images/bx_loader.gif"/>
+                </div>
+                <div class="previous-result-results">
+                    <p class="caption">
+                        We've saved your previously visited sections here in case you want to return for a second visit.
+                        
+                        <span class="clear-all-btn-container">
+                            <a class="basic-btn short" href="#" id="clear-all-btn">Clear All</a>
+                        </span>
+                    </p>
+                    <div class="container" id="previous-result-slider-container">
+                        <ul class="previous-result-list navigation-list horizontal" id="previous-result-list">
+                            <xsl:text/>
+                        </ul>
+                        <div class="previous-result-slider-status" id="previous-result-slider-status">
+                            <xsl:text/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="previous-result-toggle-btn" href="#previous-result" id="previous-result-toggle-btn" title="Show/ Hide Results">
+                <span class="container icon icon-arrow-circle-down">
+                    <span class="caption">Previous Results</span>
+                    <xsl:text/>
+                    <span class="count">(0)</span>
+                </span>
+            </a>
+        </section>
+    </xsl:template>
+</xsl:stylesheet>
