@@ -178,10 +178,6 @@
       .story_footer {
         border-bottom-right-radius: 3px;
         border-bottom-left-radius: 3px;
-        .meta {
-          border-bottom-right-radius: 3px;
-          border-bottom-left-radius: 3px;
-        }
         background-color: #fff;
       }
       a {
@@ -272,9 +268,6 @@
         font-size: 12px;
         line-height: 18px;
       }
-      a, .meta a:hover {
-        opacity: 1;
-      }
       .source {
         position: absolute;
         top: 0;
@@ -351,30 +344,6 @@
         }
         &.facebook a, &.instagram a, &.twitter a, &.blogs a {
           padding-left: 30px !important;
-        }
-      }
-      .meta {
-        position: absolute;
-        top: 0;
-        right: 0;
-        background: #fff;
-        .icon {
-          display: block;
-          color: #000000;
-          opacity: 0.6;
-          text-decoration: none;
-          padding: 13px 20px 13px 10px;
-          float: left;
-        }
-        .action {
-          display: block;
-          color: #000000;
-          opacity: 1;
-          text-decoration: none;
-          float: left;
-          &:hover {
-            opacity: 0.8;
-          }
         }
       }
     }
@@ -513,20 +482,6 @@
       -moz-transition: all 0.1s ease-out;
       -o-transition: all 0.1s ease-out;
       transition: all 0.1s ease-out;
-    }
-    .meta.share_action {
-      .action {
-        width: 40px;
-      }
-      .icon {
-        &.comments, &.views {
-          display: none;
-        }
-        &.shares {
-          opacity: 0.2 !important;
-          cursor: default;
-        }
-      }
     }
   }
 }

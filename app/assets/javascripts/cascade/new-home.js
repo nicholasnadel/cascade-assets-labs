@@ -794,65 +794,6 @@
 
     }; // end cu_hero_area
 
-    var cu_stories_area = {
-        initialize : function() {
-            // Share expansion
-            $(".stories").delegate('.meta .shares','click',function(e) {
-                $(this).parent(".meta").addClass("share_action");
-                e.preventDefault();
-                return false;
-            });
-
-            $(".meta .shares").lazybind("mouseenter", function(e) {
-
-                $(".stories .meta").removeClass("share_action"); // clean up open items
-
-                $(e.currentTarget).parent(".meta").addClass("share_action");
-            }, 400, "mouseleave");
-
-            $(".meta").lazybind("mouseleave", function(e) {
-                // $(e.currentTarget).removeClass("share_action");
-                $(".stories .meta").removeClass("share_action");
-            }, 600, "mouseenter");
-
-
-            // Set up the social media sharing function
-            $(".stories").delegate('.meta a','click', this.processShareClick);
-        },
-
-        processShareClick : function(e) {
-            var url, service;
-
-            if (e.target.href !== undefined) {
-                url = e.target.href;
-                service = $(e.target).attr('service');
-            } else {
-                url = $(e.target).parents("a").attr("href");
-                service = $(e.target).parents("a").attr('service');
-            }
-
-            if (service != 'Facebook' && service != 'Twitter') {
-                return false;
-            }
-
-            var x = window.screen.width;
-            var y = window.screen.height;
-
-            newwindow=window.open(url,'name','height=450,width=600,top='+(y/2 - 200)+ ',left=' + (x/2 - 300));
-            if (window.focus) {
-                newwindow.focus();
-            }
-
-            e.preventDefault();
-
-            // Google Analytics Event Tracking
-            // _gaq.push(['_trackEvent', 'Social Engagement', 'Social Media Share Button', service]);
-            if (typeof(ga) !== 'undefined') ga('send', 'event', 'Social Engagement', 'Social Media Share Button', service);
-
-            return false;
-        }
-    }; // end cu_stories_area
-
     var cu_admission_area = {
 
         formTransitionSpeed : 400,
