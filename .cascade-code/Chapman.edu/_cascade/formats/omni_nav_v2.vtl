@@ -197,9 +197,11 @@
   <div id="primary-nav">
     #buildPrimaryNavLeftContainer()
     #buildPrimaryNavLogoContainer()
-    #buildPrimaryNavRightContainer()
+    <div class="right-container" style="float:left;">
+        #buildGlobalNav()
+        #buildPrimaryNavRightContainer()
+    </div>
     #buildPrimaryNavSearchBox()
-    #buildGlobalNav()
   </div>
 #end
 
@@ -247,7 +249,7 @@
 #macro ( buildPrimaryNavRightContainer )
   <div class="nav-container right-nav-container">
     <div class="primary-nav-action utility-nav-trigger">
-      <a tabindex="0" class="primary-nav-icon" aria-label="Search Nav">
+      <a tabindex="0" class="primary-nav-icon" aria-label="Access search navigation bar">
         <svg width="32" height="32" viewBox="0 0 16 16" class="icon-open-search">
           <g>
             <path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path>
@@ -264,7 +266,7 @@
       <div class="nav-icon-text search">Find</div>
     </div>
     <div class="primary-nav-action login-trigger">
-      <a class="primary-nav-icon" role="button">
+      <a tabindex="0" class="primary-nav-icon" role="button" aria-label="Access Chapman Systems">
         <svg width="32" height="32" viewBox="0 0 16 16">
           <g>
             <path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"/>

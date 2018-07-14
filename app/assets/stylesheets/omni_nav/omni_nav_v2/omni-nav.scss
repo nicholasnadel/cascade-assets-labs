@@ -38,11 +38,20 @@ html.omni-nav-v2 {
   ---------------------------------------- */
 
   /* Branded and unbranded break at the same place, for XL screens */
-  &.branded div#primary-nav div.global-nav,
-  &.unbranded div#primary-nav div.global-nav {
+  &.branded div#primary-nav div.global-nav {
     @include media($xl-screen) {
       display: inline-block;
       float: right;
+      width: auto;
+      border-top: none;
+      margin: 14px $base-spacing;
+      padding: 0;
+    }
+  }
+  &.unbranded div#primary-nav div.global-nav {
+    @include media($xl-screen) {
+      display: inline-block;
+      float: left;
       width: auto;
       border-top: none;
       margin: 14px $base-spacing;
@@ -366,6 +375,10 @@ html.omni-nav-v2 {
       height: $primary-nav-height;
     }
 
+    .right-container {
+      float: right;
+    }
+
     #primary-nav-search {
       display: none;
 
@@ -442,10 +455,12 @@ html.omni-nav-v2 {
           }
         }
       }
+      
+
 
       &.right-nav-container {
         font-size: 0; //to prevent div separation
-        float: right;
+        float: left;
         display: table;
         height: 60px;
 
@@ -784,7 +799,7 @@ html.omni-nav-v2 {
   .login-trigger {
     position: relative;
 
-    &:hover {
+    &:hover, &[aria-expanded="true"] {
       .login-menu {
         visibility: visible;
         opacity: 1;

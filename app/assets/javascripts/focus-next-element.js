@@ -1,5 +1,5 @@
 //Slightly modified from https://stackoverflow.com/a/47840891/1274724
-function focusNextElement( activeElem, reverse = false ) {
+function focusNextElement(activeElem, reverse = false) {
   /*check if an element is defined or use activeElement*/
   activeElem = activeElem instanceof HTMLElement ? activeElem : document.activeElement;
 

@@ -22,17 +22,4 @@ $(document).ready(function(){
       list.slideUp(200);
     }
   });
-
-  // $(window).keydown(function(event) {
-  //   switch(event.keyCode) {
-  //     case 38:
-  //       highlight((highlighted && highlighted.prev().length > 0) ? highlighted.prev() : list.children().last());
-  //       list.scrollTo('.selected');
-  //       break;
-  //     case 40:
-  //       highlight((highlighted && highlighted.next().length > 0) ? highlighted.next() : list.children().first());
-  //       list.scrollTo('.selected');
-  //       break;
-  //   }
-  // });
 });

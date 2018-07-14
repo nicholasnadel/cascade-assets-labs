@@ -62,8 +62,98 @@ var OmniNav2 = (function() {
   };
 
   var bindEventHandlers = function() {
-    $('.utility-nav-trigger').on('click', onUtilityNavClick);
-    $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
+    //Main utility nav trigger
+    $('.utility-nav-trigger').on('click keydown', function (e) {
+      if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "click")) {
+        onUtilityNavClick();
+        return false;
+      }
+    });
+    
+    //Handles all keyboard controls and dropdown menus
+    $utilityNav.on('keydown click', 'li a', function(e) {
+      e.stopPropagation();
+
+      //Find next/prev top level link and move to it
+      if (e.keyCode === 37 ) { //left arrow key
+        $(this).closest('.utility-cell').prev().find("a").first().focus();
+        return false;
+      }
+      else if (e.keyCode === 39 ) { //right arrow key
+        $(this).closest('.utility-cell').next().find("a").first().focus();
+        return false;
+      }
+
+      //Check if focused item has dropdowns or not
+      if ($(this).parent().hasClass('utility-has-dropdown')) {
+        //Keydown event
+        if (e.type == "keydown") {
+          if ($(this).parent().attr('aria-expanded') == "true") {
+            if (e.keyCode === 40 ) { //down arrow key
+              focusNextElement($(this)).focus();
+              return false;
+            }
+          }
+          else {
+            //Spacebar, Down, or Enter Key
+            if (e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) {
+              $(this).parent().addClass('dropdown-open');
+              $(this).parent().attr('aria-expanded', 'true');
+              return false;
+            }
+          }
+        }
+        //Click event
+        else {  
+          // This is to prevent Search From and Social dropdowns from overlapping
+          // Search From (.search-type) has a different parent than the other dropdowns so it needs a different selector to hide the other dropdowns
+          var that = $(this).closest('li.utility-has-dropdown');
+          if ( that[0].classList.contains('search-type') ) {
+            $('.utility-links').find('.utility-has-dropdown').removeClass('dropdown-open').attr('aria-expanded', 'false');
+          }
+          else {
+            that.siblings('.utility-has-dropdown').removeClass('dropdown-open');
+            $('.utility-search').find('.utility-has-dropdown').removeClass('dropdown-open').attr('aria-expanded', 'false');
+          }
+
+          that.addClass('dropdown-open');
+          that.attr('aria-expanded', function(index, attr){
+              return attr == 'true' ? 'false' : 'true';
+          });
+          $(document).on("click", onDocumentClick);
+        }
+      }
+      //Controls for navigating submenus with arrow keys
+      else {
+        if (e.keyCode === 38 ) { //up arrow key
+          focusPrevElement($(this)).focus();
+          return false;
+        }    
+        else if (e.keyCode === 40 ) { //down arrow key
+          focusNextElement($(this)).focus();
+          return false;
+        }
+      }
+    });
+    
+    //Helper function for Utility nav controls
+    var onDocumentClick = function() {
+      $('li.utility-has-dropdown').removeClass('dropdown-open').attr('aria-expanded', 'false');
+      $(document).off("click", onDocumentClick);
+    };
+    
+    //Removes dropdown menus when menu loses focus
+    $utilityNav.on("focusout", "li.utility-has-dropdown", function() {
+      //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
+      //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
+      var that = $(this);
+      setTimeout(function() {
+        if (that.find(":focus").length === 0) {
+          that.removeClass('dropdown-open');
+          that.attr('aria-expanded', 'false');
+        }
+      }, 50);
+    });
 
     var hideSearchResultsTimeoutId = null;
     $(window).on('resize', function() {
@@ -264,7 +354,10 @@ var OmniNav2 = (function() {
     // Set gradual transition for padding adjustments after initial load
     // Timing and duration match slideToggle defaults
     $('html.omni-nav-v2').css('transition', 'padding-top 400ms ease-in-out');
-    $('.primary-nav-action').toggleClass("utility-open");
+    $('.utility-nav-trigger').toggleClass("utility-open");
+    $('.utility-nav-trigger').attr('aria-expanded', function(index, attr){
+        return attr == 'true' ? 'false' : 'true';
+    });
 
     if ($(window).width() >= DESKTOP_BREAKPOINT) {
       // slideToggle() sets display: block and overflow: hidden by default
@@ -287,7 +380,8 @@ var OmniNav2 = (function() {
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
         setTimeout(function(){
-          $('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
+          $(".utility-nav").find("a").first().focus();
+          //$('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
         },300);
       }
     }
@@ -338,28 +432,6 @@ var OmniNav2 = (function() {
       $('.icon-open-search').attr("class", "icon-open-search");
       $('.icon-close-search').attr("class", "icon-close-search hide");
     }
-  };
-
-  var onUtilityNavDropdownClick = function(e) {
-    e.stopPropagation();
-
-    // This is to prevent Search From and Social dropdowns from overlapping
-    // Search From (.search-type) has a different parent than the other dropdowns so it needs a different selector to hide the other dropdowns
-    if ( $(this)[0].classList.contains('search-type') ) {
-      $('.utility-links').find('.utility-has-dropdown').removeClass('dropdown-open');
-    }
-    else {
-      $(this).siblings('.utility-has-dropdown').removeClass('dropdown-open');
-      $('.utility-search').find('.utility-has-dropdown').removeClass('dropdown-open');
-    }
-
-    $(this).toggleClass('dropdown-open');
-    $(document).on("click", onDocumentClick);
-  };
-
-  var onDocumentClick = function() {
-    $('li.utility-has-dropdown').removeClass('dropdown-open');
-    $(document).off("click", onDocumentClick);
   };
 
   var onSearchInput = function() {
@@ -483,10 +555,10 @@ $(document).ready(function () {
     OmniNav2.init($('#omni-nav-v2'));
   }
   
+  //Primary Global Nav Keyboard Accessibility
   $("#primary-nav").on("keydown mouseenter", ".primary-link.has-dropdown a", function (e) {
     if ($(this).parent().attr('aria-expanded') == "true") {
       if (e.keyCode === 40 ) { //down arrow key
-        // $(this).next().find("a").first().focus();
         focusNextElement($(this)).focus();
         return false;
       }
@@ -512,7 +584,7 @@ $(document).ready(function () {
   });
   
   $("#primary-nav").on("keydown", ".primary-link", function (e) {  
-    //Need to explicitly find an element that's focusable, in this case the top level anchor
+    //Need to explicitly find an element that's focusable, in this case the next top level anchor
     if (e.keyCode === 37 ) { //left arrow key
       $(this).prev().find("a").first().focus();
       return false;
@@ -523,7 +595,7 @@ $(document).ready(function () {
     }
   });
 
-  $(".primary-link.has-dropdown").on("focusout mouseleave", function() {
+  $("#primary-nav").on("focusout mouseleave", ".primary-link.has-dropdown", function() {
     //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
     //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
     var that = $(this);
@@ -534,37 +606,13 @@ $(document).ready(function () {
     }, 50);
   });
   
-  
-  // $( '#primary-nav' ).on( 'mouseenter focus', '.primary-link.has-dropdown > a', function( e ) {
-  //       var el = $( this );
-  //       el.toggleClass( 'has-focus' );
-  //       // Show sub-menu
-  //       el.parents( '.primary-link.has-dropdown' ).attr( 'aria-expanded', 'true' );
-  //     }).on( 'mouseleave blur', '.menu-level-0.menu-item-has-children > .menu-item-link', function( e ) {
-  //       var el = $( this );
-  //       el.toggleClass( 'has-focus' );
-  //       // Only hide sub-menu after a short delay, so links get a chance to catch focus from tabbing
-  //       setTimeout( function() {
-  //         if ( el.siblings( '.global-nav-dropdown' ).attr( 'data-has-focus' ) !== 'true' ) {
-  //           el.parents( '.primary-link.has-dropdown' ).attr( 'aria-expanded', 'false' );
-  //         }
-  //       }, 100 );
-  //     }).on( 'mouseenter focusin', '.global-nav-dropdown', function( e ) {
-  //       var el = $( this );
-  //       el.attr( 'data-has-focus', 'true' );
-  //     }).on( 'mouseleave focusout', '.global-nav-dropdown', function( e ) {
-  //       var el = $( this );
-  //       setTimeout( function() {
-  //         // Check if anything else has picked up focus (i.e. next link in sub-menu)
-  //         if ( el.find( ':focus' ).length === 0 ) {
-  //           el.attr( 'data-has-focus', 'false' );
-  //           // Hide sub-menu on the way out if parent link doesn't have focus now
-  //           if ( el.siblings( 'a.has-focus' ).length === 0 ) {
-  //             el.parents( '.primary-link.has-dropdown' ).attr( 'aria-expanded', 'false' );
-  //           }
-  //         }
-  //       }, 100 );
-  //     });
-      
+  //Utility Nav Keyboard Controls
+
+
+  $(document).keydown(function(e) {
+      console.log(e.keyCode);
+  });
+
+
   
 });
