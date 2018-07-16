@@ -290,15 +290,6 @@
   #set ( $escapedHeader = ${_EscapeTool.url($headerNormed)} )
   #set ( $facebookLink = $FACEBOOK_SHARE_URL + $storyLink )
   #set ( $twitterLink = $TWITTER_SHARE_URL + $escapedHeader + '&amp;url=' + $storyLink )
-
-  ## Output
-  <p class="meta">
-    <a href="$facebookLink" class="action facebook" service="Facebook">Share on Facebook</a>
-    <a href="$twitterLink" class="action twitter" service="Twitter">Post to Twitter</a>
-
-    ## sr-only span avoids WAVE issue: https://stackoverflow.com/a/39919878/6763239
-    <a href="#" class="icon shares"><span class="sr-only">Share Icon</span></a>
-  </p>
 #end
 
 #macro ( buildActionsBlock )
