@@ -259,7 +259,9 @@ html.omni-nav-v2 {
           li { padding-right: 16px; }
           & > li:last-child { padding-left: 0px; }
         }
-
+        & > .utility-list {
+          li.search-filter-option { padding-right: 0px; }
+        }
 
       }
 

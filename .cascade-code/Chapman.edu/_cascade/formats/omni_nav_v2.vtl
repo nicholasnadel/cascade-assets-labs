@@ -475,11 +475,11 @@
   <div class="utility-nav-container utility-search" id="utility-nav-search">
     <ul class="utility-list">
       <li class="utility-cell search-type utility-has-dropdown">
-        <a class="selected-search-filter">Search From</a>
+        <a tabindex="0" class="selected-search-filter">Search From</a>
         <div class="utility-dropdown dropdown">
           <ul>
             #foreach ($filter in $searchFilters)
-              <li class="search-filter-option"><a>$filter</a></li>
+              <li class="search-filter-option"><a tabindex="0">$filter</a></li>
             #end
           </ul>
         </div>
@@ -791,7 +791,7 @@
 #end
 
 #macro ( buildOffCanvasNavCloseIcon )
-  <span class="close js-close-off-canvas-nav">
+  <span tabindex="0" class="close js-close-off-canvas-nav">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
       <title>Close</title>
       <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>

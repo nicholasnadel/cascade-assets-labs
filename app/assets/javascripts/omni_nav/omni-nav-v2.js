@@ -61,17 +61,70 @@ var OmniNav2 = (function() {
     repositionForCollabsibleAnchor(params, height);
   };
 
+  //Handles all keyboard controls and dropdown menus
   var bindEventHandlers = function() {
+    
+    //Primary global nav keyboard controls
+    $primaryNav.on("keydown mouseenter", ".primary-link.has-dropdown a", function (e) {
+      if ($(this).parent().attr('aria-expanded') == "true") {
+        if (e.keyCode === 40 ) { //down arrow key
+          focusNextElement($(this)).focus();
+          return false;
+        }
+      }
+      else {
+        //Spacebar, Down, or Enter Key
+        if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "mouseenter")) {
+          $(this).parent().attr('aria-expanded', 'true');
+          return false;
+        }
+      }
+    });
+
+    $(".primary-link.has-dropdown .global-nav-dropdown a").on("keydown mouseenter", function (e) {
+      if (e.keyCode === 38 ) { //up arrow key
+        focusPrevElement($(this)).focus();
+        return false;
+      }    
+      else if (e.keyCode === 40 ) { //down arrow key
+        focusNextElement($(this)).focus();
+        return false;
+      }
+    });
+  
+    $primaryNav.on("keydown", ".primary-link", function (e) {  
+      //Need to explicitly find an element that's focusable, in this case the next top level anchor
+      if (e.keyCode === 37 ) { //left arrow key
+        $(this).prev().find("a").first().focus();
+        return false;
+      }    
+      else if (e.keyCode === 39 ) { //left arrow key
+        $(this).next().find("a").first().focus();
+        return false;
+      }
+    });
+
+    $primaryNav.on("focusout mouseleave", ".primary-link.has-dropdown", function() {
+      //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
+      //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
+      var that = $(this);
+      setTimeout(function() {
+        if (that.find(":focus").length === 0) {
+          that.attr('aria-expanded', 'false');
+        }
+      }, 50);
+    });
+    
     //Main utility nav trigger
     $('.utility-nav-trigger').on('click keydown', function (e) {
       if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "click")) {
         onUtilityNavClick();
         return false;
       }
-    });
+    });    
     
-    //Handles all keyboard controls and dropdown menus
-    $utilityNav.on('keydown click', 'li a', function(e) {
+    //Utility nav keyboard controls
+    $utilityNav.on('keydown click', 'li', function(e) {
       e.stopPropagation();
 
       //Find next/prev top level link and move to it
@@ -85,20 +138,20 @@ var OmniNav2 = (function() {
       }
 
       //Check if focused item has dropdowns or not
-      if ($(this).parent().hasClass('utility-has-dropdown')) {
+      if ($(this).hasClass('utility-has-dropdown')) {
         //Keydown event
         if (e.type == "keydown") {
-          if ($(this).parent().attr('aria-expanded') == "true") {
+          if ($(this).attr('aria-expanded') == "true") {
             if (e.keyCode === 40 ) { //down arrow key
-              focusNextElement($(this)).focus();
+              focusNextElement($(this).find('a').first()).focus();
               return false;
             }
           }
           else {
             //Spacebar, Down, or Enter Key
             if (e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) {
-              $(this).parent().addClass('dropdown-open');
-              $(this).parent().attr('aria-expanded', 'true');
+              $(this).addClass('dropdown-open');
+              $(this).attr('aria-expanded', 'true');
               return false;
             }
           }
@@ -126,11 +179,11 @@ var OmniNav2 = (function() {
       //Controls for navigating submenus with arrow keys
       else {
         if (e.keyCode === 38 ) { //up arrow key
-          focusPrevElement($(this)).focus();
+          focusPrevElement($(this).find("a").first()).focus();
           return false;
         }    
         else if (e.keyCode === 40 ) { //down arrow key
-          focusNextElement($(this)).focus();
+          focusNextElement($(this).find("a").first()).focus();
           return false;
         }
       }
@@ -150,6 +203,45 @@ var OmniNav2 = (function() {
       setTimeout(function() {
         if (that.find(":focus").length === 0) {
           that.removeClass('dropdown-open');
+          that.attr('aria-expanded', 'false');
+        }
+      }, 50);
+    });
+    
+    //Login nav trigger
+    $('.login-trigger').on('keydown', 'a.primary-nav-icon', function (e) {     
+      if ($(this).parent().attr('aria-expanded') == "true") {
+        if (e.keyCode === 40 ) { //down arrow key
+          focusNextElement($(this)).focus();
+          return false;
+        }
+      }
+      else {
+        //Spacebar, Down, or Enter Key
+        if (e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) {
+          $(this).parent().attr('aria-expanded', 'true');
+          return false;
+        }
+      }
+    });   
+  
+    $('.login-trigger').on("keydown mouseenter", ".login-menu a", function (e) {
+      if (e.keyCode === 38 ) { //up arrow key
+        focusPrevElement($(this)).focus();
+        return false;
+      }    
+      else if (e.keyCode === 40 ) { //down arrow key
+        focusNextElement($(this)).focus();
+        return false;
+      }
+    });
+  
+    $('.login-trigger').on("focusout mouseleave", function() {
+      //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
+      //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
+      var that = $(this);
+      setTimeout(function() {
+        if (that.find(":focus").length === 0) {
           that.attr('aria-expanded', 'false');
         }
       }, 50);
@@ -489,17 +581,46 @@ var OmniNav2 = (function() {
       // SiteImprove reports duplicate IDs
       var offCanvasSelectors = '#js-off-canvas-trigger, .js-close-off-canvas-nav, #js-off-canvas-overlay';
 
-      $(offCanvasSelectors).on('click', function(event) {
-        event.preventDefault();
-        $('#js-off-canvas-nav-container').toggleClass('open');
-        $('#js-off-canvas-overlay').toggleClass('active');
-        $('body').toggleClass('no-scroll');
+      $(offCanvasSelectors).on('click keydown', function(e) {
+        if ((e.keyCode === 32 || e.keyCode === 13) || (e.type == "click")) {
+          $('#js-off-canvas-nav-container').toggleClass('open');
+          $('#js-off-canvas-overlay').toggleClass('active');
+          $('body').toggleClass('no-scroll');
+          var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('#js-off-canvas-nav-container') : $('.nav-container');
+          focus_target.find("a").first().focus();
+          return false;
+        }
+      });
+
+      $(".off-canvas-menu").on('keydown','li', function(e) {
+        if (e.keyCode === 32 || e.keyCode === 13) { //Enter or space bar
+          var that = $(this).find(".toggle");
+          console.log(that);
+          if (that.length) { //Has a dropdown
+            e.preventDefault();
+            that.click();
+          }
+          else { //Regular nav links
+            $(this).find('a')[0].click();
+            return false;
+          }
+        }
+        else if (e.keyCode === 38 ) { //Up arrow key
+          focusPrevElement($(this)).focus();
+          return false;
+        }    
+        else if (e.keyCode === 40 ) { //Down arrow key
+          focusNextElement($(this)).focus();
+          return false;
+        }
       });
 
       $('#js-off-canvas-nav-container .toggle').on('click', function() {
         $(this).parent().toggleClass('open'); // Targets li
         $(this).parent().find('ul').slideToggle();
       });
+      
+      
     };
 
     return {
@@ -554,65 +675,5 @@ $(document).ready(function () {
   if($('#omni-nav-v2').length) {
     OmniNav2.init($('#omni-nav-v2'));
   }
-  
-  //Primary Global Nav Keyboard Accessibility
-  $("#primary-nav").on("keydown mouseenter", ".primary-link.has-dropdown a", function (e) {
-    if ($(this).parent().attr('aria-expanded') == "true") {
-      if (e.keyCode === 40 ) { //down arrow key
-        focusNextElement($(this)).focus();
-        return false;
-      }
-    }
-    else {
-      //Spacebar, Down, or Enter Key
-      if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "mouseenter")) {
-        $(this).parent().attr('aria-expanded', 'true');
-        return false;
-      }
-    }
-  });
-
-  $(".primary-link.has-dropdown .global-nav-dropdown a").on("keydown mouseenter", function (e) {
-    if (e.keyCode === 38 ) { //up arrow key
-      focusPrevElement($(this)).focus();
-      return false;
-    }    
-    else if (e.keyCode === 40 ) { //down arrow key
-      focusNextElement($(this)).focus();
-      return false;
-    }
-  });
-  
-  $("#primary-nav").on("keydown", ".primary-link", function (e) {  
-    //Need to explicitly find an element that's focusable, in this case the next top level anchor
-    if (e.keyCode === 37 ) { //left arrow key
-      $(this).prev().find("a").first().focus();
-      return false;
-    }    
-    else if (e.keyCode === 39 ) { //left arrow key
-      $(this).next().find("a").first().focus();
-      return false;
-    }
-  });
-
-  $("#primary-nav").on("focusout mouseleave", ".primary-link.has-dropdown", function() {
-    //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
-    //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
-    var that = $(this);
-    setTimeout(function() {
-      if (that.find(":focus").length === 0) {
-        that.attr('aria-expanded', 'false');
-      }
-    }, 50);
-  });
-  
-  //Utility Nav Keyboard Controls
-
-
-  $(document).keydown(function(e) {
-      console.log(e.keyCode);
-  });
-
-
   
 });
