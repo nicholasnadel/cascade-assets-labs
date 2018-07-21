@@ -358,15 +358,14 @@
       <nav aria-label="global navigation">
         <ul class="global-nav-links">
           #foreach( $link in $globalNavLinks )
-            #if( $link.dropdown.size() > 0 )
-            <li class="primary-link has-dropdown" aria-expanded="false">
-              <a tabindex="0">$link.sectionTitle</a>
-              #buildGlobalNavDropdown( $link.dropdown $link.sectionLink $link.sectionTitle)
-            #else
             <li class="primary-link">
-              ## Primary links with no dropdown have a link with the title
-              <a href="site://Chapman.edu/$link.sectionLink">$link.sectionTitle</a>
-            #end
+              #if( $link.dropdown.size() > 0 )
+                <a>$link.sectionTitle</a>
+                #buildGlobalNavDropdown( $link.dropdown $link.sectionLink)
+              #else
+                ## Primary links with no dropdown have a link with the title
+                <a href="site://Chapman.edu/$link.sectionLink">$link.sectionTitle</a>
+              #end
             </li>
           #end
         </ul>
@@ -375,7 +374,7 @@
   </div>
 #end
 
-#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink $sectionTitle)
+#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink)
   ## Law global nav dropdowns don't have icons
   #if( $umbrellaDirectory != 'law' )
     #set ( $overviewIconClass = "icon-file-text" )
@@ -387,14 +386,14 @@
     <ul>
       ## First list item is always Overview
       <li>
-        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink" aria-label="$sectionTitle Overview">Overview</a>
+        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
           #if($dropdownLink.link.toString().contains("http"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="${_EscapeTool.xml( $dropdownLink.text )}">
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
           #else
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link" aria-label="${_EscapeTool.xml( $dropdownLink.text )}">          
+            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
           #end
             ${_EscapeTool.xml( $dropdownLink.text )}
           </a>

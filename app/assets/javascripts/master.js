@@ -3,7 +3,6 @@
 
 //= require global
 //= require omni-nav
-//= require focus-next-element
 
 //= require_tree ./widgets
 //= require_tree ./components
