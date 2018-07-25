@@ -65,7 +65,7 @@ var OmniNav2 = (function() {
   var bindEventHandlers = function() {
     
     //Primary global nav keyboard controls
-    $primaryNav.on("keydown mouseenter", ".primary-link.has-dropdown a", function (e) {
+    $primaryNav.on("keydown mouseenter", ".primary-link a", function (e) {
       if ($(this).parent().attr('aria-expanded') == "true") {
         if (e.keyCode === 40 ) { //down arrow key
           focusNextElement($(this)).focus();
@@ -81,7 +81,7 @@ var OmniNav2 = (function() {
       }
     });
 
-    $(".primary-link.has-dropdown .global-nav-dropdown a").on("keydown mouseenter", function (e) {
+    $(".primary-link .global-nav-dropdown a").on("keydown mouseenter", function (e) {
       if (e.keyCode === 38 ) { //up arrow key
         focusPrevElement($(this)).focus();
         return false;
@@ -91,20 +91,25 @@ var OmniNav2 = (function() {
         return false;
       }
     });
-  
+    
     $primaryNav.on("keydown", ".primary-link", function (e) {  
       //Need to explicitly find an element that's focusable, in this case the next top level anchor
-      if (e.keyCode === 37 ) { //left arrow key
+      if (e.keyCode === 37 ) { //Left arrow key
         $(this).prev().find("a").first().focus();
         return false;
       }    
-      else if (e.keyCode === 39 ) { //left arrow key
+      else if (e.keyCode === 39 ) { //Right arrow key
         $(this).next().find("a").first().focus();
         return false;
       }
+      else if (e.keyCode === 27) { //ESC key
+        $(this).attr('aria-expanded', 'false');
+        $(this).find('a').first().focus();
+        return false;
+      }
     });
-
-    $primaryNav.on("focusout mouseleave", ".primary-link.has-dropdown", function() {
+    
+    $primaryNav.on("focusout mouseleave", ".primary-link", function() {
       //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
       //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
       var that = $(this);
@@ -128,11 +133,11 @@ var OmniNav2 = (function() {
       e.stopPropagation();
 
       //Find next/prev top level link and move to it
-      if (e.keyCode === 37 ) { //left arrow key
+      if (e.keyCode === 37 ) { //Left arrow key
         $(this).closest('.utility-cell').prev().find("a").first().focus();
         return false;
       }
-      else if (e.keyCode === 39 ) { //right arrow key
+      else if (e.keyCode === 39 ) { //Right arrow key
         $(this).closest('.utility-cell').next().find("a").first().focus();
         return false;
       }
@@ -142,7 +147,7 @@ var OmniNav2 = (function() {
         //Keydown event
         if (e.type == "keydown") {
           if ($(this).attr('aria-expanded') == "true") {
-            if (e.keyCode === 40 ) { //down arrow key
+            if (e.keyCode === 40 ) { //Down arrow key
               focusNextElement($(this).find('a').first()).focus();
               return false;
             }
@@ -186,6 +191,11 @@ var OmniNav2 = (function() {
           focusNextElement($(this).find("a").first()).focus();
           return false;
         }
+        else if (e.keyCode === 27) { //ESC key
+          onDocumentClick();
+          $(this).closest(".utility-cell").find("a").first().focus();
+          return false;
+        }
       }
     });
     
@@ -211,7 +221,7 @@ var OmniNav2 = (function() {
     //Login nav trigger
     $('.login-trigger').on('keydown', 'a.primary-nav-icon', function (e) {     
       if ($(this).parent().attr('aria-expanded') == "true") {
-        if (e.keyCode === 40 ) { //down arrow key
+        if (e.keyCode === 40 ) { //Down arrow key
           focusNextElement($(this)).focus();
           return false;
         }
@@ -226,12 +236,17 @@ var OmniNav2 = (function() {
     });   
   
     $('.login-trigger').on("keydown mouseenter", ".login-menu a", function (e) {
-      if (e.keyCode === 38 ) { //up arrow key
+      if (e.keyCode === 38 ) { //Up arrow key
         focusPrevElement($(this)).focus();
         return false;
       }    
-      else if (e.keyCode === 40 ) { //down arrow key
+      else if (e.keyCode === 40 ) { //Down arrow key
         focusNextElement($(this)).focus();
+        return false;
+      }
+      else if (e.keyCode === 27) { //ESC key
+        $(this).closest('.login-trigger').attr('aria-expanded', 'false');
+        $(this).closest('.login-trigger').find('a').first().focus();
         return false;
       }
     });
@@ -581,13 +596,17 @@ var OmniNav2 = (function() {
       // SiteImprove reports duplicate IDs
       var offCanvasSelectors = '#js-off-canvas-trigger, .js-close-off-canvas-nav, #js-off-canvas-overlay';
 
+      var toggleOffCanvas = function() {
+        $('#js-off-canvas-nav-container').toggleClass('open');
+        $('#js-off-canvas-overlay').toggleClass('active');
+        $('body').toggleClass('no-scroll');
+        var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('#js-off-canvas-nav-container') : $('.nav-container');
+        focus_target.find("a").first().focus();
+      };
+
       $(offCanvasSelectors).on('click keydown', function(e) {
         if ((e.keyCode === 32 || e.keyCode === 13) || (e.type == "click")) {
-          $('#js-off-canvas-nav-container').toggleClass('open');
-          $('#js-off-canvas-overlay').toggleClass('active');
-          $('body').toggleClass('no-scroll');
-          var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('#js-off-canvas-nav-container') : $('.nav-container');
-          focus_target.find("a").first().focus();
+          toggleOffCanvas();
           return false;
         }
       });
@@ -610,6 +629,13 @@ var OmniNav2 = (function() {
         }    
         else if (e.keyCode === 40 ) { //Down arrow key
           focusNextElement($(this)).focus();
+          return false;
+        }
+      });
+      
+      $(document).on('keydown', function(e) {
+        if (e.keyCode === 27 && $(".off-canvas-nav-container").hasClass("open")) { //ESC key
+          toggleOffCanvas();
           return false;
         }
       });
