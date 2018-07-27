@@ -573,6 +573,11 @@ var OmniNav2 = (function() {
       enableMenusToggle();
       enableOffCanvasNavHandlers();
 
+      //Prevent https://github.com/chapmanu/cascade-assets/issues/369
+      if ($("#off-canvas-umbrella").length) {
+        $("#off-canvas-main, #main-logo").hide();
+      }
+
       var syncLinkWidthsTimeoutId;
       $(window).on('resize', function() {
         clearTimeout(syncLinkWidthsTimeoutId);
@@ -583,11 +588,16 @@ var OmniNav2 = (function() {
     var enableMenusToggle = function() {
       // Enables toggle to slide main/umbrella menus back and forth.
       $('a.toggle-menu-label').on('click', function(e) {
+        
+        
         // Toggles headers.
-        $('div#umbrella-logo').toggle('blind');
+        $('div#umbrella-logo, #main-logo').toggle('blind');
 
         // Slide-toggles the menus.
-        $('div#off-canvas-umbrella').toggle('slide');
+        $('div#off-canvas-umbrella, div#off-canvas-main').toggle("slide", function() {
+          $("a.toggle-menu-label:visible").first().focus();
+        });
+        
       });
     };
 
