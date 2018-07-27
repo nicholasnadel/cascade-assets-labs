@@ -197,7 +197,7 @@
   <div id="primary-nav">
     #buildPrimaryNavLeftContainer()
     #buildPrimaryNavLogoContainer()
-    <div class="right-container" style="float:left;">
+    <div class="right-container">
         #buildGlobalNav()
         #buildPrimaryNavRightContainer()
     </div>
@@ -360,7 +360,7 @@
           #foreach( $link in $globalNavLinks )
             <li class="primary-link">
               #if( $link.dropdown.size() > 0 )
-                <a>$link.sectionTitle</a>
+                <a tabindex="0">$link.sectionTitle</a>
                 #buildGlobalNavDropdown( $link.dropdown $link.sectionLink)
               #else
                 ## Primary links with no dropdown have a link with the title

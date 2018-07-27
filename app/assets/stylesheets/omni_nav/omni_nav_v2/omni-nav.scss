@@ -38,16 +38,7 @@ html.omni-nav-v2 {
   ---------------------------------------- */
 
   /* Branded and unbranded break at the same place, for XL screens */
-  &.branded div#primary-nav div.global-nav {
-    @include media($xl-screen) {
-      display: inline-block;
-      float: right;
-      width: auto;
-      border-top: none;
-      margin: 14px $base-spacing;
-      padding: 0;
-    }
-  }
+  &.branded div#primary-nav div.global-nav,
   &.unbranded div#primary-nav div.global-nav {
     @include media($xl-screen) {
       display: inline-block;
@@ -58,7 +49,7 @@ html.omni-nav-v2 {
       padding: 0;
     }
   }
-
+  
   /* Searchbox and search results styling
   ---------------------------------------- */
   #search-results-overlay {
