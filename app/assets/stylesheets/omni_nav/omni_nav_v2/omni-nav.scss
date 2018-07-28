@@ -370,6 +370,10 @@ html.omni-nav-v2 {
 
     .right-container {
       float: right;
+      
+      @media screen and (max-width: $xl-screen - 1px) {
+        float: none;
+      }
     }
 
     #primary-nav-search {
@@ -448,14 +452,17 @@ html.omni-nav-v2 {
           }
         }
       }
-      
-
 
       &.right-nav-container {
         font-size: 0; //to prevent div separation
         float: left;
         display: table;
         height: 60px;
+
+        @media screen and (max-width: $xl-screen - 1px) {
+          position: absolute;
+          right: 0;
+        }
 
         .primary-nav-action {
           // without z-index, global nav dropdown overlaps primary icons
@@ -886,6 +893,7 @@ html.omni-nav-v2 {
 }
 
 table.gsc-completion-container { font-size: 13px; }
+td.gsc-search-button { padding: 0; }
 
 /*
  * For OmniNav v2, #theme header should have no bottom padding.
