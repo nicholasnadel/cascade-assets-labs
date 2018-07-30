@@ -3,9 +3,9 @@
 .facultyList{
   margin:0 0 20px 0;
   .summary {
-		border-bottom: 1px dotted $black;
-		padding: 10px 0 0 0;     
-  } 
+    border-bottom: 1px dotted #565555;
+    padding: 10px 0 10px 0;    
+  }
   .facultyMember{
     margin:20px 20px 2px 0;
     width:100%;
@@ -18,15 +18,12 @@
     @include bp(m) {
       width:45%;
     }
-
     &:nth-child(odd){
       margin-right:45px;
     }
-
     &:nth-child(even){
       margin-right:0;
     }
-
     .profilePicture{
       position:absolute;
       top:10px;
