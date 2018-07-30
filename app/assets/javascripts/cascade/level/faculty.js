@@ -145,7 +145,7 @@ $(function () {
                 $.getJSON(facultyFeedUrl(), function (data) {
                     for (var i = 0; i < data.length; i++) {
                         var v_photo;
-												var v_alt_text = 'no photo available';
+                        var v_alt_text = 'no photo available';
                         if (!data[i].ThumbnailPhoto) {
                             v_photo = '/_files/level/img/unisex-silhouette.jpg';														
                         }
@@ -157,7 +157,7 @@ $(function () {
                         }
                         else {
                             v_photo = data[i].ThumbnailPhoto;
-														v_alt_text = 'Headshot photo of ' + data[i].FacFullName;
+                            v_alt_text = 'Headshot photo of ' + data[i].FacFullName;
                         }
                         
                         //put each title on own line
@@ -168,7 +168,7 @@ $(function () {
                         var result = {
                             link: data[i].CascadePath ? '/our-faculty/' + data[i].CascadePath : '',
                             image: v_photo,
-														imageAltText: v_alt_text,
+                            imageAltText: v_alt_text,
                             firstName: $.trim(data[i].FacFirstName),
                             lastName: $.trim(data[i].FacLastName),
                             name: $.trim(data[i].FacFullName),
