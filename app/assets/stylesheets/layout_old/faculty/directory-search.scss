@@ -54,47 +54,46 @@
     display: inline-block;
   }
 
-    fieldset>legend {
-      color: #fff;
-      font-weight: 600;
-      padding:0 0 10px 0;
-    }
+	fieldset>legend {
+		color: #fff;
+		font-weight: 600;
+		padding:0 0 10px 0;
+	}
 
-    fieldset>label, select {
-      margin: 0 10px 5px 0;
-      width: 100%;
-      @include media($medium-screen) {
-        width: 220px;
-        display: inline-block; 
-      }
-      max-height: 40px;
-      vertical-align: middle; 
-      display: block;
-    }
-    fieldset>input[type="checkbox"]  {
-      display:block;
-    }
-    fieldset>input[type="checkbox"] + label {
-      display:block;
-      margin-top: -20px;
-      margin-left: 20px;
-      font-weight: normal;
-      font-size: 14px;
-    }
-    // one for main listing page, other two for school/dept listing page:
-    fieldset>label[for=allFaculty], fieldset>label[for=showAll], fieldset>label[for=tenure], fieldset>label[for=fulltime] {
-      margin-left: 5px;
-      vertical-align: text-top;
-      color: #fff;
-      display: inline;
-    }
-    a.allFaculty {
-      margin-left: 0;
-      vertical-align: text-top;
-      color: #fff;
-      border-bottom: none;
-      display: block;
-      margin-top: 5px;
-    }
-  } // end .filters  
+	fieldset>label, select {
+		margin: 0 10px 5px 0;
+		width: 100%;
+		@include media($medium-screen) {
+			width: 220px;
+			display: inline-block; 
+		}
+		max-height: 40px;
+		vertical-align: middle; 
+		display: block;
+	}
+	fieldset>input[type="checkbox"]  {
+		display:block;
+	}
+	fieldset>input[type="checkbox"] + label {
+		display:block;
+		margin-top: -20px;
+		margin-left: 20px;
+		font-weight: normal;
+		font-size: 14px;
+	}
+	// one for main listing page, other two for school/dept listing page:
+	fieldset>label[for=allFaculty], fieldset>label[for=showAll], fieldset>label[for=tenure], fieldset>label[for=fulltime] {
+		margin-left: 5px;
+		vertical-align: text-top;
+		color: #fff;
+		display: inline;
+	}
+	a.allFaculty {
+		margin-left: 0;
+		vertical-align: text-top;
+		color: #fff;
+		border-bottom: none;
+		display: block;
+		margin-top: 5px;
+	}
 }
