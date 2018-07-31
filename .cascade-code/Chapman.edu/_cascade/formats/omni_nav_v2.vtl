@@ -388,7 +388,8 @@
     <ul>
       ## First list item is always Overview
       <li>
-        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">Overview</a>
+        #set ( $parentPage = $overviewLink.split("/")[1].replace("-"," ") )
+        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">$parentPage Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
