@@ -42,14 +42,14 @@ html.omni-nav-v2 {
   &.unbranded div#primary-nav div.global-nav {
     @include media($xl-screen) {
       display: inline-block;
-      float: right;
+      float: left;
       width: auto;
       border-top: none;
       margin: 14px $base-spacing;
       padding: 0;
     }
   }
-
+  
   /* Searchbox and search results styling
   ---------------------------------------- */
   #search-results-overlay {
@@ -250,7 +250,9 @@ html.omni-nav-v2 {
           li { padding-right: 16px; }
           & > li:last-child { padding-left: 0px; }
         }
-
+        & > .utility-list {
+          li.search-filter-option { padding-right: 0px; }
+        }
 
       }
 
@@ -366,6 +368,14 @@ html.omni-nav-v2 {
       height: $primary-nav-height;
     }
 
+    .right-container {
+      float: right;
+      
+      @media screen and (max-width: $xl-screen - 1px) {
+        float: none;
+      }
+    }
+
     #primary-nav-search {
       display: none;
 
@@ -445,9 +455,14 @@ html.omni-nav-v2 {
 
       &.right-nav-container {
         font-size: 0; //to prevent div separation
-        float: right;
+        float: left;
         display: table;
         height: 60px;
+
+        @media screen and (max-width: $xl-screen - 1px) {
+          position: absolute;
+          right: 0;
+        }
 
         .primary-nav-action {
           // without z-index, global nav dropdown overlaps primary icons
@@ -592,7 +607,7 @@ html.omni-nav-v2 {
             white-space: nowrap;
           }
 
-          &:hover {
+          &:hover, &[aria-expanded="true"] {
             .global-nav-dropdown {
               visibility: visible;
               opacity: 1;
@@ -784,7 +799,7 @@ html.omni-nav-v2 {
   .login-trigger {
     position: relative;
 
-    &:hover {
+    &:hover, &[aria-expanded="true"] {
       .login-menu {
         visibility: visible;
         opacity: 1;
@@ -878,6 +893,7 @@ html.omni-nav-v2 {
 }
 
 table.gsc-completion-container { font-size: 13px; }
+td.gsc-search-button { padding: 0; }
 
 /*
  * For OmniNav v2, #theme header should have no bottom padding.

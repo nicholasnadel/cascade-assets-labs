@@ -38,8 +38,10 @@
   [ 'crean', 'Crean College' ],
   [ 'wilkinson', 'Wilkinson College' ],
   [ 'copa', 'College of Performing Arts' ],
+  [ 'engineering', 'Fowler School of Engineering' ],
   [ 'pharmacy', 'School of Pharmacy' ],
-  [ 'law', 'Fowler School' ],
+  [ 'law', 'Fowler School of Law' ],
+  [ 'library-new', 'Leatherby Libraries' ],
   [ 'scst', 'Schmid College' ],
   [ 'communication', 'School of Communication' ],
   [ 'about', 'About' ],
@@ -197,9 +199,11 @@
   <div id="primary-nav">
     #buildPrimaryNavLeftContainer()
     #buildPrimaryNavLogoContainer()
-    #buildPrimaryNavRightContainer()
+    <div class="right-container">
+        #buildGlobalNav()
+        #buildPrimaryNavRightContainer()
+    </div>
     #buildPrimaryNavSearchBox()
-    #buildGlobalNav()
   </div>
 #end
 
@@ -247,7 +251,7 @@
 #macro ( buildPrimaryNavRightContainer )
   <div class="nav-container right-nav-container">
     <div class="primary-nav-action utility-nav-trigger">
-      <a class="primary-nav-icon">
+      <a tabindex="0" class="primary-nav-icon" aria-label="Access search navigation bar">
         <svg width="32" height="32" viewBox="0 0 16 16" class="icon-open-search">
           <g>
             <path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path>
@@ -264,7 +268,7 @@
       <div class="nav-icon-text search">Find</div>
     </div>
     <div class="primary-nav-action login-trigger">
-      <a class="primary-nav-icon" role="button">
+      <a tabindex="0" class="primary-nav-icon" role="button" aria-label="Access Chapman Systems">
         <svg width="32" height="32" viewBox="0 0 16 16">
           <g>
             <path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"/>
@@ -358,7 +362,7 @@
           #foreach( $link in $globalNavLinks )
             <li class="primary-link">
               #if( $link.dropdown.size() > 0 )
-                <a>$link.sectionTitle</a>
+                <a tabindex="0">$link.sectionTitle</a>
                 #buildGlobalNavDropdown( $link.dropdown $link.sectionLink)
               #else
                 ## Primary links with no dropdown have a link with the title
@@ -472,11 +476,11 @@
   <div class="utility-nav-container utility-search" id="utility-nav-search">
     <ul class="utility-list">
       <li class="utility-cell search-type utility-has-dropdown">
-        <a class="selected-search-filter">Search From</a>
+        <a tabindex="0" class="selected-search-filter">Search From</a>
         <div class="utility-dropdown dropdown">
           <ul>
             #foreach ($filter in $searchFilters)
-              <li class="search-filter-option"><a>$filter</a></li>
+              <li class="search-filter-option"><a tabindex="0">$filter</a></li>
             #end
           </ul>
         </div>
@@ -788,7 +792,7 @@
 #end
 
 #macro ( buildOffCanvasNavCloseIcon )
-  <span class="close js-close-off-canvas-nav">
+  <span tabindex="0" class="close js-close-off-canvas-nav">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
       <title>Close</title>
       <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>
