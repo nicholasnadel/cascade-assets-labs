@@ -69,6 +69,7 @@ $(function () {
                     globalData = data;
                     for (var i = 0; i < data.length; i++) {
                         var v_photo;
+                        var v_alt_text = 'no photo available';
                         if (!data[i].ThumbnailPhoto) {
                             v_photo = '/_files/level/img/unisex-silhouette110x130.gif';
                         }
@@ -80,6 +81,7 @@ $(function () {
                         }
                         else {
                             v_photo = data[i].ThumbnailPhoto;
+                            v_alt_text = 'Headshot photo of ' + data[i].FacFullName;
                         }
                         //put each title on own line
                         var splitTitles = data[i].AdditionalTitles;
@@ -89,6 +91,7 @@ $(function () {
                         var result = {
                             link: data[i].CascadePath ? '/our-faculty/' + data[i].CascadePath : '',
                             image: v_photo,
+                            imageAltText: v_alt_text,
                             name: $.trim(data[i].FacFullName),
                             title: data[i].Rank,
                             additionalTitles: splitTitles,
@@ -251,7 +254,7 @@ $(function () {
         function formatResult(result) {
             var formattedResult =
                 '<div class="result" itemscope itemtype="http://schema.org/Person">' +
-                    (result.image ? '<div class="profilePicture"><img class="image" src="' + result.image + '"alt="' + result.name + '" itemprop="image"/></div>' : '') +
+                    (result.image ? '<div class="profilePicture"><img class="image" src="' + result.image + '"alt="' + result.imageAltText + '" itemprop="image"/></div>' : '') +
                     (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '</h2>' : '') +
                     (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                     (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +

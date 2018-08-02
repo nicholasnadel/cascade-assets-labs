@@ -145,8 +145,9 @@ $(function () {
                 $.getJSON(facultyFeedUrl(), function (data) {
                     for (var i = 0; i < data.length; i++) {
                         var v_photo;
+                        var v_alt_text = 'no photo available';
                         if (!data[i].ThumbnailPhoto) {
-                            v_photo = '/_files/level/img/unisex-silhouette.jpg';
+                            v_photo = '/_files/level/img/unisex-silhouette.jpg';														
                         }
                         else if (data[i].ThumbnailPhoto == '/') {
                             v_photo = '/_files/level/img/unisex-silhouette.jpg';
@@ -156,6 +157,7 @@ $(function () {
                         }
                         else {
                             v_photo = data[i].ThumbnailPhoto;
+                            v_alt_text = 'Headshot photo of ' + data[i].FacFullName;
                         }
                         
                         //put each title on own line
@@ -166,6 +168,7 @@ $(function () {
                         var result = {
                             link: data[i].CascadePath ? '/our-faculty/' + data[i].CascadePath : '',
                             image: v_photo,
+                            imageAltText: v_alt_text,
                             firstName: $.trim(data[i].FacFirstName),
                             lastName: $.trim(data[i].FacLastName),
                             name: $.trim(data[i].FacFullName),
@@ -324,10 +327,10 @@ $(function () {
         });
         //
         function formatResult(result) {
-            var imgAlt = result.name ? 'Photo of ' + result.name : 'Faculty Member Photo',
+            //var imgAlt = result.name ? 'Headshot photo of ' + result.name : 'Faculty Member Photo',
                 formattedResult =
                     '<div class="facultyMember" itemscope itemtype="http://schema.org/Person">' +
-                        (result.image ? '<div class="profilePicture"><img width="80px" src="' + result.image + '" itemprop="image" alt="' + imgAlt + '"></div>' : '') +
+                        (result.image ? '<div class="profilePicture"><img width="80px" src="' + result.image + '" itemprop="image" alt="' + result.imageAltText + '"></div>' : '') +
                         (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '</h2>' : '') +
                         (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                         (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
