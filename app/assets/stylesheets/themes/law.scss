@@ -193,12 +193,20 @@
 
   /* Footer */
 
-  .link-container-before,
-  .links-header {
-    background-color: $law-primary;
-  }
+  .footer {
+    .inner-container {
 
-  .link-container-after {
-    background-image: image-url('ribbon_tails_law.png');
+      .menu-section {
+        margin-bottom: 0;
+      }
+
+      .link-container {
+        margin-bottom: 2em;
+      }
+      .weather {
+        grid-column: footer-column-start 1 / span 5;
+        justify-self: center;
+      }
+    }
   }
 }

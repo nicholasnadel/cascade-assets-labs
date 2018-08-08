@@ -5,6 +5,7 @@
         if ( onHomePage ) {
             cu_window_manager.initialize();
             cu_hero_area.initialize();
+            //This is also causing an error as cu_stories_area is not defined in this file "Uncaught TypeError: Cannot read property of undefined"
             cu_stories_area.initialize();
             cu_admission_area.initialize();
             smc_cta_tracker.initialize();
@@ -245,6 +246,7 @@
             * Undergraduate Admission
             *************************/
             this.$undergraduateAdmission = $("#undergraduateAdmission");
+            //This is causing a breaking change "Uncaught TypeError: Cannot read property 'top' of null" in development
             this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
 
             this.$undergraduateAdmission.find('.fade-elem').css('opacity', 0); // prep for fade in
