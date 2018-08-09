@@ -3,7 +3,6 @@
   position: relative;
   height: auto;
   padding-bottom: $base-spacing;
-  // overflow: auto;
   background-color: #231f20;
   font-size: 10px;
   padding-top: 4.5em;
@@ -16,21 +15,10 @@
     max-width: 130em;
     padding: 0 2em;
     margin: 0 auto;
-
-    // @include bp(lx) {
-    //   font-size: .9em;
-    // }
-    @include media($large-screen) {
-      // .address, .copyright { padding-left: 52px; }
-    }
-
-    
   }
 
   .footer-section {
     display: block;
-    // float: left;
-    // overflow: auto;
 
     @include media($large-screen) {
       display: inline-block;
@@ -46,7 +34,6 @@
 
     @include media($large-screen) {
       border-top: none;
-      // padding: 0 0 0 12px;
       text-align: left;
     }
   }
@@ -57,7 +44,6 @@
     grid-template-rows: repeat(4, [footer-row-start] min-content [footer-row-end]);
     position: relative;
     height: min-content;
-    // padding-bottom: 36px;
 
     @include bp(lx) {
       grid-template-columns: repeat(4, [footer-column-start] 1fr [footer-column-end]);
@@ -71,10 +57,6 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    @include media($large-screen) {
-      // width: 70%;
     }
 
     .menu-section {
@@ -107,26 +89,12 @@
 
         &:nth-child(1) { margin-bottom: 0; }
       }
-
-      // position:relative;
-      // overflow: auto;
-
-      @include media($medium-screen) {
-        // display: inline-block;
-        // width: 50%;
-        // float: left;
-      }
     }
 
     .link-list {
-      // padding: 16px 48px 16px 16px;
       list-style-type: none;
       position: relative;
       z-index: 1;
-
-      li {
-        // margin: 0 0 10px 0;
-      }
 
       a {
         color: $white;
@@ -148,25 +116,18 @@
         grid-template-rows: repeat(2, 3.5em);
         grid-template-columns: repeat(4, 3.5em);
         grid-gap: 1em;
-        // overflow: auto;
 
         li {
-          // display: inline-block;
-          // float: left;
-          // width: 3.6em;
-          // height: 3.6em;
           margin: 0 0px 0px 0;
           text-align: center;
-          // line-height: 3.6em;
-          // border-radius: 4px;
-          // background-color: #c1c1c1;
+          width: 80%;
+          height: auto;
 
           &:hover { opacity: .8; }
 
           a {
             vertical-align: middle;
             font-size: 2em;
-            // line-height: 4.6em;
             fill: #ffffff;
 
             &:hover { border-bottom: none;}
@@ -192,7 +153,7 @@
           grid-gap: 2em;
           justify-content: center;
 
-          li { font-size: 1.8em; }
+          li { width: 90%; }
 
           &.helloWorld { display: grid; }
 
@@ -229,7 +190,6 @@
     
 
     .links-header {
-      // padding: 10px 16px;
 
       h2, h3 {
         margin: 0 0 8px 0;
@@ -296,14 +256,8 @@
 
         &:first-child { margin-bottom: 2em; }
 
-        @include media($medium-screen){
-          // width: auto;
-          // margin: 0 0 20px 0;
-        }
-
         p {
           margin-bottom: 0;
-          // line-height: 24px;
 
           &.addr-name {
             font-size: 1.4em;
@@ -319,7 +273,6 @@
     .contact-info {
       grid-column: footer-column-start 5 / span 1;
       grid-row: footer-row-start 1/ span 1;
-      // font-size: 1.4em;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -336,13 +289,16 @@
         width: 100%;
         height: 100%;
 
+        svg {
+          width: 1.25em;
+          margin: 3px;
+          fill: $white;
+        }
+
         &:hover { color: $cu-light-grey-2; }
       }
       
       div {
-        // display: flex;
-        // align-items: center;
-        // justify-content: center;
         width: 20em;
         height: 5em;
         border: 1px solid rgba($white, .25);
@@ -405,16 +361,7 @@
         margin-top: 2em;
       }
 
-      @include media($large-screen) {
-        // margin: 0;
-        // padding-right: 4px;
-      }
-
       .weather-icon {
-        // display: table-cell;
-        // vertical-align: top;
-        // width: 23%;
-
 
         img { 
           width: 2.5em;
@@ -425,7 +372,6 @@
 
       .temp {
         display: flex;
-        // vertical-align: top;
         padding-top: 1.2em;
         text-align: left;
         
@@ -442,11 +388,6 @@
 
           @include bp(lx) { font-size: 1.2em }
         }
-
-        // .c {
-        //   padding-left: 2px;
-        //   line-height: 2em;
-        // }
       }
     }
 
@@ -470,7 +411,6 @@
         color: $white;
         margin: 0px;
         line-height: 1.4em;
-        // margin: 0 10px;
 
         &:hover { 
           color: $cu-light-grey-2;
@@ -506,7 +446,6 @@
           padding: 0 9px;
         }
       }
-
     }
 
     .copyright {
@@ -517,7 +456,6 @@
       font-size: 1.2em;
       font-weight: bold;
       font-style: normal;
-      // text-transform: uppercase;
     }
   }
 }
