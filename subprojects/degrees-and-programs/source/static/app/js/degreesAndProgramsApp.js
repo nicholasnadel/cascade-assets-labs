@@ -460,9 +460,12 @@ var chapman = chapman || {};
 			}
 
 			_this.resetDiscoverMotivation();
-			_this.closeDiscoverMotivationPanel();
 			_this.resetDiscoverInterest();
-			_this.closeDiscoverInterestPanel();
+
+			if (sectionID !== 'discover') {
+				_this.closeDiscoverMotivationPanel();
+				_this.closeDiscoverInterestPanel();
+			}
 
 			if (section.hasClass('active')) { // If the section is open, close it
 				var activeResults = $('#js-dap-results-' + activeSection + ' .results-row .result');
