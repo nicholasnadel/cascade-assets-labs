@@ -5,7 +5,7 @@
         if ( onHomePage ) {
             cu_window_manager.initialize();
             cu_hero_area.initialize();
-            cu_stories_area.initialize();
+            //cu_stories_area.initialize();
             cu_admission_area.initialize();
             smc_cta_tracker.initialize();
             heroModalViewer.initialize();
