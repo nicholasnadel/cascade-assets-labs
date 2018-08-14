@@ -12,9 +12,8 @@
     <!--<![endif]-->
 
     <div id="theme" class="<%= yield(:theme) %>">
-
-        <a class="skip-link" href="#main" tabindex="-1" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a>
-
+      
+        <%= render '_cascade/blocks/html/jump_link' %>
         <div id="fb-root"></div>
 
         <div class="noscript">
