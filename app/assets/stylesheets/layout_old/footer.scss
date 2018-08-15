@@ -168,14 +168,13 @@
             height: 14em;
             padding: 1.5em 0 1em 1em;
             opacity: 1;
-            animation: socialFooterIn 0.45s normal ease-in-out both 1;
+            animation: footerLinksIn 0.45s normal ease-in-out both 1;
           }
 
           &.linksOut {
             height: 0;
-            padding: 1.5em 0 1em 1em;
             opacity: 0;
-            animation: socialFooterOut 0.45s alternate ease-in-out both 1;
+            animation: footerLinksOut 0.45s alternate ease-in-out both 1;
           }
         }
       }
@@ -189,13 +188,12 @@
           height: 14em;
           padding: 1.5em 0 1em 1em;
           opacity: 1;
-          animation: socialFooterIn 0.45s normal ease-in-out both 1;
+          animation: footerLinksIn 0.45s normal ease-in-out both 1;
         }
         &.linksOut {
           height: 0;
-          padding: 1.5em 0 1em 1em;
           opacity: 0;
-          animation: socialFooterOut 0.45s alternate ease-in-out both 1;
+          animation: footerLinksOut 0.45s alternate ease-in-out both 1;
         }
       }
     }
@@ -458,7 +456,7 @@
       -ms-grid-row-align: center;
       -ms-grid-column-align: center;
 
-      a:focus { outline: none;}
+      a:focus { outline: 1px dotted white;}
 
       @include bp(mx) { grid-row: 6 / span 1;}
 

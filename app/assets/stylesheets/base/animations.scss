@@ -1,4 +1,4 @@
-@keyframes socialFooterIn {
+@keyframes footerLinksIn {
   0% {
     opacity: 0;
     height: 0;
@@ -12,10 +12,11 @@
   }
 }
 
-@keyframes socialFooterOut {
+@keyframes footerLinksOut {
     0% {
       opacity: 1;
       height: 14em;
+      padding: 1.5em 0 1em 1em;
       transform:scale(1);
     }
      100% {
