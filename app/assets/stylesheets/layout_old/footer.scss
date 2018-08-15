@@ -1,12 +1,13 @@
 // ---------- Main Footer Styles ---------- //
 .footer {
   position: relative;
-  height: auto;
   padding-bottom: $base-spacing;
   background-color: #231f20;
   font-size: 10px;
   padding-top: 4.5em;
   color: $white;
+  overflow: hidden;
+  height: auto;
 
   .inner-container {
     position: relative;
@@ -40,23 +41,26 @@
 
   .footer-section.footer-menu {
     display: grid;
-    grid-template-columns: repeat(5, [footer-column-start] 1fr [footer-column-end]);
-    grid-template-rows: repeat(4, [footer-row-start] min-content [footer-row-end]);
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20em 6em 5em 12em 8em;
+    grid-auto-rows: 0;
+    grid-auto-columns: 0;
     position: relative;
-    height: min-content;
 
     @include bp(lx) {
-      grid-template-columns: repeat(4, [footer-column-start] 1fr [footer-column-end]);
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 20em 9em 8em 15em 8em;
     }
 
     @include bp(mx) {
-      grid-template-columns: repeat(2, [footer-column-start] 1fr [footer-column-end]);
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 20em 18em 8em 7em 10em 10em 6em;
     }
 
     @include bp(sx) {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .menu-section {
@@ -64,13 +68,13 @@
       justify-content: space-between;
 
       &:nth-child(1) {
-        grid-column: footer-column-start 1 / span 2;
-        grid-row: footer-row-start 1/ span 1;
+        grid-column: 1 / span 2;
+        grid-row: 1/ span 1;
       }
 
       &:nth-child(2) {
-        grid-column: footer-column-start 3 / span 1;
-        grid-row: footer-row-start 1/ span 1;
+        grid-column: 3 / span 1;
+        grid-row: 1/ span 1;
       }
 
       @include bp(mx) {
@@ -78,16 +82,21 @@
         &:nth-child(1) { margin-bottom: 5em; }
 
         &:nth-child(2) {
-          grid-column: footer-column-start 1 / span 1;
-          grid-row: footer-row-start 2 / span 1;
+          grid-column: 1 / span 1;
+          grid-row: 2 / span 1;
         }
       }
 
       @include bp(sx) { 
         flex-direction: column;
-        margin-bottom: 2em;
+        margin-bottom: 0;
 
-        &:nth-child(1) { margin-bottom: 0; }
+        &:nth-child(1) { 
+          order: 1; 
+          margin-bottom: 0;
+        }
+
+        &:nth-child(2) { order: 2; }
       }
     }
 
@@ -112,25 +121,26 @@
       }
 
       &.social-icon-list {
-        display: grid;
-        grid-template-rows: repeat(2, 3.5em);
-        grid-template-columns: repeat(4, 3.5em);
-        grid-gap: 1em;
+        display: flex;
+        flex-wrap: wrap;
+        width: 20em;
+        justify-content: space-between;
 
         li {
-          margin: 0 0px 0px 0;
-          text-align: center;
-          width: 80%;
-          height: auto;
+          margin: 0;
+          padding: 0 1.3em .8em 0;
 
           &:hover { opacity: .8; }
 
           a {
-            vertical-align: middle;
-            font-size: 2em;
-            fill: #ffffff;
-
             &:hover { border-bottom: none;}
+
+            svg {
+              width: 2.25em;
+              height: 2.25em;
+              fill: white;
+            }
+
             //screen-readers only will see A text for social buttons
             .sr-only {
               position: absolute;
@@ -147,21 +157,20 @@
 
         @include bp(sx) {
           height: 0;
+          width: 25em;
           opacity: 0;
           padding-top: 1em;
           transition: all .45s;
-          grid-gap: 2em;
-          justify-content: center;
-
-          li { width: 90%; }
 
           &.helloWorld { display: grid; }
 
           &.linksIn {
             height: 14em;
+            padding: 1.5em 0 1em 1em;
             opacity: 1;
             animation: socialFooterIn 0.45s normal ease-in-out both 1;
           }
+
           &.linksOut {
             height: 0;
             opacity: 0;
@@ -177,6 +186,7 @@
 
         &.linksIn {
           height: 14em;
+          padding: 1.5em 0 1em 1em;
           opacity: 1;
           animation: socialFooterIn 0.45s normal ease-in-out both 1;
         }
@@ -207,12 +217,14 @@
         display: flex;
         padding: 15px 5px;
         position: relative;
+        cursor: pointer;
         z-index: 10;
 
         h2, h3 {
           font-size: 1.7em;
-          margin: 0;
           width: 80%;
+          margin: 0;
+          padding: 2px 0 0 15px;
         }
 
         &:after {
@@ -230,26 +242,26 @@
       &:last-of-type {
         .social-icon-list { padding-right: 0; }
       }
-
-      @include bp(sx) {
-        margin-bottom: 1.2em;
-      }
     }
 
     .campus-addresses {
-      grid-column: footer-column-start 4 / span 1;
-      grid-row: footer-row-start 1 / span 1;
+      grid-column: 4 / span 1;
+      grid-row: 1 / span 1;
       display: flex;
       flex-direction: column;
       position: relative;
       z-index: 10;
 
       @include bp(mx) {
-        grid-column: footer-column-start 2 / span 1;
-        grid-row: footer-row-start 2 / span 1;
+        grid-column: 2 / span 1;
+        grid-row: 2 / span 1;
       }
 
-      @include bp(sx) { width: 25em; }
+      @include bp(sx) { 
+        width: 25em;
+        margin: 2em 0;
+        order: 4;
+      }
 
       .address {
         color: $white;
@@ -271,13 +283,12 @@
     }
 
     .contact-info {
-      grid-column: footer-column-start 5 / span 1;
-      grid-row: footer-row-start 1/ span 1;
+      grid-column: 5 / span 1;
+      grid-row: 1/ span 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-end;
-      height: 20vh;
 
       i, span { font-size: 1.4em; }
 
@@ -308,28 +319,25 @@
       }
 
       @include bp(lx) {
-        grid-column: footer-column-start 1 / span 3;
-        grid-row: footer-row-start 2/ span 1;
+        grid-column: 1 / span 3;
+        grid-row: 2/ span 1;
         flex-direction: row;
-        justify-content: flex-end;
-        height: auto;
-        margin-top: 7em;
 
-        div { margin: 0 15px; }
+        div { width: 30%; }
       }
 
       @include bp(mx) {
-        grid-column: footer-column-start 1 / span 2;
-        grid-row: auto;
+        grid-column: 1 / span 2;
+        grid-row: 3 / span 1;
         justify-content: space-between;
-        margin: 5em 0 0 0;
       }
 
       @include bp(sx) {
         flex-direction: column;
+        order: 3;
 
         div { 
-          margin: 5px;
+          margin: 5px 0;
           border: 1px solid #fff;
           height: 6em;
           width: 25em;
@@ -341,38 +349,40 @@
     }
 
     .weather {
-      grid-column: footer-column-start 5 / span 1;
-      grid-row: footer-row-start 2/ span 1;
+      grid-column: 5 / span 1;
+      grid-row: 2/ span 1;
       display: table;
       justify-self: flex-end;
-      padding-top: 2em;
-      // margin: 0;
+      align-self: flex-end;
+      -ms-grid-row-align: end;
+      -ms-grid-column-align: end;
 
-      @include bp(lx) {
-        grid-column: footer-column-start 4 / span 1;
-        justify-self: flex-start;
-        margin-top: 7em;
-      }
+      @include bp(lx) { grid-column: 4 / span 1; }
 
       @include bp(mx) {
-        grid-column: footer-column-start 1 / span 2;
-        grid-row: auto;
+        grid-column: 1 / span 2;
+        grid-row: 4 / span 1;
         justify-self: center;
-        margin-top: 2em;
+        -ms-grid-row-align: center;
+        -ms-grid-column-align: center;
+      }
+
+      @include bp(sx) { 
+        align-self: flex-start;
+        -ms-grid-column-align: start;
+        margin: 3em 0;
+        order: 5;
       }
 
       .weather-icon {
 
-        img { 
-          width: 2.5em;
-        }
+        img { width: 2.5em; }
       }
 
       p { margin: 0; }
 
       .temp {
         display: flex;
-        padding-top: 1.2em;
         text-align: left;
         
         abbr {
@@ -381,7 +391,6 @@
         }
 
         .f {
-          padding-bottom: 8px;
           font-size: 1.4em;
           font-weight: bold;
           line-height: 2.1em;
@@ -392,13 +401,23 @@
     }
 
     .footer-info-links {
-      grid-column: footer-column-start 1 / span 5;
+      grid-column: 1 / span 5;
+      grid-row: 3 / span 1;
       justify-self: center;
+      align-self: flex-end;
+      -ms-grid-row-align: center;
+      -ms-grid-column-align: end;
+      width: 100%;
       font-size: 1.4em;
       text-align: center;
-      margin: 3em 0;
 
-      @include bp(sx) { margin: 2em; }
+      @include bp(mx) { grid-row: 5 / span 1;}
+
+      @include bp(sx) { 
+        margin: 2em 0;
+        text-align: justify; 
+        order: 6;
+      }
 
       span {
         &:not(:last-child)::after {
@@ -425,37 +444,45 @@
     }
 
     .back-to-top {
-      grid-column: footer-column-start 1 / span 5;
+      grid-column: 1 / span 5;
+      grid-row: 4 / span 1;
       justify-self: center;
-      transform: rotate(90deg);
-      margin: 1em 0 5em 0;
+      align-self: center;
+      -ms-grid-row-align: center;
+      -ms-grid-column-align: center;
 
-      a { color: $black;}
+      a:focus { outline: none;}
 
-      .circle {
+      @include bp(mx) { grid-row: 6 / span 1;}
+
+      @include bp(sx) { 
+        margin: 5em;
+        order: 7; 
+      }
+
+      svg {
         height: 4em;
-        width: 4em;
-        background-color: #fff;
-        border-radius: 50%;
-        display: inline-block;
-
-        &:after {
-          content: "\276E";
-          font-size: 3.5em;
-          text-align: center;
-          padding: 0 9px;
-        }
+        fill: white;
       }
     }
 
     .copyright {
-      grid-column: footer-column-start 1 / span 5;
+      grid-column: 1 / span 5;
+      grid-row: 5 / span 1;
       text-align: center;
       border-top: 1px solid rgba($white, .25);
-      padding: 2.5em 0;
+      padding: 2.5em 7em;
       font-size: 1.2em;
       font-weight: bold;
       font-style: normal;
+
+      @include bp(mx) { grid-row: 7 / span 1;}
+
+      @include bp(sx) { 
+        align-self: center;
+        -ms-grid-column-align: center;
+        order: 8;
+      }
     }
   }
 }
