@@ -1,5 +1,4 @@
 $(function() {
-
   skrollr.init({
 		forceHeight: false
 	});
@@ -23,5 +22,17 @@ $(function() {
   $("a[href='#top']").click(function() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
     return false;
+  });
+
+  $.getJSON("https://forecast.chapman.edu/chapman/banner-json.php?callback=orange", function (data) {
+    var iconPath = data.weather.icon_path,
+      tempF = data.weather.temp_f,
+      tempC = data.weather.temp_c,
+      url = "//www.chapman.edu",
+      $weather = $(".weather");
+    //find weather class in html and substitute placeholders with current temp
+    $weather.find("img").attr("src", url + iconPath);
+    $weather.find(".temp #tempF").html(tempF);
+    $weather.find(".temp #tempC").html(tempC);
   });
 })

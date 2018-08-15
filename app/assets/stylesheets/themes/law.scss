@@ -235,6 +235,8 @@
 
           &:nth-child(3) {
             order: 3;
+            align-self: center;
+            -ms-grid-column-align: center;
           }
         }
       }

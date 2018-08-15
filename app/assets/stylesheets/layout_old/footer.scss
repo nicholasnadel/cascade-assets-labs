@@ -60,7 +60,7 @@
     @include bp(sx) {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
     }
 
     .menu-section {
@@ -173,6 +173,7 @@
 
           &.linksOut {
             height: 0;
+            padding: 1.5em 0 1em 1em;
             opacity: 0;
             animation: socialFooterOut 0.45s alternate ease-in-out both 1;
           }
@@ -192,6 +193,7 @@
         }
         &.linksOut {
           height: 0;
+          padding: 1.5em 0 1em 1em;
           opacity: 0;
           animation: socialFooterOut 0.45s alternate ease-in-out both 1;
         }
@@ -287,7 +289,6 @@
       grid-row: 1/ span 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: flex-end;
 
       i, span { font-size: 1.4em; }
@@ -312,6 +313,7 @@
       div {
         width: 20em;
         height: 5em;
+        margin-bottom: 1em;
         border: 1px solid rgba($white, .25);
         border-radius: 3px;
 
@@ -321,6 +323,7 @@
       @include bp(lx) {
         grid-column: 1 / span 3;
         grid-row: 2/ span 1;
+        justify-content: space-between;
         flex-direction: row;
 
         div { width: 30%; }
@@ -368,8 +371,9 @@
       }
 
       @include bp(sx) { 
-        align-self: flex-start;
-        -ms-grid-column-align: start;
+        align-self: center;
+        -ms-grid-column-align: center;
+        width: 25em;
         margin: 3em 0;
         order: 5;
       }
@@ -415,7 +419,10 @@
 
       @include bp(sx) { 
         margin: 2em 0;
-        text-align: justify; 
+        text-align: left; 
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         order: 6;
       }
 
