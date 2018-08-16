@@ -26,7 +26,7 @@ The Degrees and Programs project is developed using a Node app generator. To ins
     2) cd subprojects\degrees-and-programs\source\static\ 
     3) gem install scss_lint
     4) gem install compass
-    5) yard ann bower
+    5) yard add bower
     6) yarn add compass
     7) yarn install
     8) yarn add bower
