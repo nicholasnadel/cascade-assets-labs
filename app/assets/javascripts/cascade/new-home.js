@@ -245,6 +245,7 @@
             * Undergraduate Admission
             *************************/
             this.$undergraduateAdmission = $("#undergraduateAdmission");
+            //This is causing a breaking change "Uncaught TypeError: Cannot read property 'top' of null" in development
             this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
 
             this.$undergraduateAdmission.find('.fade-elem').css('opacity', 0); // prep for fade in
