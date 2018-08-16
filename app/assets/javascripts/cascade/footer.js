@@ -19,7 +19,7 @@ $(function() {
     $(this).siblings('ul').addClass('linksIn');
   })
 
-  $("a[href='#top']").click(function() {
+  $(".footer a[href='#']").click(function() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
     return false;
   });
