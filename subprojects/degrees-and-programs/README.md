@@ -29,7 +29,7 @@ The Degrees and Programs project is developed using a Node app generator. To ins
     5) yard add bower
     6) yarn add compass
     7) yarn install
-    8) yarn add bower
+    8) bower install
 
 ## Testing
 
