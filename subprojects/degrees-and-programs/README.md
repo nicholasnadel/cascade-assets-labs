@@ -8,7 +8,7 @@ The file structure includes two top level folders, `build` and `source`. The `so
 
 Within the `source` folder, there are two subdirectories, `cascade` and `static`. The `cascade` folder contains copies of the most recent Chapman Cascade Server assets, such as templates and formats. The `static` folder contains the original source code, including static HTML of the site that can be run locally.
 
-## Installation
+## Installation - Mac OS X
 
 The Degrees and Programs project is developed using a Node app generator. To install and setup the app generator on Mac, run the following commands:
 
@@ -20,6 +20,16 @@ The Degrees and Programs project is developed using a Node app generator. To ins
 
     npm install
     bower install
+
+## Installation - Windows
+    1) Ensure you've installed Yarn: https://yarnpkg.com/en/docs/install#windows-stable
+    2) cd subprojects\degrees-and-programs\source\static\ 
+    3) gem install scss_lint
+    4) gem install compass
+    5) yard add bower
+    6) yarn add compass
+    7) yarn install
+    8) bower install
 
 ## Testing
 
