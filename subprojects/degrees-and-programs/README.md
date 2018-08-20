@@ -22,14 +22,16 @@ The Degrees and Programs project is developed using a Node app generator. To ins
     bower install
 
 ## Installation - Windows
-    1) Ensure you've installed Yarn: https://yarnpkg.com/en/docs/install#windows-stable
-    2) cd subprojects\degrees-and-programs\source\static\ 
-    3) gem install scss_lint
-    4) gem install compass
-    5) yarn add bower
-    6) yarn add compass
-    7) yarn install
-    8) bower install
+    Ensure you've installed Yarn: https://yarnpkg.com/en/docs/install#windows-stable
+    Ensure you've installed a current version of node.js: https://nodejs.org/en/
+    Launch the node console (start > "node.js")
+    From the node.js console: cd subprojects\degrees-and-programs\source\static\ 
+    gem install scss_lint
+    gem install compass
+    yarn add bower
+    yarn add compass
+    yarn install
+    bower install
 
 ## Testing
 
