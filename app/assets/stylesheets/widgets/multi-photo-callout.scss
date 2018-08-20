@@ -1,0 +1,35 @@
+.business__grad .multi-photo-callout-widget {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 10px;
+  max-width: 125em;
+  background-color: white;
+  margin: auto;
+
+  .multi-callout-heading {
+    flex-basis: 100%;
+    width: 100%;
+    font-size: 3em;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .photoCallout {
+    font-size: 1em;
+    margin: 1em;
+    border-bottom: none;
+
+    &:focus { border: 1px dotted white;}
+
+    img {
+      height: 17.4em;
+      width: 26em;
+    }
+
+    .grad-caption {
+      text-align: center;
+      color: $black;
+    }
+  }
+}
