@@ -40,21 +40,23 @@
   }
 
   .footer-section.footer-menu {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 20em 6em 5em 12em 8em;
-    grid-auto-rows: 0;
-    grid-auto-columns: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    // grid-template-rows: 20em 6em 5em 12em 8em;
+    // grid-auto-rows: 0;
+    // grid-auto-columns: 0;
     position: relative;
 
     @include bp(lx) {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      grid-template-rows: 20em 9em 8em 15em 8em;
+      // grid-template-columns: 1fr 1fr 1fr 1fr;
+      // grid-template-rows: 20em 9em 8em 15em 8em;
     }
 
     @include bp(mx) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 20em 18em 8em 7em 10em 10em 6em;
+      // grid-template-columns: 1fr 1fr;
+      // grid-template-rows: 20em 18em 8em 7em 10em 10em 6em;
     }
 
     @include bp(sx) {
@@ -68,22 +70,29 @@
       justify-content: space-between;
 
       &:nth-child(1) {
-        grid-column: 1 / span 2;
-        grid-row: 1/ span 1;
+        // grid-column: 1 / span 2;
+        // grid-row: 1/ span 1;
+        flex: 2 0 0;
+        // width: 35%;
       }
 
       &:nth-child(2) {
-        grid-column: 3 / span 1;
-        grid-row: 1/ span 1;
+        // grid-column: 3 / span 1;
+        // grid-row: 1/ span 1;
+        // width: 20%;
+        flex: 1 0 0;
       }
 
       @include bp(mx) {
 
-        &:nth-child(1) { margin-bottom: 5em; }
+        &:nth-child(1) { 
+          margin-bottom: 5em;
+          flex: 0 0 100%;
+        }
 
         &:nth-child(2) {
-          grid-column: 1 / span 1;
-          grid-row: 2 / span 1;
+          // grid-column: 1 / span 1;
+          // grid-row: 2 / span 1;
         }
       }
 
@@ -96,7 +105,10 @@
           margin-bottom: 0;
         }
 
-        &:nth-child(2) { order: 2; }
+        &:nth-child(2) { 
+          order: 2;
+          flex: 0 0 100%;
+        }
       }
     }
 
@@ -245,22 +257,24 @@
     }
 
     .campus-addresses {
-      grid-column: 4 / span 1;
-      grid-row: 1 / span 1;
+      // grid-column: 4 / span 1;
+      // grid-row: 1 / span 1;
+      flex: 1 0 0;
       display: flex;
       flex-direction: column;
       position: relative;
       z-index: 10;
 
       @include bp(mx) {
-        grid-column: 2 / span 1;
-        grid-row: 2 / span 1;
+        // grid-column: 2 / span 1;
+        // grid-row: 2 / span 1;
       }
 
-      @include bp(sx) { 
+      @include bp(sx) {
+        flex: 0 0 100%;
+        order: 4;
         width: 25em;
         margin: 2em 0;
-        order: 4;
       }
 
       .address {
@@ -283,8 +297,10 @@
     }
 
     .contact-info {
-      grid-column: 5 / span 1;
-      grid-row: 1/ span 1;
+      // grid-column: 5 / span 1;
+      // grid-row: 1/ span 1;
+      width: 20%;
+      flex: 1 0 0;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
@@ -319,23 +335,32 @@
       }
 
       @include bp(lx) {
-        grid-column: 1 / span 3;
-        grid-row: 2/ span 1;
+        // grid-column: 1 / span 3;
+        // grid-row: 2/ span 1;
         justify-content: space-between;
+        flex: 0 0 70%;
         flex-direction: row;
+        margin: 3em 0;
 
-        div { width: 30%; }
+        div { 
+          width: 30%;
+          margin-bottom: 0;
+        }
       }
 
       @include bp(mx) {
-        grid-column: 1 / span 2;
-        grid-row: 3 / span 1;
-        justify-content: space-between;
+        // grid-column: 1 / span 2;
+        // grid-row: 3 / span 1;
+        // justify-content: space-between;
+        flex: 0 0 100%;
+        margin: 5em 0 3em 0;
       }
 
       @include bp(sx) {
         flex-direction: column;
         order: 3;
+        width: 25em;
+        margin: 0;
 
         div { 
           margin: 5px 0;
@@ -350,22 +375,30 @@
     }
 
     .weather {
-      grid-column: 5 / span 1;
-      grid-row: 2/ span 1;
-      display: table;
-      justify-self: flex-end;
-      align-self: flex-end;
-      -ms-grid-row-align: end;
-      -ms-grid-column-align: end;
+      // grid-column: 5 / span 1;
+      // grid-row: 2/ span 1;
+      flex: 0 0 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 2em 0;
 
-      @include bp(lx) { grid-column: 4 / span 1; }
+      @include bp(lx) { 
+        // grid-column: 4 / span 1;
+        flex: 0 0 30%;
+        /* justify-self: flex-start; */
+        align-self: center;
+        justify-content: center;
+        margin: 3em 0;
+        padding: 0;
+      }
 
       @include bp(mx) {
-        grid-column: 1 / span 2;
-        grid-row: 4 / span 1;
-        justify-self: center;
-        -ms-grid-row-align: center;
-        -ms-grid-column-align: center;
+        // grid-column: 1 / span 2;
+        // grid-row: 4 / span 1;
+        flex: 0 0 100%;
+        // justify-self: center;
+        // -ms-grid-row-align: center;
+        // -ms-grid-column-align: center;
       }
 
       @include bp(sx) { 
@@ -396,24 +429,26 @@
           font-size: 1.4em;
           font-weight: bold;
           line-height: 2.1em;
-
-          @include bp(lx) { font-size: 1.2em }
         }
       }
     }
 
     .footer-info-links {
-      grid-column: 1 / span 5;
-      grid-row: 3 / span 1;
-      justify-self: center;
-      align-self: flex-end;
-      -ms-grid-row-align: center;
-      -ms-grid-column-align: end;
+      // grid-column: 1 / span 5;
+      // grid-row: 3 / span 1;
+      flex: 0 0 100%;
+      // justify-self: center;
+      // align-self: flex-end;
+      // -ms-grid-row-align: center;
+      // -ms-grid-column-align: end;
       width: 100%;
       font-size: 1.4em;
       text-align: center;
+      margin: 2em 0;
 
-      @include bp(mx) { grid-row: 5 / span 1;}
+      @include bp(mx) { 
+        // grid-row: 5 / span 1;
+      }
 
       @include bp(sx) { 
         margin: 2em 0;
@@ -449,12 +484,15 @@
     }
 
     .back-to-top {
-      grid-column: 1 / span 5;
-      grid-row: 4 / span 1;
-      justify-self: center;
-      align-self: center;
-      -ms-grid-row-align: center;
-      -ms-grid-column-align: center;
+      // grid-column: 1 / span 5;
+      // grid-row: 4 / span 1;
+      flex: 0 0 100%;
+      text-align: center;
+      margin: 5em 0;
+      // justify-self: center;
+      // align-self: center;
+      // -ms-grid-row-align: center;
+      // -ms-grid-column-align: center;
 
       a:focus { outline: 1px dotted white;}
 
@@ -472,8 +510,9 @@
     }
 
     .copyright {
-      grid-column: 1 / span 5;
-      grid-row: 5 / span 1;
+      // grid-column: 1 / span 5;
+      // grid-row: 5 / span 1;
+      flex: 0 0 100%;
       text-align: center;
       border-top: 1px solid rgba($white, .25);
       padding: 2.5em 7em;
@@ -481,7 +520,9 @@
       font-weight: bold;
       font-style: normal;
 
-      @include bp(mx) { grid-row: 7 / span 1;}
+      @include bp(mx) { 
+        // grid-row: 7 / span 1;
+      }
 
       @include bp(sx) { 
         align-self: center;
