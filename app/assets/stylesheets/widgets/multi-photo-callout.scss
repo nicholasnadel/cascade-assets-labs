@@ -1,33 +1,44 @@
-.business__grad .multi-photo-callout-widget {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.business__grad .multi-image-content-blocks-widget {
   font-size: 10px;
-  max-width: 125em;
+  width: 100%;
   background-color: white;
   margin: auto;
 
-  .multi-callout-heading {
+  .multi-image-content-blocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 125em;
+    font-size: 1em;
+    margin: auto;
+  }
+
+  .multi-image-content-heading {
     flex-basis: 100%;
     width: 100%;
+    margin: 4em 0 2em 0;
     font-size: 3em;
     font-weight: 700;
     text-align: center;
   }
 
   .photoCallout {
-    font-size: 1em;
-    margin: 1em;
+    margin: 0 0 4em 0;
     border-bottom: none;
+    transition: all .4s;
 
     &:focus { border: 1px dotted white;}
+
+    &:hover { 
+      img {opacity: 0.7;}
+    }
 
     img {
       height: 17.4em;
       width: 26em;
     }
 
-    .grad-caption {
+    .multi-image-caption {
       text-align: center;
       color: $black;
     }
