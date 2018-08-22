@@ -236,6 +236,8 @@
     .link-container {
       width: 50%;
 
+      @include bp(sx) { width: 100%; }
+
       &:last-of-type {
         .social-icon-list { padding-right: 0; }
       }
