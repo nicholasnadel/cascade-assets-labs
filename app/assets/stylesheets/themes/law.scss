@@ -240,42 +240,19 @@
           height: auto;
           margin-left: 0;
         }
-
-        @include bp(mx) {
-          // grid-column: 3 / span 1;
-        }
       }
 
-      .back-to-top {
-        // grid-row: 3 / span 1;
-
-        @include bp(mx) {
-          // grid-row: 4 / span 1;
-        }
-      }
-
-      .copyright {
-        // grid-row: 4 / span 1;
-
-        @include bp(mx) {
-          // grid-row: 5 / span 1;
-        }
-      }
 
       .link-container {
         margin-bottom: 2em;
       }
       .weather {
-        // grid-column: 1 / span 5;
-        // padding-right: 9.75%;
         justify-content: center;
-        // justify-self: center;
 
         @include bp(lx) { flex: 0 0 100%; }
 
         @include bp(mx) {
           padding: 0;
-          // grid-row: 3 / span 1;
         }
       }
     }
