@@ -34,6 +34,11 @@
         'iconClass': 'icon-cu-window'
       },
       {
+        'text': 'Campus Services',
+        'link': '/campus-services/index',
+        'iconClass': 'icon-wrench'
+      },
+      {
         'text': 'Contact Us',
         'link': '/about/contact-us',
         'iconClass': 'icon-envelop'
