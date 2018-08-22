@@ -94,7 +94,7 @@ module ContentTypes
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
-# GET /modular/one_column_business_graduate
+    # GET /modular/one_column_business_graduate
     # Maps to Content Types/Modular/1 Column in Cascade.
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def one_column_business_graduate
@@ -114,7 +114,7 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_business_graduate'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_sub_brand'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
@@ -129,7 +129,9 @@ module ContentTypes
 
       render @configuration_set.template
     end
-    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+    # GET /modular/one_column_business_graduate
+    # Maps to Content Types/Modular/1 Column in Cascade.
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
 
     # GET /modular/two_column
     # Maps to Content Types/Modular/2 Column in Cascade.
@@ -223,7 +225,7 @@ module ContentTypes
         'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
         'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
         'FEATURED NEWS EVENTS FEEDS' => 'TODO: _cascade/formats/modular/meta/' \
-                                        'Featured News Events Feeds',
+        'Featured News Events Feeds',
         'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
@@ -272,16 +274,16 @@ module ContentTypes
       # This reproduces content from static sample version.
       primary_content = <<-HTML
       <div id="column-container" class="ad-landing-column-container">
-        <div id="left-column" class="ad-landing-left-column">
-          <h2 class="ad-landing-title">%s</h2>
-          %s
-          %s
-        </div>
-        <div id="right-column" class="ad-landing-right-column">
-          %s
-          %s
-          %s
-        </div>
+      <div id="left-column" class="ad-landing-left-column">
+      <h2 class="ad-landing-title">%s</h2>
+      %s
+      %s
+      </div>
+      <div id="right-column" class="ad-landing-right-column">
+      %s
+      %s
+      %s
+      </div>
       </div>
       HTML
 

@@ -9,7 +9,7 @@ $(document).ready(function(){
   };
 
   trigger.on('click', function() {
-    trigger.toggleClass('active');
+    // trigger.toggleClass('active');
     list.slideToggle(200);
   });
 
@@ -19,7 +19,7 @@ $(document).ready(function(){
 
   $(document).on('click', function(event) {
     if(trigger[0] !== event.target && !list.has(event.target).length) {
-      list.slideUp(200);
+      list.slideUp(20000000);
     }
   });
 });
