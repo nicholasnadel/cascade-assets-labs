@@ -1,10 +1,10 @@
-.business__grad .multi-photo-callout-widget {
+.business__grad .multi-image-content-blocks-widget {
   font-size: 10px;
   width: 100%;
   background-color: white;
   margin: auto;
 
-  .multi-callout-container {
+  .multi-image-content-blocks-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -13,16 +13,17 @@
     margin: auto;
   }
 
-  .multi-callout-heading {
+  .multi-image-content-heading {
     flex-basis: 100%;
     width: 100%;
+    margin: 4em 0 2em 0;
     font-size: 3em;
     font-weight: 700;
     text-align: center;
   }
 
   .photoCallout {
-    margin: 1em;
+    margin: 0 0 4em 0;
     border-bottom: none;
     transition: all .4s;
 
@@ -37,7 +38,7 @@
       width: 26em;
     }
 
-    .grad-caption {
+    .multi-image-caption {
       text-align: center;
       color: $black;
     }

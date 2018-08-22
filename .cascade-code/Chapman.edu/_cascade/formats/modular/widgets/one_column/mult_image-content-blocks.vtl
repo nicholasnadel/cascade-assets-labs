@@ -4,9 +4,9 @@
 ##
 #set ($photos = $_XPathTool.selectNodes($element.getChild('multiPhotoCallout'), "photoCallout"))
 #set ($calloutHeading = $element.getChild('multiPhotoCallout').getChild('calloutHeading').value)
-    <div class="multi-photo-callout-widget">
-        <div class='multi-callout-container'>
-        <h2 class="multi-callout-heading">${calloutHeading}</h2>
+    <div class="multi-image-content-blocks-widget">
+        <div class='multi-image-content-blocks-container'>
+        <h2 class="multi-image-content-heading">${calloutHeading}</h2>
         #foreach ($photo in $photos)
             #set ($photoPath = $photo.getChild('image').getChild('path').value )
             #set ($alt = $photo.getChild('altText').value )
