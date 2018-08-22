@@ -417,9 +417,7 @@
       @include bp(sx) { 
         margin: 2em 0;
         -ms-flex: auto;
-        text-align: left; 
-        display: flex;
-        flex-wrap: wrap;
+        text-align: center;
         justify-content: center;
         order: 6;
       }
