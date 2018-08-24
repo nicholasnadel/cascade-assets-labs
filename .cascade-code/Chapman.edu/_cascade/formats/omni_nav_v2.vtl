@@ -388,7 +388,14 @@
     <ul>
       ## First list item is always Overview
       <li>
-        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">Overview</a>
+        #set ( $parentPage = "" )
+        #foreach ( $word in $overviewLink.split("/")[1].split("-") )
+          #if ( $parentPage != "" )
+            #set ( $parentPage = $parentPage + " " )
+          #end
+          #set ( $parentPage = $parentPage + $word.substring(0,1).toUpperCase() + $word.substring(1) )
+        #end
+        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">$parentPage Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
@@ -599,12 +606,12 @@
         #buildToggleIcon("About")
         <ul>
           <li><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
-          <li><a href="site://Chapman.edu/about/visit-chapman/index">Visit Chapman</a></li>
+          <li><a href="site://Chapman.edu/about/visit/index">Visit Chapman</a></li>
           <li><a href="site://Chapman.edu/discover/index">Discover Chapman</a></li>
-          <li><a href="site://Chapman.edu/about/campus/index">Our Campus</a></li>
-          <li><a href="site://Chapman.edu/about/facts-history/index">Facts &amp; History</a></li>
-          <li><a href="site://Chapman.edu/about/administration/index">Administration</a></li>
-          <li><a href="site://Chapman.edu/about/contact-us">Contact Us</a></li>
+          <li><a href="site://Chapman.edu/about/facts-and-rankings/index">Facts &amp; Rankings</a></li>
+          <li><a href="site://Chapman.edu/about/our-family/leadership/index">Leadership</a></li>
+          <li><a href="site://Chapman.edu/campus-services/index">Campus Services</a></li>
+          <li><a href="site://Chapman.edu/about/connect">Connect</a></li>
         </ul>
       </li>
       <li>
