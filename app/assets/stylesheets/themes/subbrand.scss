@@ -1,4 +1,4 @@
-#theme.business__grad {
+#theme.subbrand {
     @include theme-color-classes($cardinal);
 
     .smallMasthead .masthead,
@@ -19,227 +19,189 @@
         background-color: $asbe-tertiary;
     }
 
-    .rightColumn .styleTwo a {
-        color: $white;
-        border-bottom: 2px dotted #74868c;
-    }
+    .subbrand-masthead {
+        position: relative;
 
-    .expandedNameBarContainer {
-        h2,
-        a {
-            color: #95d2e8;
-        }
-    }
+        &,
+        .cd-hero-slider {
+            background-color: $bg-light-gray;
+            height: 300px;
+            width: 100%;
 
-    #social_follow_us {
-        .banner {
-            background-image: image-url('asbe_follow_us.png');
+            @include media($medium-screen) {
+                height: 400px;
+            }
+            @include media($large-screen) {
+                height: 600px;
+            }
         }
-        li span {
-            &.hover_state,
-            &.inactive_state {
-                background-image: image-url('asbe_icons.png');
+
+        /* only display slide controls when hovering on masthead on medium+ screen */
+        @include media($medium-screen) {
+            .slider-controls {
+                display: none;
+            }
+            &:hover {
+                .slider-controls {
+                    display: block;
+                }
+            }
+        }
+
+        .foreground-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 30px;
+            text-align: center;
+            z-index: 666;
+
+            @include media($medium-screen) {
+                bottom: 44px;
+            }
+            @include media($large-screen) {
+                bottom: 60px;
+            }
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            width: 100%;
+            margin: auto;
+            z-index: 666;
+
+            .control {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                text-align: center;
+                background-color: white;
+                opacity: .8;
+                cursor: pointer;
+
+                &.left {
+                    float: left;
+                }
+                &.right {
+                    float: right;
+                }
+
+                a {
+                    font-size: 80px;
+                    line-height: 40px;
+                    color: $black;
+                }
+            }
+        }
+
+        .headline-container {
+            margin-bottom: 8px;
+
+            @include media($large-screen) {
+                margin-bottom: 16px;
+            }
+
+            .headline {
+                font-size: 32px;
+                line-height: 32px;
+                margin: 0;
+                color: white;
+                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+
+                @include media($large-screen) {
+                    font-size: 48px;
+                    line-height: 48px;
+                }
+
+                &.primary {
+                    font-weight: 800;
+                    text-transform: uppercase;
+                }
+
+                &.secondary {
+                    font-weight: 100;
+                }
+            }
+        }
+
+        .offcanvas-menu-trigger a {
+            display: inline-block;
+            border: 2px solid white;
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 16px;
+            color: white;
+            text-transform: uppercase;
+            background-color: transparent;
+            cursor: pointer;
+
+            &:hover {
+                background-color: white;
+                color: $black;
+            }
+        }
+
+        .background-content {
+            .slider-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .cd-hero-slider {
+                list-style-type: none;
+
+                li,
+                .background-image {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                }
+
+                .background-image {
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    background-image: url('mastheads/masthead-business-graduate-argyros.jpg') !important;
+                }
+            }
+
+            .background-video-wrapper {
+                background-color: $bg-light-gray;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .gradient-overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient( to bottom,
+                rgba(0, 0, 0, 0) 40%,
+                rgba(0, 0, 0, 0.75));
             }
         }
     }
 
-    .rounded-slider .info-container .blue {
-        background-color: #a50034;
-    }
-
-    .newbutton a {
-        background-color: $cardinal;
-        &:hover {
-            background-color: $asbe-secondary;
-        }
-        &:active {
-            background-color: $asbe-tertiary;
-        }
-    }
-
-    .midPhotoCallouts .photoCallout .caption {
-        background-color: $cardinal;
-    }
-
-    .photoCallouts {
-        .caption,
-        .rollover {
-            background-color: $cardinal;
-        }
-    }
-
-    .leftNavSubContent .callout .view-more-expander {
-        .view-more {
-            background-color: $cardinal;
-        }
-        .view-more-link {
-            background-color: $cardinal;
-        }
-        .view-less-link {
-            background-color: $cardinal;
-        }
-        .icon-triangle-up {
-            color: $cardinal;
-        }
-    }
-    ul.hero-select-list {
-        display: none;
-    }
-
-    .dropdown-button-wrapper {
-        display: inline-flex !important;
-    }
-
-    .flex-container {
-        display: flex;
-    }
-
-    .background-image {
-        background: linear-gradient( to bottom,
-        rgba(0, 0, 0, 0) 40%,
-        rgba(0, 0, 0, 0.75)),
-        image_url("mastheads/masthead-business-graduate-argyros.jpg");
-        background-size: cover !important;
-        height: 600px;
-    }
-
-    .slider-bottom-border {
-        background-color: $cu-red;
-    }
-
-    .title,
-    .subhead {
-        margin: 0;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-
-    h2.subhead {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-
-    h3.title {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-    .masthead {
-        text-align: center;
-    }
-
-    .masthead-primary {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        height: 600px; // background: linear-gradient( to bottom, // rgba(0, 0, 0, 0) 40%,
-        // rgba(0, 0, 0, 0.75)),
-        // image_url("mastheads/masthead-business-graduate-argyros.jpg") !important;
-        // background-size: cover !important;
-        padding-bottom: 30px;
-        border-bottom: 8px solid #a50034;
-    }
-
-    .bg-image {
-        background: linear-gradient( to bottom,
-        rgba(0, 0, 0, 0) 40%,
-        rgba(0, 0, 0, 0.75));
-        background-size: cover !important;
-    }
-    .masthead-primary {
-        text-transform: uppercase;
-    }
-
-    .masthead-primary-a,
-    .subhead {
-        line-height: normal;
-    }
-
-    .masthead-primary-a {
-        background-color: none;
-        color: white;
-    }
-
-    .masthead-primary-b,
-    .masthead-primary-c {
-        color: white;
-    }
-
-    .masthead-primary .title .subhead {
-        font-size: 30px;
-        color: white;
-        font-family: $futura-condensed;
-        font-weight: 500;
-        text-transform: uppercase;
-        text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5)
-    }
-    .hero-content {
-        padding-bottom: 30px;
-    }
-
-    .theme-button {
-        display: inline-flex;
-        flex-grow: 1;
-    }
-
-    .theme-button {
-        margin-right: 12px;
-    }
-
-    .menu {
-        display: inline-flex;
-    }
-
-    .menu ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    .menu ul li>ul {
-        display: none;
-        flex-direction: column;
-    }
-
-    .menu ul li>ul li {
-        width: 100%;
-    }
-
-    .menu ul li:hover>ul {
-        display: flex;
-    }
-
-    .menu a {
-        text-transform: uppercase;
-        display: block;
-        padding: 15px;
-        color: white;
-        text-decoration: none;
-        text-align: center;
-    }
-
-    .menu .sub-menu>a:after {
-        content: "+";
-        padding-left: 5px;
-    }
-
-    .select-arrow {
-        position: absolute;
-        top: 20px;
-        right: 18px;
-        display: block;
-        background: transparent;
-        border-width: 0px 1px 1px 0px;
-        border-style: solid;
-        width: 8px;
-        height: 8px;
-        -webkit-transform: rotateZ(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotateZ(45deg);
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        min-width: 300px;
     }
 
     .dropbtn {
@@ -260,13 +222,6 @@
         -moz-box-shadow: inset 0px 0px 0px 4px #a50034;
         box-shadow: inset 0px 0px 0px 4px #a50034;
     }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        min-width: 300px;
-    }
-
     .dropdown-content {
         display: none;
         position: absolute;
@@ -333,13 +288,12 @@
     }
 
     @media screen and (min-width: 1181px) {
-        .masthead-primary {
+        .subbrand-masthead {
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
-            height: 600px;
         }
-        .masthead-primary-b {
+        .subbrand-masthead-b {
             order: -1;
         }
         .side-panel-hero .hero-content {
@@ -354,13 +308,13 @@
             height: 600px;
         }
 
-        .masthead-primary .subhead {
+        .subbrand-masthead .subhead {
             font-family: $futura-condensed;
             font-size: 30px;
             text-transform: uppercase;
         }
 
-        .masthead-primary .title {
+        .subbrand-masthead .title {
             font-family: $futura-condensed;
             font-size: 72px;
             text-transform: uppercase;
@@ -380,8 +334,8 @@
             flex-grow: 2;
         }
 
-        .masthead-primary-a>.theme-button,
-        .masthead-primary-a>.dropdown {
+        .subbrand-masthead-a>.theme-button,
+        .subbrand-masthead-a>.dropdown {
             text-transform: capitalize !important;
         }
     }
@@ -401,9 +355,9 @@
     }
 
     @media all and (max-width: 1180px) and (min-width: 781px) {
-        .masthead-primary {
-            height: 500px;
-        }
+        // .subbrand-masthead {
+        //     height: 500px;
+        // }
         .dropbtn {
             background: transparent !important;
             box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.3);
@@ -411,7 +365,7 @@
             -moz-box-shadow: inset 0px 0px 0px 4px #a50034;
             box-shadow: inset 0px 0px 0px 4px #a50034;
         }
-        .masthead-primary .subhead {
+        .subbrand-masthead .subhead {
             font-size: 24px;
             color: white;
             font-family: $futura-regular;
@@ -419,7 +373,7 @@
             text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
         }
 
-        .masthead-primary .title {
+        .subbrand-masthead .title {
             font-size: 60px;
             color: white;
             font-family: $futura-regular;
@@ -450,14 +404,14 @@
             height: 400px;
         }
 
-        .masthead-primary .subhead {
+        .subbrand-masthead .subhead {
             font-size: 18px;
             color: white;
             font-family: $futura-regular;
             font-weight: 700;
             text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
         }
-        .masthead-primary .title {
+        .subbrand-masthead .title {
             font-size: 48px;
             color: white;
             font-family: $minion;
@@ -472,25 +426,23 @@
         .dropdown {
             display: inline-flex;
             margin-top: 12px;
-        }
-
-        .masthead-primary {
-            height: 400px;
-        }
+        } //     .subbrand-masthead {
+        //     height: 400px;
+        // }
     }
 
     @media screen and (max-width: 480px) {
-        .masthead-primary {
+        .subbrand-masthead {
             margin-top: 10px;
             border-bottom: none;
             border-top: 8px solid #a50034;
             background: linear-gradient( to bottom,
             rgba(0, 0, 0, .75) 100%,
             rgba(0, 0, 0, 0.75)),
-            image_url("mastheads/masthead-business-graduate-argyros.jpg");
+            image_url("mastheads/masthead-business-graduate-argyros.jpg") !important;
             background-size: cover !important;
         }
-        .masthead-primary .title {
+        .subbrand-masthead .title {
             font-size: 52px;
             color: white;
             font-family: $futura-regular;

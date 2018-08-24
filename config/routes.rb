@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get '/modular/ad_landing', to: 'modular#ad_landing'
     get '/modular/one_column', to: 'modular#one_column'
     get '/modular/one_column_business_graduate', to: 'modular#one_column_business_graduate'
+    get '/modular/subbrand', to: 'modular#one_column_subbrand'
+
     get '/modular/two_column', to: 'modular#two_column'
     get '/modular/three_column', to: 'modular#three_column'
 
