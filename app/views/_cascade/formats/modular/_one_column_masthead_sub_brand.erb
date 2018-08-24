@@ -3,7 +3,11 @@
 <% #import( "/_cascade/formats/modular/mastheads/side_panel_hero" ) %>
 <% mastheadType = current_page.get_child_value(:masthead_type) %>
 	<div class="masthead">
-		<div class="masthead-primary bg-image">
+		<div class="masthead-primary bg-image" style="background: linear-gradient( to bottom,
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.75)),
+        url(<%= image_path "mastheads/masthead-business-graduate-argyros.jpg"%>) !important;
+        background-size: cover !important;">
 			<div class="masthead-primary-a">
 				<h2 class="subhead">Chapman University</h2>
 				<h1 class="title"> Argyros School of Business & Economics</h1>
