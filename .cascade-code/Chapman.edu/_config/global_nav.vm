@@ -10,7 +10,7 @@
       },
       {
         'text': 'Visit Chapman',
-        'link': '/about/visit-chapman/index',
+        'link': '/about/visit/index',
         'iconClass': 'icon-california'
       },
       {
@@ -19,18 +19,13 @@
         'iconClass': 'icon-cu-window'
       },
       {
-        'text': 'Our Campus',
-        'link': '/about/campus/index',
-        'iconClass': 'icon-office'
-      },
-      {
-        'text': 'Facts and History',
-        'link': '/about/facts-history/index',
+        'text': 'Facts and Rankings',
+        'link': '/about/facts-and-rankings/index',
         'iconClass': 'icon-library4'
       },
       {
-        'text': 'Administration',
-        'link': '/about/administration/index',
+        'text': 'Leadership',
+        'link': '/about/our-family/leadership/index',
         'iconClass': 'icon-cu-window'
       },
       {
@@ -39,8 +34,8 @@
         'iconClass': 'icon-wrench'
       },
       {
-        'text': 'Contact Us',
-        'link': '/about/contact-us',
+        'text': 'Connect',
+        'link': '/about/connect/index',
         'iconClass': 'icon-envelop'
       }
     ]
