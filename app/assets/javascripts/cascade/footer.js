@@ -1,6 +1,7 @@
 $(function() {
   skrollr.init({
 		forceHeight: false
+
 	});
   $('.footer .footer-menu .links-header').on('click', function() {
 
