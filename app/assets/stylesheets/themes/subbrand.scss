@@ -63,7 +63,7 @@
       z-index: 666;
 
       @include media($medium-screen) {
-        bottom: 44px;
+        bottom: 0;
       }
       @include media($large-screen) {
         bottom: 60px;
@@ -129,6 +129,7 @@
           color: $white;
           font-weight: 400;
           text-transform: uppercase;
+          line-height: 1em;
         }
 
         &.secondary {
@@ -527,8 +528,11 @@
     .subbrand-masthead .background-content .cd-hero-slider {
       height: 100vh;
     }
+  }
+
+  @media screen and (max-width: 435px) {
     .foreground-content {
-      bottom: 0 !important;
+      top: 15px !important;
     }
   }
 }
