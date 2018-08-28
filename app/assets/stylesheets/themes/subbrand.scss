@@ -120,23 +120,19 @@
             }
 
             .headline {
-                // font-size: 32px;
-                // line-height: 32px;
                 margin: 0;
                 color: white;
                 text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
                 font: $futura-condensed;
-                @include media($large-screen) {
-                    // font-size: 48px;
-                    line-height: 48px;
-                }
+
 
                 &.primary {
                     font-size: 72px;
                     color: $white;
                     font-weight: 400;
                     text-transform: uppercase;
-                    line-height: 1em;
+                    margin-bottom: 10px;
+                    margin-top: -10px;
                 }
 
                 &.secondary {
@@ -191,7 +187,6 @@
                 .background-image {
                     background-repeat: no-repeat;
                     background-size: cover;
-                    background-image: url('mastheads/masthead-business-graduate-argyros.jpg') !important;
                 }
             }
 
@@ -316,7 +311,7 @@
         #theme.business__grad .background-image {
             height: 600px;
         }
-        .subbrand-masthead .secondary {
+        h2.headline.secondary.subhead {
             font-family: $futura-condensed;
             font-size: 30px;
             text-transform: uppercase;
@@ -368,7 +363,6 @@
         }
         .foreground-content {
             position: relative !important;
-            bottom: 0 !important;
         }
     }
 
@@ -388,7 +382,7 @@
             // height: 600px;
         }
 
-        .subbrand-masthead .secondary {
+        h2.headline.secondary.subhead {
             font-family: $futura-condensed;
             font-size: 30px;
             text-transform: uppercase;
@@ -408,7 +402,7 @@
 
         .theme-button,
         .dropdown {
-            text-transform: uppercase;
+            text-transform: capitalize;
         }
     }
     @media screen and (max-width: 1180px) and (min-width: 781px) {
@@ -425,7 +419,7 @@
             -moz-box-shadow: inset 0px 0px 0px 4px #a50034;
             box-shadow: inset 0px 0px 0px 4px #a50034;
         }
-        .subbrand-masthead .secondary {
+        h2.headline.secondary.subhead {
             font-size: 24px !important;
             color: white;
             font-family: $futura-regular !important;
@@ -458,14 +452,14 @@
             z-index: 666;
             height: 400px;
         }
-        .subbrand-masthead .secondary {
+        h2.headline.secondary.subhead {
             font-size: 18px !important;
             color: white;
             font-family: $futura-regular !important;
             font-weight: 700 !important;
             text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
         }
-        .subbrand-masthead .primary {
+        h1.headline.primary.title {
             font-size: 48px !important;
             color: white;
             font-family: $minion !important;
@@ -486,13 +480,9 @@
             margin-top: 10px;
             border-bottom: none;
             border-top: 8px solid #a50034;
-            background: linear-gradient( to bottom,
-            rgba(0, 0, 0, .75) 100%,
-            rgba(0, 0, 0, 0.75)),
-            image_url("mastheads/masthead-business-graduate-argyros.jpg") !important;
             background-size: cover !important;
         }
-        .subbrand-masthead .primary {
+        h1.headline.primary.title {
             font-size: 52px !important;
             color: white;
             font-family: $futura-regular;
@@ -506,9 +496,7 @@
             display: inline-flex;
             margin-top: 12px;
         }
-        .subbrand-masthead .background-content .cd-hero-slider {
-            height: 100vh;
-        }
+
         .gradient-overlay-subbrand {
             background: rgba(0, 0, 0, .75) !important;
         }
@@ -516,7 +504,7 @@
 
     @media screen and (max-width: 435px) {
         .foreground-content {
-            top: 35px !important;
+            bottom: 10px !important;
         }
     }
 }
