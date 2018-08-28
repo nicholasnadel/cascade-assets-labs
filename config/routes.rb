@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     get '/modular/subbrand_business', to: 'modular#one_column_subbrand_business'
     get '/modular/subbrand_grad_business', to: 'modular#one_column_subbrand_grad_business'
     get '/modular/subbrand_fowler_law', to: 'modular#one_column_subbrand_fowler_law'
+    get '/modular/image_slider_business', to: 'modular#one_column_business_image_slider'
+
 
     get '/modular/two_column', to: 'modular#two_column'
     get '/modular/three_column', to: 'modular#three_column'

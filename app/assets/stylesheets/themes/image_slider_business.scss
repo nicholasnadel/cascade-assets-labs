@@ -1,0 +1,88 @@
+#theme.image_slider_business {
+    $panther-black-alpha: rgba(35, 31, 32, 0.8);
+    $cardinal: #a50034;
+    $cardinal-hover: #810029;
+    $pillar: #686259;
+    $sand: #ddcba4;
+    $panther-black: #231f20;
+    section.hero-content-panel,
+    .side-panel-hero .hero-content {
+        display: none;
+    }
+    .side-panel-hero article {
+        margin-left: 0;
+        background-color: transparent;
+        margin-top: 0;
+    }
+    .content {
+        background-color: $panther-black-alpha;
+        margin-left: 5%;
+        margin-bottom: 5%;
+        width: 750px; // max-width: 750px;
+    }
+    .cd-arrow-left,
+    .cd-arrow-right {
+        display: none;
+    }
+    h2.title {
+        font-size: 24px;
+        font-family: $futura-regular;
+        font-weight: 700;
+        color: $white;
+        margin-bottom: 10px;
+    }
+    p.body {
+        font-size: 16px;
+        font-family: arial, sans-serif;
+        color: $white;
+    }
+
+    .side-panel-hero .cd-slider-nav li.selected a {
+        background: $cardinal;
+        box-shadow: 0 0 2px $panther-black;
+    }
+    .side-panel-hero .cd-slider-nav {
+        background-color: orange;
+        margin: 0;
+    }
+    .cd-slider-nav nav {
+        margin-right: 30px;
+    }
+    @media screen and (min-width: 1181px) {
+        .side-panel-hero {
+            height: 600px;
+        }
+        .side-panel-hero article .category {
+            font-size: 24px;
+        }
+    }
+    @media screen and (max-width: 1180px) {
+        .side-panel-hero {
+            height: 500px !important;
+        }
+        .content {
+            width: 100%;
+            display: block;
+            margin: 0;
+        }
+        .call-to-action-block-widget__medium-bg {
+            margin-top: 400px;
+        }
+    }
+
+    @media screen and (max-width: 780px) {
+        .side-panel-hero {
+            height: 400px !important;
+        }
+    }
+    @media screen and (min-width: 768px) {
+        .side-panel-hero .hero-content {
+            display: none;
+        }
+    }
+
+    .image-slider-wrapper {
+        background-color: pink;
+        min-height: 400px;
+    }
+}
