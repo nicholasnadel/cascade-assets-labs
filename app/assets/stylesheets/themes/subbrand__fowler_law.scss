@@ -416,15 +416,10 @@
             display: inline-flex;
             margin-top: 12px;
         }
-
         .gradient-overlay-subbrand {
             background: rgba(0, 0, 0, .75) !important;
         }
     }
 
-    @media screen and (max-width: 435px) {
-        .foreground-content {
-            bottom: 10px !important;
-        }
-    }
+    @media screen and (max-width: 435px) {}
 }
