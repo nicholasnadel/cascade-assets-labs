@@ -178,7 +178,7 @@
 
             .cd-hero-slider {
                 list-style-type: none;
-                border-bottom: 8px solid $cardinal;
+                border-bottom: 10px solid $cardinal;
 
 
                 li,
@@ -293,6 +293,10 @@
         .foreground-content {
             position: relative !important;
         }
+        .subbrand-masthead .background-content .cd-hero-slider {
+            border-bottom: none !important;
+            border-top: 10px solid $cardinal;
+        }
     }
 
     @media screen and (max-width: 780px) {
@@ -396,10 +400,6 @@
         .theme-button,
         .dropdown {
             margin-right: 15px;
-        }
-        #theme.subbrand__fowler_law .subbrand-masthead .background-content .cd-hero-slider {
-            border-bottom: none !important;
-            border-top: 10px solid $cardinal;
         }
     }
     @media screen and (max-width: 480px) {

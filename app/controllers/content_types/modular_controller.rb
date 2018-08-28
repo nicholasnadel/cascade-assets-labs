@@ -171,7 +171,7 @@ module ContentTypes
     end
     def one_column_subbrand_fowler_law
       @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Subbrand - Business')
+      @metadata_set = MetadataSet.page(title: 'Sub-Brand - Business')
       @data_definition = DataDefinitions::OneColumn.default
 
       theme = params.fetch(:theme, 'subbrand__fowler_law')
