@@ -267,7 +267,9 @@
 
                 // Do not initialize Skrollr on mobile.
                 if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-                    cu_parallax_fx.skrollr = skrollr.init();
+                    cu_parallax_fx.skrollr = skrollr.init({
+                      forceHeight: false
+                    });
                 }
 
             } catch (e) {
