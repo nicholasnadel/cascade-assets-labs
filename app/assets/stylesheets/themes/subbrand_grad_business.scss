@@ -1,437 +1,445 @@
 #theme.subbrand__grad_business {
-    @include theme-color-classes($cardinal);
+  @include theme-color-classes($cardinal);
 
-    .smallMasthead .masthead,
-    .smallMasthead .masthead-old,
-    .bigMasthead .mastheadPlaceholder,
-    .bigMasthead .masthead,
-    .bigMasthead .masthead-old,
-    .nameBar,
-    .rightColumn .styleTwo {
-        background: $cardinal;
+  .smallMasthead .masthead,
+  .smallMasthead .masthead-old,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .bigMasthead .masthead-old,
+  .nameBar,
+  .rightColumn .styleTwo {
+    background: $cardinal;
+  }
+
+  .nameBarButtons li a {
+    color: $cardinal;
+  }
+
+  .rightColumn .styleTwo .border {
+    background-color: $asbe-tertiary;
+  }
+
+  .subbrand-masthead {
+    position: relative;
+    display: flex;
+    align-items: space-around;
+
+    &,
+    .cd-hero-slider {
+      background-color: $bg-light-gray; // height: 600px;
+      width: 100%;
+
+      @include media($medium-screen) {
+        height: 400px;
+      }
+      @include media($large-screen) {
+        height: 600px;
+      }
     }
 
-    .nameBarButtons li a {
-        color: $cardinal;
+    @include media($medium-screen) {
+      .subbrand-masthead {
+        height: 500px;
+      }
     }
 
-    .rightColumn .styleTwo .border {
-        background-color: $asbe-tertiary;
-    }
-
-    .subbrand-masthead {
-        position: relative;
-        display: flex;
-        align-items: space-around;
-
-        &,
-        .cd-hero-slider {
-            background-color: $bg-light-gray; // height: 600px;
-            width: 100%;
-
-            @include media($medium-screen) {
-                height: 400px;
-            }
-            @include media($large-screen) {
-                height: 600px;
-            }
-        }
-
-        @include media($medium-screen) {
-            .subbrand-masthead {
-                height: 500px;
-            }
-        }
-
-        /* only display slide controls when hovering on masthead on medium+ screen */
-        @include media($medium-screen) {
-            .slider-controls {
-                display: none;
-            }
-            &:hover {
-                .slider-controls {
-                    display: block;
-                }
-            }
-        }
-
-        .foreground-content {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 50px;
-            text-align: center;
-            z-index: 666;
-
-            @include media($medium-screen) {}
-            @include media($large-screen) {
-                // bottom: 60px;
-            }
-        }
-
-        .slider-controls {
-            position: absolute;
-            top: 0;
-
-            left: 0;
-            right: 0;
-            height: 50px;
-            width: 100%;
-            margin: auto;
-            z-index: 666;
-
-            .control {
-                display: inline-block;
-                width: 50px;
-                height: 50px;
-                text-align: center;
-                background-color: white;
-                opacity: .8;
-                cursor: pointer;
-
-                &.left {
-                    float: left;
-                }
-                &.right {
-                    float: right;
-                }
-
-                a {
-                    font-size: 80px;
-                    line-height: 40px;
-                    color: $black;
-                }
-            }
-        }
-
-        h2.headline.secondary.subhead {
-            line-height: 1;
-        }
-        .gradient-overlay-subbrand {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient( to bottom,
-            rgba(0, 0, 0, 0) 40%,
-            rgba(0, 0, 0, 0.75));
-        }
-        .headline-container {
-            margin-bottom: 8px;
-
-            @include media($large-screen) {
-                margin-bottom: 16px;
-            }
-
-            .headline {
-                margin: 0;
-                color: white;
-                text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-                font: $futura-condensed;
-
-
-                &.primary {
-                    font-size: 72px;
-                    color: $white;
-                    font-weight: 500;
-                    text-transform: uppercase;
-                    font-family: $futura-condensed;
-                }
-
-                &.secondary {
-                    display: none;
-                }
-            }
-        }
-
-        .offcanvas-menu-trigger a {
-            display: inline-block;
-            border: 2px solid white;
-            padding: 16px 32px;
-            font-size: 16px;
-            font-weight: 800;
-            line-height: 16px;
-            color: white;
-            text-transform: uppercase;
-            background-color: transparent;
-            cursor: pointer;
-
-            &:hover {
-                background-color: white;
-                color: $black;
-            }
-        }
-
-        .background-content {
-            .slider-wrapper {
-                position: absolute;
-                top: 0;
-                left: 0;
-
-                width: 100%;
-                height: 100%;
-            }
-
-            .cd-hero-slider {
-                list-style-type: none;
-                border-bottom: 10px solid $cardinal;
-
-
-                li,
-                .background-image {
-                    width: 100%;
-                    height: 100%;
-                    margin: 0;
-                }
-
-                .background-image {
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                }
-            }
-
-            .background-video-wrapper {
-                background-color: $bg-light-gray;
-                position: absolute;
-                top: 0;
-                right: 0;
-
-                left: 0;
-                display: block;
-                width: 100%;
-                height: auto;
-                overflow: hidden;
-            }
-        }
-    }
-
-    .dropdown {
+    /* only display slide controls when hovering on masthead on medium+ screen */
+    @include media($medium-screen) {
+      .slider-controls {
         display: none;
+      }
+      &:hover {
+        .slider-controls {
+          display: block;
+        }
+      }
     }
-    .select-arrow {
-        position: relative;
-        top: 2px;
-        left: 12px;
+
+    .foreground-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 50px;
+      text-align: center;
+      z-index: 666;
+
+      @include media($medium-screen) {}
+      @include media($large-screen) {
+        // bottom: 60px;
+      }
+    }
+
+    .slider-controls {
+      position: absolute;
+      top: 0;
+
+      left: 0;
+      right: 0;
+      height: 50px;
+      width: 100%;
+      margin: auto;
+      z-index: 666;
+
+      .control {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        background-color: white;
+        opacity: .8;
+        cursor: pointer;
+
+        &.left {
+          float: left;
+        }
+        &.right {
+          float: right;
+        }
+
+        a {
+          font-size: 80px;
+          line-height: 40px;
+          color: $black;
+        }
+      }
+    }
+
+    h2.headline.secondary.subhead {
+      line-height: 1;
+    }
+    .gradient-overlay-subbrand {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient( to bottom,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(0, 0, 0, 0.75));
+    }
+    .headline-container {
+      margin-bottom: 8px;
+
+      @include media($large-screen) {
+        margin-bottom: 16px;
+      }
+
+      .headline {
+        margin: 0;
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+        font: $futura-condensed;
+
+
+        &.primary {
+          font-size: 72px;
+          color: $white;
+          font-weight: 500;
+          text-transform: uppercase;
+          font-family: $futura-condensed;
+        }
+
+        &.secondary {
+          display: none;
+        }
+      }
+    }
+
+    .offcanvas-menu-trigger a {
+      display: inline-block;
+      border: 2px solid white;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 16px;
+      color: white;
+      text-transform: uppercase;
+      background-color: transparent;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: $black;
+      }
+    }
+
+    .background-content {
+      .slider-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+      }
+
+      .cd-hero-slider {
+        list-style-type: none;
+        border-bottom: 10px solid $cardinal;
+
+
+        li,
+        .background-image {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+        }
+
+        .background-image {
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+      }
+
+      .background-video-wrapper {
+        background-color: $bg-light-gray;
+        position: absolute;
+        top: 0;
         right: 0;
+
+        left: 0;
         display: block;
-        background: transparent;
-        border-width: 0px 1px 1px 0px;
-        border-style: solid;
-        width: 8px;
-        height: 8px;
-        -webkit-transform: rotateZ(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotateZ(45deg);
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+      }
     }
-    @media screen and (min-width: 1181px) {
-        .subbrand-masthead {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-        }
-        .subbrand-masthead-b {
-            order: -1;
-        }
-        .side-panel-hero .hero-content {
-            padding: 32px 0;
-            pointer-events: none;
-            z-index: 666;
-            height: 600px;
-        }
-        #theme.business__grad .background-image {
-            height: 600px;
-        }
-        h2.headline.secondary.subhead {
-            font-family: $futura-regular;
-            font-size: 30px;
-            text-transform: uppercase;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-            font-weight: 700;
-        }
-        .subbrand-masthead .headline-container .headline.primary {
-            font-family: $futura-condensed;
-            font-size: 60px;
-            text-transform: uppercase;
-            color: white;
-            font-weight: 400;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-            text-align: left;
-            padding-left: 5%;
-        }
+  }
+
+  .dropdown {
+    display: none;
+  }
+  .select-arrow {
+    position: relative;
+    top: 2px;
+    left: 12px;
+    right: 0;
+    display: block;
+    background: transparent;
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+    width: 8px;
+    height: 8px;
+    -webkit-transform: rotateZ(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotateZ(45deg);
+  }
+  @media screen and (min-width: 1181px) {
+    .subbrand-masthead {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
     }
-
-    @media screen and (max-width: 1180px) {
-
-        .subbrand-masthead-a>.theme-button,
-        .subbrand-masthead-a>.dropdown {
-            text-transform: capitalize !important;
-        }
+    .subbrand-masthead-b {
+      order: -1;
     }
-
-    @media screen and (max-width: 780px) {
-        .subbrand-masthead .cd-hero-slider {
-            height: 400px;
-        }
-        .subbrand-masthead {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-end;
-        }
-        .theme-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .side-panel-hero .hero-content {
+      padding: 32px 0;
+      pointer-events: none;
+      z-index: 666;
+      height: 600px;
     }
-
-    @media screen and (max-width: 480px) {
-        .theme-button {
-            min-width: 330px;
-        }
-        .foreground-content {
-            position: relative !important;
-        }
+    #theme.business__grad .background-image {
+      height: 600px;
     }
-
-    @media screen and (max-width: 780px) {
-        .theme-button {
-            display: inline-flex;
-            margin-top: 12px;
-        }
-        .subbrand-masthead {
-            height: 400px;
-        }
+    h2.headline.secondary.subhead {
+      font-family: $futura-regular;
+      font-size: 30px;
+      text-transform: uppercase;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+      font-weight: 700;
     }
-
-    @include media($large-screen) {
-        .subbrand-masthead {
-            // height: 600px;
-        }
-
-        h2.headline.secondary.subhead {
-            font-family: $futura-condensed;
-            font-size: 30px;
-            text-transform: uppercase;
-            color: white;
-            font-weight: 500;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-        }
-        .subbrand-masthead .title {
-            font-family: $futura-condensed;
-            font-size: 72px;
-            text-transform: uppercase;
-            color: white;
-            font-weight: 400;
-            text-transform: uppercase;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-        }
-
-        .theme-button,
-        .dropdown {
-            text-transform: capitalize;
-        }
+    .subbrand-masthead .headline-container .headline.primary {
+      font-family: $futura-condensed;
+      font-size: 72px;
+      text-transform: uppercase;
+      color: white;
+      font-weight: 500;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+      text-align: left;
+      padding-left: 5%;
+      text-align: left;
     }
-    @media screen and (max-width: 1180px) and (min-width: 781px) {
+    h1.headline.primary.title {
+      max-width: 700px;
+    }
+  }
 
-        .subbrand-masthead .cd-hero-slider,
-        .subbrand-masthead,
-        .cd-hero-slider {
-            height: 500px !important;
-        }
-        h2.headline.secondary.subhead {
-            font-size: 24px !important;
-            color: white;
-            font-family: $futura-regular !important;
-            font-weight: 700;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-            text-tansform: uppercase;
-        }
-        .subbrand-masthead .title {
-            font-size: 48px !important;
-            color: white;
-            font-family: $futura-condensed !important;
-            font-weight: 400;
-            text-transform: uppercase;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-        }
-        .side-panel-hero .hero-content {
-            padding: 32px 0;
-            pointer-events: none;
-            z-index: 666;
-            height: 500px;
-        }
-        #theme.business__grad .background-image {
-            height: 500px;
-        }
+  @media screen and (max-width: 1180px) {
+
+    .subbrand-masthead-a>.theme-button,
+    .subbrand-masthead-a>.dropdown {
+      text-transform: capitalize !important;
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    .subbrand-masthead .cd-hero-slider {
+      height: 400px;
+    }
+    .subbrand-masthead {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+    }
+    .theme-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .theme-button {
+      min-width: 330px;
+    }
+    .foreground-content {
+      position: relative !important;
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    .theme-button {
+      display: inline-flex;
+      margin-top: 12px;
+    }
+    .subbrand-masthead {
+      height: 400px;
+    }
+  }
+
+  @include media($large-screen) {
+    .subbrand-masthead {
+      // height: 600px;
     }
 
-    @media screen and (max-width: 780px) and (min-width: 481px) {
-        .side-panel-hero .hero-content {
-            padding: 32px 0;
-            pointer-events: none;
-            z-index: 666;
-            height: 400px;
-        }
-        h2.headline.secondary.subhead {
-            font-size: 18px !important;
-            color: white;
-            font-family: $futura-regular !important;
-            font-weight: 700 !important;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-            text-transform: uppercase;
-        }
-        h1.headline.primary.title {
-            font-size: 40px !important;
-            color: white;
-            font-family: $futura-condensed !important;
-            font-weight: 400;
-            text-transform: uppercase;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-        }
+    h2.headline.secondary.subhead {
+      font-family: $futura-condensed;
+      font-size: 30px;
+      text-transform: uppercase;
+      color: white;
+      font-weight: 500;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+    }
+    .subbrand-masthead .title {
+      font-family: $futura-condensed;
+      font-size: 72px;
+      text-transform: uppercase;
+      color: white;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
     }
 
-    @media screen and (max-width: 480px) {
-        .subbrand-masthead {
-            margin-top: 10px;
-            border-bottom: none;
-            border-top: 10px solid #a50034;
-            background-size: cover !important;
-        }
-        h1.headline.primary.title {
-            font-size: 48px !important;
-            color: white;
-            font-family: $futura-condensed;
-            font-weight: 500;
-            text-transform: uppercase;
-            text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
-        }
-        .theme-button {
-            min-width: 330px;
-            display: inline-flex;
-            margin-top: 12px;
-        }
-
-        .gradient-overlay-subbrand {
-            background: rgba(0, 0, 0, .75) !important;
-        }
-    }
-
-    @media screen and (max-width: 435px) {
-        .foreground-content {
-            bottom: 10px !important;
-        }
-    }
-
-    @media screen and (max-width: 1180px) {
-        #theme.subbrand__grad_business .subbrand-masthead .headline-container .headline.primary {
-            text-align: left;
-            padding-left: 5%;
-        }
-    }
-    #theme.subbrand__grad_business .subbrand-masthead .headline-container .headline.secondary,
-    h1.headline.secondary.subhead,
     .theme-button,
-    .dropdown,
-    .dropbtn {
-        display: none !important;
+    .dropdown {
+      text-transform: capitalize;
     }
+  }
+  @media screen and (max-width: 1180px) and (min-width: 781px) {
+
+    .subbrand-masthead .cd-hero-slider,
+    .subbrand-masthead,
+    .cd-hero-slider {
+      height: 500px !important;
+    }
+    h2.headline.secondary.subhead {
+      font-size: 24px !important;
+      color: white;
+      font-family: $futura-regular !important;
+      font-weight: 700;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+      text-tansform: uppercase;
+    }
+    .subbrand-masthead .title {
+      font-size: 48px !important;
+      color: white;
+      font-family: $futura-condensed !important;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+    }
+    .side-panel-hero .hero-content {
+      padding: 32px 0;
+      pointer-events: none;
+      z-index: 666;
+      height: 500px;
+    }
+    #theme.business__grad .background-image {
+      height: 500px;
+    }
+  }
+
+  @media screen and (max-width: 780px) and (min-width: 481px) {
+    .side-panel-hero .hero-content {
+      padding: 32px 0;
+      pointer-events: none;
+      z-index: 666;
+      height: 400px;
+    }
+    h2.headline.secondary.subhead {
+      font-size: 18px !important;
+      color: white;
+      font-family: $futura-regular !important;
+      font-weight: 700 !important;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+      text-transform: uppercase;
+    }
+    h1.headline.primary.title {
+      font-size: 40px !important;
+      color: white;
+      font-family: $futura-condensed !important;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .subbrand-masthead {
+      margin-top: 10px;
+      border-bottom: none;
+      border-top: 10px solid #a50034;
+      background-size: cover !important;
+    }
+    h1.headline.primary.title {
+      font-size: 48px !important;
+      color: white;
+      font-family: $futura-condensed;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.75);
+    }
+    .theme-button {
+      min-width: 330px;
+      display: inline-flex;
+      margin-top: 12px;
+    }
+
+    .gradient-overlay-subbrand {
+      background: rgba(0, 0, 0, .75) !important;
+    }
+  }
+
+  @media screen and (max-width: 435px) {
+    .foreground-content {
+      bottom: 10px !important;
+    }
+  }
+
+  @media screen and (max-width: 1180px) {
+    #theme.subbrand__grad_business .subbrand-masthead .headline-container .headline.primary {
+      text-align: left;
+      padding-left: 5%;
+    }
+  }
+
+  #theme.subbrand__grad_business .subbrand-masthead .headline-container .headline.secondary,
+  h1.headline.secondary.subhead,
+  .theme-button,
+  .dropdown,
+  .dropbtn {
+    display: none !important;
+  }
+  .subbrand-masthead .headline-container .headline.primary {
+    line-height: .9em;
+  }
 }
