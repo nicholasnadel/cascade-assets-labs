@@ -4,6 +4,7 @@
   $cardinal-hover: #810029;
   $pillar: #686259;
   $sand: #ddcba4;
+  $sand-alpha: rgba(221, 203, 164, 0.8);
   $panther-black: #231f20;
   section.hero-content-panel,
   .side-panel-hero .hero-content {
@@ -93,7 +94,7 @@
       width: auto;
     }
     .side-panel-hero .cd-slider-nav {
-      top: 400px;
+      top: 360px;
     }
   } //   .call-to-action-block-widget__medium-bg {
   //     margin-top: 400px;
@@ -136,7 +137,7 @@
       width: 100%;
       min-width: 100%;
       margin-left: 0;
-      background-color: $panther-black;
+      background-color: $sand;
     }
   }
   @media screen and (max-width: 960px) {
@@ -162,7 +163,7 @@
     }
 
     .side-panel-hero .cd-slider-nav {
-      top: 480px;
+      top: 490px;
     }
   }
 
@@ -184,7 +185,7 @@
 
   @media screen and (max-width: 480px) {
     .content {
-      background-color: $panther-black;
+      background-color: $sand-alpha;
     }
   }
 }

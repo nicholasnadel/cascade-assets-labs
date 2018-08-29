@@ -1,6 +1,9 @@
 #theme.subbrand__business {
   @include theme-color-classes($cardinal);
 
+  .subbrand-masthead .foreground-content {
+    margin-bottom: 10px;
+  }
   .smallMasthead .masthead,
   .smallMasthead .masthead-old,
   .bigMasthead .mastheadPlaceholder,
@@ -369,8 +372,9 @@
       min-width: 330px;
     }
     .foreground-content {
-      position: relative !important;
+      // position: relative !important;
     }
+    .subbrand-masthead .background-content .cd-hero-slider {}
   }
 
   @media screen and (max-width: 780px) {
@@ -507,11 +511,13 @@
     .gradient-overlay-subbrand {
       background: rgba(0, 0, 0, .75) !important;
     }
-  }
-
-  @media screen and (max-width: 435px) {
-    .foreground-content {
-      bottom: 10px !important;
+    .subbrand-masthead .foreground-content {
+      // margin-bottom: 10px !important;
+    }
+    .subbrand-masthead .foreground-content {
+      margin-bottom: 10px;
     }
   }
+
+  @media screen and (max-width: 435px) {}
 }
