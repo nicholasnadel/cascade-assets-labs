@@ -1,5 +1,5 @@
-#theme.business.business__grad .by-the-numbers-widget,
-.law.grad .by-the-numbers-widget {
+#theme.business.business__graduate .by-the-numbers-widget,
+.law.law__graduate .by-the-numbers-widget {
   color: white;
   background-color: $panther-black;
   position: relative;
@@ -97,9 +97,21 @@
       @include bp(wildcard-max, 480px) {
         width: 100%;
       }
-  
+
       span:nth-child(1) {
-        flex: 0 0 20%;
+        flex: 0 0 15%;
+        font-size: 48px;
+        font-weight: 700;
+        padding: 10px 10px 0 0;
+
+        @include bp(wildcard-max, 780px) {
+          padding: 10px 0 0 0;
+          font-size: 36px;
+        }
+      }
+  
+      span:nth-child(2) {
+        flex: 0 0 15%;
         font-size: 10.4em;
         font-weight: 700;
         display: flex;
@@ -108,22 +120,10 @@
         @include bp(wildcard-max, 780px) {
           font-size: 7.2em;
         }
-
-        &:before {
-          content: "#";
-          font-size: 48px;
-          font-weight: 700;
-          padding: 10px 10px 0 0;
-
-          @include bp(wildcard-max, 780px) {
-            padding: 10px 0 0 0;
-            font-size: 36px;
-          }
-        }
       }
   
-      span:nth-child(2) {
-        flex: 0 0 35%;
+      span:nth-child(3) {
+        flex: 0 0 25%;
         font-size: 3em;
         font-weight: 500;
         text-transform: uppercase;
@@ -135,8 +135,8 @@
         }
       }
   
-      span:nth-child(3) {
-        flex: 0 0 50%;
+      span:nth-child(4) {
+        flex: 0 0 55%;
         font-size: 2.4em;
         font-family: "Minion Pro";
         font-weight: 400;
@@ -161,7 +161,7 @@
   }
 }
 
-.law.grad .by-the-numbers-widget {
+#theme.law.law__graduate .by-the-numbers-widget {
   background-color: rgba(221, 203, 164, .25%);
 
   .by-the-numbers-container {
@@ -198,16 +198,7 @@
     .rank {
       justify-content: center;
 
-      span:nth-child(1) {
-        justify-content: flex-end;
-        flex: 0 0 20%;
-
-        &:before {
-          content: "";
-        }
-      }
-
-      span:nth-child(2) {
+      span:nth-child(3) {
         font-size: 4.8em;
         flex: 0 0 10%;
 
@@ -216,7 +207,7 @@
         }
       }
 
-      span:nth-child(3) {
+      span:nth-child(4) {
         flex: 0 0 75%;
         color: $panther-black;
 
