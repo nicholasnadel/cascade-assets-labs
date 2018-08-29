@@ -7,8 +7,22 @@
   $panther-black: #231f20;
   section.hero-content-panel,
   .side-panel-hero .hero-content {
-    display: block;
+    display: none;
   }
+
+  .side-panel-hero,
+  .background-image {
+    margin-bottom: 100px;
+  }
+
+  .side-panel-hero {
+    height: 600px;
+  }
+
+  .background-image {
+    height: 100%;
+  }
+
   .cd-slider-nav {
     background-color: transparent !important;
     display: inline-block;
@@ -20,30 +34,36 @@
     background-color: transparent;
     margin-top: 0;
   }
+
   .content {
     background-color: $white-alpha;
+    margin-bottom: 30px;
   }
+
   .cd-arrow-left,
   .cd-arrow-right {
     display: none;
   }
+
   h2.title {
     font-size: 24px;
     font-family: $futura-regular;
     font-weight: 700;
-    color: $panther-black;
+    color: $black;
     margin-bottom: 10px;
   }
+
   p.body {
     font-size: 16px;
     font-family: arial, sans-serif;
-    color: $panther-black;
+    color: $black;
   }
 
   .side-panel-hero .cd-slider-nav li.selected a {
     background: $cardinal;
     box-shadow: 0 0 2px $panther-black;
   }
+
   .side-panel-hero .cd-slider-nav {
     margin: 0;
     display: -webkit-inline-box;
@@ -56,49 +76,48 @@
     justify-content: flex-end;
     background-color: transparent !important;
   }
+
   .cd-slider-nav nav {
     margin-right: 30px;
   }
+
+
   @media screen and (min-width: 1181px) {
-    .side-panel-hero {
-      height: 600px;
-    }
     .side-panel-hero article .category {
       font-size: 24px;
     }
   }
   @media screen and (max-width: 1180px) {
-    .side-panel-hero {
-      height: 500px !important;
+    .side-panel-hero article img {
+      height: 500px;
+      width: auto;
     }
-    .call-to-action-block-widget__medium-bg {
-      margin-top: 400px;
+    .side-panel-hero .cd-slider-nav {
+      top: 400px;
     }
-  }
-
+  } //   .call-to-action-block-widget__medium-bg {
+  //     margin-top: 400px;
+  //   }
+  // }
+  // @media screen and (max-width: 1024px) {
+  //   .side-panel-hero .cd-slider-nav {
+  //     // height: 60px;
+  //   }
+  //   .background-image {
+  //     padding-bottom: 0;
+  //   }
+  // }
+  // @media screen and (min-width: 1024px) {
+  //   .content {
+  //     width: 100%;
+  //     display: block;
+  //     margin: 0;
+  //   }
+  //   .side-panel-hero .cd-slider-nav {
+  //     padding-top: 25px !important;
+  //   }
+  // }
   @media screen and (max-width: 1024px) {
-    .side-panel-hero .cd-slider-nav {
-      // height: 60px;
-    }
-    .background-image {
-      padding-bottom: 0;
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    .content {
-      width: 100%;
-      display: block;
-      margin: 0;
-    }
-    .side-panel-hero .cd-slider-nav {
-      padding-top: 25px !important;
-    }
-  }
-  @media screen and (max-width: 960px) {
-    .side-panel-hero {
-      height: 400px !important;
-    }
     .theme-button {
       display: block !important;
       padding: 15px 25px;
@@ -113,25 +132,37 @@
       text-decoration: none;
       margin-top: 2%;
     }
-
     .content {
       width: 100%;
       min-width: 100%;
+      margin-left: 0;
+      background-color: $panther-black;
     }
   }
+  @media screen and (max-width: 960px) {
+    .side-panel-hero article img {
+      height: 400px;
+      width: auto;
+    }
+    .side-panel-hero .cd-slider-nav {
+      top: 380px;
+    }
 
-  @media screen and (min-width: 960px) {
+    .side-panel-hero {
+      margin-bottom: 200px;
+    }
+  }
+  @media screen and (min-width: 1024px) {
     .theme-button {
       display: none;
     }
     .content {
-      margin-left: 5%;
-      margin-bottom: 5%;
-      width: 750px; // max-width: 750px;
+      width: 750px;
+      margin-left: 30px;
     }
+
     .side-panel-hero .cd-slider-nav {
-      height: 90px;
-      padding-top: 0;
+      top: 480px;
     }
   }
 
@@ -140,15 +171,20 @@
       margin-bottom: 70px !important;
     }
   }
+
   @media screen and (min-width: 768px) {
     .side-panel-hero .hero-content {
       display: block;
     }
   }
+  .side-panel-hero article img {
+    height: 400px;
+    width: auto;
+  }
 
-
-  .image-slider-wrapper {
-    background-color: pink;
-    min-height: 400px;
+  @media screen and (max-width: 480px) {
+    .content {
+      background-color: $panther-black;
+    }
   }
 }
