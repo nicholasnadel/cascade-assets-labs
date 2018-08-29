@@ -1,12 +1,10 @@
 .by-the-numbers-widget {
   color: white;
-  background-color: $panther-black;
+  background-color: white;
   position: relative;
   height: 600px;
   font-size: 10px;
   text-align: center;
-
-
 
   @include bp(wildcard-max, 1180px) {
     height: 500px;
@@ -31,8 +29,128 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    color: $cu-red;
     font-size: 1em;
     height: 100%;
+
+    .title {
+
+      h2 {
+        font-size: 3.6em;
+        font-weight: 700;
+        font-family: "futura-pt";
+        color: $cu-red;
+      }
+
+      img { display: none; }
+    }
+
+    .number-ranks {
+      display: flex;
+      justify-content: center;
+  
+      @include bp(wildcard-max, 480px) {
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 60%;
+      }
+  
+      .rank {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        z-index: 10;
+        width: 33%;
+  
+        @include bp(wildcard-max, 480px) {
+          width: 100%;
+        }
+  
+        span:nth-child(1) {
+          flex: 0 0 10%;
+          font-size: 48px;
+          font-weight: 700;
+          padding: 10px 10px 0 0;
+  
+          @include bp(wildcard-max, 780px) {
+            padding: 10px 0 0 0;
+            font-size: 36px;
+          }
+        }
+    
+        span:nth-child(2) {
+          flex: 0 0 10%;
+          font-size: 10.4em;
+          font-weight: 700;
+          display: flex;
+          align-items: flex-start;
+          padding: 0 16px 0 0;
+  
+          @include bp(wildcard-max, 780px) {
+            font-size: 7.2em;
+            padding: 0 8px 0 0;
+
+            &.number { padding: 0; }
+          }
+
+          &.number { padding: 0; }
+        }
+    
+        span:nth-child(3) {
+          flex: 0 0 10%;
+          font-size: 4.8em;
+          font-weight: 500;
+          text-transform: uppercase;
+          text-align: left;
+          padding-top: 10px;
+  
+          @include bp(wildcard-max, 780px) {
+            font-size: 3.6em;
+          }
+
+          &.text {
+            font-size: 3em;
+    
+            @include bp(wildcard-max, 780px) {
+              font-size: 1.8em;
+            }
+          }
+        }
+    
+        span:nth-child(4) {
+          flex: 0 0 75%;
+          font-size: 1.6em;
+          color: $panther-black;
+          font-family: "Arial Regular";
+          font-weight: normal;
+  
+          @include bp(wildcard-max, 780px) {
+            flex: 0 0 80%;
+            font-size: 1.8em;
+            padding-top: 5px;
+          }
+        }
+      }
+    }
+  
+    #numbers-button.theme-button {
+      position: relative;
+      width: 13em;
+      font-size: 1.8em;
+      font-weight: bold;
+      background-color: $cu-red;
+      z-index: 10;
+  
+      &:hover { background: $red-button-hover;}
+    }
+  }
+}
+
+#theme.business .by-the-numbers-widget {
+  background-color: $panther-black;
+
+  .by-the-numbers-container {
+    color: white;
 
     .title {
 
@@ -42,6 +160,7 @@
         margin: 0;
         font-size: 7.2em;
         font-weight: 500;
+        color: white;
         background-color: $panther-black;
         z-index: 10;
 
@@ -57,10 +176,11 @@
       }
   
       img {
+        display: block;
         height: 70em;
         width: 100%;
         position: absolute;
-        top: -2.5em;
+        top: -1.25em;
         right: 0;
         z-index: 0;
 
@@ -74,99 +194,30 @@
         }
       }
     }
-  }
 
-  .number-ranks {
-    display: flex;
-    justify-content: center;
-
-    @include bp(wildcard-max, 480px) {
-      flex-direction: column;
-      justify-content: space-evenly;
-      height: 60%;
-    }
-
-    .rank {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      z-index: 10;
-      width: 33%;
-
-      @include bp(wildcard-max, 480px) {
-        width: 100%;
-      }
-
-      span:nth-child(1) {
-        flex: 0 0 10%;
-        font-size: 48px;
-        font-weight: 700;
-        padding: 10px 10px 0 0;
-
-        @include bp(wildcard-max, 780px) {
-          padding: 10px 0 0 0;
-          font-size: 36px;
-        }
-      }
+    .number-ranks {
   
-      span:nth-child(2) {
-        flex: 0 0 10%;
-        font-size: 10.4em;
-        font-weight: 700;
-        display: flex;
-        align-items: flex-start;
-        padding: 0 16px 0 0;
-
-        @include bp(wildcard-max, 780px) {
-          font-size: 7.2em;
-          padding: 0 8px 0 0;
-        }
-      }
+      .rank {
+    
+        span:nth-child(4) {
+          font-size: 2.4em;
+          font-family: "Minion Pro";
+          font-weight: 400;
+          color: white;
   
-      span:nth-child(3) {
-        flex: 0 0 15%;
-        font-size: 3em;
-        font-weight: 500;
-        text-transform: uppercase;
-        text-align: left;
-        padding-top: 10px;
-
-        @include bp(wildcard-max, 780px) {
-          font-size: 1.8em;
-        }
-      }
-  
-      span:nth-child(4) {
-        flex: 0 0 55%;
-        font-size: 2.4em;
-        font-family: "Minion Pro";
-        font-weight: 400;
-
-        @include bp(wildcard-max, 780px) {
-          flex: 0 0 70%;
-          font-size: 1.8em;
+          @include bp(wildcard-max, 780px) {
+            flex: 0 0 70%;
+          }
         }
       }
     }
-  }
-
-  #numbers-button.theme-button {
-    position: relative;
-    width: 13em;
-    font-size: 1.8em;
-    font-weight: bold;
-    background: $cu-red;
-    z-index: 10;
-
-    &:hover { background: $red-button-hover;}
   }
 }
 
-#theme.law.law__graduate .by-the-numbers-widget {
+#theme.law .by-the-numbers-widget {
   background-color: rgba(221, 203, 164, .25%);
 
   .by-the-numbers-container {
-    color: $cu-red;
 
     .title {
 
@@ -174,9 +225,6 @@
         display: table;
         white-space: nowrap;
         background-color: transparent;
-        font-size: 3.6em;
-        font-weight: 700;
-        font-family: "futura-pt";
         color: $pillar;
 
         &:before, &:after {
@@ -196,34 +244,17 @@
       img { display: none; }
     }
 
-    .rank {
-      justify-content: center;
+    .number-ranks {
 
-      span:nth-child(3) {
-        font-size: 4.8em;
-        flex: 0 0 10%;
+      .ranks {
 
-        @include bp(wildcard-max, 780px) {
-          font-size: 3.6em;
+        span:nth-child(4) {
+          font-size: 2.4em;
+          font-family: "Minion Pro";
+          font-weight: 400;
+
         }
       }
-
-      span:nth-child(4) {
-        flex: 0 0 75%;
-        color: $panther-black;
-
-        @include bp(wildcard-max, 780px) {
-          flex: 0 0 80%;
-          font-size: 1.8em;
-          padding-top: 5px;
-        }
-      }
-    }
-
-    #numbers-button.theme-button {
-      width: 25em;
-
-      &:after { content: "";}
     }
   }
 }
