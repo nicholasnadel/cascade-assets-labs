@@ -1,7 +1,4 @@
 $(function() {
-  skrollr.init({
-		forceHeight: false
-	});
   $('.footer .footer-menu .links-header').on('click', function() {
 
     if ($(document).width() > 420 && $(window).width() > 420) return
