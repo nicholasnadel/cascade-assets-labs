@@ -268,6 +268,39 @@ module ContentTypes
       render @configuration_set.template
     end
 
+    def one_column_law_image_slider
+      @configuration_set = ConfigurationSet.one_column
+      @metadata_set = MetadataSet.page(title: 'Image Slider - Business')
+      @data_definition = DataDefinitions::OneColumn.default
+
+      theme = params.fetch(:theme, 'image_slider_law')
+      @current_page_path = "#{theme}/path/to/index.aspx"
+
+      # Define configuration set regions.
+      @configuration_set.regions = {
+        'ADDITIONAL BODY AT-END' => '',
+        'ADDITIONAL HEAD' => '',
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
+        'GOOGLE_ANALYTICS' => '',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_image_slider_business'),
+        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
+        'OG_TAGS' => '',
+        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
+        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
+
+        # TODO: convert these to cascade_format action.
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
+        'NAVIGATION' => render_static_partial(navigation_path),
+        'PRIMARY CONTENT' => render_static_one_column_primary_content,
+        'GLOBAL FOOTER' => render_static_partial(footer_path)
+      }
+
+      render @configuration_set.template
+    end
+
     # GET /modular/two_column
     # Maps to Content Types/Modular/2 Column in Cascade.
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
