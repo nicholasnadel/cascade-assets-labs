@@ -15,11 +15,11 @@
   }
 
   @include bp(wildcard-max, 480px) {
-    height: 75vh;
+    height: auto;
     border-top: 1em solid $cu-red;
   }
 
-  span, h2 {
+  span, h2, p {
     font-family: "futura-pt-condensed", Arial, sans-serif;
     line-height: 1;
   }
@@ -40,6 +40,7 @@
         font-weight: 700;
         font-family: "futura-pt";
         color: $cu-red;
+        margin: 0 0 0 0;
       }
 
       img { display: none; }
@@ -48,6 +49,7 @@
     .number-ranks {
       display: flex;
       justify-content: center;
+      width: 100%;
   
       @include bp(wildcard-max, 480px) {
         flex-direction: column;
@@ -57,72 +59,78 @@
   
       .rank {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+        height: 100%;
         z-index: 10;
-        width: 33%;
-  
-        @include bp(wildcard-max, 480px) {
-          width: 100%;
-        }
-  
-        span:nth-child(1) {
-          flex: 0 0 10%;
-          font-size: 48px;
-          font-weight: 700;
-          padding: 10px 10px 0 0;
-  
-          @include bp(wildcard-max, 780px) {
-            padding: 10px 0 0 0;
-            font-size: 36px;
-          }
-        }
-    
-        span:nth-child(2) {
-          flex: 0 0 10%;
-          font-size: 10.4em;
-          font-weight: 700;
+
+        .rank-values {
           display: flex;
-          align-items: flex-start;
-          padding: 0 16px 0 0;
-  
-          @include bp(wildcard-max, 780px) {
-            font-size: 7.2em;
-            padding: 0 8px 0 0;
+          justify-content: center;
 
-            &.number { padding: 0; }
-          }
-
-          &.number { padding: 0; }
-        }
-    
-        span:nth-child(3) {
-          flex: 0 0 10%;
-          font-size: 4.8em;
-          font-weight: 500;
-          text-transform: uppercase;
-          text-align: left;
-          padding-top: 10px;
-  
-          @include bp(wildcard-max, 780px) {
-            font-size: 3.6em;
-          }
-
-          &.text {
-            font-size: 3em;
+          span:nth-child(1) {
+            font-size: 48px;
+            font-weight: 700;
+            padding: 10px 10px 0 0;
     
             @include bp(wildcard-max, 780px) {
-              font-size: 1.8em;
+              padding: 10px 0 0 0;
+              font-size: 36px;
+            }
+          }
+      
+          span:nth-child(2) {
+            font-size: 10.4em;
+            font-weight: 700;
+            padding: 0 16px 0 0;
+    
+            @include bp(wildcard-max, 780px) {
+              font-size: 7.2em;
+              padding: 0 8px 0 0;
+  
+              &.number { padding: 0; }
+            }
+  
+            &.number { padding: 0; }
+          }
+      
+          span:nth-child(3) {
+            font-size: 4.8em;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-align: left;
+            padding-top: 10px;
+            max-width: 45%;
+    
+            @include bp(wildcard-max, 780px) {
+              font-size: 3.6em;
+            }
+  
+            &.text {
+              font-size: 3em;
+      
+              @include bp(wildcard-max, 780px) {
+                font-size: 1.8em;
+              }
             }
           }
         }
+  
+        @include bp(wildcard-max, 480px) {
+          width: 100%;
+          margin: 2.5em 0;
+        }
+  
+        
     
-        span:nth-child(4) {
+        .rank-description {
           flex: 0 0 75%;
           font-size: 1.6em;
           color: $panther-black;
           font-family: "Arial Regular";
           font-weight: normal;
+          max-width: 75%;
   
           @include bp(wildcard-max, 780px) {
             flex: 0 0 80%;
@@ -142,6 +150,10 @@
       z-index: 10;
   
       &:hover { background: $red-button-hover;}
+
+      @include bp(wildcard-max, 480px) {
+        margin: 1.5em 0;
+      }
     }
   }
 }
@@ -160,12 +172,14 @@
         margin: 0;
         font-size: 7.2em;
         font-weight: 500;
+        font-family: "futura-pt-condensed";
         color: white;
         background-color: $panther-black;
         z-index: 10;
+        padding: 0 20px 0 20px;
 
         @include bp(wildcard-max, 1180px) {
-          margin: .75em 0 0 0;
+          margin: .25em 0 0 0;
           font-size: 6em;
         }
 
@@ -180,12 +194,17 @@
         height: 70em;
         width: 100%;
         position: absolute;
-        top: -1.25em;
+        top: -3.25em;
         right: 0;
         z-index: 0;
 
+        @include bp(wildcard-max, 1180px) {
+          height: 50em;
+          top: -2.25em
+        }
+
         @include bp(wildcard-max, 780px) {
-          height: 43em;
+          height: 32em;
           top: -1.5em;
         }
 
@@ -199,7 +218,7 @@
   
       .rank {
     
-        span:nth-child(4) {
+        .rank-description {
           font-size: 2.4em;
           font-family: "Minion Pro";
           font-weight: 400;
@@ -239,6 +258,11 @@
 
         &:before { right: 1.5%; }
         &:after { left: 1.5%; }
+
+        @include bp(wildcard-max, 480px) {
+          display: block;
+          white-space: normal;
+        }
       }
 
       img { display: none; }
@@ -248,7 +272,7 @@
 
       .rank {
 
-        span:nth-child(4) {
+        .rank-description {
           font-size: 2.4em;
           font-family: "Minion Pro";
           font-weight: 400;
