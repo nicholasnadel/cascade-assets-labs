@@ -193,12 +193,87 @@
 
   /* Footer */
 
-  .link-container-before,
-  .links-header {
-    background-color: $law-primary;
-  }
+  .footer {
+    .inner-container {
 
-  .link-container-after {
-    background-image: image-url('ribbon_tails_law.png');
+      .footer-section.footer-menu {
+        grid-template-rows: 25em 6em 12em 8em;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        @include bp(mx) {
+          grid-template-rows: 25em 15em 4em 12em 8em;;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+
+      .menu-section {
+        margin-bottom: 0;
+
+        &:nth-child(3) {
+          grid-row: 1 / span 1;
+          grid-column: 4 / span 1;
+          align-self: flex-end;
+          -ms-grid-row-align: end;
+        }
+
+        @include bp(mx) {
+          
+          &:nth-child(2) {
+            grid-column: 3 / span 1;
+            grid-row: 1 / span 1;
+          }
+
+          &:nth-child(3) {
+            grid-row: 2 / span 1;
+            grid-column: 1 / span 1;
+            align-self: flex-start;
+            -ms-grid-column-align: start;
+          }
+        }
+
+        @include bp(sx) {
+
+          &:nth-child(3) {
+            order: 3;
+            align-self: center;
+            -ms-grid-column-align: center;
+          }
+        }
+      }
+
+      .campus-addresses {
+        @include bp(mx) {
+          grid-column: 3 / span 1;
+        }
+      }
+
+      .back-to-top {
+        grid-row: 3 / span 1;
+
+        @include bp(mx) {
+          grid-row: 4 / span 1;
+        }
+      }
+
+      .copyright {
+        grid-row: 4 / span 1;
+
+        @include bp(mx) {
+          grid-row: 5 / span 1;
+        }
+      }
+
+      .link-container {
+        margin-bottom: 2em;
+      }
+      .weather {
+        grid-column: 1 / span 5;
+        justify-self: center;
+
+        @include bp(mx) {
+          grid-row: 3 / span 1;
+        }
+      }
+    }
   }
 }

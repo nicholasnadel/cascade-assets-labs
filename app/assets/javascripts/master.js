@@ -13,6 +13,7 @@
 //= require cascade/carousel
 //= require cascade/collapsed-nav
 //= require cascade/console-log
+//= require cascade/footer
 //= require cascade/new-home
 //= require cascade/ie7
 //= require cascade/main
@@ -23,6 +24,7 @@
 //= require cascade/search
 //= require cascade/video-overlay
 //= require cascade/weather
+
 
 // If they're not required, can we delete them and remove these lines?
 // don't require cascade/home

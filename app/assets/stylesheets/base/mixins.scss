@@ -8,6 +8,14 @@
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
 
+  @if $point == s { // Mobile
+    @media (min-width: 420px) { @content; }
+  }
+
+  @if $point == sx { // Mobile
+    @media (max-width: 420px) { @content; }
+  }
+
   // This should probably not be used (see note above). Leaving it as is because
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
@@ -15,12 +23,24 @@
     @media (min-width: 780px) { @content; }
   }
 
+  @if $point == mx { // Medium
+    @media (max-width: 767px) { @content; }
+  }
+
   @if $point == l { // Large
     @media (min-width: 1024px) { @content; }
   }
 
+  @if $point == lx { // Large
+    @media (max-width: 1024px) { @content; }
+  }
+
   @if $point == xl { // Extra-Large
     @media (min-width: 1200px) { @content; }
+  }
+
+  @if $point == xlx { // Extra-Large
+    @media (max-width: 1200px) { @content; }
   }
 
   @if $point == wildcard-min { // Uses variable breakpoint.
