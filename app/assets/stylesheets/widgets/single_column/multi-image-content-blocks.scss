@@ -23,7 +23,8 @@
   
     .photoCallout {
       margin: 0 2em 4em 2em;
-      max-width: 21%;
+      // max-width: 21%;
+      justify-content: center;
       border-bottom: none;
       transition: all .4s;
   
@@ -38,6 +39,11 @@
       img {
         height: 17.4em;
         width: 26em;
+      }
+
+      .heading {
+        max-width: 13em;
+        text-align: center;
       }
   
       .multi-image-caption {
