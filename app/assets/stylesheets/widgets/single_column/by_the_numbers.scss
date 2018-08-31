@@ -2,16 +2,13 @@
   color: white;
   background-color: #eeeeee;
   position: relative;
-  height: 600px;
+  height: 500px;
   font-size: 10px;
   text-align: center;
-
-  @include bp(wildcard-max, 1180px) {
-    height: 500px;
-  }
+  
 
   @include bp(wildcard-max, 780px) {
-    height: 400px;
+    height: 550px;
   }
 
   @include bp(wildcard-max, 480px) {
@@ -35,14 +32,14 @@
     .title {
 
       h2 {
-        font-size: 3.6em;
+        font-size: 5em;
         font-weight: 700;
         font-family: "futura-pt";
         color: $cu-red;
         margin: 0 0 0 0;
 
         @include bp(wildcard-max, 480px) {
-          padding: 15px 0;
+          padding: 40px 0 0;
         }
       }
 
@@ -52,12 +49,12 @@
     .number-ranks {
       display: flex;
       justify-content: center;
-      margin: 10em 0;
+      margin: 5em 0;
       width: 100%;
 
-      @include bp(wildcard-max, 1180px) {
-        margin: 5em 0;
-      }
+      // @include bp(wildcard-max, 1180px) {
+      //   margin: 5em 0;
+      // }
 
       @include bp(wildcard-max, 780px) {
         margin: 3em 0;
@@ -66,7 +63,7 @@
       @include bp(wildcard-max, 480px) {
         flex-direction: column;
         justify-content: center;
-        margin: 5em 0;
+        margin: 1em 0;
         height: 60%;
       }
   
@@ -81,7 +78,7 @@
         .rank-values {
           display: flex;
           justify-content: center;
-
+          
           span:nth-child(1) {
             font-size: 48px;
             font-weight: 700;
@@ -138,7 +135,6 @@
         
     
         .rank-description {
-          flex: 0 0 75%;
           font-size: 1.6em;
           color: $panther-black;
           font-family: "Arial";
@@ -146,7 +142,6 @@
           max-width: 75%;
   
           @include bp(wildcard-max, 780px) {
-            flex: 0 0 80%;
             font-size: 1.8em;
             padding-top: 5px;
           }
@@ -165,7 +160,7 @@
       &:hover { background: $red-button-hover;}
 
       @include bp(wildcard-max, 480px) {
-        margin: 1.5em 0;
+        margin: 0 0 2.8em;
       }
     }
   }
@@ -219,16 +214,16 @@
         height: 70em;
         width: 100%;
         position: absolute;
-        top: -3em;
+        top: -4em;
         right: 0;
         z-index: 0;
 
         @include bp(wildcard-max, 1180px) {
-          top: -6.25em;
+          top: -5em;
         }
 
         @include bp(wildcard-max, 780px) {
-          top: -8.75em;
+          top: 0em;
         }
 
         @include bp(wildcard-max, 480px) {
@@ -246,10 +241,6 @@
           font-family: "Minion Pro";
           font-weight: 400;
           color: white;
-  
-          @include bp(wildcard-max, 780px) {
-            flex: 0 0 70%;
-          }
         }
       }
     }
@@ -265,36 +256,22 @@
     .title {
       width: 100%;
 
-      .header-line {
-        background: $pillar;
-        text-align: center;
-        width: 100%;
-      }
-
       h2 {
         width: 100%;
         color: $pillar;
         position: relative;
         text-align: center;
+        display: table;
+        white-space: nowrap;
 
-        &:before {
-          content:"";
+        &:before, &:after {
           border-top: 2px solid $pillar;
-          margin: 0 auto;
-          height: 2px;
-          position: absolute;
-          top: 50%;
-          width: 95%;
-          z-index: 0;
-        }
-
-        span {
-          background-color: rgba(227, 223, 213, 1);
-          padding: 0 15px;
+          content: '';
+          display: table-cell;
           position: relative;
-          z-index: 1;
+          top: 0.5em;
+          width: 45%;
         }
-
         &:before { right: 1.5%; }
         &:after { left: 1.5%; }
 
@@ -312,9 +289,10 @@
       .rank {
 
         .rank-description {
-          font-size: 2.4em;
+          font-size: 2.1em;
           font-family: "Minion Pro";
           font-weight: 400;
+          line-height: 1.2em;
         }
       }
     }
