@@ -7,7 +7,7 @@
   .multi-image-content-blocks-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     max-width: 125em;
     font-size: 1em;
     margin: auto;
@@ -22,7 +22,7 @@
     }
   
     .photoCallout {
-      margin: 0 0 4em 0;
+      margin: 0 2em 4em 2em;
       border-bottom: none;
       transition: all .4s;
   
