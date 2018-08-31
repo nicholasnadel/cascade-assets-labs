@@ -31,6 +31,15 @@ class ConfigurationSet < Tableless
     configuration_set
   end
 
+  def self.image_slider(options={})
+    configuration_set = ConfigurationSet.new(name: 'Image Slider')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template,
+                                               '_cascade/templates/modular/one_column_image_slider.html')
+    configuration_set
+  end
+
+
   def self.two_column(options={})
     configuration_set = ConfigurationSet.new(name: '2 Column')
     configuration_set.set_defaults

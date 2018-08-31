@@ -404,6 +404,13 @@
         }
     }
     @media screen and (max-width: 480px) {
+        .cd-hero {
+            margin-top: 10px;
+            border-bottom: none;
+            border-top: 10px solid #a50034;
+            background-size: cover !important;
+            height: 100vh;
+        }
         h1.headline.primary.title {
             font-size: 48px !important;
             color: white;
@@ -420,6 +427,17 @@
         .gradient-overlay-subbrand {
             background: rgba(0, 0, 0, .75) !important;
         }
+        .subbrand-masthead,
+        .subbrand-masthead .cd-hero-slider {
+            height: 550px !important;
+            background: rgba(0, 0, 0, .75) !important;
+        }
+        .buttons {
+            margin-bottom: 10px;
+        }
+        .subbrand-masthead {
+            margin-top: 25px;
+        }
     }
 
     @media screen and (max-width: 435px) {}
@@ -427,5 +445,10 @@
     .subbrand-masthead .headline-container .headline.primary {
         margin-top: 0;
         margin-bottom: 0;
+    }
+    .side-panel-hero .background-image {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center !important;
     }
 }

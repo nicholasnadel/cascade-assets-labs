@@ -23,6 +23,9 @@ class DashboardController < ApplicationController
     render template: "ad_landing_page/#{params[:page]}", layout: 'ad_landing_page'
   end
 
+  def image_slider
+  end
+
   # Update routes config to mock out paths for development and testing.
   def mock_success
     head :ok
