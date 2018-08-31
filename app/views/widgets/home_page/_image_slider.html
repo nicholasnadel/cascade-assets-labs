@@ -1,239 +1,39 @@
-<!-- <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css" /> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.js"></script> -->
+<div class="image-slider-wrapper">
+    <div class="image-slider">
+        <div class="item">
+            <div class="clearfix" style="max-width:100vw; max-height: 600px;">
+                <div class="bottom-left">
+                    <h1>Schedule a Visit Today</h1>
+                    <p>retro biodiesel trust fund Brooklyn brunch normcore locavore crucifix forage deep v sartorial
+                        church-key
+                        distillery flexitarian Carles bicycle rights cornhole kitsch semiotics +1 polaroid mustache
+                        craft beer hoodie messenger
+                        bag PBR&B next level wolf lomo fap mumblecore VHS organic chia tofu Godard bespoke pickled
+                        actually before they sold
+                        out Pitchfork hashtag roof party</p>
 
-<style>
-    ul {
-        list-style: none outside none;
-        padding-left: 0;
-        margin: 0;
-    }
+                    <a href="#" class="button red smc-cta ">button</a>
 
-    .cu-slider .item {
-        margin-bottom: 60px;
-    }
 
-    .content-slider li {
-        background-color: #ed3020;
-        text-align: center;
-        color: #FFF;
-    }
-
-    .content-slider h3 {
-        margin: 0;
-        padding: 70px 0;
-    }
-
-    .cu-slider {
-        width: 100vw;
-        background-color: #ed3020;
-        position: relative;
-        min-height: 400px;
-    }
-
-    img {
-        max-height: 600px;
-        width: 100vw;
-        object-fit: cover;
-    }
-
-    .content-box {
-        background: green;
-        height: auto;
-        width: 50%;
-        position: relative;
-        bottom: 0;
-        z-index: 1;
-    }
-
-    .cu-slider {
-        position: relative;
-        text-align: center;
-        color: white;
-    }
-
-    /* Bottom left text */
-    .bottom-left {
-        position: absolute;
-        bottom: 8px;
-        left: 16px;
-        z-index: 1;
-        background-color: black;
-        width: 46.875em;
-        margin-left: 2%;
-        margin-bottom: 2%;
-        margin-right: 2%;
-    }
-
-    .bottom-left h1,
-    .bottom-left p {
-        text-align: left;
-        padding-left: 4%;
-        padding-right: 4%;
-    }
-
-    .bottom-let p {
-        font-size: 1.2em;
-    }
-
-    /* Top left text */
-    .top-left {
-        position: absolute;
-        top: 8px;
-        left: 16px;
-    }
-
-    /* Top right text */
-    .top-right {
-        position: absolute;
-        top: 8px;
-        right: 16px;
-    }
-
-    /* Bottom right text */
-    .bottom-right {
-        position: absolute;
-        bottom: 8px;
-        right: 16px;
-    }
-
-    .cu-button {
-        background-color: #a50034;
-        color: white;
-        font-size: 16px;
-        padding: 1%;
-        margin-bottom: 2%;
-        margin-left: 4%;
-        text-align: left;
-        display: block;
-        float: left;
-        border: none;
-        border-radius: 8px;
-    }
-
-    .lSAction,
-    .lSPrev,
-    .lSNExt {
-        display: none !important;
-    }
-
-    .lSSlideOuter .lSPager.lSpg {
-        /* margin: 10px 0 0; */
-        padding: 0;
-        float: right;
-        position: relative;
-        bottom: 4.688em;
-        margin-right: 4%;
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li {
-        cursor: pointer;
-        display: inline-block;
-        padding: 0 7px;
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li a {
-        border-radius: 30px;
-        display: inline-block;
-        height: 20px;
-        width: 20px;
-        overflow: hidden;
-        text-indent: -999em;
-        position: relative;
-        z-index: 99;
-        -webkit-transition: all 0.5s linear 0s;
-        transition: all 0.5s linear 0s;
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li a {
-        background-color: #FFF;
-        box-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li:hover a,
-    .lSSlideOuter .lSPager.lSpg>li.active a {
-        background-color: #a50034;
-    }
-
-    /* Cente#a50034 text */
-    .cente#a50034 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    @media screen and (max-width: 1480px) {
-        .bottom-left {
-            background-color: orange;
-        }
-    }
-
-    @media screen and (max-width: 1180px) {
-        .bottom-left {
-            background-color: purple;
-        }
-
-        /* .lSSlideOuter .lSPager.lSpg {
-                bottom: 4em;
-            } */
-    }
-
-    @media screen and (max-width: 1024px) {
-        .bottom-left {
-            background-color: brown;
-            width: 100vw;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin-left: 0;
-        }
-    }
-
-    @media screen and (max-width: 900px) and (min-width: 600px) {
-        .lSSlideOuter .lSPager.lSpg {
-            bottom: 3em;
-        }
-    }
-
-    @media screen and (max-width: 600px) {
-        .lSSlideOuter .lSPager.lSpg {
-            bottom: 20px;
-        }
-    }
-</style>
-
-<div class="cu-slider">
-    <div class="item">
-        <div class="clearfix" style="max-width:100vw; max-height: 600px;">
-            <div class="bottom-left">
-                <h1>This is a heading</h1>
-                <p>retro biodiesel trust fund Brooklyn brunch normcore locavore crucifix forage deep v sartorial
-                    church-key
-                    distillery flexitarian Carles bicycle rights cornhole kitsch semiotics +1 polaroid mustache
-                    craft beer hoodie messenger
-                    bag PBR&B next level wolf lomo fap mumblecore VHS organic chia tofu Godard bespoke pickled
-                    actually before they sold
-                    out Pitchfork hashtag roof party</p>
-
-                <button class="cu-button">button</button>
+                </div>
+                <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                    <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
+                        <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
+                    </li>
+                    <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
+                        <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
+                    </li>
+                    <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
+                        <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
+                    </li>
+                    <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
+                        <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
+                    </li>
+                    <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
+                        <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
+                    </li>
+                </ul>
             </div>
-            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
-                    <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
-                </li>
-                <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
-                    <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
-                </li>
-                <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
-                    <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
-                </li>
-                <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
-                    <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
-                </li>
-                <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
-                    <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
-                </li>
-            </ul>
         </div>
     </div>
 </div>
