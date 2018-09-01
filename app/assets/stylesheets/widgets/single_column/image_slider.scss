@@ -1,224 +1,290 @@
 .image-slider-wrapper {
-    $white-alpha: rgba(255, 255, 240, 0.8);
-    $cardinal: #a50034;
-    $cardinal-hover: #810029;
-    $pillar: #686259;
-    $sand: #ddcba4;
-    $sand-alpha: rgba(221, 203, 164, 0.8);
-    $panther-black: #231f20;
-    $theme-bg-color-alpha: transparent;
+  $white-alpha: rgba(255, 255, 240, 0.8);
+  $cardinal: #a50034;
+  $cardinal-hover: #810029;
+  $pillar: #686259;
+  $sand: #ddcba4;
+  $sand-alpha: rgba(221, 203, 164, 0.8);
+  $panther-black: #231f20;
+  $theme-bg-color-alpha: transparent;
 
-    $panther-black-alpha: rgba(35, 31, 32, 0.8);
-    $cardinal: black;
-    $cardinal-hover: #810029;
-    $pillar: #686259;
-    $sand: #ddcba4;
-    $panther-black: #231f20;
+  $panther-black-alpha: rgba(35, 31, 32, 0.8);
+  $cardinal: black;
+  $cardinal-hover: #810029;
+  $pillar: #686259;
+  $sand: #ddcba4;
+  $panther-black: #231f20;
 
-    $content-padding: 2%;
+  $content-padding: 2%;
 
-    ul {
-        list-style: none outside none;
-        padding-left: 0;
-        margin: 0;
-    }
+  ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+  }
 
-    .image-slider .item {
-        margin-bottom: 60px;
-    }
+  .image-slider .item {
+    margin-bottom: 60px;
+  }
 
-    .content-slider li {
-        background-color: none;
-        text-align: center;
-        color: #FFF;
-    }
+  .content-slider li {
+    background-color: none;
+    text-align: center;
+    color: #fff;
+  }
 
-    .content-slider h3 {
-        margin: 0;
-        padding: 70px 0;
-    }
+  .content-slider h3 {
+    margin: 0;
+    padding: 70px 0;
+  }
 
-    .image-slider {
-        width: 100vw;
-        background-color: none;
-        position: relative;
-        min-height: 400px;
-    }
+  .image-slider {
+    width: 100vw;
+    background-color: none;
+    position: relative;
+    min-height: 400px;
+  }
 
-    img {
-        max-height: 600px;
-        width: 100vw;
-        object-fit: cover;
-    }
+  img {
+    max-height: 600px;
+    width: 100vw;
+    object-fit: cover;
+  }
 
-    .content-box {
-        background: green;
-        height: auto;
-        width: 50%;
-        position: relative;
-        bottom: 0;
-        z-index: 1;
-    }
+  .bottom-left {
+    background: green;
+    height: auto;
+    width: 50%;
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+    padding-left: 50px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
 
-    .image-slider {
-        position: relative;
-        text-align: center;
-        color: white;
-    }
+  .image-slider {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
 
-    /* Bottom left text */
+  /* Bottom left text */
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    z-index: 1;
+    background-color: $panther-black-alpha;
+    width: 46.875em;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    text-align: left;
+  }
+
+  .bottom-left h1 {
+    margin-bottom: 10px;
+    font-family: $futura-regular;
+  }
+
+  .bottom-left p {
+    font-size: 1.2em;
+    font-family: arial;
+  }
+
+  .bottom-left a.button.red.smc-cta {
+    float: left;
+    margin-bottom: 5%;
+    margin-top: 2%;
+  }
+
+  /* Top left text */
+  .top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+  }
+
+  /* Top right text */
+  .top-right {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+  }
+
+  /* Bottom right text */
+  .bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
+
+  .lSAction,
+  .lSPrev,
+  .lSNExt {
+    display: none !important;
+  }
+
+  .lSSlideOuter .lSPager.lSpg {
+    margin: 10px 0 0;
+    padding: 0;
+    right: 0;
+    position: absolute;
+    bottom: 22px;
+    margin-right: 4%;
+  }
+
+  li.lslide.active {
+    display: flex;
+  }
+
+  .lSSlideOuter .lSPager.lSpg > li {
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 7px;
+  }
+
+  .lSSlideOuter .lSPager.lSpg > li a {
+    border-radius: 30px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    overflow: hidden;
+    text-indent: -999em;
+    position: relative;
+    z-index: 99;
+    -webkit-transition: all 0.5s linear 0s;
+    transition: all 0.5s linear 0s;
+  }
+
+  .lSSlideOuter .lSPager.lSpg > li a {
+    background-color: #fff;
+    box-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
+  }
+
+  .lSSlideOuter .lSPager.lSpg > li:hover a,
+  .lSSlideOuter .lSPager.lSpg > li.active a {
+    background-color: #a50034;
+  }
+
+  /* Cente#a50034 text */
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media screen and (max-width: 1480px) {
     .bottom-left {
-        position: absolute;
-        bottom: 8px;
-        left: 16px;
-        z-index: 1;
-        background-color: $panther-black-alpha;
-        width: 46.875em;
-        margin-left: 2%;
-        margin-bottom: 2%;
-        margin-right: 2%;
+      background-color: $panther-black-alpha;
     }
+  }
 
-    .bottom-left h1,
-    .bottom-left p {
-        text-align: left;
-        padding-left: 4%;
-        padding-right: 4%;
+  @media screen and (min-width: 1480px) {
+    img {
+      height: 600px;
     }
+  }
 
-    .bottom-left h1 {
-        margin-bottom: 10px;
-        font-family: $futura-regular;
+  @media screen and (max-width: 1180px) {
+    .bottom-left {
+      background-color: $panther-black-alpha;
     }
-
-    .bottom-left p {
-        font-size: 1.2em;
-        font-family: arial;
+    img {
+      height: 500px;
     }
-
-    .bottom-left a.button.red.smc-cta {
-        float: left;
-        margin-left: 4%;
-        margin-bottom: 5%;
-        margin-top: 2%;
-    }
-
-    /* Top left text */
-    .top-left {
-        position: absolute;
-        top: 8px;
-        left: 16px;
-    }
-
-    /* Top right text */
-    .top-right {
-        position: absolute;
-        top: 8px;
-        right: 16px;
-    }
-
-    /* Bottom right text */
-    .bottom-right {
-        position: absolute;
-        bottom: 8px;
-        right: 16px;
-    }
-
-    .lSAction,
-    .lSPrev,
-    .lSNExt {
-        display: none !important;
-    }
-
-    .lSSlideOuter .lSPager.lSpg {
-        /* margin: 10px 0 0; */
-        padding: 0;
-        float: right;
-        position: relative;
-        bottom: 4.688em;
-        margin-right: 4%;
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li {
-        cursor: pointer;
-        display: inline-block;
-        padding: 0 7px;
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li a {
-        border-radius: 30px;
-        display: inline-block;
-        height: 20px;
-        width: 20px;
-        overflow: hidden;
-        text-indent: -999em;
-        position: relative;
-        z-index: 99;
-        -webkit-transition: all 0.5s linear 0s;
-        transition: all 0.5s linear 0s;
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li a {
-        background-color: #FFF;
-        box-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
-    }
-
-    .lSSlideOuter .lSPager.lSpg>li:hover a,
-    .lSSlideOuter .lSPager.lSpg>li.active a {
-        background-color: #a50034;
-    }
-
-    /* Cente#a50034 text */
-    .cente#a50034 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    @media screen and (max-width: 1480px) {
-        .bottom-left {
-            background-color: $panther-black-alpha;
-        }
-    }
-
-    @media screen and (max-width: 1180px) {
-        .bottom-left {
-            background-color: $panther-black-alpha;
-        }
-
-        /* .lSSlideOuter .lSPager.lSpg {
+    /* .lSSlideOuter .lSPager.lSpg {
                 bottom: 4em;
             } */
-    }
+  }
 
-    @media screen and (max-width: 1024px) {
-        .bottom-left {
-            background-color: $panther-black-alpha;
-            width: 100vw;
-            position: absolute;
-            bottom: 0;
-            margin-bottom: 0;
-            left: 0;
-            margin-left: 0;
-        }
+  @media screen and (max-width: 1024px) {
+    .bottom-left {
+      background-color: $panther-black-alpha;
+      width: 100vw;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 0;
+      left: 0;
+      margin-left: 0;
     }
+  }
 
-    @media screen and (max-width: 900px) and (min-width: 600px) {
-        .lSSlideOuter .lSPager.lSpg {
-            bottom: 3em;
-        }
+  @media screen and (max-width: 900px) {
+    // .bottom-left {
+    //     margin-bottom: 45px;
+    // }
+  }
+
+  @media screen and (max-width: 900px) and (min-width: 600px) {
+    .lSSlideOuter .lSPager.lSpg {
+      bottom: 25px;
     }
+  }
 
-    @media screen and (max-width: 600px) {
-        .lSSlideOuter .lSPager.lSpg {
-            bottom: 20px;
-        }
+  @media screen and (max-width: 600px) {
+    .lSSlideOuter .lSPager.lSpg {
+      bottom: 20px;
     }
+  }
 
-    .image-slider-wrapper-business {    
-        
+  @media screen and (max-width: 535px) {
+    .foreground {
+      margin-top: -10px;
     }
+    .lSSlideOuter .lSPager.lSpg {
+      bottom: 220px;
+    }
+    .container {
+      position: relative;
+    }
+    .bottom-left {
+      background-color: $panther-black;
+      width: 100vw;
+      position: relative;
+    }
+    .bottom-left h1 {
+      margin-top: 0;
+    }
+    .image-slider-wrapper .bottom-left a.button.red.smc-cta {
+      float: unset;
+      margin-left: unset;
+      margin-bottom: unset;
+      margin-top: unset;
+    }
+    .bottom-left {
+      background-color: $panther-black;
+      display: flex;
+      flex-direction: column;
+      justify-content: baseline;
+      align-items: baseline;
+      padding-top: 4%;
+    }
+    img {
+      height: 300px;
+    }
+  }
+  @media screen and (max-width: 435px) {
+    .bottom-left {
+      align-items: space-around;
+      text-align: left;
+      padding: 6%;
+      margin-top: -10px;
+    }
+    .lSSlideOuter .lSPager.lSpg {
+      top: 250px;
+    }
+    .bottom-left a.button.red.smc-cta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
-    .image-slider-wrapper-law {}
+  .image-slider-wrapper-business {
+  }
+
+  .image-slider-wrapper-law {
+  }
 }
