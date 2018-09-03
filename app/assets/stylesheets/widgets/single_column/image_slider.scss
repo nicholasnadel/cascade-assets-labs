@@ -58,9 +58,6 @@
     position: relative;
     bottom: 0;
     z-index: 1;
-    padding-left: 50px;
-    padding-top: 25px;
-    padding-bottom: 10px;
   }
 
   .image-slider {
@@ -76,12 +73,18 @@
     left: 16px;
     z-index: 1;
     background-color: $panther-black-alpha;
-    width: 46.875em;
-    margin-left: 2%;
-    margin-bottom: 2%;
+    width: 750px;
+    height: 220px;
+    margin-left: 40px;
+    margin-bottom: 32px;
     text-align: left;
   }
 
+  .text-wrapper {
+    margin-right: 32px;
+    margin-left: 32px;
+    margin-bottom: 32px;
+  }
   .bottom-left h1 {
     margin-bottom: 10px;
     font-family: $futura-regular;
@@ -94,8 +97,9 @@
 
   .bottom-left a.button.red.smc-cta {
     float: left;
-    margin-bottom: 5%;
+    margin-bottom: 32px;
     margin-top: 2%;
+    width: auto;
   }
 
   /* Top left text */
@@ -205,7 +209,7 @@
       width: 100vw;
       position: absolute;
       bottom: 0;
-      margin-bottom: 0;
+      margin-bottom: 5px;
       left: 0;
       margin-left: 0;
     }
@@ -245,7 +249,7 @@
       position: relative;
     }
     .bottom-left h1 {
-      margin-top: 0;
+      margin-top: 32px;
     }
     .image-slider-wrapper .bottom-left a.button.red.smc-cta {
       float: unset;
@@ -259,7 +263,6 @@
       flex-direction: column;
       justify-content: baseline;
       align-items: baseline;
-      padding-top: 4%;
     }
     img {
       height: 300px;
@@ -270,12 +273,13 @@
       align-items: space-around;
       text-align: left;
       margin-top: -10px;
+      min-height: 220px;
     }
     .lSSlideOuter .lSPager.lSpg {
       top: 250px;
     }
     .bottom-left a.button.red.smc-cta {
-      display: flex;
+      display: block;
       justify-content: center;
       align-items: center;
     }
