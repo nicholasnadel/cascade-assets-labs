@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get 'omninav_v2(/:template)(/:theme)', to: 'omninav#demo_v2'
 
   # Simplify Controller - Cascade Assets is out of control
-  get 'cuslider', to: 'simplify#cuslider'
+  get 'image_slider', to: 'simplify#image_slider'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

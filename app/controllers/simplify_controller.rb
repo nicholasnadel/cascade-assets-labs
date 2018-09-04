@@ -1,4 +1,4 @@
 class SimplifyController < ApplicationController
-  def cuslider
+  def image_slider
   end
 end
