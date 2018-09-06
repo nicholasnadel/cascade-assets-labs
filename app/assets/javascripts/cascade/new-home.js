@@ -1,8 +1,8 @@
 (function ($) {
-    $(document).ready(function() {
+    $(document).ready(function () {
         var onHomePage = $('.homepage').length > 0;
 
-        if ( onHomePage ) {
+        if (onHomePage) {
             cu_window_manager.initialize();
             cu_hero_area.initialize();
             //cu_stories_area.initialize();
@@ -14,87 +14,87 @@
 
     // SMC CTA tracker
     var smc_cta_tracker = {
-        callback_url : 'http://smc_cta_tracker.meteor.com/track',
+        callback_url: 'http://smc_cta_tracker.meteor.com/track',
 
-        initialize : function() {
+        initialize: function () {
             // $('.smc-cta').on('click', smc_cta_tracker.trackAction);
             $('body').on('click', '.smc-cta', smc_cta_tracker.trackAction);
         }, // end initialize
 
-        trackAction : function(e) {
-          smc_cta_tracker.trackWithGoogleAnalytics(e);
+        trackAction: function (e) {
+            smc_cta_tracker.trackWithGoogleAnalytics(e);
 
-          //this was calling a meteor app that suddenly stopped working in early Nov. 2016
-          //for details see https://github.com/chapmanu/cascade-assets/issues/93
-          //smc_cta_tracker.trackWithSmcCtaTracker(e);
+            //this was calling a meteor app that suddenly stopped working in early Nov. 2016
+            //for details see https://github.com/chapmanu/cascade-assets/issues/93
+            //smc_cta_tracker.trackWithSmcCtaTracker(e);
 
-          // If we have a URL to navigate to, prevent default
-          var modifierKey = (e.metaKey || e.ctrlKey);
-          var href_url = $(e.currentTarget).attr('href') || false;
+            // If we have a URL to navigate to, prevent default
+            var modifierKey = (e.metaKey || e.ctrlKey);
+            var href_url = $(e.currentTarget).attr('href') || false;
 
-          // This code was in the original tracker that worked with meteor tracking site. It
-          // makes no sense because it blocks browser from redirecting to a tags with href. Maybe
-          // the redirect was somehow dependent on the AJAX call, which is still crazy. So I am
-          // disabling this but not removing it because maybe it had some cryptic unexplained
-          // purpose I don't understand.
-          //if (href_url && !modifierKey) {
-          //  e.preventDefault();
-          //  return false;
-          //}
+            // This code was in the original tracker that worked with meteor tracking site. It
+            // makes no sense because it blocks browser from redirecting to a tags with href. Maybe
+            // the redirect was somehow dependent on the AJAX call, which is still crazy. So I am
+            // disabling this but not removing it because maybe it had some cryptic unexplained
+            // purpose I don't understand.
+            //if (href_url && !modifierKey) {
+            //  e.preventDefault();
+            //  return false;
+            //}
         },
 
-        trackWithSmcCtaTracker : function(e) {
-          var modifierKey = (e.metaKey || e.ctrlKey);
-          var ok_to_navigate_away = true;
-          var href_url = $(e.currentTarget).attr('href') || false;
-          var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
-          var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
+        trackWithSmcCtaTracker: function (e) {
+            var modifierKey = (e.metaKey || e.ctrlKey);
+            var ok_to_navigate_away = true;
+            var href_url = $(e.currentTarget).attr('href') || false;
+            var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
+            var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
 
-          // If has quickview html
-          if ($(e.currentTarget).attr('data-quickview-content') !== undefined && (!modifierKey) && (cu_window_manager.windowWidth > 640)) {
-            ok_to_navigate_away = false;
-          }
-
-          // Track w/ SMC tracking
-          $.ajax({
-            url     : smc_cta_tracker.callback_url,
-            type    : 'GET',
-            cache   : false,
-            timeout   : 350,
-            // jsonpCallback: "complete",
-            data: {
-            'campaign_id' : cta_id,
-            'campaign_label' : cta_label
-            },
-            dataType  : 'jsonp',
-            complete  : function() {
-              // Navigate to the URL
-              if (ok_to_navigate_away && !modifierKey) {
-                window.location.href = href_url;
-              }
+            // If has quickview html
+            if ($(e.currentTarget).attr('data-quickview-content') !== undefined && (!modifierKey) && (cu_window_manager.windowWidth > 640)) {
+                ok_to_navigate_away = false;
             }
-          });
+
+            // Track w/ SMC tracking
+            $.ajax({
+                url: smc_cta_tracker.callback_url,
+                type: 'GET',
+                cache: false,
+                timeout: 350,
+                // jsonpCallback: "complete",
+                data: {
+                    'campaign_id': cta_id,
+                    'campaign_label': cta_label
+                },
+                dataType: 'jsonp',
+                complete: function () {
+                    // Navigate to the URL
+                    if (ok_to_navigate_away && !modifierKey) {
+                        window.location.href = href_url;
+                    }
+                }
+            });
         },
 
-        trackWithGoogleAnalytics : function(e) {
-          var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
-          var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
+        trackWithGoogleAnalytics: function (e) {
+            var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
+            var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
 
-          // Figure out the category for Google Analytics
-          var category = 'Home Page General Click';
+            // Figure out the category for Google Analytics
+            var category = 'Home Page General Click';
 
-          if ($(e.currentTarget).parents('#hero').length > 0) {
-            category = 'Home Page Hero CTA';
-          } else if ($(e.currentTarget).parents('#undergraduateAdmission').length > 0) {
-            category = 'Home Page Undergraduate CTA';
-          } else if ($(e.currentTarget).parents('#graduateAdmission').length > 0) {
-            category = 'Home Page Graduate CTA';
-          } else if ($(e.currentTarget).parents('#featured_stories').length > 0) {
-            category = 'Home Page Blog Stories';
-          }
+            if ($(e.currentTarget).parents('#hero').length > 0) {
+                category = 'Home Page Hero CTA';
+            } else if ($(e.currentTarget).parents('#undergraduateAdmission').length > 0) {
+                category = 'Home Page Undergraduate CTA';
+            } else if ($(e.currentTarget).parents('#graduateAdmission').length > 0) {
+                category = 'Home Page Graduate CTA';
+            } else if ($(e.currentTarget).parents('#featured_stories').length > 0) {
+                category = 'Home Page Blog Stories';
+            }
 
-          // Track Google Analytics
-          if (typeof(ga) !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
+            // Track Google Analytics
+            if (typeof (ga) !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
         }
     };
 
@@ -102,29 +102,32 @@
     var cu_window_manager = {
 
         // Manual Configs
-        resizerLatency : 40, // in milliseconds. Higher = less CPU, lower = faster UI
+        resizerLatency: 40, // in milliseconds. Higher = less CPU, lower = faster UI
 
         // Automagic Configs (changed by the script)
-        useTransitions      : true,
-        useParallax         : true,
-        cannotAutoplayVideo : false,
+        useTransitions: true,
+        useParallax: true,
+        cannotAutoplayVideo: false,
 
         // Vars to initialize
-        resizeTimeout   : null,
-        windowWidth     : null,
-        windowHeight    : null,
-        scrollTop       : null,
-        scrollBot       : null,
-        getVars         : null,
+        resizeTimeout: null,
+        windowWidth: null,
+        windowHeight: null,
+        scrollTop: null,
+        scrollBot: null,
+        getVars: null,
 
-        initialize : function() {
+        initialize: function () {
 
             // Check device type
             var i = 0,
                 is_iOS = false,
                 iDevice = ['iPad', 'iPhone', 'iPod'];
-            for ( ; i < iDevice.length ; i++ ) {
-                if( navigator.platform === iDevice[i] ){ is_iOS = true; break; }
+            for (; i < iDevice.length; i++) {
+                if (navigator.platform === iDevice[i]) {
+                    is_iOS = true;
+                    break;
+                }
             }
             var ua = navigator.userAgent.toLowerCase();
             var is_Android = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
@@ -135,7 +138,7 @@
                 cu_window_manager.useTransitions = true;
             }
 
-            if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
+            if (!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
                 cu_window_manager.useParallax = true;
                 cu_parallax_fx.setupFX();
 
@@ -153,18 +156,18 @@
             }
 
             // Intial vars
-            cu_window_manager.scrollTop     = $(window).scrollTop();
-            cu_window_manager.windowWidth   = $(window).width();
-            cu_window_manager.windowHeight  = $(window).height();
+            cu_window_manager.scrollTop = $(window).scrollTop();
+            cu_window_manager.windowWidth = $(window).width();
+            cu_window_manager.windowHeight = $(window).height();
 
             // Featured story image rotator
             $("#featured_stories").find(".imagerotator").cycle({
-                'next'      :'.imagerotator', // selector to advance slide on click
-                'delay'     : 0, // additional delay before starting slideshow
-                'timeout'   : 2000, // time between transitions
-                'speed'     : 1400, // speed of transition
-                'pause'     : false, // pause on mouse hover?
-                'slideExpr' : 'img' // only select child elements that match this
+                'next': '.imagerotator', // selector to advance slide on click
+                'delay': 0, // additional delay before starting slideshow
+                'timeout': 2000, // time between transitions
+                'speed': 1400, // speed of transition
+                'pause': false, // pause on mouse hover?
+                'slideExpr': 'img' // only select child elements that match this
             });
 
             var speeds = [];
@@ -173,29 +176,29 @@
             speeds[1] = 4000;
             speeds[2] = 2000;
 
-            $("#generalInformation").find(".imagerotator").each(function(i) {
+            $("#generalInformation").find(".imagerotator").each(function (i) {
 
                 $(this).cycle({
-                    'delay'     : speeds[i], // additional delay before starting slideshow
-                    'timeout'   : 7000, // time between transitions
-                    'speed'     : 2000, // speed of transition
-                    'pause'     : false, // pause on mouse hover?
-                    'slideExpr' : 'img' // only select child elements that match this
+                    'delay': speeds[i], // additional delay before starting slideshow
+                    'timeout': 7000, // time between transitions
+                    'speed': 2000, // speed of transition
+                    'pause': false, // pause on mouse hover?
+                    'slideExpr': 'img' // only select child elements that match this
                 });
             });
         }, // end initialize
 
 
         /***************************************************
-        * The purpose of the resizer function is to act as a buffer to prevent rapid execution of the functions which must run on window resize.
-        * By using a timetout, we can reduce the number of times these functions are called to increase browser performance.
-        ***************************************************/
-        resizer : function() {
+         * The purpose of the resizer function is to act as a buffer to prevent rapid execution of the functions which must run on window resize.
+         * By using a timetout, we can reduce the number of times these functions are called to increase browser performance.
+         ***************************************************/
+        resizer: function () {
 
             if (cu_window_manager.resizeTimeout != null) {
                 clearTimeout(cu_window_manager.resizeTimeout);
             }
-            cu_window_manager.resizeTimeout = setTimeout(function() {
+            cu_window_manager.resizeTimeout = setTimeout(function () {
                 cu_window_manager.resizeTimeout = null;
 
                 // Update vars
@@ -209,7 +212,7 @@
 
         }, // end resizer
 
-        scroller : function() {
+        scroller: function () {
 
             // Update vars
             cu_window_manager.scrollTop = $(window).scrollTop();
@@ -226,24 +229,24 @@
     // Contains the animation FX
     var cu_parallax_fx = {
 
-        enabled : false, // starts false
-        skrollr : null,
+        enabled: false, // starts false
+        skrollr: null,
 
-        admissionStartPX            : null,
-        admissionAnimationReady     : false,
-        $undergraduateAdmission     : null,
+        admissionStartPX: null,
+        admissionAnimationReady: false,
+        $undergraduateAdmission: null,
 
-        graduateAdmissionStartPX        : null,
-        graduateAdmissionAnimationReady : false,
-        $graduateAdmission              : null,
+        graduateAdmissionStartPX: null,
+        graduateAdmissionAnimationReady: false,
+        $graduateAdmission: null,
 
 
         // Prep the elements by hiding them as needed. Run only once.
-        setupFX : function() {
+        setupFX: function () {
 
             /*
-            * Undergraduate Admission
-            *************************/
+             * Undergraduate Admission
+             *************************/
             this.$undergraduateAdmission = $("#undergraduateAdmission");
             //This is causing a breaking change "Uncaught TypeError: Cannot read property 'top' of null" in development
             this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
@@ -251,8 +254,8 @@
             this.$undergraduateAdmission.find('.fade-elem').css('opacity', 0); // prep for fade in
 
             /*
-            * Graduate Admission
-            *************************/
+             * Graduate Admission
+             *************************/
             this.$graduateAdmission = $("#graduateAdmission");
             this.graduateAdmissionStartPX = this.$graduateAdmission.offset().top;
 
@@ -260,14 +263,16 @@
         },
 
         // Re-run as needed.
-        enable : function() {
+        enable: function () {
 
             // DO ENABLE TASKS
             try {
 
                 // Do not initialize Skrollr on mobile.
-                if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-                    cu_parallax_fx.skrollr = skrollr.init();
+                if (!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)) {
+                    skrollr.init({
+                        forceHeight: false
+                    });
                 }
 
             } catch (e) {
@@ -281,16 +286,16 @@
         },
 
         // Re-run as needed.
-        disable : function() {
+        disable: function () {
             // DO DISABLE TASKS
             cu_parallax_fx.skrollr.destroy();
             cu_parallax_fx.enabled = false;
 
-            this.$graduateAdmission.css('background-size','');
+            this.$graduateAdmission.css('background-size', '');
         },
 
         // Fire on scroll to position elements
-        process : function() {
+        process: function () {
 
             if (!cu_parallax_fx.enabled && cu_window_manager.windowWidth > 640) {
                 cu_parallax_fx.enable();
@@ -301,15 +306,17 @@
             if (!cu_parallax_fx.enabled) return false;
 
             /*
-            * Undergraduate Admission | number counter
-            *************************/
-            if (this.admissionAnimationReady && cu_window_manager.scrollBot > this.admissionStartPX ) {
+             * Undergraduate Admission | number counter
+             *************************/
+            if (this.admissionAnimationReady && cu_window_manager.scrollBot > this.admissionStartPX) {
                 this.animateAdmissionNumbers();
 
-                this.$undergraduateAdmission.find('.fade-elem').each(function(i) {
+                this.$undergraduateAdmission.find('.fade-elem').each(function (i) {
                     var $elem = $(this);
-                    setTimeout(function() {
-                        $elem.animate({'opacity':'1'}, 1000, 'linear');
+                    setTimeout(function () {
+                        $elem.animate({
+                            'opacity': '1'
+                        }, 1000, 'linear');
                     }, 600 * i);
                 });
 
@@ -317,8 +324,8 @@
             }
 
             /*
-            * Graduate Admission | ken burns
-            *************************/
+             * Graduate Admission | ken burns
+             *************************/
 
             // TODO: dead code - remove in future.
             // if (this.graduateAdmissionAnimationReady && cu_window_manager.scrollBot > this.graduateAdmissionStartPX ) {
@@ -335,23 +342,27 @@
         },
 
         /***************************************************
-        * Ken burns FX for BG image of element
-        ***************************************************/
-        kenBurns : function($elem) {
+         * Ken burns FX for BG image of element
+         ***************************************************/
+        kenBurns: function ($elem) {
 
             // Do not fire if frame is already visible
-            if ($elem.css('background-size') == '100%' ) {
-                $elem.animate({'background-size':'120%'}, 10000, "swing");
+            if ($elem.css('background-size') == '100%') {
+                $elem.animate({
+                    'background-size': '120%'
+                }, 10000, "swing");
             } else {
                 $elem.css('background-size', '120%');
-                $elem.animate({'background-size':'100%'}, 10000, "swing");
+                $elem.animate({
+                    'background-size': '100%'
+                }, 10000, "swing");
             }
 
         },
 
-        animateAdmissionNumbers : function() {
+        animateAdmissionNumbers: function () {
 
-            this.$undergraduateAdmission.find(".statistics").find("li").each(function(i) {
+            this.$undergraduateAdmission.find(".statistics").find("li").each(function (i) {
 
                 var $label = $(this).find('.label');
                 var $bigstat = $(this).find('.bigstat');
@@ -359,28 +370,32 @@
                 $bigstat.css('opacity', 0);
                 $label.css('opacity', 0);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     cu_parallax_fx.animateSingleNumber($bigstat);
 
-                    $bigstat.animate({opacity:1}, 600);
-                    $label.animate({opacity:1}, 400);
+                    $bigstat.animate({
+                        opacity: 1
+                    }, 600);
+                    $label.animate({
+                        opacity: 1
+                    }, 400);
 
-                }, 100 * Math.floor((Math.random()*10)+1));
+                }, 100 * Math.floor((Math.random() * 10) + 1));
 
             });
 
         },
 
         /***************************************************
-        * Takes a jQuery element $elem and animates the inner HTML if it is a number.
-        * Counts up to 'final_num' from 'start_num' over 'duration' milliseconds.
-        ***************************************************/
-        animateSingleNumber : function($elem, final_num, start_num, duration) {
+         * Takes a jQuery element $elem and animates the inner HTML if it is a number.
+         * Counts up to 'final_num' from 'start_num' over 'duration' milliseconds.
+         ***************************************************/
+        animateSingleNumber: function ($elem, final_num, start_num, duration) {
 
             var original_num = $elem.html();
 
             // If not set, take inner HTML of elem
-            if (!final_num) final_num = parseFloat($elem.html().replace(/,/,''));
+            if (!final_num) final_num = parseFloat($elem.html().replace(/,/, ''));
 
             // If not set, count up from zero
             if (!start_num) start_num = 0;
@@ -398,11 +413,15 @@
             /* jshint ignore:end */
 
             //Parking count animation
-            $({countNum: 0})
-               .animate({countNum: final_num},{
+            $({
+                    countNum: 0
+                })
+                .animate({
+                    countNum: final_num
+                }, {
                     duration: duration,
                     easing: 'swing',
-                    step: function() {
+                    step: function () {
 
                         // Round to decimal places
                         var stepNum = this.countNum.toFixed(decimalPlaces);
@@ -412,10 +431,10 @@
 
                         $elem.html(stepNum);
                     },
-                    complete:function() {
+                    complete: function () {
                         $elem.html(original_num);
                     }
-            });
+                });
         }
 
     }; // end cu_parallax_fx
@@ -425,17 +444,17 @@
     var cu_hero_area = {
 
         // Configurations
-        contentTransitionSpeed  : 2000,
-        hero_stories_html_dir   : hero_stories_hostname.concat('_hero_stories/'),
+        contentTransitionSpeed: 2000,
+        hero_stories_html_dir: hero_stories_hostname.concat('_hero_stories/'),
 
         // Do not configure these
-        videoPlayer             : null,
-        pastCampaigns           : null, // array of campaigns with some data
-        currentCampaign         : null, // int - the position in the pastCampaigns array
-        videoTransitionTimeout  : null,
-        isChanging              : false,
+        videoPlayer: null,
+        pastCampaigns: null, // array of campaigns with some data
+        currentCampaign: null, // int - the position in the pastCampaigns array
+        videoTransitionTimeout: null,
+        isChanging: false,
 
-        initialize : function() {
+        initialize: function () {
 
             var requested_story_slug = (location.hash.match(/story-([\w-]+)/) || [])[1]; // undefined, or a string with the story slug
 
@@ -452,12 +471,12 @@
             }
 
             // Fetch past content
-            $.getJSON(cu_hero_area.hero_stories_html_dir+"listing_order.json.txt", function(data){
+            $.getJSON(cu_hero_area.hero_stories_html_dir + "listing_order.json.txt", function (data) {
                 cu_hero_area.currentCampaign = 0;
                 cu_hero_area.pastCampaigns = [];
-                var keys = ( data ) ? Object.keys(data) : [];
+                var keys = (data) ? Object.keys(data) : [];
 
-                keys.forEach(function(key){
+                keys.forEach(function (key) {
 
                     /* jshint -W069: ['foo'] is better written in dot notation. */
                     // set the slug for this stage
@@ -471,7 +490,7 @@
 
                         // Look for the slug filename
                         if (data[key]['slug'] == requested_story_slug) {
-                            cu_hero_area.currentCampaign = cu_hero_area.pastCampaigns.length-1;
+                            cu_hero_area.currentCampaign = cu_hero_area.pastCampaigns.length - 1;
                         }
                     }
                     /* jshint -W069 */
@@ -493,32 +512,32 @@
                 if (cu_hero_area.pastCampaigns.length > 1)
                     $("#showOlderContent").removeClass('disabled');
 
-                $("#showOlderContent").hammer().on("tap", function(e) {
+                $("#showOlderContent").hammer().on("tap", function (e) {
                     cu_hero_area.processNavigation('older');
                     // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "older"]);
-                    if (typeof(ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Switch hero story", "older");
+                    if (typeof (ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Switch hero story", "older");
                 });
 
-                $("#showNewerContent").hammer().on("tap", function(e) {
+                $("#showNewerContent").hammer().on("tap", function (e) {
                     cu_hero_area.processNavigation('newer');
                     // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "newer"]);
-                    if (typeof(ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Switch hero story", "newer");
+                    if (typeof (ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Switch hero story", "newer");
                 });
             });
 
         },
 
         /***************************************************
-        * This function resizes the HTML5 video so that it covers the entire #mastheadBackground element.
-        * This simulates the property background-size:cover;
-        * This needs to be run every time the browser window is resized.
-        ***************************************************/
-        adjustVideoSize : function() {
+         * This function resizes the HTML5 video so that it covers the entire #mastheadBackground element.
+         * This simulates the property background-size:cover;
+         * This needs to be run every time the browser window is resized.
+         ***************************************************/
+        adjustVideoSize: function () {
 
             if (!cu_hero_area.videoPlayer) return false;
 
             // Get the current video area size
-            var container_width  = $('#mastheadBackground').outerWidth();
+            var container_width = $('#mastheadBackground').outerWidth();
             var container_height = $('#mastheadBackground').outerHeight();
 
             // use largest scale factor of horizontal/vertical
@@ -539,8 +558,8 @@
             $('#mastheadBackground').scrollTop((new_video_height - container_height) / 2);
         },
 
-        absoluteUrls : function() {
-            $("#mastheadVideo source").each(function() {
+        absoluteUrls: function () {
+            $("#mastheadVideo source").each(function () {
                 videoUrl = $(this).attr('src').replace('/_files', 'http://www.chapman.edu/_files');
                 $(this).attr('src', videoUrl);
             });
@@ -552,7 +571,7 @@
             $('#hero').css('background-image', fallbackUrl);
         },
 
-        setupContent : function($content) {
+        setupContent: function ($content) {
 
             // This fires if working on a development server to change relative image urls to absolute urls
             if (document.location.hostname == 'localhost') cu_hero_area.absoluteUrls();
@@ -569,7 +588,7 @@
 
                 cu_hero_area.videoPlayer.muted = true; // REQUIRED TO MUTE FOR SAFARI 5.1.3!!!! Does not obey mute property without this line
 
-                cu_hero_area.videoPlayer.addEventListener('canplay', function() {
+                cu_hero_area.videoPlayer.addEventListener('canplay', function () {
 
                     // Start the video player
                     cu_hero_area.videoPlayer.play();
@@ -577,7 +596,7 @@
                     // Show the video
                     $content.find("#mastheadVideo").fadeIn(1000);
 
-                    cu_hero_area.videoTransitionTimeout = setTimeout(function() {
+                    cu_hero_area.videoTransitionTimeout = setTimeout(function () {
                         $content.addClass('video-playing');
                     }, 1000);
 
@@ -593,67 +612,67 @@
 
         },
 
-        queueExcerptEntrance: function(delay_ms) {
+        queueExcerptEntrance: function (delay_ms) {
             if (!cu_window_manager.useTransitions) return false;
 
             var $hero = $("#hero");
 
             $hero.find(".excerpt").css({
-                "position"  : "relative",
-                "left"      : "50px",
-                "opacity"   : "0"
-            // Apply animations to the old outgoing content
+                "position": "relative",
+                "left": "50px",
+                "opacity": "0"
+                // Apply animations to the old outgoing content
             });
 
             $hero.find(".actions").css({
-                "position"  : "relative",
-                "left"      : "100px",
-                "opacity"   : "0"
-            // Apply animations to the old outgoing content
+                "position": "relative",
+                "left": "100px",
+                "opacity": "0"
+                // Apply animations to the old outgoing content
             });
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $hero.find(".excerpt").addClass("fast_transition").css({
-                    "left"      : "0px",
-                    "opacity"   : "1"
+                    "left": "0px",
+                    "opacity": "1"
                 });
 
                 $hero.find(".actions").addClass("fast_transition").css({
-                    "left"      : "0",
-                    "opacity"   : "1"
+                    "left": "0",
+                    "opacity": "1"
                 });
             }, delay_ms);
         },
 
-        queueTitleAndExcerptEntrance: function(delay_ms) {
+        queueTitleAndExcerptEntrance: function (delay_ms) {
             // Fancy text animations
             if (!cu_window_manager.useTransitions) return false;
 
             var $hero = $("#hero");
 
             $("#hero").find(".heading").css({
-                "position"  : "relative",
-                "left"      : "50px",
-                "opacity"   : "0"
-            // Apply animations to the old outgoing content
+                "position": "relative",
+                "left": "50px",
+                "opacity": "0"
+                // Apply animations to the old outgoing content
             });
 
             $("#hero").find(".subheading").css({
-                "position"  : "relative",
-                "left"      : "50px",
-                "opacity"   : "0"
-            // Apply animations to the old outgoing content
+                "position": "relative",
+                "left": "50px",
+                "opacity": "0"
+                // Apply animations to the old outgoing content
             });
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#hero").find(".heading").addClass("fast_transition").css({
-                    "left"      : "0",
-                    "opacity"   : "1"
+                    "left": "0",
+                    "opacity": "1"
                 });
 
                 $("#hero").find(".subheading").addClass("fast_transition").css({
-                    "left"      : "0",
-                    "opacity"   : "1"
+                    "left": "0",
+                    "opacity": "1"
                 });
 
 
@@ -664,14 +683,14 @@
         },
 
         // Accepts an int ID of a slide, or the string 'older' or 'newer' then transitions to that slide.
-        processNavigation : function(input) {
+        processNavigation: function (input) {
 
             if (cu_hero_area.isChanging) return false;
             cu_hero_area.isChanging = true;
 
-            var max         = cu_hero_area.pastCampaigns.length -1; // zero based
-            var min         = 0;
-            var direction   = 'older'; // default transition
+            var max = cu_hero_area.pastCampaigns.length - 1; // zero based
+            var min = 0;
+            var direction = 'older'; // default transition
             var current_num = cu_hero_area.currentCampaign;
 
             if (input == 'newer') {
@@ -704,19 +723,19 @@
 
                 var newFile = cu_hero_area.pastCampaigns[current_num]['filename'];
 
-                $.get(cu_hero_area.hero_stories_html_dir+newFile,function(data){
+                $.get(cu_hero_area.hero_stories_html_dir + newFile, function (data) {
                     cu_hero_area.pastCampaigns[current_num]['html'] = data;
                     cu_hero_area.transitionToStory(data, direction);
                 });
             }
 
             // Update the URL
-            location.hash = "#story-"+cu_hero_area.pastCampaigns[current_num]['slug'];
+            location.hash = "#story-" + cu_hero_area.pastCampaigns[current_num]['slug'];
             /* jshint +W069 */
 
         }, // end processNavigation
 
-        transitionToStory : function(raw_html, direction) {
+        transitionToStory: function (raw_html, direction) {
 
             $new_content = $(raw_html);
             $old_content = $("#hero");
@@ -730,33 +749,33 @@
             if (cu_window_manager.useTransitions) {
 
                 $new_content.css({
-                    'opacity' : 0
+                    'opacity': 0
                 }).addClass('fast_transition');
 
                 $old_content.css({
-                    "opacity" : 1,
-                    "margin-top"    : "-"+$("#hero").outerHeight()+"px"
+                    "opacity": 1,
+                    "margin-top": "-" + $("#hero").outerHeight() + "px"
                 }).addClass('fast_transition');
 
                 $old_content.before($new_content);
 
                 // Need to wait until the transition class is in the DOM
-                setTimeout(function() {
+                setTimeout(function () {
                     $new_content.css({
-                        "opacity":1
+                        "opacity": 1
                     });
 
                     $old_content.css({
-                        "opacity":0
+                        "opacity": 0
                     });
-                },250, $new_content, $old_content);
+                }, 250, $new_content, $old_content);
 
                 // Wait until the transition is complete
-                setTimeout(function() {
+                setTimeout(function () {
                     // Remove the old content from the DOM
                     $old_content.remove();
 
-                },cu_hero_area.contentTransitionSpeed, $old_content);
+                }, cu_hero_area.contentTransitionSpeed, $old_content);
 
 
             } else {
@@ -775,9 +794,9 @@
             var timeToHideNav = (cu_window_manager.useTransitions) ? cu_hero_area.contentTransitionSpeed : 10;
 
             // Tasks after the switch is complete
-            setTimeout(function() {
+            setTimeout(function () {
                 var current_num = cu_hero_area.currentCampaign;
-                var max = cu_hero_area.pastCampaigns.length -1; // zero based
+                var max = cu_hero_area.pastCampaigns.length - 1; // zero based
                 var min = 0;
 
                 $("#mastheadNavigation").fadeIn();
@@ -797,15 +816,15 @@
 
     var cu_admission_area = {
 
-        formTransitionSpeed : 400,
-        $admissionCTA : null,
+        formTransitionSpeed: 400,
+        $admissionCTA: null,
 
-        initialize : function() {
+        initialize: function () {
 
             this.$admissionCTA = $("#admissionCTA");
             this.switchToMode('hide');
 
-            $(".admissionCTA_start").on("click", function(e) {
+            $(".admissionCTA_start").on("click", function (e) {
 
                 cu_admission_area.setupFormHTML(e);
 
@@ -816,11 +835,11 @@
             });
 
 
-            $('input[name="student_type"]').on('change', function(){
+            $('input[name="student_type"]').on('change', function () {
                 cu_admission_area.switchToMode('student_details');
             });
 
-            this.$admissionCTA.find("#admissionCTA_form").on('submit', function(e) {
+            this.$admissionCTA.find("#admissionCTA_form").on('submit', function (e) {
                 e.preventDefault();
                 cu_admission_area.submitForm();
                 return false;
@@ -830,16 +849,16 @@
 
         },
 
-        setupFormHTML : function(e) {
+        setupFormHTML: function (e) {
 
-            if (! $(e.currentTarget).siblings("#admissionCTA").length) {
+            if (!$(e.currentTarget).siblings("#admissionCTA").length) {
                 // Move the form here
                 $(e.currentTarget).parent().append(cu_admission_area.$admissionCTA.detach());
 
             }
         },
 
-        switchToMode : function(mode) {
+        switchToMode: function (mode) {
 
             if (mode == 'student_type') {
                 // this.$admissionCTA.css('max-height', '0px');
@@ -856,7 +875,7 @@
                 this.$admissionCTA.find("#admissionCTA_form").show();
                 this.$admissionCTA.find(".student_details_section").slideDown(cu_admission_area.formTransitionSpeed);
             } else if (mode == 'hide') {
-                var $student_type_section   = this.$admissionCTA.find(".student_type_section");
+                var $student_type_section = this.$admissionCTA.find(".student_type_section");
                 var $student_details_section = this.$admissionCTA.find(".student_details_section");
 
                 $student_type_section.css('height', $student_type_section.height()).hide();
@@ -868,7 +887,7 @@
             return;
         },
 
-        submitForm : function() {
+        submitForm: function () {
 
             var name = this.$admissionCTA.find("input:text[name=name]").val();
             var email = this.$admissionCTA.find("input:text[name=email]").val();
@@ -890,12 +909,12 @@
             this.$admissionCTA.find(".student_type_section").slideUp(cu_admission_area.formTransitionSpeed);
             this.$admissionCTA.find(".student_details_section").slideUp(cu_admission_area.formTransitionSpeed);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 cu_admission_area.$admissionCTA.find("#admissionCTA_form").hide();
             }, cu_admission_area.formTransitionSpeed);
 
 
-            this.$admissionCTA.find(".status").hide().html("<b>Thanks, "+name+"! </b><br><small>The <a href=\"http://www.chapman.edu/admission/\">CU admissions</a> team will be in touch soon.</small>").fadeIn();
+            this.$admissionCTA.find(".status").hide().html("<b>Thanks, " + name + "! </b><br><small>The <a href=\"http://www.chapman.edu/admission/\">CU admissions</a> team will be in touch soon.</small>").fadeIn();
 
 
             $('.admissionCTA_start').hide();
@@ -913,7 +932,7 @@
      * where the logic behind them was not explained and the effects of changing them unknown.
      * Prompted by https://github.com/chapmanu/cascade-assets/issues/93.
      */
-    var heroModalViewer = (function() {
+    var heroModalViewer = (function () {
         // Selectors
         // These are inherited from legacy version and tied to existing stylesheets.
         var HERO_WRAPPER_SELECTOR = 'div#heroWrapper';
@@ -938,7 +957,7 @@
         var isLocked = false;
 
         // Public Functions
-        var initialize = function() {
+        var initialize = function () {
             // Initalize DOM elements.
             $window = $(window);
             $html = $('html');
@@ -950,34 +969,38 @@
             $heroWrapper.after($modal);
 
             // Handle modal events.
-            $heroWrapper.on('click', TRIGGER_SELECTOR, function(e) { openModal(e); });
+            $heroWrapper.on('click', TRIGGER_SELECTOR, function (e) {
+                openModal(e);
+            });
             $modal.on('click', closeModal);
-            $body.on('keyup', function(e) { closeModalOnEscape(e); });
+            $body.on('keyup', function (e) {
+                closeModalOnEscape(e);
+            });
         };
 
         // Private Functions
-        var buildModal = function() {
+        var buildModal = function () {
             $modal = $('<div />').attr('id', MODAL_ID);
             $modalCell = $('<div />').attr('id', MODAL_CELL_ID);
             $modal.append($modalCell);
             return $modal;
         };
 
-        var openModal = function(e) {
+        var openModal = function (e) {
             var MIN_WINDOW_WIDTH = 640;
             var modifierKey = (e.metaKey || e.ctrlKey);
             var modalContent = $(e.currentTarget).attr('data-quickview-content');
 
             // Do not intercept URLs that are alt clicked or in small windows.
-            if ( modifierKey ) {
+            if (modifierKey) {
                 return;
             }
             // Do not intercept in small windows.
-            else if ( $window.width() <= MIN_WINDOW_WIDTH ) {
+            else if ($window.width() <= MIN_WINDOW_WIDTH) {
                 return;
             }
             // Do not intercept if content is empty.
-            else if ( !modalContent ) {
+            else if (!modalContent) {
                 return;
             }
             // Go!
@@ -990,7 +1013,7 @@
             }
         };
 
-        var fadeInModal = function(modalContent, milliSecDuration) {
+        var fadeInModal = function (modalContent, milliSecDuration) {
             var cellHeight = $window.height() + 'px';
             var cellWidth = $window.width() + 'px';
 
@@ -1004,19 +1027,19 @@
             $body.addClass(MODAL_OPEN_CLASS);
         };
 
-        var closeModal = function() {
-            $modal.fadeOut(40, function() {
+        var closeModal = function () {
+            $modal.fadeOut(40, function () {
                 $modalCell.empty();
             });
             unlockScroll();
             $body.removeClass(MODAL_OPEN_CLASS);
         };
 
-        var lockScroll = function() {
+        var lockScroll = function () {
             // Retain settings for later.
             var scrollPosition = [
                 document.documentElement.scrollLeft || document.body.scrollLeft,
-                document.documentElement.scrollTop  || document.body.scrollTop
+                document.documentElement.scrollTop || document.body.scrollTop
             ];
             $html.data(SCROLL_POSITION_DATA_ID, scrollPosition);
             $html.data(PREVIOUS_OVERFLOW_DATA_ID, $html.css('overflow'));
@@ -1031,8 +1054,8 @@
 
         };
 
-        var unlockScroll = function() {
-            if ( !isScrollLocked ) {
+        var unlockScroll = function () {
+            if (!isScrollLocked) {
                 return false;
             }
 
@@ -1045,8 +1068,8 @@
             window.scrollTo(scrollPosition[0], scrollPosition[1]);
         };
 
-        var closeModalOnEscape = function(e) {
-            if ( e.which == 27 ) {
+        var closeModalOnEscape = function (e) {
+            if (e.which == 27) {
                 closeModal();
             }
         };
@@ -1059,20 +1082,20 @@
 })(jQuery);
 
 // Define Lazybind
-(function($){
-    $.fn.lazybind = function(event, fn, timeout, abort){
+(function ($) {
+    $.fn.lazybind = function (event, fn, timeout, abort) {
         var timer = null;
-        $(this).bind(event, function(e){
+        $(this).bind(event, function (e) {
             var ev = e;
-            timer = setTimeout(function(){
+            timer = setTimeout(function () {
                 fn(ev);
             }, timeout);
         });
-        if(abort == undefined){
+        if (abort == undefined) {
             return;
         }
-        $(this).bind(abort, function(){
-            if(timer != null){
+        $(this).bind(abort, function () {
+            if (timer != null) {
                 clearTimeout(timer);
             }
         });
@@ -1081,51 +1104,51 @@
 
 // Object.keys pollyfill for older IE
 if (!Object.keys) {
-  Object.keys = (function () {
-    var hasOwnProperty = Object.prototype.hasOwnProperty,
-        hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
-        dontEnums = [
-          'toString',
-          'toLocaleString',
-          'valueOf',
-          'hasOwnProperty',
-          'isPrototypeOf',
-          'propertyIsEnumerable',
-          'constructor'
-        ],
-        dontEnumsLength = dontEnums.length;
+    Object.keys = (function () {
+        var hasOwnProperty = Object.prototype.hasOwnProperty,
+            hasDontEnumBug = !({
+                toString: null
+            }).propertyIsEnumerable('toString'),
+            dontEnums = [
+                'toString',
+                'toLocaleString',
+                'valueOf',
+                'hasOwnProperty',
+                'isPrototypeOf',
+                'propertyIsEnumerable',
+                'constructor'
+            ],
+            dontEnumsLength = dontEnums.length;
 
-    return function (obj) {
-      if (typeof obj !== 'object' && typeof obj !== 'function' || obj === null) throw new TypeError('Object.keys called on non-object');
+        return function (obj) {
+            if (typeof obj !== 'object' && typeof obj !== 'function' || obj === null) throw new TypeError('Object.keys called on non-object');
 
-      var result = [];
+            var result = [];
 
-      for (var prop in obj) {
-        if (hasOwnProperty.call(obj, prop)) result.push(prop);
-      }
+            for (var prop in obj) {
+                if (hasOwnProperty.call(obj, prop)) result.push(prop);
+            }
 
-      if (hasDontEnumBug) {
-        for (var i=0; i < dontEnumsLength; i++) {
-          if (hasOwnProperty.call(obj, dontEnums[i])) result.push(dontEnums[i]);
-        }
-      }
-      return result;
-    };
-  })();
+            if (hasDontEnumBug) {
+                for (var i = 0; i < dontEnumsLength; i++) {
+                    if (hasOwnProperty.call(obj, dontEnums[i])) result.push(dontEnums[i]);
+                }
+            }
+            return result;
+        };
+    })();
 }
 
 // Array.forEach pollyfill for older IE
 if (!Array.prototype.forEach) {
-  Array.prototype.forEach = function(fun /*, thisp*/)
-  {
-    var len = this.length;
-    if (typeof fun != "function")
-      throw new TypeError();
-    var thisp = arguments[1];
-    for (var i = 0; i < len; i++)
-    {
-      if (i in this)
-        fun.call(thisp, this[i], i, this);
-    }
-  };
+    Array.prototype.forEach = function (fun /*, thisp*/ ) {
+        var len = this.length;
+        if (typeof fun != "function")
+            throw new TypeError();
+        var thisp = arguments[1];
+        for (var i = 0; i < len; i++) {
+            if (i in this)
+                fun.call(thisp, this[i], i, this);
+        }
+    };
 }
