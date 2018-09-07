@@ -57,3 +57,39 @@ $white: #ffffff;
 		}
 	}
 }
+
+/* Business & Law Grad Theme */
+#theme.business__grad, #theme.law {
+
+  .cta-footer-widget.graduate {
+    background-color: #a50034;
+
+    .outer-container {
+
+      .text-section {
+        
+        p {
+          font-family: "futura-pt", Arial, sans-serif;
+          font-size: 32px;
+          text-transform: capitalize;
+          color: white;
+        }
+      }
+
+      .button-section {
+
+        .button-wrapper {
+
+          .footer-button {
+            background: white;
+            color: black;
+
+            &:hover {
+              background: rgba(228, 228, 228, 1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
