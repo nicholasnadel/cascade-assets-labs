@@ -1,3 +1,25 @@
+
+
+<style>
+ .image-wrapper {
+  width: 100%; // the same width and height as for the <img>
+  &.compat-object-fit {
+   background-size: cover;
+   background-position: center center;
+   .featured-image { // hide image if object fit is not supported - opacity to 0 for the link area
+    opacity: 0;
+   }
+  }
+ }
+ 
+ &featured-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+ }
+
+</style>
+
 <div class="image-slider-wrapper">
   <div class="image-slider">
     <div class="item">
@@ -5,21 +27,22 @@
         <div class="container">
           <ul class="gallery list-unstyled cS-hidden widget-slides">
             <li>
-              <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
+            <div class="image-wrapper">
+              <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b7365f219b9100828e3a12a/01832336950a22029a259140af7490ce/law-background-image.jpg"/>
+             </div>
               <div class="content-container">
                 <div class="content-text">
                   <h1 class="headline">Too Much Text</h1>
-                  <p class="description line-clamp">However, you may forget that you do not need to make it enforceable. This License does not cure such failure in a commercial product offering, such Contributor by reason of any subsequent version of this License with every copy of the initial Agreement Steward. The Eclipse Foundation may assign the responsibility to serve as the originator of the Licensed Product or Modifications that you changed that file, and provided that Apple did not first commence an action for patent infringement claim against Respondent alleging that the requirements of Sections 1 through 9 of this license. If you institute patent litigation against a Contributor if it fails to comply with terms compatible with the Program.
-
-In addition, such works are not mutually agreed upon in writing by the terms and conditions of merchantability and fitness for a component of this license. If your Modifications available to Licensee on an 'AS IS' basis, WITHOUT WARRANTY OF ANY RIGHTS GRANTED HEREUNDER, EVEN IF ADVISED OF THE USE OF THE WORK The Work has the status `author-maintained' if the Electronic Distribution Mechanism is maintained by a third party. By clicking on the "ACCEPT" button where indicated, or by copying, installing or otherwise modify your copy of this BeOpen Python License is retained in the Licensed Program in a commercial product offering, such Contributor as a result, the Commercial Contributor then makes performance claims, or offers warranties related to applicable law or agreed to in writing, Licensor provides the Work as permitted above, be liable to you under Sections 2.1 or 2.2 shall be subject to the Program, and copy and distribute the Modifications are Contributor's original creation(s) and/or Contributor has been derived from it, be made available under this License shall take other steps (such as a whole, provided Your use, reproduction, and distribution of a court requires any other party has been published under a particular purpose; ii) effectively excludes on behalf of Apple as such will be given a distinguishing version number.</p>
+                  <p class="description line-clamp">However, you may forget that </p>
                   <a href="#" class="theme-button theme-button ">Schedule a Tour</a>
                 </div>
             </li>
-            <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/58170e214301e719c20c4a22f1616425/Chapman3_18Law-47.jpg">
-              <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/58170e214301e719c20c4a22f1616425/Chapman3_18Law-47.jpg" />
+
+            <li data-thumb="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg">
+              <img src="https://trello-attachments.s3.amazonaws.com/57acf5c2d6c82399b130cbc5/5b736796f7bdcd8cc8dd0c0b/c5831869f98cd4200f6857b088f85a00/Chapman3_18Business-56.jpg" />
               <div class="content-container">
                 <div class="content-text">
-                  <h1 class="headline">1st Widget - lorem ipsum yesterday</h1>
+                  <h1 class="headline">background image</h1>
                   <p class="description">retro biodiesel trust fund Brooklyn brunch normcore locavore crucifix forage
                     deep</p>
                   <a href="#" class="theme-button ">Schedule a Tour</a>
@@ -93,4 +116,3 @@ In addition, such works are not mutually agreed upon in writing by the terms and
     </div>
   </div>
 </div>
-

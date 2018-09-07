@@ -46,6 +46,7 @@
   }
 
   .theme-button {
+
     &:hover,
     &:focus {
       background-color: $red-button-hover;
@@ -85,17 +86,13 @@
     bottom: 55px;
   }
 
-  li.lslide.active {
-    // display: flex;
-  }
-
-  .lSSlideOuter .lSPager.lSpg > li {
+  .lSSlideOuter .lSPager.lSpg>li {
     cursor: pointer;
     display: inline-block;
     padding: 0 7px;
   }
 
-  .lSSlideOuter .lSPager.lSpg > li a {
+  .lSSlideOuter .lSPager.lSpg>li a {
     border-radius: 30px;
     display: inline-block;
     height: 20px;
@@ -109,14 +106,14 @@
     color: $white;
   }
 
-  .lSSlideOuter .lSPager.lSpg > li a {
+  .lSSlideOuter .lSPager.lSpg>li a {
     background-color: #fff;
     -webkit-box-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
     box-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
   }
 
-  .lSSlideOuter .lSPager.lSpg > li:hover a,
-  .lSSlideOuter .lSPager.lSpg > li.active a {
+  .lSSlideOuter .lSPager.lSpg>li:hover a,
+  .lSSlideOuter .lSPager.lSpg>li.active a {
     background-color: #a50034;
   }
 
@@ -220,12 +217,6 @@
       -ms-flex-align: center;
       align-items: center;
     }
-  }
-
-  .image-slider-wrapper-business {
-  }
-
-  .image-slider-wrapper-law {
   }
 
   //update
@@ -340,6 +331,7 @@
     ul.lSPager.lSpg {
       bottom: 0;
     }
+
     .lSSlideOuter .lSPager.lSpg {
       display: -webkit-inline-box !important;
       display: -ms-inline-flexbox !important;
@@ -348,6 +340,7 @@
       bottom: unset;
       position: absolute;
     }
+
     .image-slider-wrapper .lSSlideOuter .lSPager.lSpg {
       bottom: unset;
       position: absolute;
@@ -368,6 +361,7 @@
       -ms-flex-align: center;
       align-items: center;
     }
+
     .lSPager.lSpg {
       margin-top: 65% !important;
     }
