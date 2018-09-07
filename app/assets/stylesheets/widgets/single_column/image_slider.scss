@@ -64,8 +64,8 @@
   img {
     max-height: 600px;
     width: 100vw;
-    //-o-object-fit: cover;
-    //object-fit: cover;
+    -o-object-fit: cover;
+    object-fit: cover;
   }
 
   .content-box a.button.red.smc-cta,
@@ -236,10 +236,8 @@
 
   img {
     width: 100%;
-    //-o-object-fit: cover;
-    //object-fit: cover;
-    background-position: center;
-    background-size: cover !important;
+    -o-object-fit: cover;
+    object-fit: cover;
   }
 
   .content-container {
