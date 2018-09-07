@@ -23,12 +23,19 @@
   
     .photoCallout {
       margin: 0 2em 4em 2em;
-      // max-width: 21%;
       justify-content: center;
       border-bottom: none;
       transition: all .4s;
   
       border-bottom: none;
+
+      &:hover {
+
+        .heading {
+          color: #a50034;
+          text-decoration: underline;
+        }
+      }
   
       &:focus { border: 1px dotted white;}
   
@@ -43,12 +50,14 @@
 
       .heading {
         max-width: 13em;
-        text-align: center;
-      }
-  
-      .multi-image-caption {
-        text-align: center;
+        margin: auto;
+        padding-top: 1em;
+        font-size: 1.8em;
+        font-weight: 600;
+        font-family: $futura-regular;
         color: $black;
+        text-transform: uppercase;
+        text-align: center;
       }
     }
   }
