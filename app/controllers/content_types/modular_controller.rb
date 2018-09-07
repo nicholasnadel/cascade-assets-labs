@@ -102,7 +102,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Business Graduate')
       @data_definition = DataDefinitions::OneColumn.default
 
-      theme = params.fetch(:theme, 'business business__grad')
+      theme = params.fetch(:theme, 'business business__graduate')
       @current_page_path = "#{theme}/path/to/index.aspx"
 
       # Define configuration set regions.

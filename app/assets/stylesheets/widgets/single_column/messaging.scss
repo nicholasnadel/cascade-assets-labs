@@ -387,7 +387,7 @@
 }
 
 /* Business & Law Grad Theme */
-#theme.business__grad, #theme.law {
+#theme.business__graduate, #theme.law {
   
   .primary-content.one-column {
 
@@ -414,6 +414,7 @@
             width: 250px;
             border-radius: 50%;
             border: 2px solid #a50034;
+            object-fit: cover;
           }
         }
 
@@ -486,13 +487,17 @@
       .links-heading {
         font-size: 20px;
         text-transform: uppercase;
-        font-family: "futura-pt", Arial, sans-serif;
+        font-family: $futura-regular;
         font-weight: 700;
         color: white;
       }
 
       .text-actions {
         max-width: 100%;
+
+        @include bp(wildcard-max, 480px) {
+          text-align: left;
+        }
 
         a {
           font-size: 16px;
