@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  console.log('hello');
   $(".widget-slides").lightSlider({
     gallery: false,
     item: 1,
@@ -7,17 +6,17 @@ $(document).ready(function () {
     slideMargin: 0,
     speed: 500,
     pause: 4000,
-    auto: false,
+    auto: true,
     loop: true,
     keyPress: true,
     pauseOnHover: false,
-    useCSS: true,
+    // useCSS: true,
     onSliderLoad: function () {
       $(".widget-slides").removeClass("cS-hidden");
     }
   });
 
-  // IE Fallback for slide images object-fit 
+  // IE Fallback for widget-slides img { object-fit: } CSS property 
   if (document.documentMode || /Edge/.test(navigator.userAgent)) {
     $('.image-slider-wrapper img').each(function () {
       var t = $(this),

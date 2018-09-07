@@ -143,7 +143,8 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Sub-Brand - Business')
       @data_definition = DataDefinitions::OneColumn.default
 
-      theme = params.fetch(:theme, 'subbrand__business')
+      # theme = params.fetch(:theme, 'subbrand__business')
+      theme = params.fetch(:theme, 'students')
       @current_page_path = "#{theme}/path/to/index.aspx"
 
       # Define configuration set regions.
@@ -176,7 +177,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Sub-Brand - Default')
       @data_definition = DataDefinitions::OneColumn.default
 
-      theme = params.fetch(:theme, 'subbrand')
+      theme = params.fetch(:theme, 'students')
       @current_page_path = "#{theme}/path/to/index.aspx"
 
       # Define configuration set regions.
@@ -188,7 +189,7 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_subbrand'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_subbrand_default'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),

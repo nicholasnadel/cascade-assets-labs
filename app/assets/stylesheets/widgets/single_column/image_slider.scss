@@ -86,6 +86,10 @@
     bottom: 55px;
   }
 
+  li.lslide.active {
+    // display: flex;
+  }
+
   .lSSlideOuter .lSPager.lSpg>li {
     cursor: pointer;
     display: inline-block;
@@ -119,6 +123,7 @@
 
   .description {
     overflow: hidden;
+    line-height: 22px;
   }
 
   @supports (-webkit-line-clamp: 2) {
@@ -218,6 +223,10 @@
       align-items: center;
     }
   }
+
+  .image-slider-wrapper-business {}
+
+  .image-slider-wrapper-law {}
 
   //update
   .image-slider-wrapper {
