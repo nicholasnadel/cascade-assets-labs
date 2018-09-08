@@ -419,11 +419,12 @@
         }
 
         .text-column {
-          width: auto;
+          width: 75%;
           padding: 0 0 0 35px;
           margin: 0;
 
           @include bp(wildcard-max, 780px) {
+            width: 100%;
             padding: 0 35px 0 35px;
           }
 
