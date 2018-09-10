@@ -4,7 +4,7 @@
   @include theme-color-classes($red);
 
   * {
-    transition: all .8s;
+    transition: all 0.8s;
   }
 
   .brochure-masthead .background-content .gradient-overlay {
@@ -45,6 +45,12 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     transition: 5s ease all;
+    border-radius: 3px;
+  }
+
+  .dropdown-content li {
+    list-style: none;
+    text-align: left;
   }
 
   /* Links inside the dropdown */
@@ -60,13 +66,15 @@
     text-align: left;
   }
 
+
+
   .link-underline {
     border-bottom: 1px dotted #a50034;
   }
 
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
-    background-color: #ddd
+    background-color: #ddd;
   }
 
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
@@ -125,7 +133,7 @@ html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  background-image: image-url('window-pattern.png');
+  background-image: image-url("window-pattern.png");
   background-repeat: repeat-x;
   background-position-y: 64px;
   background-color: $cu-light-grey;
@@ -284,7 +292,7 @@ a {
       color: $white;
 
       &:hover {
-        background-color: #C92741;
+        background-color: #c92741;
         text-decoration: none;
       }
     }
@@ -356,7 +364,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: 'courier new', monospace;
+  font-family: "courier new", monospace;
   font-size: 1em;
 }
 
@@ -632,7 +640,7 @@ h1.headline.primary.title {
 }
 
 // Tablet
-@media screen and (max-width:780px) {
+@media screen and (max-width: 780px) {
   h1.headline.primary.title {
     font-size: 48px;
   }
@@ -675,7 +683,7 @@ h1.headline.primary.title {
 }
 
 // Mobile
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   .subrand-masthead-wrapper {
     border-bottom: none;
     border-top: 10px solid $cardinal;
@@ -695,7 +703,7 @@ h1.headline.primary.title {
   }
 }
 
-@media screen and (max-width:350px) {
+@media screen and (max-width: 350px) {
   .dropdown {
     margin: auto;
   }
@@ -758,7 +766,8 @@ h1.headline.primary.title {
 }
 
 #theme.grad-business,
-#theme.subbrand__grad-business {
+#theme.subbrand__grad-business,
+.subpage-masthead {
   .brochure-masthead .foreground-content {
     text-align: left;
   }
@@ -776,7 +785,7 @@ h1.headline.primary.title {
     font-weight: 500;
     text-transform: uppercase;
     text-shadow: 0.05em 0.05em 0.1em rgba(0, 0, 0, 0.5);
-    line-height: .9em;
+    line-height: 0.9em;
     margin-bottom: -10px;
     max-width: 700px;
   }
