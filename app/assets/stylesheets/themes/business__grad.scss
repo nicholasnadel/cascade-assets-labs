@@ -1,12 +1,16 @@
-#theme.business {
-  @include theme-color-classes($cu-red);
+#theme.business__graduate {
+  @include theme-color-classes(black);
+
+  h1, h2, h3 {
+    font-family: $futura-condensed;
+  }
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-    background: $cu-red; /* Old browsers */
+    background: black; /* Old browsers */
   }
 
   .nameBarButtons li a {
-    color: $cu-red;
+    color: black;
   }
 
   .rightColumn .styleTwo .border {
@@ -36,7 +40,7 @@
   }
 
   .rounded-slider .info-container .blue {
-    background-color: $cu-red;
+    background-color: black;
   }
 
   .newbutton a {
@@ -50,27 +54,27 @@
   }
 
   .midPhotoCallouts .photoCallout .caption {
-    background-color: $cu-red;
+    background-color: black;
   }
 
   .photoCallouts {
     .caption, .rollover {
-      background-color: $cu-red;
+      background-color: black;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
-      background-color: $cu-red;
+      background-color: black;
     }
     .view-more-link {
-      background-color: $cu-red;
+      background-color: black;
     }
     .view-less-link {
-      background-color: $cu-red;
+      background-color: black;
     }
     .icon-triangle-up {
-      color: $cu-red;
+      color: black;
     }
   }
 }

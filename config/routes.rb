@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/modular/one_column', to: 'modular#one_column'
     get '/modular/two_column', to: 'modular#two_column'
     get '/modular/three_column', to: 'modular#three_column'
+    get '/modular/three_column_business', to: 'modular#three_column_business'
 
     # Next 2 point to the same action
     get '/school_home_pages/slideshow', to: 'school_home_pages#slideshow'
