@@ -1,22 +1,22 @@
-.image-slider-wrapper {
-  @include theme-color-classes($red);
-  $white-alpha: rgba(255, 255, 240, 0.8);
-  $cardinal: #a50034;
-  $cardinal-hover: #810029;
-  $pillar: #686259;
-  $sand: #ddcba4;
-  $sand-alpha: rgba(221, 203, 164, 0.8);
-  $panther-black: #231f20;
-  $theme-bg-color-alpha: transparent;
-  $panther-black-alpha: rgba(35, 31, 32, 0.8);
-  $cardinal: black;
-  $cardinal-hover: #810029;
-  $pillar: #686259;
-  $sand: #ddcba4;
-  $panther-black: #231f20;
-  $content-padding: 2%;
-  $line-height: normal;
+@include theme-color-classes($red);
+$white-alpha: rgba(255, 255, 240, 0.8);
+$cardinal: #a50034;
+$cardinal-hover: #810029;
+$pillar: #686259;
+$sand: #ddcba4;
+$sand-alpha: rgba(221, 203, 164, 0.8);
+$panther-black: #231f20;
+$theme-bg-color-alpha: transparent;
+$panther-black-alpha: rgba(35, 31, 32, 0.8);
+$cardinal: black;
+$cardinal-hover: #810029;
+$pillar: #686259;
+$sand: #ddcba4;
+$panther-black: #231f20;
+$content-padding: 2%;
+$line-height: normal;
 
+.image-slider-wrapper {
   h1 {
     font-family: $futura-regular;
     font-weight: 700;
@@ -240,7 +240,7 @@
     object-fit: cover;
   }
 
-  .content-container {
+  .content-container-slider {
     background-color: $panther-black-alpha;
     position: absolute;
     bottom: 0;
@@ -272,7 +272,7 @@
       height: 600px;
     }
 
-    .content-container {
+    .content-container-slider {
       width: 100%;
       margin: 0;
       padding: 0;
@@ -292,7 +292,7 @@
       bottom: 62px;
     }
 
-    .content-container {
+    .content-container-slider {
       margin: 0;
       width: 100%;
       display: block;
@@ -373,6 +373,39 @@
 
     .lSPager.lSpg {
       margin-top: 65% !important;
+    }
+  }
+}
+
+#theme.business,
+#theme.subbrand__business {
+  .image-slider-wrapper .content-container-slider {
+    background-color: $panther-black-alpha;
+  }
+
+  @media screen and (max-width: 480px) {
+    .image-slider-wrapper .content-container-slider {
+      background-color: $panther-black;
+    }
+  }
+}
+
+#theme.law,
+#theme.subbrand__law {
+  .image-slider-wrapper {
+    .content-container-slider {
+      background-color: $white-alpha;
+    }
+
+    h1.headline,
+    p.description {
+      color: black;
+    }
+
+    @media screen and (max-width: 480px) {
+      .content-container-slider {
+        background-color: $sand;
+      }
     }
   }
 }

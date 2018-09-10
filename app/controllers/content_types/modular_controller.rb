@@ -177,7 +177,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Sub-Brand - Default')
       @data_definition = DataDefinitions::OneColumn.default
 
-      theme = params.fetch(:theme, 'subbrand')
+      theme = params.fetch(:theme, 'law')
       @current_page_path = "#{theme}/path/to/index.aspx"
 
       # Define configuration set regions.
@@ -190,7 +190,6 @@ module ContentTypes
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
         'MASTHEAD' => cascade_format('widgets/masthead/subbrand_masthead.html'), 
-        # /Users/nnadel/Documents/workspace/cascade-assets/app/views/widgets/masthead/_brochure.html
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),

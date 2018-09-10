@@ -3,7 +3,7 @@
     <div class="foreground-content">
       <div class="headline-container">
         <h2 class="headline secondary subhead">Chapman University</h2>
-        <h1 class="headline primary title">Argyros School of Business</h1>
+        <h1 class="headline primary title">Argyros School of Business & Economics</h1>
       </div>
       <button class="theme-button">
         <a href="#">Learn More</a>
@@ -11,31 +11,15 @@
       <button class="theme-button">
         <a href="#">Apply</a>
       </button>
-      <!-- <div class="theme-border-color dropdown" id="program-select-links">
-        <a href="#">Explore Options <span class="select-arrow"></span> </a>
-      </div> -->
       <div class="dropdown">
         <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">Degrees & Programs <span class="select-arrow"></span></div>
-        <div id="myDropdown" class="dropdown-content">
+        <div id="mastheadDropdown" class="dropdown-content">
           <a href="#home"> <span class="link-underline"> Argyros </span></a>
           <a href="#home"> <span class="link-underline"> Alumns </span></a>
           <a href="#home"> <span class="link-underline"> Schools & Colleges </span></a>
         </div>
       </div>
-      <!-- <nav class="program-select" id="program-select-links">
-        <span class="select-arrow theme-border-color"></span>
-        <button class="hero-select-button theme-border-color">$_EscapeTool.xml($dropdownLabel)</button>
-        <ul class="hero-select-list">
-          #foreach( $link in $dropdownLinks )
-          <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
-          #end
-        </ul>
-      </nav> -->
     </div>
-    <!-- <div class="slider-controls">
-      <div class="control left cd-arrow-left"><a href="#">&lsaquo;</a></div>
-      <div class="control right cd-arrow-right"><a href="#">&rsaquo;</a></div>
-    </div> -->
     <div class="background-content">
       <div class="slider-wrapper">
         <ul class="cd-hero-slider autoplay">
@@ -46,7 +30,7 @@
                 <source src="http://www.chapman.edu/_files/img/hero-panels/html5-videos/welcome-2016.mp4" type="video/mp4" />
               </video>
             </div>
-          </li>
+          </li>a
           <li>
             <div class="background-image" role="img" aria-label="Memorial Lawn" style="background-image: url(<%= image_url 'placeholder/chapman.jpg' %>)"></div>
           </li>
@@ -58,4 +42,9 @@
       <div class="gradient-overlay"></div>
     </div>
   </div>
+</div>
+
+<div id="googlemap">
+  <iframe width="100%" height="600px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=15&center=33.7933%2C-117.8514&key=AIzaSyBr3t0eLrBhOcI4Mxopv8NAiFfIXL4A62M"
+    allowfullscreen></iframe>
 </div>

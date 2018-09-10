@@ -1,0 +1,81 @@
+<group
+    collapsed="true"
+    identifier="subbrandMasthead"
+    label="Sub-Brand Page Masthead"
+    restrict-to-groups="Web-Coordinators, Administrators">
+    <group collapsed="true" identifier="headline" label="Headline">
+        <text help-text="Required Masthead Title" identifier="primary" label="Primary " required="true"/>
+        <text
+            help-text="Optional text displayed above title text"
+            identifier="secondary"
+            label="Secondary"/>
+    </group>
+    <group collapsed="true" identifier="slides" label="Backgrounds">
+        <group collapsed="true" identifier="slide" label="Background" multiple="false">
+            <text default="Image" identifier="type" label="Type" type="radiobutton">
+                <radio-item show-fields="masthead/subbrandMasthead/slides/slide/imageFile" value="Image"/>
+                <radio-item
+                    show-fields="masthead/subbrandMasthead/slides/slide/videoFile, masthead/subbrandMasthead/slides/slide/fallbackImageFile"
+                    value="Video"/>
+            </text>
+            <asset identifier="videoFile" label="Video File (.mp4 no larger than 10mb)" type="file"/>
+            <asset
+                identifier="fallbackImageFile"
+                label="Fallback Image File (Around 1600px by 1200px)"
+                type="file"/>
+            <asset identifier="imageFile" label="Image File (Around 1600px by 1200px)" type="file"/>
+            <text default="Center" identifier="alignY" label="Image Align" type="radiobutton">
+                <radio-item value="Top"/>
+                <radio-item value="Center"/>
+                <radio-item value="Bottom"/>
+            </text>
+            <text identifier="alternateText" label="Alternate Text" required="true"/>
+        </group>
+    </group>
+    <group collapsed="true" identifier="Buttons" label="Calls to Action">
+        <group identifier="button" label="Button" maximum-number="3" minimum-number="0" multiple="true">
+            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                <radio-item
+                    show-fields="masthead/subbrandMasthead/headline/Buttons/button/internalLink"
+                    value="Internal Link"/>
+                <radio-item
+                    show-fields="masthead/subbrandMasthead/headline/Buttons/button/externalLink"
+                    value="External Link"/>
+                <radio-item
+                    show-fields="masthead/subbrandMasthead/headline/Buttons/button/fileLink"
+                    value="File Link"/>
+            </text>
+            <text
+                help-text="full url (including http) to page outside of Cascade"
+                identifier="externalLink"
+                label="External Link"/>
+            <asset identifier="internalLink" label="Internal Link" type="page"/>
+            <asset identifier="fileLink" label="File Link" type="file"/>
+            <text identifier="label" label="Label"/>
+        </group>
+    </group>
+    <group identifier="dropdownNav" label="Dropdown Navigation">
+        <text identifier="dropdownLabel" label="Label"/>
+        <group identifier="dropdownLink" label="Link" multiple="true">
+            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                <radio-item
+                    show-fields="primaryContent/widget/textOnly/textFields/dropdownNav/dropdownLink/internalLink"
+                    value="Internal Link"/>
+                <radio-item
+                    show-fields="primaryContent/widget/textOnly/textFields/dropdownNav/dropdownLink/externalLink"
+                    value="External Link"/>
+                <radio-item
+                    show-fields="primaryContent/widget/textOnly/textFields/dropdownNav/dropdownLink/fileLink"
+                    value="File Link"/>
+            </text>
+            <text
+                help-text="full url (including http) to page outside of Cascade"
+                identifier="externalLink"
+                label="External Link"/>
+            <asset identifier="internalLink" label="Internal Link" type="page"/>
+            <asset identifier="fileLink" label="File Link" type="file"/>
+            <text identifier="label" label="Label"/>
+        </group>
+    </group>
+</group>
+</group>
