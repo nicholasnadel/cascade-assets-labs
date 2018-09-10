@@ -130,7 +130,6 @@ module ContentTypes
       render @configuration_set.template
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
-
     # GET /modular/two_column
     # Maps to Content Types/Modular/2 Column in Cascade.
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
@@ -303,6 +302,19 @@ module ContentTypes
              render_static_partial('widgets/single_column/messaging_1_column_facts'),
              render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
              render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
+    end
+
+    def render_static_one_column_primary_content_business_grad
+      # This reproduces content from static sample version
+      format("%s %s %s",
+            render_static_partial('widgets/single_column/messaging_1_column_text_left_grad'),
+            render_static_partial('widgets/single_column/messaging_1_column_video_grad'),
+            render_static_partial('widgets/single_column/cta_footer_grad'))
+            #  render_static_partial('widgets/single_column/call_to_action_block'),
+            #  render_static_partial('widgets/single_column/chapman_events_feed'),
+            #  render_static_partial('widgets/single_column/messaging_1_column_facts'),
+            #  render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
+            #  render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
     end
 
     def render_static_two_column_primary_content
