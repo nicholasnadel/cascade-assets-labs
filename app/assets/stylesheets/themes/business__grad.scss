@@ -1,16 +1,20 @@
-#theme.business_grad {
-  @include theme-color-classes($asbe-primary);
+#theme.business__graduate {
+  @include theme-color-classes(black);
+
+  h1, h2, h3 {
+    font-family: $futura-condensed;
+  }
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-    background: $asbe-primary; /* Old browsers */
+    background: black; /* Old browsers */
   }
 
   .nameBarButtons li a {
-    color: $asbe-primary;
+    color: black;
   }
 
   .rightColumn .styleTwo .border {
-    background-color: $asbe-tertiary;
+    background-color: $cu-dark-red;
   }
 
   .rightColumn .styleTwo a {
@@ -36,41 +40,41 @@
   }
 
   .rounded-slider .info-container .blue {
-    background-color: $asbe-primary;
+    background-color: black;
   }
 
   .newbutton a {
-    background-color: $asbe-primary;
+    background-color: $cu-red;
     &:hover {
-      background-color: $asbe-secondary;
+      background-color: $red-button-hover;
     }
     &:active {
-      background-color: $asbe-tertiary;
+      background-color: $cu-dark-red;
     }
   }
 
   .midPhotoCallouts .photoCallout .caption {
-    background-color: $asbe-primary;
+    background-color: black;
   }
 
   .photoCallouts {
     .caption, .rollover {
-      background-color: $asbe-primary;
+      background-color: black;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
-      background-color: $asbe-primary;
+      background-color: black;
     }
     .view-more-link {
-      background-color: $asbe-primary;
+      background-color: black;
     }
     .view-less-link {
-      background-color: $asbe-primary;
+      background-color: black;
     }
     .icon-triangle-up {
-      color: $asbe-primary;
+      color: black;
     }
   }
 }
