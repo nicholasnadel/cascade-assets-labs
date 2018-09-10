@@ -33,8 +33,7 @@
       &:hover {
 
         .heading {
-          color: #a50034;
-          text-decoration: underline;
+          color: $cu-link-hover;
         }
       }
   
@@ -50,15 +49,23 @@
       }
 
       .heading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         max-width: 13em;
         margin: auto;
         padding-top: 1em;
         font-size: 1.8em;
         font-weight: 600;
         font-family: $futura-regular;
-        color: $black;
+        color: $cu-red;
         text-transform: uppercase;
         text-align: center;
+
+        &::after {
+          content: "»";
+          padding: 0 0 3px 3px;
+        }
       }
     }
   }
