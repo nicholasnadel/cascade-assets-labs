@@ -8,6 +8,9 @@
             <radio-item show-fields="masthead/slider201611" value="Slider - New"/>
             <radio-item show-fields="masthead/boxes" value="Boxes"/>
             <radio-item value="No Masthead"/>
+            <radio-item show-fields="masthead/showMasthead, masthead/showImage, masthead/image, masthead/altText, masthead/description" value="Use OLD Masthead"/>
+            <radio-item show-fields="masthead/branded-masthead" value="Branded Masthead"/>
+            <radio-item show-fields="masthead/slider" value="Slider"/>
         </text>
         <!-- New masthead formats (Nov 2016): Branded and Slider -->
         <!-- These should mirror groups in three_column.xml -->
@@ -27,6 +30,16 @@
                     <text help-text="short caption (70 chars max including blanks) to show on photo eg. Photo By: or other text" identifier="photoCaption" label="Caption (optional. 70 chars max)" maxlength="70"/>
                 </group>
             </group>
+        </group>
+        <group identifier="branded-masthead" label="Branded Masthead">
+            <text default="No" identifier="display-image" label="Show" required="true" type="radiobutton">
+                <radio-item value="Yes"/>
+                <radio-item value="No"/>
+            </text>
+            <text identifier="header" label="Title"/>
+            <text identifier="sub-title" label="subTitle"/>
+            <asset identifier="image" label="Image (1130x220)" type="file"/>
+            <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
         </group>
         <group identifier="boxes" label="Boxes">
             <text default="No" identifier="show" label="Show" required="true" type="radiobutton">
@@ -53,6 +66,46 @@
                 </group>
             </group>
         </group>
+        <group identifier="slider" label="Slider (for landing pages only)">
+            <text default="No" identifier="display-slider" label="Show" required="true" type="radiobutton">
+                <radio-item value="Yes"/>
+                <radio-item value="No"/>
+            </text>
+            <group identifier="slides" label="Slides">
+                <group identifier="slide" label="Slide" maximum-number="10" minimum-number="1" multiple="true">
+                    <text identifier="header" label="Title"/>
+                    <text identifier="sub-title" label="subTitle"/>
+                    <text identifier="description" label="Description"/>
+                    <asset identifier="image" label="Image (1130x440)" type="file"/>
+                    <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+                    <text help-text="Will only display if the slide type is set to Quote" identifier="quote-author" label="Author Attribution"/>
+                    <text default="Transparent Black" identifier="text-background" label="Text Background" type="dropdown">
+                        <dropdown-item value="Transparent Black"/>
+                        <dropdown-item value="Solid Red"/>
+                    </text>
+                    <text default="bottom-left" help-text="This will align the quote box relative to the masthead. This will only work with the slide type of quote." identifier="align" label="Slide Align" type="dropdown">
+                        <dropdown-item value="bottom-left"/>
+                        <dropdown-item value="bottom-right"/>
+                    </text>
+                    <group identifier="link" label="Link">
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="link" label="External Link"/>
+                        <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="Or File Link" type="file"/>
+                    </group>
+                </group>
+            </group>
+        </group>
+        <text default="No" help-text="Becoming obsolete. Only here for legacy pages" identifier="showMasthead" label="Show Masthead" type="radiobutton">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+        </text>
+        <text default="No" help-text="for OLD Masthead. Indicates to use Image below instead of default image" identifier="showImage" label="Custom Image" type="radiobutton">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+        </text>
+        <asset help-text="for OLD Masthead. Large image to replace small default image" identifier="image" label="Image (1024x260)" type="file"/>
+        <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text"/>
+        <text help-text="for OLD Masthead. Visible caption under masthead image" identifier="description" label="Description" maxlength="150"/>
     </group>
     <group collapsed="true" identifier="leftColumn" label="Left Column">
         <group identifier="widget" label="Widget" multiple="true">
