@@ -177,7 +177,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Sub-Brand - Default')
       @data_definition = DataDefinitions::OneColumn.default
 
-      theme = params.fetch(:theme, 'law')
+      theme = params.fetch(:theme, 'subbrand')
       @current_page_path = "#{theme}/path/to/index.aspx"
 
       # Define configuration set regions.

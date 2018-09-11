@@ -2,6 +2,9 @@ $cardinal: #a50034;
 $cardinal-hover: #810029;
 $white-alpha: rgba(255, 255, 240, 0.8);
 $white-alpha-50: rgba(255, 255, 240, 0.5);
+$panther-black: #231f20;
+$theme-bg-color-alpha: transparent;
+$panther-black-alpha: rgba(35, 31, 32, 0.8);
 
 // #theme.subbrand {
 #theme.subbrand__business .subbrand-masthead-wrapper,
@@ -820,6 +823,24 @@ h1.headline.primary.title {
     position: relative;
   }
 
+  .marker-icon {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+  }
+
+  i.fas {
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0px 0px 2px #888;
+    padding: 0.5em 0.6em;
+    background-color: $cardinal;
+    color: $white;
+    font-size: 1.5em;
+  }
+
   .box {
     background-color: $white-alpha-50;
     width: 480px;
@@ -855,6 +876,7 @@ h1.headline.primary.title {
     color: $black;
     border: 2px solid $cardinal;
     height: 125px;
+    position: relative;
   }
 
   .address-inner {
@@ -867,6 +889,10 @@ h1.headline.primary.title {
     padding: 15%;
   }
 
+  .theme-button {
+    border-radius: 0;
+  }
+
   .red-button {
     font-family: $futura-regular;
     font-weight: 400;
@@ -875,7 +901,11 @@ h1.headline.primary.title {
     background-color: $cardinal;
     margin-top: 12px;
     display: block !important;
+  }
 
+  .google-maps-link,
+  .login-control {
+    display: none;
   }
 
   @media screen and (max-width: 1480px) {}
