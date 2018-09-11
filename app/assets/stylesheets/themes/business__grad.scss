@@ -1,7 +1,7 @@
 #theme.business__graduate {
   @include theme-color-classes(black);
 
-  h1, h2, h3 {
+  .header h2.header {
     font-family: $futura-condensed;
   }
 
@@ -25,17 +25,6 @@
   .expandedNameBarContainer {
     h2, a {
       color: #95d2e8;
-    }
-  }
-
-  #social_follow_us {
-    .banner {
-      background-image: image-url('asbe_follow_us.png');
-    }
-    li span {
-      &.hover_state, &.inactive_state {
-        background-image: image-url('asbe_icons.png');
-      }
     }
   }
 

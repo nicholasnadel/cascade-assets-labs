@@ -24,17 +24,6 @@
     }
   }
 
-  #social_follow_us {
-    .banner {
-      background-image: image-url('asbe_follow_us.png');
-    }
-    li span {
-      &.hover_state, &.inactive_state {
-        background-image: image-url('asbe_icons.png');
-      }
-    }
-  }
-
   .rounded-slider .info-container .blue {
     background-color: $cu-red;
   }
