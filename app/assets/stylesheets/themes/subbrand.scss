@@ -1,6 +1,7 @@
 // #theme.subbrand {
 #theme.subbrand__business .subbrand-masthead-wrapper,
-.subrand-masthead-wrapper {
+.subrand-masthead-wrapper,
+#theme.business {
   @include theme-color-classes($red);
 
   * {
@@ -764,6 +765,7 @@ h1.headline.primary.title {
 
 #theme.grad-business,
 #theme.subbrand__grad-business,
+#theme.business__grad,
 .subpage-masthead {
   .brochure-masthead .foreground-content {
     text-align: left;
