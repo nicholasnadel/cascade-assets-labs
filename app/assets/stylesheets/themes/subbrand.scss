@@ -1,3 +1,8 @@
+$cardinal: #a50034;
+$cardinal-hover: #810029;
+$white-alpha: rgba(255, 255, 240, 0.8);
+$white-alpha-50: rgba(255, 255, 240, 0.5);
+
 // #theme.subbrand {
 #theme.subbrand__business .subbrand-masthead-wrapper,
 .subrand-masthead-wrapper {
@@ -807,9 +812,32 @@ h1.headline.primary.title {
 }
 
 .googlemap-container {
+  * {
+    transition: 1s ease
+  }
+
+  .googlemap-inner {
+    position: relative;
+  }
+
   .box {
     background-color: $white-alpha-50;
+    width: 480px;
     max-width: 480px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 100%;
+  }
+
+  .box-inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 15%;
   }
 
   .box-header {
@@ -819,11 +847,24 @@ h1.headline.primary.title {
     color: $cardinal;
   }
 
-  .address {
+  .address-wrapper {
+    margin-top: 65px;
     font-family: $futura-regular;
     font-weight: 400;
     font-size: 18px;
     color: $black;
+    border: 2px solid $cardinal;
+    height: 125px;
+  }
+
+  .address-inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 15%;
   }
 
   .red-button {
@@ -831,7 +872,22 @@ h1.headline.primary.title {
     font-weight: 400;
     font-size: 16px;
     color: $white;
+    background-color: $cardinal;
+    margin-top: 12px;
+    display: block !important;
+
   }
 
   @media screen and (max-width: 1480px) {}
+
+  @media screen and (max-width: 1480px) {}
+
+  @media screen and (max-width: 1480px) {}
+
+  @media screen and (max-width: 780px) {
+    .box {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
 }
