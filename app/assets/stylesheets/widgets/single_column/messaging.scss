@@ -391,7 +391,8 @@
   
   .primary-content.one-column {
 
-    .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.graduate {
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.graduate,
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.graduate {
       min-height: 500px;
       background-color: white;
 
@@ -413,7 +414,7 @@
             height: 250px;
             width: 250px;
             border-radius: 50%;
-            border: 2px solid #a50034;
+            border: 2px solid $cu-red;
             object-fit: cover;
           }
         }
@@ -483,7 +484,16 @@
         }
       }
     }
-    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-right.video-graduate {
+
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.graduate {
+      
+      .outer-container {
+        flex-direction: row-reverse;
+      }
+    }
+
+    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-right.video-graduate,
+    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-left.video-graduate {
       
       .links-heading {
         font-size: 20px;
