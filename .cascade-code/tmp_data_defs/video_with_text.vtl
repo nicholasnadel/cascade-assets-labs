@@ -1,0 +1,148 @@
+<group collapsed="true" identifier="videoWithText" label="Video with Text">
+  <text default="Yes" identifier="display-video-with-text" label="Show" type="radiobutton">
+    <radio-item value="Yes"/>
+    <radio-item value="No"/>
+  </text>
+  <text default="one-column-page" help-text="Choose page type for video with text widget" identifier="videoWithTextPageType" label="For" type="dropdown">
+    <dropdown-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText" value="One Column"/>
+    <dropdown-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithTextGraduate" value="One Column Graduate"/>
+  </text>
+  <group collapsed="true" identifier="oneColumnVideoWithText">
+    <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Video Positions" type="dropdown">
+      <dropdown-item value="Stacked"/>
+      <dropdown-item show-fields="primaryContent/widget/videoWithText/textFields/textAlign" value="Side by side"/>
+    </text>
+    <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
+      <radio-item value="Light"/>
+      <radio-item value="Medium"/>
+      <radio-item value="Dark"/>
+    </text>
+    <text help-text="Example: `https://youtu.be/jhz862KOstA` or `https://vimeo.com/194384917`" identifier="videoShareLink" label="Youtube or Vimeo Share Link"/>
+    <group collapsed="true" identifier="textFields" label="Text Fields">
+      <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
+        <radio-item value="Left"/>
+        <radio-item value="Right"/>
+      </text>
+      <text identifier="category" label="Category"/>
+      <text identifier="title" label="Title"/>
+      <text identifier="body" label="Content" wysiwyg="true"/>
+      <group identifier="button" label="Button">
+        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText/textFields/button/internalLink" value="Internal Link"/>
+          <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText/textFields/button/externalLink" value="External Link"/>
+          <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText/textFields/button/fileLink" value="File Link"/>
+        </text>
+        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+        <asset identifier="internalLink" label="Internal Link" type="page"/>
+        <asset identifier="fileLink" label="File Link" type="file"/>
+        <text identifier="label" label="Label"/>
+      </group>
+      <group identifier="dropdownNav" label="Dropdown Navigation">
+        <text identifier="dropdownLabel" label="Label"/>
+        <group identifier="dropdownLink" label="Link" multiple="true">
+          <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+            <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+            <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+            <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithText/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+          </text>
+          <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+          <asset identifier="internalLink" label="Internal Link" type="page"/>
+          <asset identifier="fileLink" label="File Link" type="file"/>
+          <text identifier="label" label="Label"/>
+        </group>
+      </group>
+    </group>
+  </group>
+  <group collapsed="true" identifier="oneColumnVideoWithTextGraduate">
+    <text help-text="Example: `https://youtu.be/jhz862KOstA` or `https://vimeo.com/194384917`" identifier="videoShareLink" label="Youtube or Vimeo Share Link"/>
+    <group collapsed="true" identifier="textFields" label="Text Fields">
+      <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
+        <radio-item value="Left"/>
+        <radio-item value="Right"/>
+      </text>
+      <text identifier="category" label="Category"/>
+      <text identifier="title" label="Title"/>
+      <text identifier="body" label="Content" wysiwyg="true"/>
+      <text identifier="linksHeading" label="Link Heading"/>
+      <group identifier="links" label="Links" maximum-number="2" minimum-number="0" multiple="true">
+        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithTextGraduate/textFields/links/internalLink" value="Internal Link"/>
+          <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithTextGraduate/textFields/links/externalLink" value="External Link"/>
+          <radio-item show-fields="primaryContent/widget/videoWithText/oneColumnVideoWithTextGraduate/textFields/links/fileLink" value="File Link"/>
+        </text>
+        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+        <asset identifier="internalLink" label="Internal Link" type="page"/>
+        <asset identifier="fileLink" label="File Link" type="file"/>
+        <text identifier="label" label="Label"/>
+      </group>
+    </group>
+  </group>
+</group>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////ORIGINAL//////////
+<group collapsed="true" identifier="videoWithText" label="Video with Text">
+  <text default="Yes" identifier="display-video-with-text" label="Show" type="radiobutton">
+    <radio-item value="Yes"/>
+    <radio-item value="No"/>
+  </text>
+  <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Video Positions" type="dropdown">
+    <dropdown-item value="Stacked"/>
+    <dropdown-item show-fields="primaryContent/widget/videoWithText/textFields/textAlign" value="Side by side"/>
+  </text>
+  <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
+    <radio-item value="Light"/>
+    <radio-item value="Medium"/>
+    <radio-item value="Dark"/>
+  </text>
+  <text help-text="Example: `https://youtu.be/jhz862KOstA` or `https://vimeo.com/194384917`" identifier="videoShareLink" label="Youtube or Vimeo Share Link"/>
+  <group collapsed="true" identifier="textFields" label="Text Fields">
+    <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
+      <radio-item value="Left"/>
+      <radio-item value="Right"/>
+    </text>
+    <text identifier="category" label="Category"/>
+    <text identifier="title" label="Title"/>
+    <text identifier="body" label="Content" wysiwyg="true"/>
+    <group identifier="button" label="Button">
+      <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+        <radio-item show-fields="primaryContent/widget/videoWithText/textFields/button/internalLink" value="Internal Link"/>
+        <radio-item show-fields="primaryContent/widget/videoWithText/textFields/button/externalLink" value="External Link"/>
+        <radio-item show-fields="primaryContent/widget/videoWithText/textFields/button/fileLink" value="File Link"/>
+      </text>
+      <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+      <asset identifier="internalLink" label="Internal Link" type="page"/>
+      <asset identifier="fileLink" label="File Link" type="file"/>
+      <text identifier="label" label="Label"/>
+    </group>
+    <group identifier="dropdownNav" label="Dropdown Navigation">
+      <text identifier="dropdownLabel" label="Label"/>
+      <group identifier="dropdownLink" label="Link" multiple="true">
+        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item show-fields="primaryContent/widget/videoWithText/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+          <radio-item show-fields="primaryContent/widget/videoWithText/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+          <radio-item show-fields="primaryContent/widget/videoWithText/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+        </text>
+        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+        <asset identifier="internalLink" label="Internal Link" type="page"/>
+        <asset identifier="fileLink" label="File Link" type="file"/>
+        <text identifier="label" label="Label"/>
+      </group>
+    </group>
+  </group>
+</group>

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   scope module: 'content_types' do
     get '/modular/spike', to: 'modular#spike'
     get '/modular/ad_landing', to: 'modular#ad_landing'
+    get '/modular/one_column_business_graduate', to: 'modular#one_column_business_graduate'
     get '/modular/one_column', to: 'modular#one_column'
     get '/modular/one_column_business_graduate', to: 'modular#one_column_business_graduate'
     get '/modular/subbrand_default', to: 'modular#one_column_subbrand_default'
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
 
     get '/modular/two_column', to: 'modular#two_column'
     get '/modular/three_column', to: 'modular#three_column'
+    get '/modular/three_column_business', to: 'modular#three_column_business'
 
     # Next 2 point to the same action
     get '/school_home_pages/slideshow', to: 'school_home_pages#slideshow'

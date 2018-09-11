@@ -385,3 +385,146 @@
     margin: $base-spacing $base-spacing 0;
   }
 }
+
+/* Business & Law Grad Theme */
+#theme.business__graduate, #theme.law {
+  
+  .primary-content.one-column {
+
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.graduate,
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.graduate {
+      min-height: 500px;
+      background-color: white;
+
+      .outer-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding: 0;
+
+        @include bp(wildcard-max, 780px) {
+          flex-direction: column;
+        }
+
+        .column.media-column {
+          height: auto;
+          width: auto;
+
+          img {
+            height: 250px;
+            width: 250px;
+            border-radius: 50%;
+            border: 2px solid $cu-red;
+            object-fit: cover;
+          }
+        }
+
+        .text-column {
+          width: 75%;
+          padding: 0 0 0 35px;
+          margin: 0;
+
+          @include bp(wildcard-max, 780px) {
+            width: 100%;
+            padding: 0 35px 0 35px;
+          }
+
+          .section-message {
+
+            .category {
+              color: #a50034;
+              font-weight: 700;
+
+              @include bp(wildcard-max, 780px) {
+                text-align: center;
+              }
+            }
+
+            .title {
+              color: #231f20;
+              font-weight: 700;
+
+              @include bp(wildcard-max, 780px) {
+                text-align: center;
+              }
+            }
+
+            .body.editableContent {
+              color: #231f20;
+            }
+
+            .text-actions {
+              display: flex;
+              justify-content: space-between;
+              max-width: 100%;
+              margin-top: 30px;
+
+              @include bp(wildcard-max, 480px) {
+                flex-direction: column;
+              }
+
+              .theme-button {
+                background: #a50034;
+                width: 49%;
+
+                &:hover {
+                  background-color: #C8003F;
+                }
+
+                @include bp(wildcard-max, 480px) {
+                  width: 100%;
+
+                  &:nth-child(1) {
+                    margin-bottom: 15px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.graduate {
+      
+      .outer-container {
+        flex-direction: row-reverse;
+
+        @include bp(wildcard-max, 780px) {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-right.video-graduate,
+    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-left.video-graduate {
+      
+      .links-heading {
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: $futura-regular;
+        font-weight: 700;
+        color: white;
+      }
+
+      .text-actions {
+        max-width: 100%;
+
+        @include bp(wildcard-max, 480px) {
+          text-align: left;
+        }
+
+        a {
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 26px;
+          border-bottom: 2px solid white;
+
+          &:hover {
+            color: rgba(255, 255, 255, 0.8);
+          }
+        }
+      }
+    }
+  }
+}

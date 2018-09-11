@@ -77,8 +77,7 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_image_slider'),
-        'IMAGE_SLIDER' => cascade_format('_cascade/formats/modular/one_column_image_slider'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
@@ -95,7 +94,7 @@ module ContentTypes
     end
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
-    # GET /modular/one_column_business_graduate
+# GET /modular/one_column_business_graduate
     # Maps to Content Types/Modular/1 Column in Cascade.
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def one_column_business_graduate
@@ -115,7 +114,7 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_sub_brand'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_business_graduate'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
@@ -130,247 +129,7 @@ module ContentTypes
 
       render @configuration_set.template
     end
-    # GET /modular/one_column_business_graduate
-    # Maps to Content Types/Modular/1 Column in Cascade.
-    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-
-    # GET /modular/two_column
-    # Maps to Content Types/Modular/2 Column in Cascade.
-    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
-
-    def one_column_subbrand_business
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Sub-Brand - Business')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      # theme = params.fetch(:theme, 'subbrand__business')
-      theme = params.fetch(:theme, 'subbrand__business')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_subbrand'),
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
-    def one_column_subbrand_default
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Sub-Brand - Default')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      theme = params.fetch(:theme, 'law')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('widgets/masthead/subbrand_masthead.html'), 
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
-    def one_column_subbrand_fowler_law
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Sub-Brand - Business')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      theme = params.fetch(:theme, 'subbrand__fowler_law')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_subbrand'),
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
-    def one_column_subbrand_grad_business
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Sub-Brand - Grad Business')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      theme = params.fetch(:theme, 'subbrand__grad_business')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead_subbrand'),
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
-    def one_column_image_slider
-      @configuration_set = ConfigurationSet.image_slider
-      @metadata_set = MetadataSet.page(title: 'Image Slider')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      theme = params.fetch(:theme, 'students')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_image_slider_business'),
-        'IMAGE_SLIDER' => render_static_partial('widgets/shared/image_slider'),
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
-    def one_column_business_image_slider
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Image Slider - Business')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      theme = params.fetch(:theme, 'image_slider_law')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_image_slider_business'),
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
-    def one_column_law_image_slider
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Image Slider - Business')
-      @data_definition = DataDefinitions::OneColumn.default
-
-      theme = params.fetch(:theme, 'image_slider_law')
-      @current_page_path = "#{theme}/path/to/index.aspx"
-
-      # Define configuration set regions.
-      @configuration_set.regions = {
-        'ADDITIONAL BODY AT-END' => '',
-        'ADDITIONAL HEAD' => '',
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'GOOGLE_ANALYTICS' => '',
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_image_slider_business'),
-        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
-        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-
-        # TODO: convert these to cascade_format action.
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial(footer_path)
-      }
-
-      render @configuration_set.template
-    end
-
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
     # GET /modular/two_column
     # Maps to Content Types/Modular/2 Column in Cascade.
     # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
@@ -463,7 +222,55 @@ module ContentTypes
         'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
         'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
         'FEATURED NEWS EVENTS FEEDS' => 'TODO: _cascade/formats/modular/meta/' \
-        'Featured News Events Feeds',
+                                        'Featured News Events Feeds',
+        'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'LEFT COLUMN CONTENT' => render_static_three_column_left_column,
+        'LEFT NAV' => 'TODO: _cascade/formats/level/LeftNav_Velocity',
+        'MASTHEAD' => cascade_format('_cascade/formats/level/masthead'),
+        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
+        'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
+        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
+        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
+        'PRIMARY CONTENT' => render_static_three_column_primary_content,
+        'RIGHT COLUMN CONTENT' => render_static_three_column_right_column,
+        'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
+
+        # TODO: convert these to cascade_format action.
+        'GLOBAL FOOTER' => render_static_partial('_cascade/blocks/html/footer'),
+        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav')
+      }
+
+      render @configuration_set.template
+    end
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
+
+    # GET /modular/one_column_business
+    # Maps to Content Types/Modular/3 Column in Cascade.
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+    def three_column_business
+      @configuration_set = ConfigurationSet.three_column
+      @metadata_set = MetadataSet.page(title: 'Business Graduate')
+      @data_definition = DataDefinitions::ThreeColumn.default
+
+      theme = params.fetch(:theme, 'business__graduate')
+      @current_page_path = "#{theme}/path/to/index.aspx"
+      @data_definition.set_value(:masthead_type, 'Branded - New')
+
+      # Define configuration set regions.
+      @configuration_set.regions = {
+        # Blank Regions
+        'ADDITIONAL BODY AT-END' => '',
+        'ADDITIONAL HEAD' => '',
+
+        # Dynamic Regions
+        'BREADCRUMBS' => 'TODO: _cascade/formats/level/Breadcrumbs',
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
+        'FEATURED NEWS EVENTS FEEDS' => 'TODO: _cascade/formats/modular/meta/' \
+                                        'Featured News Events Feeds',
         'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
@@ -512,16 +319,16 @@ module ContentTypes
       # This reproduces content from static sample version.
       primary_content = <<-HTML
       <div id="column-container" class="ad-landing-column-container">
-      <div id="left-column" class="ad-landing-left-column">
-      <h2 class="ad-landing-title">%s</h2>
-      %s
-      %s
-      </div>
-      <div id="right-column" class="ad-landing-right-column">
-      %s
-      %s
-      %s
-      </div>
+        <div id="left-column" class="ad-landing-left-column">
+          <h2 class="ad-landing-title">%s</h2>
+          %s
+          %s
+        </div>
+        <div id="right-column" class="ad-landing-right-column">
+          %s
+          %s
+          %s
+        </div>
       </div>
       HTML
 
@@ -536,12 +343,26 @@ module ContentTypes
 
     def render_static_one_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s %s",
+      format("%s %s %s %s %s %s",
              render_static_partial('widgets/single_column/call_to_action_block'),
+             render_static_partial('widgets/primary_content/multi_photo_callout'),
              render_static_partial('widgets/single_column/chapman_events_feed'),
              render_static_partial('widgets/single_column/messaging_1_column_facts'),
              render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
              render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
+    end
+
+    def render_static_one_column_primary_content_business_grad
+      # This reproduces content from static sample version
+      format("%s %s %s",
+            render_static_partial('widgets/single_column/messaging_1_column_text_left_grad'),
+            render_static_partial('widgets/single_column/messaging_1_column_video_grad'),
+            render_static_partial('widgets/single_column/cta_footer_grad'))
+            #  render_static_partial('widgets/single_column/call_to_action_block'),
+            #  render_static_partial('widgets/single_column/chapman_events_feed'),
+            #  render_static_partial('widgets/single_column/messaging_1_column_facts'),
+            #  render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
+            #  render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
     end
 
     def render_static_two_column_primary_content

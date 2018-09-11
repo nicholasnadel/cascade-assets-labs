@@ -1,164 +1,167 @@
 #theme.law {
   @include theme-color-classes($law-primary);
-  
   .bigMasthead header {
-    @include media(1024px) { margin: 0; }
-    @include media(1120px) { margin: 30px 0; }
+    @include media(1024px) {
+      margin: 0;
+    }
+    @include media(1120px) {
+      margin: 30px 0;
+    }
   }
-
   .logo {
-    background: image-url('logo_law_alternate.svg') ;
+    background: image-url('logo_law_alternate.svg');
     background-repeat: no-repeat;
     height: 57px;
     width: 200px;
     margin: 0 auto $base-spacing auto;
-    @include bp(m) { margin: 0 $base-spacing $base-spacing $base-spacing;}
-    @include media(1120px) { margin: -13px $base-spacing 0 0; }
+    @include bp(m) {
+      margin: 0 $base-spacing $base-spacing $base-spacing;
+    }
+    @include media(1120px) {
+      margin: -13px $base-spacing 0 0;
+    }
   }
-
   .collapsedNav {
     margin: 115px 0 0 0;
   }
-
-  .mainNavLinks > li > a {
+  .mainNavLinks>li>a {
     background-color: $law-primary;
   }
-
   .mainNavLinks .mainNavLinksAfter,
   .mainNavLinks .mainNavLinksAfter:hover {
     background-color: $law-primary !important;
   }
-
   @include bp(m) {
     .ie8 .subNavLinks {
       border-right: 1px solid #00307c;
       border-bottom: 1px solid #00307c;
       border-left: 1px solid #00307c;
     }
-
     .mainNav .icon {
       margin-left: 0;
     }
-
     .mainNav .icon:before {
       display: none;
     }
   }
-
   .nameBarButtons li a {
     color: #00307c;
   }
-
   .expandedNameBarContainer h2,
   .expandedNameBarContainer a,
   div.styleTwo a {
     color: #99afda;
   }
-
   .smallMasthead .masthead,
   .bigMasthead .masthead,
   .nameBar {
     background: #00307c;
   }
-
   #social_follow_us .banner {
     background-image: image-url('law_follow_us.png');
   }
-  
   #social_follow_us li span.hover_state,
   #social_follow_us li span.inactive_state {
     background-image: image-url('law_icons.png');
   }
-
   .ie8 .slideDescription,
-  .ie9 .slideDescription{
+  .ie9 .slideDescription {
     display: none !important;
   }
-
   .mainNavExpand a {
     background-color: $law-primary;
   }
-
-  .mainNavLinks > li {
+  .mainNavLinks>li {
     background-color: #353430;
   }
-
   /* ==|== media queries ====================================================== */
   @include bp(m) {
-
     header {
       padding: 0 0 15px 0;
     }
-
     .infoFor {
       width: 600px;
     }
-
     .mainNavLinks {
       background-image: image-url('ribbon_tails_law.png');
     }
-
-    .mainNavLinks > li.noSubNav > a {
-      padding:0 !important;
+    .mainNavLinks>li.noSubNav>a {
+      padding: 0 !important;
     }
-
-    .mainNavLinks > li:hover{
-      background-color:transparent;
+    .mainNavLinks>li:hover {
+      background-color: transparent;
     }
-
-    .mainNavLinks > li > a > span {
+    .mainNavLinks>li>a>span {
       padding-left: 12px;
       padding-right: 12px;
     }
-
     .mainNavLinks,
-    .mainNavLinks > li,
-    .mainNavLinks > li.noSubNav:hover {
+    .mainNavLinks>li,
+    .mainNavLinks>li.noSubNav:hover {
       background-color: $law-primary;
     }
-
   }
-
   @include media(1120px) {
-
-    .mainNavLinks{
+    .mainNavLinks {
       background-color: transparent;
     }
   }
-
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  background: $law-primary; /* Old browsers */
+  .smallMasthead .masthead,
+  .smallMasthead .masthead-old,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .bigMasthead .masthead-old,
+  .nameBar,
+  .rightColumn .styleTwo {
+    background: $law-primary;
+    /* Old browsers */
   }
-  
-  .rightColumn .styleTwo .border { background-color: #002663; }
-  .styleTwo p {color: $white;}
-  .styleTwo li {color: $white;}
-  .styleTwo div {color: $white;}
-  .styleTwo h2 {color: $white;}
-  .styleTwo h3 {color: $white;}
-  .rightColumn .styleTwo a {color: $white; border-bottom: 2px dotted #61728d;}
-
-  .nameBarButtons li a { color: $law-primary;}
-  .expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
-
+  .rightColumn .styleTwo .border {
+    background-color: #002663;
+  }
+  .styleTwo p {
+    color: $white;
+  }
+  .styleTwo li {
+    color: $white;
+  }
+  .styleTwo div {
+    color: $white;
+  }
+  .styleTwo h2 {
+    color: $white;
+  }
+  .styleTwo h3 {
+    color: $white;
+  }
+  .rightColumn .styleTwo a {
+    color: $white;
+    border-bottom: 2px dotted #61728d;
+  }
+  .nameBarButtons li a {
+    color: $law-primary;
+  }
+  .expandedNameBarContainer h2,
+  .expandedNameBarContainer a,
+  div.styleTwo a {
+    color: #99afda;
+  }
   #social_follow_us .banner {
     background-image: image-url('law_follow_us.png');
   }
-  
-  #social_follow_us li span.hover_state, #social_follow_us li span.inactive_state {
+  #social_follow_us li span.hover_state,
+  #social_follow_us li span.inactive_state {
     background-image: image-url('law_icons.png');
   }
-
-  .rounded-slider .info-container .blue{
+  .rounded-slider .info-container .blue {
     background-color: $law-primary;
     background-image: -webkit-gradient(linear, left top, left bottom, from($law-primary), to($law-secondary));
     background-image: -webkit-linear-gradient(top, $law-primary, $law-secondary);
     background-image: -moz-linear-gradient(top, $law-primary, $law-secondary);
     background-image: -o-linear-gradient(top, $law-primary, $law-secondary);
     background-image: linear-gradient(to bottom, $law-primary, $law-secondary);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b', GradientType=1);
   }
-
   .newbutton a {
     background-color: $law-primary;
     &:hover {
@@ -168,110 +171,82 @@
       background-color: #002562;
     }
   }
-  
   .midPhotoCallouts .photoCallout .caption,
   .photoCallouts .caption,
-  .photoCallouts .rollover{
+  .photoCallouts .rollover {
     background-color: $law-primary;
   }
-
-  
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
-      background-color: $law-primary;;
+      background-color: $law-primary;
+      ;
     }
     .view-more-link {
-      background-color: $law-primary;;
+      background-color: $law-primary;
+      ;
     }
     .view-less-link {
-      background-color: $law-primary;;
+      background-color: $law-primary;
+      ;
     }
     .icon-triangle-up {
-      color: $law-primary;;
+      color: $law-primary;
+      ;
     }
   }
-
   /* Footer */
-
   .footer {
     .inner-container {
-
       .footer-section.footer-menu {
-        grid-template-rows: 25em 6em 12em 8em;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-
-        @include bp(mx) {
-          grid-template-rows: 25em 15em 4em 12em 8em;;
-          grid-template-columns: 1fr 1fr 1fr;
-        }
-      }
-
-      .menu-section {
-        margin-bottom: 0;
-
-        &:nth-child(3) {
-          grid-row: 1 / span 1;
-          grid-column: 4 / span 1;
-          align-self: flex-end;
-          -ms-grid-row-align: end;
-        }
-
-        @include bp(mx) {
-          
+        .menu-section {
+          margin-bottom: 0;
+          &:nth-child(1) { flex: 0 0 40%; }
           &:nth-child(2) {
-            grid-column: 3 / span 1;
-            grid-row: 1 / span 1;
+            flex: 0 0 25%;
+
+            .link-container { width: 100%; }
           }
 
-          &:nth-child(3) {
-            grid-row: 2 / span 1;
-            grid-column: 1 / span 1;
-            align-self: flex-start;
-            -ms-grid-column-align: start;
+          &:nth-child(3) { flex: 0 0 20%; }
+
+          @include bp(lx) {
+            &:nth-child(1) { flex: 0 0 75%; }
+            &:nth-child(2) { flex: 0 0 25%; }
+            &:nth-child(3) { flex: 0 0 75%; }
+          }
+
+          @include bp(mx) {
+            &:nth-child(1) { flex: 0 0 75%; }
+            &:nth-child(2) { flex: 0 0 25%; }
+            &:nth-child(3) { flex: 0 0 75%; }
+          }
+
+          @include bp(sx) {
+            &:nth-child(1), 
+            &:nth-child(2), 
+            &:nth-child(3) { -ms-flex: auto; }
+
+            &:nth-child(3) { order: 3; }
+            
           }
         }
 
-        @include bp(sx) {
-
-          &:nth-child(3) {
-            order: 3;
-            align-self: center;
-            -ms-grid-column-align: center;
-          }
+        .campus-addresses {
+          flex: 0 0 15%;
+          @include bp(lx) { flex: 0 0 25%; } 
+          @include bp(sx) { -ms-flex: auto; }
         }
-      }
 
-      .campus-addresses {
-        @include bp(mx) {
-          grid-column: 3 / span 1;
+        .link-container {
+          margin-bottom: 2em;
+          @include bp(sx) { width: 100%; }
         }
-      }
 
-      .back-to-top {
-        grid-row: 3 / span 1;
-
-        @include bp(mx) {
-          grid-row: 4 / span 1;
-        }
-      }
-
-      .copyright {
-        grid-row: 4 / span 1;
-
-        @include bp(mx) {
-          grid-row: 5 / span 1;
-        }
-      }
-
-      .link-container {
-        margin-bottom: 2em;
-      }
-      .weather {
-        grid-column: 1 / span 5;
-        justify-self: center;
-
-        @include bp(mx) {
-          grid-row: 3 / span 1;
+        .weather {
+          justify-content: center;
+          @include bp(lx) { flex: 0 0 100%; }
+          @include bp(mx) { padding: 0; }
+          @include bp(sx) { -ms-flex: auto; }
         }
       }
     }

@@ -1,0 +1,63 @@
+#macro(outputByTheNumbers $element)  
+##
+#set ($heading = $element.getChild('byTheNumbers').getChild('byTheNumbersHeading').value )
+#set ($rankings = $_XPathTool.selectNodes($element.getChild('byTheNumbers'), 'rankings') )
+#set ($link = $_XPathTool.selectNodes($element.getChild('byTheNumbers'), 'link') )
+#set ($buttonLinkType = $element.getChild('byTheNumbers').getChild('link').getChild('linkType').value )
+#set ($buttonText = $element.getChild('byTheNumbers').getChild('link').getChild('buttonText').value )
+
+
+<div class="by-the-numbers-widget">
+    <div class="by-the-numbers-container">
+        <div class="title">
+            ##set ($byTheNumbersHeading = $heading.getChild('byTheNumbersHeading').value )
+            <h2>${heading}</h2>
+            <img src="/_assets/background-lines-669219e96c5f0c601a17c4fa7d450d166ead131372cc244c37db7166a9affd64.png" alt="by the numbers image background"/>
+        </div>
+        <div class="number-ranks">
+            #foreach($ranks in $rankings)
+                #set ($rankType = $ranks.getChild('rank').getChild('rankType').value )
+                #set ($rankDescription = $ranks.getChild('rankingDescription').value )
+                #set ($rankText = $ranks.getChild('rankingText').value )
+                #set ($rankValClass= "")
+                #if ($rankType == 'Rank')
+                    #set($rankVal = $ranks.getChild('rank').getChild('rank').value )
+                    #set($rankSymbol = "#")
+                #elseif ($rankType == 'Percentage')
+                    #set($rankVal = $ranks.getChild('rank').getChild('percentage').value )
+                    #set($rankSymbol = "%")
+                #else
+                    #set($rankVal = $ranks.getChild('rank').getChild('number').value )
+                    #set($rankValClass= "number")
+                    #set($rankSymbol = "")
+                #end
+                #if($rankType == 'Percentage')
+                    <div class="rank">
+                        <span></span>
+                        <span class="${rankValClass}">${_EscapeTool.xml($rankVal)}</span>
+                        <span>${_EscapeTool.xml($rankSymbol)}</span>
+                        <span>${_EscapeTool.xml($rankDescription)}</span>
+                    </div>
+                #else
+                    <div class="rank">
+                        <span>${_EscapeTool.xml($rankSymbol)}</span>
+                        <span>${_EscapeTool.xml($rankVal)}</span>
+                        <span class="text">${_EscapeTool.xml($rankText)}</span>
+                        <span>${_EscapeTool.xml($rankDescription)}</span>
+                    </div>
+                #end
+                
+            #end
+        </div>
+        #if ($buttonLinkType == 'Internal Link')
+            #set ($buttonLinkURL = $element.getChild('byTheNumbers').getChild('link').getChild('internalLink').getChild('path').value )
+        #elseif ($buttonLinkType == 'External Link')
+            #set ($buttonLinkURL = $element.getChild('byTheNumbers').getChild('link').getChild('externalLink').value )
+        #else 
+            #set ($buttonLinkURL = $element.getChild('byTheNumbers').getChild('link').getChild('fileLink').getChild('path').value )
+        #end
+        <a href="${buttonLinkURL}" id="numbers-button" class="theme-button">${buttonText}</a>
+    </div>
+</div>
+##
+#end
