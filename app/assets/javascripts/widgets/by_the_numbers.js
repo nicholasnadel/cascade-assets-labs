@@ -13,7 +13,6 @@ $(function () {
     $('.counter').each(function(idx) {
       var $this = $(this),
           countTo = $this.attr('data-count');
-          debugger
       if( $this.isOnScreen() && !byTheNumberscounted['counter' + idx] ) {
         byTheNumberscounted['counter' + idx] = true;
         $({ countNum: $this.text()}).animate({
