@@ -489,6 +489,10 @@
       
       .outer-container {
         flex-direction: row-reverse;
+
+        @include bp(wildcard-max, 780px) {
+          flex-direction: column;
+        }
       }
     }
 
