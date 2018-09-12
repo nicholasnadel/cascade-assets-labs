@@ -102,7 +102,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Business Graduate')
       @data_definition = DataDefinitions::OneColumn.default
 
-      theme = params.fetch(:theme, 'business__grad')
+      theme = params.fetch(:theme, 'law')
       @current_page_path = "#{theme}/path/to/index.aspx"
 
       # Define configuration set regions.
@@ -123,7 +123,7 @@ module ContentTypes
         # TODO: convert these to cascade_format action.
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
         'NAVIGATION' => render_static_partial(navigation_path),
-        'PRIMARY CONTENT' => render_static_one_column_primary_content,
+        'PRIMARY CONTENT' => render_static_one_column_primary_content_business_grad,
         'GLOBAL FOOTER' => render_static_partial(footer_path)
       }
 

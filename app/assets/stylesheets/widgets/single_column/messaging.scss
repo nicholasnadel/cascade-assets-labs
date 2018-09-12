@@ -432,7 +432,7 @@
           .section-message {
 
             .category {
-              color: #a50034;
+              color: $cu-red;
               font-weight: 700;
 
               @include bp(wildcard-max, 780px) {
@@ -464,7 +464,7 @@
               }
 
               .theme-button {
-                background: #a50034;
+                background: $cu-red;
                 width: 49%;
 
                 &:hover {
@@ -496,8 +496,12 @@
       }
     }
 
-    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-right.video-graduate,
-    .messaging-widget.messaging-widget__2-column.messaging-widget__dark-bg.messaging-widget__text-left.video-graduate {
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.video-graduate,
+    .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.video-graduate {
+      background-color: #2f2f2f;
+      color: white;
+
+      .category { color: white;}
       
       .links-heading {
         font-size: 20px;
@@ -517,6 +521,7 @@
         a {
           font-size: 16px;
           font-weight: bold;
+          color: white;
           line-height: 26px;
           border-bottom: 2px solid white;
 
