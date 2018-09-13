@@ -1,6 +1,9 @@
 #theme.crean {
   @include theme-color-classes($crean-primary);
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead,
+  .bigMasthead .mastheadPlaceholder,
+  .bigMasthead .masthead,
+  .nameBar, .rightColumn .styleTwo {
     background: $crean-primary; /* Old browsers */
   }
 
@@ -17,31 +20,34 @@
     color: $crean-secondary;
   }
 
-  .expandedNameBarContainer h2, .expandedNameBarContainer a { 
+  .expandedNameBarContainer h2,
+  .expandedNameBarContainer a { 
     color: $theme-light-grey;
     text-decoration: underline; 
   }
 
   #social_follow_us {
+
     .banner {
       background-image: image-url('crean_follow_us.png');
     }
+
     li span {
-      &.hover_state, &.inactive_state {
+
+      &.hover_state,
+      &.inactive_state {
         background-image: image-url('crean_icons.png');
       }
     }
   }
 
-  .rounded-slider .info-container .blue{
-    background-color: $crean-primary;
-  }
-
   .newbutton a {
     background-color: $crean-primary;
+
     &:hover {
       background-color: $crean-secondary;
     }
+
     &:active {
       background-color: $crean-tertiary;
     }
@@ -52,21 +58,27 @@
   }
 
   .photoCallouts {
-    .caption, .rollover {
+    
+    .caption,
+    .rollover {
       background-color: $crean-primary;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
+
     .view-more {
       background-color: $crean-primary;
     }
+
     .view-more-link {
       background-color: $crean-primary;
     }
+
     .view-less-link {
       background-color: $crean-primary;
     }
+
     .icon-triangle-up {
       color: $crean-primary;
     }
