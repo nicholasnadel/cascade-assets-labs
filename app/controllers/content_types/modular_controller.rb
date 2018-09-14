@@ -431,6 +431,7 @@ module ContentTypes
     def render_static_one_column_primary_content_subbrand
       # This reproduces content from static sample version
       format("%s %s %s",
+            render_static_partial('widgets/single_column/campus_map'),
             render_static_partial('widgets/single_column/image_slider_2018'),
             render_static_partial('widgets/single_column/messaging_1_column_text_left_grad'),
             render_static_partial('widgets/single_column/messaging_1_column_video_grad'),
