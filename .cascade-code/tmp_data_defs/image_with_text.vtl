@@ -1,0 +1,221 @@
+<group collapsed="true" identifier="imageWithText" label="Image with Text">
+  <text default="Yes" identifier="display-image-with-text" label="Show" type="radiobutton">
+    <radio-item value="Yes"/>
+    <radio-item value="No"/>
+  </text>
+  <text default="one-column-page" help-text="Choose page type for image with text widget" identifier="imageWithTextPageType" label="For" type="dropdown">
+    <dropdown-item show-fields="primaryContent/widget/imageWithText/oneColumn" value="One Column"/>
+    <dropdown-item show-fields="primaryContent/widget/imageWithText/oneColumnGraduate" value="One Column Graduate"/>
+  </text>
+  <group collapsed="true" identifier="oneColumnImageWithText">
+    <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Image Positions" type="dropdown">
+      <dropdown-item value="Stacked"/>
+      <dropdown-item show-fields="primaryContent/widget/imageWithText/textFields/textAlign" value="Side by side"/>
+    </text>
+    <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
+      <radio-item value="Light"/>
+      <radio-item value="Medium"/>
+      <radio-item value="Dark"/>
+    </text>
+    <group collapsed="true" identifier="backgroundImage" label="Background Image">
+      <text default="None" identifier="linkType" label="Link Type" type="radiobutton">
+        <radio-item value="None"/>
+        <radio-item show-fields="primaryContent/widget/imageWithText/backgroundImage/fileLink" value="File Link"/>
+      </text>
+      <asset identifier="fileLink" label="File Link" type="file"/>
+    </group>
+    <group collapsed="true" identifier="textFields" label="Text Fields">
+      <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
+        <radio-item value="Left"/>
+        <radio-item value="Right"/>
+      </text>
+      <text identifier="category" label="Category"/>
+      <text identifier="title" label="Title"/>
+      <text identifier="body" label="Content" wysiwyg="true"/>
+      <group identifier="button" label="Button">
+        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithText/textFields/button/internalLink" value="Internal Link"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithText/textFields/button/externalLink" value="External Link"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithText/textFields/button/fileLink" value="File Link"/>
+        </text>
+        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+        <asset identifier="internalLink" label="Internal Link" type="page"/>
+        <asset identifier="fileLink" label="File Link" type="file"/>
+        <text identifier="label" label="Label"/>
+      </group>
+      <group identifier="dropdownNav" label="Dropdown Navigation">
+        <text identifier="dropdownLabel" label="Label"/>
+        <group identifier="dropdownLink" label="Link" multiple="true">
+          <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+            <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithText/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+            <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithText/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+            <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithText/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+          </text>
+          <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+          <asset identifier="internalLink" label="Internal Link" type="page"/>
+          <asset identifier="fileLink" label="File Link" type="file"/>
+          <text identifier="label" label="Label"/>
+        </group>
+      </group>
+    </group>
+  </group>
+  <group identifier="oneColumnImageWithTextGraduate">
+    <group collapsed="true" identifier="textFields" label="Text Fields">
+      <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
+        <radio-item value="Left"/>
+        <radio-item value="Right"/>
+      </text>
+      <text identifier="category" label="Testimonial Category"/>
+      <text identifier="title" label="Title"/>
+      <text identifier="body" label="Content" wysiwyg="true"/>
+      <group identifier="firstButton" label="Button One">
+        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithTextGraduate/textFields/firstButton/internalLink" value="Internal Link"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithTextGraduate/textFields/firstButton/externalLink" value="External Link"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithTextGraduate/textFields/firstButton/fileLink" value="File Link"/>
+        </text>
+        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+        <asset identifier="internalLink" label="Internal Link" type="page"/>
+        <asset identifier="fileLink" label="File Link" type="file"/>
+        <text identifier="label" label="Label"/>
+      </group>
+      <group identifier="secondButton" label="Button Two">
+        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithTextGraduate/textFields/secondButton/internalLink" value="Internal Link"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithTextGraduate/textFields/secondButton/externalLink" value="External Link"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/oneColumnImageWithTextGraduate/textFields/secondButton/fileLink" value="File Link"/>
+        </text>
+        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+        <asset identifier="internalLink" label="Internal Link" type="page"/>
+        <asset identifier="fileLink" label="File Link" type="file"/>
+        <text identifier="label" label="Label"/>
+      </group>
+    </group>
+  </group>
+  <group collapsed="true" identifier="imageFields" label="Image Fields">
+    <asset identifier="fileLink" label="File Link (Around 600px by 400px)" type="file"/>
+    <text identifier="alternateText" label="Alternate Text"/>
+  </group>
+</group>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////ORIGINAL//////////
+<group collapsed="true" identifier="imageWithText" label="Image with Text">
+  <text default="Yes" identifier="display-image-with-text" label="Show" type="radiobutton">
+      <radio-item value="Yes"/>
+      <radio-item value="No"/>
+  </text>
+  <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Image Positions" type="dropdown">
+      <dropdown-item value="Stacked"/>
+      <dropdown-item show-fields="primaryContent/widget/imageWithText/textFields/textAlign" value="Side by side"/>
+  </text>
+  <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
+      <radio-item value="Light"/>
+      <radio-item value="Medium"/>
+      <radio-item value="Dark"/>
+  </text>
+  <group collapsed="true" identifier="backgroundImage" label="Background Image">
+      <text default="None" identifier="linkType" label="Link Type" type="radiobutton">
+          <radio-item value="None"/>
+          <radio-item show-fields="primaryContent/widget/imageWithText/backgroundImage/fileLink" value="File Link"/>
+      </text>
+      <asset identifier="fileLink" label="File Link" type="file"/>
+  </group>
+  <group collapsed="true" identifier="textFields" label="Text Fields">
+      <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
+          <radio-item value="Left"/>
+          <radio-item value="Right"/>
+      </text>
+      <text identifier="category" label="Category"/>
+      <text identifier="title" label="Title"/>
+      <text identifier="body" label="Content" wysiwyg="true"/>
+      <group identifier="button" label="Button">
+          <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+              <radio-item show-fields="primaryContent/widget/imageWithText/textFields/button/internalLink" value="Internal Link"/>
+              <radio-item show-fields="primaryContent/widget/imageWithText/textFields/button/externalLink" value="External Link"/>
+              <radio-item show-fields="primaryContent/widget/imageWithText/textFields/button/fileLink" value="File Link"/>
+          </text>
+          <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+          <asset identifier="internalLink" label="Internal Link" type="page"/>
+          <asset identifier="fileLink" label="File Link" type="file"/>
+          <text identifier="label" label="Label"/>
+      </group>
+      <group identifier="dropdownNav" label="Dropdown Navigation">
+          <text identifier="dropdownLabel" label="Label"/>
+          <group identifier="dropdownLink" label="Link" multiple="true">
+              <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                  <radio-item show-fields="primaryContent/widget/imageWithText/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+                  <radio-item show-fields="primaryContent/widget/imageWithText/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+                  <radio-item show-fields="primaryContent/widget/imageWithText/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+              </text>
+              <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+              <asset identifier="internalLink" label="Internal Link" type="page"/>
+              <asset identifier="fileLink" label="File Link" type="file"/>
+              <text identifier="label" label="Label"/>
+          </group>
+      </group>
+  </group>
+  <group collapsed="true" identifier="imageFields" label="Image Fields">
+      <asset identifier="fileLink" label="File Link (Around 600px by 400px)" type="file"/>
+      <text identifier="alternateText" label="Alternate Text"/>
+  </group>
+</group>
+
+
+
+
+
+
+
+///////ORIGINAL//////////
+#import( "/_cascade/formats/helpers.velocity" )
+#import( "/_cascade/formats/helpers/primary_column_helpers.velocity" )
+
+#macro(outputImageWithText $element)
+    #set ($displayImageWithText = $element.getChild('imageWithText').getChild('display-image-with-text').value)
+    #if ($displayImageWithText == 'Yes')
+        #set ($imageWithText = $element.getChild('imageWithText'))
+        #set ($format        = $imageWithText.getChild('format').value)
+        
+        <div class="#outputMessagingClasses($imageWithText)">
+            <div class="outer-container">
+               #if ($format == "Stacked")
+                    #outputSectionMessage($imageWithText)
+                    #outputSectionImage($imageWithText)
+                #else
+                    #outputSectionImage($imageWithText)
+                    #outputSectionMessage($imageWithText)
+                #end
+            </div>
+        </div>
+    #end
+#end
+
+#macro(outputSectionImage $content)
+    #set ($imageFields = $content.getChild('imageFields'))
+    <div class="column media-column">
+        <span class="center-media-helper"></span>
+        <img #outputSrc($imageFields) class="media" alt="$_EscapeTool.xml($imageFields.getChild('alternateText').value)"/>
+    </div>
+#end
