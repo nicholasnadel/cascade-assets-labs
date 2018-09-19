@@ -31,12 +31,12 @@
                 </div>
             #end
             #if (($buttonLabel != "" || $dropdownLabel != "") && ($content.getChild('format').value != "Stacked"))
-                <div class="actions">
+                <div class="text-actions">
                     #if ($buttonLabel != "")
                         <a #outputHref($button) class="theme-button">$buttonLabel&#160;</a>
                     #end
                     #if ($dropdownLabel != "")
-                        <nav class="select">
+                        <nav class="text-widget-select">
                             <button class="select-button theme-border-color theme-text-color">
                                 $_EscapeTool.xml($dropdownLabel)
                                 <span class="select-arrow theme-border-color"></span>

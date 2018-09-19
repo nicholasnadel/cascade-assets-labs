@@ -8,7 +8,9 @@
     max-width: 1130px;
     margin: 0 auto;
 
-    @include media($medium-screen) { display: table; }
+    @include media($medium-screen) {
+      display: table;
+    }
 
     .column {
       position: relative;
@@ -18,6 +20,7 @@
       }
 
       &.image {
+
         @include media($medium-screen) {
           width: 70%;
         }
@@ -27,9 +30,13 @@
           width: 100%;
           height: auto;
 
-          @include media($medium-screen) { max-height: 280px; }
+          @include media($medium-screen) {
+            max-height: 280px;
+          }
 
-          @include media($large-screen) { max-height: 400px; }
+          @include media($large-screen) {
+            max-height: 400px;
+          }
         }
 
         div.photo-by {
@@ -59,7 +66,9 @@
           font-size: 22px;
           line-height: 30px;
 
-          @include media($medium-screen) { padding: 32px; }
+          @include media($medium-screen) {
+            padding: 32px;
+          }
 
           @include media($large-screen) {
             font-size: 36px;
