@@ -67,6 +67,12 @@
     }
   }
 
+  .theme-button {
+    background: $cu-red;
+    
+    &:hover { background: $red-button-hover }
+  }
+
   .primary-content.one-column {
 
     .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.image-with-text,
@@ -169,9 +175,7 @@
                 
                 &:nth-child(2) { margin-top: 0px; }
 
-                &:hover {
-                  background-color: #C8003F;
-                }
+                &:hover { background: $red-button-hover }
 
                 @include bp(wildcard-max, 480px) {
                   width: 100%;
@@ -234,6 +238,26 @@
 
           &:hover {
             color: rgba(255, 255, 255, 0.8);
+          }
+        }
+
+        .select-button.theme-border-color.theme-text-color {
+          background-color: transparent;
+          border-color: $cu-red;
+          color: white;
+      
+          .select-arrow.theme-border-color {
+            border-color: white;
+          }
+        }
+
+        .select-list {
+          
+          a {
+            color: $cu-red;
+            border-bottom: 1px dotted $cu-red;
+
+            &:hover { color: $red-button-hover; }
           }
         }
       }
