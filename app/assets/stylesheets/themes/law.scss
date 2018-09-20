@@ -63,13 +63,7 @@
   .nameBar {
     background: $cu-red;
   }
-  // #social_follow_us .banner {
-  //   background-image: image-url('law_follow_us.png');
-  // }
-  // #social_follow_us li span.hover_state,
-  // #social_follow_us li span.inactive_state {
-  //   background-image: image-url('law_icons.png');
-  // }
+
   .ie8 .slideDescription,
   .ie9 .slideDescription {
     display: none !important;
@@ -142,7 +136,7 @@
   }
   .rightColumn .styleTwo a {
     color: $white;
-    border-bottom: 2px dotted #61728d;
+    border-bottom: 1px dotted #fff;
   }
   .nameBarButtons li a {
     color: $cu-red;
@@ -152,13 +146,6 @@
   div.styleTwo a {
     color: #99afda;
   }
-  // #social_follow_us .banner {
-  //   background-image: image-url('law_follow_us.png');
-  // }
-  // #social_follow_us li span.hover_state,
-  // #social_follow_us li span.inactive_state {
-  //   background-image: image-url('law_icons.png');
-  // }
   .rounded-slider .info-container .blue {
     background-color: $cu-red;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#a12756), to($cu-red));
