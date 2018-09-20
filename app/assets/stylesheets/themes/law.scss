@@ -1,5 +1,5 @@
 #theme.law {
-  @include theme-color-classes($law-primary);
+  @include theme-color-classes($cu-red);
   .bigMasthead header {
     @include media(1024px) {
       margin: 0;
@@ -8,6 +8,12 @@
       margin: 30px 0;
     }
   }
+
+  .bigMasthead .column.header h2.header {
+    font-family: "minion";
+  }
+
+
   .logo {
     background: image-url('logo_law_alternate.svg');
     background-repeat: no-repeat;
@@ -25,17 +31,17 @@
     margin: 115px 0 0 0;
   }
   .mainNavLinks>li>a {
-    background-color: $law-primary;
+    background-color: $cu-red;
   }
   .mainNavLinks .mainNavLinksAfter,
   .mainNavLinks .mainNavLinksAfter:hover {
-    background-color: $law-primary !important;
+    background-color: $cu-red !important;
   }
   @include bp(m) {
     .ie8 .subNavLinks {
-      border-right: 1px solid #00307c;
-      border-bottom: 1px solid #00307c;
-      border-left: 1px solid #00307c;
+      border-right: 1px solid $cu-red;
+      border-bottom: 1px solid $cu-red;
+      border-left: 1px solid $cu-red;
     }
     .mainNav .icon {
       margin-left: 0;
@@ -45,7 +51,7 @@
     }
   }
   .nameBarButtons li a {
-    color: #00307c;
+    color: $cu-red;
   }
   .expandedNameBarContainer h2,
   .expandedNameBarContainer a,
@@ -55,21 +61,15 @@
   .smallMasthead .masthead,
   .bigMasthead .masthead,
   .nameBar {
-    background: #00307c;
+    background: $cu-red;
   }
-  #social_follow_us .banner {
-    background-image: image-url('law_follow_us.png');
-  }
-  #social_follow_us li span.hover_state,
-  #social_follow_us li span.inactive_state {
-    background-image: image-url('law_icons.png');
-  }
+
   .ie8 .slideDescription,
   .ie9 .slideDescription {
     display: none !important;
   }
   .mainNavExpand a {
-    background-color: $law-primary;
+    background-color: $cu-red;
   }
   .mainNavLinks>li {
     background-color: #353430;
@@ -98,7 +98,7 @@
     .mainNavLinks,
     .mainNavLinks>li,
     .mainNavLinks>li.noSubNav:hover {
-      background-color: $law-primary;
+      background-color: $cu-red;
     }
   }
   @include media(1120px) {
@@ -113,11 +113,11 @@
   .bigMasthead .masthead-old,
   .nameBar,
   .rightColumn .styleTwo {
-    background: $law-primary;
+    background: $cu-red;
     /* Old browsers */
   }
   .rightColumn .styleTwo .border {
-    background-color: #002663;
+    background-color: $cu-dark-red;
   }
   .styleTwo p {
     color: $white;
@@ -136,61 +136,54 @@
   }
   .rightColumn .styleTwo a {
     color: $white;
-    border-bottom: 2px dotted #61728d;
+    border-bottom: 1px dotted #fff;
   }
   .nameBarButtons li a {
-    color: $law-primary;
+    color: $cu-red;
   }
   .expandedNameBarContainer h2,
   .expandedNameBarContainer a,
   div.styleTwo a {
     color: #99afda;
   }
-  #social_follow_us .banner {
-    background-image: image-url('law_follow_us.png');
-  }
-  #social_follow_us li span.hover_state,
-  #social_follow_us li span.inactive_state {
-    background-image: image-url('law_icons.png');
-  }
   .rounded-slider .info-container .blue {
-    background-color: $law-primary;
-    background-image: -webkit-gradient(linear, left top, left bottom, from($law-primary), to($law-secondary));
-    background-image: -webkit-linear-gradient(top, $law-primary, $law-secondary);
-    background-image: -moz-linear-gradient(top, $law-primary, $law-secondary);
-    background-image: -o-linear-gradient(top, $law-primary, $law-secondary);
-    background-image: linear-gradient(to bottom, $law-primary, $law-secondary);
+    background-color: $cu-red;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#a12756), to($cu-red));
+    background-image: -webkit-linear-gradient(top, #a12756, $cu-red);
+    background-image: -moz-linear-gradient(top, #a12756, $cu-red);
+    background-image: -o-linear-gradient(top, #a12756, $cu-red);
+    background-image: linear-gradient(to bottom, #a12756, $cu-red);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b', GradientType=1);
   }
   .newbutton a {
-    background-color: $law-primary;
+    background-color: $cu-red;
     &:hover {
-      background-color: #063a8f;
+      background-color: $red-button-hover;
     }
     &:active {
-      background-color: #002562;
+      background-color: $red-button-active;
     }
   }
   .midPhotoCallouts .photoCallout .caption,
   .photoCallouts .caption,
   .photoCallouts .rollover {
-    background-color: $law-primary;
+    background-color: $cu-red;
   }
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
-      background-color: $law-primary;
+      background-color: $cu-red;
       ;
     }
     .view-more-link {
-      background-color: $law-primary;
+      background-color: $cu-red;
       ;
     }
     .view-less-link {
-      background-color: $law-primary;
+      background-color: $cu-red;
       ;
     }
     .icon-triangle-up {
-      color: $law-primary;
+      color: $cu-red;
       ;
     }
   }
