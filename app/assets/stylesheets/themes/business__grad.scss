@@ -66,4 +66,22 @@
       color: black;
     }
   }
+
+  .theme-button {
+    background: $cu-red;
+
+    &:hover { background: $red-button-hover }
+  }
+
+  .video-with-text {
+    .select-button.theme-border-color.theme-text-color {
+      background-color: transparent;
+      border-color: $cu-red;
+      color: white;
+  
+      .select-arrow.theme-border-color {
+        border-color: white;
+      }
+    }
+  }
 }
