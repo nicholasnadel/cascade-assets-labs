@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+<div class="googlemap">
+    <div class="map-container">
+        <div class="map-inner">
+            <div class="box">
+                <div class="box-inner">
+                    <h1 class="box-header">Chapman University</h1>
+                    <div class="address-wrapper"> <a href="#" class="reset_state"> <i class="fas fa-map-marker-alt marker-icon reset_state"></i></a>
+                        <div class="address-inner"> <span class="link-underline"> 1 University Drive, <br> Orange, Ca
+                                92886</span>
+                        </div>
+                        <div class="theme-button">Contact Us <i class="fas fa-phone"></i></div>
+                        <div class="theme-button">Email Us <i class="fas fa-envelope"></i></div>
+                        <input type="button" id="reset_state" value="reset" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map"></div>
+    </div>
+    <script>
+        function initMap() {
+
+            var myLatLng = {
+                lat: 33.7933476,
+                lng: -117.8513503
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 18,
+                center: myLatLng,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                }
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Chapman University'
+            });
+        }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj0P7RulkHgZtDR7yJMAggZClA1d-nAHk&callback=initMap"
+        async defer></script>
