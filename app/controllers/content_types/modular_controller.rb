@@ -318,7 +318,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Business Graduate')
       @data_definition = DataDefinitions::ThreeColumn.default
 
-      theme = params.fetch(:theme, 'business__graduate')
+      theme = params.fetch(:theme, 'law')
       @current_page_path = "#{theme}/path/to/index.aspx"
       @data_definition.set_value(:masthead_type, 'Branded - New')
 
