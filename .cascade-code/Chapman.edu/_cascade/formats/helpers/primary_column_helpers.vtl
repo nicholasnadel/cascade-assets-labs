@@ -7,7 +7,7 @@
 
 ## Used for repeated code on primary_column widgets
 
-#macro(outputSectionMessage $content)
+#macro(outputSectionMessage $content $subBrand)
     #set ($category       = $_EscapeTool.xml($content.getChild('textFields').getChild('category').value) )
     #set ($title          = $_EscapeTool.xml($content.getChild('textFields').getChild('title').value) )
     #set ($body           = $_SerializerTool.serialize($content.getChild('textFields').getChild('body'), true) )
@@ -16,6 +16,10 @@
     #set ($dropdownNav    = $content.getChild('textFields').getChild('dropdownNav') )
     #set ($dropdownLabel  = $_EscapeTool.xml($dropdownNav.getChild('dropdownLabel').value) )
     #set ($dropdownLinks  = $_XPathTool.selectNodes($dropdownNav, 'dropdownLink') )
+    #set ($buttons        = $_XPathTool.selectNodes($content.getChild('textFields'), 'buttons' ))
+    #set ($links          = $_XPathTool.selectNodes($content.getChild('textFields'), 'links'))
+    #set ($buttonType     = $content.getChild('textFields').getChild('buttonType').value )
+    
 
     <div class="text-column">
         <div class="section-message">
@@ -30,7 +34,22 @@
                     <p>$body</p>
                 </div>
             #end
-            #if (($buttonLabel != "" || $dropdownLabel != "") && ($content.getChild('format').value != "Stacked"))
+            #if ($buttonType == 'Buttons')
+                <div class="text-actions">
+                    #foreach($button in $buttons)
+                        <a #outputHref($button) class="theme-button">$_EscapeTool.xml($button.getChild('label').value)</a>
+                    #end
+                </div>
+                #set ($buttonType = '')
+            #elseif ($buttonType == 'Links' )
+                <div class="text-actions">
+                    <h2 class="video-links-title">$_EscapeTool.xml($content.getChild('textFields').getChild('linksHeading').value)</h2>
+                    #foreach($link in $links)
+                        <p><a #outputHref($link)> $_EscapeTool.xml($link.getChild('label').value)</a></p>
+                    #end
+                </div>
+                #set ($buttonType = '')
+            #elseif (($buttonLabel != "" || $dropdownLabel != "") && ($content.getChild('format').value != "Stacked" || $subBrand == true ))
                 <div class="text-actions">
                     #if ($buttonLabel != "")
                         <a #outputHref($button) class="theme-button">$buttonLabel&#160;</a>

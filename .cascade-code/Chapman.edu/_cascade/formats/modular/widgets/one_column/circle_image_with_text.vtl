@@ -1,0 +1,24 @@
+#import( "/_cascade/formats/helpers.velocity" )
+#import( "/_cascade/formats/helpers/primary_column_helpers.velocity" )
+
+#macro(outputCircleImageWithText $element)
+    #set ($displayImageWithText = $element.getChild('circleImageWithText').getChild('display-image-with-text').value)
+    #if ($displayImageWithText == 'Yes')
+        #set ($imageWithText = $element.getChild('imageWithTextSubBrand'))
+        #set ($format        = $imageWithText.getChild('format').value)
+        <div class="#outputMessagingClasses($imageWithText)">
+            <div class="outer-container">
+                #outputSectionImage($imageWithText)
+                #outputSectionMessage($imageWithText)
+            </div>
+        </div>
+    #end
+#end
+
+#macro(outputSectionImage $content)
+    #set ($imageFields = $content.getChild('imageFields'))
+    <div class="column media-column">
+        <span class="center-media-helper"></span>
+        <img #outputSrc($imageFields) class="media" alt="$_EscapeTool.xml($imageFields.getChild('alternateText').value)"/>
+    </div>
+#end

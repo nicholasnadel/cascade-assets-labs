@@ -1,0 +1,38 @@
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputCallToActionFooter $element)  
+    #set ($displayCallToActionFooter = $element.getChild('callToActionFooter').getChild('displayCallToActionFooter').value)
+    
+    #if ($displayCallToActionFooter == 'Yes')
+        #set ($callToActionFooter = $element.getChild('callToActionFooter'))
+        #set ($buttons = $_XPathTool.selectNodes($element, 'callToActionFooter/button'))
+        #set ($bgColor = $callToActionFooter.getChild('bgColor').value)
+        #set ($classStr = "cta-footer-widget#if($bgColor == 'School Color') theme-bg-color#end")
+        #set ($buttonClass = "footer-button #if($bgColor == 'White')theme-button#{else}theme-text-color#end")
+        #set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]/path").value )
+        
+        #if($currentPage.matches('/business/graduate.*') == true || $currentPage.matches('/law/.*') == true)
+            #set ($graduateTheme = "graduate")
+        #else
+            #set ($graduateTheme = "")
+        #end
+        
+        
+        <div class="${classStr} ${graduateTheme}">
+            <div class="outer-container">
+                <div class="text-section">
+                    #if($bgColor == "White")<p class="theme-text-color">#else<p>#end
+                        $callToActionFooter.getChild('title').value
+                    </p>
+                </div>
+                <div class="button-section">
+                    #foreach($button in $buttons)
+                        <div class="button-wrapper">
+                            <a #outputHref($button) class="$buttonClass">$button.getChild('label').value</a>
+                        </div>
+                    #end
+                </div>
+            </div>
+        </div>
+    #end
+#end
