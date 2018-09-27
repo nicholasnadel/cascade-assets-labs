@@ -1,0 +1,46 @@
+#import( "/_cascade/formats/helpers.velocity" )
+#import( "/_cascade/formats/helpers/primary_column_helpers.velocity" )
+
+#macro(outputVideoWithTextSubBrand $element)  
+    #set ($displayVideoWithText = $element.getChild('videoWithTextSubBrand').getChild('display-video-with-text').value)
+    #if ($displayVideoWithText == 'Yes')
+        #set ($videoWithText = $element.getChild('videoWithTextSubBrand'))
+         #set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]/path").value )
+
+        #if ( $currentPage.matches('/business/graduate.*') != true && $currentPage.matches('/law/.*') != true)
+            <div class="#outputMessagingClasses($videoWithText)">
+                <div class="outer-container">
+                   #if ($format == "Stacked")
+                        #outputSectionMessage($videoWithText)
+                        #outputSectionVideo($videoWithText)
+                    #else
+                        #outputSectionVideo($videoWithText)
+                        #outputSectionMessage($videoWithText, true)
+                    #end
+                </div>
+            </div>
+        #else
+            <div class="#outputMessagingClasses($videoWithText) video-with-text">
+                <div class="outer-container">
+                    #outputSectionVideo($videoWithText)
+                    #outputSectionMessage($videoWithText)
+                </div>
+            </div>
+        #end
+    #end
+#end
+
+#macro(outputSectionVideo $content)
+    #set ($type = $content.getChild('mediaType').value)
+    #set ($url  = $content.getChild('videoShareLink').value)
+    
+    #if ($url.contains('vimeo'))
+        #set ($url = $url.replaceAll("vimeo\.com", "player\.vimeo\.com\/video"))
+    #else
+        #set ($url = $url.replaceAll("youtu\.be", "www\.youtube\.com\/embed"))
+    #end
+    
+    <div class="column media-column">
+        <span class="center-media-helper"></span><div class="media fluid-width-video-container"><iframe width="560" height="315" src="$_EscapeTool.xml($url)" frameborder="0"></iframe></div>
+    </div>
+#end

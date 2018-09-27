@@ -62,4 +62,15 @@
       color: $cu-red;
     }
   }
+
+  .theme-button {
+    background: $cu-red;
+    
+    &:hover { background: $red-button-hover }
+  }
+
+  .select-button {
+    border-color: $cu-red;
+    color: $cu-red;
+  }
 }
