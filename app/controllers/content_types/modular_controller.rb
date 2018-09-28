@@ -411,6 +411,7 @@ module ContentTypes
              render_static_partial('widgets/primary_content/multi_photo_callout'),
              render_static_partial('widgets/single_column/chapman_events_feed'),
              render_static_partial('widgets/single_column/messaging_1_column_facts'),
+             render_static_partial('widgets/single_column/campus_map'),
              render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
              render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
     end
@@ -420,6 +421,7 @@ module ContentTypes
       format("%s %s %s",
             render_static_partial('widgets/single_column/messaging_1_column_text_left_grad'),
             render_static_partial('widgets/single_column/messaging_1_column_video_grad'),
+            render_static_partial('widgets/single_column/campus_map'),
             render_static_partial('widgets/single_column/cta_footer_grad'))
             #  render_static_partial('widgets/single_column/call_to_action_block'),
             #  render_static_partial('widgets/single_column/chapman_events_feed'),
@@ -432,10 +434,13 @@ module ContentTypes
       # This reproduces content from static sample version
       format("%s %s %s",
             # render_static_partial('widgets/single_column/google_map_address'),
+            render_static_partial('widgets/single_column/messaging_1_column_facts'),
+            render_static_partial('widgets/single_column/image_slider_2018'),
             render_static_partial('widgets/single_column/campus_map'),
             render_static_partial('widgets/single_column/google_map'),
             # render_static_partial('widgets/single_column/google_map_embed'),
-            render_static_partial('widgets/single_column/image_slider_2018'),
+            render_static_partial('widgets/single_column/messaging_1_column_text_left_grad'),
+            render_static_partial('widgets/single_column/messaging_1_column_video_grad'),
             render_static_partial('widgets/single_column/messaging_1_column_text_left_grad'),
             render_static_partial('widgets/single_column/messaging_1_column_video_grad'),
             render_static_partial('widgets/single_column/cta_footer_grad'))

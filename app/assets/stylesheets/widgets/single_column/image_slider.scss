@@ -17,6 +17,13 @@
     margin-bottom: 2%;
   }
 
+  h1.title,
+  h2.title,
+  h3.title {
+    margin-top: -30px;
+    padding-top: 0;
+  }
+
   p {
     font-family: $arial;
     font-size: 16px;
@@ -25,6 +32,17 @@
     line-height: normal;
     margin: auto;
     margin-bottom: 2%;
+    line-height: 22px;
+  }
+
+  .content-text a {
+    color: $white;
+    border-bottom: 1px dotted $white !important;
+    font-weight: bold;
+  }
+
+  a.theme-button.theme-button {
+    border-bottom: none !important;
   }
 
   .theme-button {
