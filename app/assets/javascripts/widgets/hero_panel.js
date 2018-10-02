@@ -19,7 +19,7 @@ $(document).ready(function(){
 
   $(document).on('click', function(event) {
     if(trigger[0] !== event.target && !list.has(event.target).length) {
-      list.slideUp(20000000);
+      list.slideUp(200);
     }
   });
 });
