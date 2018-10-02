@@ -246,15 +246,25 @@
             *************************/
             this.$undergraduateAdmission = $("#undergraduateAdmission");
             //This is causing a breaking change "Uncaught TypeError: Cannot read property 'top' of null" in development
-            this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
-
+            if (this.$undergraduateAdmission.find('.statistics').length > 0) {
+              this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
+            }
+            else {
+              this.admissionStartPX = 0;
+            }
             this.$undergraduateAdmission.find('.fade-elem').css('opacity', 0); // prep for fade in
 
             /*
             * Graduate Admission
             *************************/
             this.$graduateAdmission = $("#graduateAdmission");
-            this.graduateAdmissionStartPX = this.$graduateAdmission.offset().top;
+            
+            if (this.$graduateAdmission.length > 0) {
+              this.graduateAdmissionStartPX = this.$graduateAdmission.offset().top;
+            }
+            else {
+              this.graduateAdmissionStartPX = 0;
+            }
 
             this.process(); // in case we already scrolled
         },

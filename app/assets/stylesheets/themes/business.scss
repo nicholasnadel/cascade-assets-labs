@@ -1,16 +1,16 @@
 #theme.business {
-  @include theme-color-classes($cu-red);
+  @include theme-color-classes($asbe-primary);
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-    background: $cu-red; /* Old browsers */
+    background: $asbe-primary; /* Old browsers */
   }
 
   .nameBarButtons li a {
-    color: $cu-red;
+    color: $asbe-primary;
   }
 
   .rightColumn .styleTwo .border {
-    background-color: $cu-dark-red;
+    background-color: $asbe-tertiary;
   }
 
   .rightColumn .styleTwo a {
@@ -24,53 +24,53 @@
     }
   }
 
+  #social_follow_us {
+    .banner {
+      background-image: image-url('asbe_follow_us.png');
+    }
+    li span {
+      &.hover_state, &.inactive_state {
+        background-image: image-url('asbe_icons.png');
+      }
+    }
+  }
+
   .rounded-slider .info-container .blue {
-    background-color: $cu-red;
+    background-color: $asbe-primary;
   }
 
   .newbutton a {
-    background-color: $cu-red;
+    background-color: $asbe-primary;
     &:hover {
-      background-color: $red-button-hover;
+      background-color: $asbe-secondary;
     }
     &:active {
-      background-color: $cu-dark-red;
+      background-color: $asbe-tertiary;
     }
   }
 
   .midPhotoCallouts .photoCallout .caption {
-    background-color: $cu-red;
+    background-color: $asbe-primary;
   }
 
   .photoCallouts {
     .caption, .rollover {
-      background-color: $cu-red;
+      background-color: $asbe-primary;
     }
   }
 
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
-      background-color: $cu-red;
+      background-color: $asbe-primary;
     }
     .view-more-link {
-      background-color: $cu-red;
+      background-color: $asbe-primary;
     }
     .view-less-link {
-      background-color: $cu-red;
+      background-color: $asbe-primary;
     }
     .icon-triangle-up {
-      color: $cu-red;
+      color: $asbe-primary;
     }
-  }
-
-  .theme-button {
-    background: $cu-red;
-    
-    &:hover { background: $red-button-hover }
-  }
-
-  .select-button {
-    border-color: $cu-red;
-    color: $cu-red;
   }
 }
