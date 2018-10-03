@@ -92,6 +92,10 @@ $large-screen: 1130px;
     }
   }
 
+  &.notification {
+    background-color: #6e6259;
+  }
+
   svg {
     fill: $white;
     display: block;
