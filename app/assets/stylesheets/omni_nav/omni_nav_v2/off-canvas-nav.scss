@@ -39,9 +39,10 @@
     // This value is relative to OmniNav parent.
     z-index: 1003;
 
+    display: none;
     position: fixed;
     top: 0;
-    left: -($cu-off-canvas-nav-mobile-width);
+    left: 0;
     width: $cu-off-canvas-nav-mobile-width;
     height: 100%;
     overflow-y: scroll;
@@ -50,12 +51,6 @@
     @include transition(all, 0.375s, ease-in-out);
 
     @include bp(m) {
-      left: -($cu-off-canvas-nav-desktop-width);
-      width: $cu-off-canvas-nav-desktop-width;
-    }
-
-    @media (min-width: 780px) {
-      left: -($cu-off-canvas-nav-desktop-width);
       width: $cu-off-canvas-nav-desktop-width;
     }
 
@@ -65,7 +60,14 @@
     }
 
     &.open {
-      left: 0;
+//      left: 0;
+        display: block;
+        animation: slide-horizontal .3s ease-out;
+    }
+
+    @keyframes slide-horizontal {
+          0% { transform: translateX(-100%); }   
+        100% { transform: translateX(0); }
     }
 
     .cu-off-canvas-header {
