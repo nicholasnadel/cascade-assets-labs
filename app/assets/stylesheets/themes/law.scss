@@ -198,6 +198,14 @@
     //background-color: $law-primary;
   }
 
+  .footer .footer-section.footer-menu .campus-addresses {
+    align-items: flex-end;
+
+    @include bp(lx) {
+      align-items: normal;
+    }
+  }
+
   .link-container-after {
     background-image: image-url('ribbon_tails_law.png');
   }
