@@ -1,19 +1,19 @@
 #import( "/_cascade/formats/helpers.velocity" )
 
-#macro(outputMultiPhotoCallout $element)  
+#macro(outputMultiImageContentBlocks $element)  
 ##
-#set ($photos = $_XPathTool.selectNodes($element.getChild('multiPhotoCallout'), "photoCallout"))
-#set ($calloutHeading = $element.getChild('multiPhotoCallout').getChild('calloutHeading').value)
+#set ($photos = $_XPathTool.selectNodes($element.getChild('multiImageContentBlocks'), "photoCallout"))
+#set ($calloutHeading = $element.getChild('multiImageContentBlocks').getChild('multiImageHeading').value)
     <div class="multi-image-content-blocks-widget">
         <div class='multi-image-content-blocks-container'>
-        <h2 class="multi-image-content-heading">${calloutHeading}</h2>
+        <h2 class="multi-image-content-heading">${_EscapeTool.xml($calloutHeading)}</h2>
         #foreach ($photo in $photos)
             #set ($photoPath = $photo.getChild('image').getChild('path').value )
             #set ($alt = $photo.getChild('altText').value )
             #set ($photoHeading = $photo.getChild('link').getChild('label').value )
             #set ($linkType = $photo.getChild('link').getChild('linkType').value )
             #if ($alt == '')
-                #set ($alt = '[photo description needed in primary content sponsor logo]')
+                #set ($alt = '[photo description needed in multi image content blocks]')
             #end
             #if ($linkType == 'Internal Link')
                 #set ($link = $photo.getChild('link').getChild('internalLink').getChild('path').value )
@@ -24,12 +24,12 @@
             #end
             <a class="photoCallout" href="${_EscapeTool.xml(${link})}">
                 <div class='image-container'>
-                    <img alt="${alt}" src="${photoPath}"/>
+                    <img alt="${_EscapeTool.xml($alt)}" src="${_EscapeTool.xml($photoPath)}"/>
                 </div>
-                <div class='grad-caption'>
-                    <h2 class="heading">
-                        ${photoHeading}
-                    </h2>
+                <div class='multi-image-caption'>
+                    <p class="heading">
+                        ${_EscapeTool.xml($photoHeading)}
+                    </p>
                 </div>
             </a>
         #end
