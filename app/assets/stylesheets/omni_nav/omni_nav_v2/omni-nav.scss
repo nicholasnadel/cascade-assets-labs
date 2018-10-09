@@ -235,6 +235,8 @@ html.omni-nav-v2 {
     .utility-nav-container {
       display: none;
       vertical-align: middle;
+      white-space: nowrap;
+      text-align: center;
 
       &.utility-search {
         position: relative;
@@ -259,7 +261,7 @@ html.omni-nav-v2 {
       &.utility-links {
         //This width is exactly the width of the content
         //may need to be updated if content changes
-        width: 741px;
+        width: 810px;
       }
     }
 
