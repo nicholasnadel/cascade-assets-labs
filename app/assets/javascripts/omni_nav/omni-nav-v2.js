@@ -620,7 +620,7 @@ var OmniNav2 = (function() {
           return false;
         }
       });
-
+      
       $(".off-canvas-menu").on('keydown','li', function(e) {
         if (e.keyCode === 32 || e.keyCode === 13) { //Enter or space bar
           var that = $(this).find(".toggle");
@@ -642,7 +642,16 @@ var OmniNav2 = (function() {
           return false;
         }
       });
+
+      //If user tabs off last item in off-canvas nav, close
+      $('.off-canvas-menu').on("keydown", ".off-canvas-utility li:last-child", function(e) {
+        if (e.keyCode === 9) { //Tab key 
+          toggleOffCanvas();
+          return false;
+        }
+      });
       
+      //Hit esc, close off-canvas nav
       $(document).on('keydown', function(e) {
         if (e.keyCode === 27 && $(".off-canvas-nav-container").hasClass("open")) { //ESC key
           toggleOffCanvas();
@@ -650,6 +659,7 @@ var OmniNav2 = (function() {
         }
       });
 
+      //Inner menu toggle
       $('#js-off-canvas-nav-container .toggle').on('click', function() {
         $(this).parent().toggleClass('open'); // Targets li
         $(this).parent().find('ul').slideToggle();
