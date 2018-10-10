@@ -1,7 +1,6 @@
 /***************************************************
 * Hero area navigation controls
 ***************************************************/
-
 @media only screen and (min-width: 680px) {
   .homepage #mastheadNavigation {
     display: none;
@@ -11,7 +10,6 @@
 /***************************************************
 * Main Hero Area
 ***************************************************/
-
 #heroWrapper {
   overflow: auto;
   background: #111111;
@@ -26,64 +24,86 @@
   background: #333333 no-repeat center;
   background-size: cover;
   color: #FFFFFF;
+
   .button {
     $shadow: 0.125em 0.25em 0.25em 0 $shadow-color;
     margin: 5px;
     padding: 13px 25px 12px;
     -webkit-box-shadow: $shadow;
-    -moz-box-shadow: $shadow;
     box-shadow: $shadow;
   }
+
   .actions {
     margin-top: 25px;
   }
+
   #mastheadContent {
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     z-index: 20;
   }
+
   &.dark-bg {
-    .heading, .subheading, .excerpt {
+
+    .heading,
+    .subheading,
+    .excerpt {
       color: #FFFFFF;
     }
   }
+
   &.light-bg {
-    .heading, .subheading, .excerpt {
+
+    .heading,
+    .subheading,
+    .excerpt {
       color: #353430;
     }
   }
+
   &.align-left {
     text-align: left;
   }
+
   &.align-right {
     text-align: right;
+
     .excerpt {
       margin-left: auto !important;
       margin-right: 0 !important;
     }
+
     .tagline:after {
       margin: 0.875em 0 0 auto;
     }
   }
+
   &.align-center {
     text-align: center;
+
     .excerpt {
       margin-left: auto !important;
       margin-right: auto !important;
     }
+
     .tagline:after {
       margin: 0.875em auto 0;
     }
   }
-  .heading, .subheading {
+
+  .heading,
+  .subheading {
     display: block;
   }
+
   .heading {
     margin: 0;
     font-size: 32px;
     line-height: 32px;
     text-transform: none;
+
     &.bold {
       text-transform: uppercase;
       font-weight: 700;
@@ -91,6 +111,7 @@
       line-height: 1;
     }
   }
+
   .subheading {
     margin: 0;
     padding: 0;
@@ -99,12 +120,14 @@
     text-transform: none;
     font-weight: 400;
     font-family: $font-stack-heading;
+
     &.bold {
       @include condensed-heading;
       font-size: 60px;
       line-height: 0.9;
     }
   }
+
   .excerpt {
     margin: 20px 0;
     padding: 0;
@@ -114,6 +137,7 @@
     display: none;
     font-weight: 400;
   }
+
   #mastheadGradient {
     position: absolute;
     top: 0;
@@ -123,22 +147,19 @@
     z-index: 10;
     background: rgba(0, 0, 0, 0.4);
     background: image-url('gray_30.png') repeat;
-    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
     /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.6)), color-stop(100%, rgba(0, 0, 0, 0)));
     /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
     /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
     /* Opera 11.10+ */
-    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
     /* IE10+ */
+    background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.6)), to(rgba(0, 0, 0, 0)));
     background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
     /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a6000000', endColorstr='#00000000', GradientType=1);
     /* IE6-9 */
     display: none;
   }
+
   #mastheadBackground {
     position: absolute;
     top: 0;
@@ -146,17 +167,20 @@
     width: 100%;
     min-height: 100%;
     overflow: hidden;
+
     img {
       width: 100%;
       height: auto;
     }
   }
+
   .tagline {
     font-family: $font-stack-heading;
     text-transform: uppercase;
     font-size: 24px;
     line-height: 24px;
     display: inline-block;
+
     &:after {
       content: '';
       display: block;
@@ -166,10 +190,15 @@
       margin: 0.875em 0 0;
     }
   }
+
   .tagline-line-2 {
     display: block;
-  }  
-  .heading, .subheading, .tagline, .excerpt {
+  }
+
+  .heading,
+  .subheading,
+  .tagline,
+  .excerpt {
     text-shadow: 0.05em 0.05em 0.1em $shadow-color;
   }
 }
@@ -183,6 +212,7 @@
 @media only screen and (min-width: 780px) {
   #hero {
     height: 400px;
+
     .actions {
       margin-top: 25px;
     }
@@ -204,30 +234,32 @@
 /*
 * Top content layer & Title Styles
 ***************************************************/
-
 /* Dark BG Colors */
-
 /* Light BG Colors */
-
 /* Alignment */
-
 /* Styles */
-
 @media only screen and (min-width: 480px) {
   #hero {
-    .heading, .subheading {
+
+    .heading,
+    .subheading {
       display: block;
     }
-    .heading, .subheading {
+
+    .heading,
+    .subheading {
       &.uppercase {
         text-transform: uppercase;
       }
+
       &.lowercase {
         text-transform: lowercase;
       }
+
       &.extended {
         letter-spacing: 4px;
       }
+
       &.thin {
         font-weight: 100;
       }
@@ -240,16 +272,20 @@
     .excerpt {
       display: block;
     }
+
     .tagline-line-2 {
       display: inline;
-    }    
+    }
+
     .heading {
       font-size: 48px;
       line-height: 48px;
+
       &.bold {
         font-size: 60px;
       }
     }
+
     .subheading {
       &.bold {
         font-size: 100px;
@@ -263,17 +299,21 @@
     .heading {
       font-size: 60px;
       line-height: 60px;
+
       &.bold {
         font-size: 75px;
       }
     }
+
     .subheading {
       font-size: 40px;
       line-height: 48px;
+
       &.bold {
         font-size: 130px;
       }
     }
+
     .tagline {
       font-size: 30px;
       line-height: 30px;
@@ -284,11 +324,9 @@
 /*
 * Middle gradient layer
 ***************************************************/
-
 /*
 * Background image or video layer
 ***************************************************/
-
 .backgroundsize #hero #mastheadBackground img {
   display: none;
 }
@@ -310,7 +348,6 @@
 /***************
 Image Quick View
 ****************/
-
 .homepage {
   #heroQuickView {
     display: none;
@@ -341,10 +378,13 @@ Image Quick View
   }
 
   #heroQuickView {
-    img, iframe {
+
+    img,
+    iframe {
       max-width: 90%;
       max-height: 90%;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+              box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
       cursor: pointer;
     }
   }

@@ -9,7 +9,7 @@ $(document).ready(function(){
   };
 
   trigger.on('click', function() {
-    trigger.toggleClass('active');
+    // trigger.toggleClass('active');
     list.slideToggle(200);
   });
 

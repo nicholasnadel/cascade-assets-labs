@@ -1,0 +1,214 @@
+.campus-map {
+    .map-container {
+        position: relative;
+        height: 500px;
+        margin-top: 66px;
+        overflow: hidden;
+    }
+
+    .map-container {
+
+        iframe#map_frame {
+            height: 512px;
+        }
+
+
+        .map-inner {
+            height: 500px;
+            // height: 100%;
+            position: absolute;
+        }
+
+        .marker-icon {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+        }
+
+        i.fas.marker-icon {
+            display: inline-block;
+            border-radius: 60px;
+            box-shadow: 0px 0px 2px #888;
+            padding: 0.5em 0.6em;
+            background-color: $cardinal;
+            color: $white;
+            font-size: 1.5em;
+        }
+
+        .theme-button i.fas {
+            font-size: 1.2em;
+            margin-left: 6px;
+        }
+
+        .theme-button:after {
+            display: none;
+        }
+
+        .box {
+            // background-color: $white-alpha-50;
+            background-color: rgba($white, .9);
+            width: 480px;
+            max-width: 480px;
+            position: absolute;
+            // top: 50%;
+            // transform: translateY(-50%);
+            height: 100%;
+        }
+
+        .box-inner {
+            position: relative;
+            // top: 50%;
+            // transform: translateY(-50%);
+            display: block;
+            margin: auto;
+            text-align: center;
+            padding: 50px;
+            height: 100%;
+        }
+
+        .box-header {
+            font-family: $futura-regular;
+            font-weight: 700;
+            font-size: 24px;
+            color: $cardinal;
+            text-transform: capitalize;
+        }
+
+        .address-wrapper {
+            margin-top: 65px;
+            font-family: $futura-regular;
+            font-weight: 400;
+            font-size: 18px;
+            color: $black;
+            border: 2px solid $cardinal;
+            height: 125px;
+            position: relative;
+        }
+
+        .address-inner {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            display: block;
+            margin: auto;
+            text-align: center;
+            margin-bottom: 125px;
+        }
+
+        a.address-inner {
+            color: $panther-black;
+            text-transform: capitalize;
+        }
+
+        .theme-button {
+            border-radius: 0;
+            display: block !important;
+            margin-bottom: 12px;
+            text-transform: capitalize;
+        }
+
+        .red-button,
+        .theme-button {
+            font-family: $futura-regular;
+            font-weight: 400;
+            font-size: 16px;
+            color: $white;
+            background-color: $cardinal;
+            margin-top: 12px;
+            display: block !important;
+        }
+
+        div#map-bar {
+            left: unset;
+            right: 0;
+            float: right;
+            position: relative;
+        }
+
+        .leaflet-control-attribution.leaflet-control {
+            display: none !important;
+        }
+
+        div#map-buttons,
+        #map-buttons {
+            display: none;
+        }
+
+        a.address-inner {
+            border-bottom: none !important;
+            color: $black;
+        }
+
+        .link-underline {
+            border-bottom: 1px dotted #a50034;
+        }
+
+        span.link-underline a {
+            color: black;
+        }
+
+        ////////////////////////// workarounds //////////////////////////
+        ////////////////////////// no transparency //////////////////////////
+        // .box {
+        //     // background-color: $white-alpha-50;
+        //     background-color: white !important;
+        // }
+
+        ////////////////////////// smaller //////////////////////////
+        // .box {
+        //     height: 460px !important;
+        //     bottom: 0;
+        //     width: 400px !important;
+        // }
+
+        ////////////////////////// pointer-events: none //////////////////////////
+        // .box {
+        //     height: 460px !important;
+        //     bottom: 0;
+        //     width: 400px !important;
+        //     pointer-events: none;
+        // }
+        ////////////////////////// remove box //////////////////////////
+        // .box {
+        //     display: none;
+        // }
+        ////////////////////////// margin-left //////////////////////////
+        // iframe#map_frame {
+        //     margin-left: 453px !important;
+        // }
+
+        ////////////////////////// extend-width //////////////////////////
+        iframe#map_frame {
+            width: 120%;
+            margin-top: 12px !important;
+            margin-left: -20% !important;
+        }
+
+        ////////////////////////// end workarounds //////////////////////////
+
+
+        @media screen and (max-width: 1480px) {}
+
+        @media screen and (max-width: 1480px) {}
+
+        @media screen and (max-width: 1480px) {}
+
+        @media screen and (max-width: 780px) {
+
+            .box {
+                width: 100vw;
+                max-width: 100vw;
+                position: relative;
+                height: 500px;
+            }
+
+            iframe#map_frame {
+                width: 100%;
+                margin-left: 0 !important;
+                margin-top: -100px !important;
+            }
+        }
+    }
+}
