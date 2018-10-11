@@ -610,10 +610,11 @@ var OmniNav2 = (function() {
         $('#js-off-canvas-nav-container').toggleClass('open');
         $('#js-off-canvas-overlay').toggleClass('active');
         $('body').toggleClass('no-scroll');
-        var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('#js-off-canvas-nav-container') : $('.nav-container');
+        var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('.off-canvas-menu:visible') : $('.nav-container');
         focus_target.find("a").first().focus();
       };
 
+      //If user clicks off-canvas button, or clicks off off-canvas nav
       $(offCanvasSelectors).on('click keydown', function(e) {
         if ((e.keyCode === 32 || e.keyCode === 13) || (e.type == "click")) {
           toggleOffCanvas();
@@ -643,15 +644,15 @@ var OmniNav2 = (function() {
         }
       });
 
-      //If user tabs off last item in off-canvas nav, close
-      $('.off-canvas-menu').on("keydown", ".off-canvas-utility li:last-child", function(e) {
-        if (e.keyCode === 9) { //Tab key 
+      //Tabbing off last item closes menu
+      $('.off-canvas-nav').on("keydown", "#off-canvas-main .off-canvas-utility li:visible:last, #off-canvas-umbrella li:visible:last", function(e) {
+        if (e.keyCode === 9 && !e.shiftKey) { //Tab and not Shift+Tab 
           toggleOffCanvas();
           return false;
         }
       });
-      
-      //Hit esc, close off-canvas nav
+
+      //ESC closes off-canvas nav
       $(document).on('keydown', function(e) {
         if (e.keyCode === 27 && $(".off-canvas-nav-container").hasClass("open")) { //ESC key
           toggleOffCanvas();
