@@ -66,7 +66,7 @@ var OmniNav2 = (function() {
     
     //Primary global nav keyboard controls
     //Top level links
-    $primaryNav.on("keydown mouseenter", "li.primary-link.has-dropdown", function (e) {
+    $primaryNav.on("keydown mouseenter", "ul.global-nav-links > li.primary-link", function (e) {
       if ($(this).attr('aria-expanded') == "true") {
         if (e.keyCode === 40 ) { //down arrow key
           focusNextElement($(this)).focus();
