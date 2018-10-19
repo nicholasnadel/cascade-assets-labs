@@ -52,8 +52,12 @@
 		line-height: 18px;
 		font-weight: 800;
 
-		a { color: $black; }
-		a:hover { color: $blue; }
+		a { 
+      color: $cu-red; 
+      border-bottom: none;
+    }
+		a:hover { color: $cu-black; }
+    a::after { content: " »"; }
 	}
 
 	.tag {
