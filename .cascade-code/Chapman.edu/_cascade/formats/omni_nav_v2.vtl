@@ -388,6 +388,7 @@
     <ul>
       ## First list item is always Overview
       <li>
+        ## Generate Nicely Capitalized and Spaced $parentPage Titles
         #set ( $parentPage = "" )
         #foreach ( $word in $overviewLink.split("/")[1].split("-") )
           #if ( $parentPage != "" )
