@@ -65,8 +65,9 @@ var OmniNav2 = (function() {
   var bindEventHandlers = function() {
     
     //Primary global nav keyboard controls
-    $primaryNav.on("keydown mouseenter", ".primary-link a", function (e) {
-      if ($(this).parent().attr('aria-expanded') == "true") {
+    //Top level links
+    $primaryNav.on("keydown mouseenter", "ul.global-nav-links > li.primary-link", function (e) {
+      if ($(this).attr('aria-expanded') == "true") {
         if (e.keyCode === 40 ) { //down arrow key
           focusNextElement($(this)).focus();
           return false;
@@ -75,13 +76,14 @@ var OmniNav2 = (function() {
       else {
         //Spacebar, Down, or Enter Key
         if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "mouseenter")) {
-          $(this).parent().attr('aria-expanded', 'true');
+          $(this).attr('aria-expanded', 'true');
           return false;
         }
       }
     });
 
-    $(".primary-link .global-nav-dropdown a").on("keydown mouseenter", function (e) {
+    //Expanded nav link items
+    $primaryNav.on("keydown mouseenter", "li.primary-link .global-nav-dropdown a", function (e) {
       if (e.keyCode === 38 ) { //up arrow key
         focusPrevElement($(this)).focus();
         return false;
@@ -92,7 +94,8 @@ var OmniNav2 = (function() {
       }
     });
     
-    $primaryNav.on("keydown", ".primary-link", function (e) {  
+    //Extra navigation options
+    $primaryNav.on("keydown", "li.primary-link", function (e) {  
       //Need to explicitly find an element that's focusable, in this case the next top level anchor
       if (e.keyCode === 37 ) { //Left arrow key
         $(this).prev().find("a").first().focus();
@@ -109,6 +112,7 @@ var OmniNav2 = (function() {
       }
     });
     
+    //Closing navs
     $primaryNav.on("focusout mouseleave", ".primary-link", function() {
       //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
       //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
@@ -610,18 +614,27 @@ var OmniNav2 = (function() {
         $('#js-off-canvas-nav-container').toggleClass('open');
         $('#js-off-canvas-overlay').toggleClass('active');
         $('body').toggleClass('no-scroll');
-        var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('#js-off-canvas-nav-container') : $('.nav-container');
+        var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('.off-canvas-menu:visible') : $('.nav-container');
         focus_target.find("a").first().focus();
       };
 
+      //If user clicks off-canvas button, or clicks off off-canvas nav
       $(offCanvasSelectors).on('click keydown', function(e) {
         if ((e.keyCode === 32 || e.keyCode === 13) || (e.type == "click")) {
           toggleOffCanvas();
           return false;
         }
       });
-
-      $(".off-canvas-menu").on('keydown','li', function(e) {
+      
+      //Tabbing off last item closes menu
+      $('.off-canvas-nav').on("keydown", "#off-canvas-main .off-canvas-utility li:visible:last, #off-canvas-umbrella li:visible:last", function(e) {
+        if ((e.keyCode === 9 && !e.shiftKey) || (e.keyCode === 40)) { //Tab and not Shift+Tab OR Down arrow key
+          toggleOffCanvas();
+          return false;
+        }
+      }); 
+      
+      $(".off-canvas-nav").on('keydown','.off-canvas-menu li', function(e) {
         if (e.keyCode === 32 || e.keyCode === 13) { //Enter or space bar
           var that = $(this).find(".toggle");
           if (that.length) { //Has a dropdown
@@ -642,7 +655,8 @@ var OmniNav2 = (function() {
           return false;
         }
       });
-      
+
+      //ESC closes off-canvas nav
       $(document).on('keydown', function(e) {
         if (e.keyCode === 27 && $(".off-canvas-nav-container").hasClass("open")) { //ESC key
           toggleOffCanvas();
@@ -650,6 +664,7 @@ var OmniNav2 = (function() {
         }
       });
 
+      //Inner menu toggle
       $('#js-off-canvas-nav-container .toggle').on('click', function() {
         $(this).parent().toggleClass('open'); // Targets li
         $(this).parent().find('ul').slideToggle();
