@@ -1,7 +1,7 @@
 #theme.business__graduate {
   @include theme-color-classes(black);
 
-  .header h2.header {
+  .header h2, .faux-h2.header, .faux-h2, .faux-h2.header {
     font-family: $futura-condensed;
   }
 
@@ -23,7 +23,7 @@
   }
 
   .expandedNameBarContainer {
-    h2, a {
+    h2, .faux-h2, a {
       color: #95d2e8;
     }
   }

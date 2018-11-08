@@ -112,7 +112,7 @@ div.slider.version-201611 {
         div.aligned {
           padding: 32px;
 
-          h2 {
+          .faux-h2, h2 {
             margin: 0px auto 24px;
             padding: 0px;
             font-size: 22px;
@@ -145,7 +145,7 @@ div.slider.version-201611 {
             }
           }
 
-          h3 {
+          h3, .faux-h3 {
             margin: 24px auto 0px;
             font-size: 20px;
             line-height: 30px;

@@ -15,7 +15,7 @@
     height: auto;
   }
 
-  span, h2, p {
+  span, h2, .faux-h2, p {
     font-family: "futura-pt-condensed", Arial, sans-serif;
     line-height: 1;
   }
@@ -31,7 +31,7 @@
 
     .title {
 
-      h2 {
+      h2, .faux-h2 {
         font-size: 5em;
         font-weight: 700;
         font-family: "futura-pt";
@@ -183,7 +183,7 @@
       height: 20%;
       width: 100%;
 
-      h2 {
+      h2, .faux-h2 {
         display: inline-block;
         position: relative;
         margin: 0;
@@ -256,7 +256,7 @@
     .title {
       width: 100%;
 
-      h2 {
+      h2, .faux-h2 {
         width: 100%;
         color: $pillar;
         position: relative;
