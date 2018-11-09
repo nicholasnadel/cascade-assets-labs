@@ -1,11 +1,33 @@
-// Add titles to untitled iFrames for Wave
+function renameNoscript() {
+  $('noscript').replaceWith('<tempscript>' + $('noscript').html() + '</tempscript>')
+  //console.log('rename noscript to tempscript');
+}
+function renameTempscript() {
+  //console.log('renaming tempscript back to noscript');
+  $('tempscript').replaceWith('<noscript>' + $('tempscript').html() + '</noscript>')
+}
+
+function addiFrameTitle() {
+  var attr = $(this).attr('title');
+  var noTitle = $('iframe').not('[title]');
+  $("iframe").each(function () {
+    $(noTitle).attr('title', 'Embedded content from external source');
+    renameTempscript();
+  });
+}
+renameNoscript();
+//console.log('renameNoscript 1');
+//debugger
+addiFrameTitle();
+//console.log('addiFrameTitle 2');
+//debugger
 (function ($, document, undefined) {
   $.fn["iready"] = function (callback) {
     var ifr = this.filter("iframe"),
       arg = arguments,
       src = this,
       clc = null, // collection
-      lng = 50, // length of time to wait between intervals
+      lng = 5, // length of time to wait between intervals
       ivl = -1, // interval id
       chk = function (ifr) {
         try {
@@ -26,7 +48,6 @@
                 // should be loaded
                 ifr.data("ready", true);
               }
-
               break;
             case "interactive":
               ifr.data("ready", "true");
@@ -41,10 +62,8 @@
           // since we won't be able to access it cross domain
           ifr.data("ready", "true");
         }
-
         return ifr.data("ready") === "true";
       };
-
     if (ifr.length) {
       ifr.each(function () {
         if (!$(this).data("ready")) {
@@ -62,7 +81,6 @@
               }
             }
           });
-
           if (rd) {
             clearInterval(ivl);
             clc = null;
@@ -80,32 +98,18 @@
     return this;
   };
 }(jQuery, document));
-
-$(window).load(function () {
-  var attr = $(this).attr('title');
-  if (typeof attr !== typeof undefined && attr !== false) {
-    $("iframe").on('load', function () {
-      $('iframe').attr('title', 'A document using iframe');
-    });
-  }
-
-  $("iframe").iready(function () {
-    var ifr = $("#test");
-    // console.log("iready - Should now be ready.");
-    try {
-      // console.log($("#iframe").contents()[0].readyState);
-    } catch (ignore) {
-      // console.log("cross domain");
-      var attr = $(this).attr('title');
-      if (typeof attr !== typeof undefined && attr !== false) {
-        $("iframe").on('load', function () {
-          $('iframe').attr('title', 'A document using iframe');
-        });
-      }
-    }
+$(window).load(function (callback) {
+  ////debugger
+  renameNoscript();
+  addiFrameTitle();
+  $("iframe").iready(function (callback) {
+    renameNoscript();
+    ////debugger
+    addiFrameTitle();
+    ////debugger
+    renameTempscript();
   });
-
   try {
-    // console.log("Should not be ready: " + $("#iframe").contents()[0].readyState);
-  } catch (ignore) {}
+  } catch (ignore) { }
 });
+renameTempscript();
