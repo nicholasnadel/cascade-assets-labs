@@ -1,3 +1,23 @@
+function removeSrc() {
+	$('script').each(function() {
+		var old_src = jQuery(this).attr('src');
+		$(this).attr('src', 'about:blank');
+		//console.log('removed source');
+	});
+}
+
+function toggleWeather() {
+	$(document).ready(function() {
+		if (window.location.href.indexOf('/navsNoJS/') > -1) {
+			// removeSrc();
+			$('.weather').css('display', 'none');
+		} else {
+			$('.weather').css('display', 'flex');
+			//console.log('displaying weather widget');
+		}
+	});
+}
+
 $(function() {
 	$('.footer .footer-menu .links-header').on('click', function() {
 		if ($(document).width() > 420 && $(window).width() > 420) return;
@@ -33,9 +53,4 @@ $(function() {
 	});
 });
 
-$(document).ready(function() {
-	$('.weather').css('display', 'flex');
-	if (document.location.pathname.indexOf('/navsNoJs/') == 0) {
-		$('.weather').css('display', 'none');
-	}
-});
+toggleWeather();
