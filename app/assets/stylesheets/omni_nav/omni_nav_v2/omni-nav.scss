@@ -429,7 +429,7 @@ html.omni-nav-v2 {
       // Used by hamburger, search, and user icons
       .primary-nav-icon {
         cursor: pointer;
-        height: 60px;
+        height: auto;
 
         svg {
           vertical-align: middle;
@@ -534,7 +534,7 @@ html.omni-nav-v2 {
 
         @include media($medium-screen) {
           margin: 13px 0px;
-          padding: 0px;
+          padding: 1px;
 
           .cu-logo-wrapper {
             height: 32px;
