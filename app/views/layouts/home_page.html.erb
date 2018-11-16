@@ -10,7 +10,7 @@
 
 <body>
   <!--<![endif]-->
-  <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
+  <%= render '_cascade/blocks/html/jump_link' %>
 
   <div id="fb-root"></div>
 
@@ -23,9 +23,11 @@
     <%= render 'widgets/shared/header' %>
 
     <div class="homepage" id="main" role="main">
+
       <%= yield(:primary_content) %>
-    </div>
       
+    </div>
+
     <%= yield(:footer) %>
 
   </div>

@@ -1,0 +1,64 @@
+<% # These import statements below don't do anything. They just mirror what's in Cascade. %>
+<% #import( "/_cascade/formats/helpers.velocity" ) %>
+<% #import( "/_cascade/formats/modular/mastheads/side_panel_hero" ) %>
+
+<% mastheadType = current_page.get_child_value(:masthead_type) %>
+
+<% if mastheadType == 'Side panel hero' %>
+  <% #outputSidePanelHero($masthead.getChild('sidePanelHero')) %>
+    <div class="masthead-primary bg-image">
+        <div class="masthead-primary-a">
+            <div class="headline-container">
+                #if($secondaryHeadline != '')
+                    <h2 class="headline secondary">$secondaryHeadline</h2>   
+                #end            
+                <h1 class="headline primary">$primaryHeadline</h1>
+            </div>
+            <div class="offcanvas-menu-trigger">
+                <a href="#">View Menu</a>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <div class="control left cd-arrow-left"><a href="#">&#139;</a></div>
+            <div class="control right cd-arrow-right"><a href="#">&#155;</a></div>
+        </div>
+        <div class="background-content">
+            <div class="slider-wrapper">
+                <ul class="cd-hero-slider autoplay">
+                    #foreach($slide in $slides)
+                        <li class="#if($foreach.index == 0)selected#end">
+                            #outputSlide($slide)
+                        </li>
+                    #end
+                </ul>
+            </div>
+            <div class="gradient-overlay"></div>
+        </div>
+    </div>
+#end
+
+#macro(outputSlide $slide)
+    #set ( $slideType = $slide.getChild('type').value )
+    #set ( $altText   = $slide.getChild('alternateText').value )
+    #set ( $bgImageAlignY = $slide.getChild('alignY').value )
+    
+    #if ( $slideType == "Image" )
+        #set ( $backgroundImage = $slide.getChild('imageFile').getChild('path').value )
+        
+        <div class="background-image" role="img" aria-label="${_EscapeTool.xml($altText)}"
+             style="background-image: url('[system-asset]${_EscapeTool.xml($backgroundImage)}[/system-asset]'); background-position: center ${bgImageAlignY.toLowerCase()};">
+        </div>
+    #elseif ($slideType == "Video")
+        #set ( $backgroundVideo = $slide.getChild('videoFile').getChild('path').value )
+        #set ( $fallbackImage   = $slide.getChild('fallbackImageFile').getChild('path').value )
+
+        <div class="background-video-wrapper">
+            <video id="background-video" class="background-video" aria-label='${_EscapeTool.xml($altText)}' muted="muted" autoplay="true" 
+                   loop="true" poster="[system-asset]${_EscapeTool.xml($fallbackImage)}[/system-asset]">
+                <source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
+            </video>
+        </div>
+    #end
+
+#end
+<% end %>

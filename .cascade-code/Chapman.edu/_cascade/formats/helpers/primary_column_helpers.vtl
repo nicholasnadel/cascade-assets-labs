@@ -1,0 +1,89 @@
+#*
+ * primary_column_helpers.velocity
+ * Master Version: Chapman.edu/_cascade/formats/helpers/primary_column_helpers.velocity
+ *#
+
+#import( "/_cascade/formats/helpers.velocity" )
+
+## Used for repeated code on primary_column widgets
+
+#macro(outputSectionMessage $content $subBrand)
+    #set ($category       = $_EscapeTool.xml($content.getChild('textFields').getChild('category').value) )
+    #set ($title          = $_EscapeTool.xml($content.getChild('textFields').getChild('title').value) )
+    #set ($body           = $_SerializerTool.serialize($content.getChild('textFields').getChild('body'), true) )
+    #set ($button         = $content.getChild('textFields').getChild('button') )
+    #set ($buttonLabel    = $_EscapeTool.xml($button.getChild('label').value) )
+    #set ($dropdownNav    = $content.getChild('textFields').getChild('dropdownNav') )
+    #set ($dropdownLabel  = $_EscapeTool.xml($dropdownNav.getChild('dropdownLabel').value) )
+    #set ($dropdownLinks  = $_XPathTool.selectNodes($dropdownNav, 'dropdownLink') )
+    #set ($buttons        = $_XPathTool.selectNodes($content.getChild('textFields'), 'buttons' ))
+    #set ($links          = $_XPathTool.selectNodes($content.getChild('textFields'), 'links'))
+    #set ($buttonType     = $content.getChild('textFields').getChild('buttonType').value )
+    
+
+    <div class="text-column">
+        <div class="section-message">
+            #if ($category != "")
+                <div class="category">$category</div>
+            #end
+            #if ($title != "")
+                <h2 class="title">$title</h2>
+            #end
+            #if ($body != "")
+                <div class="body editableContent">
+                    <p>$body</p>
+                </div>
+            #end
+            #if ($buttonType == 'Buttons')
+                <div class="text-actions">
+                    #foreach($button in $buttons)
+                        <a #outputHref($button) class="theme-button">$_EscapeTool.xml($button.getChild('label').value)</a>
+                    #end
+                </div>
+                #set ($buttonType = '')
+            #elseif ($buttonType == 'Links' )
+                <div class="text-actions">
+                    <h2 class="video-links-title">$_EscapeTool.xml($content.getChild('textFields').getChild('linksHeading').value)</h2>
+                    #foreach($link in $links)
+                        <p><a #outputHref($link)> $_EscapeTool.xml($link.getChild('label').value)</a></p>
+                    #end
+                </div>
+                #set ($buttonType = '')
+            #elseif (($buttonLabel != "" || $dropdownLabel != "") && ($content.getChild('format').value != "Stacked" || $subBrand == true ))
+                <div class="text-actions">
+                    #if ($buttonLabel != "")
+                        <a #outputHref($button) class="theme-button">$buttonLabel&#160;</a>
+                    #end
+                    #if ($dropdownLabel != "")
+                        <nav class="text-widget-select">
+                            <button class="select-button theme-border-color theme-text-color">
+                                $_EscapeTool.xml($dropdownLabel)
+                                <span class="select-arrow theme-border-color"></span>
+                            </button>
+                            #if ($dropdownLinks.size() > 0)
+                                <ul class="select-list">
+                                    #foreach( $link in $dropdownLinks )
+                                      <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
+                                    #end
+                                </ul>
+                            #end
+                        </nav>                        
+                    #end
+                </div>
+            #end
+        </div>
+    </div>
+#end
+
+#macro(outputMessagingClasses $content)
+    #set ($format     = $content.getChild('format').value)
+    #set ($bgColor = $content.getChild('bgColor').value)
+    #set ($textAlign  = $content.getChild('textFields').getChild('textAlign').value)
+    #set ($classStr   = "messaging-widget ")
+
+    ## Setting Class String
+    #set($classStr = "${classStr} messaging-widget__#if($format == 'Stacked' || $format == 'Centered')1-column#{else}2-column#end")
+    #set($classStr = "${classStr} messaging-widget__#if($bgColor == 'Light')light-bg#{elseif}($bgColor == 'Medium')medium-bg#{else}dark-bg#end")
+    #set($classStr = "${classStr} messaging-widget__#if($textAlign == 'Left')text-left#{else}text-right#end")
+    $classStr
+#end

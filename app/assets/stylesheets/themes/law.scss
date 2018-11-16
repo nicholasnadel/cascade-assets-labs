@@ -195,7 +195,15 @@
 
   .link-container-before,
   .links-header {
-    background-color: $law-primary;
+    //background-color: $law-primary;
+  }
+
+  .footer .footer-section.footer-menu .campus-addresses {
+    align-items: flex-end;
+
+    @include bp(lx) {
+      align-items: normal;
+    }
   }
 
   .link-container-after {

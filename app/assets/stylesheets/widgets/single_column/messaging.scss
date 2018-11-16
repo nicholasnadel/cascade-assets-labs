@@ -31,6 +31,8 @@
     height: auto;
   }
 
+  .video-links-title { font-size: 26px; }
+
   .fluid-width-video-container {
     @include fluid-width-video-container;
     display: inline-block;
@@ -171,6 +173,13 @@
     margin: 24px auto 0;
     max-width: 304px;
     width: 100%;
+
+    .theme-button {
+  
+      &:nth-child(2) {
+        margin-top: 15px;
+      }
+    }
   }
 
   .theme-button {
@@ -316,7 +325,7 @@
   .title,
   .category,
   .body { 
-    color: white; 
+    color: white;
   }
 
   /* Updated for accessibility. See:
@@ -346,6 +355,14 @@
   .text-widget-select {
 
     .select-button {
+
+      #theme & {
+        color: white;
+
+        .select-arrow.theme-border-color {
+          border-color: white;
+        }
+      }
 
       #theme.business &,
       #theme.communication &,
@@ -383,5 +400,150 @@
   .fact-card {
     white-space: normal;
     margin: $base-spacing $base-spacing 0;
+  }
+}
+
+/* Circle image with Text */
+.primary-content.one-column {
+
+  .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.circle,
+  .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.circle,
+  .messaging-widget.messaging-widget__1-column.messaging-widget__text-right.circle,
+  .messaging-widget.messaging-widget__1-column.messaging-widget__text-left.circle {
+    min-height: 500px;
+
+    .outer-container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0;
+
+      @include bp(wildcard-max, 780px) {
+        flex-direction: column;
+      }
+
+      .column.media-column {
+        height: auto;
+        width: auto;
+
+        img {
+          height: 250px;
+          width: 250px;
+          border-radius: 50%;
+          border: 2px solid $cu-red;
+          object-fit: cover;
+        }
+      }
+
+      .text-column {
+        width: 75%;
+        padding: 0 0 0 35px;
+        margin: 0;
+
+        @include bp(wildcard-max, 780px) {
+          width: 100%;
+          padding: 0 35px 0 35px;
+        }
+
+        .section-message {
+          text-align: left;
+
+          .category {
+            color: $cu-red;
+            font-weight: 700;
+
+            @include bp(wildcard-max, 780px) {
+              text-align: center;
+            }
+          }
+
+          .title {
+            font-weight: 700;
+
+            @include bp(wildcard-max, 780px) {
+              text-align: center;
+            }
+          }
+
+          .text-actions {
+            display: flex;
+            justify-content: space-between;
+            max-width: 100%;
+            margin-top: 30px;
+
+            @include bp(wildcard-max, 480px) {
+              flex-direction: column;
+            }
+
+            .text-widget-select {
+              width: 49%;
+              margin-top: 0;
+
+              @include bp(wildcard-max, 480px) {
+                width: 100%;
+              }
+            }
+
+            .theme-button {
+              width: 49%;
+              
+              &:nth-child(2) { margin-top: 0px; }
+
+
+              @include bp(wildcard-max, 480px) {
+                width: 100%;
+
+                &:nth-child(1) {
+                  margin-bottom: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .messaging-widget__dark-bg {
+
+    .section-message {
+      
+      .category { color: white !important; }
+    }
+
+    
+
+    .select-button.theme-border-color {
+      color: $cu-red;
+      border-color: transparent;
+
+      .select-arrow.theme-border-color {
+        border-color: $cu-red;
+      }
+    }
+
+    .video-links-title { color: white;}
+
+    p {
+      a {
+        border-bottom: 2px solid white;
+
+        &:hover {
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+
+  .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.circle,
+  .messaging-widget.messaging-widget__1-column.messaging-widget__text-left.circle {
+    
+    .outer-container {
+      flex-direction: row-reverse;
+
+      @include bp(wildcard-max, 780px) {
+        flex-direction: column;
+      }
+    }
   }
 }

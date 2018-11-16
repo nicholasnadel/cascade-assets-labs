@@ -166,10 +166,6 @@ $(function () {
             $('.rounded-slider').find('.red').addClass("no-link");
         }
 
-        if (!$(".rounded-slider .info-container .red p").text()) {
-            $(".rounded-slider .info-container .red").hide();
-        }
-
         // FIXME: Code in callback methods below needs cleanup.
         $('.flexslider').flexslider({
             animation: "slide",

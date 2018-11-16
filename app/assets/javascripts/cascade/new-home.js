@@ -5,7 +5,7 @@
         if ( onHomePage ) {
             cu_window_manager.initialize();
             cu_hero_area.initialize();
-            cu_stories_area.initialize();
+            //cu_stories_area.initialize();
             cu_admission_area.initialize();
             smc_cta_tracker.initialize();
             heroModalViewer.initialize();
@@ -245,15 +245,26 @@
             * Undergraduate Admission
             *************************/
             this.$undergraduateAdmission = $("#undergraduateAdmission");
-            this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
-
+            //This is causing a breaking change "Uncaught TypeError: Cannot read property 'top' of null" in development
+            if (this.$undergraduateAdmission.find('.statistics').length > 0) {
+              this.admissionStartPX = this.$undergraduateAdmission.find('.statistics').offset().top;
+            }
+            else {
+              this.admissionStartPX = 0;
+            }
             this.$undergraduateAdmission.find('.fade-elem').css('opacity', 0); // prep for fade in
 
             /*
             * Graduate Admission
             *************************/
             this.$graduateAdmission = $("#graduateAdmission");
-            this.graduateAdmissionStartPX = this.$graduateAdmission.offset().top;
+            
+            if (this.$graduateAdmission.length > 0) {
+              this.graduateAdmissionStartPX = this.$graduateAdmission.offset().top;
+            }
+            else {
+              this.graduateAdmissionStartPX = 0;
+            }
 
             this.process(); // in case we already scrolled
         },
@@ -266,7 +277,9 @@
 
                 // Do not initialize Skrollr on mobile.
                 if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){
-                    cu_parallax_fx.skrollr = skrollr.init();
+                    cu_parallax_fx.skrollr = skrollr.init({
+                      forceHeight: false
+                    });
                 }
 
             } catch (e) {
