@@ -3,12 +3,13 @@
  *
  * I've seperated them here to share them between all widgets that need
  * to use them.
- */ 
+ */
 
 .section-message {
   .category {
     @include content_label();
     margin: 0;
+    background-color: red !important;
   }
 
   .title {
@@ -25,7 +26,7 @@
   }
 
   .button.red {
-   @include button();
-   padding: $base-spacing $base-spacing*2;
+    @include button();
+    padding: $base-spacing $base-spacing*2;
   }
 }
