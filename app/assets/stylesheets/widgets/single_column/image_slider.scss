@@ -5,7 +5,7 @@
     margin-bottom: 64px;
   }
 
-  h1 {
+  h1, .faux-h1 {
     font-family: $futura-regular;
     font-weight: 700;
     font-size: 24px;
@@ -16,9 +16,9 @@
     margin-bottom: 2%;
   }
 
-  h1.title,
-  h2.title,
-  h3.title {
+  h1.title, .faux-h1.title,
+  h2.title, .faux-h2.title,
+  h3.title, .faux-h3.title {
     margin-top: -30px;
     padding-top: 0;
   }

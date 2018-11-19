@@ -31,6 +31,7 @@ $panther-black: #231f20;
 $theme-bg-color-alpha: transparent;
 $cardinal-hover: #810029;
 $panther-black: #231f20;
+$cu-black: $panther-black;
 $content-padding: 2%;
 $line-height: normal;
 $red-button-hover: #C8003F;
@@ -105,10 +106,8 @@ $theatre-tertiary: #001f41;
 $wilkinson-primary: #008ec1;
 $wilkinson-secondary: #209cc9;
 $wilkinson-tertiary: #007ba7;
-//$law-primary: $cardinal;
-//$law-secondary: $cardinal-hover;
-$law-primary: #002f7c;
-$law-secondary: #01235b;
+$law-primary: $cardinal;
+$law-secondary: $cardinal-hover;
 /* Our Base Spacing Unit: Use multiples of this variable */
 $base-spacing: 16px;
 

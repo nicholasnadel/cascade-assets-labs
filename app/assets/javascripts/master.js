@@ -53,6 +53,7 @@
 //= require cascade/level/feature
 //= require cascade/level/flickr-picasa
 //= require cascade/level/funnel
+//= require cascade/iframe-titles
 //= require cascade/level/left-nav
 //= require cascade/level/shared-content-dept-contacts
 //= require cascade/level/level

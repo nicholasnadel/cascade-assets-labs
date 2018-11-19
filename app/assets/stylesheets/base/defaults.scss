@@ -384,26 +384,26 @@ p, li {
   @include paragraph;
 }
 
-h1, h2, h3 {
+h1, .faux-h1, h2, .faux-h2, h3, .faux-h3 {
   font-family: $font-stack-heading;
 }
 
-h3, h4, h5, h6 {
+h3, .faux-h3, h4, .faux-h4, h5, .faux-h5, h6, .faux-h6 {
   font-weight: 200;
 }
 
-h1 {
+h1, .faux-h1 {
 	font-size: 30px;
   font-weight: 800;
 }
 
-h2 {
+h2, .faux-h2 {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2em;
 }
 
-h3 {
+h3, .faux-h3 {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4em;
@@ -411,12 +411,12 @@ h3 {
   margin-bottom: 15px;
 }
 
-h4 {
+h4, .faux-h4 {
   font-size: 14px;
   font-weight: 500;
 }
 
-h5 {
+h5, .faux-h5 {
   font-size: 14px;
   font-weight: 500;
 }
