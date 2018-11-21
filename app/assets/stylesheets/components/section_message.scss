@@ -9,7 +9,7 @@
   .category {
     @include content_label();
     margin: 0;
-    background-color: red !important;
+    color: $color-medium-gray;
   }
 
   .title {
