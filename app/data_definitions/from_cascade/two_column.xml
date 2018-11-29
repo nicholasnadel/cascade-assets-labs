@@ -606,6 +606,8 @@
                     <dropdown-item value="SCST-CBFS"/>
                     <dropdown-item value="SCST-LES"/>
                     <dropdown-item value="SCST-MPC"/>
+                    <dropdown-item value="PHRM-BPS"/>
+                    <dropdown-item value="PHRM-PP"/>
                 </text>
                 <text default="Yes" identifier="photo" label="Show Photo" required="true" type="radiobutton">
                     <radio-item value="Yes"/>
