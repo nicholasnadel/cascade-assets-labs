@@ -45,7 +45,7 @@ $(function () {
   /* Populate news from Wordpress RSS feed (converted to JSON with YQL)
   ------------------------------------------------------------------------------------------------*/
   if ($(".news").length) {
-    var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
+    var newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
       newsYqlUrl = function () {
         return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + newsFeedUrl + "'&format=json&diagnostics=true&callback=?")
       },
@@ -91,8 +91,8 @@ $(function () {
         $(".allNews").attr("href", "http://blogs.chapman.edu/law");
         break;
       case "News and Stories":
-        newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories";
-        $(".allNews").attr("href", "http://blogs.chapman.edu/news-and-stories");
+        newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories";
+        $(".allNews").attr("href", "https://news.chapman.edu");
         break;
       case "Pharmacy":
         newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsPharmacy";
@@ -119,7 +119,7 @@ $(function () {
         $(".allNews").attr("href", "http://blogs.chapman.edu/wilkinson");
         break;
       default:
-        $(".allNews").attr("href", "http://blogs.chapman.edu/news-and-stories");
+        $(".allNews").attr("href", "https://news.chapman.edu");
         break;
     }
 
