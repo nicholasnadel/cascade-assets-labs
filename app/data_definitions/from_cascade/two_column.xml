@@ -643,7 +643,7 @@
         </group>
         <group identifier="news-events-options" label="Featured / News / Events Feeds">
             <asset identifier="feature" label="Feature" type="page"/>
-            <text default="Default" identifier="newsFeed" label="News Feed" type="dropdown">
+            <text default="Default" help-text="Default is stories from Newsroom maintained by Marketing Dept at Chapman" identifier="newsFeed" label="News Feed" type="dropdown">
                 <dropdown-item value="Default"/>
                 <dropdown-item value="Admissions"/>
                 <dropdown-item value="ASBE"/>
@@ -654,7 +654,6 @@
                 <dropdown-item value="Education"/>
                 <dropdown-item value="Information Systems"/>
                 <dropdown-item value="Law"/>
-                <dropdown-item value="News and Stories"/>
                 <dropdown-item value="Pharmacy"/>
                 <dropdown-item value="Schmid"/>
                 <dropdown-item value="SOC"/>
@@ -662,7 +661,7 @@
                 <dropdown-item value="Thompson Policy Institute"/>
                 <dropdown-item value="Wilkinson"/>
             </text>
-            <text default="Default" identifier="eventsFeed" label="Events Feed" type="dropdown">
+            <text default="Default" help-text="Default is today's events on events.chapman.edu" identifier="eventsFeed" label="Events Feed" type="dropdown">
                 <dropdown-item value="Default"/>
                 <dropdown-item value="ASBE"/>
                 <dropdown-item value="CDC"/>
