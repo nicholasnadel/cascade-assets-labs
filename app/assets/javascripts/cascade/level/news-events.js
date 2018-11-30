@@ -91,10 +91,6 @@ $(function () {
         newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsLaw";
         $(".allNews").attr("href", "http://blogs.chapman.edu/law");
         break;
-      //case "News and Stories":
-      //  newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories";
-      //  $(".allNews").attr("href", "https://news.chapman.edu");
-      //   break;
       case "Pharmacy":
         newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsPharmacy";
         $(".allNews").attr("href", "http://blogs.chapman.edu/pharmacy");
