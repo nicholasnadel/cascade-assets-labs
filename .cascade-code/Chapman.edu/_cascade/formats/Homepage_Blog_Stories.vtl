@@ -136,7 +136,15 @@
 #macro ( buildAnnouncementBlock )
   #set ( $footerName = $topStoryBlogParams[0] )
   #set ( $footerCss = $topStoryBlogParams[1] )
-  #set ( $footerLink = "https://blogs.chapman.edu/${topStoryBlogID}" )
+  #if ( $topStoryBlogID == "newsroom") 
+    #set ( $footerLink = "https://news.chapman.edu" )
+  #elseif ( $topStoryBlogID == 'chapman-forward')
+    #set ( $footerLink = "https://news.chapman.edu/chapman-forward")
+  #elseif ( $topStoryBlogID == 'magazine')
+    #set ( $footerLink = "https://news.chapman.edu/chapman-magazine")
+  #else
+    #set ( $footerLink = "https://blogs.chapman.edu/${topStoryBlogID}" )
+  #end
 
   <div class="announcement">
     ## Images must be 725x374 (or proportionally larger) for this space
@@ -271,7 +279,15 @@
   #set ( $storyBlogParams = $BLOGS_CONFIG[$storyBlogName] )
   #set ( $storyBlogTitle = $storyBlogParams[0] )
   #set ( $storyCss = $storyBlogParams[1] )
-  #set ( $storyBlogLink = "https://blogs.chapman.edu/${storyBlogName}" )
+  #if ( $storyBlogName == "newsroom") 
+    #set ( $storyBlogLink = "https://news.chapman.edu" )
+  #elseif ( $storyBlogName == "chapman-forward")
+    #set ( $storyBlogLink = "https://news.chapman.edu/chapman-forward" )
+  #elseif ( $storyBlogName == "magazine")
+    #set ( $storyBlogLink = "https://news.chapman.edu/chapman-magazine" )
+  #else
+    #set ( $storyBlogLink = "https://blogs.chapman.edu/${storyBlogName}" )
+  #end
 
   ## Output
   <footer class="story_footer">
