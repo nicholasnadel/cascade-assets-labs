@@ -159,8 +159,6 @@
           padding-top: 1em;
           transition: all .45s;
 
-          &.helloWorld { display: grid; }
-
           &.linksIn {
             height: 14em;
             padding: 1.5em 0 1em 1em;
@@ -198,7 +196,7 @@
 
     .links-header {
 
-      h2, h3 {
+      h3, h4 {
         margin: 0 0 8px 0;
         font-size: 1.4em;
         line-height: 1.4em;
@@ -217,7 +215,7 @@
         cursor: pointer;
         z-index: 10;
 
-        h2, h3 {
+        h3, h4 {
           font-size: 1.7em;
           width: 80%;
           margin: 0;

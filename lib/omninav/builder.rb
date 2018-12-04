@@ -624,7 +624,7 @@ OFF_CANVAS_HEADER_HTML
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
+              <a href="https://news.chapman.edu/" title="Blog for News and Stories">News and Stories</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>
