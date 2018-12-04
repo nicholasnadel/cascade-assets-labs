@@ -25,7 +25,6 @@
 //= require cascade/video-overlay
 //= require cascade/weather
 
-
 // If they're not required, can we delete them and remove these lines?
 // don't require cascade/home
 // don't require cascade/shortcuts
@@ -54,6 +53,7 @@
 //= require cascade/level/flickr-picasa
 //= require cascade/level/funnel
 //= require cascade/iframe-titles
+//= require cascade/image-alt-text
 //= require cascade/level/left-nav
 //= require cascade/level/shared-content-dept-contacts
 //= require cascade/level/level
