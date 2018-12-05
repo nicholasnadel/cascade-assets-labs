@@ -31,4 +31,6 @@ node_modules
 db/data.yml
 npm-debug.log
 *.log
-/.cascade-code/tmp_data_defs
+
+# VSCode Settings
+.vscode/settings.json
