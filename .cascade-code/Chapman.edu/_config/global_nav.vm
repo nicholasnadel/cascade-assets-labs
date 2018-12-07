@@ -112,7 +112,7 @@
       },
       {
         'text': 'Financial Aid Calculator',
-        'link':'/students/tuition-and-aid/financial-aid/net-cost-calculator/index',
+        'link':'/students/tuition-and-aid/financial-aid/undergraduate/net-cost-calculator/index',
         'iconClass': 'icon-calculate'
       },
       {
