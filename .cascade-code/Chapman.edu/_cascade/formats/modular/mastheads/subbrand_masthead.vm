@@ -1,0 +1,92 @@
+#import( "/_cascade/formats/helpers.velocity" )
+#import( "/_cascade/formats/helpers/debug.velocity" )
+
+#macro(outputSubbrandMasthead $element)
+    #set ( $primaryHeadline   = $element.getChild('headline').getChild('primary').value )
+    #set ( $secondaryHeadline = $element.getChild('headline').getChild('secondary').value )
+    #set ( $slides            = $_XPathTool.selectNodes($element, '//subbrandMasthead/slides') )
+    ## #set ( $dropdownLabel = $element.getChild('panel').getChild('dropdownNav').getChild('dropdownLabel').value )
+    ## #set ( $dropdownLinks = $_XPathTool.selectNodes($element, '//subbrandMasthead/panel/dropdownNav/dropdownLink') )
+    ## #set ( $buttons       = $_XPathTool.selectNodes($element, '//subbrandMasthead/panel/callsToAction/button') )
+    #set ( $dropdownLabel = $element.getChild('callsToAction').getChild('dropdownNav').getChild('dropdownLabel').value )
+    #set ( $dropdownLinks = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/dropdownNav/dropdownLink') )
+    #set ( $buttons       = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button') )
+
+<div class="subbrand-masthead-wrapper">
+    <div class="brochure-masthead">
+        <div class="foreground-content">
+            <div class="headline-container">
+                #if($secondaryHeadline != '')
+                    <div class="faux-h2 headline secondary subhead">$_EscapeTool.xml($secondaryHeadline)</div>  
+                #end            
+                <div class="faux-h1 headline primary title">$_EscapeTool.xml($primaryHeadline)</div>
+            </div>
+            #foreach($button in $buttons)
+          <button class="theme-button">
+            <a #outputHref($button) >$_EscapeTool.xml($button.getChild('label').value)</a>
+         </button>
+          #end
+            
+        #if($dropdownLabel != '')
+            <div class="dropdown">
+                <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($dropdownLabel)
+                    <span class="select-arrow"></span>
+                </div>
+                <div id="mastheadDropdown" class="dropdown-content">
+                    #foreach( $link in $dropdownLinks )
+                                       
+                    <li><a #outputHref($link)><span class="link-underline">$_EscapeTool.xml($link.getChild('label').value)</span>    </a></li>              
+
+                            #end
+
+                </div>
+
+            </div>
+
+           #end
+        </div>
+        <div class="slider-controls">
+            <div class="control left cd-arrow-left"><a href="#">&#139;</a></div>
+            <div class="control right cd-arrow-right"><a href="#">&#155;</a></div>
+        </div>
+        <div class="background-content">
+            <div class="slider-wrapper">
+                <ul class="cd-hero-slider autoplay">
+                    #foreach($slide in $slides)
+                        <li class="#if($foreach.index == 0)selected#end">
+                            #outputSlide($slide)
+                        </li>
+                    #end
+                </ul>
+            </div>
+            <div class="gradient-overlay"></div>
+        </div>
+    </div>
+    </div>
+#end
+
+#macro(outputSlide $slide)
+    #set ( $slideType = $slide.getChild('type').value )
+    #set ( $altText   = $slide.getChild('alternateText').value )
+    #set ( $bgImageAlignY = $slide.getChild('alignY').value )
+    
+    #if ( $slideType == "Image" )
+        #set ( $backgroundImage = $slide.getChild('imageFile').getChild('path').value )
+        
+        <div class="background-image" role="img" aria-label="${_EscapeTool.xml($altText)}"
+             style="background-image: url('[system-asset]${_EscapeTool.xml($backgroundImage)}[/system-asset]'); background-position: center ${bgImageAlignY.toLowerCase()};">
+        </div>
+    #elseif ($slideType == "Video")
+        #set ( $backgroundVideo = $slide.getChild('videoFile').getChild('path').value )
+        #set ( $fallbackImage   = $slide.getChild('fallbackImageFile').getChild('path').value )
+
+        <div class="background-video-wrapper">
+            <video id="background-video" class="background-video" aria-label='${_EscapeTool.xml($altText)}' muted="muted" autoplay="true" 
+                   loop="true" poster="[system-asset]${_EscapeTool.xml($fallbackImage)}[/system-asset]">
+                <source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
+            </video>
+        </div>
+
+    #end
+
+#end

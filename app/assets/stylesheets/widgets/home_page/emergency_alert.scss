@@ -86,10 +86,14 @@ $large-screen: 1130px;
         padding-top: 20px;
         a {
           color: $white;
-          border-bottom: 2px solid rgba(255,255,255,0.5);
+          border-bottom: 2px dotted rgba(255,255,255,0.5);
         }
       }
     }
+  }
+
+  &.notification {
+    background-color: #6e6259;
   }
 
   svg {
