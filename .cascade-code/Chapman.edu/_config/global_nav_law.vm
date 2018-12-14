@@ -24,8 +24,8 @@
        'iconClass': 'default'
       },
       {
-       'text': 'Visit Chapman',
-       'link': '/law/about/visiting-school/tours',
+       'text': 'Visit the Fowler School of Law',
+       'link': '/law/about/visiting-school/index.aspx',
        'iconClass': 'default'
       }
     ]
@@ -71,28 +71,13 @@
         'iconClass': 'default'
       },
       {
-        'text': 'Admission FAQs',
-        'link': '/law/admission/faq',
-        'iconClass': 'default'
-      },
-      {
-        'text': 'Catalog Request',
-        'link': '/law/admission/request-catalog-form',
-        'iconClass': 'default'
-      },
-      {
-        'text': 'JD Application',
+        'text': 'JD Applicants',
         'link': '/law/admission/apply-now',
         'iconClass': 'default'
       },
       {
-        'text': 'LL.M. Application',
+        'text': 'LLM Applicants',
         'link': '/law/admission/llm-applicants',
-        'iconClass': 'default'
-      },
-      {
-        'text': 'More Admission Resources',
-        'link': '/law/admission/index',
         'iconClass': 'default'
       }
     ]
