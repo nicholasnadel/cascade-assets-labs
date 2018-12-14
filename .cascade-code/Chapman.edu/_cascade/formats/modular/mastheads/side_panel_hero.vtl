@@ -1,5 +1,5 @@
 #*
- * side_panel_hero(.vm)
+ * side_panel_hero(.vtl)
  * Master Version: Chapman.edu/_cascade/formats/modular/mastheads/side_panel_hero
  *#
 
@@ -21,9 +21,9 @@
 
     <div class="hero-content">
       <section aria-labelledby="herocontentpanel" class="hero-content-panel">
-        <div id="herocontentpanel" class="faux-h1">$_EscapeTool.xml($panelTitle)</div>
+        <h1 id="herocontentpanel">$_EscapeTool.xml($panelTitle)</h1>
         #if ($panelSubtitle != "")
-          <div class="faux-h2">$_EscapeTool.xml($panelSubtitle)</div>
+          <h2>$_EscapeTool.xml($panelSubtitle)</h2>
         #end
         <p>$panelBody</p>
 
@@ -77,8 +77,8 @@
                     #if ( $featuredContentExists == 'true' )
                       <div class="content">
                         <span class="category">$_EscapeTool.xml($featuredCategory)</span>
-                        <div class="title faux-h2">$_EscapeTool.xml($featuredTitle)</div>
-                        <div class="faux-h3 subtitle">$_EscapeTool.xml($featuredSubtitle)</div>
+                        <h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
+                        <h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
                         <p class="body">$featuredBody</p>
                         #if ( $featuredLinkExists )
                           <a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
@@ -96,8 +96,8 @@
                     #if ( $featuredContentExists == 'true' )
                       <div class="content">
                         <span class="category">$_EscapeTool.xml($featuredCategory)</span>
-                        <div class="faux-h2 title">$_EscapeTool.xml($featuredTitle)</div>
-                        <div class="faux-h3 subtitle">$_EscapeTool.xml($featuredSubtitle)</div>
+                        <h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
+                        <h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
                         <p class="body">$featuredBody</p>
                         #if ( $featuredLinkExists )
                           <a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
