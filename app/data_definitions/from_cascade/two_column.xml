@@ -530,11 +530,11 @@
                         <radio-item value="Yes"/>
                         <radio-item value="No"/>
                     </text>
-                    <text default="Yes" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
+                    <text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
                         <radio-item value="Yes"/>
                         <radio-item value="No"/>
                     </text>
-                    <text default="Yes" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
+                    <text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
                         <radio-item value="Yes"/>
                         <radio-item value="No"/>
                     </text>
@@ -617,11 +617,11 @@
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text default="Yes" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
+                <text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text default="Yes" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
+                <text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
