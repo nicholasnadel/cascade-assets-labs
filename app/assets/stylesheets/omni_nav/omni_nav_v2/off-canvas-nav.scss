@@ -1,22 +1,19 @@
 @import "variables";
-
 /* OFF CANVAS NAV
 ----------------------------------------------*/
+
 #omni-nav-v2 {
   .close {
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 0;
-
-    // Magic number aligns button with logo.
+    right: 0; // Magic number aligns button with logo.
     padding: 22px;
   }
 
   .off-canvas-overlay {
     // This value is relative to OmniNav parent.
     z-index: 1002;
-
     background-color: $black;
     position: fixed;
     visibility: hidden;
@@ -38,7 +35,6 @@
   .off-canvas-nav-container {
     // This value is relative to OmniNav parent.
     z-index: 1003;
-
     position: fixed;
     top: 0;
     left: -($cu-off-canvas-nav-mobile-width);
@@ -59,7 +55,8 @@
       width: $cu-off-canvas-nav-desktop-width;
     }
 
-    ul, ol {
+    ul,
+    ol {
       margin: 0;
       padding: 0;
     }
@@ -71,7 +68,6 @@
     .cu-off-canvas-header {
       // For menu-toggling
       width: 200%;
-
       height: 60px;
       position: relative;
       padding: 0;
@@ -95,14 +91,15 @@
             background: image-url('off-canvas-logo.svg'), linear-gradient(transparent, transparent);
             background-repeat: no-repeat;
             background-size: contain;
-
             /* WAVE error reports empty anchor tag because logo is a background image.
              * Use color:transparent to add text that users can't see, to give context. */
             color: transparent;
           }
         }
 
-        svg { color: $black; }
+        svg {
+          color: $black;
+        }
       }
     }
 
@@ -111,7 +108,9 @@
       width: 200%;
       position: relative;
       left: 0;
-      @include transition(all, 0.375s, ease-in-out);
+      @include transition(all,
+      0.375s,
+      ease-in-out);
 
       li {
         list-style: none;
@@ -119,7 +118,9 @@
 
       a {
         left: 0;
-        @include transition(all, 0.175s, ease-in-out);
+        @include transition(all,
+        0.175s,
+        ease-in-out);
 
         &:hover {
           left: 5px;
@@ -150,20 +151,18 @@
           overflow: auto;
 
           a {
-            color:$white;
+            color: $white;
           }
 
           // Menu Labels
-          span.menu-label {}
-
           a.toggle-menu-label {
             display: block;
             float: right;
           }
         }
 
-        > ul {
-          > li {
+        >ul {
+          >li {
             background-color: $white;
             list-style: none;
             display: table;
@@ -173,14 +172,14 @@
             margin: 0;
             min-height: 46px;
 
-            > ul {
+            >ul {
               display: none;
               background-color: $cu-off-canvas-nav-background;
 
-              > li {
+              >li {
                 margin: 0;
 
-                > a {
+                >a {
                   padding: 0.5em 1.325em;
                   position: relative;
                   display: block;
@@ -197,11 +196,13 @@
             }
 
             &.open {
-              > a {
+              >a {
                 color: $cu-red;
               }
-              .toggle > span {
-                @include vendorize(transform, rotate(45deg));
+
+              .toggle>span {
+                @include vendorize(transform,
+                rotate(45deg));
               }
             }
 
@@ -209,16 +210,19 @@
               color: $cu-red;
             }
 
-            > a, .toggle {
+            >a,
+            .toggle {
               min-height: 46px;
             }
 
-            > a {
+            >a {
               color: $cu-off-canvas-nav-text;
               padding: 18px 50px 18px 18px;
               position: relative;
               display: block;
-              @include transition(all, 0.175s, ease-in-out);
+              @include transition(all,
+              0.175s,
+              ease-in-out);
               vertical-align: middle;
               font-size: 16px;
 
@@ -226,7 +230,6 @@
                 color: $cu-red;
               }
             }
-
 
             .toggle {
               background-color: $cu-off-canvas-nav-background;
@@ -242,7 +245,9 @@
               span {
                 display: block;
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                @include transition(all, 0.175s, ease-in-out);
+                @include transition(all,
+                0.175s,
+                ease-in-out);
 
                 svg {
                   width: 13px;
@@ -256,11 +261,13 @@
         }
       }
 
-
       .off-canvas-utility {
+        background-color: black;
+        color: black;
+        fill: black;
 
-        > ul {
-          > li {
+        >ul {
+          >li {
             background: $cu-off-canvas-nav-utility-background;
             list-style: none;
             display: table;
@@ -270,13 +277,13 @@
             height: 46px;
             margin: 0;
 
-            > ul {
+            >ul {
               display: none;
 
-              > li {
+              >li {
                 margin: 0;
 
-                > a {
+                >a {
                   display: block;
                   padding: 0.5em 1.325em;
                   color: $cu-off-canvas-nav-background;
@@ -297,30 +304,38 @@
             }
 
             &.open {
-              > a {
+              >a {
                 color: $white;
               }
-              .toggle > span {
-                @include vendorize(transform, rotate(45deg));
+
+              .toggle>span {
+                @include vendorize(transform,
+                rotate(45deg));
               }
             }
 
-            > a, .toggle {
+            >a,
+            .toggle {
               height: 46px;
             }
 
-            > a {
+            >a {
               color: $cu-off-canvas-nav-background;
               padding: 18px;
               position: relative;
               display: block;
-              @include transition(all, 0.175s, ease-in-out);
+              @include transition(all,
+              0.175s,
+              ease-in-out);
               vertical-align: middle;
               font-size: 16px;
 
-              &:before, svg {
+              &:before,
+              svg {
                 position: relative;
-                @include transition(all, 0.175s, ease-in-out);
+                @include transition(all,
+                0.175s,
+                ease-in-out);
               }
 
               &:before {
@@ -333,7 +348,9 @@
             }
 
             .toggle {
-              background-color: #c8c8c8;
+              background-color: #8a8a8a;
+              color: black;
+              fill: black;
               width: 46px;
               font-size: 16px;
               line-height: 45px;
@@ -343,10 +360,12 @@
               top: 0;
               right: 0;
 
-              > span {
+              >span {
                 display: block;
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-                @include transition(all, 0.175s, ease-in-out);
+                @include transition(all,
+                0.175s,
+                ease-in-out);
 
                 svg {
                   width: 13px;
@@ -361,5 +380,4 @@
       }
     }
   }
-
 }
