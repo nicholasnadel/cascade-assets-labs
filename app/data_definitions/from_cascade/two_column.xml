@@ -518,7 +518,7 @@
                 <text identifier="copy" label="Copy" wysiwyg="true"/>
                 <text default="Individual Faculty" identifier="type" label="Display" required="true" type="radiobutton">
                     <radio-item show-fields="primaryContent/widget/faculty/person" value="Individual Faculty"/>
-                    <radio-item show-fields="primaryContent/widget/faculty/school, primaryContent/widget/faculty/dept, primaryContent/widget/faculty/filter, primaryContent/widget/faculty/facultyUnit, primaryContent/widget/faculty/photo, primaryContent/widget/faculty/bio-link, primaryContent/widget/faculty/short-bio, primaryContent/widget/faculty/office-info, primaryContent/widget/faculty/show-school-affiliations" value="Faculty Listing"/>
+                    <radio-item label="Faculty Listing (Not Available Yet)" show-fields="primaryContent/widget/faculty/school, primaryContent/widget/faculty/dept, primaryContent/widget/faculty/filter, primaryContent/widget/faculty/facultyUnit, primaryContent/widget/faculty/photo, primaryContent/widget/faculty/bio-link, primaryContent/widget/faculty/short-bio, primaryContent/widget/faculty/office-info, primaryContent/widget/faculty/show-school-affiliations" value="Faculty Listing"/>
                 </text>
                 <group identifier="person" label="Person" multiple="true">
                     <asset identifier="faculty-block" label="Faculty Member" required="true" type="block"/>
@@ -606,6 +606,7 @@
                     <dropdown-item value="SCST-CBFS"/>
                     <dropdown-item value="SCST-LES"/>
                     <dropdown-item value="SCST-MPC"/>
+										<dropdown-item value="WILK-PEAC"/>
                     <dropdown-item value="PHRM-BPS"/>
                     <dropdown-item value="PHRM-PP"/>
                 </text>
