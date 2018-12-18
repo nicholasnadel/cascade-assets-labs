@@ -596,6 +596,7 @@
                     <dropdown-item value="THEA - Theatre "/>
                 </text>
                 <text identifier="filter" label="Filter By" required="true" type="dropdown">
+                    <dropdown-item value="All"/>
                     <dropdown-item value="Emeriti only"/>
                     <dropdown-item value="Presidential Fellows only"/>
                     <dropdown-item value="Chancellor Fellows only"/>
@@ -603,6 +604,7 @@
                     <dropdown-item value="Core Faculty only"/>
                 </text>
                 <text identifier="facultyUnit" label="Faculty Unit" type="dropdown">
+                    <dropdown-item value="All"/>
                     <dropdown-item value="SCST-CBFS"/>
                     <dropdown-item value="SCST-LES"/>
                     <dropdown-item value="SCST-MPC"/>
