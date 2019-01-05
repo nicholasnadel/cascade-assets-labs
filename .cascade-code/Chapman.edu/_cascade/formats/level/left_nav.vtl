@@ -57,7 +57,7 @@
         #set ( $isVisible = $sibling.metadata.getDynamicField('Hide from navigation').value != "Yes" )
 
         ## Sibling is a single page
-        #if ( $sibling.assetType == 'page' && $isVisible && ($sibling.name != 'index') )
+        #if ( ($sibling.assetType == 'symlink') || ($sibling.assetType == 'page' && $isVisible && ($sibling.name != 'index')) )
             #buildSiblingPageListItem($sibling)
 
         ## Sibling is a folder
@@ -88,7 +88,11 @@
     
     ## Output
     <li class="${liClass}">
-        <a href="${siblingPage.link}">$siblingPageTitle</a>
+        <a href="${siblingPage.link}">$siblingPageTitle
+        #if ( $siblingPage.assetType == 'symlink' )
+         <span class="fas fa-external-link-alt"></span>
+        #end
+        </a>
     </li>
 #end
 
@@ -101,8 +105,12 @@
 
     ## Get all children assets that aren't hidden
     #foreach ( $asset in $siblingFolder.children )
-        ## By default, set visibility to false
-        #set ( $isVisibleChild = false )
+        ## By default, set visibility to false for all assets
+        #set ( $isVisibleChild = false ) 
+        ## Since a symLink (External Link added to folders) can't be set by user to Hidden, set visibility to true:
+        #if ( $asset.assetType == 'symlink' )
+            #set ( $isVisibleChild = true ) 
+        #end
         #if ( $asset.assetType == 'folder' && $asset.name != '_files' )
             #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
@@ -156,6 +164,8 @@
     #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
     #if ( $child.assetType == 'page' )
         #set ( $childLink = "${child.link}" )
+    #elseif ( $child.assetType == 'symlink' )
+        #set ( $childLink = "${child.link}" )
     #elseif ( $child.assetType == 'folder' )
         #set ( $childLink = "${child.link}/index" )
     #end
@@ -164,7 +174,10 @@
     <li>
         <a href="${childLink}">
             <span class="bullet">» </span>
-            $childTitle
+            $childTitle 
+            #if ( $child.assetType == 'symlink' )
+            <span class="fas fa-external-link-alt"></span>
+            #end
         </a>
     </li>
 #end
