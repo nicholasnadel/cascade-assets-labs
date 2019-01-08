@@ -55,7 +55,7 @@
         #set ( $isVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
     
         ## Child is a page
-        #if ( ($sibling.assetType == 'symlink') || ($childAsset.assetType == 'page' && $isVisible && ($childAsset.name != 'index')) )
+        #if ( ($childAsset.assetType == 'symlink') || ($childAsset.assetType == 'page' && $isVisible && ($childAsset.name != 'index')) )
             #buildChildPageListItem($childAsset)
     
         ## Child is a folder
@@ -86,10 +86,11 @@
     
     ## Output
     <li class="${liClass}">
-        <a href="${childPage.link}">$childPageTitle</a>
+        <a href="${childPage.link}">$childPageTitle
         #if ( $childPage.assetType == 'symlink' )
          <span class="fas fa-external-link-alt"></span>
         #end
+        </a>
     </li>
 #end
 
