@@ -78,12 +78,12 @@
 	          visibility: hidden;
 	          display: block;
 	          &:hover {
-	            background-position: -100px 0px;
+	            background-position: -101px 0px;
 	          }
 	          &.open {
-	            background-position: -79px -21px;
+	            background-position: -79px -22px;
 	            &:hover {
-	              background-position: -100px -21px;
+	              background-position: -101px -22px;
 	            }
 	          }
 	        }
