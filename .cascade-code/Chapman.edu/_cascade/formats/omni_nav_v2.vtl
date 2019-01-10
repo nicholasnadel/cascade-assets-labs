@@ -151,6 +151,10 @@
     ## See Github issue: https://github.com/chapmanu/cascade-assets/issues/262
     ## By default, set visibility to false
     #set ( $isVisibleChild = false )
+    ## Since a symLink (External Link added to folders) can't be set by user to Hidden, set visibility to true:
+    #if ( $childAsset.assetType == 'symlink' )
+        #set ( $isVisibleChild = true ) 
+    #end
     #if ( $childAsset.assetType == 'folder')
       ## Both the folder and index page must be visible
       #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
@@ -392,7 +396,6 @@
     <ul>
       ## First list item is always Overview
       <li>
-        ## Generate Nicely Capitalized and Spaced $parentPage Titles
         #set ( $parentPage = "" )
         #foreach ( $word in $overviewLink.split("/")[1].split("-") )
           #if ( $parentPage != "" )
@@ -732,6 +735,9 @@
   #if ( $assetType == 'page' )
     <li><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
 
+  #elseif ( $assetType == 'symlink' )
+    <li><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+
   #elseif ( $assetType == 'folder' )
     ## Collect folder's visible children.
     #set ( $visibleChildren = [] )
@@ -739,6 +745,10 @@
     #foreach( $childAsset in $asset.children )
       ## By default, set visibility to false
       #set ( $isVisibleChild = false )
+      ## Since a symLink (External Link added to folders) can't be set by user to Hidden, set visibility to true:
+      #if ( $childAsset.assetType == 'symlink' )
+        #set ( $isVisibleChild = true ) 
+      #end
       #if ( $childAsset.assetType == 'folder')
           ## Both the folder and index page must be visible
           #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
@@ -767,6 +777,8 @@
           #foreach ( $child in $visibleChildren )
             #if ( $child.assetType == "page" )
               <li><a href="site://Chapman.edu/${child.path}">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+            #elseif ( $child.assetType == "symlink" )
+              <li><a href="site://Chapman.edu/${child.path}">${_EscapeTool.xml($child.label)} <span class="fas fa-external-link-alt"></span></a></li>
             #elseif ( $child.assetType == "folder" )
               <li><a href="site://Chapman.edu/${child.path}/index">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
             #end
