@@ -552,6 +552,7 @@
           <dropdown-item label="Wilkinson College" value="CHSS"/>
           <dropdown-item label="College of Performing Arts" value="COPA"/>
           <dropdown-item label="School of Pharmacy" value="SOP"/>
+          <dropdown-item label="Fowler School of Engineering" value="ENG"/>
           <dropdown-item label="Fowler Law" value="SOL"/>
           <dropdown-item label="Schmid College" value="COS"/>
           <dropdown-item label="School of Communication" value="COMM"/>
@@ -568,6 +569,7 @@
           <dropdown-item label="Dance " value="DANC"/>
           <dropdown-item label="Economic Science Institute " value="ESI"/>
           <dropdown-item label="Education " value="EDUC"/>
+          <dropdown-item label="Electrical Engineering and Computer Science " value="EECS"/>
           <dropdown-item label="English " value="ENGL"/>
           <dropdown-item label="Film and Media Arts " value="FILM"/>
           <dropdown-item label="Food Science " value="FOOD"/>
