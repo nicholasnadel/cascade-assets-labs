@@ -1,0 +1,148 @@
+<system-data-structure>
+  <text default="0000001" help-text="7 digit ID number from PeopleSoft (old Datatel ID)" identifier="id" label="Employee ID" maxlength="7" regular-expression="\d{7}" required="true"/>
+  <asset identifier="thumbnailPhoto" label="Thumbnail Photo (110x130)" type="file"/>
+  <asset identifier="largePhoto" label="Large Photo (206px wide)" type="file"/>
+  <text help-text="name of photographer (if need to show credit on website)" identifier="photoCredit" label="photoCredit"/>
+  <text identifier="bio" label="Biography" wysiwyg="true"/>
+  <text identifier="websiteUrl" label="Website Link"/>
+  <text help-text="Choose one or leave blank and put full address in other field" identifier="officeBuilding" label="Office Building" type="dropdown">
+    <dropdown-item value=""/>
+    <dropdown-item value="Building 9401, Rinker Campus"/>
+    <dropdown-item value="Building 9501, Rinker Campus"/>
+    <dropdown-item value="Argyros Forum"/>
+    <dropdown-item value="Baldwin Family Pavilion"/>
+    <dropdown-item value="Becket Building"/>
+    <dropdown-item value="Beckman Hall"/>
+    <dropdown-item value="Bertea Hall"/>
+    <dropdown-item value="Chapman Studios West"/>
+    <dropdown-item value="Crean Hall"/>
+    <dropdown-item value="DeMille Hall"/>
+    <dropdown-item value="Digital Media Arts Center"/>
+    <dropdown-item value="Doti Hall"/>
+    <dropdown-item value="Entertainment Technology Center"/>
+    <dropdown-item value="Fish Interfaith Center"/>
+    <dropdown-item value="Hashinger Science Center"/>
+    <dropdown-item value="Hutton Sports Center"/>
+    <dropdown-item value="Keck Center for Science and Engineering"/>
+    <dropdown-item value="Kennedy Hall"/>
+    <dropdown-item value="Leatherby Libraries"/>
+    <dropdown-item value="Marion Knott Studios"/>
+    <dropdown-item value="Memorial Hall"/>
+    <dropdown-item value="Moulton Hall"/>
+    <dropdown-item value="Musco Center for the Arts"/>
+    <dropdown-item value="Oliphant Hall"/>
+    <dropdown-item value="Partridge Dance Center"/>
+    <dropdown-item value="Reeves Hall"/>
+    <dropdown-item value="Rinker Health Science Campus"/>
+    <dropdown-item value="Roosevelt Hall"/>
+    <dropdown-item value="Smith Hall"/>
+    <dropdown-item value="Von Neumann Hall"/>
+    <dropdown-item value="Wilkinson Hall"/>
+  </text>
+  <text identifier="officeLocationDetails" label="Office Number (or alternate address)"/>
+  <text help-text="If faculty has a second office, choose one and use next field to supply the office number." identifier="officeBuildingSecondary" label="Secondary Office Building" type="dropdown">
+    <dropdown-item value=""/>
+    <dropdown-item value="Building 9401, Rinker Campus"/>
+    <dropdown-item value="Building 9501, Rinker Campus"/>
+    <dropdown-item value="Argyros Forum"/>
+    <dropdown-item value="Baldwin Family Pavilion"/>
+    <dropdown-item value="Becket Building"/>
+    <dropdown-item value="Beckman Hall"/>
+    <dropdown-item value="Bertea Hall"/>
+    <dropdown-item value="Chapman Studios West"/>
+    <dropdown-item value="Crean Hall"/>
+    <dropdown-item value="DeMille Hall"/>
+    <dropdown-item value="Digital Media Arts Center"/>
+    <dropdown-item value="Doti Hall"/>
+    <dropdown-item value="Entertainment Technology Center"/>
+    <dropdown-item value="Fish Interfaith Center"/>
+    <dropdown-item value="Hashinger Science Center"/>
+    <dropdown-item value="Hutton Sports Center"/>
+    <dropdown-item value="Keck Center for Science and Engineering"/>
+    <dropdown-item value="Kennedy Hall"/>
+    <dropdown-item value="Leatherby Libraries"/>
+    <dropdown-item value="Marion Knott Studios"/>
+    <dropdown-item value="Memorial Hall"/>
+    <dropdown-item value="Moulton Hall"/>
+    <dropdown-item value="Musco Center for the Arts"/>
+    <dropdown-item value="Oliphant Hall"/>
+    <dropdown-item value="Partridge Dance Center"/>
+    <dropdown-item value="Reeves Hall"/>
+    <dropdown-item value="Rinker Health Science Campus"/>
+    <dropdown-item value="Roosevelt Hall"/>
+    <dropdown-item value="Smith Hall"/>
+    <dropdown-item value="Von Neumann Hall"/>
+    <dropdown-item value="Wilkinson Hall"/>
+  </text>
+  <text identifier="officeLocationDetailsSecondary" label="Secondary Office Number"/>
+  <text identifier="officeHours" label="Office Hours"/>
+  <text identifier="officePhone" label="Office Phone"/>
+  <text help-text="area of specialty eg Molecular Biology or Opera" identifier="specialty" label="Specialty/Discipline"/>
+  <text help-text="extra title such as Chair of..." identifier="additionalTitle2" label="Additional Title"/>
+  <text help-text="Meta Keywords (2-3 words that will append to page Title tag for SEO)) " identifier="metaKeywords" label="Meta Keywords " maxlength="50"/>
+  <text help-text="youTube ID (from approved Chapman channel)" identifier="videoProfile" label="Video Profile (YouTube ID only)"/>
+  <text help-text="tag faculty as core for use in filters on listing pages" identifier="coreFacultyFlag" label="Core Faculty?" type="checkbox">
+    <checkbox-item value="Yes"/>
+  </text>
+  <text help-text="internal groupings of faculty specific to some schools" identifier="facultyUnits" label="Faculty Units" type="multi-selector">
+    <selector-item value="SCST-CBFS"/>
+    <selector-item value="SCST-LES"/>
+    <selector-item value="SCST-MPC"/>
+    <selector-item value="WILK-PEAC"/>
+    <selector-item value="PHRM-BPS"/>
+    <selector-item value="PHRM-PHP"/>
+  </text>
+  <group collapsed="true" identifier="curriculumVita" label="Link to Curriculum Vita">
+    <text identifier="link" label="External Link"/>
+    <asset identifier="file" label="or File Link" type="file"/>
+  </group>
+  <group collapsed="true" identifier="scholarlyWorks" label="Scholarly Work Listing Sites">
+    <group identifier="scholarlyWorkLink" label="Link to Listing Site" maximum-number="3" multiple="true">
+      <text help-text="link to site with listing of faculty's scholarly works (eg https://scholar.google.com/scholar....)" identifier="link" label="Link URL"/>
+      <text help-text="name of listing site eg Google Scholar, Digital Commons, etc" identifier="label" label="Label"/>
+    </group>
+  </group>
+  <group collapsed="true" identifier="publications" label="Link to Publications">
+    <text identifier="link" label="Link"/>
+    <asset identifier="fileLink" label="Or File Link" type="file"/>
+  </group>
+  <group collapsed="true" identifier="social" label="Social Icons">
+    <group identifier="facebook" label="Facebook">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="twitter" label="Twitter">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="linkedIn" label="linkedIn">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="rss" label="RSS">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="flickr" label="Flickr">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="youTube" label="YouTube">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="vimeo" label="Vimeo">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="googlePlus" label="GooglePlus">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+    <group identifier="instagram" label="Instagram">
+      <text identifier="link" label="Link"/>
+      <asset identifier="internalLink" label="Or Internal Link" type="page"/>
+    </group>
+  </group>
+  <text help-text="one short paragraph summarizing bio. Used on some faculty listing pages" identifier="short-bio" label="(FOR FUTURE USE) Synopsis (1000 char limit)" wysiwyg="true" wysiwyg-toolbar-remove="font assignment,insert image,insert table,"/>
+</system-data-structure>
