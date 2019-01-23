@@ -138,6 +138,8 @@
         <dropdown-item value="(select one)"/>
         <dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
         <dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
+        <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
+        <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
         <dropdown-item show-fields="primaryContent/widget/FeaturedNewsEvents" value="Featured / News / Events"/>
         <dropdown-item show-fields="primaryContent/widget/form" value="Form"/>
         <dropdown-item show-fields="primaryContent/widget/funnels-1up" value="Funnels 1up"/>
@@ -148,10 +150,8 @@
         <dropdown-item show-fields="primaryContent/widget/threePhotoCallout" value="Three Photo Callout"/>
         <dropdown-item show-fields="primaryContent/widget/twitterTimeline" value="Twitter Feed"/>
         <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live"/>
-        <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>
-        <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
-        <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
-        <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
+        <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>        
+        <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>        
       </text>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
