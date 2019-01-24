@@ -44,6 +44,8 @@ $(function () {
                         return "COPA";
                     case "/dodge/about/faculty-directory".toLowerCase():
                         return "CFMA";
+                    case "/engineering/faculty-directory".toLowerCase():
+                        return "ENG";
                     case "/law/law-faculty/index".toLowerCase():
                         return "SOL";
                     case "/scst/about/faculty-directory".toLowerCase():
@@ -53,7 +55,7 @@ $(function () {
                     case "/crean/faculty-directory".toLowerCase():
                         return "CHBS";
                     case "/wilkinson/about/faculty/faculty-directory".toLowerCase():
-                        return "CHSS";
+                        return "CHSS";                    
                     default:
                         return "";
                 }
@@ -72,6 +74,8 @@ $(function () {
                         return "ARTS";
                     case "/communication/faculty-directory".toLowerCase():
                         return "COMM";
+                    case "/engineering/faculty-directory".toLowerCase():
+                        return "EECS";
                     case "/wilkinson/english/faculty-directory/index".toLowerCase():
                         return "ENGL";
                     case "/wilkinson/history/faculty-directory".toLowerCase():

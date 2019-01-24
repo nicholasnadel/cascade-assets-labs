@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+     
+<xsl:template match="/">
+    <div class="twoColumnNoLeftNav">
+        
+        <div class="editableContent clearfix">
+            <div class="content">
+                <p><xsl:copy-of select="system-index-block/calling-page/system-page/system-data-structure/primaryContent/content/node()"/></p>
+            </div>
+        </div>
+        <h2>Search Faculty</h2>
+        <div class="directorySearch" id="mainFacultyDirectorySearch">
+
+            <div class="filters">
+                <fieldset>
+                    <legend>FILTER BY:</legend>
+                    <select id="collegeFilter">
+                        <option selected="selected" value="">Filter By School or College</option>
+                        <option value="SBE">Argyros School of Business and Economics</option>
+                        <option value="CES">Attallah College of Educational Studies</option>
+                        <option value="COPA">College of Performing Arts</option>
+                        <option value="CHBS">Crean College of Health and Behavioral Sciences</option>
+                        <option value="CFMA">Dodge College of Film and Media Arts</option>
+                        <option value="ENG">Fowler School of Engineering</option>
+                        <option value="SOL">Fowler School of Law</option> 
+                        <option value="COS">Schmid College of Science and Technology</option>
+                        <option value="SOC">School of Communication </option>                    
+                        <option value="SOP">School of Pharmacy</option>                      
+                        <option value="CHSS">Wilkinson College of Arts, Humanities, and Social Sciences </option>                        
+                    </select>
+                    <label for="collegeFilter" style="display: none;">Filter By School or College</label>
+                    <select id="departmentFilter">
+                        <option selected="selected" value="">Filter By Department or Program</option>
+                        <option value="ARTS">Art</option>
+                        <option value="ATPE">Athletic Training Program</option>
+                        <option value="BIOL">Biological Sciences</option>
+                        <option value="BUSI">Business and Economics</option>
+                        <option value="CHEM">Chemistry</option>
+                        <option value="COMM">Communication Studies</option>
+                        <option value="CSD">Communication Sciences and Disorders</option>
+                        <option value="DANC">Dance</option>
+                        <option value="ESI">Economic Science Institute</option>
+                        <option value="EDUC">Education</option>
+                        <option value="EECS">Electrical Engineering and Computer Science</option>
+                        <option value="ENGL">English</option>                    
+                        <option value="FILM">Film and Media Arts</option>
+                        <option value="FOOD">Food Science</option>
+                        <option value="HCOM">Health and Strategic Communication</option>
+                        <option value="HSK">Health Sciences</option>
+                        <option value="HIST">History</option>                    
+                        <option value="INTS">International Studies</option>
+                        <option value="LANG">Languages</option>
+                        <option value="LAWS">Law</option>
+                        <option value="LEAD">Leadership Programs</option>
+                        <option value="COMP">Mathematics and Computer Science</option>
+                        <option value="MFT">Marriage and Family Therapy</option>
+                        <option value="MLPI">Military Law and Policy Institute</option>
+                        <option value="MUSI">Music, Conservatory of</option>
+                        <option value="PCST">Peace Studies</option>
+                        <option value="PHRM">Pharmacy</option>
+                        <option value="PHIL">Philosophy</option>
+                        <option value="PAC">Physical Activity</option>
+                        <option value="PHYS">Physical Therapy</option>
+                        <option value="PAS">Physician Assistant Studies</option>
+                        <option value="PCSE">Physics, Computational Science and Engineering</option>
+                        <option value="POLI">Political Science</option>
+                        <option value="PSYC">Psychology</option>
+                        <option value="RELI">Religious Studies</option>
+                        <option value="SOCI">Sociology</option>
+                        <option value="THEA">Theatre</option>
+                    </select>
+                    <label for="departmentFilter" style="display: none;">Filter by Department or Program</label>
+                    <input id="directorySearchBox" placeholder="Enter keyword to search" title="Enter keyword to search" type="text"/>
+                    <div><a class="icon icon-cross2 allFaculty" href="#" id="allFaculty"> Clear Filter and View All Faculty</a></div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="searchResults" id="searchResults">
+            <div class="summary">
+                <h2 class="resultsFor"><span class="totalResults"></span> Results <!--<span class="searchTerm"></span>--></h2>
+            </div>
+            <div class="pagingInfo">
+                <span class="rangeLower"></span>-<span class="rangeUpper"></span> of <span class="totalResults"></span> results
+                <span class="pagingNavigation">
+                    <span class="first" title="Go to the first page of faculty results">First</span>
+                    <span class="previous" title="Go to the previous page of faculty results">Previous</span>
+                    <span class="next" title="Go to the next page of faculty results">Next</span>
+                    <span class="last" title="Go to the last page of faculty results">Last</span>
+                </span>
+            </div>
+        </div>
+
+    </div>
+</xsl:template>  
+    
+</xsl:stylesheet>

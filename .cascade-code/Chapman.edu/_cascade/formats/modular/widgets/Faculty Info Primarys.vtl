@@ -1,0 +1,78 @@
+#macro (displayFacultyInfo $fWidget $hSize $count)
+    <script src="/_files/js/facultyWidget.js"></script>
+    #if ($_XPathTool.selectSingleNode($fWidget, "faculty/type").value == "Individual Faculty")
+        #set ($faculty = $_XPathTool.selectNodes($fWidget, "faculty/person"))
+        #set ($names = "")
+        #set ($showPhoto = "")
+        #set ($showLink = "")
+        #set ($showBio ="")
+        #set ($showOffice = "")
+        #set ($showSchoolAffiliations = "")
+        #foreach ($person in $faculty)
+            #set ($names = $names + $_XPathTool.selectSingleNode($person, 'faculty-block/name').value)
+            #set ($showPhoto = $showPhoto + $person.getChild("photo").value)
+            #set ($showLink = $showLink + $person.getChild("bio-link").value)
+            #set ($showBio = $showBio + $person.getChild("short-bio").value)
+            #set ($showOffice = $showOffice + $person.getChild("office-info").value)
+            #set ($showSchoolAffiliations = $showSchoolAffiliations + $person.getChild("show-school-affiliations").value)
+            #if ($foreach.hasNext)
+                #set ($names = $names + " ")
+                #set ($showPhoto = $showPhoto + " ")
+                #set ($showLink = $showLink + " ")
+                #set ($showBio = $showBio + " ")
+                #set ($showOffice = $showOffice + " ")
+                #set ($showSchoolAffiliations = $showSchoolAffiliations + " ")
+            #end
+        #end
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var names = "${names}".split(" ");
+                var showPhoto = "${showPhoto}".split(" ");
+                var showLink = "${showLink}".split(" ");
+                var showBio = "${showBio}".split(" ");
+                var showOffice = "${showOffice}".split(" ");
+                var showSchoolAffiliations = "${showSchoolAffiliations}".split(" ");
+                getFacultyInfo(names, showPhoto, showLink, showBio, showOffice, showSchoolAffiliations, "faculty${count}");
+            })
+        </script>
+        <!-- removed from div below: faculty-widget  editableContent -->
+        <div id="faculty${count}" class="personnel-listing-widget">
+            <span class="loadingText">Loading faculty member..</span>
+        </div>
+        <div style="clear:both"></div>
+    #elseif ($_XPathTool.selectSingleNode($fWidget, "faculty/type").value == "Faculty Listing")
+        #set ($school = $_XPathTool.selectSingleNode($fWidget, 'faculty/school').value)
+        #if ($school == "")
+            #set $school = "All"
+        #end
+        ##
+        #set ($dept = $_XPathTool.selectSingleNode($fWidget, 'faculty/dept').value)
+        #if ($dept == "")
+            #set $dept = "All"
+        #end
+        ##
+        #set ($filterOptions = { "All" : "All", "Emeriti only" : "EmeritiFlag", "Presidential Fellows only" : "PresidentialFellowFlag", "Tenured/Tenure-Track only" : "TenureTrackFlag", "Core Faculty only" : "CoreFacultyFlag"})
+        #set ($filter = $filterOptions[$_XPathTool.selectSingleNode($fWidget, "faculty/filter").value])
+        ##
+        #set ($facultyUnit = $_XPathTool.selectSingleNode($fWidget, 'faculty/facultyUnit').value)
+        #if ($facultyUnit == "")
+            #set $facultyUnit = "All"
+        #end
+        ##
+        #set ($showPhoto = $_XPathTool.selectSingleNode($fWidget, "faculty/photo").value)
+        #set ($showLink = $_XPathTool.selectSingleNode($fWidget, "faculty/bio-link").value)
+        #set ($showBio = $_XPathTool.selectSingleNode($fWidget, "faculty/short-bio").value)
+        #set ($showOffice = $_XPathTool.selectSingleNode($fWidget, "faculty/office-info").value)
+        #set ($showSchoolAffiliations = $_XPathTool.selectSingleNode($fWidget, "faculty/show-school-affiliations").value)
+        <script type="text/javascript">
+            $(document).ready(function(){
+                getFacultyListing("${school}", "${dept}", "${filter}", "${facultyUnit}", "${showPhoto}", "${showLink}", "${showBio}", "${showOffice}", "${showSchoolAffiliations}", "faculty${count}");
+            })
+        </script>
+        <!-- removed from div below: faculty-widget  editableContent -->
+        <div id="faculty${count}" class="personnel-listing-widget">
+            <span class="loadingText">Loading faculty member(s)..</span>
+        </div>
+        <div style="clear:both"></div>
+    #end
+#end
