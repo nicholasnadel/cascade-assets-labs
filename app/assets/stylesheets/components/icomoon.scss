@@ -36,7 +36,7 @@ you can use the generic selector below, but it's slower:
   -webkit-font-smoothing: antialiased;
 }
 
-.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before, .icon-profile:before, .icon-cross2:before, .icon-wrench:before {
+.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before, .icon-profile:before, .icon-cross2:before, .icon-wrench:before, .icon-book:before, .icon-location2:before, .icon-clock:before, .icon-user:before, .icon-users4:before, .icon-clock:before, .icon-sun:before, .icon-coin-dollar:before, .icon-pushpin:before, .icon-star-full:before {
   font-family: 'icomoon-ultimate';
   speak: none;
   font-style: normal;
@@ -319,4 +319,33 @@ you can use the generic selector below, but it's slower:
 }
 .icon-wrench:before {
   content: "\eb58";
-};
+}
+
+//New as of 01/2019
+.icon-book:before {
+  content: "\e993";
+}
+.icon-location2:before {
+  content: "\ea39";
+}
+.icon-clock:before {
+  content: "\ea4d";
+}
+.icon-user:before {
+  content: "\eaf7";
+}
+.icon-users4:before {
+  content: "\eb0c";
+}
+.icon-sun:before {
+  content: "\ecce";
+}
+.icon-coin-dollar:before {
+  content: "\ea0b";
+}
+.icon-pushpin:before {
+  content: "\ea36";
+}
+.icon-star-full:before {
+  content: "\ece2";
+}

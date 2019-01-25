@@ -15,12 +15,20 @@
     
 #macro(outputPoints $point)
     #set ($iconClasses = {
-        "Bookmark" : "icon-bookmark",
-        "Calendar" : "icon-calendar4",
-        "Earth"    : "icon-earth",
-        "Leaf"     : "icon-leaf",
-        "Library"  : "icon-library2"
-    
+        "Bookmark"     : "icon-bookmark",
+        "Calendar"     : "icon-calendar4",
+        "Earth"        : "icon-earth",
+        "Leaf"         : "icon-leaf",
+        "Library"      : "icon-library2",
+        "Book"         : "icon-book",
+        "Location"     : "icon-location2",
+        "Clock"        : "icon-clock",
+        "Single User"  : "icon-user",
+        "Users"        : "icon-users4",
+        "Sun"          : "icon-sun",
+        "Financial"    : "icon-coin-dollar",
+        "Bullet Point" : "icon-pushpin",
+        "Star"         : "icon-star-full"
     })
     #set ($message = $point.getChild('message').value)
     #set ($icon = $point.getChild('icon').value)
