@@ -25,7 +25,7 @@ $white: #ffffff;
 			margin-bottom: 32px;
 		}
 
-		p {
+		h2 {
 			margin-bottom: 0;
 			text-align: center;
 			font-size: 24px;
@@ -56,4 +56,8 @@ $white: #ffffff;
 			@include button($white); 
 		}
 	}
+  
+  .footer-button.theme-text-color:focus {
+    outline:  2px dotted #fff;
+  }
 }

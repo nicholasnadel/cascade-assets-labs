@@ -1,0 +1,51 @@
+#import( "/_cascade/formats/helpers.velocity" )
+#macro(outputContactFooter $element)  
+    #set ($displayContactFooter = $element.getChild('contactFooter').getChild('displayContactFooter').value)
+    #if ($displayContactFooter == 'Yes')
+        #set ($contactFooter    = $element.getChild('contactFooter'))
+        #set ($title            = $contactFooter.getChild('title').value)
+        #set ($address          = $contactFooter.getChild('address'))
+        #set ($socialMediaLinks = $_XPathTool.selectNodes($contactFooter, 'social-media/social-media-link'))
+        #set ($classStr = 'contact-footer-widget')
+        
+        <div class="${classStr} #outputBgColorClass($contactFooter $classStr)">
+            <div class="outer-container">
+                <div class="content-cell left">
+                    <div class="content-wrap">
+                        <address class="contact-line-1">#outputAddress($address)</address>
+                        <address class="contact-line-2">
+                            <p class="address phone">$contactFooter.getChild('phone').value</p>
+                            #if ($contactFooter.getChild('email').value != "")
+                		        <a class="address email" href="mailto:$contactFooter.getChild('email').value">$contactFooter.getChild('email').value</a>
+                		    #end
+                        </address>
+                    </div>
+                </div>
+                <div class="content-cell right">
+            		<div class="content-wrap">
+                        <h2 class="footer-heading">$contactFooter.getChild('social-media').getChild('title').value</h2>
+                        <ul class="social-icon-list">
+                            #foreach($socialMediaLink in $socialMediaLinks)
+                                #outputSocialIcon($socialMediaLink)
+                            #end
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    #end
+    
+    #macro(outputAddress $address)
+        #set($name      = $address.getChild('name').value)
+        #set($addrLine1 = $address.getChild('address-line-1').value)
+        #set($city      = $address.getChild('city').value)
+        #set($state     = $address.getChild('state').value)
+        #set($zip       = $address.getChild('zip').value)
+        #set($addrStr   = "$addrLine1#if($city != '')&#44;&#160;$city#end#if($state != '')&#44;&#160;$state#end#if($zip != '')&#44;&#160;$zip#end")
+        
+        <address class="contact-line-1">
+            <div class="footer-heading address name">$name</div>
+            <p class="address">$addrStr</p>
+        </address>
+    #end
+#end

@@ -109,11 +109,11 @@
 
         &:hover { 
           color: $cu-light-grey-2;
-          border-bottom: 1px solid $cu-light-grey-2;
+          border-bottom: 2px solid $cu-light-grey-2;
         }
 
         &:focus {
-          outline: 1px dotted $cu-light-grey-2;
+          outline: 2px dotted $cu-light-grey-2;
         }
       }
 
@@ -436,12 +436,12 @@
 
         &:hover { 
           color: $cu-light-grey-2;
-          border-bottom: 1px solid $cu-light-grey-2;
+          border-bottom: 2px solid $cu-light-grey-2;
           width: 75%;
         }
 
         &:focus {
-          outline: 1px dotted $cu-light-grey-2;
+          outline: 2px dotted $cu-light-grey-2;
         }
       }
     }
@@ -452,7 +452,7 @@
       text-align: center;
       margin: 5em 0;
 
-      a:focus { outline: 1px dotted white;}
+      a:focus { outline: 2px dotted white;}
 
       @include bp(mx) { grid-row: 6 / span 1;}
 

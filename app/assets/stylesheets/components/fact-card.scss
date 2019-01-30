@@ -59,6 +59,10 @@
 			transition: 0.8s !important;
 		}
 	}
+  
+  &:focus {
+    outline: 2px dotted #333;
+  }
 
 	/* Background color classes */
 	.red {

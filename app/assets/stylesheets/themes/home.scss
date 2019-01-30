@@ -262,7 +262,21 @@ h1, .faux-h1, h2, .faux-h2, h3, .faux-h3, h4, .faux-h4, h5, .faux-h5, h6, .faux-
   }
 }
 
-/* Headings */
+/* Visual Focus */
+
+a:focus {
+  opacity: 1 !important;
+  outline: 2px dotted #a50034;
+} 
+
+#hero a.button:focus, a.white.button:focus {
+  outline: 2px dotted white;// #a50034; 
+} 
+
+a.red.button:focus {
+  outline: 2px dotted #333;
+}
+
 
 /* Dark BG */
 

@@ -204,8 +204,8 @@
 
 //Paragraphs
 @mixin paragraph() {
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 23px;
   margin:0 0 10px 0;
   font-weight: 400;
 }
@@ -275,7 +275,6 @@
   }
 
   &:hover, &:focus {
-    outline: none;
     background-color: darken($bg-color, 7%);
     @include transition(background-color);
   }
