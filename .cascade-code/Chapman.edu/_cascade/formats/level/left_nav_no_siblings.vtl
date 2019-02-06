@@ -26,7 +26,7 @@
     <div class="leftTitle">
         <ul>
             <li class="title">
-            <a href="${currentPage.link}" target="_top">
+            <a href="${_EscapeTool.xml($currentPage.link)}" target="_top">
                 ${_EscapeTool.xml($currentPage.label)}
             </a>
             </li>
@@ -40,7 +40,7 @@
     <div class="leftTitle">
         <ul>
             <li class="title">
-            <a href="${currentPage.link}" target="_top">
+            <a href="${_EscapeTool.xml($currentPage.link)}" target="_top">
                 ${_EscapeTool.xml($currentPage.label)}
             </a>
             </li>
@@ -86,7 +86,7 @@
     
     ## Output
     <li class="${liClass}">
-        <a href="${childPage.link}">$childPageTitle
+        <a href="${_EscapeTool.xml($childPage.link)}">$childPageTitle
         #if ( $childPage.assetType == 'symlink' )
          <span class="fas fa-external-link-alt"></span>
         #end
@@ -172,7 +172,7 @@
     
             ## Output
             <li>
-                <a href="$grandchildLink" title="$grandchildTitle">
+                <a href="${_EscapeTool.xml($grandchildLink)}">
                     <span class="bullet">» </span>
                     $grandchildTitle
                     #if ( $grandchild.assetType == 'symlink' )
