@@ -42,6 +42,7 @@
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    display: none;
     background-color: $cu-off-canvas-nav-utility-background;
     @include transition(all, 0.375s, ease-in-out);
 
@@ -63,6 +64,7 @@
 
     &.open {
       left: 0;
+      display: block;
     }
 
     .cu-off-canvas-header {

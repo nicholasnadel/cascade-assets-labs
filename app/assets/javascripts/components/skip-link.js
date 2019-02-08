@@ -11,11 +11,8 @@ $(document).ready(function() {
       }
       $('html,body').animate({ scrollTop: scrollTarget.offset().top}, 1000);
       scrollTarget.attr('tabindex', -1).on('blur focusout', function () {
-
-          // when focus leaves this element, 
-          // remove the tabindex attribute
+          // when focus leaves this element, remove the tabindex attribute
           $(this).removeAttr('tabindex');
-
       }).focus(); // focus on the content container
       return false;
     }
