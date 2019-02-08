@@ -615,8 +615,7 @@ var OmniNav2 = (function() {
         $('#js-off-canvas-overlay').toggleClass('active');
         $('body').toggleClass('no-scroll');
         if ($('#js-off-canvas-nav-container').hasClass("open")) {
-          var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('.off-canvas-menu:visible') : $('.nav-container');
-          focus_target.find("a").first().focus();
+          $('.off-canvas-menu:visible').find("a").first().focus();
         }
       };
 

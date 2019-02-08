@@ -6,9 +6,14 @@
   .close {
     cursor: pointer;
     position: absolute;
-    top: 0;
-    right: 0; // Magic number aligns button with logo.
-    padding: 22px;
+    top: 0px;
+    right: 0px;
+    padding: 20px;
+    
+    &:focus {
+      outline: 2px dotted $cu-red;
+      outline-offset: -2px;
+    }
   }
 
   .off-canvas-overlay {
