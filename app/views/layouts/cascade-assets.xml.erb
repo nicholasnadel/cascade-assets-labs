@@ -1,6 +1,11 @@
 <!-- Paste this snippet in _cascade/blocks/html/cascade-assets -->
 
 <system-xml>
+  <!-- preload CSS & JS -->
+  <%= stylesheet_link_tag 'master', rel: 'preload', as: 'style', media: 'all' %>
+  <%= preload_js_link 'master', rel: 'preload', as: 'script', media: 'all'  %>
+
+  <!-- carry on -->
   <%= stylesheet_link_tag 'master', media: 'all' %>
-  <%= javascript_include_tag 'master' %>
+  <%= javascript_include_tag 'master', defer: true %>
 </system-xml>
