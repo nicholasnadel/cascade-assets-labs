@@ -213,7 +213,6 @@
 				<dropdown-item show-fields="primaryContent/widget/chapmanStoriesFeed" value="Stories Feed"/>
 				<dropdown-item show-fields="primaryContent/widget/contactFooter" value="Contact Footer"/>
 				<dropdown-item show-fields="primaryContent/widget/callToActionFooter" value="Call To Action Footer"/>
-				<dropdown-item show-fields="primaryContent/widget/callToActionFooterSubBrand" value="Call To Action Footer - Subbrand"/>
 				<dropdown-item show-fields="primaryContent/widget/multiImageContentBlocks" value="Multi Image Content Blocks"/>
 				<dropdown-item show-fields="primaryContent/widget/byTheNumbers" value="By the Numbers"/>
 				<dropdown-item show-fields="primaryContent/widget/imageSliderWidget" value="Image Slider Widget"/>
@@ -333,8 +332,12 @@
 					<radio-item value="Yes"/>
 					<radio-item value="No"/>
 				</text>
+				<text default="Square" identifier="multiImageBlocksShape" label="Shape" required="true" type="radiobutton">
+					<radio-item value="Square"/>
+					<radio-item value="Circle"/>
+				</text>
 				<group identifier="photoCallout" label="Photo" minimum-number="1" multiple="true">
-					<asset identifier="image" label="Image (260x174)" required="true" type="file"/>
+					<asset identifier="image" label="Image (square 260x174 | circle 260x260)" required="true" type="file"/>
 					<text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
 					<group identifier="link" label="Link">
 						<text default="Internal Link" identifier="linkType" label="Link Type" required="true" type="radiobutton">
@@ -871,20 +874,6 @@
 						<radio-item show-fields="primaryContent/widget/callToActionFooter/button/internalLink" value="Internal Link"/>
 						<radio-item show-fields="primaryContent/widget/callToActionFooter/button/externalLink" value="External Link"/>
 						<radio-item show-fields="primaryContent/widget/callToActionFooter/button/fileLink" value="File Link"/>
-					</text>
-					<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
-					<asset identifier="internalLink" label="Internal Link" type="page"/>
-					<asset identifier="fileLink" label="File Link" type="file"/>
-					<text identifier="label" label="Label"/>
-				</group>
-			</group>
-			<group collapsed="true" identifier="callToActionFooterSubBrand" label="Call to Action Footer - Subbrand">
-				<text identifier="title" label="Title"/>
-				<group identifier="button" label="Button" maximum-number="3" minimum-number="0" multiple="true">
-					<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
-						<radio-item show-fields="primaryContent/widget/callToActionFooterSubBrand/button/internalLink" value="Internal Link"/>
-						<radio-item show-fields="primaryContent/widget/callToActionFooterSubBrand/button/externalLink" value="External Link"/>
-						<radio-item show-fields="primaryContent/widget/callToActionFooterSubBrand/button/fileLink" value="File Link"/>
 					</text>
 					<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
 					<asset identifier="internalLink" label="Internal Link" type="page"/>
