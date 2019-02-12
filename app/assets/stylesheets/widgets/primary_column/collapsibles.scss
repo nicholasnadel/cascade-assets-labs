@@ -65,6 +65,9 @@
         display: none;
       }
     }
+    &:focus {
+      outline: 2px dotted $cu-red;
+    }
   }
 
   &.active {

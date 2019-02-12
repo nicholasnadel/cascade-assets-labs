@@ -21,9 +21,9 @@
         <div class="${classStr} ${graduateTheme}">
             <div class="outer-container">
                 <div class="text-section">
-                    #if($bgColor == "White")<p class="theme-text-color">#else<p>#end
+                    #if($bgColor == "White")<h2 class="theme-text-color">#else<h2>#end
                         $callToActionFooter.getChild('title').value
-                    </p>
+                    </h2>
                 </div>
                 <div class="button-section">
                     #foreach($button in $buttons)
