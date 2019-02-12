@@ -1,0 +1,33 @@
+#set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+
+#set ($panel = $currentPage.getChild('system-data-structure').getChild('GradAdmission') )
+#set ($header = $_SerializerTool.serialize($panel.getChild('header'), true) )
+#set ($subHeader = $panel.getChild('subHeader').value )
+#set ($primaryButtonLabel = $panel.getChild('primaryButton').getChild('Text').value )
+#set ($primaryButtonTrackID = $panel.getChild('primaryButton').getChild('trackingID').value )
+#set ( $primaryButtonLink_ext = $panel.getChild('primaryButton').getChild('buttonLink').getChild('link').value )
+#set ( $primaryButtonLink_int = $panel.getChild('primaryButton').getChild('buttonLink').getChild('internalLink').getChild('path').value )
+#if ($primaryButtonLink_ext != '')
+    #set ( $primaryButtonLink = $primaryButtonLink_ext )
+#elseif ($primaryButtonLink_int != '' && $primaryButtonLink_int != '/')
+    #set ( $primaryButtonLink = $primaryButtonLink_int )
+#else
+    #set ( $primaryButtonLink = '#' )
+#end
+
+<section class="section dark-bg skrollable skrollable-between" data-bottom-top="background-position: center 100px" data-top-bottom="background-position: center -100px" id="graduateAdmission" aria-label="Graduate Admission Information">
+        <div class="maxWidth">
+            <div class="second">
+                <h2 class="heading skrollable skrollable-after" data-bottom="right:50px; opacity:0;" data-center="right:0; opacity:1;">$header </h2>
+                <h3 class="subheading skrollable skrollable-after" data-bottom="right:50px; opacity:0;" data-center="right:0; opacity:1;">$subHeader </h3>
+            </div>
+            <div class="second">
+                <div class="actions" data-bottom="opacity:0;" data-center="opacity:1;">
+                  ## First button has hardcoded link and hardcoded label
+                  <a class="button white apply smc-cta skrollable skrollable-after" data-cta-id="$primaryButtonTrackID"  data--100-bottom="opacity:1" data-bottom="opacity:0" href="[system-asset:id=a0c04c9dc0a81e4b53bc07db7ed41fda]/admission/graduate/request-info[/system-asset]" style="opacity: 1;">Request information</a>
+                  ## Second button has hardcoded link but users can edit label (has data definition)
+                  <a class="button red apply smc-cta skrollable skrollable-after" data-cta-id="$primaryButtonTrackID"  data--100-bottom="opacity:1" data-bottom="opacity:0" href="[system-asset:id=ce06cdd4c04d744c64d6b6765c849731]/academics/degrees-and-programs[/system-asset]?startingtab=4" style="opacity: 1;">$primaryButtonLabel</a>
+                </div>
+            </div>
+        </div>
+    </section>

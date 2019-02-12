@@ -9,6 +9,7 @@
 //= require_tree ./regions
 //= require_tree ./omni_nav
 
+//= require cascade/accessibility__landmarks.js
 //= require cascade/analytics
 //= require cascade/carousel
 //= require cascade/collapsed-nav

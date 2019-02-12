@@ -88,7 +88,7 @@
     
     ## Output
     <li class="${liClass}">
-        <a href="${siblingPage.link}">$siblingPageTitle
+        <a href="${_EscapeTool.xml($siblingPage.link)}">$siblingPageTitle
         #if ( $siblingPage.assetType == 'symlink' )
          <span class="fas fa-external-link-alt"></span>
         #end
@@ -172,7 +172,7 @@
     
     ## Output
     <li>
-        <a href="${childLink}">
+        <a href="${_EscapeTool.xml($childLink)}">
             <span class="bullet">» </span>
             $childTitle 
             #if ( $child.assetType == 'symlink' )

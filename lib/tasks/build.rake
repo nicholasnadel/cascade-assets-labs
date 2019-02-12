@@ -183,6 +183,20 @@ def dist_cascade_block_path
   Rails.root.join('dist', Rails.env, 'cascade-assets.xml')
 end
 
+def preload_js_link(*sources)
+  options = sources.extract_options!.stringify_keys
+  path_options = options.extract!('protocol').symbolize_keys
+
+  sources.uniq.map { |source|
+    tag_options = {
+      "rel" => "script",
+      "media" => "all",
+      "href" => path_to_javascript(source, path_options)
+    }.merge!(options)
+    tag(:link, tag_options)
+  }.join("\n").html_safe
+end
+
 def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
   zf.write

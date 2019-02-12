@@ -4,6 +4,7 @@
 #set ( $alertMessage  = $alertData.getChild('copy').textValue )
 #set ( $messageType   = $alertData.getChild('messageType').textValue )
 
+<section aria-label="Emergency Alert">
 <div class="emergency-alert #if($messageType == 'Notice') notification #end">
   <span class="close-alert-trigger">
     <svg class="icon-close" version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
@@ -41,3 +42,4 @@
     </div>
   </div>
 </div>
+</section>

@@ -124,7 +124,7 @@
 #macro ( buildHomepageBlogStoriesBlock )
   <!-- Homepage Blog Stories Macro -->
   <!-- topStoryBlogID: $topStoryBlogID -->
-  <section id="featured_stories" class="stories section">
+  <section id="featured_stories" class="stories section" aria-label="Featured Stories">
     <div class="maxWidth">
       #buildAnnouncementBlock()
       #buildTrendingStoriesBlock()
@@ -251,8 +251,8 @@
   ## Output
   ## Yes, each block has className "third" (for 1/3rd?)
   <div class="third">
-    <article class="story story-$storyIndex">
-      <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
+    <article class="story story-$storyIndex" aria-label="$storyHeaderCtaLabel">
+      <a id="story-$storyIndex" class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
 
       <a class="permalink smc-cta"
          href="$storyLink"

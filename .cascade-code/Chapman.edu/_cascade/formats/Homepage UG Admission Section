@@ -1,0 +1,84 @@
+#set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+
+#set ($panel = $currentPage.getChild('system-data-structure').getChild('UGadmission') )
+#set ($headerSet = $_XPathTool.selectNodes($panel, "./header") )
+#set ($subHeader = $panel.getChild('subHeader').value )
+#set ($factSet = $_XPathTool.selectNodes($panel, "./facts") )
+#set ($leftButtonLabel = $panel.getChild('leftButton').getChild('Text').value )
+#set ($leftButtonTrackID = $panel.getChild('leftButton').getChild('trackingID').value )
+#set ($rightButtonTrackID = $panel.getChild('leftButton').getChild('trackingID').value )
+#set ($rightButtonLabel = $panel.getChild('rightButton').getChild('Text').value )
+#set ( $leftButtonLink_ext = $panel.getChild('leftButton').getChild('buttonLink').getChild('link').value )
+            #set ( $leftButtonLink_int = $panel.getChild('leftButton').getChild('buttonLink').getChild('internalLink').getChild('path').value )
+            #if ($leftButtonLink_ext != '')
+                #set ( $leftButtonLink = $leftButtonLink_ext )
+            #elseif ($leftButtonLink_int != '' && $leftButtonLink_int != '/')
+                  #set ( $leftButtonLink = $leftButtonLink_int )
+            #else
+                #set ( $leftButtonLink = '#' )
+            #end
+#set ( $rightButtonLink_ext = $panel.getChild('rightButton').getChild('buttonLink').getChild('link').value )
+            #set ( $rightButtonLink_int = $panel.getChild('rightButton').getChild('buttonLink').getChild('internalLink').getChild('path').value )
+            #if ($rightButtonLink_ext != '')
+                #set ( $rightButtonLink = $rightButtonLink_ext )
+            #elseif ($rightButtonLink_int != '' && $rightButtonLink_int != '/')
+                  #set ( $rightButtonLink = $rightButtonLink_int )
+            #else
+                #set ( $rightButtonLink = '#' )
+            #end
+
+<section class="section dark-bg" data-bottom-top="background-position: center 100px" data-top-bottom="background-position: center -100px" id="undergraduateAdmission" aria-label="Undergraduate Admission Information">
+        <div class="maxWidth">
+            <h2 class="heading" data-100-top="opacity:1;" data-top="opacity:0;">
+            #foreach ($item in $headerSet)
+                #set ( $header = $item.getChild('item').value )
+                <span class="fade-elem">$header</span>
+            #end               
+            </h2>
+            <h3 class="subheading fade-elem">$subHeader</h3>
+
+            <ul class="statistics">
+                #foreach ($fact in $factSet)
+                    #set ($factNumber = $fact.getChild('factNumber').value )
+                    #set ($factLabel = $fact.getChild('Label').value )
+                    #if ($foreach.count == 1)
+                        #set ($position = "120px" )
+                        <li class="fact1" data-bottom-top="top[sqrt]:$position" data-center="top:0px"><p><span class="bigstat">$factNumber</span> <span class="label"> $factLabel</span></p></li>
+                    #end
+                    #if ($foreach.count == 2)
+                        #set ($position = "-50px" )
+                        <li class="fact2" data-bottom-top="top[sqrt]:$position" data-center="top:0px"><p><span class="bigstat">$factNumber</span> <span class="label"> $factLabel</span></p></li>
+                    #end
+                    #if ($foreach.count == 3)
+                        #set ($position = "60px" )
+                        <li class="fact3" data-bottom-top="top[sqrt]:$position" data-center="top:0px"><p><span class="bigstat">$factNumber</span> <span class="label"> $factLabel</span></p></li>
+                    #end
+                    #if ($foreach.count == 4)
+                        #set ($position = "-10px" )
+                        <li class="fact4" data-bottom-top="top[sqrt]:$position" data-center="top:0px"><p><span class="bigstat">$factNumber</span> <span class="label"> $factLabel</span></p></li>
+                    #end
+                    #if ($foreach.count == 5)
+                        #set ($position = "70px" )
+                        <li class="fact5" data-bottom-top="top[sqrt]:$position" data-center="top:0px"><p><span class="bigstat">$factNumber</span> <span class="label"> $factLabel</span></p></li>
+                    #end
+                #end            
+            </ul>
+
+            <div class="actions">
+                <a class="button white smc-cta" data-cta-id="homepage-ug-adm" data--100-bottom="opacity:1" data-bottom="opacity:0" href="https://www.chapman.edu/discover/index.html">Discover Chapman</a>
+                
+                ### popup form not used: <a class="button red request admissionCTA_start" data--100-bottom="opacity:1" data-bottom="opacity:0" href="javascript:void();">Request Information</a>
+                #if ($leftButtonTrackID != "")
+                    <a class="button white smc-cta" data-cta-id="$leftButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink">$leftButtonLabel</a>
+                #else
+                    <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink">$leftButtonLabel</a>
+                #end
+                #if ($rightButtonTrackID != "")
+                    <a class="button white smc-cta" data-cta-id="$rightButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$rightButtonLink">$rightButtonLabel</a>
+                #else
+                    <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$rightButtonLink">$rightButtonLabel</a>
+                #end
+
+            </div>
+        </div>
+</section>
