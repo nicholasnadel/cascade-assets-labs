@@ -4,6 +4,16 @@
   background-color: white;
   margin: auto;
 
+  .multi-image-content-blocks-container.Circle {
+    .photoCallout {
+      img {
+        border-radius: 50%;
+        height: 26em;
+        width: 26em;
+      }
+    }
+  }
+
   .multi-image-content-blocks-container {
     display: flex;
     flex-wrap: wrap;

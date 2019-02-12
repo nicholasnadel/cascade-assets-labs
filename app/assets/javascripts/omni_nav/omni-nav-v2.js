@@ -614,8 +614,9 @@ var OmniNav2 = (function() {
         $('#js-off-canvas-nav-container').toggleClass('open');
         $('#js-off-canvas-overlay').toggleClass('active');
         $('body').toggleClass('no-scroll');
-        var focus_target = ($('#js-off-canvas-nav-container').hasClass("open")) ? $('.off-canvas-menu:visible') : $('.nav-container');
-        focus_target.find("a").first().focus();
+        if ($('#js-off-canvas-nav-container').hasClass("open")) {
+          $('.off-canvas-menu:visible').find("a").first().focus();
+        }
       };
 
       //If user clicks off-canvas button, or clicks off off-canvas nav

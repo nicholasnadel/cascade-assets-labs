@@ -1,0 +1,37 @@
+#import( "/_cascade/formats/helpers.velocity" )
+#macro(outputChapmanSocialFeed $element)
+    #set ($displayChapmanSocialFeed = $element.getChild('chapmanSocialFeed').getChild('displayChapmanSocialFeed').value)
+    #if ($displayChapmanSocialFeed == 'Yes')
+        #set ($chapmanSocialFeed = $element.getChild('chapmanSocialFeed'))
+        #set ($title         = $_SerializerTool.serialize($chapmanSocialFeed.getChild('title'), true))
+        #set ($socialLinks   = $_XPathTool.selectNodes($element, 'chapmanSocialFeed/social-media-link'))
+        #set ($feedLink      = $_SerializerTool.serialize($chapmanSocialFeed.getChild('socialFeedSettings').getChild('feedLink'), true))
+        #set ($numberOfPosts = $_SerializerTool.serialize($chapmanSocialFeed.getChild('socialFeedSettings').getChild('numberOfPosts'), true))
+        #set ($randomId      = $_MathTool.random(0, 1000000))
+        #set ($classStr      = "chapman-social-feed-widget")
+        
+        #if  ($socialLinks.size() >= 1)
+            #set($classStr = "${classStr} ${classStr}__has-social-icons")
+        #end
+        
+        <div class="${classStr} #outputBgColorClass($chapmanSocialFeed 'chapman-social-feed-widget')">
+          <div class="outer-container">
+            <h2 class="chapman-social-feed-title">$title</h2>
+              #if($socialLinks.size() >= 1)
+                <div class="chapman-social-feed-icons">
+                  <ul class="social-icon-list">
+                    #foreach($link in $socialLinks)
+                      #outputSocialIcon($link)
+                    #end
+                  </ul>
+                </div>
+              #end
+            <div class="chapman-social-feed-$randomId"></div>
+              <script type="text/javascript" async="async">
+                jQuery('.chapman-social-feed-$randomId').chapmanSocialFeed({url: "$feedLink", per: $numberOfPosts, max_columns: 4});
+              </script>
+              <a class="view-all-link" href="$feedLink">View all at social.chapman.edu »</a>
+          </div>
+        </div>
+    #end
+#end

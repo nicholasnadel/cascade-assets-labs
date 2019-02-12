@@ -161,7 +161,8 @@ module ContentTypes
       }
       render @configuration_set.template
     end
-        def one_column_subbrand_law
+    
+    def one_column_subbrand_law
       @configuration_set = ConfigurationSet.one_column
       @metadata_set = MetadataSet.page(title: 'Subbrands 2018')
       @data_definition = DataDefinitions::OneColumn.default

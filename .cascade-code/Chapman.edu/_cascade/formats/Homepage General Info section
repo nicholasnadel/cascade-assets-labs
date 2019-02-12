@@ -1,0 +1,54 @@
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+
+#set ( $panel = $currentPage.getChild('system-data-structure').getChild('generalInfo') )
+#set ( $header = $panel.getChild('header').value )
+
+<section class="section light-bg" id="generalInformation" aria-label="General Campus Information">
+    <div class="maxWidth">
+        <h2 class="heading skrollable skrollable-after" data-bottom="opacity:0;" data-center="opacity:1;">$header</h2>
+        #set ( $stories = $_XPathTool.selectNodes($currentPage, "//system-data-structure/generalInfo/story") ) 
+        #if( $stories.size() > 0 )             
+        #foreach($story in $stories)
+        #set ( $story_header = $story.getChild('header').value )
+            #set ( $storyCopy = $_SerializerTool.serialize($story.getChild('copy'), true) )
+            #set ( $storylinkText = $story.getChild('storyLink').getChild('linkText').value )
+            #set ( $link_ext = $story.getChild('storyLink').getChild('link').value )
+            #set ( $link_int = $story.getChild('storyLink').getChild('internalLink').getChild('path').value )
+            #if ($link_ext != '')
+                #set ( $link = $link_ext )
+            #elseif ($link_int != '' && $link_int != '/')
+                  #set ( $link = $link_int )
+            #else
+                #set ( $link = '#' )
+            #end
+            <div class="third">                
+                <!-- Images must be 480x320 for this space | unlimited images supported -->
+                <div class="imagerotator">
+                    ## can be 1 to N number of images for each story:
+                    #set ( $SlideImages = $_XPathTool.selectNodes($story, "./images") )
+                    #if( $SlideImages.size() > 0 )  
+                        #foreach($image in  $SlideImages)
+                            #set ( $imageAltText = $image.getChild('altText').value )
+                            #set ( $image_ext = $image.getChild('link').value )
+                            #set ( $image_int = $image.getChild('internalLink').getChild('path').value )
+                            #if ($image_ext != '')
+                                #set ( $imageLink = $image_ext )
+                            #elseif ($image_int != '' && $image_int != '/')
+                                #set ( $imageLink = $image_int )
+                            #else
+                                #set ( $imageLink = '#' )
+                            #end
+                            <img src="$imageLink" alt="$imageAltText"/>
+                        #end
+                    #end
+                    <div style="padding-bottom:67%;" class="imagerotator_clearfix"></div>
+                </div>                    
+                <h3>$story_header</h3>
+                <p>$storyCopy</p>
+                <p><a href="$link">$storylinkText</a></p>
+            </div>
+        #end
+        #end
+            
+    </div>
+</section>
