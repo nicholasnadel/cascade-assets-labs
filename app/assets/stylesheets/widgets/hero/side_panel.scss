@@ -295,6 +295,10 @@
 					width: 100%;
 					margin: $base-spacing/4 0px;
 				}
+        
+        &:focus {
+          outline: 2px dotted #333 !important;
+        }
 			}
 		}
 
@@ -340,6 +344,10 @@
 				border-radius: 3px;
 				background-position: center right;
 				background-repeat: no-repeat;
+        
+        &:focus {
+          outline: 2px dotted #333 !important;
+        }
 			}
 
 			.hero-select-list {

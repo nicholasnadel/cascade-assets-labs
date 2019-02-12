@@ -11,6 +11,10 @@
     &:active {
       background-color: $red-button-active;
     }
+    
+    &:focus {
+      outline: 2px dotted #333;
+    }
   }
 }
 

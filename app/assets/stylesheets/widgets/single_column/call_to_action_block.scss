@@ -35,6 +35,10 @@ $call-to-action-block-screen-height: 150px;
       transform: scale(1.02);
       z-index: 2;
     }
+    
+    &:focus {
+      outline: 2px dotted #333;
+    }
 
     @include media($medium-screen) {
       width: 25%;

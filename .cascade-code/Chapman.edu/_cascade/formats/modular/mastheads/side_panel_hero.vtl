@@ -35,7 +35,7 @@
 
         <nav class="program-select" id="program-select-links">
           <span class="select-arrow theme-border-color"></span>
-          <button class="hero-select-button theme-border-color">$_EscapeTool.xml($dropdownLabel)</button>
+          <button class="hero-select-button theme-border-color" tabindex="0">$_EscapeTool.xml($dropdownLabel)</button>
           <ul class="hero-select-list">
             #foreach( $link in $dropdownLinks )
               <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
