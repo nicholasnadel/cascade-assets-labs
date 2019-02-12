@@ -57,6 +57,9 @@
       border-bottom: 1px solid $tab-content-bg-color;
       @include bp(l) { padding: 0 40px 0 40px; }
     }
+    &:focus {
+      outline: 2px dotted $cu-red;
+    }
   }
 }
 
