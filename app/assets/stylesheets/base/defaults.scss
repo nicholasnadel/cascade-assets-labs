@@ -112,7 +112,9 @@ a {
     text-decoration: underline;
   }
   &:focus {
-    outline: 2px dotted;
+    outline: 2px dotted #a50034;
+    outline-offset: 5px;
+    z-index: 100;
   }
   &:hover, &:active {
     outline: 0;

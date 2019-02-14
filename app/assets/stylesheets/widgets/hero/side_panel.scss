@@ -346,7 +346,8 @@
 				background-repeat: no-repeat;
         
         &:focus {
-          outline: 2px dotted #333 !important;
+          outline: 2px dotted #333;
+          outline-offset: 5px;
         }
 			}
 

@@ -6,7 +6,12 @@
   @include bp(l) {
     padding-top: 0;
   }
-
+  
+  .action-buttons-widget a:focus {
+    outline: 2px dotted $cu-black;
+    outline-offset: 5px;
+  }
+  
   .border {
     top: 0;
     left: 0;
