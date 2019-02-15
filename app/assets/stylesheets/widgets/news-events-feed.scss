@@ -118,6 +118,11 @@ $tab-content-border-color: #c1c1c1;
     border-bottom: 1px solid $tab-content-bg-color;
     @include bp(l) { padding: 0 40px 0 40px; }
   }
+  &:focus {
+    outline: 2px dotted $cu-red;
+    outline-offset: 5px;
+    z-index: 100;
+  }
 }
 
 // When in Left Nav override padding

@@ -9,8 +9,8 @@ FactCard.prototype.initialize = function() {
 
   // Hover Listeners
   if (!utils.ios()) { // iOS translates mouseleave to clicks, lame :(
-    this.$root.on('mouseenter', function(e) { $(this).addClass('flipped'); });
-    this.$root.on('mouseleave', function(e) { $(this).removeClass('flipped'); });
+    this.$root.on('mouseenter, focusin', function(e) { $(this).addClass('flipped'); });
+    this.$root.on('mouseleave, focusout', function(e) { $(this).removeClass('flipped'); });
   }
 
   // Tap listeners

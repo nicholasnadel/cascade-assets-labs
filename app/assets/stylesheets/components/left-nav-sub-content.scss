@@ -11,6 +11,10 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  
+  .calls-to-action-widget a:focus {
+    outline-color: $cu-black;
+  }
 
   .callout {
     background-color:#d8d8d8;
