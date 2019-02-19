@@ -158,6 +158,10 @@
       ul.buttonLinks {
         margin-left: 0;
         padding: 0 0;
+
+        a {
+          border-bottom: none;
+        }
       }
       
       .redLeftColButton {
