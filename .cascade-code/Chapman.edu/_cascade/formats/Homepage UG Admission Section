@@ -65,20 +65,20 @@
             </ul>
 
             <div class="actions">
-                <a class="button white smc-cta" data-cta-id="homepage-ug-adm" data--100-bottom="opacity:1" data-bottom="opacity:0" href="https://www.chapman.edu/discover/index.html">Discover Chapman</a>
+                <a class="button white smc-cta" data-cta-id="homepage-ug-adm" data--100-bottom="opacity:1" data-bottom="opacity:0" href="site://Chapman.edu/discover/index">Discover Chapman</a>
                 
                 ### popup form not used: <a class="button red request admissionCTA_start" data--100-bottom="opacity:1" data-bottom="opacity:0" href="javascript:void();">Request Information</a>
                 #if ($leftButtonTrackID != "")
-                    <a class="button white smc-cta" data-cta-id="$leftButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink">$leftButtonLabel</a>
+                    <a class="button white smc-cta" data-cta-id="$leftButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink" aria-label="$leftButtonLabel">$leftButtonLabel</a>
                 #else
-                    <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink">$leftButtonLabel</a>
+                    <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink" aria-label="$leftButtonLabel">$leftButtonLabel</a>
                 #end
                 #if ($rightButtonTrackID != "")
-                    <a class="button white smc-cta" data-cta-id="$rightButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$rightButtonLink">$rightButtonLabel</a>
+                    <a class="button white smc-cta" data-cta-id="$rightButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href='$rightButtonLink' aria-label="$rightButtonLabel">$rightButtonLabel</a>
                 #else
-                    <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$rightButtonLink">$rightButtonLabel</a>
+                    <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$rightButtonLink" aria-label='{$rightButtonLabel}'>$rightButtonLabel</a>
                 #end
 
             </div>
         </div>
-</section>
+    </section>
