@@ -442,9 +442,9 @@
           #elseif($dropdownLink.link.toString().contains("support-chapman/get-involved"))
             <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Support Chapman: Get Involved">
           #elseif($dropdownLink.link.toString().contains("about/connect/index"))
-            <a class="icon $dropdownLink.iconClass" href="https://www.chapman.edu/about/connect/index.aspx" aria-label="Connect with Chapman">
-          #elseif($dropdownLink.link.toString().contains("undergraduate/applynow"))
-            <a class="icon $dropdownLink.iconClass" href="https://www.chapman.edu/admission/undergraduate/applynow">
+            <a class="icon $dropdownLink.iconClass" href="/about/connect/index" aria-label="Connect with Chapman">
+          #elseif($dropdownLink.link.toString().contains("/admission/undergraduate/how-to-apply/index"))
+            <a class="icon $dropdownLink.iconClass" href="/admission/undergraduate/how-to-apply/index">
           #elseif($dropdownLink.link.toString().contains("discover"))
             <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="$defaultLinkName">
           #else
@@ -649,7 +649,7 @@
           <li><a href="site://Chapman.edu/about/facts-and-rankings/index">Facts &amp; Rankings</a></li>
           <li><a href="site://Chapman.edu/about/our-family/leadership/index">Leadership</a></li>
           <li><a href="site://Chapman.edu/campus-services/index">Campus Services</a></li>
-          <li><a href="https://dev-www.chapman.edu/about/connect/index.aspx">Connect</a></li>
+          <li><a href="site://Chapman.edu/about/connect/index">Connect</a></li>
         </ul>
       </li>
       <li>
@@ -670,7 +670,7 @@
         #buildToggleIcon("Admission")
         <ul>
           <li><a href="site://Chapman.edu/admission/undergraduate/index">Undergraduate Admission</a></li>
-          <li><a href="https://www.chapman.edu/admission/undergraduate/applynow">Undergraduate Application</a></li>
+          <li><a href="site://Chapman.edu/admission/undergraduate/how-to-apply/index">Undergraduate Application</a></li>
           <li><a href="site://Chapman.edu/admission/graduate/index">Graduate Admission</a></li>
           <li><a href="site://Chapman.edu/admission/graduate/applynow">Graduate Application</a></li>
           <li><a href="site://Chapman.edu/admission/undergraduate/afford">Affordability</a></li>

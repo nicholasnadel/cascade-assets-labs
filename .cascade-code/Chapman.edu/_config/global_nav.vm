@@ -92,7 +92,7 @@
       },
       {
         'text': 'Undergraduate Application',
-        'link':'/admission/undergraduate/applynow',
+        'link':'/admission/undergraduate/how-to-apply/index',
         'iconClass': 'icon-pencil5'
       },
       {
