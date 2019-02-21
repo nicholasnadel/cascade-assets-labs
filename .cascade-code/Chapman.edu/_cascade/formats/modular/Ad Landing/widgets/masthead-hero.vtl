@@ -16,6 +16,14 @@
     #set ( $formTitle = $form.getChild('title').value )
     #set ( $formId    = $form.getChild('formId').value )
     
+    ## nick
+    #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
+    #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
+    
+    ## #set ($mobileBgUrl = #addBackgroundImage($backgroundImageMobile))
+    ## #set ($lqip = $desktopBgUrl$mobileBgUrl).value
+    ## lqip $lqip
+    ## end nick
 
     <div class="ad-landing-masthead">
       <div class="masthead-header">
@@ -25,11 +33,12 @@
           <p class="header-text-desktop">$_SerializerTool.serialize($headerText, true)</p>
         </div>
       </div>
-    
+     
+     
       <div class="masthead-hero">
         <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
-        <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImage)>
-          <article title="mobile hero background image" style=#addBackgroundImage($backgroundImage)>
+        <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImageDesktop)>
+          <article title="mobile hero background image" style=#addBackgroundImage($backgroundImageMobile)>
             <div class="content">
               <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
               <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
@@ -51,6 +60,19 @@
               var s = document.getElementsByTagName('script')[0];
               s.parentNode.insertBefore(script, s);
             /*]]>*/</script>
+            
+            <!--#passthrough
+            <script>
+            $('article').fadeTo('slow', 0.3, function()
+                {
+                    var desktopBg = $('.background-image').css('background-image')
+                    var mobileBg = $('article').css('background-image')
+                                    $('article').css("background-image", desktopBg)
+                
+                }).delay(500).fadeTo('slow', 1);
+            </script>
+            #passthrough-->
+           
           </div>
         </section>
       </div>
