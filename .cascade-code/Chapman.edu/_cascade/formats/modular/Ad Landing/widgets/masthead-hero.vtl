@@ -19,10 +19,48 @@
     ## nick
     #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
     #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
-    
+
+    ## #set($img = $_XPathTool.selectSingleNode($contentRoot, '//masthead/backgroundImageDesktop/fileLink'))
+
+    ## img $img
+
     ## #set ($mobileBgUrl = #addBackgroundImage($backgroundImageMobile))
     ## #set ($lqip = $desktopBgUrl$mobileBgUrl).value
     ## lqip $lqip
+    
+    <style>
+     .container {
+	margin-top: 20px;
+    }
+    
+    .progressive-image {
+    	position: relative;
+    	overflow: hidden;
+      transition: opacity 1s linear;
+    
+    }
+    
+    .progressive-image div {
+      width: 100%;
+    	padding-top: 100%;
+    	background-size: cover!important;
+    	background-position: center bottom!important;
+    }
+    
+    .progressive-image .loadingImage {
+    	filter: blur(50px);
+      /* this is needed so Safari keeps sharp edges */
+      transform: scale(1);
+    }
+    
+    .progressive-image .overlay {
+    	position: absolute;
+      top: 0;
+    	opacity: 0;
+      transition: opacity 1s linear;
+    
+    }
+    </style>
     ## end nick
 
     <div class="ad-landing-masthead">
@@ -35,18 +73,28 @@
       </div>
      
      
-      <div class="masthead-hero">
-        <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
-        <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImageDesktop)>
-          <article title="mobile hero background image" style=#addBackgroundImage($backgroundImageMobile)>
-            <div class="content">
-              <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
-              <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
-            </div>
-          </article>
-        </div> 
-      </div>
+    ##   <div class="masthead-hero">
+    ##     <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
+    ##     <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImageMobile)>
+    ##       <article title="mobile hero background image" style=#addBackgroundImage($backgroundImageMobile)>
+    ##         <div class="content">
+    ##           <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
+    ##           <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
+    ##         </div>
+    ##       </article>
+    ##     </div> 
+    ##   </div>
     
+    dataimage $backgroundImageMobile.url
+    <div class="progressive-image">
+		<div class="loadingImage"
+			 style=#addBackgroundImage($backgroundImageMobile)
+			 data-image=#getFileLink($backgroundImageDesktop)>
+		</div>
+
+		<div class="overlay"></div>
+	</div>
+      
       <div class="masthead-content">
         <section aria-labelledby="mastheadcontentpanel" class="masthead-content-panel">
           <h2 id="mastheadcontentpanel">$_EscapeTool.xml($formTitle)</h2>
@@ -59,19 +107,31 @@
               script.src = 'https://go.chapman.edu/register/?id=$_EscapeTool.xml($formId)&output=embed&div=form_$_EscapeTool.xml($formId)' + ((location.search.length > 1) ? '&' + location.search.substring(1) : '');
               var s = document.getElementsByTagName('script')[0];
               s.parentNode.insertBefore(script, s);
+            
+            
+            
+ console.log('hello nick')
+                  $(function(){
+
+                      $('.progressive-image').each(function(){
+                    
+                        var image = new Image();
+                        var previewImage = $(this).find('.loadingImage');
+                        var newImage = $(this).find('.overlay');
+                    
+                        image.onload = function(){
+                          newImage.css('background-image', 'url(' + image.src + ')');
+                          newImage.css('opacity', '1');
+                          console.log('complete');
+                        };
+                    
+                        image.src = previewImage.data('image');
+                    
+                      });
+                    
+                    });
             /*]]>*/</script>
             
-            <!--#passthrough
-            <script>
-            $('article').fadeTo('slow', 0.3, function()
-                {
-                    var desktopBg = $('.background-image').css('background-image')
-                    var mobileBg = $('article').css('background-image')
-                                    $('article').css("background-image", desktopBg)
-                
-                }).delay(500).fadeTo('slow', 1);
-            </script>
-            #passthrough-->
            
           </div>
         </section>
