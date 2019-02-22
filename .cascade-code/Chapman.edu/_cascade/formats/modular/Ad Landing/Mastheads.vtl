@@ -1,0 +1,10 @@
+## Located at Chapman.edu/_cascade/formats/modular/Ad Landing/Mastheads
+#import( "/_cascade/formats/helpers.velocity" )
+
+##if have several options for mastheads, would import each macro here, eg a hero masthead, and a slider masthead etc:
+#import( "/_cascade/formats/modular/Ad Landing/widgets/nick-masthead-hero" )
+
+#set ( $currentPage  = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ( $masthead     = $currentPage.getChild('system-data-structure').getChild('masthead') )
+
+#outputMastheadHero($masthead)
