@@ -69,7 +69,7 @@
                 
                 ### popup form not used: <a class="button red request admissionCTA_start" data--100-bottom="opacity:1" data-bottom="opacity:0" href="javascript:void();">Request Information</a>
                 #if ($leftButtonTrackID != "")
-                    <a class="button white smc-cta" data-cta-id="$leftButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink" aria-label="$leftButtonLabel">$leftButtonLabel</a>
+                    <a class="button white smc-cta" data-cta-id="$leftButtonTrackID" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink">$leftButtonLabel</a>
                 #else
                     <a class="button white" data--100-bottom="opacity:1" data-bottom="opacity:0" href="$leftButtonLink">$leftButtonLabel</a>
                 #end
@@ -81,4 +81,4 @@
 
             </div>
         </div>
-    </section>
+  </section>
