@@ -15,6 +15,7 @@
     #set ( $formTitle = $form.getChild('title').value )
     #set ( $formId    = $form.getChild('formId').value )
     #set ( $pagePath = $currentPage.path )
+    #set ( $imagePathPrefix = "../_files/background-images/")
     
     ## nick
     <style>
@@ -24,7 +25,7 @@
             padding-left: 12px;
         }
         #output-debug {
-            /*display: none !important;*/
+            display: none !important;
             background-color: #000;
             color: #33FF00;
             font-family: monospace !important;
@@ -85,6 +86,7 @@
             #set ($withADot = $output[$index])
             <br/>
             with a dot: $withADot
+            <br/>
             #set ($noDot = $withADot.replace(".jpg", "") )
             <br/>
             without a dot: $noDot
@@ -98,7 +100,15 @@
             <br/>
           
             <br/>
-            #set( $tinyImage = $linkUrl.replace(".jpg", "-1x1.") )
+            #set ( $tinyImage = $withADot.replace(".jpg", "-1x1.jpg") )
+            <br/>
+            #set ( $tinyImageUrl = "$imagePathPrefix$tinyImage")
+            <br/>
+            tinyimageurl: $tinyImageUrl
+            <br/>
+            #set ( $largeImageUrl = "$imagePathPrefix$withADot")
+            $largeImageUrl
+            <br/>
             ## #set( $tinyImage = $linkUrl.replace(".jpeg", "-1x1.") )
             ## #set( $tinyImage = $linkUrl.replace(".png", "-1x1.") )
             
@@ -141,9 +151,12 @@
                         #if ($child.name.contains("$noDotWildcard"))
                             $child.name
                             #set ($medImage = $child.name)
-                            #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
+                            #set ( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
+                            #set ( $medImageUrl = "$imagePathPrefix$child.name")
                             <br/>
                             medimagepath: "$medImagePath"
+                            <br/>
+                            mediumImageUrl: $medImageUrl
                         #end
                         
                     #end
@@ -224,107 +237,18 @@
     </style>
     ## end nick
 
-    <div class="ad-landing-masthead">
-      <div class="masthead-header">
-        <img class="header-mobile" #outputSrc($mobileLogoFields) alt="$_EscapeTool.xml($mobileLogoFields.getChild('alternateText').value)"/>
-        <div class="header-desktop">
-          <img class="header-logo-desktop" #outputSrc($desktopLogoFields) alt="$medimagepath"/>
-          <p class="header-text-desktop">$_SerializerTool.serialize($headerText, true)</p>
-        </div>
-      </div>
-     
-     
-    ##   <div class="masthead-hero">
-    ##     <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
-    ##     <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImageMobile)>
-    ##       <article title="mobile hero background image" style=#addBackgroundImage($backgroundImageMobile)>
-    ##         <div class="content">
-    ##           <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
-    ##           <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
-    ##         </div>
-    ##       </article>
-    ##     </div> 
-    ##   </div>
-    
-##     <div class="progressive-image">
-## 		<div class="loadingImage"
-## 			 style=#addBackgroundImage($backgroundImageMobile)
-## 			 data-image=#getFileLink($backgroundImageDesktop)>
-## 		</div>
-
-## 		<div class="overlay"></div>
-## 	</div>
-        <h1>Cascade is intuitive and great</h1>
-        #set ( $content = $_XPathTool.selectSingleNode($n, "system-data-structure/content").value )
-        <div style=#cascadeBgImage($backgroundImageDesktop)> </div>
+        ## srcset doesn't appear to be working in Chrome or FF. The original is always used
+        ##   <img src="$tinyImageUrl" srcset="$medImageUrl 100w, $largeImageUrl 1000w" style="width: 100%"/>
         
-      <div class="masthead-hero">
-        <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
-            <div class="background-image">
-                <div class="progressive-image">
-            		<div class="loadingImage"
-            			 style=#addBackgroundImage($backgroundImageMobile)
-            			 data-image=#getFileLink($backgroundImageDesktop)>
-            		
-            		      <article title="mobile hero background image progressive-image">
-            		        <div class="loadingImage" style="{$tinyImage}" data-image=#getFileLink($backgroundImageMobile)>
-                                <div class="content">
-                                  <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
-                                  <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
-                                </div>
-                            </div>
-                          </article>
-                    </div>  
-                    <div class="overlay"></div>
-            	</div>
-            </div>
-        </div>
-      
-      <div class="masthead-content">
-        <section aria-labelledby="mastheadcontentpanel" class="masthead-content-panel">
-          <h2 id="mastheadcontentpanel">$_EscapeTool.xml($formTitle)</h2>
+        ## Trying <picture>
+        <picture>
+            <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg"
+            media="(max-width: 800px)" />
+            <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg"
+            media="(max-width: 800px) and (min-width: 601px)" />
+            <source srcset="https://odesza.com/wp-content/uploads/2015/04/768-1280.jpg"
+            media="(max-width: 600px) and (min-width: 1px)" />
+            <img src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg" />
+        </picture>
           
-          <div class="calls-to-action">
-            <div id="form_$_EscapeTool.xml($formId)">Loading...</div>
-            <script>/*<![CDATA[*/
-              var script = document.createElement('script');
-              script.async = 1;
-              script.src = 'https://go.chapman.edu/register/?id=$_EscapeTool.xml($formId)&output=embed&div=form_$_EscapeTool.xml($formId)' + ((location.search.length > 1) ? '&' + location.search.substring(1) : '');
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(script, s);
-            
-            
-            
- console.log('hello nick')
-                  $(function(){
-
-                      $('.progressive-image').each(function(){
-                    
-                        var image = new Image();
-                        var previewImage = $(this).find('.loadingImage');
-                        var newImage = $(this).find('.overlay');
-        
-                    
-                        image.onload = function(){
-                          newImage.css('background-image', 'url(' + image.src + ')');
-                          newImage.css('opacity', '1');
-                          console.log('complete');
-                        };
-                    
-                        image.src = previewImage.data('image');
-                    
-                      });
-                    
-                    });
-            /*]]>*/</script>
-            
-           
-          </div>
-        </section>
-      </div>
-    
-      <div class="masthead-footer">
-        <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
-      </div>
-    </div>
 #end
