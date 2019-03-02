@@ -116,12 +116,24 @@
             <div class="background-image">
                 <div class="progressive-image">
             		<div class="loadingImage"
-            			 style=#addBackgroundImage($backgroundImageMobile)
-            			 data-image=#getFileLink($backgroundImageDesktop)>
+            			 style="background-image: url('https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-1x1.jpg')"
+            			 >
             		
             		      <article title="mobile hero background image progressive-image">
             		      ##  <div class="loadingImage" style=#addBackgroundImage($backgroundImageMobile) data-image=#getFileLink($backgroundImageDesktop)>
-            		      <img src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-1x1.jpg" srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg 2x" />
+            		      ##<img src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-1x1.jpg" srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg 1x" class="mobile-image" />
+                                
+                                
+                             <picture>
+                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg"
+                                media="(max-width: 768px)" />
+                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg"
+                                media="(min-width: 769px)" />
+                                <img class="mobile-image" src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg" />
+                             </picture>
+                                
+                                
+                                
                                 <div class="content">
                                   <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
                                   <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
@@ -150,23 +162,27 @@
             
             
  console.log('hello nick')
-                  $(function(){
+ 
 
+                  $(function(){
                       $('.progressive-image').each(function(){
                     
                         var image = new Image();
                         var previewImage = $(this).find('.loadingImage');
                         var newImage = $(this).find('.overlay');
-        
+                        var imgSize = $('img.mobile-image').prop('currentSrc')
+
                     
                         image.onload = function(){
                           newImage.css('background-image', 'url(' + image.src + ')');
                           newImage.css('opacity', '1');
                           console.log('complete');
+                                                  console.log('imgsrc: ' + imgsrc)
+
                         };
                     
-                        image.src = previewImage.data('image');
-                    
+                        image.src = $('img.mobile-image').prop('currentSrc')
+                        console.log(  $('img.mobile-image').prop('currentSrc') )
                       });
                     
                     });
