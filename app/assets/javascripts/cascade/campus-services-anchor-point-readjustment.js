@@ -1,3 +1,5 @@
+// todo: calculate height of omni-nav (@768 etc)
+
 // The function actually applying the offset
 function offsetAnchor() {
   if (location.hash.length !== 0) {
