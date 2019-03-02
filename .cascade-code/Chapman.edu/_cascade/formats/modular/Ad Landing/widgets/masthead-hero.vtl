@@ -140,10 +140,7 @@
                     #foreach($child in $sortedChildren)
                         #if ($child.name.contains("$noDotWildcard"))
                             $child.name
-                            <br/>
                             #set ($medImage = $child.name)
-                            <br/>
-                            #set ($medImageUrl = "../files/$medImage")
                             #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
                             <br/>
                             medimagepath: "$medImagePath"
@@ -271,11 +268,11 @@
                                 
                                 
                              <picture>
-                                <source srcset="$medImageUrl"
+                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg"
                                 media="(max-width: 768px)" />
-                                <source srcset="$withADot"
+                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg"
                                 media="(min-width: 769px)" />
-                                <img class="mobile-image" src="$withADot" />
+                                <img class="mobile-image" src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg" />
                              </picture>
                                 
                                 
