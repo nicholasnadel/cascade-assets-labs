@@ -17,25 +17,25 @@
     #set ( $pagePath = $currentPage.path )
     
     ## nick
-    <style>
-        #output-debug h1,h2,h3,h4,h5,h6, ul, li, a {
-            font-family: monospace !important;
-            font-size: 12px !important;
-            padding-left: 12px;
-        }
-        #output-debug {
+    /*<style>*/
+    /*    #output-debug h1,h2,h3,h4,h5,h6, ul, li, a {*/
+    /*        font-family: monospace !important;*/
+    /*        font-size: 12px !important;*/
+    /*        padding-left: 12px;*/
+    /*    }*/
+    /*    #output-debug {*/
             /*display: none !important;*/
-            background-color: #000;
-            color: #33FF00;
-            font-family: monospace !important;
-            font-size: 12px;
-            width:100%;
-            padding: 12px;
-        }
-        button {
-            display: block;
-        }
-    </style>
+    /*        background-color: #000;*/
+    /*        color: #33FF00;*/
+    /*        font-family: monospace !important;*/
+    /*        font-size: 12px;*/
+    /*        width:100%;*/
+    /*        padding: 12px;*/
+    /*    }*/
+    /*    button {*/
+    /*        display: block;*/
+    /*    }*/
+    /*</style>*/
     <script>
     function debugNewWindow(hideDebug){
         var divText = document.getElementById("output-debug").outerHTML;
@@ -223,7 +223,7 @@
     
     </style>
     ## end nick
-#end
+
     <div class="ad-landing-masthead">
       <div class="masthead-header">
         <img class="header-mobile" #outputSrc($mobileLogoFields) alt="$_EscapeTool.xml($mobileLogoFields.getChild('alternateText').value)"/>
@@ -320,7 +320,7 @@
                           newImage.css('background-image', 'url(' + image.src + ')');
                           newImage.css('opacity', '1');
                           console.log('complete');
-                                                  console.log('imgsrc: ' + imgsrc)
+                                                  console.log('imgsrc: ' + image.src)
 
                         };
                     
@@ -340,3 +340,4 @@
         <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
       </div>
     </div> 
+#end
