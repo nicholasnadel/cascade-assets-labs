@@ -431,9 +431,18 @@
         <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">$parentPage Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
-        <li>
+        #set ($defaultLinkName = "${_EscapeTool.xml( $dropdownLink.text )}")
+          <li>
           #if($dropdownLink.link.toString().contains("http"))
             <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
+          #elseif($dropdownLink.link.toString().contains("alumni/events/index"))
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Alumni events">
+          #elseif($dropdownLink.link.toString().contains("alumni/get-involved/index"))
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Alumni: Get Involved">
+          #elseif($dropdownLink.link.toString().contains("support-chapman/get-involved"))
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Support Chapman: Get Involved">
+          #elseif($dropdownLink.link.toString().contains("about/connect/index"))
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Connect with Chapman">
           #else
             <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
           #end
@@ -475,10 +484,10 @@
       <li class="utility-cell"><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
       <li class="utility-cell"><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
       <li class="utility-cell"><a href="site://Chapman.edu/directory/index">All Directories</a></li>
-      <li class="utility-cell"><a href="https://news.chapman.edu/">News</a></li>
-      <li class="utility-cell"><a href="https://events.chapman.edu/">Events</a></li>
+      <li class="utility-cell"><a href="https://news.chapman.edu/" aria-label="Chapman Newsroom">News</a></li>
+      <li class="utility-cell"><a href="https://events.chapman.edu/" aria-label="Chapman Events">Events</a></li>
       <li class="utility-cell utility-has-dropdown">
-        <a href="#">Social</a>
+        <a href="#" role="listbox" aria-label="Social listbox">Social</a>
         <div class="utility-dropdown social-dropdown dropdown">
           <ul>
             <li>
@@ -636,7 +645,7 @@
           <li><a href="site://Chapman.edu/about/facts-and-rankings/index">Facts &amp; Rankings</a></li>
           <li><a href="site://Chapman.edu/about/our-family/leadership/index">Leadership</a></li>
           <li><a href="site://Chapman.edu/campus-services/index">Campus Services</a></li>
-          <li><a href="site://Chapman.edu/about/connect">Connect</a></li>
+          <li><a href="site://Chapman.edu/about/connect/index">Connect</a></li>
         </ul>
       </li>
       <li>
@@ -657,7 +666,7 @@
         #buildToggleIcon("Admission")
         <ul>
           <li><a href="site://Chapman.edu/admission/undergraduate/index">Undergraduate Admission</a></li>
-          <li><a href="site://Chapman.edu/admission/undergraduate/applynow">Undergraduate Application</a></li>
+          <li><a href="site://Chapman.edu/admission/undergraduate/how-to-apply/index">Undergraduate Application</a></li>
           <li><a href="site://Chapman.edu/admission/graduate/index">Graduate Admission</a></li>
           <li><a href="site://Chapman.edu/admission/graduate/applynow">Graduate Application</a></li>
           <li><a href="site://Chapman.edu/admission/undergraduate/afford">Affordability</a></li>
@@ -669,8 +678,8 @@
         <a href="site://Chapman.edu/alumni/index">Alumni</a>
         #buildToggleIcon("Alumni")
         <ul>
-          <li><a href="site://Chapman.edu/alumni/events/index">Events</a></li>
-          <li><a href="site://Chapman.edu/alumni/get-involved/index">Get Involved</a></li>
+          <li><a href="site://Chapman.edu/alumni/events/index" aria-label="Alumni Events">Events</a></li>
+          <li><a href="site://Chapman.edu/alumni/get-involved/index" aria-label="Alumni: Get Involved">Get Involved</a></li>
           <li><a href="site://Chapman.edu/campus-services/career-professional-development/index">Career Support</a></li>
         </ul>
       </li>
@@ -681,7 +690,7 @@
         <ul>
           <li><a href="http://www.chapmanathletics.com/landing/index">Athletics</a></li>
           <li><a href="site://Chapman.edu/diversity/index">Diversity &amp; Inclusion</a></li>
-          <li><a href="https://events.chapman.edu/">Events</a></li>
+          <li><a href="https://events.chapman.edu/" aria-label="Chapman Events">Events</a></li>
           <li><a href="site://Chapman.edu/campus-life/fish-interfaith-center/index">Fish Interfaith Center</a></li>
           <li><a href="site://Chapman.edu/students/health-and-safety/index">Health &amp; Safety</a></li>
           <li><a href="site://Chapman.edu/students/services/housing-and-residence/index">Residence Life</a></li>
@@ -705,9 +714,9 @@
         #buildToggleIcon("Support")
         <ul>
           <li><a href="site://Chapman.edu/support-chapman/contact-us">Contact Development</a></li>
-          <li><a href="site://Chapman.edu/support-chapman/get-involved">Get Involved</a></li>
+          <li><a href="site://Chapman.edu/support-chapman/get-involved" aria-label="Support: Involvement Opportunities">Get Involved</a></li>
           <li><a href="site://Chapman.edu/support-chapman/ways-to-give/areas-to-support">Areas to Support</a></li>
-          <li><a href="site://Chapman.edu/alumni/get-involved/index">Alumni Involvement</a></li>
+          <li><a href="site://Chapman.edu/alumni/get-involved/index" aria-label="Alumni: Get Involved">Get Involved</a></li>
         </ul>
       </li>
     </ul>
@@ -728,9 +737,9 @@
         <li><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
         <li><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
         <li><a href="site://Chapman.edu/directory/index">All Directories</a></li>
-        <li><a href="https://news.chapman.edu/">News</a></li>
-        <li><a href="https://events.chapman.edu/">Events</a></li>
-        <li><a href="https://social.chapman.edu/">Social</a></li>
+        <li><a href="https://news.chapman.edu/" aria-label="Chapman Newsroom">News</a></li>
+        <li><a href="https://events.chapman.edu/" aria-label="Chapman Events">Events</a></li>
+        <li><a href="https://social.chapman.edu/" aria-label="Chapman Social Hub">Social</a></li>
       </ul>
     </div>
   </div>
