@@ -15,181 +15,98 @@
     #set ( $formTitle = $form.getChild('title').value )
     #set ( $formId    = $form.getChild('formId').value )
     #set ( $pagePath = $currentPage.path )
-    
-    #set ( $thePage = $_XPathTool.selectSingleNode($contentRoot,"//system-page") )
 
-    ## Output the path value
-    $thePage.getChild('path').value
-    
-    ## Output the link value, useful for cross-site
-    $thePage.getChild('link').value
-    
-    
-    ## nick
-    <style>
-        #output-debug h1,h2,h3,h4,h5,h6, ul, li, a {
-            font-family: monospace !important;
-            font-size: 12px !important;
-            padding-left: 12px;
-        }
-        #output-debug {
-            display: none !important;
-            background-color: #000;
-            color: #33FF00;
-            font-family: monospace !important;
-            font-size: 12px;
-            width:100%;
-            padding: 12px;
-        }
-        button {
-            display: block;
-        }
-    </style>
-    <script>
-    function debugNewWindow(hideDebug){
-        var divText = document.getElementById("output-debug").outerHTML;
-        var myWindow = window.open('','','width=800,height=500');
-        var doc = myWindow.document;
-        doc.open();
-        doc.write(divText);
-        doc.close();
-    }
-    function hideDebug(){
-        $('#output-debug').addClass("hidden")
-    }
-    
-    </script>
-    <div id="output-debug">
-        
-        <button onclick="debugNewWindow(hideDebug())">open in new window</button>
-        <button onclick="hideDebug()">hide debug output</button>
+   
 
-        #if ( $pagePath.contains('sprint-02-27-2019'))
-            <h1>sprint-02-27-2019</h1>
-        #end
 
-    #if (! $pagePath.contains('sprint-02-27-2019'))
-        $currentPage.parentFolderIdentifier.type
-        $currentPage 
+    
         #set ( $harold = $_.locateFile("harold.jpg" ))
-        $harold
         #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
         #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
     
-        <ul>
-            <br/>
+       
             #set ($string = "#getFileLink($backgroundImageDesktop)")
             #set ($uglyImagePath = "#getFileLink($backgroundImageDesktop)")
-            <h1>the string: </h1> $string 
-            <br/>
+
   
-            <br/>
-            <h1>splitting</h1>
+            
             #foreach ($element in $linkUrl.split("/"))
-              $element
+            ##   $element
             #end
             
              #set ($string = $linkUrl)
             #set ($index = $string.indexOf('\.'))
             #set ($output = $string.split('/')) 
             #set ($withADot = $output[$index])
-            <br/>
-            with a dot: $withADot
+            
             #set ($noDot = $withADot.replace(".jpg", "") )
             
             #set ( $bgImageDirPath = $uglyImagePath )
             
-            bgimagepathdir $bgImageDirPath
-            
-            $uglyImagePath
+
             #set($localdir = $cpagepath.substring(0, $uglyImagePath.lastIndexOf('/')))
 
-            $localdir
-            localdir $localdir
-            
+
             
 
-<br/>
 
-            <br/>
-            without a dot: $noDot
+
+            
+            
             #set ($sevenSixtyEight = "-768")
             #set ($noDotWildcard = "$noDot$sevenSixtyEight")
-            noDotWildcard: $noDotWildcard
-            noDotWildcard as string?: "$noDotWildcard"
             
-            <br/>
-            linkurl: $linkUrl
-            <br/>
+            
           
-            <br/>
+            
             #set( $tinyImage = $withADot.replace(".jpg", "-1x1.jpg") )
 
-            ## #set( $tinyImage = $linkUrl.replace(".jpeg", "-1x1.") )
-            ## #set( $tinyImage = $linkUrl.replace(".png", "-1x1.") )
-            currentpagepath $currentPagePath.parentFolder
-            ## #set ( $largeImageUrl = "/test-section/nick-test/landing-lqip/_files/background-images/$withADot" )
             #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
             
-            largeimageurl: $largeImageUrl 
             #set ( $tinyImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
-            <br/>
-            tinyImageUrl: $tinyImageUrl
-            <br/>
+            
+            
+                    
             
             #set ( $parentDir = $currentPage.parentFolder )
             
             
-            currentpage: $currentPage
-            <br/>
-            string: $string
-            <br/>
             #set ($index = $string.indexOf('.jpg'))
-            <br/>
-            index of ".jpg": $index 
-            <br/>
+            
+        
+            
             #set ($index = $index)
-            <br/>
-            index-3: $index
-            <br/>
+            
+        
+            
             #set ($end = $string.substring.reverse($index))
-            <br/>
-            end: $end 
-            <br/>
-            
-       <h1>currentfolderplay folder contents</h1>
-            
+        
          #set($folder = $_.locateFolder("/test-section/nick-test/landing-lqip/_files/background-images"))
         #outputFolder($folder)
         #macro(outputFolder $folder)
            #set($children = $folder.children)
            #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
-           <ul>
+           
             #foreach($child in $sortedChildren)
                 #if ($child.name.contains("$noDotWildcard"))
-                    $child.name
+                    ## $child.name
                     #set ($medImage = $child.name)
                     #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
                     #set ( $medImageUrl = $medImagePath )
-                    <br/>
-                    medImageUrl: "$medImageUrl"
+                    
+        
                 #end
             #end
-           </ul>
         #end
         #set($sorted = $_SortTool.sort($assets, "metadata.dynamicField(myDynamicField).value"))
         #set($sorted = $_SortTool.sort($pages, "structuredDataNode(myField).textValue"))
         
-    
         #set ( $parentDir = $currentPage.parentFolder )
         #set ( $children = $parentDir.children )
-        $parentDir
-        parentDir.children
-         
-        #end
-    </ul>
-        </div>
-    ## end output hints
+        
+    
+        
+    
     
     <style>
      .container {
@@ -323,11 +240,7 @@
               var s = document.getElementsByTagName('script')[0];
               s.parentNode.insertBefore(script, s);
             
-            
-            
- console.log('hello nick')
- 
-
+    
                   $(function(){
                       $('.progressive-image').each(function(){
                     
