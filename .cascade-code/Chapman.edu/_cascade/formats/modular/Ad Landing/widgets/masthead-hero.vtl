@@ -26,25 +26,25 @@
     
     
     ## nick
-    /*<style>*/
-    /*    #output-debug h1,h2,h3,h4,h5,h6, ul, li, a {*/
-    /*        font-family: monospace !important;*/
-    /*        font-size: 12px !important;*/
-    /*        padding-left: 12px;*/
-    /*    }*/
-    /*    #output-debug {*/
-            /*display: none !important;*/
-    /*        background-color: #000;*/
-    /*        color: #33FF00;*/
-    /*        font-family: monospace !important;*/
-    /*        font-size: 12px;*/
-    /*        width:100%;*/
-    /*        padding: 12px;*/
-    /*    }*/
-    /*    button {*/
-    /*        display: block;*/
-    /*    }*/
-    /*</style>*/
+    <style>
+        #output-debug h1,h2,h3,h4,h5,h6, ul, li, a {
+            font-family: monospace !important;
+            font-size: 12px !important;
+            padding-left: 12px;
+        }
+        #output-debug {
+            display: none !important;
+            background-color: #000;
+            color: #33FF00;
+            font-family: monospace !important;
+            font-size: 12px;
+            width:100%;
+            padding: 12px;
+        }
+        button {
+            display: block;
+        }
+    </style>
     <script>
     function debugNewWindow(hideDebug){
         var divText = document.getElementById("output-debug").outerHTML;
@@ -170,7 +170,7 @@
                     $child.name
                     #set ($medImage = $child.name)
                     #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
-                    $set ( $medImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$medImagePath" )
+                    #set ( $medImageUrl = $medImagePath )
                     <br/>
                     medImageUrl: "$medImageUrl"
                 #end
