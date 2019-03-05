@@ -128,10 +128,11 @@
             ## #set( $tinyImage = $linkUrl.replace(".jpeg", "-1x1.") )
             ## #set( $tinyImage = $linkUrl.replace(".png", "-1x1.") )
             currentpagepath $currentPagePath.parentFolder
-            #set ( $largeImageUrl = "https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$withADot" )
+            ## #set ( $largeImageUrl = "/test-section/nick-test/landing-lqip/_files/background-images/$withADot" )
+            #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
             
             largeimageurl: $largeImageUrl 
-            #set ( $tinyImageUrl = "https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
+            #set ( $tinyImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
             <br/>
             tinyImageUrl: $tinyImageUrl
             <br/>
@@ -169,7 +170,7 @@
                     $child.name
                     #set ($medImage = $child.name)
                     #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
-                    $set ( $medImageUrl = "https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$medImagePath" )
+                    $set ( $medImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$medImagePath" )
                     <br/>
                     medImageUrl: "$medImageUrl"
                 #end
@@ -283,15 +284,16 @@
             		
             		      <article title="mobile hero background image progressive-image">
             		      ##  <div class="loadingImage" style=#addBackgroundImage($backgroundImageMobile) data-image=#getFileLink($backgroundImageDesktop)>
-            		      ##<img src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-1x1.jpg" srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg 1x" class="mobile-image" />
+            		      ##<img src="site://Chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-1x1.jpg" srcset="site://Chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg 1x" class="mobile-image" />
                                 
-                                
+                
+
                              <picture>
-                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/harold.jpg"
+                                <source srcset="$largeImageUrl"
                                 media="(max-width: 768px)" />
                                 <source srcset="$largeImageUrl"
                                 media="(min-width: 769px)" />
-                                <img class="mobile-image" src="$largeImageUrl" />
+                                <img class="mobile-image" src="[system-asset]${_EscapeTool.xml($medImageUrl)}[/system-asset]" />
                              </picture>
                                 
                                 
