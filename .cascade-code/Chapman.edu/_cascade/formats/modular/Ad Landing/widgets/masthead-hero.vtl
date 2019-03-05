@@ -16,6 +16,15 @@
     #set ( $formId    = $form.getChild('formId').value )
     #set ( $pagePath = $currentPage.path )
     
+    #set ( $thePage = $_XPathTool.selectSingleNode($contentRoot,"//system-page") )
+
+    ## Output the path value
+    $thePage.getChild('path').value
+    
+    ## Output the link value, useful for cross-site
+    $thePage.getChild('link').value
+    
+    
     ## nick
     /*<style>*/
     /*    #output-debug h1,h2,h3,h4,h5,h6, ul, li, a {*/
@@ -62,17 +71,18 @@
     #if (! $pagePath.contains('sprint-02-27-2019'))
         $currentPage.parentFolderIdentifier.type
         $currentPage 
-        #set ( $currentFolder = $_.locateFolder($currentPage.parentFolderIdentifier.path.pathAsString ))
-        $currentFolder
+        #set ( $harold = $_.locateFile("harold.jpg" ))
+        $harold
         #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
         #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
     
         <ul>
             <br/>
             #set ($string = "#getFileLink($backgroundImageDesktop)")
+            #set ($uglyImagePath = "#getFileLink($backgroundImageDesktop)")
             <h1>the string: </h1> $string 
             <br/>
-            linkUrl.parentfolder: $linkUrl.parentFolder
+  
             <br/>
             <h1>splitting</h1>
             #foreach ($element in $linkUrl.split("/"))
@@ -86,6 +96,21 @@
             <br/>
             with a dot: $withADot
             #set ($noDot = $withADot.replace(".jpg", "") )
+            
+            #set ( $bgImageDirPath = $uglyImagePath )
+            
+            bgimagepathdir $bgImageDirPath
+            
+            $uglyImagePath
+            #set($localdir = $cpagepath.substring(0, $uglyImagePath.lastIndexOf('/')))
+
+            $localdir
+            localdir $localdir
+            
+            
+
+<br/>
+
             <br/>
             without a dot: $noDot
             #set ($sevenSixtyEight = "-768")
@@ -99,13 +124,21 @@
           
             <br/>
             #set( $tinyImage = $withADot.replace(".jpg", "-1x1.jpg") )
+
             ## #set( $tinyImage = $linkUrl.replace(".jpeg", "-1x1.") )
             ## #set( $tinyImage = $linkUrl.replace(".png", "-1x1.") )
-            #set ( $tinyImageUrl = "../files/$tinyImage" )
+            currentpagepath $currentPagePath.parentFolder
+            #set ( $largeImageUrl = "https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$withADot" )
+            
+            largeimageurl: $largeImageUrl 
+            #set ( $tinyImageUrl = "https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
             <br/>
             tinyImageUrl: $tinyImageUrl
             <br/>
+            
             #set ( $parentDir = $currentPage.parentFolder )
+            
+            
             currentpage: $currentPage
             <br/>
             string: $string
@@ -123,49 +156,35 @@
             end: $end 
             <br/>
             
-            <h1>trying to display folder contents</h1>
+       <h1>currentfolderplay folder contents</h1>
             
-        #set ( $currentPage = $_.locatePage($currentPagePath) )
-        #set ( $parentFolder = $_.locateFolder($currentPage.parentFolderIdentifier.path.pathAsString) )
-        
-        $parentFolder.metadata.displayName
-        #set ( $currentFolder = $currentPage.parentFolder )  
-        
-         #set($folder = $currentFolder)
-                #outputFolder($folder)
-                #macro(outputFolder $folder)
-                   #set($children = $folder.children)
-                   #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
-                   <ul>
-                    #foreach($child in $sortedChildren)
-                        #if ($child.name.contains("$noDotWildcard"))
-                            $child.name
-                            #set ($medImage = $child.name)
-                            #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
-                            <br/>
-                            medimagepath: "$medImagePath"
-                        #end
-                        
-                    #end
-                    
-                   </ul>
+         #set($folder = $_.locateFolder("/test-section/nick-test/landing-lqip/_files/background-images"))
+        #outputFolder($folder)
+        #macro(outputFolder $folder)
+           #set($children = $folder.children)
+           #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
+           <ul>
+            #foreach($child in $sortedChildren)
+                #if ($child.name.contains("$noDotWildcard"))
+                    $child.name
+                    #set ($medImage = $child.name)
+                    #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
+                    $set ( $medImageUrl = "https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$medImagePath" )
+                    <br/>
+                    medImageUrl: "$medImageUrl"
                 #end
-                #set($sorted = $_SortTool.sort($assets, "metadata.dynamicField(myDynamicField).value"))
-                #set($sorted = $_SortTool.sort($pages, "structuredDataNode(myField).textValue"))
-                
-            
-                #set ( $parentDir = $currentPage.parentFolder )
-                #set ( $children = $parentDir.children )
-                $parentDir
-                parentDir.children
+            #end
+           </ul>
+        #end
+        #set($sorted = $_SortTool.sort($assets, "metadata.dynamicField(myDynamicField).value"))
+        #set($sorted = $_SortTool.sort($pages, "structuredDataNode(myField).textValue"))
         
-            ## #set($img = $_XPathTool.selectSingleNode($contentRoot, '//masthead/backgroundImageDesktop/fileLink'))
-        
-            ## img $img
-        
-            ## #set ($mobileBgUrl = #addBackgroundImage($backgroundImageMobile))
-            ## #set ($lqip = $desktopBgUrl$mobileBgUrl).value
-            ## lqip $lqip
+    
+        #set ( $parentDir = $currentPage.parentFolder )
+        #set ( $children = $parentDir.children )
+        $parentDir
+        parentDir.children
+         
         #end
     </ul>
         </div>
@@ -268,11 +287,11 @@
                                 
                                 
                              <picture>
-                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg"
+                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/harold.jpg"
                                 media="(max-width: 768px)" />
-                                <source srcset="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg"
+                                <source srcset="$largeImageUrl"
                                 media="(min-width: 769px)" />
-                                <img class="mobile-image" src="https://dev-www.chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold.jpg" />
+                                <img class="mobile-image" src="$largeImageUrl" />
                              </picture>
                                 
                                 
