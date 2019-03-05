@@ -16,95 +16,86 @@
     #set ( $formId    = $form.getChild('formId').value )
     #set ( $pagePath = $currentPage.path )
 
-   
-
-
-    
-        #set ( $harold = $_.locateFile("harold.jpg" ))
-        #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
-        #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
-    
-       
-            #set ($string = "#getFileLink($backgroundImageDesktop)")
-            #set ($uglyImagePath = "#getFileLink($backgroundImageDesktop)")
+    #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
+    #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
+    #set ($string = "#getFileLink($backgroundImageDesktop)")
+    #set ($uglyImagePath = "#getFileLink($backgroundImageDesktop)")
 
   
-            
-            #foreach ($element in $linkUrl.split("/"))
-            ##   $element
-            #end
-            
-             #set ($string = $linkUrl)
-            #set ($index = $string.indexOf('\.'))
-            #set ($output = $string.split('/')) 
-            #set ($withADot = $output[$index])
-            
-            #set ($noDot = $withADot.replace(".jpg", "") )
-            
-            #set ( $bgImageDirPath = $uglyImagePath )
-            
+    
+    #foreach ($element in $linkUrl.split("/"))
+    ##   $element
+    #end
+    
+    #set ($string = $linkUrl)
+    #set ($index = $string.indexOf('\.'))
+    #set ($output = $string.split('/')) 
+    #set ($withADot = $output[$index])
+    
+    #set ($noDot = $withADot.replace(".jpg", "") )
+    
+    #set ( $bgImageDirPath = $uglyImagePath )
 
-            #set($localdir = $cpagepath.substring(0, $uglyImagePath.lastIndexOf('/')))
-
-
-            
+    #set ($sevenSixtyEight = "-768")
+    #set ($noDotWildcard = "$noDot$sevenSixtyEight")
 
 
+ 
 
-            
-            
-            #set ($sevenSixtyEight = "-768")
-            #set ($noDotWildcard = "$noDot$sevenSixtyEight")
-            
-            
-          
-            
-            #set( $tinyImage = $withADot.replace(".jpg", "-1x1.jpg") )
+    
+    #set( $tinyImage = $withADot.replace(".jpg", "-1x1.jpg") )
 
-            #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
+    #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
+    ## #set ($cascadeSucks = $_.locateFile($linkUrl) )
+    ## <h1>$cascadeSucks</h1>
+    #set ( $tinyImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
+    
+    
             
-            #set ( $tinyImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
-            
-            
-                    
-            
-            #set ( $parentDir = $currentPage.parentFolder )
-            
-            
-            #set ($index = $string.indexOf('.jpg'))
-            
-        
-            
-            #set ($index = $index)
-            
-        
-            
-            #set ($end = $string.substring.reverse($index))
-        
-         #set($folder = $_.locateFolder("/test-section/nick-test/landing-lqip/_files/background-images"))
-        #outputFolder($folder)
-        #macro(outputFolder $folder)
-           #set($children = $folder.children)
-           #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
-           
-            #foreach($child in $sortedChildren)
-                #if ($child.name.contains("$noDotWildcard"))
-                    ## $child.name
-                    #set ($medImage = $child.name)
-                    #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
-                    #set ( $medImageUrl = $medImagePath )
-                    
-        
-                #end
+    
+    
+    
+    #set ($index = $string.indexOf('.jpg'))
+    
+
+    
+    #set ($index = $index)
+    
+
+    
+    #set ($end = $string.substring.reverse($index))
+
+
+    #set( $parentDir = $linkUrl.replace($withADot, "") ) 
+    #set ($bgImageDir = $parentDir)  
+    #set ($stringLength = $bgImageDir.length() - 1)  
+    #set ($bgImageDir = $bgImageDir.substring(0,$stringLength))  
+    #set ($folder = ${_EscapeTool.xml($bgImageDir)})
+    #set($folder = $_.locateFolder("$bgImageDir"))
+    
+    #outputFolder($folder)
+    #macro(outputFolder $folder)
+       #set($children = $folder.children)
+       #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
+       
+        #foreach($child in $sortedChildren)
+            #if ($child.name.contains("$noDotWildcard"))
+                ## $child.name
+                #set ($medImage = $child.name)
+                #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
+                #set ( $medImageUrl = $medImagePath )
+                
+    
             #end
         #end
-        #set($sorted = $_SortTool.sort($assets, "metadata.dynamicField(myDynamicField).value"))
-        #set($sorted = $_SortTool.sort($pages, "structuredDataNode(myField).textValue"))
-        
-        #set ( $parentDir = $currentPage.parentFolder )
-        #set ( $children = $parentDir.children )
-        
+    #end
+    #set($sorted = $_SortTool.sort($assets, "metadata.dynamicField(myDynamicField).value"))
+    #set($sorted = $_SortTool.sort($pages, "structuredDataNode(myField).textValue"))
     
+    #set ( $parentDir = $currentPage.parentFolder )
+    #set ( $children = $parentDir.children )
+    
+        
         
     
     
