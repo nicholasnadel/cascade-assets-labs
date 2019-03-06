@@ -8,45 +8,46 @@
     </a>
   </p>
 
-  <h3>Direct Links to Personnel Blocks</h3>
+  <h2>Direct Links to Personnel Blocks</h2>
   <p>Note: These buttons do not have jQuery events associated with them.</p>
   <ul>
-    <li><a href="#personnel-anchor-jane">Jane's Link</a></li>
-    <li><a href="#personnel-anchor-john">John's Link</a></li>
+    <li><a href="#jane-doe">Jane's Link</a></li>
+    <li><a href="#miguel-torrez">Miguel's Link</a></li>
   </ul>
 
   <div class="personnel-listing-widget">
-    <!-- anchor: these anchor tags are found in production -->
-    <span id="personnel-anchor-jane"></span>
+    <!-- anchor: -->
+    <span id="jane-doe"></span>
     <div class="person" itemscope="itemscope" itemtype="http://schema.org/Person">
       <img alt="photo of Jane Doe" class="image" itemprop="image"
            src="//www.chapman.edu/_files/level/img/unisex-silhouette.jpg"
            style="width:120px;"/>
-      <div class="name" itemprop="name">Jane Doe</div>
+      <h3 class="name" itemprop="name">Jane Doe</h3>
       <div class="title" itemprop="title">Director of Something Complicated</div>
       <div class="location">Beckman Hall 201</div>
       <div class="phone" itemprop="telephone">(714) 555-5555</div>
-      <a class="email" href="#personnel-anchors" itemprop="email">name@chapman.edu</a>
+      <a class="email" href="mailto:name1@chapman.edu" itemprop="email">name1@chapman.edu</a>
       <div class="bio">Bio paragraph goes here.</div>
       <div class="bio-url">
-        <a href="#personnel-anchors">View Full Bio &#187;</a>
+        <a aria-label="view Full Bio of Jane Doe" href="https://somewhere.com">View Full Bio &#187;</a>
       </div>
     </div>
 
     <!-- anchor: -->
-    <span id="personnel-anchor-john"></span>
+    <span id="miguel-torrez"></span>
     <div class="person" itemscope="itemscope" itemtype="http://schema.org/Person">
-      <img alt="photo of John Doe" class="image" itemprop="image"
+      <img alt="photo of Miguel Torrez" class="image" itemprop="image"
            src="//www.chapman.edu/_files/level/img/unisex-silhouette.jpg"
            style="width:120px;"/>
-      <div class="name" itemprop="name">John Doe</div>
+      <h3 class="name" itemprop="name">Miguel Torrez</h3>
       <div class="title" itemprop="title">Manager of Something Complicated</div>
-      <div class="location">Beckman Hall 201</div>
+      <div class="location">Beckman Hall 404</div>
       <div class="phone" itemprop="telephone">(714) 555-5555</div>
-      <a class="email" href="#personnel-anchors" itemprop="email">name@chapman.edu</a>
+      <a class="email" href="mailto:name2@chapman.edu" itemprop="email">name2@chapman.edu</a>
       <div class="bio">The bio paragraph goes here. </div>
+      <div class="bio">Another bio paragraph goes here. </div>
       <div class="bio-url">
-        <a href="#personnel-anchors">View Full Bio &#187;</a>
+        <a aria-label="view Full Bio of Miguel Torrez" href="https://somewhereelse.com">View Full Bio &#187;</a>
       </div>
     </div>
   </div>

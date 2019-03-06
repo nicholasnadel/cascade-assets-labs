@@ -4,8 +4,8 @@
     #set ($displayFactCardsWithText = $element.getChild('factCardsWithText').getChild('display-fact-cards-with-text').value)
     #if ($displayFactCardsWithText == 'Yes')
         #set ($factCardsWithText = $element.getChild('factCardsWithText'))
-        #set ($format = $content.getChild('format').value)
-        #set ($button   = $content.getChild('textFields').getChild('button') )
+        #set ($format = $factCardsWithText.getChild('format').value)
+        #set ($button   = $factCardsWithText.getChild('textFields').getChild('button') )
         #set ($label    = $_EscapeTool.xml($button.getChild('label').value) )
         
         <div class="#outputMessagingClasses($factCardsWithText) messaging-widget__has-fact-cards">
@@ -13,7 +13,7 @@
                 #outputSectionMessage($factCardsWithText)
                 #insertFactCardsColumn($factCardsWithText)
                 
-                #if ($format == "Stacked")
+                #if ($format == "Stacked" && !($_PropertyTool.isEmpty($label)))
                     <div class="text-actions">
                         <a #outputHref($button) class="theme-button">$label&#160;</a>
                     </div>

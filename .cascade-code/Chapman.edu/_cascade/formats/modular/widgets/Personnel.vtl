@@ -1,0 +1,97 @@
+#macro(outputPersonnel $element)  
+##    
+    #set ($header = $element.getChild('personnel').getChild('header').value)
+    #set ($sectionCopy = $_SerializerTool.serialize( $element.getChild('personnel').getChild('copy'), true ) )
+    #set ($personnel = $_XPathTool.selectNodes($element.getChild('personnel'), "person") )
+##
+    <div class="personnel-listing-widget">
+        #if ($header != '')
+            <h2 class="sectionHeader">${_EscapeTool.xml($header)}</h2>
+        #end 
+        #if ($element.getChild('personnel').getChild('copy').value != "" or $element.getChild('personnel').getChild('copy').getChildren().size() > 0)
+            <div class="editableContent">$sectionCopy</div>
+        #end 
+        #foreach ($person in $personnel)
+##            
+            #set ( $firstName = $person.getChild('first-name').value )
+            #set ( $middleName = $person.getChild('middle-name').value ) 
+            #set ( $lastName = $person.getChild('last-name').value ) 
+            #set ( $job_title = $person.getChild('title').value )
+            #set ( $image = $_SerializerTool.serialize( $person.getChild('image').getChild('path'), true) )
+            #set ( $location =$person.getChild('location').value )
+            #set ( $phone = $person.getChild('phone').value )
+            #set ( $email = $person.getChild('email').value )
+            #set ( $personAnchor = $firstName.toLowerCase() + "-" + $lastName.toLowerCase() )
+##            
+            ##start person
+            <!-- anchor: -->
+            <span id="$personAnchor"></span>
+            <div class="person" itemscope="itemscope" itemtype="http://schema.org/Person">
+                #if ($image != '/')
+                       <img class="image" itemprop="image" src="$image" alt="photo of $firstName $lastName" style="width:120px;" />         
+                #else                 
+                     <img class="image" itemprop="image" src="/_files/level/img/unisex-silhouette.jpg" alt="no photo available for $firstName $lastName"  style="width:120px;" />   
+                #end
+                #if ($middleName != '')
+                    #set ($name = $firstName + ' ' + $middleName + ' ' + $lastName)
+                #else
+                    #set ($name = $firstName + ' ' + $lastName)
+                #end
+                
+                ### heading tag on name is h3 ONLY IF optional widget heading has text (making it an h2)
+                ### otherwise each is an h2
+                #if ($header != '')
+                    <h3 class="name" itemprop="name">$name</h3>
+                #else
+                    <h2 class="name" itemprop="name">$name</h2>
+                #end
+                
+                #if ($job_title != '')
+                    <div class="title" itemprop="title">${_EscapeTool.xml($job_title)}</div>
+                #end
+                #if ($location != '')
+                    <div class="location">${_EscapeTool.xml($location)}</div>
+                #end
+                #if ($phone != '')
+                    <div class="phone" itemprop="telephone">$phone</div>
+                #end
+                #if ($email != '')
+                    <a class="email" href="mailto:$email" itemprop="email">$email</a>
+                #end
+                #set ( $bios = $person.getChildren('bio') )
+                #foreach ( $bio in $bios )
+                    #if ($bio.text != '')
+                        <div class="bio">$_SerializerTool.serialize( $bio, true )</div>
+                    #end
+                #end
+                ## note $link is now a mulitple field meaning there can be more than the one default to Profile page
+                #set ( $links = $person.getChildren('link') )
+                #foreach ($pageLink in $links)
+                    #set ($linkType = $pageLink.getChild('linkType').value )
+                    #if ($linkType == 'Internal Link')
+                        #set ($linkURL = $pageLink.getChild('internalLink').getChild('path').value )
+                    #elseif ($linkType == 'External Link')
+                        #set ($linkURL = $pageLink.getChild('externalLink').value )
+                    #else 
+                        #set ($linkURL = $pageLink.getChild('fileLink').getChild('path').value )
+                    #end                
+                    #if ($linkURL != '' && $linkURL != '/')
+                        #set ($label = $pageLink.getChild('label').value )
+                        <div class="bio-url">
+                            #if ($label == '')
+                                #set ($label = 'View Full Bio')
+                                #set ($ariaLabel = 'View Full Bio of ' + $name)
+                                <a href="${_EscapeTool.xml(${linkURL})}" aria-label="${ariaLabel}">${_EscapeTool.xml($label)}</a>
+                            #else
+                                <a href="${_EscapeTool.xml(${linkURL})}">${_EscapeTool.xml($label)}</a>
+                            #end
+                        </div>
+                    #end
+                #end
+            </div>
+            ## end person
+        #end 
+        ## end foreach
+    </div>
+##    
+#end
