@@ -10,7 +10,6 @@
     &:first-child {
       border-top: none;
     }
-
     position: relative;
     border-bottom: 1px solid #c1c1c1;
     padding: $base-spacing*1 0;
@@ -39,9 +38,10 @@
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
   }
 
-  .name {
-    font-size: 18px;
-    //margin-bottom: $base-spacing;
+  .name, h2.name, h3.name {
+    font-size: 18px; 
+    margin-top: 0;
+		margin-bottom: 0;
     padding-top: 0;
   }
 
@@ -52,8 +52,5 @@
     &:last-child {
       margin-bottom: 0;
     }
-  }
-  .bio-url a {
-    text-decoration: none;
   }
 }
