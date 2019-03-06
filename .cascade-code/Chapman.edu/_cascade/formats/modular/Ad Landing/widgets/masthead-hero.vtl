@@ -18,139 +18,51 @@
 
     #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
     #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
-    #set ($string = "#getFileLink($backgroundImageDesktop)")
-    #set ($uglyImagePath = "#getFileLink($backgroundImageDesktop)")
+    
+    ## Dissect the image URL returned by the macro in helpers.velocity
+    #set ($urlAsString = "#getFileLink($backgroundImageDesktop)")
+    #set ($urlAsString = $linkUrl)
+    #set ($index = $urlAsString.indexOf('\.'))
+    #set ($output = $urlAsString.split('/')) 
+    #set ($filenameWithSuffix = $output[$index])
 
-  
-    
-    #foreach ($element in $linkUrl.split("/"))
-    ##   $element
-    #end
-    
-    #set ($string = $linkUrl)
-    #set ($index = $string.indexOf('\.'))
-    #set ($output = $string.split('/')) 
-    #set ($withADot = $output[$index])
-    
-    #set ($noDot = $withADot.replace(".jpg", "") )
-    
-    #set ( $bgImageDirPath = $uglyImagePath )
+    ## imageFileType comes from helpers.velocity 
+    #determineImageType($urlAsString)
+    #set ($filenameNoSuffix = $filenameWithSuffix.replace("$imageFileType", "") )
 
+    ## All medium images will begin with -768 (ie example-768xUnkown.jpg) via Cascade's Asset Factory Plugin
     #set ($sevenSixtyEight = "-768")
-    #set ($noDotWildcard = "$noDot$sevenSixtyEight")
-
-
- 
-
+    #set ($filenameNoSuffixWildcard = "$filenameNoSuffix$sevenSixtyEight")
     
-    #set( $tinyImage = $withADot.replace(".jpg", "-1x1.jpg") )
-
+    ## Removing trailing slash on the original image directory path
+    #set ($index = $urlAsString.indexOf('$imageFileType'))
+    #set ($end = $urlAsString.substring.reverse($index))
+    #set( $parentDir = $linkUrl.replace($filenameWithSuffix, "") ) 
+    #set ($imageDirectory = $parentDir)  
+    #set ($urlAsStringLength = $imageDirectory.length() - 1)  
+    #set ($imageDirectory = $imageDirectory.substring(0,$urlAsStringLength))  
+    #set ($folder = ${_EscapeTool.xml($imageDirectory)})
+    #set($folder = $_.locateFolder("$imageDirectory"))
+    
+     ## All tiny images will be exactly 1x1 (ie example-1x1.jpg)
+    #set( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
     #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
-    ## #set ($cascadeSucks = $_.locateFile($linkUrl) )
-    ## <h1>$cascadeSucks</h1>
-    #set ( $tinyImageUrl = "site://Chapman.edu/test-section/nick-test/landing-lqip/_files/background-images/$tinyImage" )
+    #set ( $tinyImageUrl = "$imageDirectory/$tinyImage" )
     
-    
-            
-    
-    
-    
-    #set ($index = $string.indexOf('.jpg'))
-    
-
-    
-    #set ($index = $index)
-    
-
-    
-    #set ($end = $string.substring.reverse($index))
-
-
-    #set( $parentDir = $linkUrl.replace($withADot, "") ) 
-    #set ($bgImageDir = $parentDir)  
-    #set ($stringLength = $bgImageDir.length() - 1)  
-    #set ($bgImageDir = $bgImageDir.substring(0,$stringLength))  
-    #set ($folder = ${_EscapeTool.xml($bgImageDir)})
-    #set($folder = $_.locateFolder("$bgImageDir"))
-    
+    ## Retrieve the unkown medium image
     #outputFolder($folder)
     #macro(outputFolder $folder)
        #set($children = $folder.children)
        #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
        
         #foreach($child in $sortedChildren)
-            #if ($child.name.contains("$noDotWildcard"))
-                ## $child.name
+            #if ($child.name.contains("$filenameNoSuffixWildcard"))
                 #set ($medImage = $child.name)
-                #set( $medImagePath = $linkUrl.replace($withADot, "$medImage") )
+                #set( $medImagePath = $linkUrl.replace($filenameWithSuffix, "$medImage") )
                 #set ( $medImageUrl = $medImagePath )
-                
-    
             #end
         #end
     #end
-    #set($sorted = $_SortTool.sort($assets, "metadata.dynamicField(myDynamicField).value"))
-    #set($sorted = $_SortTool.sort($pages, "structuredDataNode(myField).textValue"))
-    
-    #set ( $parentDir = $currentPage.parentFolder )
-    #set ( $children = $parentDir.children )
-    
-        
-        
-    
-    
-    <style>
-     .container {
-	margin-top: 20px;
-    }
-    
-    .progressive-image {
-    	position: relative;
-    	overflow: hidden;
-      transition: opacity 1s linear;
-    
-    }
-    
-    .progressive-image div {
-      width: 100%;
-    	padding-top: 100%;
-    	background-size: cover!important;
-    	background-position: center center!important;
-    }
-    
-    .progressive-image .loadingImage {
-    	filter: blur(50px);
-      /* this is needed so Safari keeps sharp edges */
-      transform: scale(1);
-    }
-    
-    .progressive-image .overlay {
-    	position: absolute;
-      top: 0;
-    	opacity: 0;
-      transition: opacity 1s linear;
-    
-    }
-    
-    @media screen and (max-width: 768px) {
-        .ad-landing-masthead article {
-          display: none;
-        }
-    }
-    @media screen and (min-width: 768px) {
-        .ad-landing-masthead .masthead-hero {
-            min-height: 550px;
-        }
-        .ad-landing-masthead .masthead-content {
-            min-height: 400px;
-        }
-        .ad-landing-masthead .masthead-content-panel {
-            min-height: 400px;
-        }
-    }
-    
-    </style>
-    ## end nick
 
     <div class="ad-landing-masthead">
       <div class="masthead-header">
@@ -161,28 +73,6 @@
         </div>
       </div>
      
-     
-    ##   <div class="masthead-hero">
-    ##     <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
-    ##     <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImageMobile)>
-    ##       <article title="mobile hero background image" style=#addBackgroundImage($backgroundImageMobile)>
-    ##         <div class="content">
-    ##           <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
-    ##           <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
-    ##         </div>
-    ##       </article>
-    ##     </div> 
-    ##   </div>
-    
-##     <div class="progressive-image">
-## 		<div class="loadingImage"
-## 			 style=#addBackgroundImage($backgroundImageMobile)
-## 			 data-image=#getFileLink($backgroundImageDesktop)>
-## 		</div>
-
-## 		<div class="overlay"></div>
-## 	</div>
-    
       <div class="masthead-hero">
         <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
             <div class="background-image">
@@ -191,11 +81,7 @@
             			 style='background-image: url("$tinyImageUrl")'>
             		
             		      <article title="mobile hero background image progressive-image">
-            		      ##  <div class="loadingImage" style=#addBackgroundImage($backgroundImageMobile) data-image=#getFileLink($backgroundImageDesktop)>
-            		      ##<img src="site://Chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-1x1.jpg" srcset="site://Chapman.edu/test-section/nick-test/landing-lqip/argyros-school/harold-768x512.jpg 1x" class="mobile-image" />
-                                
-                
-
+            		      
                              <picture>
                                 <source srcset="$largeImageUrl"
                                 media="(max-width: 768px)" />
@@ -203,14 +89,10 @@
                                 media="(min-width: 769px)" />
                                 <img class="mobile-image" src="[system-asset]${_EscapeTool.xml($medImageUrl)}[/system-asset]" />
                              </picture>
-                                
-                                
-                                
                                 <div class="content">
                                   <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
                                   <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
                                 </div>
-                            ## </div>
                           </article>
                     </div>  
                     <div class="overlay"></div>
@@ -230,30 +112,26 @@
               script.src = 'https://go.chapman.edu/register/?id=$_EscapeTool.xml($formId)&output=embed&div=form_$_EscapeTool.xml($formId)' + ((location.search.length > 1) ? '&' + location.search.substring(1) : '');
               var s = document.getElementsByTagName('script')[0];
               s.parentNode.insertBefore(script, s);
+
+          $(function(){
+              $('.progressive-image').each(function(){
             
-    
-                  $(function(){
-                      $('.progressive-image').each(function(){
-                    
-                        var image = new Image();
-                        var previewImage = $(this).find('.loadingImage');
-                        var newImage = $(this).find('.overlay');
-                        var imgSize = $('img.mobile-image').prop('currentSrc')
+                var image = new Image();
+                var previewImage = $(this).find('.loadingImage');
+                var newImage = $(this).find('.overlay');
+                var imgSize = $('img.mobile-image').prop('currentSrc')
 
-                    
-                        image.onload = function(){
-                          newImage.css('background-image', 'url(' + image.src + ')');
-                          newImage.css('opacity', '1');
-                          console.log('complete');
-                                                  console.log('imgsrc: ' + image.src)
-
-                        };
-                    
-                        image.src = $('img.mobile-image').prop('currentSrc')
-                        console.log(  $('img.mobile-image').prop('currentSrc') )
-                      });
-                    
-                    });
+                image.onload = function(){
+                  // 2. Inserts data-image src as background image into overlay
+                  newImage.css('background-image', 'url(' + image.src + ')');
+                  newImage.css('opacity', '1');
+                };
+                
+                // 1. Grabs data-image src
+                image.src = $('img.mobile-image').prop('currentSrc')
+                
+              });
+            });
             /*]]>*/</script>
             
            

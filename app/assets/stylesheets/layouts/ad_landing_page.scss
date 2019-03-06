@@ -1,9 +1,62 @@
+.container {
+  margin-top: 20px;
+}
+
+.progressive-image {
+  position: relative;
+  overflow: hidden;
+  transition: opacity 1s linear;
+
+}
+
+.progressive-image div {
+  width: 100%;
+  padding-top: 100%;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+.progressive-image .loadingImage {
+  filter: blur(50px);
+  /* this is needed so Safari keeps sharp edges */
+  transform: scale(1);
+}
+
+.progressive-image .overlay {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  transition: opacity 1s linear;
+
+}
+
+@media screen and (max-width: 768px) {
+  .ad-landing-masthead article {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ad-landing-masthead .masthead-hero {
+    min-height: 550px;
+  }
+
+  .ad-landing-masthead .masthead-content {
+    min-height: 400px;
+  }
+
+  .ad-landing-masthead .masthead-content-panel {
+    min-height: 400px;
+  }
+}
+
+
 .ad-landing-container {
   margin-top: -($base-spacing*4);
 
   .ad-landing-column-container {
     @include outer-container;
-    
+
     .ad-landing-left-column {
       @include media($medium-screen) {
         @include span-columns(11);
@@ -33,7 +86,9 @@
   #footer {
     padding: 16px 0;
 
-    @include media($medium-screen) { padding-top: 48px; }
+    @include media($medium-screen) {
+      padding-top: 48px;
+    }
 
     .copyright {
       padding: 72px 36px 0px;
