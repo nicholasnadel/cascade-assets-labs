@@ -50,7 +50,7 @@
         #set( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
         #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
         #set ( $tinyImageUrl = "$imageDirectory/$tinyImage" )
-        
+
         ## Retrieve the unkown medium image
         #outputFolder($folder)
         #macro(outputFolder $folder)
@@ -76,13 +76,15 @@
         </div>
       </div>
      
+                 		    
+
       <div class="masthead-hero">
         <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
             <div class="background-image">
                 <div class="progressive-image">
             		<div class="loadingImage" 
-            			 style='background-image: url("$tinyImageUrl")'>
-            		
+            			 style='background-image: url("[system-asset]${_EscapeTool.xml($tinyImageUrl)}[/system-asset]")'>
+            		    #log("tinyimage $tinyImageUrl")
             		      <article title="mobile hero background image progressive-image">
             		      
                              <picture>
@@ -128,7 +130,7 @@
                   // 2. Inserts data-image src as background image into overlay
                   newImage.css('background-image', 'url(' + image.src + ')');
                   newImage.css('opacity', '1');
-                //   console.log("Current masthead image size: " + $("img.mobile-image ").prop("currentSrc"));
+                  console.log("Current masthead image size: " + $("img.mobile-image ").prop("currentSrc"));
                 };
                 
                 // 1. Grabs data-image src
