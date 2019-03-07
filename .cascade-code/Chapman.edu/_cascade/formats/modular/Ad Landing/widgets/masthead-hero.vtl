@@ -15,54 +15,79 @@
     #set ( $formTitle = $form.getChild('title').value )
     #set ( $formId    = $form.getChild('formId').value )
     #set ( $pagePath = $currentPage.path )
-
     #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
     #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
     
+    #getFileLink($backgroundImageDesktop)
+        
+
+## debugging
+
+## #if ($_PropertyTool.isEmpty($backgroundImageDesktop))
+##     <h1>yes backgroundImageDesktop is empty</h1>
+##     #else 
+##     <h1>no backgroundImageDesktop is not empty</h1>
+## #end
+## end debugging
+
     ## Dissect the image URL returned by the macro in helpers.velocity
-    #set ($urlAsString = "#getFileLink($backgroundImageDesktop)")
-    #set ($urlAsString = $linkUrl)
-    #set ($index = $urlAsString.indexOf('\.'))
-    #set ($output = $urlAsString.split('/')) 
-    #set ($filenameWithSuffix = $output[$index])
+        ## #if (!$_PropertyTool.isEmpty($linkUrl))
+         #log($linkUrl)
+        #if (!$linkUrl.contains("jpg"))
+          #alert('Please set a masthead background image')
+          #getFileLink($backgroundImageDesktop)
+        
+        #else 
+        #set ($urlAsString = "#getFileLink($backgroundImageDesktop)")
 
-    ## imageFileType comes from helpers.velocity 
-    #determineImageType($urlAsString)
-    #set ($filenameNoSuffix = $filenameWithSuffix.replace("$imageFileType", "") )
+        
 
-    ## All medium images will begin with -768 (ie example-768xUnkown.jpg) via Cascade's Asset Factory Plugin
-    #set ($sevenSixtyEight = "-768")
-    #set ($filenameNoSuffixWildcard = "$filenameNoSuffix$sevenSixtyEight")
+        #set ($urlAsString = $linkUrl)
+        #set ($index = $urlAsString.indexOf('\.'))
+        #set ($output = $urlAsString.split('/')) 
+        #set ($filenameWithSuffix = $output[$index])
+        
+        ## imageFileType comes from helpers.velocity 
+        #determineImageType($urlAsString)
+        #set ($filenameNoSuffix = $filenameWithSuffix.replace("$imageFileType", "") )
     
-    ## Removing trailing slash on the original image directory path
-    #set ($index = $urlAsString.indexOf('$imageFileType'))
-    #set ($end = $urlAsString.substring.reverse($index))
-    #set( $parentDir = $linkUrl.replace($filenameWithSuffix, "") ) 
-    #set ($imageDirectory = $parentDir)  
-    #set ($urlAsStringLength = $imageDirectory.length() - 1)  
-    #set ($imageDirectory = $imageDirectory.substring(0,$urlAsStringLength))  
-    #set ($folder = ${_EscapeTool.xml($imageDirectory)})
-    #set($folder = $_.locateFolder("$imageDirectory"))
-    
-     ## All tiny images will be exactly 1x1 (ie example-1x1.jpg)
-    #set( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
-    #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
-    #set ( $tinyImageUrl = "$imageDirectory/$tinyImage" )
-    
-    ## Retrieve the unkown medium image
-    #outputFolder($folder)
-    #macro(outputFolder $folder)
-       #set($children = $folder.children)
-       #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
-       
-        #foreach($child in $sortedChildren)
-            #if ($child.name.contains("$filenameNoSuffixWildcard"))
-                #set ($medImage = $child.name)
-                #set( $medImagePath = $linkUrl.replace($filenameWithSuffix, "$medImage") )
-                #set ( $medImageUrl = $medImagePath )
+        ## All medium images will begin with -768 (ie example-768xUnkown.jpg) via Cascade's Asset Factory Plugin
+        #set ($sevenSixtyEight = "-768")
+        #set ($filenameNoSuffixWildcard = "$filenameNoSuffix$sevenSixtyEight")
+        
+        ## Removing trailing slash on the original image directory path
+        #set ($index = $urlAsString.indexOf('$imageFileType'))
+        #set ($end = $urlAsString.substring.reverse($index))
+        #set( $parentDir = $linkUrl.replace($filenameWithSuffix, "") ) 
+        #set ($imageDirectory = $parentDir)  
+        #set ($urlAsStringLength = $imageDirectory.length() - 1)  
+        #set ($imageDirectory = $imageDirectory.substring(0,$urlAsStringLength))  
+        #set ($folder = ${_EscapeTool.xml($imageDirectory)})
+        #set($folder = $_.locateFolder("$imageDirectory"))
+        
+         ## All tiny images will be exactly 1x1 (ie example-1x1.jpg)
+        #set( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
+        #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
+        #set ( $tinyImageUrl = "$imageDirectory/$tinyImage" )
+        
+        ## Retrieve the unkown medium image
+        #outputFolder($folder)
+        #macro(outputFolder $folder)
+           #set($children = $folder.children)
+           #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
+           
+            #foreach($child in $sortedChildren)
+                #if ($child.name.contains("$filenameNoSuffixWildcard"))
+                    #set ($medImage = $child.name)
+                    #set( $medImagePath = $linkUrl.replace($filenameWithSuffix, "$medImage") )
+                    #set ( $medImageUrl = $medImagePath )
+                #end
             #end
         #end
-    #end
+    
+       
+          
+        #end
 
     <div class="ad-landing-masthead">
       <div class="masthead-header">
@@ -83,6 +108,8 @@
             		      <article title="mobile hero background image progressive-image">
             		      
                              <picture>
+                                 #log($largeImageUrl)
+                                 #log($medImageUrl)
                                 <source srcset="$largeImageUrl"
                                 media="(max-width: 768px)" />
                                 <source srcset="$largeImageUrl"
@@ -143,4 +170,5 @@
         <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
       </div>
     </div> 
-#end
+
+#end 
