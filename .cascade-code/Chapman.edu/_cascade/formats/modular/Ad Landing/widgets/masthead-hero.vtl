@@ -137,6 +137,10 @@
                 image.src = $('img.mobile-image').prop('currentSrc')
               });
             });
+            
+            if ($.browser.msie && $.browser.version === 10) {
+                 $("img.mobile-image").prop('src', '$largeImageUrl' )
+            }
             /*]]>*/</script>
             
            
