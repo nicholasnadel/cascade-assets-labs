@@ -18,7 +18,7 @@
     #if ($linkUrl != '')
         "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
     #else
-        #set ($linkUrl = 'https://via.placeholder.com/1920x1080.png')
+        ""
     #end
 #end
 ## Log velocity variables in the browser console on dev
