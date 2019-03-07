@@ -86,7 +86,7 @@
             		      <article title="mobile hero background image progressive-image">
             		      
                              <picture>
-                                <source srcset="$largeImageUrl"
+                                <source srcset="[system-asset]${_EscapeTool.xml($medImageUrl)}[/system-asset]"
                                 media="(max-width: 768px)" />
                                 <source srcset="$largeImageUrl"
                                 media="(min-width: 769px)" />
@@ -128,11 +128,11 @@
                   // 2. Inserts data-image src as background image into overlay
                   newImage.css('background-image', 'url(' + image.src + ')');
                   newImage.css('opacity', '1');
+                //   console.log("Current masthead image size: " + $("img.mobile-image ").prop("currentSrc"));
                 };
                 
                 // 1. Grabs data-image src
                 image.src = $('img.mobile-image').prop('currentSrc')
-                
               });
             });
             /*]]>*/</script>
