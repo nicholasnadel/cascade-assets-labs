@@ -18,36 +18,17 @@
     #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
     #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
     
-    #getFileLink($backgroundImageDesktop)
-        
-
-## debugging
-
-## #if ($_PropertyTool.isEmpty($backgroundImageDesktop))
-##     <h1>yes backgroundImageDesktop is empty</h1>
-##     #else 
-##     <h1>no backgroundImageDesktop is not empty</h1>
-## #end
-## end debugging
-
-    ## Dissect the image URL returned by the macro in helpers.velocity
-        ## #if (!$_PropertyTool.isEmpty($linkUrl))
-         #log($linkUrl)
-        #if (!$linkUrl.contains("jpg"))
-          #alert('Please set a masthead background image')
-          #getFileLink($backgroundImageDesktop)
-        
-        #else 
+    ## Handle exception if image not set
+    <span class="hidden">#getFileLink($backgroundImageDesktop)</span>
+    #if (!$linkUrl.contains(".jpg") or $linkUrl.contains(".jpeg") or $linkUrl.contains(".png"))
+    #else 
         #set ($urlAsString = "#getFileLink($backgroundImageDesktop)")
-
-        
-
         #set ($urlAsString = $linkUrl)
         #set ($index = $urlAsString.indexOf('\.'))
         #set ($output = $urlAsString.split('/')) 
         #set ($filenameWithSuffix = $output[$index])
         
-        ## imageFileType comes from helpers.velocity 
+        ## determineImageType comes from helpers.velocity 
         #determineImageType($urlAsString)
         #set ($filenameNoSuffix = $filenameWithSuffix.replace("$imageFileType", "") )
     
@@ -84,10 +65,7 @@
                 #end
             #end
         #end
-    
-       
-          
-        #end
+    #end
 
     <div class="ad-landing-masthead">
       <div class="masthead-header">
@@ -108,8 +86,6 @@
             		      <article title="mobile hero background image progressive-image">
             		      
                              <picture>
-                                 #log($largeImageUrl)
-                                 #log($medImageUrl)
                                 <source srcset="$largeImageUrl"
                                 media="(max-width: 768px)" />
                                 <source srcset="$largeImageUrl"
@@ -170,5 +146,6 @@
         <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
       </div>
     </div> 
-
+#log($largeImageUrl)
+#log($medImageUrl)
 #end 

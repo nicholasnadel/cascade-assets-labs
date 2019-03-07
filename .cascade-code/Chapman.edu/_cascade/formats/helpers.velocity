@@ -18,7 +18,7 @@
     #if ($linkUrl != '')
         "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
     #else
-        ""
+        #set ($linkUrl = 'https://via.placeholder.com/1920x1080.png')
     #end
 #end
 ## Log velocity variables in the browser console on dev
@@ -31,7 +31,16 @@
       #protect]]>
   </script>
 #end
-    
+
+#macro(alert $v)
+  <script>
+      <![CDATA[#protect
+          if(window.location.href.indexOf("//dev-") > -1) {          
+            alert("(ง •̀_•́)ง VELOCITY: $v")
+          }
+      #protect]]>
+  </script>
+#end
 ## Determine image filetype
 #macro(determineImageType $urlAsString)
     #if ($urlAsString.toString().contains("jpg"))
