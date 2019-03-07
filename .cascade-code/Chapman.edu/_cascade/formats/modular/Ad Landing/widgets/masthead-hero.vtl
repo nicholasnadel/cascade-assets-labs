@@ -47,7 +47,7 @@
         #set($folder = $_.locateFolder("$imageDirectory"))
         
          ## All tiny images will be exactly 1x1 (ie example-1x1.jpg)
-        #set( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
+        #set ( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
         #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
         #set ( $tinyImageUrl = "$imageDirectory/$tinyImage" )
 
@@ -67,6 +67,14 @@
         #end
     #end
 
+<style>
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .loadingImage { 
+            background-image: url('$largeImageUrl') !important;
+            
+        }
+    }
+</style>
     <div class="ad-landing-masthead">
       <div class="masthead-header">
         <img class="header-mobile" #outputSrc($mobileLogoFields) alt="$_EscapeTool.xml($mobileLogoFields.getChild('alternateText').value)"/>
@@ -84,7 +92,6 @@
                 <div class="progressive-image">
             		<div class="loadingImage" 
             			 style='background-image: url("[system-asset]${_EscapeTool.xml($tinyImageUrl)}[/system-asset]")'>
-            		    #log("tinyimage $tinyImageUrl")
             		      <article title="mobile hero background image progressive-image">
             		      
                              <picture>
@@ -130,17 +137,14 @@
                   // 2. Inserts data-image src as background image into overlay
                   newImage.css('background-image', 'url(' + image.src + ')');
                   newImage.css('opacity', '1');
-                  console.log("Current masthead image size: " + $("img.mobile-image ").prop("currentSrc"));
+                  console.log("CURRENT MASTHEAD SOURCE: " + $("img.mobile-image ").prop("currentSrc"));
                 };
                 
                 // 1. Grabs data-image src
                 image.src = $('img.mobile-image').prop('currentSrc')
               });
             });
-            
-            if ($.browser.msie && $.browser.version === 10) {
-                 $("img.mobile-image").prop('src', '$largeImageUrl' )
-            }
+        
             /*]]>*/</script>
             
            
@@ -154,4 +158,6 @@
     </div> 
 #log($largeImageUrl)
 #log($medImageUrl)
+#log($tinyImageUrl)
 #end 
+
