@@ -140,7 +140,7 @@
               var s = document.getElementsByTagName('script')[0];
               s.parentNode.insertBefore(script, s);
 
-          $(function () {
+        $( window ).load(function() {
               $('.progressive-image').each(function(){
                 var image = new Image();
                 var previewImage = $(this).find('.loadingImage');
@@ -160,8 +160,7 @@
                 
                 // 3. Fallback/never allow overlay to ultimately contain 1x1
                 $( window ).load(function() {
-                    if (currentMasthead.indexOf("-1x1") > -1 ) {
-                        console.log('running')
+                    if (currentMasthead.indexOf("-1x1") > -1) {
 	                    $(".overlay").css('background-image', 'url($largeImageUrl)');
                     }
                 });
@@ -183,4 +182,4 @@
 #log($largeImageUrl)
 #log($medImageUrl)
 #log($tinyImageUrl)
-#end 
+#end
