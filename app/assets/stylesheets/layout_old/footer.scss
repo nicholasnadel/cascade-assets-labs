@@ -155,41 +155,43 @@
 
         @include bp(sx) {
           height: 0;
+          visibility: hidden;
           width: 25em;
-          opacity: 0;
-          padding-top: 1em;
+          padding: 1.5em 0 1em 1em;
           transition: all .45s;
 
           &.linksIn {
-            height: 14em;
-            padding: 1.5em 0 1em 1em;
+            height: 100%;
+            visibility: visible;
             opacity: 1;
             animation: footerLinksIn 0.45s normal ease-in-out both 1;
           }
 
           &.linksOut {
             height: 0;
-            opacity: 0;
-            animation: footerLinksOut 0.45s alternate ease-in-out both 1;
+            visibility: hidden;
+            animation: footerLinksOut 0.15s alternate ease-in-out both 1;
           }
         }
       }
 
       @include bp(sx) {
-        height: 0em;
-        opacity: 0;
-        padding-top: 1em;
+        height: 0;
+        visibility: hidden;
+        width: 25em;
+        padding: 1.5em 0 1em 1em;
+        transition: all .45s;
 
         &.linksIn {
-          height: 14em;
-          padding: 1.5em 0 1em 1em;
+          height: 100%;
+          visibility: visible;
           opacity: 1;
           animation: footerLinksIn 0.45s normal ease-in-out both 1;
         }
         &.linksOut {
           height: 0;
-          opacity: 0;
-          animation: footerLinksOut 0.45s alternate ease-in-out both 1;
+          visibility: hidden;
+          animation: footerLinksOut 0.15s alternate ease-in-out both 1;
         }
       }
     }
