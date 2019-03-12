@@ -41,14 +41,14 @@ $(function () {
       return null;
     }
   };
-
+  
   /* Populate news from Wordpress RSS feed (converted to JSON with YQL)
   ------------------------------------------------------------------------------------------------*/
   if ($(".news").length) {
     //default is NewsAndStories:
     var newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
       newsYqlUrl = function () {
-        return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + newsFeedUrl + "'&format=json&diagnostics=true&callback=?")
+        return ("https://social03.chapman.edu:4040/data?url=" + newsFeedUrl)
       },
       newsFeedOptions = $(".newsFeed").text();
 
@@ -121,34 +121,46 @@ $(function () {
     }
 
     $(".news .loading").siblings(".story").css("visibility", "hidden");
-    $.getJSON(newsYqlUrl(), function (data) {
-      var newsData = data.query.results;
+
+    var updateNewsWidget = function(data) {
+      var newsData = data[0];
       if (newsData) {
         $(".newsEvents").each(function () {
           $(this).find(".news .story").each(function (i) {
             var $this = $(this);
             if (newsData.item[i].pubDate) {
               //Month
-              $this.find(".date .month").html(newsData.item[i].pubDate.split(' ')[2].toUpperCase());
+              $this.find(".date .month").html(newsData.item[i].pubDate[0].split(' ')[2].toUpperCase());
               //Day
-              $this.find(".date .day").html(pad2(parseInt((newsData.item[i].pubDate.split(' ')[1]), 10)));
+              $this.find(".date .day").html(pad2(parseInt((newsData.item[i].pubDate[0].split(' ')[1]), 10)));
               //Year
-              $this.find(".date .year").html(newsData.item[i].pubDate.split(' ')[3]);
+              $this.find(".date .year").html(newsData.item[i].pubDate[0].split(' ')[3]);
             }
             //Title
-            $this.find(".title>a").html(newsData.item[i].title);
+            $this.find(".title>a").html(newsData.item[i].title[0]);
             //Links
             $this.find(".title>a, .readMore").each(function () {
-              $(this).attr('href', newsData.item[i].link);
+              $(this).attr('href', newsData.item[i].link[0]);
             });
+            
             //Show News
             $(".news .loading").hide().siblings(".story").css("visibility", "visible");
+            $(".news .story").css("visibility", "visible");
+            
           });
         });
       } else {
         $(".news").html("<p>Oops, <a href='" + newsFeedUrl + "'>" + newsFeedUrl + "</a> appears to be unresponsive or is not returning anything to display at the moment.</p>");
       }
-    });
+    }
+
+    $.getJSON(newsYqlUrl(), function (data) {
+      updateNewsWidget(data);
+    }).done( function(data) {
+      updateNewsWidget(data);
+    }).fail( function(data) {
+      $(".news").html("<p>There are no news articles found or the news feed is temporarily down.</p>");
+    })
   }
 
   /* Populate events from RSS feeds (converted to JSON with YQL)
@@ -157,7 +169,7 @@ $(function () {
     //sample: eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
     var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
       eventsYqlUrl = function () {
-        return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + eventsFeedUrl + "'&format=json&diagnostics=true&callback=?")
+        return ("https://social03.chapman.edu:4040/data?url=" + eventsFeedUrl)
       },
       eventsFeedOptions = $(".eventsFeed").text();
 
@@ -241,9 +253,8 @@ $(function () {
         break;
     }
 
-    $(".events .loading").siblings(".story").css("visibility", "hidden");
-    $.getJSON(eventsYqlUrl(), function (data) {
-      var eventsData = data.query.results;
+    var updateEventsWidget = function(data) {
+      var eventsData = data[0];
       if (eventsData) {
         $(".newsEvents").each(function () {
           $(this).find(".events .story").each(function (i) {
@@ -260,16 +271,16 @@ $(function () {
 
             if (rssitem) {
               // Title
-              $this.find(".title>a").html(rssitem.title);
+              $this.find(".title>a").html(rssitem.title[0]);
 
               // Links
               $this.find(".title>a, .readMore").each(function () {
-                $(this).attr('href', rssitem.link);
+                $(this).attr('href', rssitem.link[0]);
               });
 
               // Datestamp: pubdate sometimes contained original but not current
               // event date; use category field instead (has yyyy/mm/dd format)
-              var datestamp = categoryToDatestamp(rssitem.category);
+              var datestamp = categoryToDatestamp(rssitem.category[0]);
               if (datestamp) {
                 var shortMonthName = utils.toShortMonthName(datestamp.getMonth() + 1);
                 $this.find(".date .month").html(shortMonthName);
@@ -284,6 +295,8 @@ $(function () {
 
             //Show Events
             $(".events .loading").hide().siblings(".story").css("visibility", "visible");
+            $(".events .story").css("visibility", "visible");
+
             if (maxloop == i) {
               return false;
             }
@@ -293,6 +306,15 @@ $(function () {
         $(".events").html("<p>There are no events found (or <a href='" + eventsFeedUrl + "'>" + eventsFeedUrl + "</a> is temporarily down).</p>");
         //$(".events").html("<p>No events found at this time.</p>");
       }
+    }
+
+    $(".events .loading").siblings(".story").css("visibility", "hidden");
+    $.getJSON(eventsYqlUrl(), function(data) {
+      updateEventsWidget(data);
+    }).done( function(data) {
+      updateEventsWidget(data);
+    }).fail( function(data) {
+      $(".events").html("<p>There are no events found or the events feed is temporarily down).</p>");
     });
   }
 

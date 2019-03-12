@@ -4,7 +4,7 @@ module DataDefinitions
 
     # TODO: configure this to for brochure masthead and schools/colleges masthead
     XPATH = {
-      masthead_type: '//group[@identifier="masthead"]/text[@identifier="schoolMastheadTypes"]'
+      masthead_type: '//group[@identifier="masthead"]/text[@identifier="mastheadType"]'
     }.freeze
 
     # Preset Data Values
