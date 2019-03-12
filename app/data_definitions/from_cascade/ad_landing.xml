@@ -100,7 +100,7 @@
 							<dropdown-item value="Sun"/>
 							<dropdown-item value="Financial"/>
 							<dropdown-item value="Bullet Point"/>
-							<dropdown-item value="Star"/>       
+							<dropdown-item value="Star"/>
 						</text>
 					</group>
 				</group>
