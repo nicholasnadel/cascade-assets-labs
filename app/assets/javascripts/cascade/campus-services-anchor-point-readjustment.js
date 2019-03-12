@@ -1,20 +1,40 @@
-// todo: calculate height of omni-nav (@768 etc)
+$(function () {
+  // Remove spaces in anchor link urls
+  $("a").each(function () {
+    $(this).attr('href', encodeURI($(this).attr("href")));
+    
+    var attr = $(this).attr('name');
+    var eyeDee = $(this).attr('id');
+    if (typeof attr !== typeof undefined && attr !== false) {
+      $(this).attr('name', eyeDee)
+    }
+    
+    
+  });
+ 
 
-// The function actually applying the offset
-function offsetAnchor() {
-  if (location.hash.length !== 0) {
-    window.scrollTo(window.scrollX, window.scrollY - 68);
+  $('a[href*=#]:not([href=#])').click(function () {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+      location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top - 125 //offsets for fixed header
+        }, 1000);
+        return false;
+      }
+    }
+  });
+  //Executed on page load with URL containing an anchor tag.
+  if ($(location.href.split("#")[1])) {
+    var target = $('#' + location.href.split("#")[1]);
+    if (target.length) {
+      $('html,body').animate({
+        scrollTop: target.offset().top - 125 //offset height of header here too.
+      }, 1000);
+      return false;
+    }
   }
-}
-
-// Captures click events of all <a> elements with href starting with #
-$(document).on('click', 'a[href^="#"]', function(event) {
-  // Click events are captured before hashchanges. Timeout
-  // causes offsetAnchor to be called after the page jump.
-  window.setTimeout(function() {
-    offsetAnchor();
-  }, 0);
 });
-
-// Set the offset when entering page with hash present in the url
-window.setTimeout(offsetAnchor, 0);
