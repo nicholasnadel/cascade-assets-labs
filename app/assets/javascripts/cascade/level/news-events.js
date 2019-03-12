@@ -48,7 +48,7 @@ $(function () {
     //default is NewsAndStories:
     var newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
       newsYqlUrl = function () {
-        return ("https://social03.chapman.edu:4040/data?url=" + newsFeedUrl)
+        return ("https://social04.chapman.edu:4040/data?url=" + newsFeedUrl)
       },
       newsFeedOptions = $(".newsFeed").text();
 
@@ -169,7 +169,7 @@ $(function () {
     //sample: eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
     var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
       eventsYqlUrl = function () {
-        return ("https://social03.chapman.edu:4040/data?url=" + eventsFeedUrl)
+        return ("https://social04.chapman.edu:4040/data?url=" + eventsFeedUrl)
       },
       eventsFeedOptions = $(".eventsFeed").text();
 

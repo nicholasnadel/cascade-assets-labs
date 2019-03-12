@@ -1,7 +1,7 @@
 $(function () {
 	//I DON'T BELIEVE THIS NEWS-EVENTS.JS IS USED (MANDY 11-13-17)
 	var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
-    eventsYqlUrl = function () { return ("https://social03.chapman.edu:4040/data?url=" + eventsFeedUrl) },
+    eventsYqlUrl = function () { return ("https://social04.chapman.edu:4040/data?url=" + eventsFeedUrl) },
     eventsFeedOptions = $(".eventsFeed").text();
     // $(".allEvents").attr("href", "/events/calendar.aspx");
     
