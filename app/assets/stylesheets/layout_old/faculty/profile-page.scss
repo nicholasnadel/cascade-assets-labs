@@ -26,10 +26,6 @@
     font-size: 12px;
   } 
 
-  .jobTitle{
-    line-height:15px;
-  }
-
   ul.contactButtons {
     list-style-type: none;
     margin: 14px 0 14px 0;
@@ -52,6 +48,7 @@
         padding: 12px;
         text-decoration: none;
         border-bottom: none;
+				font-weight: 600;
       }
     } 
   }

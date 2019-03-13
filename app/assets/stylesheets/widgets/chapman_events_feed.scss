@@ -114,6 +114,7 @@
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
+      background-size: 100%;
 
       @include media($medium-screen){
         height: 188px;
