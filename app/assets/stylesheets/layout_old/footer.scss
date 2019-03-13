@@ -54,10 +54,15 @@
     .menu-section {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 1.5em;
 
       &:nth-child(1) {
         flex: 2 0 0;
         -ms-flex: 2;
+
+        .link-container:nth-child(1) {
+          margin-bottom: 1.5em
+        }
       }
 
       &:nth-child(2) {
@@ -74,19 +79,19 @@
       @include bp(mx) {
 
         &:nth-child(1) { 
-          margin-bottom: 5em;
+          // margin-bottom: 5em;
           flex: 0 0 100%;
         }
       }
 
       @include bp(sx) { 
         flex-direction: column;
-        margin-bottom: 0;
+        // margin-bottom: 1.5em;
 
         &:nth-child(1) {
           -ms-flex: auto;
           order: 1; 
-          margin-bottom: 0;
+          // margin-bottom: 1.5em;
         }
 
         &:nth-child(2) {
@@ -124,6 +129,7 @@
         justify-content: space-between;
 
         li {
+          height: 45px;
           margin: 0;
           padding: 0 1.3em .8em 0;
 
@@ -154,42 +160,44 @@
         }
 
         @include bp(sx) {
-          height: 0;
+          // height: 0;
+          display: none;
           width: 25em;
-          opacity: 0;
-          padding-top: 1em;
+          padding: 1.5em 0 1em 1em;
           transition: all .45s;
 
           &.linksIn {
-            height: 14em;
-            padding: 1.5em 0 1em 1em;
+            // height: 100%;
+            display: flex;
             opacity: 1;
             animation: footerLinksIn 0.45s normal ease-in-out both 1;
           }
 
           &.linksOut {
-            height: 0;
-            opacity: 0;
-            animation: footerLinksOut 0.45s alternate ease-in-out both 1;
+            // height: 0;
+            display: none;
+            animation: footerLinksOut 0.15s alternate ease-in-out both 1;
           }
         }
       }
 
       @include bp(sx) {
-        height: 0em;
-        opacity: 0;
-        padding-top: 1em;
+        // height: 0;
+        display: none;
+        width: 25em;
+        padding: 1.5em 0 1em 1em;
+        transition: all .45s;
 
         &.linksIn {
-          height: 14em;
-          padding: 1.5em 0 1em 1em;
+          // height: 100%;
+          display: block;
           opacity: 1;
           animation: footerLinksIn 0.45s normal ease-in-out both 1;
         }
         &.linksOut {
-          height: 0;
-          opacity: 0;
-          animation: footerLinksOut 0.45s alternate ease-in-out both 1;
+          // height: 0;
+          display: none;
+          animation: footerLinksOut 0.15s alternate ease-in-out both 1;
         }
       }
     }
@@ -212,6 +220,7 @@
         width: 25em;
         display: flex;
         padding: 15px 5px;
+        // margin-bottom: 1.5em;
         position: relative;
         cursor: pointer;
         z-index: 10;
@@ -235,7 +244,9 @@
     .link-container {
       width: 50%;
 
-      @include bp(sx) { width: 100%; }
+      @include bp(sx) { 
+        width: 100%;
+      }
 
       &:last-of-type {
         .social-icon-list { padding-right: 0; }
