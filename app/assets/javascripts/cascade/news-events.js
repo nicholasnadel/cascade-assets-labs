@@ -1,6 +1,6 @@
 $(function () {
 	//I DON'T BELIEVE THIS NEWS-EVENTS.JS IS USED (MANDY 11-13-17)
-	var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
+	var eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=events",
     eventsYqlUrl = function () { return ("https://social04.chapman.edu:4040/data?url=" + eventsFeedUrl) },
     eventsFeedOptions = $(".eventsFeed").text();
     // $(".allEvents").attr("href", "/events/calendar.aspx");
@@ -56,7 +56,7 @@ $(function () {
      /* Populate news from Wordpress RSS feed (converted to JSON with YQL)
     ------------------------------------------------------------------------------------------------*/
     var newsFeedUrl ='https://www.chapman.edu/getFeed.ashx?name=happenings',
-        yqlNewsUrl = "https://social03.chapman.edu:4040/data?url=" + newsFeedUrl;
+        yqlNewsUrl = "https://social04.chapman.edu:4040/data?url=" + newsFeedUrl;
 
     $.getJSON(yqlNewsUrl, function(data){
         var i;
