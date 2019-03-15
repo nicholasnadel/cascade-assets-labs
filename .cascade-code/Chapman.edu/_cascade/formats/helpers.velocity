@@ -21,7 +21,57 @@
         ""
     #end
 #end
+## Log velocity variables in the browser console on dev
+#macro(log $v)
+  <script>
+      <![CDATA[#protect
+          if(window.location.href.indexOf("//dev-") > -1) {          
+            console.log("(ง •̀_•́)ง VELOCITY: $v")
+          }
+      #protect]]>
+  </script>
+#end
 
+#macro(alert $v)
+  <script>
+      <![CDATA[#protect
+          if(window.location.href.indexOf("//dev-") > -1) {          
+            alert("(ง •̀_•́)ง VELOCITY: $v")
+          }
+      #protect]]>
+  </script>
+#end
+## Determine image filetype
+#macro(determineImageType $urlAsString)
+    #if ($urlAsString.toString().contains("jpg"))
+        #set ( $imageFileType = ".jpg")
+            ## $imageFileType
+        #elseif ($urlAsString.toString().contains("jpeg"))
+            #set ( $imageFileType = ".jpeg")
+            ## $imageFileType
+        #elseif ($urlAsString.toString().contains("png"))
+            #set ( $imageFileType = ".png")
+            ## $imageFileType
+    #end
+#end
+
+#macro(getFileLink $content)
+    #set ($linkUrl = $content.getChild('fileLink').getChild('path').value)
+    #if ($linkUrl != '')
+        "[system-asset]${linkUrl}[/system-asset]"
+    #else
+        ""
+    #end
+#end
+
+#macro(cascadeBgImage $content)
+    #set ($fileLink = $content.getChild("fileLink").getChild('path').asset)
+    #if (!$_PropertyTool.isNull($fileLink))
+        "background-image: url('[system-asset]${fileLink.path}[/system-asset]')"
+    #else
+        ""
+    #end
+#end
 ##
 ## Pass a specificly strucutred xml node to this macro and ouput a url.
 ##

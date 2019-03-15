@@ -20,8 +20,8 @@
 				<radio-item value="Yes"/>
 				<radio-item value="No"/>
 			</text>
-			<group collapsed="true" identifier="backgroundImage" label="Background Image">
-				<asset identifier="fileLink" label="File Link (Around 1600px by 800px)" type="file"/>
+			<group collapsed="true" identifier="backgroundImageDesktop" label="Desktop Background Image">
+				<asset identifier="fileLink" label="Desktop Image" type="file"/>
 				<text identifier="alternateText" label="Alternate Text"/>
 			</group>
 			<text identifier="title" label="Title"/>
@@ -100,7 +100,7 @@
 							<dropdown-item value="Sun"/>
 							<dropdown-item value="Financial"/>
 							<dropdown-item value="Bullet Point"/>
-							<dropdown-item value="Star"/>       
+							<dropdown-item value="Star"/>
 						</text>
 					</group>
 				</group>
