@@ -1,6 +1,6 @@
 // Accounts for Omninav height when scrolling to anchor links in WYSIWYG https://trello.com/c/ZCjBDv9e
 $(function () {
-  var omniHeight = $('div#primary-nav').height()
+  var omniHeight = $('div#primary-nav').height();
 
   // Smooth scrolling to target
   $('a[href*=#]:not([href=#])').click(function () {
