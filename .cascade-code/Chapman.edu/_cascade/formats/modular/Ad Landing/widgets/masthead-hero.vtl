@@ -1,5 +1,6 @@
-#import( "/_cascade/formats/helpers.velocity" )
+## Infers unkown dimension values. Requires a Cascade Asset Factory with the "Create Resized Images Plug-in" plugin which Mandy Thomas should probably handle. As of 3.12.2019, Access should be limited to Administrators, Web-Coordinators. See DEV > Asset Factories > Website Files/File Upload - Multiple Image Sizes - Ad Landing Masthead for values.
 
+#import( "/_cascade/formats/helpers.velocity" )
 #macro(outputMastheadHero $element)  
     ## Variables
     #set ( $header            = $element.getChild('header') )
@@ -15,7 +16,81 @@
     #set ( $form      = $element.getChild('form') )
     #set ( $formTitle = $form.getChild('title').value )
     #set ( $formId    = $form.getChild('formId').value )
+    #set ( $pagePath = $currentPage.path )
+    #set ( $backgroundImageMobile = $hero.getChild('backgroundImageMobile') )
+    #set ( $backgroundImageDesktop = $hero.getChild('backgroundImageDesktop') )
     
+    ## Handle exception if image not set
+    <span class="hidden">#getFileLink($backgroundImageDesktop)</span>
+    #if (!$linkUrl.contains(".jpg") or $linkUrl.contains(".jpeg") or $linkUrl.contains(".png"))
+    #else 
+        #set ($urlAsString = "#getFileLink($backgroundImageDesktop)")
+        #set ($urlAsString = $linkUrl)
+        #set ($index = $urlAsString.indexOf('\.'))
+        #set ($output = $urlAsString.split('/')) 
+        #set ($filenameWithSuffix = $output[$index])
+        
+        ## determineImageType comes from helpers.velocity 
+        #determineImageType($urlAsString)
+        #set ($filenameNoSuffix = $filenameWithSuffix.replace("$imageFileType", "") )
+    
+        ## All medium images will begin with -768 (ie example-768xUnkown.jpg) via Cascade's Asset Factory Plugin
+        #set ($sevenSixtyEight = "-768")
+        #set ($filenameNoSuffixWildcard = "$filenameNoSuffix$sevenSixtyEight")
+        
+        ## Removing trailing slash on the original image directory path
+        #set ($index = $urlAsString.indexOf('$imageFileType'))
+        #set ($end = $urlAsString.substring.reverse($index))
+        #set( $parentDir = $linkUrl.replace($filenameWithSuffix, "") ) 
+        #set ($imageDirectory = $parentDir)  
+        #set ($urlAsStringLength = $imageDirectory.length() - 1)  
+        #set ($imageDirectory = $imageDirectory.substring(0,$urlAsStringLength))  
+        #set ($folder = ${_EscapeTool.xml($imageDirectory)})
+        #set($folder = $_.locateFolder("$imageDirectory"))
+        
+         ## All tiny images will be exactly 1x1 (ie example-1x1.jpg)
+        #set ( $tinyImage = $filenameWithSuffix.replace("$imageFileType", "-1x1$imageFileType") )
+        #set ( $largeImageUrl = "[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]" )
+        #set ( $tinyImageUrl = "$imageDirectory/$tinyImage" )
+
+        ## Retrieve the unkown medium image
+        #outputFolder($folder)
+        #macro(outputFolder $folder)
+           #set($children = $folder.children)
+           #set($sortedChildren = $_SortTool.sort($children, "folderOrder"))
+           
+            #foreach($child in $sortedChildren)
+                #if ($child.name.contains("$filenameNoSuffixWildcard"))
+                    #set ($medImage = $child.name)
+                    #set( $medImagePath = $linkUrl.replace($filenameWithSuffix, "$medImage") )
+                    #set ( $medImageUrl = $medImagePath )
+                #end
+            #end
+        #end
+    #end
+
+<style>
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        .loadingImage { 
+            background-image: url('$largeImageUrl') !important;
+            
+        }
+    }
+</style>
+<noscript>
+    <style>
+    .loadingImage {
+        background-image: url('$largeImageUrl') !important;
+    }
+    .progressive-image .loadingImage { 
+     -webkit-filter: unset; 
+     filter: unset; 
+    -webkit-transform: unset;
+    -ms-transform: unset;
+    transform: unset;
+    }
+    </style>
+</noscript>
 
     <div class="ad-landing-masthead">
       <div class="masthead-header">
@@ -25,19 +100,35 @@
           <p class="header-text-desktop">$_SerializerTool.serialize($headerText, true)</p>
         </div>
       </div>
-    
+     
+                 		    
+
       <div class="masthead-hero">
         <!-- There are two elements with background images because of the major design difference between the mobile and desktop layouts -->
-        <div class="background-image" title="desktop hero background image" style=#addBackgroundImage($backgroundImage)>
-          <article title="mobile hero background image" style=#addBackgroundImage($backgroundImage)>
-            <div class="content">
-              <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
-              <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
+            <div class="background-image">
+                <div class="progressive-image">
+            		<div class="loadingImage" 
+            			 style='background-image: url("[system-asset]${_EscapeTool.xml($tinyImageUrl)}[/system-asset]")'>
+            		      <article title="mobile hero background image progressive-image">
+            		      
+                             <picture>
+                                <source srcset="[system-asset]${_EscapeTool.xml($medImageUrl)}[/system-asset]"
+                                media="(max-width: 768px)" />
+                                <source srcset="$largeImageUrl"
+                                media="(min-width: 769px)" />
+                                <img class="mobile-image" src="[system-asset]${_EscapeTool.xml($medImageUrl)}[/system-asset]" />
+                             </picture>
+                                <div class="content">
+                                  <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
+                                  <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
+                                </div>
+                          </article>
+                    </div>  
+                    <div class="overlay"></div>
+            	</div>
             </div>
-          </article>
-        </div> 
-      </div>
-    
+        </div>
+      
       <div class="masthead-content">
         <section aria-labelledby="mastheadcontentpanel" class="masthead-content-panel">
           <h2 id="mastheadcontentpanel">$_EscapeTool.xml($formTitle)</h2>
@@ -50,7 +141,38 @@
               script.src = 'https://go.chapman.edu/register/?id=$_EscapeTool.xml($formId)&output=embed&div=form_$_EscapeTool.xml($formId)' + ((location.search.length > 1) ? '&' + location.search.substring(1) : '');
               var s = document.getElementsByTagName('script')[0];
               s.parentNode.insertBefore(script, s);
+
+        $( window ).load(function() {
+              $('.progressive-image').each(function(){
+                var image = new Image();
+                var previewImage = $(this).find('.loadingImage');
+                var newImage = $(this).find('.overlay');
+                var imgSize = $('img.mobile-image').prop('currentSrc')
+                var currentMasthead = $("img.mobile-image ").prop("currentSrc")
+                
+                // 1. Grabs data-image src
+                image.src = $('img.mobile-image').prop('currentSrc')
+                
+                image.onload = function(){
+                // 2. Inserts data-image src as background image into overlay
+                  newImage.css('background-image', 'url(' + image.src + ')');
+                  newImage.css('opacity', '1');
+                  console.log("CURRENT MASTHEAD SOURCE: " + currentMasthead);
+                };
+                
+                // 3. Fallback/never allow overlay to ultimately contain 1x1
+                $( window ).load(function() {
+                    if (currentMasthead.indexOf("-1x1") > -1) {
+	                    $(".overlay").css('background-image', 'url($largeImageUrl)');
+                    }
+                });
+                
+              });
+            });
+        
             /*]]>*/</script>
+            
+           
           </div>
         </section>
       </div>
@@ -58,5 +180,9 @@
       <div class="masthead-footer">
         <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
       </div>
-    </div>
-#end
+    </div> 
+#log($largeImageUrl)
+#log($medImageUrl)
+#log($tinyImageUrl)
+#end 
+
