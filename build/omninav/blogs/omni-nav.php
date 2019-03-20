@@ -235,14 +235,14 @@ if (is_user_logged_in()) {
           </a>
         </li>
         <li>
-          <a class="has-icon" href="https://blogs.chapman.edu/">
+          <a class="has-icon" href="https://news.chapman.edu">
             <svg class="newspaper svg-icon" viewbox="0 0 512 512"><path d="M448,128V64H0v352c0,17.7,14.3,32,32,32h432c26.5,0,48-21.5,48-48V128H448z M416,416H32V96h384V416z M64,160h320v32H64V160   z M256,224h128v32H256V224z M256,288h128v32H256V288z M256,352h96v32h-96V352z M64,224h160v160H64V224z"></path></svg>
             Blogs
           </a>
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
+              <a href="https://news.chapman.edu" title="Blog for News and Stories">News and Stories</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>
@@ -278,7 +278,7 @@ if (is_user_logged_in()) {
               <a href="https://blogs.chapman.edu/wilkinson/" title="Blog for Wilkinson College of Arts, Humanities, and Social Sciences">Wilkinson College of Arts, Humanities, and Social Sciences</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/" title="View more Blogs">View More Blogs</a>
+              <a href="https://news.chapman.edu" title="View more Blogs">View More Blogs</a>
             </li>
           </ul>
         </li>
