@@ -10,6 +10,7 @@ this.jQuery && (function ($) {
 		'wwwtest.chapman.edu'          : 'www.chapman.edu',
 		'eventsdev.chapman.edu'        : 'events.chapman.edu',
 		'dev-blogs.chapman.edu'        : 'blogs.chapman.edu',
+		'dev-news.chapman.edu'         : 'news.chapman.edu',
 		'socialdev.chapman.edu'        : 'social.chapman.edu',
 		'socialdev.chapman.edu/inside' : 'inside.chapman.edu',
 		'localhost'                    : '206.211.143.174'
