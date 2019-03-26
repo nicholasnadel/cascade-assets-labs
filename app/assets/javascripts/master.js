@@ -17,7 +17,6 @@
 //= require cascade/new-home
 //= require cascade/ie7
 //= require cascade/main
-//= require cascade/news-events
 //= require cascade/form-validation
 //= require cascade/query-string
 //= require cascade/rotator
