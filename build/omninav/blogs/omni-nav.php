@@ -129,7 +129,7 @@ if (is_user_logged_in()) {
         </a>
       </li>
       <li>
-        <a class="cu_nav_button" href="https://mywindow.chapman.edu/">
+        <a class="cu_nav_button" href="https://mywindow.chapman.edu">
           <svg class="chapman_window svg-icon" viewbox="0 0 512 512"><path d="M237.543,263.319L-0.266,501.073V263.319H237.543z M-0.266,248.073V10.26l237.81,237.813H-0.266zM501.276-0.455L263.518,237.291V-0.455H501.276z M248.299,237.291L10.507-0.455h237.792V237.291z M274.291,248.073L512.032,10.26v237.813H274.291z M512.032,263.319v237.754L274.291,263.319H512.032z M248.299,274.025L10.507,511.831h237.792V274.025zM263.518,274.025v237.806h237.725L263.518,274.025z"></path></svg>
           MyWindow
         </a>
@@ -235,14 +235,14 @@ if (is_user_logged_in()) {
           </a>
         </li>
         <li>
-          <a class="has-icon" href="https://blogs.chapman.edu/">
+          <a class="has-icon" href="https://news.chapman.edu">
             <svg class="newspaper svg-icon" viewbox="0 0 512 512"><path d="M448,128V64H0v352c0,17.7,14.3,32,32,32h432c26.5,0,48-21.5,48-48V128H448z M416,416H32V96h384V416z M64,160h320v32H64V160   z M256,224h128v32H256V224z M256,288h128v32H256V288z M256,352h96v32h-96V352z M64,224h160v160H64V224z"></path></svg>
             Blogs
           </a>
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
+              <a href="https://news.chapman.edu" title="Blog for News and Stories">News and Stories</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>
@@ -278,7 +278,7 @@ if (is_user_logged_in()) {
               <a href="https://blogs.chapman.edu/wilkinson/" title="Blog for Wilkinson College of Arts, Humanities, and Social Sciences">Wilkinson College of Arts, Humanities, and Social Sciences</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/" title="View more Blogs">View More Blogs</a>
+              <a href="https://news.chapman.edu" title="View more Blogs">View More Blogs</a>
             </li>
           </ul>
         </li>
