@@ -40,12 +40,11 @@ $(function () {
   // Shimmer
   $('.circle-bg').hover(
     function () {
-      $('i.fa-chevron-up').addClass('shimmer')
+      $('span.fa-chevron-up').addClass('shimmer')
     },
     function () {
-      $('i.fa-chevron-up').removeClass('shimmer')
+      $('span.fa-chevron-up').removeClass('shimmer')
     },
-    //$('#back2top').css('color', 'white')
   )
   $('#back2top').on('click', function (e) {
     e.preventDefault();
