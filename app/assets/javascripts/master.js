@@ -11,6 +11,7 @@
 
 //= require cascade/analytics
 //= require cascade/carousel
+//= require cascade/back-to-top
 //= require cascade/collapsed-nav
 //= require cascade/console-log
 //= require cascade/footer
