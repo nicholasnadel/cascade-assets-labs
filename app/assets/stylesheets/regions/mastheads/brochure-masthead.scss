@@ -76,7 +76,9 @@
         text-transform: uppercase;
       }
 
-      &.secondary { font-weight: 100; }
+      &.secondary { font-weight: 100; 
+        font-family: "futura-pt", Arial, sans-serif;
+      }
     }
   }
 
