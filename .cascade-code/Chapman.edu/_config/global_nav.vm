@@ -15,7 +15,7 @@
       },
       {
         'text': 'Discover Chapman',
-        'link': '/discover/index',
+        'link': '/about/index',
         'iconClass': 'icon-cu-window'
       },
       {
