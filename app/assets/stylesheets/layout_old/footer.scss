@@ -28,7 +28,6 @@
   }
 
   .footer-section.footer-info {
-
     border-top: 2px solid $black;
     margin-top: 4.8em;
     text-align: center;
@@ -71,26 +70,29 @@
       }
 
       @include bp(lx) {
-        &:nth-child(1) { flex: 2 0 45%; }
-  
-        &:nth-child(2) { flex: 1 0 25% }
+        &:nth-child(1) {
+          flex: 2 0 45%;
+        }
+
+        &:nth-child(2) {
+          flex: 1 0 25%
+        }
       }
 
       @include bp(mx) {
-
-        &:nth-child(1) { 
+        &:nth-child(1) {
           // margin-bottom: 5em;
           flex: 0 0 100%;
         }
       }
 
-      @include bp(sx) { 
+      @include bp(sx) {
         flex-direction: column;
-        // margin-bottom: 1.5em;
 
+        // margin-bottom: 1.5em;
         &:nth-child(1) {
           -ms-flex: auto;
-          order: 1; 
+          order: 1;
           // margin-bottom: 1.5em;
         }
 
@@ -112,7 +114,7 @@
         margin: 0px;
         line-height: 1.4em;
 
-        &:hover { 
+        &:hover {
           color: $cu-light-grey-2;
           border-bottom: 2px solid $cu-light-grey-2;
         }
@@ -133,10 +135,14 @@
           margin: 0;
           padding: 0 1.3em .8em 0;
 
-          &:hover { opacity: .8; }
+          &:hover {
+            opacity: .8;
+          }
 
           a {
-            &:hover { border-bottom: none;}
+            &:hover {
+              border-bottom: none;
+            }
 
             svg {
               width: 2.25em;
@@ -153,7 +159,7 @@
               padding: 0;
               margin: -1px;
               overflow: hidden;
-              clip: rect(0,0,0,0);
+              clip: rect(0, 0, 0, 0);
               border: 0;
             }
           }
@@ -194,6 +200,7 @@
           opacity: 1;
           animation: footerLinksIn 0.45s normal ease-in-out both 1;
         }
+
         &.linksOut {
           // height: 0;
           display: none;
@@ -201,11 +208,11 @@
         }
       }
     }
-    
 
     .links-header {
 
-      h2, h3 {
+      h2,
+      h3 {
         margin: 0 0 8px 0;
         font-size: 1.4em;
         line-height: 1.4em;
@@ -225,7 +232,8 @@
         cursor: pointer;
         z-index: 10;
 
-        h2, h3 {
+        h2,
+        h3 {
           font-size: 1.7em;
           width: 80%;
           margin: 0;
@@ -244,12 +252,14 @@
     .link-container {
       width: 50%;
 
-      @include bp(sx) { 
+      @include bp(sx) {
         width: 100%;
       }
 
       &:last-of-type {
-        .social-icon-list { padding-right: 0; }
+        .social-icon-list {
+          padding-right: 0;
+        }
       }
     }
 
@@ -276,7 +286,9 @@
       .address {
         color: $white;
 
-        &:first-child { margin-bottom: 2em; }
+        &:first-child {
+          margin-bottom: 2em;
+        }
 
         p {
           margin-bottom: 0;
@@ -300,7 +312,10 @@
       flex-direction: column;
       align-items: flex-end;
 
-      i, span { font-size: 1.4em; }
+      i,
+      span {
+        font-size: 1.4em;
+      }
 
       .contact-info-links {
         display: flex;
@@ -316,9 +331,11 @@
           fill: $white;
         }
 
-        &:hover { color: $cu-light-grey-2; }
+        &:hover {
+          color: $cu-light-grey-2;
+        }
       }
-      
+
       div {
         width: 20em;
         height: 5em;
@@ -326,7 +343,9 @@
         border: 1px solid rgba($white, .25);
         border-radius: 3px;
 
-        p { margin: 0 0 0 3px;}
+        p {
+          margin: 0 0 0 3px;
+        }
       }
 
       @include bp(lx) {
@@ -336,7 +355,7 @@
         flex-direction: row;
         margin: 3em 0;
 
-        div { 
+        div {
           width: 30%;
           margin-bottom: 0;
         }
@@ -355,16 +374,14 @@
         width: 25em;
         margin: 0;
 
-        div { 
+        div {
           margin: 5px 0;
           border: 1px solid #fff;
           height: 6em;
           width: 25em;
           border-radius: 0;
         }
-
       }
-      
     }
 
     .weather {
@@ -373,7 +390,7 @@
       justify-content: flex-end;
       padding: 2em 0;
 
-      @include bp(lx) { 
+      @include bp(lx) {
         flex: 0 0 30%;
         align-self: center;
         justify-content: center;
@@ -385,7 +402,7 @@
         flex: 0 0 100%;
       }
 
-      @include bp(sx) { 
+      @include bp(sx) {
         -ms-flex: auto;
         align-self: center;
         -ms-grid-column-align: center;
@@ -395,16 +412,19 @@
       }
 
       .weather-icon {
-
-        img { width: 2.5em; }
+        img {
+          width: 2.5em;
+        }
       }
 
-      p { margin: 0; }
+      p {
+        margin: 0;
+      }
 
       .temp {
         display: flex;
         text-align: left;
-        
+
         abbr {
           text-decoration: none;
           border-bottom: none;
@@ -426,7 +446,7 @@
       text-align: center;
       margin: 2em 0;
 
-      @include bp(sx) { 
+      @include bp(sx) {
         margin: 2em 0;
         -ms-flex: auto;
         text-align: center;
@@ -446,7 +466,7 @@
         margin: 0px;
         line-height: 1.4em;
 
-        &:hover { 
+        &:hover {
           color: $cu-light-grey-2;
           border-bottom: 2px solid $cu-light-grey-2;
           width: 75%;
@@ -464,13 +484,17 @@
       text-align: center;
       margin: 5em 0;
 
-      a:focus { outline: 2px dotted white;}
+      a:focus {
+        outline: 2px dotted white;
+      }
 
-      @include bp(mx) { grid-row: 6 / span 1;}
+      @include bp(mx) {
+        grid-row: 6 / span 1;
+      }
 
-      @include bp(sx) { 
+      @include bp(sx) {
         margin: 5em;
-        order: 7; 
+        order: 7;
       }
 
       svg {
@@ -490,7 +514,7 @@
       font-weight: bold;
       font-style: normal;
 
-      @include bp(sx) { 
+      @include bp(sx) {
         align-self: center;
         -ms-grid-column-align: center;
         order: 8;
@@ -499,67 +523,94 @@
   }
 }
 
- #back2top {
-        position: fixed;
-        font-size: 1.2em;
-        right: 0;
-        margin-right: 50px;
-        bottom: 50px;
-        z-index: 33;
-        color: #acacac;
-    }
-    
-    span.fa.fa-chevron-up {
-        color: #f5f5f599;
-    }
-    
-    .bottomPadding {
-    padding-bottom: 500px;
-    }
-    .noPadding {
-    padding-bottom: 0;
-    }
-    
-    
-    .shimmer {
-      display: inline-block;
-      background: #f5f5f5 -webkit-gradient(linear, 100% 0, 0 0, from(#FF422580), color-stop(0.5, #ffffff), to(#ffffff));
-      background-position: -4rem top; /*50px*/
-      background-repeat: no-repeat;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -webkit-animation-name: shimmer;
-      animation-delay: .8s;
-      -webkit-animation-delay: .8s;
-      -webkit-animation-duration: 3s;
-      -webkit-animation-iteration-count: 1;
-      -webkit-background-size: 4rem 100%; /*50px*/
-    }
-    
-    @-webkit-keyframes shimmer {
-        0% {
-            background-position: -4rem top; /*50px*/
-        }
-    
-        70% {
-            background-position: 12.5rem top; /*200px*/
-        }
-    
-        100% {
-            background-position: 12.5rem top; /*200px*/
-        }
-    }
-    
-    .circle-bg{
-        background: rgba(157,32,62,.5);
-        padding: 1.2rem;
-        text-align: center;
-        display: inline;
-        border-radius: 50%;
-    }
-    .circle-bg:hover{
-        background: rgba(157,32,62,1);
-        box-shadow: 0 5px 15px rgba(0,0,0,.3);
-        transition: opacity 0.3s ease-in-out;
-    }
-    
+#back2top {
+  position: fixed;
+  font-size: 1.2em;
+  right: 0;
+  margin-right: 50px;
+  bottom: 50px;
+  z-index: 33;
+  color: #acacac;
+}
+
+span.fa.fa-chevron-up {
+  color: #f5f5f599;
+}
+
+.bottomPadding {
+  padding-bottom: 500px;
+}
+
+.noPadding {
+  padding-bottom: 0;
+}
+
+.shimmer {
+  display: inline-block;
+  background: #f5f5f5 -webkit-gradient(linear, 100% 0, 0 0, from(#FF422580), color-stop(0.5, #ffffff), to(#ffffff));
+  background-position: -4rem top;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-name: shimmer;
+  animation-delay: .8s;
+  -webkit-animation-delay: .8s;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-background-size: 4rem 100%;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -4rem top;
+    /*50px*/
+  }
+
+  70% {
+    background-position: 12.5rem top;
+    /*200px*/
+  }
+
+  100% {
+    background-position: 12.5rem top;
+    /*200px*/
+  }
+}
+
+.circle-bg {
+  background: rgba(157, 32, 62, .5);
+  padding: 1.2rem;
+  text-align: center;
+  display: inline;
+  border-radius: 50%;
+}
+
+.circle-bg:hover {
+  background: #9d203e;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  -webkit-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
+}
+
+/* Microsoft Edge Browser 12+ (All) - @supports method */
+@supports (-ms-ime-align:auto) {
+  #cu-blogs-footer .shimmer {
+    -webkit-text-fill-color: #f5f5f5;
+  }
+}
+
+/* Microsoft Edge Browser 15+ - @supports method */
+@supports (-ms-ime-align:auto) and (-webkit-text-stroke:initial) {
+  #cu-blogs-footer .shimmer {
+    -webkit-text-fill-color: #f5f5f5;
+  }
+}
+
+@media screen and (-ms-high-contrast: none) {
+  #cu-blogs-footer .shimmer {
+    -webkit-text-fill-color: #f5f5f5;
+  }
+}
