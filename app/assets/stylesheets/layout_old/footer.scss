@@ -614,3 +614,9 @@ span.fa.fa-chevron-up {
     -webkit-text-fill-color: #f5f5f5;
   }
 }
+
+// Workaround for Safari 10.1 issue that Ross noticed 4.19.19
+// https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items
+.footer .footer-section.footer-menu .menu-section:nth-child(1) {
+  flex: 1 0 auto !important;
+}
