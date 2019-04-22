@@ -1,7 +1,6 @@
 // Accounts for Omninav height when scrolling to anchor links in WYSIWYG https://trello.com/c/ZCjBDv9e
 $(function () {
-  var url = location.pathname;
-  if (url.indexOf('campus-services/marketing-communication/guidelines-and-resources/writing/') > 0) {
+  if ($('.wysiwyg-widget').length > 0) {
     $('.wysiwyg-widget a[href*=\\#]:not([href=\\#])').click(function () {
       if (
         location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
