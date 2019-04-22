@@ -1,14 +1,7 @@
 // Accounts for Omninav height when scrolling to anchor links in WYSIWYG https://trello.com/c/ZCjBDv9e
 $(function () {
   if ($('.wysiwyg-widget').length > 0) {
-    // Remove spaces in anchor link urls
-    $('a').each(function (removeSpace) {
-      $(this).attr('href', encodeURI($(this).attr('href')));
-      if (typeof attr !== typeof undefined && attr !== false) {
-        // Element has this attribute
-      }
-    });
-    $('a[href*=\\#]:not([href=\\#])').click(function () {
+    $('.wysiwyg-widget a[href*=\\#]:not([href=\\#])').click(function () {
       if (
         location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
         location.hostname == this.hostname
@@ -39,7 +32,3 @@ $(function () {
     }
   }
 });
-
-function removeSpace() {
-  $('a').replace(/%20/g, ' ');
-}
