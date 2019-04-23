@@ -1,34 +1,57 @@
 .brochure-masthead {
   position: relative;
 
-  &, .cd-hero-slider {
+  &,
+  .cd-hero-slider {
     background-color: $bg-light-gray;
     height: 300px;
     width: 100%;
 
-    @include media($medium-screen) { height: 400px; }
-    @include media($large-screen)  { height: 600px; }
+    @include media($medium-screen) {
+      height: 400px;
+    }
+
+    @include media($large-screen) {
+      height: 600px;
+    }
   }
 
   /* only display slide controls when hovering on masthead on medium+ screen */
   @include media($medium-screen) {
-    .slider-controls { display: none; }
-    &:hover{ .slider-controls { display: block; } }
+    .slider-controls {
+      display: none;
+    }
+
+    &:hover {
+      .slider-controls {
+        display: block;
+      }
+    }
   }
 
   .foreground-content {
     position: absolute;
-    left: 0; right: 0; bottom: 30px;
+    left: 0;
+    right: 0;
+    bottom: 30px;
     text-align: center;
     z-index: 666;
 
-    @include media($medium-screen) { bottom: 44px; }
-    @include media($large-screen) { bottom: 60px; }
+    @include media($medium-screen) {
+      bottom: 44px;
+    }
+
+    @include media($large-screen) {
+      bottom: 60px;
+    }
   }
 
   .slider-controls {
     position: absolute;
-    top: 0; bottom: 0; left: 0; right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     height: 50px;
     width: 100%;
     margin: auto;
@@ -43,8 +66,13 @@
       opacity: .8;
       cursor: pointer;
 
-      &.left { float: left; }
-      &.right { float: right; }
+      &.left {
+        float: left;
+      }
+
+      &.right {
+        float: right;
+      }
 
       a {
         font-size: 80px;
@@ -57,16 +85,18 @@
   .headline-container {
     margin-bottom: 8px;
 
-    @include media($large-screen) { margin-bottom: 16px; }
+    @include media($large-screen) {
+      margin-bottom: 16px;
+    }
 
     .headline {
       font-size: 32px;
       line-height: 32px;
       margin: 0;
       color: white;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 
-      @include media($large-screen)  {
+      @include media($large-screen) {
         font-size: 48px;
         line-height: 48px;
       }
@@ -76,13 +106,18 @@
         text-transform: uppercase;
       }
 
-      &.secondary { font-weight: 100; 
+      &.secondary {
+        font-weight: 100;
+        font-family: "futura-pt", Arial, sans-serif;
+        text-transform: uppercase;
+        font-size: 34px;
+        font-weight: 400;
         font-family: "futura-pt", Arial, sans-serif;
       }
     }
   }
 
-  .offcanvas-menu-trigger a{
+  .offcanvas-menu-trigger a {
     display: inline-block;
     border: 2px solid white;
     padding: 16px 32px;
@@ -103,7 +138,9 @@
   .background-content {
     .slider-wrapper {
       position: absolute;
-      top: 0; left: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
       width: 100%;
       height: 100%;
     }
@@ -111,7 +148,8 @@
     .cd-hero-slider {
       list-style-type: none;
 
-      li, .background-image {
+      li,
+      .background-image {
         width: 100%;
         height: 100%;
         margin: 0;
@@ -126,7 +164,10 @@
     .background-video-wrapper {
       background-color: $bg-light-gray;
       position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
       display: block;
       width: 100%;
       height: auto;
@@ -137,7 +178,13 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 100%);
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
     }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .brochure-masthead .slider-controls {
+    display: none;
   }
 }
