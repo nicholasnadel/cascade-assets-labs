@@ -1,0 +1,94 @@
+div.upgrade-browser-wrapper {
+  position: absolute;
+  top: 0;
+  z-index: 1001;
+  width: 100%;
+  height: 60px;
+  // height: 100%;
+}
+
+#upgrade-browser {
+  background-color: #FFFFBD;
+  font-size: 24px;
+  font-weight: bold;
+  height: 100%;
+  font-family: $futura-regular;
+  // height: 100vh;
+}
+
+#upgrade-browser {
+  #upgrade-hide {
+    display: none;
+    transition: 1s ease-in-out;
+  }
+
+  label {
+    cursor: pointer;
+  }
+
+  #upgrade-hide:checked~#upgrade-browser {
+    display: none;
+  }
+
+  .no-underline {
+    text-decoration: none;
+  }
+
+  p {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    font-weight: bold;
+  }
+
+  p.inner {
+    padding: 10px 0 10px 0;
+    background-color: #FFFFBD;
+    vertical-align: middle;
+  }
+
+  .linklike {
+    color: $cu-red;
+    cursor: pointer;
+    text-decoration: underline;
+    display: inline;
+  }
+}
+
+// Show alert on browsers where flex is unsupported
+@supports not (display: flex) {
+  #upgrade-browser {
+    display: block;
+  }
+}
+
+// Hide on all browsers that support flex
+@supports (display: flex) {
+  #upgrade-browser {
+    display: none !important;
+  }
+}
+
+// Microsoft Edge (supports flex)
+@supports (-ms-ime-align: auto) {
+  #upgrade-browser {
+    // display: none !important;
+  }
+}
+
+// Microsoft ie 10 & 11
+// https://www.chapman.edu/upgrade-browser.aspx requires supporting 11
+@media all and (-ms-high-contrast:none) {
+
+  /* IE10 */
+  #upgrade-browser {
+    display: block
+  }
+
+  /* IE11 */
+  *::-ms-backdrop,
+  #upgrade-browser {
+    display: none !important;
+  }
+}
