@@ -272,6 +272,7 @@
 
 .miniRotatorNav {
   position: relative;
+  top: 300px;
   left: auto;
   z-index: 999;
   display: block;
@@ -330,4 +331,27 @@ section#boxes-wrapper {
 
 .flexing {
   display: flex !important;
+}
+
+a.next-section {
+  margin-left: -9999999px;
+  z-index: -9999999;
+  opacity: 0;
+}
+
+a.next-section:focus {
+  z-index: unset !important;
+  margin-left: unset !important;
+  opacity: 1;
+  color: $white;
+  text-align: center;
+  outline: initial;
+  font-family: $arial;
+  font-weight: bold;
+}
+
+.skip {
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
 }
