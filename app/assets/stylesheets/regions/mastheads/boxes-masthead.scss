@@ -318,28 +318,16 @@ li.jcarousel-item:active .button {
   outline: 2px dotted white !important;
 }
 
-section#boxes-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  max-height: 440px;
-}
 
-.miniRotatorContainer.jcarousel-container.jcarousel-container-horizontal {
-  display: flex;
-}
 
-.flexing {
-  display: flex !important;
-}
-
-a.next-section {
+.peekaboo {
   margin-left: -9999999px;
   z-index: -9999999;
   opacity: 0;
 }
 
-a.next-section:focus {
+.peekaboo:focus,
+.pause:focus {
   z-index: unset !important;
   margin-left: unset !important;
   opacity: 1;
