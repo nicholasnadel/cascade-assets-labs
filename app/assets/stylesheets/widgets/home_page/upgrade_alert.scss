@@ -4,7 +4,6 @@ div.upgrade-browser-wrapper {
   z-index: 1001;
   width: 100%;
   height: 60px;
-  // height: 100%;
 }
 
 #upgrade-browser {
@@ -13,17 +12,19 @@ div.upgrade-browser-wrapper {
   font-weight: bold;
   height: 100%;
   font-family: $futura-regular;
-  // height: 100vh;
+  z-index: 1;
 }
 
 #upgrade-browser {
   #upgrade-hide {
     display: none;
+    -webkit-transition: 1s ease-in-out;
     transition: 1s ease-in-out;
   }
 
   label {
     cursor: pointer;
+    z-index: 2;
   }
 
   #upgrade-hide:checked~#upgrade-browser {
@@ -37,15 +38,19 @@ div.upgrade-browser-wrapper {
   p {
     position: relative;
     top: 50%;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     text-align: center;
     font-weight: bold;
   }
 
   p.inner {
-    padding: 10px 0 10px 0;
-    background-color: #FFFFBD;
     vertical-align: middle;
+    z-index: 1;
+  }
+
+  .dismiss {
+    cursor: pointer;
   }
 
   .linklike {
@@ -57,20 +62,20 @@ div.upgrade-browser-wrapper {
 }
 
 // Show alert on browsers where flex is unsupported
-@supports not (display: flex) {
+@supports not (display: grid) {
   #upgrade-browser {
     display: block;
   }
 }
 
 // Hide on all browsers that support flex
-@supports (display: flex) {
+@supports (display: grid) {
   #upgrade-browser {
     display: none !important;
   }
 }
 
-// Microsoft Edge (supports flex)
+// Microsoft Edge (supports flex eg covered above. leaving here in case needed later)
 @supports (-ms-ime-align: auto) {
   #upgrade-browser {
     // display: none !important;
@@ -80,6 +85,13 @@ div.upgrade-browser-wrapper {
 // Microsoft ie 10 & 11
 // https://www.chapman.edu/upgrade-browser.aspx requires supporting 11
 @media all and (-ms-high-contrast:none) {
+  .hide {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 
   /* IE10 */
   #upgrade-browser {
