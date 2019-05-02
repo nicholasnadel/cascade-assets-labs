@@ -17,7 +17,23 @@
 
     &.disabled {
       opacity: .4;
-      filter: alpha(opacity = 40);
+      filter: alpha(opacity=40);
+    }
+
+    &:hover,
+    &:focus {
+      outline: 2px dotted #a50034;
+      outline-offset: 5px;
+    }
+
+    &:active {
+      outline: 2px dotted #a50034;
+      outline-offset: 5px;
+    }
+
+    &:focus {
+      outline: 2px dotted #a50034;
+      outline-offset: 5px;
     }
   }
 
@@ -157,7 +173,7 @@
 
       .copy {
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-        filter: alpha(opacity = 100);
+        filter: alpha(opacity=100);
         opacity: 1;
         -webkit-transition-delay: 0.2s;
       }
@@ -166,7 +182,7 @@
 
   .copy {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity = 0);
+    filter: alpha(opacity=0);
     opacity: 0;
     -webkit-transition: opacity 0.5s;
     -moz-transition: opacity 0.5s;
@@ -223,9 +239,11 @@
   @include bp(wildcard-min, 600px) {
     width: 533px;
   }
+
   @include bp(wildcard-min, 880px) {
     width: 840px;
   }
+
   @include bp(wildcard-min, 1160px) {
     width: 100%;
   }
@@ -243,6 +261,73 @@
   }
 }
 
-.oldie.miniRotator .inner{
+.oldie.miniRotator .inner {
   word-break: break-all;
+}
+
+.outline {
+  outline: 2px dotted #a50034;
+  outline-offset: 5px;
+}
+
+.miniRotatorNav {
+  position: relative;
+  left: auto;
+  z-index: 999;
+  display: block;
+}
+
+section#boxes-wrapper {
+  display: block;
+}
+
+li.jcarousel-item:active,
+li.jcarousel-item:focus,
+li.jcarousel-item:focus-within,
+li.jcarousel-item:hover {
+  outline: 3px dotted #a50034;
+  outline-offset: 5px;
+}
+
+li.jcarousel-item:focus-within div.caption.ellipsis.multiline,
+li.jcarousel-item:focus-within .inner .copy,
+.miniRotator .button {
+  top: 80px;
+  transition: none;
+  opacity: 1;
+}
+
+ul.miniRotator.clearfix.jcarousel-list.jcarousel-list-horizontal {
+  min-height: 320px;
+}
+
+li.jcarousel-item {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+li.jcarousel-item:first-child {
+  margin-left: 10px;
+}
+
+li.jcarousel-item:hover .button,
+li.jcarousel-item:focus .button,
+li.jcarousel-item:focus-within .button,
+li.jcarousel-item:active .button {
+  outline: 2px dotted white !important;
+}
+
+section#boxes-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 440px;
+}
+
+.miniRotatorContainer.jcarousel-container.jcarousel-container-horizontal {
+  display: flex;
+}
+
+.flexing {
+  display: flex !important;
 }
