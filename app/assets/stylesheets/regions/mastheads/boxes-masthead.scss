@@ -347,3 +347,19 @@ li.jcarousel-item:active .button {
 .miniRotatorNav.next {
   top: 0;
 }
+
+.skip {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    position: absolute;
+    z-index: -1;
+}
+
+.skip:focus-within {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    position: relative;
+    z-index: 10;
+}

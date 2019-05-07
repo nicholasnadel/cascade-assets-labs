@@ -176,7 +176,8 @@ $(function () {
     }, 500)
     $(".breadcrumbs a:first-child").focus()
   })
-  console.log("ready!");
+  // Scroll to skip button when focus
+  $(window).scrollTop($('.peekaboo').position().top);
   // Pause carousel via button
   $('div.pause').click(function () {
     pauseAutoScroll();
@@ -188,3 +189,4 @@ $(function () {
     }
   });
 });
+
