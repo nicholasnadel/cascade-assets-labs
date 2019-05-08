@@ -1,6 +1,6 @@
 function dismiss() {
-  $('a.dismiss, span.dismiss, div.dismiss, input.dismiss').click(function () {
-    $('#upgrade-browser').css('display', 'none')
+  $('div.upgrade-browser-wrapper > a.dismiss, div.upgrade-browser-wrapper span.dismiss, div.upgrade-browser-wrapper label.upgrade-notice').click(function () {
+    $('div.upgrade-browser-wrapper, #upgrade-browser').css('display', 'none')
   })
 }
 
