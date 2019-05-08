@@ -8,7 +8,6 @@ function localStorageAvailable() {
   if (typeof (Storage) !== "undefined") {
     $('#persistence input').click(function () {
       if ($("#persistence input").is(':checked')) {
-        console.log('checked')
         if (localStorageAvailable())
           localStorage.DoNotShowMessageAgain = "true";
       }
@@ -32,7 +31,6 @@ function cacheDismissal() {
 function checkPref() {
   if (localStorageAvailable()) {
     if (localStorage.DoNotShowMessageAgain && localStorage.DoNotShowMessageAgain === "true") {
-      console.log('remembering prefs')
       $('div.upgrade-browser-wrapper, #upgrade-browser').css('display', 'none')
     }
   };
