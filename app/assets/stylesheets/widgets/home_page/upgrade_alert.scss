@@ -1,3 +1,7 @@
+div.upgrade-browser-wrapper {
+  background-color: #FFFFBD;
+}
+
 #upgrade-browser {
   #upgrade-hide {
     display: none;
@@ -18,10 +22,15 @@
     text-decoration: none;
   }
 
+  input {
+    color: #2f2f2f;
+  }
   p {
     position: relative;
     text-align: center;
-    font-weight: bold;
+    color: #2f2f2f;
+    padding: 8px 12px 8px 50px;
+    line-height: 1.4em;
   }
 
   p.inner {
@@ -52,8 +61,6 @@
   }
 
   #upgrade-browser {
-    font-size: 24px;
-    font-weight: bold;
     height: 100%;
     font-family: $futura-regular;
     display: block;
