@@ -59,6 +59,29 @@ div.upgrade-browser-wrapper {
     text-decoration: underline;
     display: inline;
   }
+
+  label.upgrade-notice {
+    float: right;
+  }
+
+  #upgrade-browser {
+    background-color: #FFFFBD;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  label {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  #upgrade-hide:checked~#upgrade-browser {
+    display: none;
+  }
+
+  #upgrade-browser a {
+    text-decoration: underline;
+  }
 }
 
 // Show alert on browsers where flex is unsupported
