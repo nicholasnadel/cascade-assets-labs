@@ -96,7 +96,6 @@ $(function () {
     }
   );
 });
-
 $(function () {
   if ($(".miniRotatorNav").length > 0) {
     // Trigger next on enter key
