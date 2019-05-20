@@ -96,97 +96,98 @@ $(function () {
     }
   );
 });
-
-// Nick
 $(function () {
-  // Trigger next on enter key
-  $('a.next').keydown(function (event) {
-    var keyCode = (event.keyCode ? event.keyCode : event.which);
-    if (keyCode == 13) {
-      $('a.next').trigger('click');
+  if ($(".miniRotatorNav").length > 0) {
+    // Trigger next on enter key
+    $('a.next').keydown(function (event) {
+      var keyCode = (event.keyCode ? event.keyCode : event.which);
+      if (keyCode == 13) {
+        $('a.next').trigger('click');
+      }
+    });
+    // Trigger previous on enter key
+    $('a.prev').keydown(function (event) {
+      var keyCode = (event.keyCode ? event.keyCode : event.which);
+      if (keyCode == 13) {
+        $('a.prev').trigger('click');
+        pauseAutoScroll();
+      }
+    });
+
+    function pauseAutoScroll() {
+      $('.miniRotatorContainer').jcarousel({
+        auto: 0,
+      })
+      //console.log('pausing autoscroll')
     }
-  });
-  // Trigger previous on enter key
-  $('a.prev').keydown(function (event) {
-    var keyCode = (event.keyCode ? event.keyCode : event.which);
-    if (keyCode == 13) {
-      $('a.prev').trigger('click');
+
+    function resumeAutoScroll() {
+      //console.log('resuming auto scroll')
+      resetSlideOrder();
+      $('.miniRotatorContainer').jcarousel({
+        scroll: 1,
+      })
+      carousel.startAuto();
+      // $('a.next').trigger('click');
+    }
+    // remove margin on shift-tab
+    var boxItemWidth = '-' + $('.jcarousel-list').outerWidth()
+    $(".miniRotator li").on('keydown', function (e) {
+      // Shift tab
+      if (e.shiftKey && e.keyCode === 9) {
+        //console.log('shift tab')
+        return true;
+      }
+      // Tab
+      else if (e.keyCode === 9) {
+        //console.log('tab')
+        pauseAutoScroll();
+        // return true;
+      }
+    });
+
+    function defaultSettings() {
+      //console.log('resetting')
+      $('.miniRotatorContainer').jcarousel({
+        // visible: 4,
+        wrap: "circular",
+        auto: 1000,
+        hoverPause: true,
+      });
+    }
+    $("a.next").focusin(function () {
       pauseAutoScroll();
-    }
-  });
-
-  function pauseAutoScroll() {
-    $('.miniRotatorContainer').jcarousel({
-      auto: 0,
-    })
-    console.log('pausing autoscroll')
-  }
-
-  function resumeAutoScroll() {
-    console.log('resuming auto scroll')
-    resetSlideOrder();
-    $('.miniRotatorContainer').jcarousel({
-      scroll: 1,
-    })
-    carousel.startAuto();
-    // $('a.next').trigger('click');
-  }
-  // remove margin on shift-tab
-  var boxItemWidth = '-' + $('.jcarousel-list').outerWidth()
-  $(".miniRotator li").on('keydown', function (e) {
-    // Shift tab
-    if (e.shiftKey && e.keyCode === 9) {
-      console.log('shift tab')
-      return true;
-    }
-    // Tab
-    else if (e.keyCode === 9) {
-      console.log('tab')
-      pauseAutoScroll();
-      // return true;
-    }
-  });
-
-  function defaultSettings() {
-    console.log('resetting')
-    $('.miniRotatorContainer').jcarousel({
-      // visible: 4,
-      wrap: "circular",
-      auto: 1000,
-      hoverPause: true,
+    });
+    $("a.next").focusout(function () {
+      resumeAutoScroll();
+      var carousel = $('.miniRotatorContainer').jcarousel
+      carousel.startAuto();
+    });
+    $("a.prev").focusin(function () {
+      // resetSlideOrder();
     });
   }
-  $("a.next").focusin(function () {
-    pauseAutoScroll();
-  });
-  $("a.next").focusout(function () {
-    resumeAutoScroll();
-    var carousel = $('.miniRotatorContainer').jcarousel
-    carousel.startAuto();
-  });
-  $("a.prev").focusin(function () {
-    // resetSlideOrder();
-  });
 });
 $(function () {
-  // Skip over carousel entirely
-  $('a.next-section').click(function () {
-    $('html, body').animate({
-      scrollTop: $("div.breadcrumbs").offset().top - 100
-    }, 500)
-    $(".breadcrumbs a:first-child").focus()
-  })
-  // Scroll to skip button when focus
-  $(window).scrollTop($('.peekaboo').position().top);
-  // Pause carousel via button
-  $('div.pause').click(function () {
-    pauseAutoScroll();
-  })
-  $('div.pause').keydown(function (event) {
-    var keyCode = (event.keyCode ? event.keyCode : event.which);
-    if (keyCode == 13) {
-      $('div.pause').trigger('click');
-    }
-  });
+  if ($(".miniRotatorNav").length > 0) {
+    // Skip over carousel entirely
+    $('a.next-section').click(function () {
+      $('html, body').animate({
+        scrollTop: $("div.breadcrumbs").offset().top - 100
+      }, 500)
+      $(".breadcrumbs a:first-child").focus()
+    })
+    // Scroll to skip button when focus
+    $(window).scrollTop($('.peekaboo').position().top);
+    // Pause carousel via button
+    $('div.pause').click(function () {
+      pauseAutoScroll();
+    })
+    $('div.pause').keydown(function (event) {
+      var keyCode = (event.keyCode ? event.keyCode : event.which);
+      if (keyCode == 13) {
+        $('div.pause').trigger('click');
+      }
+    });
+  }
 });
-

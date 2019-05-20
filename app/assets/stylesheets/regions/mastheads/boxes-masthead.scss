@@ -349,17 +349,21 @@ li.jcarousel-item:active .button {
 }
 
 .skip {
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
-    position: absolute;
-    z-index: -1;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  position: absolute;
+  z-index: -1;
+
+  &a.peekaboo.next-section.button.red:focus {
+    border: 2px dotted;
+  }
 }
 
 .skip:focus-within {
-    width: 100%;
-    text-align: center;
-    padding-top: 10px;
-    position: relative;
-    z-index: 10;
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+  position: relative;
+  z-index: 10;
 }
