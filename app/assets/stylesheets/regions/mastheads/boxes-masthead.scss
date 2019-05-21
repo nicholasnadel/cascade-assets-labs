@@ -318,8 +318,6 @@ li.jcarousel-item:active .button {
   outline: 2px dotted white !important;
 }
 
-
-
 .peekaboo {
   margin-left: -9999999px;
   z-index: -9999999;
@@ -355,7 +353,7 @@ li.jcarousel-item:active .button {
   position: absolute;
   z-index: -1;
 
-  &a.peekaboo.next-section.button.red:focus {
+  .peekaboo.next-section.button.red:focus {
     border: 2px dotted;
   }
 }

@@ -123,7 +123,7 @@ $(function () {
 
     function resumeAutoScroll() {
       //console.log('resuming auto scroll')
-      resetSlideOrder();
+      // resetSlideOrder();
       $('.miniRotatorContainer').jcarousel({
         scroll: 1,
       })
