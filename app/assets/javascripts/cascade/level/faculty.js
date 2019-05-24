@@ -89,7 +89,7 @@ $(function () {
                     case "/crean/academic-programs/graduate-programs/physician-assistant/faculty".toLowerCase():
                         return "PAS";
                     case "/crean/academic-programs/graduate-programs/physical-therapy/faculty".toLowerCase():
-                        return "PHYS";
+                        return "PT";
                     case "/crean/academic-programs/graduate-programs/ms-communication-sciences-and-disorders/faculty".toLowerCase():
                         return "CSD";
                     case "/crean/academic-programs/graduate-programs/ms-athletic-training/faculty".toLowerCase():
