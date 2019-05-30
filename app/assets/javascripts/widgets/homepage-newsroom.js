@@ -1,13 +1,20 @@
 $(document).ready(function () {
   var newsroomFeed = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
   
+  function decodeEntities(encodedString) {
+    var textArea = document.createElement('textarea');
+    textArea.innerHTML = encodedString;
+    
+    return textArea.value;
+  }
+
   function trimDescription(description, title) {
     var descriptionNoHTML       = description.trim().replace(/(<([^>]+)>)/ig, ""),
         descriptionNoHTMLLength = descriptionNoHTML.length,
         titleLength             = title.length;
     
-    descriptionNoHTML = descriptionNoHTML.replace(/[&.*?]/, "");
-
+    descriptionNoHTML = decodeEntities(descriptionNoHTML);
+    
     if (descriptionNoHTMLLength > 500 && titleLength < 30) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 500) < 0 ? 501 : descriptionNoHTML.indexOf(" ", 500));
       descriptionNoHTML = descriptionNoHTML + '...';
@@ -38,6 +45,7 @@ $(document).ready(function () {
 
     return title
   }
+  
   $.get('https://social04.chapman.edu:4040/data?url=' + newsroomFeed, function (rssData) {
 
     rssData[0].item.forEach(function (item, idx) {
