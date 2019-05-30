@@ -40,7 +40,6 @@
 	#set ( $firstSubtitle = $_XPathTool.selectSingleNode($slides[0], 'subTitle').value )
 
 	<div class="slider version-201611">
-
 		<div class="hidden slideOptions">
 			<div class="autoRotate">On</div>
 		</div>
@@ -119,7 +118,16 @@
 			${_EscapeTool.xml($rotateSpeed)}
 		</div>
 	</div>
-
+    
+    <div class="skip">
+        <a class="peekaboo next-section button red" tabindex="0" href="#" role="skip over carousel to next section">Skip
+          over carousel to next section</a>
+    </div>
+    
+	<div class="miniRotatorNav">
+		<a tabindex="0" class="prev" title="Move back to the previous slide"></a>
+	</div>
+	
 	<div class="miniRotatorContainer">
 		<ul class="miniRotator clearfix">
 			#foreach($slide in $slides)
@@ -138,9 +146,7 @@
 
 				#if ( $slideInternalLinkPath != '/' )
 					#set ( $slideItemHref = $slideInternalLinkPath )
-				#elseif ( $slideLinkText != '' && $slideLinkTarget == 'New Window' )
-					#set ( $slideItemHref = $slideLinkText )
-					#set ( $slideItemTarget = '_blank' )
+
 				#elseif ( $slideLinkText != '' )
 					#set ( $slideItemHref = $slideLinkText )
 				#else
@@ -170,11 +176,10 @@
 			#end
 		</ul>
 	</div>
-	<div class="miniRotatorNav">
-		<a class="prev" title="Move back to the previous slide"></a>
-		<a class="next" title="Move forward to the next slide"></a>
-	</div>
 
+    <div class="miniRotatorNav next">
+		<a tabindex="0" class="next" title="Move forward to the next slide"></a>
+	</div>
 #else
 	<!-- mastheadType: base case (no match, no masthead) -->
 #end

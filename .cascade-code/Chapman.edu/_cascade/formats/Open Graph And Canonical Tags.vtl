@@ -1,0 +1,79 @@
+######################################################################################
+## Get the data for the social accounts, and add canonical name for google analytics, 
+##  and hide some pages from robots with meta tag
+######################################################################################
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+##
+##for SiteImprove deep-linking to page in CMS
+#set ( $pageID = $_.locatePage($currentPagePath, $currentPageSiteName).identifier.id )
+<meta name="id" content="$pageID"/>
+##
+#set ( $data        = $currentPage.getChild('system-data-structure') )
+#set ( $url = $currentPage.getChild('path').text )
+#set ( $hideParentFromSearch = $_XPathTool.selectSingleNode($currentPage.parent, "dynamic-metadata[name = 'HideFromSearch']/value").value )
+#set ( $hidePageFromSearch = $_XPathTool.selectSingleNode($currentPage, "dynamic-metadata[name = 'HideFromSearch']/value").value )
+## Thank You pages related to forms are showing up in search results. Tell robots to skip page:
+#if ($url.contains('360') or $url.contains('thank-you') or $url.contains('thankyou')  or $url.contains('test-section')  or $url.contains('training-area') or $url.contains('_reports') )
+    <!-- hidden thru programming -->
+    <meta name="robots" content="noindex" />    
+#elseif ($hidePageFromSearch == 'Yes')
+    <!-- hidden by request at page level -->
+    <meta name="robots" content="noindex"/>
+#end
+##
+## The modular templates 'Sharing' uses node at  //system-data-structure/meta/sharing
+## The old templates 'Sharing' uses node at //system-data-structure/sharing
+##
+#if ($data.getChild('meta').getChild('sharing')) 
+    #set ( $sharing = $data.getChild('meta').getChild('sharing') )    
+#elseif ($data.getChild('sharing'))
+    #set ( $sharing = $data.getChild('sharing') )
+#end
+##
+#set ( $title = ${_EscapeTool.xml($currentPage.getChild('display-name').text)} )
+#set ( $extension = '.aspx' )
+#set ( $description = ${_EscapeTool.xml($currentPage.getChild('description').text)} )
+##
+#if ( $url.toLowerCase().endsWith("index") )
+    <!-- canonical name for analytics so considers folder/ same as folder/index.aspx -->
+    <link rel="canonical" href="https://www.chapman.edu$url$extension"/>
+#end
+## some templates (data definitions) don't have a Sharing node at all so don't do rest of code:
+#if ($sharing)
+    
+    #set ( $og_title = $sharing.getChild('og_title').text )    
+    #set ( $og_description = $sharing.getChild('og_description').text )
+    #set ( $image = $sharing.getChild('og_image').getChild('path').text )
+    ##
+    #if ($og_title != '' && $og_title != 'Default')
+        #set ( $ogTitle = $og_title )
+    #else
+        #set ( $ogTitle = $title )
+    #end
+    <meta property="og:title" content="$ogTitle" />
+    #if ($og_description != '' && $og_description != 'Default')
+        #set ( $ogDescription = $og_description )
+    #else
+        #set ( $ogDescription = $description )
+    #end
+    <meta property="og:description" content="$ogDescription" />
+    <meta property="og:url" content="https://www.chapman.edu$url$extension" />
+    #if ($image != '/')
+        #set ( $ogImage = $image )
+    #else
+        #set ( $ogImage = '/_files/img/open-graph-cu-logo.png' )
+    #end
+    <meta property="og:image" content="https://www.chapman.edu$ogImage" />
+    
+    ## twitter
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="$title" />
+    <meta name="twitter:site" content="@ChapmanU" />
+    <meta name="twitter:creator" content="@ChapmanU" />
+    <meta property="og:url" content="https://www.chapman.edu$url$extension" />
+    <meta property="og:title" content="$og_title" />
+    <meta property="og:description" content="$description" />
+    <meta property="og:image" content="$ogImage" />
+    ## end twitter
+    
+#end

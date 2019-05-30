@@ -329,25 +329,6 @@
               My Chapman
             </a>
           </li>
-          
-          <li>
-            <a href="https://mywindow.chapman.edu/">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
-                <style type="text/css">
-                  .st0{fill:#ffffff;}
-                </style>
-                <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
-                <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
-                <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
-                <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
-                <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
-                <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
-                <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
-                <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
-              </svg>
-              My Window
-            </a>
-          </li>
 
           <li>
             <a href="https://www.chapman.edu/panthermail/">
@@ -641,7 +622,6 @@
         <ul>
           <li><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
           <li><a href="site://Chapman.edu/about/visit/index">Visit Chapman</a></li>
-          <li><a href="site://Chapman.edu/discover/index">Discover Chapman</a></li>
           <li><a href="site://Chapman.edu/about/facts-and-rankings/index">Facts &amp; Rankings</a></li>
           <li><a href="site://Chapman.edu/about/our-family/leadership/index">Leadership</a></li>
           <li><a href="site://Chapman.edu/campus-services/index">Campus Services</a></li>
@@ -866,3 +846,33 @@
 ##
 #setVars()
 #buildOmniNav()
+
+
+## Browser Upgrade Alert 
+<div class="upgrade-browser-wrapper">
+    <input type="checkbox" id="upgrade-hide"/>
+    <label for="upgrade-hide" class="upgrade-notice dismiss">
+        <a class="fa fa-window-close no-underline" aria-hidden="true">
+        <span class="sr-only">dismiss alert</span>
+        </a>
+    </label>
+    <br/>
+    <div id="upgrade-browser">
+        <p class="inner">
+            Please update your browser for the best viewing experience.
+            <br/>
+            <span class="fr dismiss">
+                <a href="https://www.chapman.edu/upgrade-browser.aspx">learn more</a>
+                or
+                <span class="linklike" role="dismiss upgrade alert">dismiss</span>
+                <br/>
+            </span>
+            <span id="persistence">
+                <label>
+                    <input aria-role="do not show message again" type="checkbox"/>
+                    Do not show this message again
+                </label>
+            </span>
+        </p>
+    </div>
+</div>
