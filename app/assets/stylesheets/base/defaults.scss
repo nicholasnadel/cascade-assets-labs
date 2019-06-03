@@ -38,8 +38,32 @@ html {
   font-family: $font-stack-body;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+
   &.cu-companion-bar {
     padding-top: 75px !important;
+  }
+}
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* http: //stackoverflow.com/a/21707103/6220029 */
+:target {
+  padding-top: 80px;
+  margin-top: -80px;
+  display: inline-block;
+}
+
+@media (max-width:1380px) and (min-width:768px) {
+  :target {
+    padding-top: 150px;
+    margin-top: -150px;
+    display: inline-block;
   }
 }
 
