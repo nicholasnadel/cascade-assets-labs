@@ -45,7 +45,7 @@ $(function () {
                     case "/dodge/about/faculty-directory".toLowerCase():
                         return "CFMA";
                     case "/engineering/faculty-directory".toLowerCase():
-                        return "ENG";
+                        return "SENG";
                     case "/law/law-faculty/index".toLowerCase():
                         return "SOL";
                     case "/scst/about/faculty-directory".toLowerCase():
@@ -88,8 +88,9 @@ $(function () {
                         return "MFT";
                     case "/crean/academic-programs/graduate-programs/physician-assistant/faculty".toLowerCase():
                         return "PAS";
+                    //chgd from PHYS to PT May 2019:
                     case "/crean/academic-programs/graduate-programs/physical-therapy/faculty".toLowerCase():
-                        return "PHYS";
+                        return "PT"; 
                     case "/crean/academic-programs/graduate-programs/ms-communication-sciences-and-disorders/faculty".toLowerCase():
                         return "CSD";
                     case "/crean/academic-programs/graduate-programs/ms-athletic-training/faculty".toLowerCase():

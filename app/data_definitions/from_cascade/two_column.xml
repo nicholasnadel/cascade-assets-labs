@@ -548,7 +548,7 @@
           <dropdown-item label="Wilkinson College" value="CHSS"/>
           <dropdown-item label="College of Performing Arts" value="COPA"/>
           <dropdown-item label="School of Pharmacy" value="SOP"/>
-          <dropdown-item label="Fowler School of Engineering" value="ENG"/>
+          <dropdown-item label="Fowler School of Engineering" value="SENG"/>
           <dropdown-item label="Fowler Law" value="SOL"/>
           <dropdown-item label="Schmid College" value="COS"/>
           <dropdown-item label="School of Communication" value="COMM"/>
@@ -584,7 +584,7 @@
           <dropdown-item label="Pharmacy " value="PHRM"/>
           <dropdown-item label="Philosophy " value="PHIL"/>
           <dropdown-item label="Physical Activity " value="PA"/>
-          <dropdown-item label="Physical Therapy " value="PHYS"/>
+          <dropdown-item label="Physical Therapy " value="PT"/>
           <dropdown-item label="Physician Assistant Studies " value="PAS"/>
           <dropdown-item label="Physics, Computational Science and Engineering " value="PCSE"/>
           <dropdown-item label="Political Science " value="POLI"/>
