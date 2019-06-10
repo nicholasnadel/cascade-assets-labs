@@ -1,9 +1,6 @@
 <!-- Paste this snippet in _cascade/blocks/html/cascade-assets -->
 
-<!-- 
-Current Branch: <%= `git rev-parse --abbrev-ref HEAD` %> 
-Built at: <%= Time.now.strftime('%d-%m-%Y_%H-%M-%S') %> 
--->
+<!-- Branch: <%= `git rev-parse --abbrev-ref HEAD`.strip + " build: " + Time.now.strftime('%d-%m-%Y_%H-%M-%S') -%> -->
 
 <system-xml>    
   <!-- Preload CSS & JS -->
