@@ -52,19 +52,21 @@ html {
   }
 }
 
-/* http: //stackoverflow.com/a/21707103/6220029 */
-:target {
-  padding-top: 80px;
-  margin-top: -80px;
-  display: inline-block;
+/* https://stackoverflow.com/a/13881860 */
+:target:before {
+    content: "";
+    display: block;
+    height: 5rem;
+    margin: -5rem 0 0;
 }
 
 @media (max-width:1380px) and (min-width:768px) {
-  :target {
-    padding-top: 150px;
-    margin-top: -150px;
-    display: inline-block;
-  }
+:target:before {
+    content: "";
+    display: block;
+    height: 8rem;
+    margin: -8rem 0 0;
+}
 }
 
 body {
