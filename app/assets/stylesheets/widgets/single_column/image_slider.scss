@@ -1,11 +1,14 @@
 .image-slider-wrapper {
+  position: relative;
+}
 
-  .image-slider {
-    margin-top: 64px;
-    margin-bottom: 64px;
+.image-slider-wrapper {
+  .container {
+    margin-top: 0;
   }
 
-  h1, .faux-h1 {
+  h1,
+  .faux-h1 {
     font-family: $futura-regular;
     font-weight: 700;
     font-size: 24px;
@@ -16,9 +19,12 @@
     margin-bottom: 2%;
   }
 
-  h1.title, .faux-h1.title,
-  h2.title, .faux-h2.title,
-  h3.title, .faux-h3.title {
+  h1.title,
+  .faux-h1.title,
+  h2.title,
+  .faux-h2.title,
+  h3.title,
+  .faux-h3.title {
     margin-top: -30px;
     padding-top: 0;
   }
@@ -63,10 +69,6 @@
     }
   }
 
-  .image-slider-wrapper {
-    position: relative;
-  }
-
   img {
     max-height: 600px;
     width: 100vw;
@@ -80,6 +82,10 @@
     margin-bottom: 37px;
     margin-top: 10px;
     width: auto;
+  }
+
+  .lSSlideOuter {
+    max-height: 600px;
   }
 
   .lSSlideOuter .lSPager.lSpg {
@@ -249,7 +255,7 @@
 
   @media screen and (max-width: 1024px) {
     img {
-      height: 600px;
+      min-height: 600px;
     }
 
     .content-container-slider {
