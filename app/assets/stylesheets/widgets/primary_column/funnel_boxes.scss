@@ -9,6 +9,7 @@
       display: inline;
     }
   }
+
   .funnelBlock {
     display: inline-block;
     vertical-align: top;
@@ -24,6 +25,7 @@
       text-align: center;
       line-height: 0;
     }
+
     h3 {
       font-weight: 700;
       font-size: 18px;
@@ -33,6 +35,7 @@
       margin: 0;
       clear: both;
       line-height: 1.25;
+
       a {
         font-weight: 700;
         font-size: 18px;
@@ -42,31 +45,38 @@
         margin: 0;
         clear: both;
         line-height: 1.25;
+
         &:hover {
           color: $cu-red;
         }
       }
     }
+
     ul {
       list-style-type: none;
       padding: 0;
     }
+
     li {
       margin: 0 0 3px 0;
     }
+
     .linkList {
       margin: 10px 0 0 0;
     }
+
     .copy {
       @include paragraph;
     }
   }
+
   .more {
     color: $black;
     font-weight: 800;
     font-size: 11px;
     cursor: pointer;
   }
+
   .region h3 a {
     font-weight: 700;
     font-size: 18px;
@@ -80,7 +90,15 @@
 }
 
 .funnelBlock a {
-  &:link, &:visited {
+
+  &:link,
+  &:visited {
     border-bottom: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .funnelBlock {
+    max-width: 315px;
   }
 }
