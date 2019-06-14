@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var newsroomFeedCache = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
-      newsroomFeed      = 'https://dev-news.chapman.edu/feed/news-editors-picks';
+  var newsroomFeedCache = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+      newsroomFeed      = 'https://news.chapman.edu/feed/news-editors-picks';
 
   function decodeEntities(encodedString) {
     var textArea = document.createElement('textarea');
@@ -10,9 +10,9 @@ $(document).ready(function () {
   }
 
   function trimDescription(description, title) {
-    var descriptionNoHTML = description.trim().replace(/(<([^>]+)>)/ig, ""),
+    var descriptionNoHTML     = description.trim().replace(/(<([^>]+)>)/ig, ""),
       descriptionNoHTMLLength = descriptionNoHTML.length,
-      titleLength = title.length;
+      titleLength             = title.length;
 
     descriptionNoHTML = decodeEntities(descriptionNoHTML);
 
@@ -118,7 +118,7 @@ $(document).ready(function () {
         return altText[1]
       }
 
-      $.get(newsroomFeed, function (xml) {
+      $.get(newsroomFeedCache, function (xml) {
         var xmlItems = xml.getElementsByTagName('item');
 
         for (var i = 0; i < xmlItems.length; i++) {
