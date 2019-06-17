@@ -48,10 +48,6 @@
     }
   }
 
-  .text-content {
-    padding-bottom: 44px;
-  }
-
   .text-wrap {
     display: inline-block;
     @include pad($base-spacing*2 $base-spacing*2 0);
@@ -76,10 +72,17 @@
 
   a.more-link {
     @include hyperlinks();
+    display: inline-block;
+    margin-top: 44px;
+    border-bottom: unset;
 
     &:after {
       content: " »"
     }
+  }
+  span.underline {
+      border-bottom: 1px dotted #a50034;
+      line-height: 1.2em;
   }
 }
 
