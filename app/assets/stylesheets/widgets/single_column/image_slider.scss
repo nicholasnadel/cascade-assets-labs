@@ -85,8 +85,8 @@
   }
 
   .lSSlideOuter {
-    margin-bottom: -5px;
     overflow: unset;
+    margin-bottom: -20px;
   }
 
   .lSSlideOuter .lSPager.lSpg {
@@ -135,34 +135,15 @@
     line-height: 22px;
   }
 
-  @supports (-webkit-line-clamp: 2) {
-    .line-clamp {
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-    }
-
-    .line-clamp:after {
-      content: "";
+  @media screen and (min-width: 1024px) {
+    .content-text .description {
+      overflow-y: auto;
+      height: auto;
+      max-height: 17rem;
+      overflow-y: scroll;
     }
   }
 
-  @supports not (-webkit-line-clamp: 2) {
-    .line-clamp {
-      position: relative;
-      height: 6em;
-    }
-
-    .line-clamp:after {
-      content: "";
-      text-align: right;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 70%;
-      height: 1.2em;
-    }
-  }
 
   // Media Queries
   @media screen and (max-width: 1480px) {
@@ -197,6 +178,13 @@
       left: 0;
       margin-left: 0;
     }
+
+    .content-container-slider {
+      min-height: 100%;
+      display: grid;
+      grid-auto-columns: 1fr;
+      align-items: center;
+    }
   }
 
   @media screen and (max-width: 535px) {
@@ -213,12 +201,6 @@
       right: 4%;
       float: right;
     }
-
-    .line-clamp {
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
   }
 
   @media screen and (max-width: 435px) {
@@ -228,7 +210,6 @@
       align-items: space-around;
       text-align: left;
       margin-top: -10px;
-      min-height: 220px;
     }
 
     .content-box a.button.red.smc-cta {
@@ -293,7 +274,7 @@
     }
   }
 
-  @media screen and (max-width: 780px) {
+  @media screen and (max-width: 1024px) {
     img {
       height: 400px;
     }
@@ -312,7 +293,6 @@
       display: block;
       position: relative;
       margin-top: -5px;
-      min-height: 200px;
       padding-bottom: 2em;
       background-color: $panther-black;
     }
