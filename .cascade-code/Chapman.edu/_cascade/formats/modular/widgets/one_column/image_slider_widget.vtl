@@ -53,7 +53,8 @@
                 <h1 class="headline">$_EscapeTool.xml($featuredTitle)</h1>
              
             ##  USEFUL TEXT-CLIPPING FUNCTION, PRE-WYSIWYG. NEED TO REFACTOR FOR WYSIWYG. 
-                <p class="description line-clamp">${_DisplayTool.truncate($featuredBody,500,"...")}</p>
+                ## <p class="description line-clamp">${_DisplayTool.truncate($featuredBody,500,"...")}</p>
+                <p class="description line-clamp">$_EscapeTool.xml($featuredBody)</p>
                  #if ( $featuredLinkExists )
                       <a #outputHref($featuredLink) class="theme-bg-color theme-button">$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
                 #end

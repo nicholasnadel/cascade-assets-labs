@@ -1,11 +1,11 @@
-<!-- Paste this snippet in _cascade/blocks/html/cascade-assets -->
+<system-xml>    
+<!-- <%= "Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%m-%d-%Y_%H-%M-%S')  -%> -->
 
-<system-xml>
-  <!-- preload CSS & JS -->
+  <!-- Preload CSS & JS -->
   <%= stylesheet_link_tag 'master', rel: 'preload', as: 'style', media: 'all' %>
   <%= preload_js_link 'master', rel: 'preload', as: 'script', media: 'all'  %>
-
-  <!-- carry on -->
+ 
+  <!-- Carry on -->
   <%= stylesheet_link_tag 'master', media: 'all' %>
   <%= javascript_include_tag 'master', defer: true %>
 </system-xml>
