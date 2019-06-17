@@ -10,6 +10,7 @@ $(document).ready(function () {
     loop: true,
     keyPress: true,
     pauseOnHover: false,
+    adaptiveHeight: true,
     // useCSS: true,
     onSliderLoad: function () {
       $(".widget-slides").removeClass("cS-hidden");
