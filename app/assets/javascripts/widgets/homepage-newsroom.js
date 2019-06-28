@@ -52,7 +52,8 @@ $(document).ready(function () {
     rssData[0].item.forEach(function (item, idx) {
       //First item in the rss feed array is the featured story 
       if (idx === 0) {
-
+        $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').attr('href', item['primary-category-link'][0]);
+        $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').text('#' + decodeEntities(item['primary-category'][0]));
         $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('src', item.image[0].img[0].$.src);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('alt', item.image[0].img[0].$.alt);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', item.link[0]);
@@ -62,6 +63,8 @@ $(document).ready(function () {
 
         return
       }
+      $('.homepage .third .story.story-' + idx + ' a.tag').attr('href', item['primary-category-link'][0]);
+      $('.homepage .third .story.story-' + idx + ' a.tag').text('#' + decodeEntities(item['primary-category'][0]));
       $('.homepage .third .story.story-' + idx).attr('aria-label', item.title[0]);
       $('.homepage .third .story.story-' + idx + ' a.permalink').attr('href', item.link[0]);
       $('.homepage .third .story.story-' + idx + ' a.permalink').attr('data-cta-label', item.title[0]);
@@ -77,7 +80,8 @@ $(document).ready(function () {
       rssData[0].item.forEach(function (item, idx) {
         //First item in the rss feed array is the featured story 
         if (idx === 0) {
-
+          $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').attr('href', item['primary-category-link'][0]);
+          $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').text('#' + decodeEntities(item['primary-category'][0]));
           $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('src', item.image[0].img[0].$.src);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('alt', item.image[0].img[0].$.alt);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', item.link[0]);
@@ -87,6 +91,8 @@ $(document).ready(function () {
 
           return
         }
+        $('.homepage .third .story.story-' + idx + ' a.tag').attr('href', item['primary-category-link'][0]);
+        $('.homepage .third .story.story-' + idx + ' a.tag').text('#' + decodeEntities(item['primary-category'][0]));
         $('.homepage .third .story.story-' + idx).attr('aria-label', item.title[0]);
         $('.homepage .third .story.story-' + idx + ' a.permalink').attr('href', item.link[0]);
         $('.homepage .third .story.story-' + idx + ' a.permalink').attr('data-cta-label', item.title[0]);
@@ -122,13 +128,17 @@ $(document).ready(function () {
         var xmlItems = xml.getElementsByTagName('item');
 
         for (var i = 0; i < xmlItems.length; i++) {
-          var image       = getImage(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
-              altText     = getAltText(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
-              title       = xmlItems[i].getElementsByTagName('title')[0].innerHTML,
-              description = getDescription(xmlItems[i].getElementsByTagName('description')[0].innerHTML.trim(), title);
-              link        = xmlItems[i].getElementsByTagName('link')[0].innerHTML
+          var image         = getImage(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
+              altText       = getAltText(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
+              title         = xmlItems[i].getElementsByTagName('title')[0].innerHTML,
+              description   = getDescription(xmlItems[i].getElementsByTagName('description')[0].innerHTML.trim(), title);
+              link          = xmlItems[i].getElementsByTagName('link')[0].innerHTML,
+              categoryLink  = xmlItems[i].getElementsByTagName('primary-category-link')[0].innerHTML,
+              categoryName  = decodeEntities(xmlItems[i].getElementsByTagName('primary-category')[0].innerHTML);
 
           if (i === 0) {
+            $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').attr('href', categoryLink);
+            $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').text('#' + categoryName);
             $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('src', image);
             $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('alt', altText);
             $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', link);
@@ -139,6 +149,8 @@ $(document).ready(function () {
             continue
           }
 
+          $('.homepage .third .story.story-' + i + ' a.tag').attr('href', categoryLink);
+          $('.homepage .third .story.story-' + i + ' a.tag').text('#' + categoryName);
           $('.homepage .third .story.story-' + i).attr('aria-label', title);
           $('.homepage .third .story.story-' + i + ' a.permalink').attr('href', link);
           $('.homepage .third .story.story-' + i + ' a.permalink').attr('data-cta-label', title);
