@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var newsroomFeedCache = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
-      newsroomFeed      = 'https://dev-news.chapman.edu/feed/news-editors-picks';
+  var newsroomFeedCache = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+      newsroomFeed      = 'https://news.chapman.edu/feed/news-editors-picks';
 
   function decodeEntities(encodedString) {
     var textArea = document.createElement('textarea');
