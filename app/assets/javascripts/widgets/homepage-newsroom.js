@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  var newsroomFeedCache = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
-      newsroomFeed      = 'https://news.chapman.edu/feed/news-editors-picks';
+  var newsroomFeedCache = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+      newsroomFeed      = 'https://dev-news.chapman.edu/feed/news-editors-picks';
 
   function decodeEntities(encodedString) {
     var textArea = document.createElement('textarea');
@@ -16,19 +16,19 @@ $(document).ready(function () {
 
     descriptionNoHTML = decodeEntities(descriptionNoHTML);
 
-    if (descriptionNoHTMLLength > 500 && titleLength < 30) {
+    if (descriptionNoHTMLLength > 505 && titleLength < 30) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 500) < 0 ? 501 : descriptionNoHTML.indexOf(" ", 500));
       descriptionNoHTML = descriptionNoHTML + '...';
       return descriptionNoHTML;
     }
 
-    if (descriptionNoHTMLLength > 400 && titleLength < 60) {
+    if (descriptionNoHTMLLength > 405 && titleLength < 60) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 400) < 0 ? 401 : descriptionNoHTML.indexOf(" ", 400));
       descriptionNoHTML = descriptionNoHTML + '...';
       return descriptionNoHTML;
     }
 
-    if (descriptionNoHTMLLength > 200 && titleLength > 60) {
+    if (descriptionNoHTMLLength > 205 && titleLength > 60) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 200) < 0 ? 201 : descriptionNoHTML.indexOf(" ", 200));
       descriptionNoHTML = descriptionNoHTML + '...';
       return descriptionNoHTML;
@@ -59,7 +59,7 @@ $(document).ready(function () {
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', item.link[0]);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('data-cta-label', item.title[0]);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').text(item.title[0]);
-        $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item.description[0], item.title[0]));
+        $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item['primary-description'][0], item.title[0]));
 
         return
       }
@@ -87,7 +87,7 @@ $(document).ready(function () {
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', item.link[0]);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('data-cta-label', item.title[0]);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').text(item.title[0]);
-          $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item.description[0], item.title[0]));
+          $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item['primary-description'][0], item.title[0]));
 
           return
         }
@@ -112,8 +112,7 @@ $(document).ready(function () {
 
       function getDescription(descriptionString, title) {
         var description = descriptionString.replace(/\n/g, " ");
-        description     = description.match(/<!\[CDATA\[(.*)/);
-        description     = trimDescription(description[1], title);
+        description     = trimDescription(description, title);
 
         return description;
       }
@@ -131,7 +130,7 @@ $(document).ready(function () {
           var image         = getImage(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
               altText       = getAltText(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
               title         = xmlItems[i].getElementsByTagName('title')[0].innerHTML,
-              description   = getDescription(xmlItems[i].getElementsByTagName('description')[0].innerHTML.trim(), title);
+              description   = getDescription(xmlItems[i].getElementsByTagName('primary-description')[0].innerHTML.trim(), title);
               link          = xmlItems[i].getElementsByTagName('link')[0].innerHTML,
               categoryLink  = xmlItems[i].getElementsByTagName('primary-category-link')[0].innerHTML,
               categoryName  = decodeEntities(xmlItems[i].getElementsByTagName('primary-category')[0].innerHTML);
