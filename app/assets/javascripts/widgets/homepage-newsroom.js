@@ -16,19 +16,19 @@ $(document).ready(function () {
 
     descriptionNoHTML = decodeEntities(descriptionNoHTML);
 
-    if (descriptionNoHTMLLength > 500 && titleLength < 30) {
+    if (descriptionNoHTMLLength > 505 && titleLength < 30) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 500) < 0 ? 501 : descriptionNoHTML.indexOf(" ", 500));
       descriptionNoHTML = descriptionNoHTML + '...';
       return descriptionNoHTML;
     }
 
-    if (descriptionNoHTMLLength > 400 && titleLength < 60) {
+    if (descriptionNoHTMLLength > 405 && titleLength < 60) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 400) < 0 ? 401 : descriptionNoHTML.indexOf(" ", 400));
       descriptionNoHTML = descriptionNoHTML + '...';
       return descriptionNoHTML;
     }
 
-    if (descriptionNoHTMLLength > 200 && titleLength > 60) {
+    if (descriptionNoHTMLLength > 205 && titleLength > 60) {
       descriptionNoHTML = descriptionNoHTML.substring(0, descriptionNoHTML.indexOf(" ", 200) < 0 ? 201 : descriptionNoHTML.indexOf(" ", 200));
       descriptionNoHTML = descriptionNoHTML + '...';
       return descriptionNoHTML;
@@ -52,16 +52,19 @@ $(document).ready(function () {
     rssData[0].item.forEach(function (item, idx) {
       //First item in the rss feed array is the featured story 
       if (idx === 0) {
-
+        $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').attr('href', item['primary-category-link'][0]);
+        $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').text('#' + decodeEntities(item['primary-category'][0]));
         $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('src', item.image[0].img[0].$.src);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('alt', item.image[0].img[0].$.alt);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', item.link[0]);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('data-cta-label', item.title[0]);
         $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').text(item.title[0]);
-        $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item.description[0], item.title[0]));
+        $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item['primary-description'][0], item.title[0]));
 
         return
       }
+      $('.homepage .third .story.story-' + idx + ' a.tag').attr('href', item['primary-category-link'][0]);
+      $('.homepage .third .story.story-' + idx + ' a.tag').text('#' + decodeEntities(item['primary-category'][0]));
       $('.homepage .third .story.story-' + idx).attr('aria-label', item.title[0]);
       $('.homepage .third .story.story-' + idx + ' a.permalink').attr('href', item.link[0]);
       $('.homepage .third .story.story-' + idx + ' a.permalink').attr('data-cta-label', item.title[0]);
@@ -77,16 +80,19 @@ $(document).ready(function () {
       rssData[0].item.forEach(function (item, idx) {
         //First item in the rss feed array is the featured story 
         if (idx === 0) {
-
+          $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').attr('href', item['primary-category-link'][0]);
+          $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').text('#' + decodeEntities(item['primary-category'][0]));
           $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('src', item.image[0].img[0].$.src);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('alt', item.image[0].img[0].$.alt);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', item.link[0]);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('data-cta-label', item.title[0]);
           $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').text(item.title[0]);
-          $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item.description[0], item.title[0]));
+          $('.homepage #featured_newsroom_stories .maxWidth .announcement #featured-description').text(trimDescription(item['primary-description'][0], item.title[0]));
 
           return
         }
+        $('.homepage .third .story.story-' + idx + ' a.tag').attr('href', item['primary-category-link'][0]);
+        $('.homepage .third .story.story-' + idx + ' a.tag').text('#' + decodeEntities(item['primary-category'][0]));
         $('.homepage .third .story.story-' + idx).attr('aria-label', item.title[0]);
         $('.homepage .third .story.story-' + idx + ' a.permalink').attr('href', item.link[0]);
         $('.homepage .third .story.story-' + idx + ' a.permalink').attr('data-cta-label', item.title[0]);
@@ -106,8 +112,7 @@ $(document).ready(function () {
 
       function getDescription(descriptionString, title) {
         var description = descriptionString.replace(/\n/g, " ");
-        description     = description.match(/<!\[CDATA\[(.*)/);
-        description     = trimDescription(description[1], title);
+        description     = trimDescription(description, title);
 
         return description;
       }
@@ -122,13 +127,17 @@ $(document).ready(function () {
         var xmlItems = xml.getElementsByTagName('item');
 
         for (var i = 0; i < xmlItems.length; i++) {
-          var image       = getImage(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
-              altText     = getAltText(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
-              title       = xmlItems[i].getElementsByTagName('title')[0].innerHTML,
-              description = getDescription(xmlItems[i].getElementsByTagName('description')[0].innerHTML.trim(), title);
-              link        = xmlItems[i].getElementsByTagName('link')[0].innerHTML
+          var image         = getImage(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
+              altText       = getAltText(xmlItems[i].getElementsByTagName('image')[0].innerHTML.trim()),
+              title         = xmlItems[i].getElementsByTagName('title')[0].innerHTML,
+              description   = getDescription(xmlItems[i].getElementsByTagName('primary-description')[0].innerHTML.trim(), title);
+              link          = xmlItems[i].getElementsByTagName('link')[0].innerHTML,
+              categoryLink  = xmlItems[i].getElementsByTagName('primary-category-link')[0].innerHTML,
+              categoryName  = decodeEntities(xmlItems[i].getElementsByTagName('primary-category')[0].innerHTML);
 
           if (i === 0) {
+            $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').attr('href', categoryLink);
+            $('.homepage #featured_newsroom_stories .maxWidth .announcement .tag').text('#' + categoryName);
             $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('src', image);
             $('.homepage #featured_newsroom_stories .maxWidth .announcement img').attr('alt', altText);
             $('.homepage #featured_newsroom_stories .maxWidth .announcement h2 a').attr('href', link);
@@ -139,6 +148,8 @@ $(document).ready(function () {
             continue
           }
 
+          $('.homepage .third .story.story-' + i + ' a.tag').attr('href', categoryLink);
+          $('.homepage .third .story.story-' + i + ' a.tag').text('#' + categoryName);
           $('.homepage .third .story.story-' + i).attr('aria-label', title);
           $('.homepage .third .story.story-' + i + ' a.permalink').attr('href', link);
           $('.homepage .third .story.story-' + i + ' a.permalink').attr('data-cta-label', title);
