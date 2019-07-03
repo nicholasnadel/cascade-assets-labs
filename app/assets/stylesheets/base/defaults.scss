@@ -59,9 +59,16 @@ html {
   display: block;
   position: relative;
   width: 0;
-  height: 75px;
-  margin-top: -75px;
+  height: $omniNavOffsetScrollingDesktop;
+  margin-top: -$omniNavOffsetScrollingDesktop;
   z-index: -1;
+}
+
+@media (max-width:1380px) and (min-width:768px) {
+  :target:before {
+    height: $omniNavOffsetScrollingMobile;
+    margin-top: -$omniNavOffsetScrollingMobile;
+  }
 }
 
 :target:focus {
@@ -83,35 +90,6 @@ html {
   z-index: 10;
   position: relative;
 }
-
-
-/* https://stackoverflow.com/a/13881860 */
-// :target:before {
-//   content: "";
-//   display: block;
-//   height: 80px;
-//   margin: -80px 0 0;
-//   position: relative;
-//   z-index: -1;
-// }
-
-// :target:before {
-//   content: "";
-//   display: inline-block;
-//   height: 80px;
-//   margin: -80px;
-//   position: relative;
-//   z-index: -1;
-// }
-
-// @media (max-width:1380px) and (min-width:768px) {
-//   :target:before {
-//     content: "";
-//     display: block;
-//     height: 128px;
-//     margin: -128px 0 0;
-//   }
-// }
 
 body {
   @include paragraph;
