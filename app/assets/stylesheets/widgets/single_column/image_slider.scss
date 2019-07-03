@@ -1,8 +1,4 @@
 .image-slider-wrapper {
-  position: relative;
-}
-
-.image-slider-wrapper {
   .container {
     margin-top: 0;
   }
@@ -69,6 +65,10 @@
     }
   }
 
+  .image-slider-wrapper {
+    position: relative;
+  }
+
   img {
     max-height: 600px;
     width: 100vw;
@@ -85,7 +85,8 @@
   }
 
   .lSSlideOuter {
-    max-height: 600px;
+    margin-bottom: -5px;
+    overflow: unset;
   }
 
   .lSSlideOuter .lSPager.lSpg {
@@ -140,6 +141,27 @@
       -webkit-line-clamp: 5;
       -webkit-box-orient: vertical;
     }
+
+    .line-clamp:after {
+      content: "";
+    }
+  }
+
+  @supports not (-webkit-line-clamp: 2) {
+    .line-clamp {
+      position: relative;
+      height: 6em;
+    }
+
+    .line-clamp:after {
+      content: "";
+      text-align: right;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 70%;
+      height: 1.2em;
+    }
   }
 
   // Media Queries
@@ -190,6 +212,12 @@
       right: 0;
       right: 4%;
       float: right;
+    }
+
+    .line-clamp {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
   }
 
@@ -255,7 +283,7 @@
 
   @media screen and (max-width: 1024px) {
     img {
-      min-height: 600px;
+      height: 600px;
     }
 
     .content-container-slider {
