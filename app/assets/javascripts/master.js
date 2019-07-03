@@ -30,7 +30,6 @@
 // don't require cascade/shortcuts
 
 //= require cascade/plugins/amplify
-//= require cascade/campus-services-anchor-point-readjustment
 //= require cascade/plugins/cookie
 //= require cascade/plugins/ellipsis
 //= require cascade/plugins/flexslider
