@@ -1,86 +1,90 @@
-/*
- * global.js
+// REMOVING THIS JS IN LIEU OF `SCROLL-BEHAVIOR: SMOOTH;` IN DEFAULTS.SCSS. OFFSET IS HANDLED BY `:target:before`.
 
- * Include in this file any javascript meant be run globally. That is, for any page on
- * document ready.
- *
- * This file models the new (as of 2017) preferred pattern we'd like to use for Javascript.
- * It follows jQuery documentation here:
- *
- * https://learn.jquery.com/using-jquery-core/document-ready/
- *
- * For more information on best practices, see: https://kb-smc.chapman.edu/?p=1796
- *
- * See also app/assets/javascripts/cascade/main.js
- */
-var globalLoader = (function() {
+// /*
+//  * global.js
 
-    // Constants
+//  * Include in this file any javascript meant be run globally. That is, for any page on
+//  * document ready.
+//  *
+//  * This file models the new (as of 2017) preferred pattern we'd like to use for Javascript.
+//  * It follows jQuery documentation here:
+//  *
+//  * https://learn.jquery.com/using-jquery-core/document-ready/
+//  *
+//  * For more information on best practices, see: https://kb-smc.chapman.edu/?p=1796
+//  *
+//  * See also app/assets/javascripts/cascade/main.js
+//  */
+// var globalLoader = (function () {
 
-    // Global Attrs: undefined values will be set on document ready.
-    var $omninav = undefined;
-    var omninavPresent = undefined;
-    var omninavHeight = undefined;
+//   // Constants
 
-    // Public Methods
-    var initOnDocumentReady = function() {
-        // Set undefined globals.
-        $omninav = $('#cu_nav');
-        omninavPresent = $omninav.length > 0;
-        omninavHeight = omninavPresent ? $omninav.outerHeight() : null;
+//   // Global Attrs: undefined values will be set on document ready.
+//   var $omninav = undefined;
+//   var omninavPresent = undefined;
+//   var omninavHeight = undefined;
 
-        // Init events.
-        repositionAnchorLinksToOffsetOmniNav();
-    }
+//   // Public Methods
+//   var initOnDocumentReady = function () {
+//     // Set undefined globals.
+//     $omninav = $('#cu_nav');
+//     omninavPresent = $omninav.length > 0;
+//     omninavHeight = omninavPresent ? $omninav.outerHeight() : null;
 
-    // Private Methods
-    var repositionAnchorLinksToOffsetOmniNav = function() {
-        // Only apply this when omninav is present.
-        if ( ! omninavPresent ) {
-            return false;
-        }
+//     // Init events.
+//     repositionAnchorLinksToOffsetOmniNav();
+//   }
 
-        // Unfortunately, there isn't a uniform identifier that can be referenced throughout
-        // the site at this time. So we have to cover a few cases.
-        var $wysiwygLinks = $('h3.anchorLinks a, a[href="#top"]');
-        var $azLinks = $('div.a-z-widget a');
+//   // Private Methods
+//   var repositionAnchorLinksToOffsetOmniNav = function () {
+//     // Only apply this when omninav is present.
+//     if (!omninavPresent) {
+//       return false;
+//     }
 
-        // Callback to reposition anchors on click.
-        var repositionAnchorsOnClick = function(e) {
-            // Pull anchor identifer from URL hash.
-            var anchorIdentifer = this.hash.slice(1);
+//     // Unfortunately, there isn't a uniform identifier that can be referenced throughout
+//     // the site at this time. So we have to cover a few cases.
+//     var $wysiwygLinks = $('h3.anchorLinks a, a[href="#top"]');
+//     var $azLinks = $('div.a-z-widget a');
 
-            // Identify target element. It could be a name or id attr.
-            var nameSelector = 'a[name=' + anchorIdentifer + ']';
-            var idSelector = '#' + anchorIdentifer;
+//     // Callback to reposition anchors on click.
+//     var repositionAnchorsOnClick = function (e) {
+//       // Pull anchor identifer from URL hash.
+//       var anchorIdentifer = this.hash.slice(1);
 
-            // Look first for name selector.
-            var $target = $(nameSelector);
+//       // Identify target element. It could be a name or id attr.
+//       var nameSelector = 'a[name=' + anchorIdentifer + ']';
+//       var idSelector = '#' + anchorIdentifer;
 
-            // If no name selector, look for ID selector.
-            if (!$target.length) {
-                $target = $(idSelector);
-            }
+//       // Look first for name selector.
+//       var $target = $(nameSelector);
 
-            if ( $target.length ) {
-                e.preventDefault();
-                var newTopPosition = $target.offset().top - omninavHeight;
-                $("body, html").animate({scrollTop: newTopPosition});
-            }
-        }
+//       // If no name selector, look for ID selector.
+//       if (!$target.length) {
+//         $target = $(idSelector);
+//       }
 
-        $wysiwygLinks.on('click', repositionAnchorsOnClick);
-        $azLinks.on('click', repositionAnchorsOnClick);
-    }
+//       if ($target.length) {
+//         e.preventDefault();
+//         var newTopPosition = $target.offset().top - omninavHeight;
+//         $("body, html").animate({
+//           scrollTop: newTopPosition
+//         });
+//       }
+//     }
 
-    // Public API
-    return {
-        init: initOnDocumentReady
-    };
-})();
+//     $wysiwygLinks.on('click', repositionAnchorsOnClick);
+//     $azLinks.on('click', repositionAnchorsOnClick);
+//   }
 
-$(document).ready(function() {
-    if ( $('html').find('#omni-nav-v2').length === 0 ){
-        globalLoader.init();
-    }
-});
+//   // Public API
+//   return {
+//     init: initOnDocumentReady
+//   };
+// })();
+
+// $(document).ready(function () {
+//   if ($('html').find('#omni-nav-v2').length === 0) {
+//     globalLoader.init();
+//   }
+// });
