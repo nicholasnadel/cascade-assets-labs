@@ -1,0 +1,34 @@
+#macro(outputCampusMapWidget $element)  
+#set ($title = $element.getChild('campusMapWidget').getChild('address').getChild('title').value )
+#set ( $phone = $element.getChild('campusMapWidget').getChild('address').getChild('phone').value )
+#set ( $email = $element.getChild('campusMapWidget').getChild('address').getChild('email').value )
+#set ( $street = $element.getChild('campusMapWidget').getChild('address').getChild('street').value )
+#set ( $city = $element.getChild('campusMapWidget').getChild('address').getChild('city').value )
+#set ( $state = $element.getChild('campusMapWidget').getChild('address').getChild('state').value )
+#set ( $zip = $element.getChild('campusMapWidget').getChild('address').getChild('zip').value )
+
+#set ( $embedCode     = $_SerializerTool.serialize($element.getChild('campusMapWidget').getChild('embed'), true ) )
+#set ( $iFrame     = $element.getChild('campusMapWidget').getChild('iframe').value )
+
+<section id="campusMapWidget" style="position:relative !important;">
+<div class="campus-map">
+
+<div class="map-container">
+    <div class="map-inner">
+        <div class="box">
+            <div class="box-inner">
+                <h1 class="box-header">$title</h1>
+                <div class="address-wrapper"> <i class="fas fa-map-marker-alt marker-icon"></i>
+                    <a href="http://maps.google.com/?q=$street $city $state $zip" class="address-inner"><span class="link-underline">$street, $city,<br/> $state $zip</span></a>
+                    <a href="tel:$phone" class="theme-bg-color theme-button">Contact Us <i class="fas fa-phone"></i></a>
+                    <a href="mailto:$email" class="theme-button">Email Us <i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--#protect $iFrame #protect-->
+</div>
+</div>
+</section>
+#end
+
