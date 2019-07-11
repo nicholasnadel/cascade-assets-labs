@@ -1,7 +1,5 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
   integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-
 <div
   class="messaging-widget  messaging-widget__2-column messaging-widget__dark-bg messaging-widget__text-right video-graduate">
   <div class="outer-container">
@@ -32,55 +30,19 @@
     </div>
   </div>
 </div>
-
-<!-- <script>
-  $(function () {
-
-    $('span.fa-info-circle, span.minimize').click(function () {
-      $('.fa-window-minimize, .box, .box-inner').toggleClass('minimized, transparent');
-      $('.fa-info-circle').toggleClass('hide transparent');
-    })
-  });
-
-</script> -->
-
-<!-- <script>
-  $(function () {
-    $("span.minimize").click(function () {
-      $('.box, .box-inner').addClass('transparent hide');
-      $('span.info').removeClass('transparent hide');
-    })
-    $("span.info").click(function () {
-      $(this).addClass('transparent hide');
-      $('.box, .box-inner').removeClass('transparent hide')
-    })
-  });
-</script> -->
-
-<script>
-  $(function () {
-
-    $("span.minimize").click(function () {
-      $('.box, .box-inner').fadeToggle('fast');
-      $('span.info').fadeToggle('fast');
-    })
-    $("span.info").click(function () {
-
-      $('.box, .box-inner').fadeToggle("fast");
-    })
-  });
-</script>
 <section id="campusMapWidget" style="position:relative !important;">
   <div class="campus-map">
     <div class="map-container">
       <div class="map-inner">
-        <span class="fas fa-info-circle info " label=" Expand" title="Expand contact info"></span>
-
+        <span class="fa-stack info hide" style="vertical-align: top;">
+          <span class="fas fa-circle fa-stack-2x"></span>
+          <span class="fas fa-info-circle" label=" Expand" title="Expand contact info" role="toggle">
+          </span>
+        </span>
         <div class="box ">
-          <span class="fas fa-minus-square minimize" label=" Minimize contact area"
+          <span class="far fa-minus-square minimize" label=" Minimize contact area"
             title="Minimize contact info"></span>
           <div class="box-inner ">
-
             <h1 class="box-header">Chapman University</h1>
             <div class="address-wrapper"> <i class="fas fa-map-marker-alt marker-icon"></i>
               <div class="address-inner"> <span class="link-underline"> 1 University Drive, <br> Orange, Ca

@@ -12,12 +12,18 @@
 
 <section id="campusMapWidget" style="position:relative !important;">
 <div class="campus-map">
-
 <div class="map-container">
     <div class="map-inner">
+      <span class="fa-stack info hide" style="vertical-align: top;">
+          <span class="fas fa-circle fa-stack-2x"></span>
+          <span class="fas fa-info-circle" label=" Expand" title="Expand contact info" role="toggle">
+          </span>
+        </span>
         <div class="box">
+        <span class="fas fa-minus-square minimize" label=" Minimize contact area"
+            title="Minimize contact info"></span>
             <div class="box-inner">
-                <h1 class="box-header">$title</h1>
+                <div class="faux-h1 box-header">$title</div>
                 <div class="address-wrapper"> <i class="fas fa-map-marker-alt marker-icon"></i>
                     <a href="http://maps.google.com/?q=$street $city $state $zip" class="address-inner"><span class="link-underline">$street, $city,<br/> $state $zip</span></a>
                     <a href="tel:$phone" class="theme-bg-color theme-button">Contact Us <i class="fas fa-phone"></i></a>

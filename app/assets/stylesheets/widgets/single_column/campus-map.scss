@@ -10,10 +10,26 @@
     transition: 100ms ease all;
   }
 
+  span.fas.fa-circle.fa-stack-2x {
+    color: white;
+    font-size: 4em;
+  }
+
   span.info,
   span.minimize {
     cursor: pointer;
     z-index: 1;
+  }
+
+  span.info {
+    color: rgba(26, 26, 26, 0.9);
+  }
+
+  span.minimize {
+    margin-left: 20px;
+    margin-top: 15px;
+    position: absolute;
+    font-size: 1.2em;
   }
 
   div.reveal {
@@ -183,7 +199,6 @@
     }
 
     .fas.fa-info-circle {
-      color: $white;
       font-size: 4em;
       position: absolute;
     }
