@@ -4,7 +4,9 @@
   max-width: 1130px;
   padding: 0 16px;
 
-  .content h3 { margin-top: 0; }
+  .content h3 {
+    margin-top: 0;
+  }
 
   @media (min-width: 1120px) {
     padding: 0;
@@ -12,21 +14,25 @@
 
   .ie7 & {
     position: relative;
+
     .main {
       overflow-x: hidden;
     }
   }
+
   .oneColumn & {
     .main {
       .tabContent {
         background-color: #fbf9f0;
         padding: 15px 20px;
       }
+
       @include bp(l) {
         max-width: 100%;
       }
     }
   }
+
   &.twoColumns {
     .main {
       @include bp(l) {
@@ -36,11 +42,13 @@
         margin: 0px;
       }
     }
+
     &.calendar .main {
       @include bp(l) {
         width: 100%;
       }
     }
+
     &.noLeftNav .main .leftColumn {
       @include bp(l) {
         width: 71%;
@@ -56,8 +64,10 @@
     }
 
   }
+
   &.threeColumns {
     text-align: center;
+
     .main {
       @include bp(l) {
         width: 100%;
@@ -66,38 +76,48 @@
       }
     }
   }
-  > .main .story {
+
+  >.main .story {
     @include bp(l) {
       width: 182px;
     }
   }
+
   .main {
     float: none;
     position: relative;
     width: 100%;
     margin: 0;
+
     @include bp(l) {
       margin: 0px;
     }
+
     @include vendorize(box-sizing, border-box);
+
     &.profile {
       min-height: 230px;
+
       @include bp(m) {
         width: 95%;
         max-width: 900px;
       }
+
       @include bp(l) {
         width: 70%;
       }
     }
+
     h1 {
       line-height: 30px;
       padding: 0 0 5px 0;
       margin: 0;
+
       .bullet {
         display: none;
       }
     }
+
     .newsEventsContent {
       div.title {
         .bullet {
@@ -108,33 +128,41 @@
         }
       }
     }
+
     .tabContent {
       padding: 0 0 10px 0;
     }
-    .newsEventsContent, .tabContent {
+
+    .newsEventsContent,
+    .tabContent {
       .copy {
         height: 100px;
         margin: 10px 0 2px 0;
+
         div {
           width: auto !important;
         }
       }
     }
+
     .loading {
       position: absolute;
       top: 130px;
       left: 200px;
     }
+
     .centerNewsLoader {
       position: absolute;
       margin: 20px 0 0 0;
       left: 200px;
       top: 0;
     }
+
     @include bp(l) {
       float: left;
-        max-width: 465px;
+      max-width: 465px;
     }
+
     .addthis_toolbox a {
       border-bottom: 0;
     }
@@ -162,5 +190,7 @@
   .cd-hero a,
   .box,
   .fact-card a,
-  .slider-controls a{ border-bottom: none; }
+  .slider-controls a {
+    border-bottom: none;
+  }
 }
