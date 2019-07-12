@@ -1,3 +1,7 @@
+#campusMapWidget {
+  position: relative;
+}
+
 .campus-map {
   .reveal {
     float: right;
@@ -53,7 +57,11 @@
   }
 
   .map-container {
-    iframe#map_frame {}
+
+    // hides Campus Bird's branding
+    iframe#map_frame {
+      height: 105%;
+    }
 
     .map-inner {
       height: 500px;
@@ -68,7 +76,7 @@
       transform: translate(-50%, -50%);
     }
 
-    i.fas.marker-icon {
+    span.fas.marker-icon {
       display: inline-block;
       border-radius: 60px;
       box-shadow: 0px 0px 2px #888;
@@ -78,7 +86,7 @@
       font-size: 1.5em;
     }
 
-    .theme-button i.fas {
+    .theme-button span.fas {
       font-size: 1.2em;
       margin-left: 6px;
     }
@@ -218,4 +226,5 @@
       }
     }
   }
+
 }
