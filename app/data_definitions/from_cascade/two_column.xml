@@ -556,9 +556,10 @@
         <text default="All" identifier="dept" label="Dept Affiliation" type="dropdown">
           <dropdown-item value="All"/>
           <dropdown-item label="Art" value="ARTS"/>
-          <dropdown-item label="Athletic Training Educational Program " value="ATPE"/>
+          <dropdown-item label="Athletic Training Program " value="ATPE"/>
           <dropdown-item label="Biological Sciences " value="BIOL"/>
           <dropdown-item label="Business and Economics " value="BUS"/>
+          <dropdown-item label="Chapman Ability Project " value="CAPX"/>
           <dropdown-item label="Chemistry " value="CHEM"/>
           <dropdown-item label="Communication Studies " value="COMM"/>
           <dropdown-item label="Communication Sciences and Disorders " value="CSD"/>
@@ -570,15 +571,16 @@
           <dropdown-item label="Film and Media Arts " value="FILM"/>
           <dropdown-item label="Food Science " value="FOOD"/>
           <dropdown-item label="Health and Strategic Communication " value="HCOM"/>
-          <dropdown-item label="Health Sciences and Kinesiology " value="HSCI"/>
+          <dropdown-item label="Health Sciences " value="HSK"/>
           <dropdown-item label="History " value="HIST"/>
+          <dropdown-item label="Human Resource Management " value="HRM"/>
           <dropdown-item label="International Studies " value="INTS"/>
-          <dropdown-item label="Languages " value="LANG"/>
+          <dropdown-item label="Languages and Cultures " value="LANG"/>
           <dropdown-item label="Law " value="LAWS"/>
           <dropdown-item label="Leadership Programs " value="LEAD"/>
           <dropdown-item label="Mathematics and Computer Science " value="COMP"/>
           <dropdown-item label="Marriage and Family Therapy " value="MFT"/>
-          <dropdown-item label="Military Law and Policy Institute " value="MLPI"/>
+          <dropdown-item label="Military and Veterans Law Institute " value="MLPI"/>
           <dropdown-item label="Conservatory of Music " value="MUSI"/>
           <dropdown-item label="Peace Studies " value="PCST"/>
           <dropdown-item label="Pharmacy " value="PHRM"/>
