@@ -59,15 +59,15 @@ html {
   display: block;
   position: relative;
   width: 0;
-  height: $omniNavOffsetScrollingDesktop;
-  margin-top: -$omniNavOffsetScrollingDesktop;
+  height: $omniNavHeightDesktop;
+  margin-top: -$omniNavHeightDesktop;
   z-index: -1;
 }
 
 @media (max-width:1380px) and (min-width:768px) {
   :target:before {
-    height: $omniNavOffsetScrollingMobile;
-    margin-top: -$omniNavOffsetScrollingMobile;
+    height: $omniNavHeightMobile;
+    margin-top: -$omniNavHeightMobile;
   }
 }
 
