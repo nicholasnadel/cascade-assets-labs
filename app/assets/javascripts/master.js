@@ -1,7 +1,6 @@
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree ../../../lib/assets/javascripts
 
-//= require global
 //= require omni-nav
 
 //= require_tree ./widgets
