@@ -40,40 +40,36 @@
 #end
 ## some templates (data definitions) don't have a Sharing node at all so don't do rest of code:
 #if ($sharing)
-    
     #set ( $og_title = $sharing.getChild('og_title').text )    
     #set ( $og_description = $sharing.getChild('og_description').text )
     #set ( $image = $sharing.getChild('og_image').getChild('path').text )
-    ##
+##
     #if ($og_title != '' && $og_title != 'Default')
         #set ( $ogTitle = $og_title )
     #else
         #set ( $ogTitle = $title )
     #end
-    <meta property="og:title" content="$ogTitle" />
+##
     #if ($og_description != '' && $og_description != 'Default')
         #set ( $ogDescription = $og_description )
     #else
         #set ( $ogDescription = $description )
     #end
-    <meta property="og:description" content="$ogDescription" />
-    <meta property="og:url" content="https://www.chapman.edu$url$extension" />
+##
     #if ($image != '/')
         #set ( $ogImage = $image )
     #else
         #set ( $ogImage = '/_files/img/open-graph-cu-logo.png' )
     #end
-    <meta property="og:image" content="https://www.chapman.edu$ogImage" />
-    
-    ## twitter
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="$title" />
-    <meta name="twitter:site" content="@ChapmanU" />
-    <meta name="twitter:creator" content="@ChapmanU" />
-    <meta property="og:url" content="https://www.chapman.edu$url$extension" />
-    <meta property="og:title" content="$og_title" />
-    <meta property="og:description" content="$description" />
-    <meta property="og:image" content="$ogImage" />
-    ## end twitter
-    
 #end
+##
+<meta property="og:url" content="https://www.chapman.edu$url$extension" />
+<meta property="og:title" content="$og_title" />
+<meta property="og:description" content="$description" />
+<meta property="og:image" content="https://www.chapman.edu$ogImage" />
+## twitter
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="$title" />
+<meta name="twitter:site" content="@ChapmanU" />
+<meta name="twitter:creator" content="@ChapmanU" />
+## end twitter
