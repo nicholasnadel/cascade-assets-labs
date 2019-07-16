@@ -133,7 +133,6 @@
 			#foreach($slide in $slides)
 				#set ( $slideInternalLinkPath = $_XPathTool.selectSingleNode($slide, 'internalLink/path').value )
 				#set ( $slideLinkText = $_XPathTool.selectSingleNode($slide, 'link').value )
-				#set ( $slideLinkTarget = $_XPathTool.selectSingleNode($slide, 'linkTarget').value )
 				#set ( $slideImagePath = $_XPathTool.selectSingleNode($slide, 'image/path').value )
 				#set ( $slideImageAltText = $_XPathTool.selectSingleNode($slide, 'altText').value )
 				#set ( $slideHeader = $_XPathTool.selectSingleNode($slide, 'header').value )

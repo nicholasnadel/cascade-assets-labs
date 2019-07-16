@@ -182,7 +182,7 @@ abbr[title] {
   border-bottom: 1px dotted;
 }
 
-b, strong {
+strong, b {
   font-weight: 600;
 }
 
@@ -334,7 +334,12 @@ table {
   border-color: gray;
   button, input {
     *overflow: auto;
+		
   }
+	caption {
+			font-weight: 600;
+			font-size: 18px; /* should be slightly larger than normal font-size */
+		}
 }
 
 button {
