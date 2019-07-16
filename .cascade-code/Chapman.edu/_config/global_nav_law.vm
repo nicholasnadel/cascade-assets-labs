@@ -114,12 +114,7 @@
     'dropdown': [
       {
         'text': 'Employer Resources',
-        'link': '/law/employers/index',
-        'iconClass': 'default'
-      },
-      {
-        'text': 'Employment FAQs',
-        'link': '/law/careers/employment-faqs',
+        'link': '/law/careers/employers/index',
         'iconClass': 'default'
       },
       {
