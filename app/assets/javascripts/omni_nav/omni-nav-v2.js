@@ -3,6 +3,7 @@ var OmniNav2 = (function () {
   // Constants
   var TABLET_BREAKPOINT = 768; //px
   var DESKTOP_BREAKPOINT = 1300; //px
+  /* Be sure to also edit $omniNavHeightDesktop and $omniNavHeightMobile in variables.scss if changes are made to the height */
   var OMNINAV_BASE_HEIGHT = 60; //px
 
   // Module Vars
@@ -54,10 +55,10 @@ var OmniNav2 = (function () {
 
     // Functions for anchor points in certain widgets
     var height = getOmninavHeight();
-    // var params = getUrlParams();
-    // repositionForPersonnelAnchor(params, height);
-    // repositionForTabAnchor(params, height);
-    // repositionForCollabsibleAnchor(params, height);
+    var params = getUrlParams();
+    repositionForPersonnelAnchor(params, height);
+    repositionForTabAnchor(params, height);
+    repositionForCollabsibleAnchor(params, height);
   };
 
   //Handles all keyboard controls and dropdown menus
@@ -266,7 +267,6 @@ var OmniNav2 = (function () {
     }
   };
 
-  // Be sure to change the values of $omniNavHeightDesktop and $omniNavHeightMobile in variables.scss as needed
   var getOmninavHeight = function () {
     // Primary Nav
     // The primary nav will always show, this is the minimum
@@ -289,27 +289,28 @@ var OmniNav2 = (function () {
     return height;
   };
 
-  // var getUrlParams = function() {
-  //   // ex. ?openregion=1
-  //   var searchString = window.location.search.substring(1);
-  //   //ex. #john-doe
-  //   var anchorName = window.location.hash;
+  var getUrlParams = function () {
+    // ex. ?openregion=1
+    var searchString = window.location.search.substring(1);
+    //ex. #john-doe
+    var anchorName = window.location.hash;
 
-  //   if ( searchString.indexOf('=') > -1 ) {
-  //     var urlParams = {};
-  //     var e,
-  //     a = /\+/g,  // Regex for replacing addition symbol with a space
-  //     r = /([^&=]+)=?([^&]*)/g,
-  //     d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
-  //     q = window.location.search.substring(1);
+    if (searchString.indexOf('=') > -1) {
+      var urlParams = {};
+      var e,
+        a = /\+/g, // Regex for replacing addition symbol with a space
+        r = /([^&=]+)=?([^&]*)/g,
+        d = function (s) {
+          return decodeURIComponent(s.replace(a, " "));
+        },
+        q = window.location.search.substring(1);
 
-  //     while (e = r.exec(q)) urlParams[d(e[1])] = d(e[2]);
-  //     return urlParams;
-  //   }
-  //   else {
-  //     return anchorName;
-  //   }
-  // };
+      while (e = r.exec(q)) urlParams[d(e[1])] = d(e[2]);
+      return urlParams;
+    } else {
+      return anchorName;
+    }
+  };
 
   var repositionForCollabsibleAnchor = function (urlParams, omninavHeight) {
     /* Used with the Collapsible Region widget */
@@ -368,86 +369,87 @@ var OmniNav2 = (function () {
     }
   };
 
-  // var repositionForPersonnelAnchor = function(urlHash, omninavHeight) {
-  //   // Unfortunately, there isn't a uniform identifier that can be referenced throughout
-  //   // the site at this time. So we have to cover a few cases.
-  //   var $wysiwygLinks = $('h3.anchorLinks a, a[href="#top"]');
-  //   var $azLinks = $('div.a-z-widget a');
+  var repositionForPersonnelAnchor = function (urlHash, omninavHeight) {
+    // Unfortunately, there isn't a uniform identifier that can be referenced throughout
+    // the site at this time. So we have to cover a few cases.
+    var $wysiwygLinks = $('h3.anchorLinks a, a[href="#top"]');
+    var $azLinks = $('div.a-z-widget a');
 
-  //   // Callback to reposition anchors on click.
-  //   var repositionAnchorsOnClick = function(e) {
-  //     // Pull anchor identifer from URL hash.
-  //     var anchorIdentifer = this.hash.slice(1);
+    // Callback to reposition anchors on click.
+    var repositionAnchorsOnClick = function (e) {
+      // Pull anchor identifer from URL hash.
+      var anchorIdentifer = this.hash.slice(1);
 
-  //     // Identify target element. It could be a name or id attr.
-  //     var nameSelector = 'a[name=' + anchorIdentifer + ']';
-  //     var idSelector = '#' + anchorIdentifer;
+      // Identify target element. It could be a name or id attr.
+      var nameSelector = 'a[name=' + anchorIdentifer + ']';
+      var idSelector = '#' + anchorIdentifer;
 
-  //     // Look first for name selector.
-  //     var $target = $(nameSelector);
+      // Look first for name selector.
+      var $target = $(nameSelector);
 
-  //     // If no name selector, look for ID selector.
-  //     if (!$target.length) {
-  //       $target = $(idSelector);
-  //     }
+      // If no name selector, look for ID selector.
+      if (!$target.length) {
+        $target = $(idSelector);
+      }
 
-  //     if ( $target.length ) {
-  //       e.preventDefault();
-  //       var newTopPosition = $target.offset().top - omninavHeight;
+      if ($target.length) {
+        e.preventDefault();
+        var newTopPosition = $target.offset().top - omninavHeight;
 
-  //       setTimeout(function(){
-  //         $('html, body').stop().animate({scrollTop: newTopPosition}, 1000);
-  //       },250);
-  //     }
-  //   };
+        setTimeout(function () {
+          $('html, body').stop().animate({
+            scrollTop: newTopPosition
+          }, 1000);
+        }, 250);
+      }
+    };
 
-  //   // Scrolls down if there is a hash initially in the current page URL
-  //   var repositionAnchorsFromUrl = function() {
-  //     // Pull anchor identifer from URL hash.
-  //     var anchorIdentifer = urlHash.slice(1);
+    // Scrolls down if there is a hash initially in the current page URL
+    var repositionAnchorsFromUrl = function () {
+      // Pull anchor identifer from URL hash.
+      var anchorIdentifer = urlHash.slice(1);
 
-  //     // There will only be an anchorIdentifier for url with hash identifier. (e.g.
-  //     // https://chapman.edu/#container. If no hash, return.)
-  //     if ( !anchorIdentifer ) {
-  //       return;
-  //     }
+      // There will only be an anchorIdentifier for url with hash identifier. (e.g.
+      // https://chapman.edu/#container. If no hash, return.)
+      if (!anchorIdentifer) {
+        return;
+      }
 
-  //     // Identify target element. It could be a name or id attr.
-  //     var nameSelector = 'a[name=' + anchorIdentifer + ']';
-  //     var idSelector = '#' + anchorIdentifer;
+      // Identify target element. It could be a name or id attr.
+      var nameSelector = 'a[name=' + anchorIdentifer + ']';
+      var idSelector = '#' + anchorIdentifer;
 
-  //     // Look first for name selector.
-  //     // anchorIdentifier could lead to an invalid jQuery selector so wrap in a
-  //     // try/catch. For details, see https://github.com/chapmanu/cascade-assets/issues/295.
-  //     try {
-  //       var $target = $(nameSelector);
-  //     }
-  //     catch(error) {
-  //       return false;
-  //     }
+      // Look first for name selector.
+      // anchorIdentifier could lead to an invalid jQuery selector so wrap in a
+      // try/catch. For details, see https://github.com/chapmanu/cascade-assets/issues/295.
+      try {
+        var $target = $(nameSelector);
+      } catch (error) {
+        return false;
+      }
 
-  //     // If no name selector, look for ID selector.
-  //     if ( !$target.length ) {
-  //       $target = $(idSelector);
-  //     }
+      // If no name selector, look for ID selector.
+      if (!$target.length) {
+        $target = $(idSelector);
+      }
 
-  //     // If target for anchorIdentifer not found, we can return or else we'll get an
-  //     // error in animate code below.
-  //     if ( !$target.length ) {
-  //       return;
-  //     }
+      // If target for anchorIdentifer not found, we can return or else we'll get an
+      // error in animate code below.
+      if (!$target.length) {
+        return;
+      }
 
-  //     setTimeout(function(){
-  //       $('html, body').stop().animate({
-  //         scrollTop: $target.offset().top - omninavHeight
-  //       }, 1000);
-  //     }, 250);
-  //   };
+      setTimeout(function () {
+        $('html, body').stop().animate({
+          scrollTop: $target.offset().top - omninavHeight
+        }, 1000);
+      }, 250);
+    };
 
-  //   if (typeof urlHash === 'string') repositionAnchorsFromUrl();
-  //   $wysiwygLinks.on('click', repositionAnchorsOnClick);
-  //   $azLinks.on('click', repositionAnchorsOnClick);
-  // };
+    if (typeof urlHash === 'string') repositionAnchorsFromUrl();
+    $wysiwygLinks.on('click', repositionAnchorsOnClick);
+    $azLinks.on('click', repositionAnchorsOnClick);
+  };
 
   var onUtilityNavClick = function () {
     // Set gradual transition for padding adjustments after initial load
