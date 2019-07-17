@@ -3,53 +3,6 @@
 }
 
 .campus-map {
-  .reveal {
-    float: right;
-    padding: 4%;
-  }
-
-  .minimized,
-  .hide {
-    display: none;
-    transition: 100ms ease all;
-  }
-
-  span.fas.fa-circle.fa-stack-2x {
-    color: white;
-    font-size: 4em;
-  }
-
-  span.info,
-  span.minimize {
-    cursor: pointer;
-    z-index: 1;
-  }
-
-  span.info {
-    color: rgba(26, 26, 26, 0.9);
-  }
-
-  span.minimize {
-    margin-left: 20px;
-    margin-top: 15px;
-    position: absolute;
-    font-size: 1.2em;
-  }
-
-  div.reveal {
-    ::before {
-      content: 'Hide';
-    }
-
-    cursor: 'pointer';
-  }
-
-  div.reveal.minimized {
-    ::before {
-      content: 'Reveal';
-    }
-  }
-
   .map-container {
     position: relative;
     height: 500px;
@@ -192,20 +145,6 @@
       color: black;
     }
 
-    // hacky workaround to for Campus Bird's forced CSS 
-    iframe#map_frame {
-      // width: 120%;
-      // margin-left: -20% !important;
-    }
-
-    .transparent {
-      opacity: 0;
-    }
-
-    .opaque {
-      opacity: 1;
-    }
-
     .fas.fa-info-circle {
       font-size: 4em;
       position: absolute;
@@ -222,9 +161,7 @@
       iframe#map_frame {
         width: 100%;
         margin-left: 0 !important;
-        // margin-top: -100px !important;
       }
     }
   }
-
 }
