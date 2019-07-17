@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  var cachedNewsroomFeed = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+  var cachedNewsroomFeed = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicksNew';
+  var newsStories;
   var $selectors = {
     featuredStory: {
       tag:          new chapDOM('.homepage #featured_newsroom_stories .maxWidth .announcement .tag'),
@@ -30,6 +31,9 @@ $(document).ready(function () {
   };
 
   setTimeout(function() {
+    if (xhr && xhr.readyState != 4) {
+      xhr.abort();
+    }
     $selectors.style.loadingIcon.hide();
     $selectors.style.featured.removeClass('news-loading');
     $selectors.style.featured.addClass('news-loaded');
@@ -107,11 +111,22 @@ $(document).ready(function () {
       $selectors.stories[idx - 1].bgImg.changeAttr('style', 'background-image:url(' + story.post_image + ')');
       $selectors.stories[idx - 1].bgImg.changeAttr('aria-label', story.post_image_alt);
       $selectors.stories[idx - 1].img.changeAttr('alt', story.post_image_alt);
-      $selectors.stories[idx - 1].img.changeAttr('src', story.post_title);
+      $selectors.stories[idx - 1].img.changeAttr('src', story.post_image);
     });
   }
 
-  $.get(cachedNewsroomFeed, function (data) {
+  function clearImages() {
+    $selectors.featuredStory.img.changeAttr('src', '');
+    $selectors.stories.forEach( function(story) {
+      story.bgImg.changeAttr('style', '');
+      story.img.changeAttr('src', '');
+    })
+  }
+
+  var xhr = $.get(cachedNewsroomFeed, function (data) {
+    if (data.post_count != 4 && data.posts.length != 4) return;
+
+    clearImages();
     updateWidgetStories(data.posts);
   });
 });
