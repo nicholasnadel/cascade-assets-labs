@@ -3,7 +3,7 @@
 
 //= require global
 //= require omni-nav
-
+//= require _helpers/chapDOM
 //= require_tree ./widgets
 //= require_tree ./components
 //= require_tree ./regions
