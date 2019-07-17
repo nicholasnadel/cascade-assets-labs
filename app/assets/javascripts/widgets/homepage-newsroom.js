@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var cachedNewsroomFeed = 'https://dev-news.chapman.edu/wp-json/featured-stories/v1/feed/1';
+  var cachedNewsroomFeed = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
   var $selectors = {
     featuredStory: {
       tag:          new chapDOM('.homepage #featured_newsroom_stories .maxWidth .announcement .tag'),
