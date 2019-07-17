@@ -4,14 +4,15 @@
   // Overwrites because the hover/active states don't work with the mixin. -SH
   .theme-button {
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background-color: $red-button-hover;
     }
 
     &:active {
       background-color: $red-button-active;
     }
-    
+
     &:focus {
       outline: 2px dotted #333;
     }
@@ -20,13 +21,14 @@
 
 * {
   word-wrap: break-word;
+
   .ie7 & {
     zoom: 1;
   }
 }
 
 html {
-	margin: 0;
+  margin: 0;
   padding: 0;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
@@ -38,9 +40,55 @@ html {
   font-family: $font-stack-body;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+
   &.cu-companion-bar {
     padding-top: 75px !important;
   }
+}
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:target:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 0;
+  height: $omniNavHeightDesktop;
+  margin-top: -$omniNavHeightDesktop;
+  z-index: -1;
+}
+
+@media (max-width:1380px) and (min-width:768px) {
+  :target:before {
+    height: $omniNavHeightMobile;
+    margin-top: -$omniNavHeightMobile;
+  }
+}
+
+:target:focus {
+  outline: none;
+}
+
+:target:focus:after {
+  content: "";
+  outline: 2px dotted $cu-red;
+  width: 110%;
+  position: absolute;
+  height: 110%;
+  left: -8px;
+  padding: 5px 13px 22px 13px;
+  top: -5px;
+}
+
+.anchorLinks a {
+  z-index: 10;
+  position: relative;
 }
 
 body {
@@ -51,12 +99,22 @@ body {
   color: $cu-font-color;
   font-family: $font-stack-body;
   height: auto;
+
   &.personnel .main {
-	  margin-left: 0;
-	}
+    margin-left: 0;
+  }
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
   display: block;
 }
 
@@ -65,35 +123,44 @@ hgroup h3 {
 }
 
 section {
-	li {
+  li {
     max-width: 70%;
+
     @include bp(m) {
       max-width: 100%;
     }
   }
+
   p {
     @include bp(m) {
-		  color: $cu-font-color;
+      color: $cu-font-color;
     }
   }
 }
 
-audio, canvas, video {
+audio,
+canvas,
+video {
   display: inline-block;
   *display: inline;
   *zoom: 1;
 }
 
-audio:not([controls]), [hidden] {
+audio:not([controls]),
+[hidden] {
   display: none;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: $font-stack-body;
   color: $cu-font-color;
 }
 
-::-moz-selection, ::selection {
+::-moz-selection,
+::selection {
   background: $cu-red;
   color: $white;
   text-shadow: none;
@@ -102,24 +169,30 @@ button, input, select, textarea {
 a {
   color: $red;
   text-decoration: none;
+
   &:visited {
     color: $red;
     border-bottom: none;
   }
+
   &:hover {
     color: $cu-link-hover;
     border-bottom: none;
     text-decoration: underline;
   }
+
   &:focus {
     outline: 2px dotted #a50034;
     outline-offset: 5px;
     z-index: 2000;
   }
-  &:hover, &:active {
+
+  &:hover,
+  &:active {
     outline: 0;
     text-decoration: none;
   }
+
   &.cta {
     padding: 7px 10px 7px 10px;
     background-color: $cu-dark-red;
@@ -129,12 +202,14 @@ a {
     font-family: $font-stack-body;
     font-weight: bold;
     max-width: 100%;
+
     &.hover {
       color: $white;
       text-decoration: none;
       background-color: $cu-red;
     }
   }
+
   &.button {
     display: inline-block;
     padding: 15px 25px;
@@ -146,18 +221,22 @@ a {
     margin-bottom: 10px;
     cursor: pointer;
     @include vendorize(box-sizing, border-box);
+
     &:hover {
       background-color: #cac9c4;
       text-decoration: none;
     }
+
     &.red {
       background: $cu-red no-repeat center;
       color: $white;
+
       &:hover {
         background-color: #C92741;
         text-decoration: none;
       }
     }
+
     @include bp(wildcard-min, 500px) {
       width: auto;
       margin-bottom: 0;
@@ -167,10 +246,13 @@ a {
 
 p.source {
   a {
-    &:link, &:visited {
+
+    &:link,
+    &:visited {
       color: $cu-red;
       border-bottom: none;
     }
+
     &:hover {
       color: $cu-link-hover;
       border-bottom: none;
@@ -182,7 +264,8 @@ abbr[title] {
   border-bottom: 1px dotted;
 }
 
-strong, b {
+strong,
+b {
   font-weight: 600;
 }
 
@@ -217,7 +300,10 @@ mark {
   font-weight: bold;
 }
 
-pre, code, kbd, samp {
+pre,
+code,
+kbd,
+samp {
   font-family: 'courier new', monospace;
   font-size: 1em;
 }
@@ -229,7 +315,9 @@ pre {
 
 q {
   quotes: none;
-  &:before, &:after {
+
+  &:before,
+  &:after {
     content: "";
     content: none;
   }
@@ -258,7 +346,8 @@ sub {
   bottom: -0.25em;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0;
   padding: 0;
 }
@@ -266,6 +355,7 @@ ul, ol {
 ol {
   .ie7 & {
     zoom: normal;
+
     li {
       zoom: normal;
       list-style-position: outside;
@@ -279,7 +369,9 @@ dd {
 }
 
 nav {
-  ul, ol {
+
+  ul,
+  ol {
     list-style: none;
     list-style-image: none;
     margin: 0;
@@ -296,7 +388,8 @@ svg:not(:root) {
   overflow: hidden;
 }
 
-figure, form {
+figure,
+form {
   margin: 0;
 }
 
@@ -316,14 +409,18 @@ legend {
   padding: 0;
 }
 
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-size: 100%;
   margin: 0;
   vertical-align: baseline;
   *vertical-align: middle;
 }
 
-button, input {
+button,
+input {
   line-height: normal;
   *overflow: visible;
 }
@@ -332,14 +429,18 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   border-color: gray;
-  button, input {
+
+  button,
+  input {
     *overflow: auto;
-		
+
   }
-	caption {
-			font-weight: 600;
-			font-size: 18px; /* should be slightly larger than normal font-size */
-		}
+
+  caption {
+    font-weight: 600;
+    font-size: 18px;
+    /* should be slightly larger than normal font-size */
+  }
 }
 
 button {
@@ -348,26 +449,34 @@ button {
 }
 
 input {
-  &[type="button"], &[type="reset"], &[type="submit"] {
+
+  &[type="button"],
+  &[type="reset"],
+  &[type="submit"] {
     cursor: pointer;
     -webkit-appearance: button;
   }
-  &[type="checkbox"], &[type="radio"] {
+
+  &[type="checkbox"],
+  &[type="radio"] {
     box-sizing: border-box;
     margin: 0 5px;
   }
+
   &[type="search"] {
     -webkit-appearance: textfield;
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
     box-sizing: content-box;
+
     &::-webkit-search-decoration {
       -webkit-appearance: none;
     }
   }
 }
 
-button::-moz-focus-inner, input::-moz-focus-inner {
+button::-moz-focus-inner,
+input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
@@ -378,11 +487,13 @@ textarea {
   resize: vertical;
 }
 
-input:invalid, textarea:invalid {
+input:invalid,
+textarea:invalid {
   background-color: #f0dddd;
 }
 
-th, tr {
+th,
+tr {
   border-color: grey;
 }
 
@@ -391,30 +502,46 @@ td {
   vertical-align: top;
 }
 
-p, li {
+p,
+li {
   @include paragraph;
 }
 
-h1, .faux-h1, h2, .faux-h2, h3, .faux-h3 {
+h1,
+.faux-h1,
+h2,
+.faux-h2,
+h3,
+.faux-h3 {
   font-family: $font-stack-heading;
 }
 
-h3, .faux-h3, h4, .faux-h4, h5, .faux-h5, h6, .faux-h6 {
+h3,
+.faux-h3,
+h4,
+.faux-h4,
+h5,
+.faux-h5,
+h6,
+.faux-h6 {
   font-weight: 200;
 }
 
-h1, .faux-h1 {
-	font-size: 30px;
+h1,
+.faux-h1 {
+  font-size: 30px;
   font-weight: 800;
 }
 
-h2, .faux-h2 {
+h2,
+.faux-h2 {
   font-size: 20px;
   font-weight: 600;
   line-height: 1.2em;
 }
 
-h3, .faux-h3 {
+h3,
+.faux-h3 {
   font-size: 16px;
   font-weight: 600;
   line-height: 1.4em;
@@ -422,12 +549,14 @@ h3, .faux-h3 {
   margin-bottom: 15px;
 }
 
-h4, .faux-h4 {
+h4,
+.faux-h4 {
   font-size: 14px;
   font-weight: 500;
 }
 
-h5, .faux-h5 {
+h5,
+.faux-h5 {
   font-size: 14px;
   font-weight: 500;
 }
