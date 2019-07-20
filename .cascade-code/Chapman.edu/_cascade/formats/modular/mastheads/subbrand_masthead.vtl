@@ -4,34 +4,57 @@
 #set ( $primaryHeadline = $element.getChild('headline').getChild('primary').value )
 #set ( $secondaryHeadline = $element.getChild('headline').getChild('secondary').value )
 #set ( $slides = $_XPathTool.selectNodes($element, '//subbrandMasthead/slides') )
+#set ( $buttons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button') )
+#set ( $button = $buttons )
+
+#set ( $regularButtons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/regularButton') )
+#set ( $dropdownButtons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton') )
+
+#set ( $buttonType =
+$element.getChild('callsToAction').getChild('button').getChild('buttonType').value )
+
+#set ( $buttonTitle = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/label').value )
 #set ( $dropdownLabel =
-$element.getChild('callsToAction').getChild('dropdownNav').getChild('dropdownLabel').value )
-#set ( $dropdownLinks = $_XPathTool.selectNodes($element,
-'//subbrandMasthead/callsToAction/dropdownNav/dropdownLink') ) #set ( $buttons =
-$_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button') )
+$element.getChild('callsToAction').getChild('dropdownButton').getChild('dropdownLabel').value )
+#set ( $dropdownLinks =
+$_XPathTool.selectNodes($element,'//subbrandMasthead/callsToAction/dropdownButton/dropdownLink') )
+
+#set ( $ddTitle =
+$element.getChild('callsToAction').getChild('button').getChild('dropdownButton').value )
+
+#set ( $dropdownTitle =
+$element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLabel').value )
+
 <div class="subbrand-masthead-wrapper">
     <div class="brochure-masthead">
         <div class="foreground-content">
             <div class="headline-container">
                 #if($secondaryHeadline != '')
-                    <div class="faux-h2 headline secondary subhead">$_EscapeTool.xml($secondaryHeadline)</div>
+                    <h2 class="faux-h2 headline secondary subhead">$_EscapeTool.xml($secondaryHeadline)</h2>
                 #end 
                 <h1 class="faux-h1 headline primary title">$_EscapeTool.xml($primaryHeadline)</h1>
             </div>
-            #foreach($button in $buttons)
-                <button class="theme-button">
-                    <a #outputhref($button)="#outputHref($button)">$_EscapeTool.xml($button.getChild('label').value)</a>
-                </button>
+            #foreach($b in $buttons)
+              <li>$buttonType</li>
             #end
-            #if($dropdownLabel != '')
+
+            #foreach($button in $regularButtons)
+                #if($button.getChild('label').value != '')
+                <button class="theme-button">
+                    <a #outputHref($button)>$_EscapeTool.xml($button.getChild('label').value)</a>
+                </button>
+                #end
+            #end
+            #foreach($button in $dropdownButtons)
+              #if($button.getChild('label').value != '')
                 <div class="dropdown">
-                    <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($dropdownLabel)
+                    <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($button.getChild('dropdownLabel').value)
                         <span class="select-arrow"></span>
                     </div>
                     <div id="mastheadDropdown" class="dropdown-content">
                         #foreach( $link in $dropdownLinks )
                             <li>
-                                <a #outputhref($link)="#outputHref($link)">
+                                <a #outputHref($link)>
                                     <span class="link-underline">$_EscapeTool.xml($link.getChild('label').value)</span>
                                 </a>
                             </li>
@@ -39,14 +62,7 @@ $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button') )
                     </div>
                 </div>
             #end
-        </div>
-        <div class="slider-controls">
-            <div class="control left cd-arrow-left">
-                <a href="#">&#139;</a>
-            </div>
-            <div class="control right cd-arrow-right">
-                <a href="#">&#155;</a>
-            </div>
+            #end
         </div>
         <div class="background-content">
             <div class="slider-wrapper">

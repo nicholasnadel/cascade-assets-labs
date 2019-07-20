@@ -12,12 +12,13 @@
         to cascade 'groups'). Web coordinators have access to all mastheads. (April 2017) School and
         brochure groups do not exist yet. Until the new brochure layout is complete, users (except for web
         coordinators) are assumed to be in the "Schools and Colleges" group and can only select the side
-        panel hero. eg: <group collapsed="true" identifier="brochureMasthead" label="Brochure Page Masthead" restrict-to-groups="Web-Coordinators, Administrators">-->
+        panel hero. eg: <group collapsed="true" identifier="brochureMasthead" label="Brochure Page Masthead"
+        restrict-to-groups="Web-Coordinators, Administrators">-->
 		<!--<text default="Schools and Colleges" identifier="userGroup" label="For" type="radiobutton">-->
-		<!--  <radio-item show-fields="masthead/sidePanelHero" value="Side Panel Hero"/>-->
-		<!--  <radio-item show-fields="masthead/brochureMasthead" value="Brochure"/>-->
-		<!--  <radio-item show-fields="masthead/subbrandMastheadTypes" value="Sub-Brand"/>-->
-		<!--  <radio-item value="None"/>-->
+		<!-- <radio-item show-fields="masthead/sidePanelHero" value="Side Panel Hero"/>-->
+		<!-- <radio-item show-fields="masthead/brochureMasthead" value="Brochure"/>-->
+		<!-- <radio-item show-fields="masthead/subbrandMastheadTypes" value="Sub-Brand"/>-->
+		<!-- <radio-item value="None"/>-->
 		<!--</text>-->
 		<text default="Sub-Brand Page Masthead" identifier="subbrandMastheadTypes" label="Sub-Brand Masthead Type" type="dropdown">
 			<dropdown-item show-fields="masthead/subbrandMasthead" value="Sub-Brand Page Masthead"/>
@@ -25,11 +26,12 @@
 		</text>
 		<!-- (April 2017) Product owners request that only web coordinators be able to select the new
         Brochure Masthead (temporarily) -->
-		<!--      <text default="None" help-text="Choose which masthead you would like on your page." identifier="allMastheadTypes" label="Type of Masthead"  type="dropdown">-->
-		<!--          <dropdown-item value="None"/>-->
-		<!--          <dropdown-item show-fields="masthead/sidePanelHero" value="Side panel hero"/>-->
-		<!--          <dropdown-item show-fields="masthead/brochureMasthead" value="Brochure Page Masthead"/>-->
-		<!--          <dropdown-item show-fields="masthead/subbrandMasthead" value="head"/>-->
+		<!-- <text default="None" help-text="Choose which masthead you would like on your page."
+        identifier="allMastheadTypes" label="Type of Masthead" type="dropdown">-->
+		<!-- <dropdown-item value="None"/>-->
+		<!-- <dropdown-item show-fields="masthead/sidePanelHero" value="Side panel hero"/>-->
+		<!-- <dropdown-item show-fields="masthead/brochureMasthead" value="Brochure Page Masthead"/>-->
+		<!-- <dropdown-item show-fields="masthead/subbrandMasthead" value="head"/>-->
 		<!--</text>-->
 		<group collapsed="true" identifier="sidePanelHero" label="Side panel hero">
 			<group collapsed="true" identifier="panel" label="Panel">
@@ -123,62 +125,71 @@
 			</group>
 		</group>
 		<group collapsed="true" identifier="subbrandMasthead" label="Sub-Brand Page Masthead">
-      <group collapsed="true" identifier="headline" label="Headline">
-        <text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>
-        <text help-text="Primary title text" identifier="primary" label="Headline" required="true"/>
-      </group>
-      <group collapsed="true" identifier="callsToAction" label="CTA Buttons (Optional)">
-        <group identifier="button" label="Button" minimum-number="0" multiple="true">
-          <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
-            <radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/internalLink" value="Internal Link"/>
-            <radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/externalLink" value="External Link"/>
-            <radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/fileLink" value="File Link"/>
-          </text>
-          <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
-          <asset identifier="internalLink" label="Internal Link" type="page"/>
-          <asset identifier="fileLink" label="File Link" type="file"/>
-          <text identifier="label" label="Label"/>
-        </group>
-        <group collapsed="true" identifier="dropdownNav" label="Dropdown Button (Optional)" multiple="true">
-          <text help-text="Optional - leave blank to exclude dropdown button from masthead" identifier="dropdownLabel" label="Label"/>
-          <group identifier="dropdownLink" label="Link" multiple="true">
-            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
-              <radio-item show-fields="masthead/subbrandMasthead/callsToAction/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
-              <radio-item show-fields="masthead/subbrandMasthead/callsToAction/dropdownNav/dropdownLink/externalLink" value="External Link"/>
-              <radio-item show-fields="masthead/subbrandMasthead/callsToAction/dropdownNav/dropdownLink/fileLink" value="File Link"/>
-            </text>
-            <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
-            <asset identifier="internalLink" label="Internal Link" type="page"/>
-            <asset identifier="fileLink" label="File Link" type="file"/>
-            <text identifier="label" label="Label"/>
-          </group>
-        </group>
-      </group>
-      <group collapsed="true" identifier="slides" label="Background Content">
-        <!--<group collapsed="true" identifier="slide" label="Background Image or Video" multiple="false">-->
-        <text default="Image" identifier="type" label="Filetype" type="radiobutton">
-          <radio-item show-fields="masthead/subbrandMasthead/slides/imageFile" value="Image"/>
-          <radio-item show-fields="masthead/subbrandMasthead/slides/videoFile, masthead/subbrandMasthead/slides/fallbackImageFile" value="Video"/>
-        </text>
-        <asset help-text=".mp4 - no larger than 10mb" identifier="videoFile" label="Video File" type="file"/>
-        <asset identifier="fallbackImageFile" label="Fallback Image File" type="file"/>
-        <asset identifier="imageFile" label="Image File" type="file"/>
-        <text default="Center" identifier="alignY" label="Image Align" type="radiobutton">
-          <radio-item value="Top"/>
-          <radio-item value="Center"/>
-          <radio-item value="Bottom"/>
-        </text>
-        <text help-text="Be succinct, accurate, and equivalent in presenting the same content and function of the image.    Do NOT be redundant or provide the same information as text within the context of the image. Do NOT use the phrases &quot;image of ...&quot; or &quot;graphic of ...&quot; to describe the image. https://webaim.org/techniques/alttext/" identifier="alternateText" label="Alternate Text"/>
-        <!--</group>-->
-      </group>
-    </group>
+			<group collapsed="false" identifier="headline" label="Headline">
+				<text help-text="Primary title text" identifier="primary" label="Headline" required="true"/>
+				<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>
+			</group>
+			<group collapsed="true" identifier="callsToAction" label="CTA Buttons">
+				<group identifier="button" label="Button" minimum-number="0" multiple="true">
+					<text default="regularButton" identifier="buttonType" label="Button Type" type="radiobutton">
+						<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/regularButton" value="Regular Button"/>
+						<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton" value="Dropdown Button"/>
+					</text>
+					<group collapsed="false" identifier="regularButton" label="Regular Button" multiple="true">
+						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+							<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/regularButton/internalLink" value="Internal Link"/>
+							<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/regularButton/externalLink" value="External Link"/>
+							<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/fileLink" value="File Link"/>
+						</text>
+						<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+						<asset identifier="internalLink" label="Internal Link" type="page"/>
+						<asset identifier="fileLink" label="File Link" type="file"/>
+						<text identifier="label" label="Label"/>
+					</group>
+					<group collapsed="false" identifier="dropdownButton" label="Dropdown Button" multiple="true">
+						<text help-text="Optional - leave blank to exclude dropdown button from masthead" identifier="dropdownLabel" label="Label"/>
+						<group identifier="dropdownLink" label="Link" multiple="true">
+							<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+								<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/internalLink" value="Internal Link"/>
+								<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/externalLink" value="External Link"/>
+								<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/fileLink" value="File Link"/>
+							</text>
+							<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+							<asset identifier="internalLink" label="Internal Link" type="page"/>
+							<asset identifier="fileLink" label="File Link" type="file"/>
+							<text identifier="label" label="Label"/>
+						</group>
+					</group>
+				</group>
+			</group>
+			<group collapsed="true" identifier="slides" label="Background Content">
+				<!--<group collapsed="true" identifier="slide" label="Background Image or Video"
+        multiple="false">-->
+				<text default="Image" identifier="type" label="Filetype" type="radiobutton">
+					<radio-item show-fields="masthead/subbrandMasthead/slides/imageFile" value="Image"/>
+					<radio-item show-fields="masthead/subbrandMasthead/slides/videoFile, masthead/subbrandMasthead/slides/fallbackImageFile" value="Video"/>
+				</text>
+				<asset help-text=".mp4 - no larger than 10mb" identifier="videoFile" label="Video File" type="file"/>
+				<asset identifier="fallbackImageFile" label="Fallback Image File" type="file"/>
+				<asset identifier="imageFile" label="Image File" type="file"/>
+				<text default="Center" identifier="alignY" label="Image Align" type="radiobutton">
+					<radio-item value="Top"/>
+					<radio-item value="Center"/>
+					<radio-item value="Bottom"/>
+				</text>
+				<text help-text="Be succinct, accurate, and equivalent in presenting the same content and function of the image.    Do NOT be redundant or provide the same information as text within the context of the image. Do NOT use the phrases &quot;image of ...&quot; or &quot;graphic of ...&quot; to describe the image. https://webaim.org/techniques/alttext/" identifier="alternateText" label="Alternate Text"/>
+				<!--</group>-->
+			</group>
+		</group>
 		<group collapsed="true" identifier="subPageMasthead" label="1 Column Child Page Masthead">
 			<group collapsed="true" identifier="headline" label="Headline">
 				<text help-text="Primary title text" identifier="primary" label="Headline" required="true"/>
-				<!--<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>-->
+				<!--<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary"
+                label="Subhead"/>-->
 			</group>
 			<group collapsed="true" identifier="slides" label="Background Content">
-				<!--<group collapsed="true" identifier="slide" label="Background Image or Video" multiple="false">-->
+				<!--<group collapsed="true" identifier="slide" label="Background Image or Video"
+                multiple="false">-->
 				<text default="Image" identifier="type" label="Filetype" type="radiobutton">
 					<radio-item show-fields="masthead/subPageMasthead/slides/imageFile" value="Image"/>
 					<radio-item show-fields="masthead/subPageMasthead/slides/videoFile, masthead/subPageMasthead/slides/fallbackImageFile" value="Video"/>
@@ -219,23 +230,30 @@
 				<dropdown-item show-fields="primaryContent/widget/campusMapWidget" value="Campus Map Widget"/>
 				<dropdown-item show-fields="primaryContent/widget/googleMapWidget" value="Google Map Widget"/>
 			</text>
-			<!--<group collapsed="true" identifier="GoogleMapWidgetAddress" label="Google Map Widget - Address">-->
-			<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ... &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
-			<!--      <group collapsed="true" identifier="address" label="Address">-->
-			<!--          <text help-text="Enter the building title" identifier="title" label="Title" required="true"/>-->
-			<!--          <text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>-->
-			<!--          <text help-text="Enter point of contact email address" identifier="email" label="Email Address" required="true"/>-->
-			<!--          <text identifier="latitude" label="Latitude"/>-->
-			<!--          <text identifier="longitude" label="Longitude"/>-->
-			<!--          <text identifier="street" label="Street"/>-->
-			<!--          <text identifier="city" label="City"/>-->
-			<!--          <text identifier="state" label="State"/>-->
-			<!--          <text identifier="zip" label="Zip"/>-->
-			<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
-			<!--      </group>-->
-			<!--  </group>-->
+			<!--<group collapsed="true" identifier="GoogleMapWidgetAddress" label="Google Map Widget -
+            Address">-->
+			<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ...
+            &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
+			<!-- <group collapsed="true" identifier="address" label="Address">-->
+			<!-- <text help-text="Enter the building title" identifier="title" label="Title"
+            required="true"/>-->
+			<!-- <text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number"
+            required="true"/>-->
+			<!-- <text help-text="Enter point of contact email address" identifier="email" label="Email Address"
+            required="true"/>-->
+			<!-- <text identifier="latitude" label="Latitude"/>-->
+			<!-- <text identifier="longitude" label="Longitude"/>-->
+			<!-- <text identifier="street" label="Street"/>-->
+			<!-- <text identifier="city" label="City"/>-->
+			<!-- <text identifier="state" label="State"/>-->
+			<!-- <text identifier="zip" label="Zip"/>-->
+			<!--<text help-text="Enter the building address" identifier="address" label="Address"
+            required="true"/>-->
+			<!-- </group>-->
+			<!-- </group>-->
 			<group collapsed="true" identifier="googleMapWidget" label="Google Map Widget">
-				<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ... &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
+				<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ...
+                &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
 				<group collapsed="true" identifier="address" label="Address">
 					<text help-text="Enter the building name" identifier="title" label="Title" required="true"/>
 					<text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>
@@ -246,7 +264,8 @@
 					<text identifier="city" label="City" required="true"/>
 					<text identifier="state" label="State" required="true"/>
 					<text identifier="zip" label="Zip" required="true"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
+					<!--<text help-text="Enter the building address" identifier="address" label="Address"
+                    required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="campusMapWidget" label="Campus Map Widget">
@@ -259,7 +278,8 @@
 					<text identifier="city" label="City"/>
 					<text identifier="state" label="State"/>
 					<text identifier="zip" label="Zip"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
+					<!--<text help-text="Enter the building address" identifier="address" label="Address"
+                    required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="imageSliderWidget" label="Image Slider Widget">
@@ -332,12 +352,8 @@
 					<radio-item value="Yes"/>
 					<radio-item value="No"/>
 				</text>
-				<text default="Square" identifier="multiImageBlocksShape" label="Shape" required="true" type="radiobutton">
-					<radio-item value="Square"/>
-					<radio-item value="Circle"/>
-				</text>
 				<group identifier="photoCallout" label="Photo" minimum-number="1" multiple="true">
-					<asset identifier="image" label="Image (square 260x174 | circle 260x260)" required="true" type="file"/>
+					<asset identifier="image" label="Image (260x174)" required="true" type="file"/>
 					<text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
 					<group identifier="link" label="Link">
 						<text default="Internal Link" identifier="linkType" label="Link Type" required="true" type="radiobutton">
