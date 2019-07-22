@@ -3,7 +3,7 @@ $(function () {
     // Not for /our-faculty/index.aspx.
     // this version shows the Full-Time filter option and defaults to Full-Time.
 		// Mostly used by Law School and now Schmid College.
-    if ( document.getElementById("deptFacDirSearch_withFT") != null ) {
+    if ( document.getElementById("school_FacDirSearch_withFT") != null ) {
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
