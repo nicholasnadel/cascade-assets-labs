@@ -5,7 +5,7 @@ $(function () {
 		// Used by most schools (except Law and now Schmid College) 
     // eg /copa/faculty-directory.aspx.
     // this is from level/js/faculty.js in Cascade
-    if ( document.getElementById("FacDirSearch_withoutFT") != null ) {
+    if ( document.getElementById("deptFacDirSearch_withoutFT") != null ) {
         var devUrl = "//chapmanfaculty.dev.breilabs.com",
             prodUrl = "//" + window.location.hostname,
             page = 0,
