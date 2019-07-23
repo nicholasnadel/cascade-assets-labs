@@ -12,8 +12,7 @@
         to cascade 'groups'). Web coordinators have access to all mastheads. (April 2017) School and
         brochure groups do not exist yet. Until the new brochure layout is complete, users (except for web
         coordinators) are assumed to be in the "Schools and Colleges" group and can only select the side
-        panel hero. eg: <group collapsed="true" identifier="brochureMasthead" label="Brochure Page Masthead"
-        restrict-to-groups="Web-Coordinators, Administrators">-->
+        panel hero. eg: <group collapsed="true" identifier="brochureMasthead" label="Brochure Page Masthead" restrict-to-groups="Web-Coordinators, Administrators">-->
 		<!--<text default="Schools and Colleges" identifier="userGroup" label="For" type="radiobutton">-->
 		<!-- <radio-item show-fields="masthead/sidePanelHero" value="Side Panel Hero"/>-->
 		<!-- <radio-item show-fields="masthead/brochureMasthead" value="Brochure"/>-->
@@ -26,8 +25,7 @@
 		</text>
 		<!-- (April 2017) Product owners request that only web coordinators be able to select the new
         Brochure Masthead (temporarily) -->
-		<!-- <text default="None" help-text="Choose which masthead you would like on your page."
-        identifier="allMastheadTypes" label="Type of Masthead" type="dropdown">-->
+		<!-- <text default="None" help-text="Choose which masthead you would like on your page." identifier="allMastheadTypes" label="Type of Masthead" type="dropdown">-->
 		<!-- <dropdown-item value="None"/>-->
 		<!-- <dropdown-item show-fields="masthead/sidePanelHero" value="Side panel hero"/>-->
 		<!-- <dropdown-item show-fields="masthead/brochureMasthead" value="Brochure Page Masthead"/>-->
@@ -130,12 +128,13 @@
 				<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>
 			</group>
 			<group collapsed="true" identifier="callsToAction" label="CTA Buttons">
-				<group identifier="button" label="Button" minimum-number="0" multiple="true">
+
+				<group identifier="button" label="Button" multiple="true">
 					<text default="regularButton" identifier="buttonType" label="Button Type" type="radiobutton">
 						<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/regularButton" value="Regular Button"/>
 						<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton" value="Dropdown Button"/>
 					</text>
-					<group collapsed="false" identifier="regularButton" label="Regular Button" multiple="true">
+					<group collapsed="false" identifier="regularButton" label="Regular Button">
 						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
 							<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/regularButton/internalLink" value="Internal Link"/>
 							<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/regularButton/externalLink" value="External Link"/>
@@ -146,9 +145,10 @@
 						<asset identifier="fileLink" label="File Link" type="file"/>
 						<text identifier="label" label="Label"/>
 					</group>
-					<group collapsed="false" identifier="dropdownButton" label="Dropdown Button" multiple="true">
+					<group collapsed="false" identifier="dropdownButton" label="Dropdown Button">
 						<text help-text="Optional - leave blank to exclude dropdown button from masthead" identifier="dropdownLabel" label="Label"/>
 						<group identifier="dropdownLink" label="Link" multiple="true">
+							<text identifier="listItemLabel" label="Label"/>
 							<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
 								<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/internalLink" value="Internal Link"/>
 								<radio-item show-fields="masthead/subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/externalLink" value="External Link"/>
@@ -157,14 +157,12 @@
 							<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
 							<asset identifier="internalLink" label="Internal Link" type="page"/>
 							<asset identifier="fileLink" label="File Link" type="file"/>
-							<text identifier="label" label="Label"/>
 						</group>
 					</group>
 				</group>
 			</group>
 			<group collapsed="true" identifier="slides" label="Background Content">
-				<!--<group collapsed="true" identifier="slide" label="Background Image or Video"
-        multiple="false">-->
+				<!--<group collapsed="true" identifier="slide" label="Background Image or Video" multiple="false">-->
 				<text default="Image" identifier="type" label="Filetype" type="radiobutton">
 					<radio-item show-fields="masthead/subbrandMasthead/slides/imageFile" value="Image"/>
 					<radio-item show-fields="masthead/subbrandMasthead/slides/videoFile, masthead/subbrandMasthead/slides/fallbackImageFile" value="Video"/>
@@ -181,15 +179,15 @@
 				<!--</group>-->
 			</group>
 		</group>
+
+
 		<group collapsed="true" identifier="subPageMasthead" label="1 Column Child Page Masthead">
 			<group collapsed="true" identifier="headline" label="Headline">
 				<text help-text="Primary title text" identifier="primary" label="Headline" required="true"/>
-				<!--<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary"
-                label="Subhead"/>-->
+				<!--<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>-->
 			</group>
 			<group collapsed="true" identifier="slides" label="Background Content">
-				<!--<group collapsed="true" identifier="slide" label="Background Image or Video"
-                multiple="false">-->
+				<!--<group collapsed="true" identifier="slide" label="Background Image or Video" multiple="false">-->
 				<text default="Image" identifier="type" label="Filetype" type="radiobutton">
 					<radio-item show-fields="masthead/subPageMasthead/slides/imageFile" value="Image"/>
 					<radio-item show-fields="masthead/subPageMasthead/slides/videoFile, masthead/subPageMasthead/slides/fallbackImageFile" value="Video"/>
@@ -235,20 +233,16 @@
 			<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ...
             &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
 			<!-- <group collapsed="true" identifier="address" label="Address">-->
-			<!-- <text help-text="Enter the building title" identifier="title" label="Title"
-            required="true"/>-->
-			<!-- <text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number"
-            required="true"/>-->
-			<!-- <text help-text="Enter point of contact email address" identifier="email" label="Email Address"
-            required="true"/>-->
+			<!-- <text help-text="Enter the building title" identifier="title" label="Title" required="true"/>-->
+			<!-- <text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>-->
+			<!-- <text help-text="Enter point of contact email address" identifier="email" label="Email Address" required="true"/>-->
 			<!-- <text identifier="latitude" label="Latitude"/>-->
 			<!-- <text identifier="longitude" label="Longitude"/>-->
 			<!-- <text identifier="street" label="Street"/>-->
 			<!-- <text identifier="city" label="City"/>-->
 			<!-- <text identifier="state" label="State"/>-->
 			<!-- <text identifier="zip" label="Zip"/>-->
-			<!--<text help-text="Enter the building address" identifier="address" label="Address"
-            required="true"/>-->
+			<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 			<!-- </group>-->
 			<!-- </group>-->
 			<group collapsed="true" identifier="googleMapWidget" label="Google Map Widget">
@@ -264,8 +258,7 @@
 					<text identifier="city" label="City" required="true"/>
 					<text identifier="state" label="State" required="true"/>
 					<text identifier="zip" label="Zip" required="true"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address"
-                    required="true"/>-->
+					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="campusMapWidget" label="Campus Map Widget">
@@ -278,8 +271,7 @@
 					<text identifier="city" label="City"/>
 					<text identifier="state" label="State"/>
 					<text identifier="zip" label="Zip"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address"
-                    required="true"/>-->
+					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="imageSliderWidget" label="Image Slider Widget">

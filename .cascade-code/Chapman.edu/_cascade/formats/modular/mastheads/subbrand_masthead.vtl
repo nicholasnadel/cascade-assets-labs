@@ -1,9 +1,5 @@
 ## the empty duplicate dropdown issue seems to be caused by the regular button
 
-
-
-
-
 #import( "/_cascade/formats/helpers.velocity" )
 #import( "/_cascade/formats/helpers/debug.velocity" )
 #macro(outputSubbrandMasthead $element)
@@ -22,8 +18,8 @@ $element.getChild('callsToAction').getChild('button').getChild('buttonType').val
 #set ( $buttonTitle = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/label').value )
 #set ( $dropdownLabel =
 $element.getChild('callsToAction').getChild('dropdownButton').getChild('dropdownLabel').value )
-#set ( $dropdownLinks =
-$_XPathTool.selectNodes($element,'//subbrandMasthead/callsToAction/dropdownButton/dropdownLink') )
+## #set ( $dropdownLinks =
+## $_XPathTool.selectNodes($element,'//subbrandMasthead/callsToAction/dropdownButton/dropdownLink').value )
 
 #set ( $ddTitle =
 $element.getChild('callsToAction').getChild('button').getChild('dropdownButton').value )
@@ -31,10 +27,27 @@ $element.getChild('callsToAction').getChild('button').getChild('dropdownButton')
 #set ( $dropdownTitle =
 $element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLabel').value )
 
+#set ( $ddListItem = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink').value )
+#set ( $ddL = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton').value )
+
+
+#set ( $ddListItems = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink').value )
+
+#set ( $listItemTitle = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton').value )
+## #set ( $listItemLabel = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/dropdownLabel').value )
+#set ( $help =
+$element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLink').getChild('dropdownLabel').value )
+
+#set ( $nick = $_XPathTool.selectNodes($dropdownButtons, '/dropdownLink/dropdownLabel').value )
+#set ( $ddd = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/dropdownLabel').value )
+#set ($dropdownLinks  = $_XPathTool.selectNodes($buttons, 'dropdownButton/dropdownLink') )
+
+$ddd
 <div class="subbrand-masthead-wrapper">
     <div class="brochure-masthead">
         <div class="foreground-content">
             <div class="headline-container">
+                
                 #if($secondaryHeadline != '')
                     <h2 class="faux-h2 headline secondary subhead">$_EscapeTool.xml($secondaryHeadline)</h2>
                 #end 
@@ -42,33 +55,52 @@ $element.getChild('callsToAction').getChild('button').getChild('dropdownButton')
             </div>
             ## #foreach($b in $buttons)
             ##   <li>$buttonType</li>
+            ##   <button>$b</button>
+            ##   <li>$dropdownLinks</li>
+            ##   <li>$ddListItem</li>
+            ##   <li>$ddL</li>
             ## #end
 
-            #foreach($button in $regularButtons)
-                #if($button.getChild('label').value != '')
+            #foreach($b in $regularButtons)
+                #if($b.getChild('label').value != '')
                 <button class="theme-button">
-                    <a #outputHref($button)>$_EscapeTool.xml($button.getChild('label').value)</a>
+                    <a #outputHref($button)>$_EscapeTool.xml($b.getChild('label').value)</a>
                 </button>
+                $listItemLabel
+                $nick
                 #end
             #end
-            #foreach($button in $dropdownButtons)
-              #if($button.getChild('label').value != '')
+            #foreach($b in $dropdownButtons)
+              #if($b.getChild('dropdownLabel').value != '')
                 <div class="dropdown">
-                    <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($button.getChild('dropdownLabel').value)
+                    <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($b.getChild('dropdownLabel').value)
                         <span class="select-arrow"></span>
                     </div>
-                    <div id="mastheadDropdown" class="dropdown-content">
-                        #foreach( $link in $dropdownLinks )
+         <div id="mastheadDropdown" class="dropdown-content">
+                         #foreach( $link in $dropdownLinks )
+              <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('listItemLabel').value)</a></li>
+            #end
+             $ddd
+                $help
+                $nick
+                        #foreach( $li in $nick )
+                        $nick
+                        ## <li>$help</li>
+                        ## <li>$li.getChild('label')</li>
                             <li>
-                                <a #outputHref($link)>
-                                    <span class="link-underline">$_EscapeTool.xml($link.getChild('label').value)</span>
+                                <a #outputHref($li)>
+                                    <span class="link-underline">$_EscapeTool.xml($li)</span>
+                                                            
+
                                 </a>
                             </li>
                         #end
                     </div>
+
                 </div>
             #end
             #end
+           
         </div>
         <div class="background-content">
             <div class="slider-wrapper">
