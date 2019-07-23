@@ -42,7 +42,8 @@ $element.getChild('callsToAction').getChild('button').getChild('dropdownButton')
 #set ( $ddd = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/dropdownLabel').value )
 #set ($dropdownLinks  = $_XPathTool.selectNodes($buttons, 'dropdownButton/dropdownLink') )
 
-$ddd
+#set ( $dropdownLinksLabels = $element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLink').getChild('dropdownLabel').getChild('listItemLabel').value )
+
 <div class="subbrand-masthead-wrapper">
     <div class="brochure-masthead">
         <div class="foreground-content">
@@ -66,8 +67,6 @@ $ddd
                 <button class="theme-button">
                     <a #outputHref($button)>$_EscapeTool.xml($b.getChild('label').value)</a>
                 </button>
-                $listItemLabel
-                $nick
                 #end
             #end
             #foreach($b in $dropdownButtons)
@@ -78,23 +77,11 @@ $ddd
                     </div>
          <div id="mastheadDropdown" class="dropdown-content">
                          #foreach( $link in $dropdownLinks )
-              <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('listItemLabel').value)</a></li>
+                       #if($link.getChild('listItemLabel').value != '')
+                        <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('listItemLabel').value)</a></li>
             #end
-             $ddd
-                $help
-                $nick
-                        #foreach( $li in $nick )
-                        $nick
-                        ## <li>$help</li>
-                        ## <li>$li.getChild('label')</li>
-                            <li>
-                                <a #outputHref($li)>
-                                    <span class="link-underline">$_EscapeTool.xml($li)</span>
-                                                            
-
-                                </a>
-                            </li>
-                        #end
+                #end
+                        
                     </div>
 
                 </div>
