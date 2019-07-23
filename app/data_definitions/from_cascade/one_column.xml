@@ -1,36 +1,15 @@
 <system-data-structure>
 	<group collapsed="true" identifier="masthead" label="Masthead">
-		<!--THIS BLOCK REPLACES THE FORMER USERGROUP DROPDOWN BELOW NN 9.28.18-->
 		<text default="Side Panel Hero" identifier="mastheadType" label="Style:" type="radiobutton">
 			<radio-item show-fields="masthead/sidePanelHero" value="Side Panel Hero"/>
 			<radio-item show-fields="masthead/brochureMasthead" value="Brochure"/>
 			<radio-item show-fields="masthead/subbrandMastheadTypes" value="Sub-Brand"/>
 			<radio-item value="None"/>
 		</text>
-		<!--END -->
-		<!-- Web coordinators want the ability to restrict mastheads to specific page types (corresponding
-        to cascade 'groups'). Web coordinators have access to all mastheads. (April 2017) School and
-        brochure groups do not exist yet. Until the new brochure layout is complete, users (except for web
-        coordinators) are assumed to be in the "Schools and Colleges" group and can only select the side
-        panel hero. eg: <group collapsed="true" identifier="brochureMasthead" label="Brochure Page Masthead" restrict-to-groups="Web-Coordinators, Administrators">-->
-		<!--<text default="Schools and Colleges" identifier="userGroup" label="For" type="radiobutton">-->
-		<!--  <radio-item show-fields="masthead/sidePanelHero" value="Side Panel Hero"/>-->
-		<!--  <radio-item show-fields="masthead/brochureMasthead" value="Brochure"/>-->
-		<!--  <radio-item show-fields="masthead/subbrandMastheadTypes" value="Sub-Brand"/>-->
-		<!--  <radio-item value="None"/>-->
-		<!--</text>-->
 		<text default="Sub-Brand Page Masthead" identifier="subbrandMastheadTypes" label="Sub-Brand Masthead Type" type="dropdown">
 			<dropdown-item show-fields="masthead/subbrandMasthead" value="Sub-Brand Page Masthead"/>
 			<dropdown-item show-fields="masthead/subPageMasthead" value="1 Col Child Page (Left Aligned)"/>
 		</text>
-		<!-- (April 2017) Product owners request that only web coordinators be able to select the new
-        Brochure Masthead (temporarily) -->
-		<!--      <text default="None" help-text="Choose which masthead you would like on your page." identifier="allMastheadTypes" label="Type of Masthead" type="dropdown">-->
-		<!--          <dropdown-item value="None"/>-->
-		<!--          <dropdown-item show-fields="masthead/sidePanelHero" value="Side panel hero"/>-->
-		<!--          <dropdown-item show-fields="masthead/brochureMasthead" value="Brochure Page Masthead"/>-->
-		<!--          <dropdown-item show-fields="masthead/subbrandMasthead" value="head"/>-->
-		<!--</text>-->
 		<group collapsed="true" identifier="sidePanelHero" label="Side panel hero">
 			<group collapsed="true" identifier="panel" label="Panel">
 				<text identifier="title" label="Title"/>
@@ -123,7 +102,7 @@
 			</group>
 		</group>
 		<group collapsed="true" identifier="subbrandMasthead" label="Sub-Brand Page Masthead">
-			<group collapsed="true" identifier="headline" label="Headline">
+			<group collapsed="true" identifier="headline" label="Headline (Required)">
 				<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>
 				<text help-text="Primary title text" identifier="primary" label="Headline" required="true"/>
 			</group>
@@ -162,7 +141,7 @@
 					</group>
 				</group>
 			</group>
-			<group collapsed="true" identifier="slides" label="Background Content">
+			<group collapsed="true" identifier="slides" label="Background Content (Required)">
 				<!--<group collapsed="true" identifier="slide" label="Background Image or Video" multiple="false">-->
 				<text default="Image" identifier="type" label="Filetype" type="radiobutton">
 					<radio-item show-fields="masthead/subbrandMasthead/slides/imageFile" value="Image"/>
@@ -170,23 +149,20 @@
 				</text>
 				<asset help-text=".mp4 - no larger than 10mb" identifier="videoFile" label="Video File" type="file"/>
 				<asset identifier="fallbackImageFile" label="Fallback Image File" type="file"/>
-				<asset identifier="imageFile" label="Image File" type="file"/>
+				<asset identifier="imageFile" label="Image File" type="file" required="true"/>
 				<text default="Center" identifier="alignY" label="Image Align" type="radiobutton">
 					<radio-item value="Top"/>
 					<radio-item value="Center"/>
 					<radio-item value="Bottom"/>
 				</text>
 				<text help-text="Be succinct, accurate, and equivalent in presenting the same content and function of the image.    Do NOT be redundant or provide the same information as text within the context of the image. Do NOT use the phrases &quot;image of ...&quot; or &quot;graphic of ...&quot; to describe the image. https://webaim.org/techniques/alttext/" identifier="alternateText" label="Alternate Text"/>
-				<!--</group>-->
 			</group>
 		</group>
 		<group collapsed="true" identifier="subPageMasthead" label="1 Column Child Page Masthead">
 			<group collapsed="true" identifier="headline" label="Headline">
 				<text help-text="Primary title text" identifier="primary" label="Headline" required="true"/>
-				<!--<text help-text="Optional, smaller text displayed ABOVE Headline" identifier="secondary" label="Subhead"/>-->
 			</group>
 			<group collapsed="true" identifier="slides" label="Background Content">
-				<!--<group collapsed="true" identifier="slide" label="Background Image or Video" multiple="false">-->
 				<text default="Image" identifier="type" label="Filetype" type="radiobutton">
 					<radio-item show-fields="masthead/subPageMasthead/slides/imageFile" value="Image"/>
 					<radio-item show-fields="masthead/subPageMasthead/slides/videoFile, masthead/subPageMasthead/slides/fallbackImageFile" value="Video"/>
@@ -200,7 +176,6 @@
 					<radio-item value="Bottom"/>
 				</text>
 				<text help-text="Be succinct, accurate, and equivalent in presenting the same content and function of the image.    Do NOT be redundant or provide the same information as text within the context of the image. Do NOT use the phrases &quot;image of ...&quot; or &quot;graphic of ...&quot; to describe the image. https://webaim.org/techniques/alttext/" identifier="alternateText" label="Alternate Text"/>
-				<!--</group>-->
 			</group>
 		</group>
 	</group>
@@ -227,23 +202,7 @@
 				<dropdown-item show-fields="primaryContent/widget/campusMapWidget" value="Campus Map Widget"/>
 				<dropdown-item show-fields="primaryContent/widget/googleMapWidget" value="Google Map Widget"/>
 			</text>
-			<!--<group collapsed="true" identifier="GoogleMapWidgetAddress" label="Google Map Widget - Address">-->
-			<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ... &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
-			<!--      <group collapsed="true" identifier="address" label="Address">-->
-			<!--          <text help-text="Enter the building title" identifier="title" label="Title" required="true"/>-->
-			<!--          <text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>-->
-			<!--          <text help-text="Enter point of contact email address" identifier="email" label="Email Address" required="true"/>-->
-			<!--          <text identifier="latitude" label="Latitude"/>-->
-			<!--          <text identifier="longitude" label="Longitude"/>-->
-			<!--          <text identifier="street" label="Street"/>-->
-			<!--          <text identifier="city" label="City"/>-->
-			<!--          <text identifier="state" label="State"/>-->
-			<!--          <text identifier="zip" label="Zip"/>-->
-			<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
-			<!--      </group>-->
-			<!--  </group>-->
 			<group collapsed="true" identifier="googleMapWidget" label="Google Map Widget">
-				<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ... &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
 				<group collapsed="true" identifier="address" label="Address">
 					<text help-text="Enter the building name" identifier="title" label="Title" required="true"/>
 					<text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>
@@ -254,7 +213,6 @@
 					<text identifier="city" label="City" required="true"/>
 					<text identifier="state" label="State" required="true"/>
 					<text identifier="zip" label="Zip" required="true"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="campusMapWidget" label="Campus Map Widget">
@@ -267,7 +225,6 @@
 					<text identifier="city" label="City"/>
 					<text identifier="state" label="State"/>
 					<text identifier="zip" label="Zip"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="imageSliderWidget" label="Image Slider Widget">
@@ -282,8 +239,6 @@
 							<radio-item show-fields="primaryContent/widget/imageSliderWidget/featuredContent/featuredBackgroundMedia/alignYPercentage" value="Percentage"/>
 						</text>
 						<text help-text="Enter a positive or negative integer WITHOUT a percent sign e.g. '10'." identifier="alignYPercentage" label="Top Alignment"/>
-						<!--<text identifier="alignYPercentage" label="alignYPercentage"/>-->
-						<!--<text identifier="label" label="Label"/>-->
 					</group>
 					<group collapsed="true" identifier="featuredPanel" label="Foreground Content">
 						<text identifier="title" label="Title"/>
