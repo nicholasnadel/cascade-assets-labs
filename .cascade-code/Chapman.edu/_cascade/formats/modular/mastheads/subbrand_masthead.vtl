@@ -1,93 +1,57 @@
-## the empty duplicate dropdown issue seems to be caused by the regular button
-
 #import( "/_cascade/formats/helpers.velocity" )
 #import( "/_cascade/formats/helpers/debug.velocity" )
 #macro(outputSubbrandMasthead $element)
 #set ( $primaryHeadline = $element.getChild('headline').getChild('primary').value )
 #set ( $secondaryHeadline = $element.getChild('headline').getChild('secondary').value )
 #set ( $slides = $_XPathTool.selectNodes($element, '//subbrandMasthead/slides') )
-#set ( $buttons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button') )
-#set ( $button = $buttons )
-
-#set ( $regularButtons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/regularButton') )
-#set ( $dropdownButtons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton') )
-
-#set ( $buttonType =
-$element.getChild('callsToAction').getChild('button').getChild('buttonType').value )
-
-#set ( $buttonTitle = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/label').value )
 #set ( $dropdownLabel =
-$element.getChild('callsToAction').getChild('dropdownButton').getChild('dropdownLabel').value )
-## #set ( $dropdownLinks =
-## $_XPathTool.selectNodes($element,'//subbrandMasthead/callsToAction/dropdownButton/dropdownLink').value )
-
-#set ( $ddTitle =
-$element.getChild('callsToAction').getChild('button').getChild('dropdownButton').value )
-
-#set ( $dropdownTitle =
-$element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLabel').value )
-
-#set ( $ddListItem = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink').value )
-#set ( $ddL = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton').value )
-
-
-#set ( $ddListItems = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink').value )
-
-#set ( $listItemTitle = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton').value )
-## #set ( $listItemLabel = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/dropdownLabel').value )
-#set ( $help =
-$element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLink').getChild('dropdownLabel').value )
-
-#set ( $nick = $_XPathTool.selectNodes($dropdownButtons, '/dropdownLink/dropdownLabel').value )
-#set ( $ddd = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button/dropdownButton/dropdownLink/dropdownLabel').value )
-#set ($dropdownLinks  = $_XPathTool.selectNodes($buttons, 'dropdownButton/dropdownLink') )
-
-#set ( $dropdownLinksLabels = $element.getChild('callsToAction').getChild('button').getChild('dropdownButton').getChild('dropdownLink').getChild('dropdownLabel').getChild('listItemLabel').value )
-
+$element.getChild('callsToAction').getChild('dropdownNav').getChild('dropdownLabel').value )
+#set ( $dropdownLinks = $_XPathTool.selectNodes($element,
+'//subbrandMasthead/callsToAction/dropdownNav/dropdownLink') )
+#set ( $buttons = $_XPathTool.selectNodes($element, '//subbrandMasthead/callsToAction/button') )
+#set ( $showDropdown =
+$element.getChild('callsToAction').getChild('dropdownNav').getChild('showButton').value )
 <div class="subbrand-masthead-wrapper">
     <div class="brochure-masthead">
         <div class="foreground-content">
             <div class="headline-container">
-                
-                #if($secondaryHeadline != '')
-                    <h2 class="faux-h2 headline secondary subhead">$_EscapeTool.xml($secondaryHeadline)</h2>
+                #if ($secondaryHeadline != '')
+                    <div class="faux-h2 headline secondary subhead">$_EscapeTool.xml($secondaryHeadline)</div>
                 #end 
                 <h1 class="faux-h1 headline primary title">$_EscapeTool.xml($primaryHeadline)</h1>
             </div>
-            ## #foreach($b in $buttons)
-            ##   <li>$buttonType</li>
-            ##   <button>$b</button>
-            ##   <li>$dropdownLinks</li>
-            ##   <li>$ddListItem</li>
-            ##   <li>$ddL</li>
-            ## #end
-
-            #foreach($b in $regularButtons)
-                #if($b.getChild('label').value != '')
-                <button class="theme-button">
-                    <a #outputHref($button)>$_EscapeTool.xml($b.getChild('label').value)</a>
-                </button>
+            #foreach($button in $buttons)
+                #set ( $showButton = $button.getChild('showButton').value )
+                #if ($showButton != 'No')
+                    <button class="theme-button">
+                        <a #outputHref($button)>$_EscapeTool.xml($button.getChild('label').value)</a>
+                    </button>
                 #end
             #end
-            #foreach($b in $dropdownButtons)
-              #if($b.getChild('dropdownLabel').value != '')
+            #if ($dropdownLabel != '' && $showDropdown != 'No')
                 <div class="dropdown">
-                    <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($b.getChild('dropdownLabel').value)
+                    <div onclick="dropdownToggle()" class="dropdown-inner theme-border-color">$_EscapeTool.xml($dropdownLabel)
                         <span class="select-arrow"></span>
                     </div>
-         <div id="mastheadDropdown" class="dropdown-content">
-                         #foreach( $link in $dropdownLinks )
-                       #if($link.getChild('listItemLabel').value != '')
-                        <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('listItemLabel').value)</a></li>
-            #end
-                #end
-                        
+                    <div id="mastheadDropdown" class="dropdown-content">
+                        #foreach( $link in $dropdownLinks )
+                            <li>
+                                <a #outputHref($link)>
+                                    <span class="link-underline">$_EscapeTool.xml($link.getChild('label').value)</span>
+                                </a>
+                            </li>
+                        #end
                     </div>
-
                 </div>
             #end
-            #end
-           
+        </div>
+        <div class="slider-controls">
+            <div class="control left cd-arrow-left">
+                <a href="#">&#139;</a>
+            </div>
+            <div class="control right cd-arrow-right">
+                <a href="#">&#155;</a>
+            </div>
         </div>
         <div class="background-content">
             <div class="slider-wrapper">
