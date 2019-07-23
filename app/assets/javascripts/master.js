@@ -48,7 +48,7 @@
 //= require cascade/level/accordion
 //= require cascade/level/degrees-programs
 //= require cascade/faculty-directory/main-listing
-//= require cascade/faculty-directory/school-listing-without-ft-option
+//= require cascade/faculty-directory/school-listing
 //= require cascade/faculty-directory/school-listing-with-ft-option
 //= require cascade/level/feature
 //= require cascade/level/flickr-picasa
