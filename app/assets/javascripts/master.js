@@ -1,9 +1,8 @@
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree ../../../lib/assets/javascripts
 
-//= require global
 //= require omni-nav
-
+//= require _helpers/chapDOM
 //= require_tree ./widgets
 //= require_tree ./components
 //= require_tree ./regions
@@ -30,7 +29,6 @@
 // don't require cascade/shortcuts
 
 //= require cascade/plugins/amplify
-//= require cascade/campus-services-anchor-point-readjustment
 //= require cascade/plugins/cookie
 //= require cascade/plugins/ellipsis
 //= require cascade/plugins/flexslider

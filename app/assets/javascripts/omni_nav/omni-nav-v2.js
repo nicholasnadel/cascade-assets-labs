@@ -1,18 +1,19 @@
-var OmniNav2 = (function() {
+var OmniNav2 = (function () {
 
   // Constants
   var TABLET_BREAKPOINT = 768; //px
   var DESKTOP_BREAKPOINT = 1300; //px
+  /* Be sure to also edit $omniNavHeightDesktop and $omniNavHeightMobile in variables.scss if changes are made to the height */
   var OMNINAV_BASE_HEIGHT = 60; //px
 
   // Module Vars
   var $container,
-      $utilityNav,
-      $primaryNav,
-      searchAPI;
+    $utilityNav,
+    $primaryNav,
+    searchAPI;
 
   // Module Functions
-  var initialize = function(container) {
+  var initialize = function (container) {
     // Key DOM elements.
     $container = container;
     $utilityNav = $container.find('.utility-nav');
@@ -25,8 +26,8 @@ var OmniNav2 = (function() {
     MobileNav.init();
 
     var omniNavId = $container.attr('id'),
-        primarySearchId = 'primary-nav-search',
-        utilitySearchId = 'utility-nav-search';
+      primarySearchId = 'primary-nav-search',
+      utilitySearchId = 'utility-nav-search';
 
     /*
      * We only initialize one form based on window size. This reduces the number
@@ -35,8 +36,7 @@ var OmniNav2 = (function() {
      */
     if ($(window).width() >= TABLET_BREAKPOINT) {
       searchAPI = GoogleCustomSearch.init(omniNavId, utilitySearchId);
-    }
-    else {
+    } else {
       searchAPI = GoogleCustomSearch.init(omniNavId, primarySearchId);
     }
 
@@ -44,7 +44,7 @@ var OmniNav2 = (function() {
     bindEventHandlers();
   };
 
-  var applyStyleAdjustments = function() {
+  var applyStyleAdjustments = function () {
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
     $('#theme header').css('padding-bottom', '0px');
@@ -62,18 +62,17 @@ var OmniNav2 = (function() {
   };
 
   //Handles all keyboard controls and dropdown menus
-  var bindEventHandlers = function() {
-    
+  var bindEventHandlers = function () {
+
     //Primary global nav keyboard controls
     //Top level links
     $primaryNav.on("keydown mouseenter", "ul.global-nav-links > li.primary-link", function (e) {
       if ($(this).attr('aria-expanded') == "true") {
-        if (e.keyCode === 40 ) { //down arrow key
+        if (e.keyCode === 40) { //down arrow key
           focusNextElement($(this)).focus();
           return false;
         }
-      }
-      else {
+      } else {
         //Spacebar, Down, or Enter Key
         if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "mouseenter")) {
           $(this).attr('aria-expanded', 'true');
@@ -84,64 +83,60 @@ var OmniNav2 = (function() {
 
     //Expanded nav link items
     $primaryNav.on("keydown mouseenter", "li.primary-link .global-nav-dropdown a", function (e) {
-      if (e.keyCode === 38 ) { //up arrow key
+      if (e.keyCode === 38) { //up arrow key
         focusPrevElement($(this)).focus();
         return false;
-      }    
-      else if (e.keyCode === 40 ) { //down arrow key
+      } else if (e.keyCode === 40) { //down arrow key
         focusNextElement($(this)).focus();
         return false;
       }
     });
-    
+
     //Extra navigation options
-    $primaryNav.on("keydown", "li.primary-link", function (e) {  
+    $primaryNav.on("keydown", "li.primary-link", function (e) {
       //Need to explicitly find an element that's focusable, in this case the next top level anchor
-      if (e.keyCode === 37 ) { //Left arrow key
+      if (e.keyCode === 37) { //Left arrow key
         $(this).prev().find("a").first().focus();
         return false;
-      }    
-      else if (e.keyCode === 39 ) { //Right arrow key
+      } else if (e.keyCode === 39) { //Right arrow key
         $(this).next().find("a").first().focus();
         return false;
-      }
-      else if (e.keyCode === 27) { //ESC key
+      } else if (e.keyCode === 27) { //ESC key
         $(this).attr('aria-expanded', 'false');
         $(this).find('a').first().focus();
         return false;
       }
     });
-    
+
     //Closing navs
-    $primaryNav.on("focusout mouseleave", ".primary-link", function() {
+    $primaryNav.on("focusout mouseleave", ".primary-link", function () {
       //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
       //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
       var that = $(this);
-      setTimeout(function() {
+      setTimeout(function () {
         if (that.find(":focus").length === 0) {
           that.attr('aria-expanded', 'false');
         }
       }, 50);
     });
-    
+
     //Main utility nav trigger
     $('.utility-nav-trigger').on('click keydown', function (e) {
       if ((e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) || (e.type == "click")) {
         onUtilityNavClick();
         return false;
       }
-    });    
-    
+    });
+
     //Utility nav keyboard controls
-    $utilityNav.on('keydown click', 'li', function(e) {
+    $utilityNav.on('keydown click', 'li', function (e) {
       e.stopPropagation();
 
       //Find next/prev top level link and move to it
-      if (e.keyCode === 37 ) { //Left arrow key
+      if (e.keyCode === 37) { //Left arrow key
         $(this).closest('.utility-cell').prev().find("a").first().focus();
         return false;
-      }
-      else if (e.keyCode === 39 ) { //Right arrow key
+      } else if (e.keyCode === 39) { //Right arrow key
         $(this).closest('.utility-cell').next().find("a").first().focus();
         return false;
       }
@@ -151,12 +146,11 @@ var OmniNav2 = (function() {
         //Keydown event
         if (e.type == "keydown") {
           if ($(this).attr('aria-expanded') == "true") {
-            if (e.keyCode === 40 ) { //Down arrow key
+            if (e.keyCode === 40) { //Down arrow key
               focusNextElement($(this).find('a').first()).focus();
               return false;
             }
-          }
-          else {
+          } else {
             //Spacebar, Down, or Enter Key
             if (e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) {
               $(this).addClass('dropdown-open');
@@ -166,100 +160,94 @@ var OmniNav2 = (function() {
           }
         }
         //Click event
-        else {  
+        else {
           // This is to prevent Search From and Social dropdowns from overlapping
           // Search From (.search-type) has a different parent than the other dropdowns so it needs a different selector to hide the other dropdowns
           var that = $(this).closest('li.utility-has-dropdown');
-          if ( that[0].classList.contains('search-type') ) {
+          if (that[0].classList.contains('search-type')) {
             $('.utility-links').find('.utility-has-dropdown').removeClass('dropdown-open').attr('aria-expanded', 'false');
-          }
-          else {
+          } else {
             that.siblings('.utility-has-dropdown').removeClass('dropdown-open');
             $('.utility-search').find('.utility-has-dropdown').removeClass('dropdown-open').attr('aria-expanded', 'false');
           }
 
           that.addClass('dropdown-open');
-          that.attr('aria-expanded', function(index, attr){
-              return attr == 'true' ? 'false' : 'true';
+          that.attr('aria-expanded', function (index, attr) {
+            return attr == 'true' ? 'false' : 'true';
           });
           $(document).on("click", onDocumentClick);
         }
       }
       //Controls for navigating submenus with arrow keys
       else {
-        if (e.keyCode === 38 ) { //up arrow key
+        if (e.keyCode === 38) { //up arrow key
           focusPrevElement($(this).find("a").first()).focus();
           return false;
-        }    
-        else if (e.keyCode === 40 ) { //down arrow key
+        } else if (e.keyCode === 40) { //down arrow key
           focusNextElement($(this).find("a").first()).focus();
           return false;
-        }
-        else if (e.keyCode === 27) { //ESC key
+        } else if (e.keyCode === 27) { //ESC key
           onDocumentClick();
           $(this).closest(".utility-cell").find("a").first().focus();
           return false;
         }
       }
     });
-    
+
     //Helper function for Utility nav controls
-    var onDocumentClick = function() {
+    var onDocumentClick = function () {
       $('li.utility-has-dropdown').removeClass('dropdown-open').attr('aria-expanded', 'false');
       $(document).off("click", onDocumentClick);
     };
-    
+
     //Removes dropdown menus when menu loses focus
-    $utilityNav.on("focusout", "li.utility-has-dropdown", function() {
+    $utilityNav.on("focusout", "li.utility-has-dropdown", function () {
       //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
       //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
       var that = $(this);
-      setTimeout(function() {
+      setTimeout(function () {
         if (that.find(":focus").length === 0) {
           that.removeClass('dropdown-open');
           that.attr('aria-expanded', 'false');
         }
       }, 50);
     });
-    
+
     //Login nav trigger
-    $('.login-trigger').on('keydown', 'a.primary-nav-icon', function (e) {     
+    $('.login-trigger').on('keydown', 'a.primary-nav-icon', function (e) {
       if ($(this).parent().attr('aria-expanded') == "true") {
-        if (e.keyCode === 40 ) { //Down arrow key
+        if (e.keyCode === 40) { //Down arrow key
           focusNextElement($(this)).focus();
           return false;
         }
-      }
-      else {
+      } else {
         //Spacebar, Down, or Enter Key
         if (e.keyCode === 32 || e.keyCode === 40 || e.keyCode === 13) {
           $(this).parent().attr('aria-expanded', 'true');
           return false;
         }
       }
-    });   
-  
+    });
+
     $('.login-trigger').on("keydown mouseenter", ".login-menu a", function (e) {
-      if (e.keyCode === 38 ) { //Up arrow key
+      if (e.keyCode === 38) { //Up arrow key
         focusPrevElement($(this)).focus();
         return false;
-      }    
-      else if (e.keyCode === 40 ) { //Down arrow key
+      } else if (e.keyCode === 40) { //Down arrow key
         focusNextElement($(this)).focus();
         return false;
-      }
-      else if (e.keyCode === 27) { //ESC key
+      } else if (e.keyCode === 27) { //ESC key
         $(this).closest('.login-trigger').attr('aria-expanded', 'false');
         $(this).closest('.login-trigger').find('a').first().focus();
         return false;
       }
     });
-  
-    $('.login-trigger').on("focusout mouseleave", function() {
+
+    $('.login-trigger').on("focusout mouseleave", function () {
       //Timeout function is neccesary because there is a slight delay when tabbing between a top level and sub level nav item
       //Need to store $(this) because after timeout, $(this) is not neccesarily the element that triggered the event anymore
       var that = $(this);
-      setTimeout(function() {
+      setTimeout(function () {
         if (that.find(":focus").length === 0) {
           that.attr('aria-expanded', 'false');
         }
@@ -267,32 +255,32 @@ var OmniNav2 = (function() {
     });
 
     var hideSearchResultsTimeoutId = null;
-    $(window).on('resize', function() {
+    $(window).on('resize', function () {
       clearTimeout(hideSearchResultsTimeoutId);
       hideSearchResultsTimeoutId = setTimeout(hideSearchResults, 250);
     });
   };
 
-  var hideSearchResults = function() {
-    if ( searchAPI.isOpen() ) {
+  var hideSearchResults = function () {
+    if (searchAPI.isOpen()) {
       searchAPI.hideResults();
     }
   };
 
-  var getOmninavHeight = function() {
+  var getOmninavHeight = function () {
     // Primary Nav
     // The primary nav will always show, this is the minimum
     var height = OMNINAV_BASE_HEIGHT;
 
     // On mobile screen, omninav is always just primary nav
-    if ( $(window).width() < TABLET_BREAKPOINT ) {
+    if ($(window).width() < TABLET_BREAKPOINT) {
       return height;
     }
 
     // Global Nav
     // Always stacked on tablet, so should be primary nav + global nav height
     var isTabletSize = ($(window).width() >= TABLET_BREAKPOINT) && ($(window).width() < DESKTOP_BREAKPOINT);
-    if ( isTabletSize) {
+    if (isTabletSize) {
       height += OMNINAV_BASE_HEIGHT;
     }
 
@@ -301,37 +289,38 @@ var OmniNav2 = (function() {
     return height;
   };
 
-  var getUrlParams = function() {
+  var getUrlParams = function () {
     // ex. ?openregion=1
     var searchString = window.location.search.substring(1);
     //ex. #john-doe
     var anchorName = window.location.hash;
 
-    if ( searchString.indexOf('=') > -1 ) {
+    if (searchString.indexOf('=') > -1) {
       var urlParams = {};
       var e,
-      a = /\+/g,  // Regex for replacing addition symbol with a space
-      r = /([^&=]+)=?([^&]*)/g,
-      d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
-      q = window.location.search.substring(1);
+        a = /\+/g, // Regex for replacing addition symbol with a space
+        r = /([^&=]+)=?([^&]*)/g,
+        d = function (s) {
+          return decodeURIComponent(s.replace(a, " "));
+        },
+        q = window.location.search.substring(1);
 
       while (e = r.exec(q)) urlParams[d(e[1])] = d(e[2]);
       return urlParams;
-    }
-    else {
+    } else {
       return anchorName;
     }
   };
 
-  var repositionForCollabsibleAnchor = function(urlParams, omninavHeight) {
+  var repositionForCollabsibleAnchor = function (urlParams, omninavHeight) {
     /* Used with the Collapsible Region widget */
     if ((urlParams["openregion"] != undefined) &&
-        (urlParams["openregion"] == parseInt(urlParams["openregion"])) &&
-        (urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length)) {
+      (urlParams["openregion"] == parseInt(urlParams["openregion"])) &&
+      (urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length)) {
 
       // Offset for zero based arrays
       if (urlParams["openregion"] != 0)
-          urlParams["openregion"] = urlParams["openregion"] - 1;
+        urlParams["openregion"] = urlParams["openregion"] - 1;
 
       var $activeElementRegion = $(".collapsibles-widget .accordion").eq(urlParams["openregion"]);
 
@@ -345,23 +334,23 @@ var OmniNav2 = (function() {
       $activeElementRegion.siblings().find("div.content").hide();
 
       // Scroll to the active element (add offset for omninav height)
-      setTimeout(function(){
+      setTimeout(function () {
         $('html, body').stop().animate({
-          scrollTop:$activeElementRegion.offset().top - omninavHeight
-        },1000);
-      },250);
+          scrollTop: $activeElementRegion.offset().top - omninavHeight
+        }, 1000);
+      }, 250);
     }
   };
 
-  var repositionForTabAnchor = function(urlParams, omninavHeight) {
+  var repositionForTabAnchor = function (urlParams, omninavHeight) {
     /* Used with the Tab widget */
     if ((urlParams["startingtab"] != undefined) &&
-        (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) &&
-        (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
+      (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) &&
+      (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
 
       // Offset for zero based arrays
       if (urlParams["startingtab"] != 0)
-          urlParams["startingtab"] = urlParams["startingtab"] - 1;
+        urlParams["startingtab"] = urlParams["startingtab"] - 1;
 
       var $activeElementTab = $(".main .tabs-nav li").eq(urlParams["startingtab"]);
 
@@ -372,22 +361,22 @@ var OmniNav2 = (function() {
       $activeElementTab.parent().siblings().children("li:eq(" + urlParams["startingtab"] + ")").addClass("active").siblings().removeClass("active");
 
       // Scroll to the active element (add offset for omninav height)
-      setTimeout(function(){
+      setTimeout(function () {
         $('html, body').stop().animate({
-          scrollTop:$activeElementTab.offset().top - omninavHeight
-        },1000);
-      },250);
+          scrollTop: $activeElementTab.offset().top - omninavHeight
+        }, 1000);
+      }, 250);
     }
   };
 
-  var repositionForPersonnelAnchor = function(urlHash, omninavHeight) {
+  var repositionForPersonnelAnchor = function (urlHash, omninavHeight) {
     // Unfortunately, there isn't a uniform identifier that can be referenced throughout
     // the site at this time. So we have to cover a few cases.
     var $wysiwygLinks = $('h3.anchorLinks a, a[href="#top"]');
     var $azLinks = $('div.a-z-widget a');
 
     // Callback to reposition anchors on click.
-    var repositionAnchorsOnClick = function(e) {
+    var repositionAnchorsOnClick = function (e) {
       // Pull anchor identifer from URL hash.
       var anchorIdentifer = this.hash.slice(1);
 
@@ -403,24 +392,26 @@ var OmniNav2 = (function() {
         $target = $(idSelector);
       }
 
-      if ( $target.length ) {
+      if ($target.length) {
         e.preventDefault();
         var newTopPosition = $target.offset().top - omninavHeight;
 
-        setTimeout(function(){
-          $('html, body').stop().animate({scrollTop: newTopPosition}, 1000);
-        },250);
+        setTimeout(function () {
+          $('html, body').stop().animate({
+            scrollTop: newTopPosition
+          }, 1000);
+        }, 250);
       }
     };
 
     // Scrolls down if there is a hash initially in the current page URL
-    var repositionAnchorsFromUrl = function() {
+    var repositionAnchorsFromUrl = function () {
       // Pull anchor identifer from URL hash.
       var anchorIdentifer = urlHash.slice(1);
 
       // There will only be an anchorIdentifier for url with hash identifier. (e.g.
       // https://chapman.edu/#container. If no hash, return.)
-      if ( !anchorIdentifer ) {
+      if (!anchorIdentifer) {
         return;
       }
 
@@ -433,23 +424,22 @@ var OmniNav2 = (function() {
       // try/catch. For details, see https://github.com/chapmanu/cascade-assets/issues/295.
       try {
         var $target = $(nameSelector);
-      }
-      catch(error) {
+      } catch (error) {
         return false;
       }
 
       // If no name selector, look for ID selector.
-      if ( !$target.length ) {
+      if (!$target.length) {
         $target = $(idSelector);
       }
 
       // If target for anchorIdentifer not found, we can return or else we'll get an
       // error in animate code below.
-      if ( !$target.length ) {
+      if (!$target.length) {
         return;
       }
 
-      setTimeout(function(){
+      setTimeout(function () {
         $('html, body').stop().animate({
           scrollTop: $target.offset().top - omninavHeight
         }, 1000);
@@ -461,25 +451,25 @@ var OmniNav2 = (function() {
     $azLinks.on('click', repositionAnchorsOnClick);
   };
 
-  var onUtilityNavClick = function() {
+  var onUtilityNavClick = function () {
     // Set gradual transition for padding adjustments after initial load
     // Timing and duration match slideToggle defaults
     $('html.omni-nav-v2').css('transition', 'padding-top 400ms ease-in-out');
     $('.utility-nav-trigger').toggleClass("utility-open");
-    $('.utility-nav-trigger').attr('aria-expanded', function(index, attr){
-        return attr == 'true' ? 'false' : 'true';
+    $('.utility-nav-trigger').attr('aria-expanded', function (index, attr) {
+      return attr == 'true' ? 'false' : 'true';
     });
 
     if ($(window).width() >= DESKTOP_BREAKPOINT) {
       // slideToggle() sets display: block and overflow: hidden by default
       // utility-nav-container needs to be table-cell, and all utility-nav divs need overflow: visible
-      $utilityNav.find('.utility-nav-container').slideToggle(10, function() {
+      $utilityNav.find('.utility-nav-container').slideToggle(10, function () {
         $(this).css('display', 'table-cell');
         $(this).css('overflow', 'visible');
       });
 
       // Main utility-nav div
-      $utilityNav.toggleClass('utility-nav-open').slideToggle(function() {
+      $utilityNav.toggleClass('utility-nav-open').slideToggle(function () {
         $(this).css('overflow', 'visible');
       });
 
@@ -490,15 +480,14 @@ var OmniNav2 = (function() {
       // Sets focus on search input field, if utility nav is being opened
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
-        setTimeout(function(){
+        setTimeout(function () {
           $(".utility-nav").find("a").first().focus();
           //$('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
-        },300);
+        }, 300);
       }
-    }
-    else if ( $(window).width() >= TABLET_BREAKPOINT && $(window).width() < DESKTOP_BREAKPOINT ) {
+    } else if ($(window).width() >= TABLET_BREAKPOINT && $(window).width() < DESKTOP_BREAKPOINT) {
       // On tablet, utility-links don't show, only utility-search should toggle in container
-      $utilityNav.find('.utility-nav-container.utility-search').slideToggle(10, function() {
+      $utilityNav.find('.utility-nav-container.utility-search').slideToggle(10, function () {
         $(this).css('display', 'table-cell');
         $(this).css('overflow', 'visible');
       });
@@ -506,7 +495,7 @@ var OmniNav2 = (function() {
       // Make sure utility-links doesn't still have display: table-cell
       $utilityNav.find('.utility-nav-container.utility-links').css('display', 'none');
       // Main utility-nav div
-      $utilityNav.toggleClass('utility-nav-open').slideToggle(function() {
+      $utilityNav.toggleClass('utility-nav-open').slideToggle(function () {
         $(this).css('overflow', 'visible');
       });
 
@@ -517,12 +506,11 @@ var OmniNav2 = (function() {
       // Sets focus on search input field, if utility nav is being opened
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
-        setTimeout(function(){
+        setTimeout(function () {
           $('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
-        },300);
+        }, 300);
       }
-    }
-    else {
+    } else {
       $utilityNav.removeClass('utility-nav-open');
       $('html.omni-nav-v2').removeClass('utility-nav-open');
       $primaryNav.toggleClass('search-open');
@@ -545,9 +533,9 @@ var OmniNav2 = (function() {
     }
   };
 
-  var onSearchInput = function() {
+  var onSearchInput = function () {
     $('.search-icon').addClass('hide');
-    $(document).on("click", function() {
+    $(document).on("click", function () {
       // resets search input box when user clicks outside
       $utilityNav.find('input:text').val("");
       $primaryNav.find('input:text').val("");
@@ -556,24 +544,24 @@ var OmniNav2 = (function() {
   };
 
   // This module handles functionality associated with OffCanvasNav in particular.
-  var OffCanvasNav = (function() {
+  var OffCanvasNav = (function () {
 
     // Module Vars
     var $offCanvasLinks;
 
     // Module Functions
-    var initialize = function() {
+    var initialize = function () {
       $offCanvasLinks = $('#js-off-canvas-nav > ul > li > a');
       syncLinkWidths();
       bindEventHandlers();
     };
 
-    var syncLinkWidths = function() {
+    var syncLinkWidths = function () {
       var width = $('#js-off-canvas-nav > ul').width();
       $offCanvasLinks.css('width', width);
     };
 
-    var bindEventHandlers = function() {
+    var bindEventHandlers = function () {
       enableMenusToggle();
       enableOffCanvasNavHandlers();
 
@@ -583,34 +571,34 @@ var OmniNav2 = (function() {
       }
 
       var syncLinkWidthsTimeoutId;
-      $(window).on('resize', function() {
+      $(window).on('resize', function () {
         clearTimeout(syncLinkWidthsTimeoutId);
         syncLinkWidthsTimeoutId = setTimeout(syncLinkWidths, 500);
       });
     };
 
-    var enableMenusToggle = function() {
+    var enableMenusToggle = function () {
       // Enables toggle to slide main/umbrella menus back and forth.
-      $('a.toggle-menu-label').on('click', function(e) {
-        
-        
+      $('a.toggle-menu-label').on('click', function (e) {
+
+
         // Toggles headers.
         $('div#umbrella-logo, #main-logo').toggle('blind');
 
         // Slide-toggles the menus.
-        $('div#off-canvas-umbrella, div#off-canvas-main').toggle("slide", function() {
+        $('div#off-canvas-umbrella, div#off-canvas-main').toggle("slide", function () {
           $("a.toggle-menu-label:visible").first().focus();
         });
-        
+
       });
     };
 
-    var enableOffCanvasNavHandlers = function() {
+    var enableOffCanvasNavHandlers = function () {
       // Selector for close-off-canvas can't be an ID because branded pages have it in 2 places
       // SiteImprove reports duplicate IDs
       var offCanvasSelectors = '#js-off-canvas-trigger, .js-close-off-canvas-nav, #js-off-canvas-overlay';
 
-      var toggleOffCanvas = function() {
+      var toggleOffCanvas = function () {
         $('#js-off-canvas-nav-container').toggleClass('open');
         $('#js-off-canvas-overlay').toggleClass('active');
         $('body').toggleClass('no-scroll');
@@ -621,45 +609,42 @@ var OmniNav2 = (function() {
       };
 
       //If user clicks off-canvas button, or clicks off off-canvas nav
-      $(offCanvasSelectors).on('click keydown', function(e) {
+      $(offCanvasSelectors).on('click keydown', function (e) {
         if ((e.keyCode === 32 || e.keyCode === 13) || (e.type == "click")) {
           toggleOffCanvas();
           return false;
         }
       });
-      
+
       //Tabbing off last item closes menu
-      $('.off-canvas-nav').on("keydown", "#off-canvas-main .off-canvas-utility li:visible:last, #off-canvas-umbrella li:visible:last", function(e) {
+      $('.off-canvas-nav').on("keydown", "#off-canvas-main .off-canvas-utility li:visible:last, #off-canvas-umbrella li:visible:last", function (e) {
         if ((e.keyCode === 9 && !e.shiftKey) || (e.keyCode === 40)) { //Tab and not Shift+Tab OR Down arrow key
           toggleOffCanvas();
           return false;
         }
-      }); 
-      
-      $(".off-canvas-nav").on('keydown','.off-canvas-menu li', function(e) {
+      });
+
+      $(".off-canvas-nav").on('keydown', '.off-canvas-menu li', function (e) {
         if (e.keyCode === 32 || e.keyCode === 13) { //Enter or space bar
           var that = $(this).find(".toggle");
           if (that.length) { //Has a dropdown
             e.preventDefault();
             that.click();
-          }
-          else { //Regular nav links
+          } else { //Regular nav links
             $(this).find('a')[0].click();
             return false;
           }
-        }
-        else if (e.keyCode === 38 ) { //Up arrow key
+        } else if (e.keyCode === 38) { //Up arrow key
           focusPrevElement($(this)).focus();
           return false;
-        }    
-        else if (e.keyCode === 40 ) { //Down arrow key
+        } else if (e.keyCode === 40) { //Down arrow key
           focusNextElement($(this)).focus();
           return false;
         }
       });
 
       //ESC closes off-canvas nav
-      $(document).on('keydown', function(e) {
+      $(document).on('keydown', function (e) {
         if (e.keyCode === 27 && $(".off-canvas-nav-container").hasClass("open")) { //ESC key
           toggleOffCanvas();
           return false;
@@ -667,12 +652,12 @@ var OmniNav2 = (function() {
       });
 
       //Inner menu toggle
-      $('#js-off-canvas-nav-container .toggle').on('click', function() {
+      $('#js-off-canvas-nav-container .toggle').on('click', function () {
         $(this).parent().toggleClass('open'); // Targets li
         $(this).parent().find('ul').slideToggle();
       });
-      
-      
+
+
     };
 
     return {
@@ -681,14 +666,14 @@ var OmniNav2 = (function() {
   })();
 
   // Module for Navigate This Section button on mobile
-  var MobileNav = (function() {
+  var MobileNav = (function () {
     // Module Vars
     var $navThisSectionButton,
-        $leftNavMenu,
-        $omniNavHeight;
+      $leftNavMenu,
+      $omniNavHeight;
 
     // Module Functions
-    var initialize = function() {
+    var initialize = function () {
       $navThisSectionButton = $('div#mobile-nav > a.button');
       $leftNavMenu = $('.leftNav > .leftTitle');
       $omniNavHeight = getOmninavHeight();
@@ -696,7 +681,7 @@ var OmniNav2 = (function() {
       $navThisSectionButton.on('click', scrollToLeftNavOnButtonClick);
     };
 
-    var scrollToLeftNavOnButtonClick = function() {
+    var scrollToLeftNavOnButtonClick = function () {
       // OmniNav is fixed position. I'd expect this to be:
       // $leftNavMenu.offset().top + omniNavHeight
       // But testing proved otherwise.
@@ -719,47 +704,47 @@ var OmniNav2 = (function() {
   return {
     init: initialize
   };
-  
+
   //Slightly modified from https://stackoverflow.com/a/47840891/1274724
   //Main changes: added focusPrevElement function. Removed all ES6 syntax since IE sucks
-  function focusNextElement(activeElem) { 
+  function focusNextElement(activeElem) {
     var reverse = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
     activeElem = activeElem instanceof HTMLElement ? activeElem : document.activeElement;
 
     var queryString = ['a:not([disabled]):not([tabindex="-1"])', 'button:not([disabled]):not([tabindex="-1"])', 'input:not([disabled]):not([tabindex="-1"])', 'select:not([disabled]):not([tabindex="-1"])', '[tabindex]:not([disabled]):not([tabindex="-1"])'
-    /* add custom queries here */
-    ].join(','),
-        queryResult = Array.prototype.filter.call(document.querySelectorAll(queryString), function (elem) {
-      /*check for visibility while always include the current activeElement*/
-      return elem.offsetWidth > 0 || elem.offsetHeight > 0 || elem === activeElem;
-    }),
-        indexedList = queryResult.slice().filter(function (elem) {
-      /* filter out all indexes not greater than 0 */
-      return elem.tabIndex == 0 || elem.tabIndex == -1 ? false : true;
-    }).sort(function (a, b) {
-      /* sort the array by index from smallest to largest */
-      return a.tabIndex != 0 && b.tabIndex != 0 ? a.tabIndex < b.tabIndex ? -1 : b.tabIndex < a.tabIndex ? 1 : 0 : a.tabIndex != 0 ? -1 : b.tabIndex != 0 ? 1 : 0;
-    }),
-        focusable = [].concat(indexedList, queryResult.filter(function (elem) {
-      /* filter out all indexes above 0 */
-      return elem.tabIndex == 0 || elem.tabIndex == -1 ? true : false;
-    }));
+        /* add custom queries here */
+      ].join(','),
+      queryResult = Array.prototype.filter.call(document.querySelectorAll(queryString), function (elem) {
+        /*check for visibility while always include the current activeElement*/
+        return elem.offsetWidth > 0 || elem.offsetHeight > 0 || elem === activeElem;
+      }),
+      indexedList = queryResult.slice().filter(function (elem) {
+        /* filter out all indexes not greater than 0 */
+        return elem.tabIndex == 0 || elem.tabIndex == -1 ? false : true;
+      }).sort(function (a, b) {
+        /* sort the array by index from smallest to largest */
+        return a.tabIndex != 0 && b.tabIndex != 0 ? a.tabIndex < b.tabIndex ? -1 : b.tabIndex < a.tabIndex ? 1 : 0 : a.tabIndex != 0 ? -1 : b.tabIndex != 0 ? 1 : 0;
+      }),
+      focusable = [].concat(indexedList, queryResult.filter(function (elem) {
+        /* filter out all indexes above 0 */
+        return elem.tabIndex == 0 || elem.tabIndex == -1 ? true : false;
+      }));
 
     /* if reverse is true return the previous focusable element
        if reverse is false return the next focusable element */
-    return reverse ? (focusable[focusable.indexOf(activeElem) - 1] || focusable[focusable.length - 1]) 
-      : (focusable[focusable.indexOf(activeElem) + 1] || focusable[0]);
+    return reverse ? (focusable[focusable.indexOf(activeElem) - 1] || focusable[focusable.length - 1]) :
+      (focusable[focusable.indexOf(activeElem) + 1] || focusable[0]);
   }
 
   function focusPrevElement(activeElem) {
     return focusNextElement(activeElem, true);
-  } 
-  
+  }
+
 })();
 
 $(document).ready(function () {
   //prevent conflicts with omni-nav-v1
-  if($('#omni-nav-v2').length) {
+  if ($('#omni-nav-v2').length) {
     OmniNav2.init($('#omni-nav-v2'));
   }
 
