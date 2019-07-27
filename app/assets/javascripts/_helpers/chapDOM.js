@@ -54,7 +54,7 @@ var chapDOM = (function () {
     if (!this.elems.length) return
 
     if(typeof data !== 'string' && !validAttr.includes(type)) return;
-    debugger
+    
     if ( this.elems.length > 1) {
       this.each( function(elem) {
         elem.setAttribute(type, data);
