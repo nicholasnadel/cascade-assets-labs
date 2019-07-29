@@ -40,10 +40,55 @@ html {
   font-family: $font-stack-body;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 
   &.cu-companion-bar {
     padding-top: 75px !important;
   }
+}
+
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+:target:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 0;
+  height: $omniNavHeightDesktop;
+  margin-top: -$omniNavHeightDesktop;
+  z-index: -1;
+}
+
+@media (max-width:1380px) and (min-width:768px) {
+  :target:before {
+    height: $omniNavHeightMobile;
+    margin-top: -$omniNavHeightMobile;
+  }
+}
+
+:target:focus {
+  outline: none;
+}
+
+:target:focus:after {
+  content: "";
+  outline: 2px dotted $cu-red;
+  width: 110%;
+  position: absolute;
+  height: 110%;
+  left: -8px;
+  padding: 5px 13px 22px 13px;
+  top: -5px;
+}
+
+.anchorLinks a {
+  z-index: 10;
+  position: relative;
 }
 
 body {

@@ -1,0 +1,25 @@
+// primary content, right content, then left content
+@include bp(mx) {
+  .primaryContent.clearfix.threeColumns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .middleRightContainer {
+    order: 0;
+  }
+
+  .rightColumn {
+    order: 1;
+  }
+
+  .leftNav {
+    order: 2;
+  }
+
+  .editableContent img {
+    max-width: 100%;
+    height: auto;
+    margin: unset;
+  }
+}
