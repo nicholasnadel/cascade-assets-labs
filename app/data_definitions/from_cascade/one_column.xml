@@ -219,23 +219,7 @@
 				<dropdown-item show-fields="primaryContent/widget/campusMapWidget" value="Campus Map Widget"/>
 				<dropdown-item show-fields="primaryContent/widget/googleMapWidget" value="Google Map Widget"/>
 			</text>
-			<!--<group collapsed="true" identifier="GoogleMapWidgetAddress" label="Google Map Widget - Address">-->
-			<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ... &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
-			<!--      <group collapsed="true" identifier="address" label="Address">-->
-			<!--          <text help-text="Enter the building title" identifier="title" label="Title" required="true"/>-->
-			<!--          <text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>-->
-			<!--          <text help-text="Enter point of contact email address" identifier="email" label="Email Address" required="true"/>-->
-			<!--          <text identifier="latitude" label="Latitude"/>-->
-			<!--          <text identifier="longitude" label="Longitude"/>-->
-			<!--          <text identifier="street" label="Street"/>-->
-			<!--          <text identifier="city" label="City"/>-->
-			<!--          <text identifier="state" label="State"/>-->
-			<!--          <text identifier="zip" label="Zip"/>-->
-			<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
-			<!--      </group>-->
-			<!--  </group>-->
 			<group collapsed="true" identifier="googleMapWidget" label="Google Map Widget">
-				<!--<text help-text="(Campus Bird embed code that starts and ends with &lt;iframe&gt; ... &lt;/iframe&gt;)" identifier="iframe" label="iFrame Code" required="true"/>-->
 				<group collapsed="true" identifier="address" label="Address">
 					<text help-text="Enter the building name" identifier="title" label="Title" required="true"/>
 					<text help-text="Enter point of contact phone number" identifier="phone" label="Phone Number" required="true"/>
@@ -246,7 +230,6 @@
 					<text identifier="city" label="City" required="true"/>
 					<text identifier="state" label="State" required="true"/>
 					<text identifier="zip" label="Zip" required="true"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="campusMapWidget" label="Campus Map Widget">
@@ -259,7 +242,6 @@
 					<text identifier="city" label="City"/>
 					<text identifier="state" label="State"/>
 					<text identifier="zip" label="Zip"/>
-					<!--<text help-text="Enter the building address" identifier="address" label="Address" required="true"/>-->
 				</group>
 			</group>
 			<group collapsed="true" identifier="imageSliderWidget" label="Image Slider Widget">
