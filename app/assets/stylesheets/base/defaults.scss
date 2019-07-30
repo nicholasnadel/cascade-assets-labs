@@ -382,6 +382,11 @@ nav {
 img {
   border: 0;
   -ms-interpolation-mode: bicubic;
+  box-sizing: inherit;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
 }
 
 svg:not(:root) {
