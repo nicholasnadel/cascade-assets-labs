@@ -1,0 +1,192 @@
+##Import all the widget formats
+#import( "/_cascade/formats/modular/widgets/Carousel" )
+#import( "/_cascade/formats/modular/widgets/Collapsibles" )
+#import( "/_cascade/formats/modular/widgets/Featured News Events Primary Content" )
+#import( "/_cascade/formats/modular/widgets/Form Embed" )
+#import( "/_cascade/formats/modular/widgets/Form" )
+## Note funnel-2up not used in 3 column, only 2 column
+#import( "/_cascade/formats/modular/widgets/Funnels 1up" )
+#import( "/_cascade/formats/modular/widgets/Funnels 2up" )
+#import( "/_cascade/formats/modular/widgets/Logo Image Rotator" )
+#import( "/_cascade/formats/modular/widgets/Personnel" )
+#import( "/_cascade/formats/modular/widgets/Tabs" )
+#import( "/_cascade/formats/modular/widgets/Text Editor" )
+#import( "/_cascade/formats/modular/widgets/Three Photo Callout" )
+#import( "/_cascade/formats/modular/widgets/Twitter Feed" )
+#import( "/_cascade/formats/modular/widgets/25Live Calendar" )
+#import( "/_cascade/formats/modular/widgets/A-Z Listing" )
+#import( "/_cascade/formats/modular/widgets/Shared Content - Contacts Primary Content" )
+#import( "/_cascade/formats/modular/widgets/Shared Content - Degrees Primary Content" )
+#import( "/_cascade/formats/modular/widgets/Faculty Info Primary" )
+#import( "/_cascade/formats/modular/widgets/Reserved Block Format" )
+##
+#set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ( $primaryContent = $currentPage.getChild('system-data-structure').getChild('primaryContent') )
+#set ($widgets = $_XPathTool.selectNodes($primaryContent, "widget") )
+##
+<h1>
+    <span class="bullet">»</span>
+    ${_EscapeTool.xml($primaryContent.getChild('pageTitle').value)}
+</h1>
+##
+## Widgets
+#foreach ($widget in $widgets)
+##
+    #set ($widgetType = $widget.getChild('widgetType').value )
+<!-- in forEach loop for $widgetType widget -->
+##    
+    #if ($widgetType == 'Carousel')
+        #set ($displayCarousel = $widget.getChild('carousel').getChild('display-carousel').value)
+        #if ($displayCarousel == 'Yes')
+        #outputCarousel($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Collapsible Regions')
+        #set ($displayCollapsibles = $widget.getChild('collapsibleRegions').getChild('display-collapsibles').value)
+        #if ($displayCollapsibles == 'Yes')
+        #outputCollapsibles($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Form Embed') 
+        #set ($displayFormEmbed = $widget.getChild('form-embed').getChild('display-form-embed').value)
+        #if ($displayFormEmbed == 'Yes')
+        #outputFormEmbed($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Form') 
+        #set ($displayForm = $widget.getChild('form').getChild('display-form').value)
+        #if ($displayForm == 'Yes')
+        #outputForm($widget)
+        #end
+    #end
+##     
+    ## 1/15/2019 M Thomas temporarily removed on production because Yahoo YQL api to convert xml to json is unavailable,
+    ## but 1/29/2019 putting this back in on DEV only so can troubleshoot:
+    #if ($widgetType == 'Featured / News / Events') 
+        #outputFeaturedNewsEvents($widget)
+    #end
+##    
+    #if ($widgetType == 'Funnels 2up')
+        #set ($displayFunnels2up = $widget.getChild('funnels-2up').getChild('display-funnels-2up').value)
+        #if ($displayFunnels2up == 'Yes')
+        #outputFunnels2up($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Funnels 1up')
+        #set ($displayFunnels1up = $widget.getChild('funnels-1up').getChild('display-funnels-1up').value)
+        #if ($displayFunnels1up == 'Yes')
+        #outputFunnels1up($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Personnel Table')
+        #set ($displayPersonnel = $widget.getChild('personnel').getChild('display-personnel').value)
+        #if ($displayPersonnel == 'Yes')
+        #outputPersonnel($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Logo Image Rotator')
+        #set ($displayLogoRotator = $widget.getChild('logo-image-rotator').getChild('display-logo-image-rotator').value)
+        #if ($displayLogoRotator == 'Yes')
+        #outputLogoImageRotator($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Tabs')
+        #set ($displayTabs = $widget.getChild('tabs').getChild('display-tabs').value)
+        #if ($displayTabs == 'Yes')
+        #outputTabs($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Text Editor')
+        #set ($displayWYSIWYG = $widget.getChild('wysiwyg-editor').getChild('display-wysiwyg-editor').value)
+        #if ($displayWYSIWYG == 'Yes')
+        #outputWYSIWYGEditor($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Three Photo Callout')
+        #set ($displayCallout = $widget.getChild('threePhotoCallout').getChild('display-three-photo-callout').value)
+        #if ($displayCallout == 'Yes')
+        #outputThreePhotoCallout($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Twitter Feed')
+        #set ($displayTwitterFeed = $widget.getChild('twitterTimeline').getChild('display-twitter-timeline').value)
+        #if ($displayTwitterFeed == 'Yes')
+        #outputTwitterFeed($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Calendar25Live')
+        #set ($display25Live = $widget.getChild('Calendar25Live').getChild('display-25live-listing').value)
+        #if ($display25Live == 'Yes')
+        #output25LiveCalendar($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'A to Z Listing')
+        #set ($displayAtoZ = $widget.getChild('AtoZListing').getChild('display-a-z-listing').value)
+        #if ($displayAtoZ == 'Yes')
+        #outputAZblock($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Reserved Block-Formats')
+        #set ($displayReservedBlockFormat = $widget.getChild('reserved-block-formats').getChild('display-reserved-block-formats').value)
+        #if ($displayReservedBlockFormat == 'Yes')
+        #outputReservedBlockFormat($widget)
+        #end
+    #end
+##    
+    #if ($widgetType == 'Department Contact Info')
+        #if ($widget.getChild('contact').getChild('display-contact').value == 'Yes')
+            #set($wHeading = 2)
+            #if($_XPathTool.selectSingleNode($widget, "contact/heading").value != "")
+                <h2>$_EscapeTool.xml($_XPathTool.selectSingleNode($widget, "contact/heading").value)</h2>
+                #set($wHeading = 3)
+            #end
+            #if($_XPathTool.selectSingleNode($widget, "contact/copy").value.length() > 1)
+                $_SerializerTool.serialize($_XPathTool.selectSingleNode($widget, "contact/copy"), true)
+            #end
+            #displayContactsPrimary($widget, $wHeading)
+        #end
+    #end
+##
+     #if ($widgetType == 'Degree Info')
+        #if ($widget.getChild('degree').getChild('display-degree').value == 'Yes')
+            #set($wHeading = 2)
+            #if($_XPathTool.selectSingleNode($widget, "degree/heading").value != "")
+                <h2>$_EscapeTool.xml($_XPathTool.selectSingleNode($widget, "degree/heading").value)</h2>
+                #set($wHeading = 3)
+            #end
+            #if($_XPathTool.selectSingleNode($widget, "degree/copy").value.length() > 1)
+                $_SerializerTool.serialize($_XPathTool.selectSingleNode($widget, "degree/copy"), true)
+            #end
+            #displayDegreesPrimary($widget, $wHeading)
+        #end
+    #end
+##
+    #if ($widgetType == 'Faculty Info')
+        #if ($_XPathTool.selectSingleNode($widget, "faculty/display-faculty").value == 'Yes')
+            #set($wHeading = 2)
+            #if($_XPathTool.selectSingleNode($widget, "faculty/heading").value != "")
+                <h2 class="sectionHeader">$_EscapeTool.xml($_XPathTool.selectSingleNode($widget, "faculty/heading").value)</h2>
+                #set($wHeading = 3)
+            #end
+            #if($_XPathTool.selectSingleNode($widget, "faculty/copy").value.length() > 1)
+                $_SerializerTool.serialize($_XPathTool.selectSingleNode($widget, "faculty/copy"), true)
+            #end
+            #displayFacultyInfo($widget, $wHeading, $foreach.count)
+        #end
+    #end
+##
+#end
+## end Widgets

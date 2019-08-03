@@ -136,6 +136,7 @@
         <dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
         <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
         <dropdown-item show-fields="primaryContent/widget/FeaturedNewsEvents" value="Featured / News / Events"/>
+        <dropdown-item show-fields="primaryContent/widget/form-embed" value="Form Embed"/>
         <dropdown-item show-fields="primaryContent/widget/form" value="Form"/>
         <dropdown-item show-fields="primaryContent/widget/funnels-1up" value="Funnels 1up"/>
         <dropdown-item show-fields="primaryContent/widget/logo-image-rotator" value="Logo Image Rotator"/>
@@ -367,6 +368,25 @@
           </group>
         </group>
       </group>
+      <group collapsed="true" identifier="form-embed" label="Form Embed">
+    <text default="Yes" identifier="display-form-embed" label="Show" required="true" type="radiobutton">
+      <radio-item value="Yes"/>
+      <radio-item value="No"/>
+    </text>
+    <text default="Cascade Block" identifier="block-type" label="Block Type" required="true" type="radiobutton">
+      <radio-item label="Cascade Block" show-fields="primaryContent/widget/form-embed/cascade-block" value="Cascade Block"/>
+      <radio-item label="External Javascript Embed or iFrame Block" show-fields="primaryContent/widget/form-embed/external-block" value="External Block"/>
+    </text>
+    <group identifier="cascade-block" label="Cascade Block">
+      <text identifier="header" label="Header"/>
+      <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
+      <asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="code-block" label="Form Block" render-content-depth="unlimited" type="block"/>
+    </group>
+    <group identifier="external-block" label="External Block">
+      <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
+      <text help-text="paste in Javascript block provided by Embed Form action or iFrame in Formstack (check checkboxes for Don't Need Jquery or Jquery UI or Modernizer)" identifier="code-block" label="Embed or IFrame Code Block" multi-line="true" required="true"/>
+    </group>
+      </group>
       <group collapsed="true" identifier="form" label="Form">
         <text default="Yes" identifier="display-form" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
@@ -511,36 +531,39 @@
           <dropdown-item label="Art" value="ARTS"/>
           <dropdown-item label="Athletic Training Program " value="ATPE"/>
           <dropdown-item label="Biological Sciences " value="BIOL"/>
-          <dropdown-item label="Business and Economics " value="BUS"/>
+          <dropdown-item label="Business and Economics " value="BUSI"/>
           <dropdown-item label="Chapman Ability Project " value="CAPX"/>
           <dropdown-item label="Chemistry " value="CHEM"/>
           <dropdown-item label="Communication Studies " value="COMM"/>
           <dropdown-item label="Communication Sciences and Disorders " value="CSD"/>
+          <dropdown-item label="Computational and Data Science " value="CADS"/>
+          <dropdown-item label="Creative and Cultural Industries " value="CMCI"/>
           <dropdown-item label="Dance " value="DANC"/>
           <dropdown-item label="Economic Science Institute " value="ESI"/>
           <dropdown-item label="Education " value="EDUC"/>
           <dropdown-item label="Electrical Engineering and Computer Science " value="EECS"/>
           <dropdown-item label="English " value="ENGL"/>
+          <dropdown-item label="Environmental Science " value="ENV"/>
           <dropdown-item label="Film and Media Arts " value="FILM"/>
           <dropdown-item label="Food Science " value="FOOD"/>
           <dropdown-item label="Health and Strategic Communication " value="HCOM"/>
           <dropdown-item label="Health Sciences " value="HSK"/>
           <dropdown-item label="History " value="HIST"/>
-          <dropdown-item label="Human Resource Management " value="HRM"/>
+          <dropdown-item label="Honors Program " value="HNRS"/>
           <dropdown-item label="International Studies " value="INTS"/>
-          <dropdown-item label="Languages and Cultures " value="LANG"/>
+          <dropdown-item label="(World) Languages and Cultures " value="LANG"/>
           <dropdown-item label="Law " value="LAWS"/>
           <dropdown-item label="Leadership Programs " value="LEAD"/>
-          <dropdown-item label="Mathematics and Computer Science " value="COMP"/>
           <dropdown-item label="Marriage and Family Therapy " value="MFT"/>
-          <dropdown-item label="Military and Veterans Law Institute " value="MLPI"/>
-          <dropdown-item label="Conservatory of Music " value="MUSI"/>
+          <dropdown-item label="Mathematics " value="MATH"/>
+          <dropdown-item label="Music, Conservatory of " value="MUSI"/>
           <dropdown-item label="Peace Studies " value="PCST"/>
           <dropdown-item label="Pharmacy " value="PHRM"/>
           <dropdown-item label="Philosophy " value="PHIL"/>
-          <dropdown-item label="Physical Activity " value="PA"/>
+          <dropdown-item label="Physical Activity " value="PAC"/>
           <dropdown-item label="Physical Therapy " value="PT"/>
           <dropdown-item label="Physician Assistant Studies " value="PAS"/>
+          <dropdown-item label="Physics " value="PHYZ"/>
           <dropdown-item label="Physics, Computational Science and Engineering " value="PCSE"/>
           <dropdown-item label="Political Science " value="POLI"/>
           <dropdown-item label="Psychology " value="PSYC"/>
@@ -624,9 +647,9 @@
           <radio-item value="Yes"/>
           <radio-item value="No"/>
         </text>
-        <text type="radiobutton" identifier="style" label="Style" default="One" required="true">
-          <radio-item value="One" label="One (light background)"/>
-          <radio-item value="Two" label="Two (dark background)"/>
+        <text default="One" identifier="style" label="Style" required="true" type="radiobutton">
+          <radio-item label="One (light background)" value="One"/>
+          <radio-item label="Two (dark background)" value="Two"/>
         </text>
         <asset identifier="image" label="Image (206px wide)" type="file"/>
         <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text"/>
