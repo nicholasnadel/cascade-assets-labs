@@ -122,6 +122,8 @@
 .toggle-expand-collapse {
   display: block;
   float: right;
+  cursor: pointer;
+  border-bottom: 2px dotted #a50034;
 }
  
 .accordion.active .content {
@@ -132,5 +134,9 @@
    .expanded {
      display: block; 
     overflow: visible;
+   }
+   
+   :focus { 
+    outline: 2px dotted $cu-red;
    }
 }
