@@ -1,0 +1,28 @@
+#macro(outputFormEmbed $element)  
+##
+	#set ( $blockType = $element.getChild('form-embed').getChild('block-type').value )
+##
+	#if ($blockType == "Cascade Block")
+		#set ( $header = $element.getChild('form-embed').getChild('cascade-block').getChild('header').value )
+		#set ( $codeBlock = $element.getChild('form-embed').getChild('cascade-block').getChild('code-block').getChild('content').getChild('system-data-structure').value )
+		#set ( $copy = $_SerializerTool.serialize($element.getChild('form-embed').getChild('cascade-block').getChild('copy'),true) )
+		<div class="form-embed-widget">
+			#if ($header != '')
+				<h2>${_EscapeTool.xml($header)}</h2>
+			#end
+			#if (!$_PropertyTool.isNull($copy))
+				<p>$copy</p>
+			#end
+			$codeBlock
+		</div>
+	#elseif ($blockType == "External Block") 
+		#set ( $codeBlock = $element.getChild('form-embed').getChild('external-block').getChild('code-block').value )
+		#set ( $copy = $_SerializerTool.serialize($element.getChild('form-embed').getChild('external-block').getChild('copy'),true) )
+		<div class="form-embed-widget">
+			#if (!$_PropertyTool.isNull($copy))
+				<p>$copy</p>
+			#end
+			<!--#protect$codeBlock#protect-->
+		</div>
+	#end
+#end
