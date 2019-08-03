@@ -119,19 +119,18 @@
   z-index: 1;
 }
 
-.toggle-expand-collapse.collapsed::before {
+.toggle-expand-collapse {
   display: block;
   float: right;
-  content: "Expand All";
-}
-.toggle-expand-collapse::before {
-  display: block;
-  float: right;
-  content: "Collapse All";
 }
  
 .accordion.active .content {
    .hidden {
     display: none; 
+    overflow: hidden;
+   }
+   .expanded {
+     display: block; 
+    overflow: visible;
    }
 }
