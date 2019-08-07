@@ -44,10 +44,7 @@ $(function () {
         $('.collapsibles-widget .toggle-expand-collapse.expand').show().focus();
       }
     })
-
   }
-
-
   $('.collapsibles-widget .toggle-expand-collapse.collapse').hide();
   expandAll();
   collapseAll();
