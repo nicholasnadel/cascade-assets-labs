@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'web_services/index', to: 'web_services#index'
+
+  get 'web_services/page', to: 'web_services#page'
+
+  get 'web_services/format', to: 'web_services#format'
+
+  get 'web_services/block', to: 'web_services#block'
+
+  get 'web_services/data_definition', to: 'web_services#data_definition'
+
   get 'simplify/masthead'
 
   root 'dashboard#index'
