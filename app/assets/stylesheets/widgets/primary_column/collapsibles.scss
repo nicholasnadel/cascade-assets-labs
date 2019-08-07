@@ -118,3 +118,26 @@
 .collapsibles-widget .accordion:active h3.header {
   z-index: 1;
 }
+
+.toggle-expand-collapse {
+  display: block;
+  float: right;
+  cursor: pointer;
+  border-bottom: 2px dotted #a50034;
+  color: $cu-red;
+}
+ 
+.accordion.active .content {
+   .hidden {
+    display: none; 
+    overflow: hidden;
+   }
+   .expanded {
+     display: block; 
+    overflow: visible;
+   }
+   
+   :focus { 
+    outline: 2px dotted $cu-red;
+   }
+}
