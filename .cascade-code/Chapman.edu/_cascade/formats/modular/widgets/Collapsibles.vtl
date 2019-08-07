@@ -7,15 +7,14 @@
 
 ##
     <div class="collapsibles-widget">
-##
-    <div class="toggle-expand-collapse expand" onClick="expandAll()" tabindex="0">Expand All</div>
-    <div class="toggle-expand-collapse collapse" onClick="collapseAll()" tabindex="0">Collapse All</div>
-
     #if ($mainheader != '')
         <h2 class="sectionHeader">${_EscapeTool.xml($mainheader)}</h2>
     #end 
     #if ($element.getChild('collapsibleRegions').getChild('copy').value != "" or $element.getChild('collapsibleRegions').getChild('copy').getChildren().size() > 0)
-        <div class="editableContent summaryText">$sectionCopy</div>
+        <div class="editableContent summaryText">$sectionCopy
+          <div class="toggle-expand-collapse expand" onClick="expandAll()" tabindex="0" aria-label="Expand all accordions">Expand All</div>
+          <div class="toggle-expand-collapse collapse" onClick="collapseAll()" tabindex="0" aria-label="Collapse all accordions">Collapse All</div>
+        </div>
     #end
 ##
     #foreach ($collapsible in $collapsibles)
