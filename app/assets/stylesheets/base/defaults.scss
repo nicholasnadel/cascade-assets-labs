@@ -63,7 +63,7 @@ html {
   }
 
   @include respond(big-desktop) {
-    font-size: 75%; //1rem = 12, 12/16
+    font-size: 62.5%; 
   }
 
   &.cu-companion-bar {
@@ -115,17 +115,27 @@ html {
 }
 
 body {
+  line-height: 2.4rem;
   @include paragraph;
   line-height: initial;
   margin: 0;
   padding: 0;
   color: $cu-font-color;
   font-family: $font-stack-body;
-  font-size:  1.6 rem;
+  font-size: 1.6 rem;
   height: auto;
 
   &.personnel .main {
     margin-left: 0;
+  }
+
+  h4,
+  .faux-h4,
+  h5,
+  .faux-h5,
+  h6,
+  .faux-h6 {
+    font-weight: 600;
   }
 }
 
@@ -570,7 +580,7 @@ h2,
 
 h3,
 .faux-h3 {
-  font-size:  2.1rem;
+  font-size: 2.1rem;
   font-weight: 600;
   line-height: 1.4em;
 }
@@ -578,13 +588,15 @@ h3,
 h4,
 .faux-h4 {
   font-size: 1.8 rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 h5,
-.faux-h5 {
-  font-size: 14px;
-  font-weight: 500;
+.faux-h5,
+h6,
+.faux-h6 {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .fas.fa-external-link-alt {
@@ -592,3 +604,8 @@ h5,
   margin-left: 2px;
   text-indent: 0;
 }
+
+body  {
+  line-height: 2.4rem;
+}
+
