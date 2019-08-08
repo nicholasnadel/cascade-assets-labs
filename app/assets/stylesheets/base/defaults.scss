@@ -59,7 +59,7 @@ html {
 
   @include respond(tab-port) {
     // width < 900?
-    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+    font-size: 58%; //1 rem = 8px, 8/16 = 50%
   }
 
   @include respond(big-desktop) {
@@ -568,27 +568,33 @@ h6,
 h1,
 .faux-h1 {
   font-size: 3.2rem;
-  font-weight: 800;
+  line-height: 3.6rem;
+  font-weight: 800rem;
+  margin-top: 2rem;
 }
 
 h2,
 .faux-h2 {
   font-size: 2.4rem;
   font-weight: 600;
-  line-height: 1.2em;
+  line-height: 2.8rem;
+  margin-top: 2rem;
 }
 
 h3,
 .faux-h3 {
   font-size: 2.1rem;
   font-weight: 600;
-  line-height: 1.4em;
+  line-height: 2.5rem;
+  margin-top: 2rem;
 }
 
 h4,
 .faux-h4 {
   font-size: 1.8 rem;
+  line-height: 2.2rem;
   font-weight: 600;
+  margin-top: 2rem;
 }
 
 h5,
@@ -596,7 +602,9 @@ h5,
 h6,
 .faux-h6 {
   font-size: 1.4rem;
+  line-height: 1.8rem;
   font-weight: 600;
+  margin-top: 2rem;
 }
 
 .fas.fa-external-link-alt {
@@ -606,6 +614,6 @@ h6,
 }
 
 body  {
-  line-height: 2.4rem;
+  line-height: 2rem;
 }
 
