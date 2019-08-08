@@ -1,3 +1,11 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
 #theme {
   @include theme-color-classes($red);
 
@@ -41,12 +49,27 @@ html {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12, 12/16
+  }
 
   &.cu-companion-bar {
     padding-top: 75px !important;
   }
 }
-
 
 @media screen and (prefers-reduced-motion: reduce) {
   html {
@@ -98,6 +121,7 @@ body {
   padding: 0;
   color: $cu-font-color;
   font-family: $font-stack-body;
+  font-size:  1.6 rem;
   height: auto;
 
   &.personnel .main {
@@ -438,7 +462,6 @@ table {
   button,
   input {
     *overflow: auto;
-
   }
 
   caption {
@@ -534,29 +557,27 @@ h6,
 
 h1,
 .faux-h1 {
-  font-size: 30px;
+  font-size: 3.2rem;
   font-weight: 800;
 }
 
 h2,
 .faux-h2 {
-  font-size: 20px;
+  font-size: 2.4rem;
   font-weight: 600;
   line-height: 1.2em;
 }
 
 h3,
 .faux-h3 {
-  font-size: 16px;
+  font-size:  2.1rem;
   font-weight: 600;
   line-height: 1.4em;
-  margin-top: 30px;
-  margin-bottom: 15px;
 }
 
 h4,
 .faux-h4 {
-  font-size: 14px;
+  font-size: 1.8 rem;
   font-weight: 500;
 }
 
