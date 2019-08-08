@@ -250,9 +250,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 //Paragraphs
 @mixin paragraph() {
-  font-size: 16px;
-  line-height: 20px;
-  margin:0 0 10px 0;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin:0 0 0.625rem 0;
   font-weight: 400;
 }
 
