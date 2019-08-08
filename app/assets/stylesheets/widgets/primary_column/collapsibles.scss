@@ -135,9 +135,16 @@
   display: block;
   float: right;
   cursor: pointer;
-  border-bottom: 2px dotted #a50034;
+  border-bottom: 2px dotted ;
   color: $cu-red;
   padding-top: 1.5rem;
+
+  &:focus {
+    outline: unset;
+    outline: 2px dotted $cu-red;
+    outline-offset: 2px;
+    border-bottom: none;
+  }
 }
 
 .editableContent.summaryText {
