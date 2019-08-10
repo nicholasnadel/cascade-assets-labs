@@ -35,6 +35,7 @@ npm-debug.log
 # Top Secret
 /config/local_env.yml
 /config/application.yml
+**/application.yml
 
 # VSCode Settings
 .vscode/settings.json

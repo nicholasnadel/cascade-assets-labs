@@ -37,7 +37,7 @@ task pull: :environment do
   response['asset']['folder']["children"].each do |child|
     # IDENTIFIERS
     id = child['id']
-    format_url = 'https://dev-cascade.chapman.edu/api/v1/read/format/' + id + '?u=username &p=pass'
+    format_url = 'https://dev-cascade.chapman.edu/api/v1/read/format/' + id + cascade_username + cascade_password
     # puts format_url
 
     # GET EACH FORMAT'S VELOCITY CODE - AKA "script"
