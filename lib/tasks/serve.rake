@@ -14,19 +14,38 @@ end
 
 desc "Pulls staging velocity formats to local machine"
 task pull: :environment do
-  # SET THIS IN APPLICATION.YML (A LA FIGARO 🐈) 
-  cascade_username = 'u=' + ENV['CASCADE_USERNAME']
+  # 1) BASE URL 
+  base_url = 'https://dev-cascade.chapman.edu/api/v1/'
+
+  # 2) REST API ACTION
+  # https://wimops.chapman.edu/wiki/WWW#Key_Links
+  # https://www.hannonhill.com/cascadecms/latest/developing-in-cascade/rest-api/index.html
+  rest_action = "read/" # keep trailing slash
+
+  # 3) ASSET TYPE
+  # THIS IS EASY TO FIND IN CASCADE'S EDIT/PREVIEW URL
+  # IE 
+  asset_type = 'folder/'
+
+  # 4) ASSET PATH
+  # YOU CAN ALSO USE ITS ID... BUT THE PATH IS UNAMBIGUOUS
+  asset_path = "Chapman.edu/_cascade/formats/modular/widgets/nick-1-col" # NO TRAILING SLASH
+
+  # SET THESE IN APPLICATION.YML (A LA FIGARO 🐈)
+  cascade_username = '?u=' + ENV['CASCADE_USERNAME']
   cascade_password = '&p=' + ENV['CASCADE_PASSWORD']
 
-  url = 'https://dev-cascade.chapman.edu/api/v1/read/folder/Chapman.edu/_cascade/formats/modular/widgets/nick-1-col?'
-  full_url = url + cascade_username + cascade_password
+  # THE CONSTRUCTED URL SHOULD LOOK SOMETHING LIKE:
+  # "https://dev-cascade.chapman.edu/api/v1/read/folder/Chapman.edu/_cascade/formats/modular/widgets/foldername?u=username&p=password"
 
+  url = base_url + rest_action + asset_type + asset_path + cascade_username + cascade_password
+
+  puts url
 
   response = HTTParty.get(url)
   response = response.parsed_response
 
   widgets = response["asset"]["folder"]["children"]
-  # 🔑 = response["asset"]["folder"]["children"][0].keys
   🔑 = response["asset"]["folder"]["children"]
 
   # # CREATE BACKUPS
