@@ -18,9 +18,9 @@ task pull: :environment do
   # ie https://dev-cascade.chapman.edu/entity/open.act?id=7f74b81ec04d744c7345a74906ded22a&type=page
   asset_type = 'folder/' # ! KEEP TRAILING SLASH 
 
-  # * 4) ASSET PATH
-  # you can also use its id... but the path is unambiguous
-  asset_path = "Chapman.edu/_cascade/formats/modular/widgets/nick-1-col" # ! NO TRAILING SLASH
+  # * 4) ASSET PATH OR ID
+  # you can also use its path (ie "Chapman.edu/_cascade/formats/modular/widgets/1-column")... but.. whitespace.
+  asset_path = "c7980059c04d744c4832d6757ebbde37" # ! NO TRAILING SLASH
 
   # * 5) SECRETS
   # set these in application.yml (a la figaro 🐈)
