@@ -11,12 +11,12 @@ task pull: :environment do
   # * 2) REST API ACTION
   # https://wimops.chapman.edu/wiki/WWW#Key_Links
   # https://www.hannonhill.com/cascadecms/latest/developing-in-cascade/rest-api/index.html
-  rest_action = "read/" # ! keep trailing slash
+  rest_action = "read/" # ! KEEP TRAILING SLASH
 
   # * 3) ASSET TYPE
   # this is easy to find in cascade's edit/preview url
   # ie https://dev-cascade.chapman.edu/entity/open.act?id=7f74b81ec04d744c7345a74906ded22a&type=page
-  asset_type = 'folder/' # ! keep trailing slash 
+  asset_type = 'folder/' # ! KEEP TRAILING SLASH 
 
   # * 4) ASSET PATH
   # you can also use its id... but the path is unambiguous
@@ -32,7 +32,7 @@ task pull: :environment do
 
   url = base_url + rest_action + asset_type + asset_path + cascade_username + cascade_password
 
-  puts url
+  # puts url
 
   response = HTTParty.get(url)
   response = response.parsed_response
@@ -42,13 +42,16 @@ task pull: :environment do
 
   # # CREATE BACKUPS
   # TO DO: MIRROR CASCADE'S ACTUAL STRUCTURE AND PROGRAMMATICALLY ORGANIZE THESE INSTEAD OF DUMPING THEM INTO THE SAME FOLDER
+  one_column_widgets_dir = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/."
   backup_dir = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/format_backups/"
   FileUtils.mkdir_p(backup_dir) unless File.directory?(backup_dir)
 
+  timestamp = Time.now.strftime('%H-%M-%S_%Y-%m-%d').to_s
+  one_column_widgets_dir_backup = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column-".concat(timestamp)
 
-
+  FileUtils.cp_r one_column_widgets_dir, one_column_widgets_dir_backup
+  
   response['asset']['folder']["children"].each do |child|
-
     # IDENTIFIERS
     id = child['id']
     format_url = 'https://dev-cascade.chapman.edu/api/v1/read/format/' + id + cascade_username + cascade_password
@@ -59,12 +62,18 @@ task pull: :environment do
     response = response.parsed_response
     puts response["asset"]["scriptFormat"]["script"]
     format_name = response["asset"]["scriptFormat"]["name"]
+    
+    current_formats_directory = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/"
+    FileUtils.mkdir_p(current_formats_directory) unless File.directory?(current_formats_directory)
+
     filetype = ".vtl"
     # WRITE EACH TO A LOCAL FILE
-    open(backup_dir + format_name + ".vtl", 'w') { |f|
+    open(current_formats_directory + format_name + ".vtl", 'w') { |f|
       f.puts response["asset"]["scriptFormat"]["script"]
     }
     puts format_name.upcase!
   end
+
   system %(open "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/format_backups/")
+
 end
