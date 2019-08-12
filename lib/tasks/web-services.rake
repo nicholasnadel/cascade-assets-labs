@@ -42,8 +42,8 @@ task pull: :environment do
 
   # # CREATE BACKUPS
   # TO DO: MIRROR CASCADE'S ACTUAL STRUCTURE AND PROGRAMMATICALLY ORGANIZE THESE INSTEAD OF DUMPING THEM INTO THE SAME FOLDER
-  one_column_widgets_dir = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/."
-  backup_dir = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/format_backups/"
+  one_column_widgets_dir = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/"
+  backup_dir = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/"
   FileUtils.mkdir_p(backup_dir) unless File.directory?(backup_dir)
 
   timestamp = Time.now.strftime('%H-%M-%S_%Y-%m-%d').to_s
@@ -74,6 +74,6 @@ task pull: :environment do
     puts format_name.upcase!
   end
 
-  system %(open "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/format_backups/")
+  system %(open "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/")
 
 end
