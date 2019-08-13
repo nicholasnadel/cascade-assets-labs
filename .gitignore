@@ -31,6 +31,6 @@ node_modules
 db/data.yml
 npm-debug.log
 *.log
-config/local_env.yml
+
 # VSCode Settings
 .vscode/settings.json

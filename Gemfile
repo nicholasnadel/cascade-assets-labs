@@ -62,7 +62,6 @@ end
 
 # Gems for Development and Test
 group :development, :test do
-  gem 'link_thumbnailer'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 

@@ -43,8 +43,4 @@ Rails.application.configure do
   # no cache money
 config.assets.cache_store = :null_store  # Disables the Asset cache
 config.sass.cache = false  # Disable the SASS compiler cache
-# Do not compress assets
-config.assets.compress = false
-# Expands the lines which load the assets
-config.assets.debug = true
 end
