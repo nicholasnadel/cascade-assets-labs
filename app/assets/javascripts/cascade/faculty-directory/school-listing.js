@@ -1,8 +1,11 @@
 $(function () {
-    // NOTE: this script is for the school or dept-specific faculty listing pages 
-    // eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
+    // NOTE: this script is 1 of 2 versions of Search for school/depts Faculty listings pages. 
+    // Not for /our-faculty/index.aspx.
+    // this version only offers All or Tenure filter options (not FULL TIME) and defaults to All.
+		// Used by most schools (except Law and now Schmid College) 
+    // eg /copa/faculty-directory.aspx.
     // this is from level/js/faculty.js in Cascade
-    if ( document.getElementById("deptFacultyDirectorySearch") != null ) {
+    if ( document.getElementById("school_FacDirSearch_withoutFT") != null ) {
         var devUrl = "//chapmanfaculty.dev.breilabs.com",
             prodUrl = "//" + window.location.hostname,
             page = 0,

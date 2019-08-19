@@ -1,6 +1,6 @@
 $(function () {
     // NOTE: this script is used only for the main listing page /our-faculty/index.aspx, 
-    // not for the school/dept specific listing pages. They use faculty.js.
+    // not for the school/dept specific listing pages. 
     if ( document.getElementById("mainFacultyDirectorySearch") != null ) {
         var devUrl = "//chapmanfaculty.dev.breilabs.com",
             prodUrl = "//" + window.location.hostname,

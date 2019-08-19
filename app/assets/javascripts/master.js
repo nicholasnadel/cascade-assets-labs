@@ -45,9 +45,9 @@
 //= require cascade/level/plugins/tipsy
 //= require cascade/level/accordion
 //= require cascade/level/degrees-programs
-//= require cascade/level/directory
-//= require cascade/level/faculty
-//= require cascade/level/faculty-law
+//= require cascade/faculty-directory/main-listing
+//= require cascade/faculty-directory/school-listing
+//= require cascade/faculty-directory/school-listing-with-ft-option
 //= require cascade/level/feature
 //= require cascade/level/flickr-picasa
 //= require cascade/level/funnel
