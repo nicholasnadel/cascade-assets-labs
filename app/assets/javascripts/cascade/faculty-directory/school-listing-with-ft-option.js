@@ -1,8 +1,9 @@
 $(function () {
-    // NOTE: this script is for the LAW SCHOOL faculty listing page only, 
-    // not /our-faculty/index.aspx or other school/dept listings
-    // this is from level/js/faculty-law.js in Cascade
-    if ( document.getElementById("LAWFacultyDirectorySearch") != null ) {
+    // NOTE: this script is 1 of 2 versions of Search for school/depts Faculty listings pages. 
+    // Not for /our-faculty/index.aspx.
+    // this version shows the Full-Time filter option and defaults to Full-Time.
+		// Mostly used by Law School and now Schmid College.
+    if ( document.getElementById("school_FacDirSearch_withFT") != null ) {
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
@@ -43,11 +44,13 @@ $(function () {
             switch (relativePath) {                
                 case "/law/law-faculty/index".toLowerCase():
                     return "SOL";                
-                default:
+                case "/scst/about/faculty-directory".toLowerCase():
+                		return "COS";
+								default:
                     return "";
             }
         })(),
-        //this faculty-law.js was copied from faculty.js. In that version departmentFilter and groupFilter were set thru Case logic.
+        //this script was copied from faculty.js. In that version departmentFilter and groupFilter were set thru Case logic.
         //rather than changing too much in this version of js, just set these two to blank and left rest of function as is.
         //not ideal. quick fix. should be done better later
         departmentFilter = "",

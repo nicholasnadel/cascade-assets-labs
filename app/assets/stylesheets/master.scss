@@ -4,8 +4,11 @@
 // Types of elements on the page
 @import "components/**/*";
 
-// Old page layout styles
+// page layout styles (not old, still in use)
 @import "layout_old/**/*";
+
+// Faculty Directory application layout styles
+@import "faculty-directory/*";
 
 // Styles for regions
 @import "regions/**/*";
