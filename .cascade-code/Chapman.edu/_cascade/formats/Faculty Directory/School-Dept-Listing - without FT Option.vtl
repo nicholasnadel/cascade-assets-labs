@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+     
+<xsl:template match="/">
+
+    <xsl:if test="system-index-block/calling-page/system-page/system-data-structure/primaryContent/facultySpotlight/show='Yes'">
+        <div class="facultySpotlight clearfix">
+
+            <xsl:for-each select="system-index-block/calling-page/system-page/system-data-structure/primaryContent/facultySpotlight/video">
+                    <a class="video">
+                        <xsl:choose>
+                            <xsl:when test="not(internalLink/path='/')">
+                                <xsl:attribute name="href"><xsl:value-of select="internalLink/path"/></xsl:attribute>
+                                <img alt="{altText}" src="{posterImage/path}"/>         
+                                <div class="playButton"></div>
+                            </xsl:when>
+                            <xsl:when test="link/text()">
+                                <xsl:attribute name="href"><xsl:value-of select="link"/></xsl:attribute>
+                                <img alt="{altText}" src="{posterImage/path}"/>         
+                                <div class="playButton"></div>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <img alt="{altText}" src="{posterImage/path}"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </a>                        
+            </xsl:for-each>
+            
+            <div class="copy">
+                <h2>Faculty Spotlight</h2>
+                <div class="editableContent">
+                    <xsl:copy-of select="system-index-block/calling-page/system-page/system-data-structure/primaryContent/facultySpotlight/copy/node()"/>
+                </div>
+            </div>
+        </div>
+    </xsl:if>
+
+    <h2>Search Faculty</h2>
+    <div class="directorySearch" id="school_FacDirSearch_withoutFT">
+        <div class="filters">
+            <fieldset>
+                <legend>FILTER BY:</legend>
+                <input checked="checked" id="showAll" name="scope" type="radio" value="Show All"/>
+                <label for="showAll">Show All</label>
+                <input id="tenure" name="scope" type="radio" value="Tenure"/>
+                <label for="tenure">Tenured/Tenure-track</label>
+                <input id="directorySearchBox" placeholder="Enter keyword to search" title="Enter keyword to search" type="text" width="100px"/>
+                <a class="button directorySearchButton">Search</a>
+            </fieldset>
+        </div>
+
+    </div>
+    
+    <div class="facultyList clearfix">    
+        <div class="summary">
+            <h2 class="resultsFor">
+                <span class="totalResults"></span> Results
+            </h2>
+        </div>
+        <div class="pagingInfo">
+            <span class="rangeLower"></span>-<span class="rangeUpper"></span> of <span class="totalResults"></span> results
+            <span class="pagingNavigation">
+                <span class="first" title="Go to the first page of faculty results">First</span>
+                <span class="previous" title="Go to the previous page of faculty results">Previous</span>
+                <span class="next" title="Go to the next page of faculty results">Next</span>
+                <span class="last" title="Go to the last page of faculty results">Last</span>
+            </span>
+        </div> 
+    </div>
+
+</xsl:template>  
+    
+</xsl:stylesheet>

@@ -4,7 +4,7 @@
 }
 
 .collapsibles-widget .summaryText {
-  margin-bottom:10px;
+  margin-bottom: 10px;
   line-height: 20px;
 }
 
@@ -17,6 +17,7 @@
   &.first {
     margin-top: 20px;
   }
+
   table {
     width: 100%;
   }
@@ -37,7 +38,8 @@
     font-weight: 600;
     text-transform: none;
 
-    .show, .hide {
+    .show,
+    .hide {
       background-image: image-url('miscButtons.png');
       background-position: -23px 0;
       background-repeat: no-repeat;
@@ -49,22 +51,27 @@
       width: 27px;
       height: 27px;
     }
+
     .show {
       background-position: -23px 0;
       display: block;
+
       &:hover {
         background-position: -51px 0;
         display: block;
       }
     }
+
     .hide {
       background-position: -23px -29px;
       display: none;
+
       &:hover {
         background-position: -51px -29px;
         display: none;
       }
     }
+
     &:focus {
       outline: 2px dotted $cu-red;
       outline-offset: 5px;
@@ -76,6 +83,7 @@
     header {
       background-color: $white;
     }
+
     .header {
       font-weight: 800;
       background: $white;
@@ -83,6 +91,7 @@
       .show {
         display: none;
       }
+
       .hide {
         display: block;
       }
@@ -91,12 +100,15 @@
 
   .ie7 & {
     zoom: normal;
+
     &.active header {
       background-color: $white;
     }
+
     h3 {
       zoom: normal;
     }
+
     .header {
       background-color: #d8d8d8;
       overflow: hidden;
@@ -117,4 +129,39 @@
  */
 .collapsibles-widget .accordion:active h3.header {
   z-index: 1;
+}
+
+.toggle-expand-collapse {
+  display: block;
+  float: right;
+  cursor: pointer;
+  border-bottom: 2px dotted ;
+  color: $cu-red;
+
+  &:focus {
+    outline: unset;
+    outline: 2px dotted $cu-red;
+    outline-offset: 2px;
+    border-bottom: none;
+  }
+}
+
+.editableContent.summaryText {
+  padding-bottom: 1.5rem;
+}
+
+.accordion.active .content {
+  .hidden {
+    display: none;
+    overflow: hidden;
+  }
+
+  .expanded {
+    display: block;
+    overflow: visible;
+  }
+
+  :focus {
+    outline: 2px dotted $cu-red;
+  }
 }
