@@ -2,20 +2,16 @@
   width: 100%;
   margin: 0 0 0 0;
   float: left;
-
   .social {
     margin: 0 0 0 25px;
   }
-
   .newsEventsNav li.active {
     padding-left: 20px;
     padding-right: 20px;
   }
-  
   .calls-to-action-widget a:focus {
     outline-color: $cu-black;
   }
-
   .callout {
     background-color:#d8d8d8;
     border: 1px solid #c1c1c1;
@@ -24,14 +20,7 @@
       height: 7px;
       background-color: #c1c1c1;
     }
-
     .contact-widget {
-      h3, h4 {
-        margin: 5px 0;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 16px;
-      }
       ul.left-social-icons {
         background-color: transparent;
         display: block;
@@ -63,7 +52,6 @@
             fill: currentColor;
             padding: 0;
           }
-
         }
       }
       .view-more-expander {
@@ -111,7 +99,6 @@
           height: 1em;
           fill: currentColor;
           padding: 0;
-
         }
         .icon-triangle-down {
           color: #d8d8d8;
@@ -127,7 +114,6 @@
         }
       }
     }
-
     .editableContent {
       .inactive {
         display: none;
@@ -140,30 +126,23 @@
         @include bp(l) {
           margin-bottom: 38px;
         }
-
       }
-
       a {
         display: inline;
       }
-
       ul { 
         margin-top :10px;
       }
-
       .buttonLinks > li > a {
         display: inline-block;
       }
-
       ul.buttonLinks {
         margin-left: 0;
         padding: 0 0;
-
         a {
           border-bottom: none;
         }
       }
-      
       .redLeftColButton {
         margin: 0 0 0 0;
         ul {
@@ -218,7 +197,6 @@
             }
           }
         }
-
       } // end redleftbutton
     } // end editableContent
   } // end callout

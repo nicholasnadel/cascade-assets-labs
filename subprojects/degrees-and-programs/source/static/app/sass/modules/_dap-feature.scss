@@ -16,7 +16,8 @@ $dap-feature-background-image-width: rem-calc(1396);
 	// background-position: 50% 50%;
 	background-size: auto;
 	background-position: top center;
-	background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: 100vw;
 	font-family: Arial, sans-serif;
 
 	@include breakpoint($dap-feature-background-image-width) {

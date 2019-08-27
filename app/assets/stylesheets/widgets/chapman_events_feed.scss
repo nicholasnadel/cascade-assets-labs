@@ -2,81 +2,53 @@
   background-color: $bg-light-gray;
   padding: $one-column-widget-spacing 0;
   text-align: center;
-
   h2 {
-    margin-top: 0;
     text-align: left;
-    font-weight: 800;
-    font-size: 32px;
-    line-height: 32px;
-
     @include media($medium-screen) {
-      margin-bottom: 36px;
-      font-size: 38px;
-      line-height: 38px;
     }
-
     @include media($large-screen) {
-      margin-bottom: 32px;
-      font-size: 48px;
-      line-height: 48px;
     }
   }
-
   .outer-container {
     @include outer-container;
     @include pad(0 $base-spacing);
     width: 100%;
   }
-
   .column {
     width:100%;
     text-align: left;
-
     @include media($medium-screen) {
       @include media($medium-screen) { @include span-columns(9); }
       width:50%;
       &.right { padding-left: 60px; }
     }
   }
-
   .event-card {
     margin-bottom: 42px;
-
     h3 {
-      margin: 0 0 16px;
-      font-size: 18px;
-      line-height: 24px;
       color: $red;
-
       @include media($medium-screen) { margin: 0 0 16px; }
     }
-
     p {
       text-transform: capitalize;
       margin: 0;
     }
-
     .event-date {
       .date-wrapper {
         display: table;
         height: 32px;
       }
-
       .date-column {
         display: table-cell;
         vertical-align: middle;
-
         &.left div.day {
           padding-right: 4px;
           font-size: 32px;
         }
-
         &.right p {
           font-weight: 700;
         }
       }
-
       p, div.day {
         text-transform: uppercase;
         color: $red;
@@ -85,10 +57,8 @@
       }
     }
   }
-
   .feed-column {
     @include media($medium-screen){ margin-bottom: 48px; }
-
     .event-date {
       width: 140px;
       margin-bottom: 32px;
@@ -96,17 +66,14 @@
       border-bottom: 2px solid $red;
     }
   }
-
   .featured-event {
     &.event-card {
       @include media($medium-screen) { margin-bottom: 0; }
     }
-
     .event-date {
       margin-bottom: 28px;
       @include media($large-screen){ margin-bottom: 16px; }
     }
-
     .featured-image {
       margin-bottom: 28px;
       width: 100%;
@@ -115,7 +82,6 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-size: 100%;
-
       @include media($medium-screen){
         height: 188px;
         margin-bottom: 36px;
@@ -123,7 +89,6 @@
       @include media($large-screen){ height: 254px; }
     }
   }
-
   .actions {
     text-align: center;
     margin-top: 48px;
@@ -133,19 +98,15 @@
     }
   }
 }
-
 .chapman-events-feed-widget__medium-bg {
   background-color: $bg-silver-gray;
 }
-
 .chapman-events-feed-widget__dark-bg {
   background-color: $black;
   color: white;
-
   .event-card {
     a, p, .event-date p, .event-date div.day { color: white; }
   }
-
   .feed-column .event-date {
     border-bottom: 2px solid white;
   }
