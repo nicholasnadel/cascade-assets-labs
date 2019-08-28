@@ -3,6 +3,8 @@
   padding: $one-column-widget-spacing 0;
   text-align: center;
   h2 {
+    margin-top: 0;
+    margin-bottom: 2rem;
     text-align: left;
     @include media($medium-screen) {
     }
