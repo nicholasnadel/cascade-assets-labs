@@ -1,3 +1,69 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet portrait
+900 - 1200px:   Tablet landscape
+[1200 - 1800] is where our normal styles apply
+1800px + :      Big desktop
+$breakpoint arguement choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+ORDER: Base + typography > general layout + grid > page layout > components
+1em = 16px
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint==phone {
+    @media only screen and (max-width: 37.5em) {
+      @content
+    }
+
+    ; //600px
+  }
+
+  @if $breakpoint==tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content
+    }
+
+    ; //900px
+  }
+
+  @if $breakpoint==tab-land {
+    @media only screen and (max-width: 75em) {
+      @content
+    }
+
+    ; //1200px
+  }
+
+  @if $breakpoint==big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content
+    }
+
+    ; //1800
+  }
+}
+
+
 // Breakpoint mixin
 //
 // There are some obvious problems with this. For example, we have a breakpoint defined
@@ -8,76 +74,149 @@
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
 
-  @if $point == s { // Mobile
-    @media (min-width: 420px) { @content; }
+  @if $point==s {
+
+    // Mobile
+    @media (min-width: 420px) {
+      @content;
+    }
   }
 
-  @if $point == sx { // Mobile
-    @media (max-width: 420px) { @content; }
+  @if $point==sx {
+
+    // Mobile
+    @media (max-width: 420px) {
+      @content;
+    }
   }
 
   // This should probably not be used (see note above). Leaving it as is because
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
-  @if $point == m { // Medium
-    @media (min-width: 780px) { @content; }
+  @if $point==m {
+
+    // Medium
+    @media (min-width: 780px) {
+      @content;
+    }
   }
 
-  @if $point == mx { // Medium
-    @media (max-width: 767px) { @content; }
+  @if $point==mx {
+
+    // Medium
+    @media (max-width: 767px) {
+      @content;
+    }
   }
 
-  @if $point == l { // Large
-    @media (min-width: 1024px) { @content; }
+  @if $point==l {
+
+    // Large
+    @media (min-width: 1024px) {
+      @content;
+    }
   }
 
-  @if $point == lx { // Large
-    @media (max-width: 1024px) { @content; }
+  @if $point==lx {
+
+    // Large
+    @media (max-width: 1024px) {
+      @content;
+    }
   }
 
-  @if $point == xl { // Extra-Large
-    @media (min-width: 1200px) { @content; }
+  @if $point==xl {
+
+    // Extra-Large
+    @media (min-width: 1200px) {
+      @content;
+    }
   }
 
-  @if $point == xlx { // Extra-Large
-    @media (max-width: 1200px) { @content; }
+  @if $point==xlx {
+
+    // Extra-Large
+    @media (max-width: 1200px) {
+      @content;
+    }
   }
 
-  @if $point == wildcard-min { // Uses variable breakpoint.
-    @media (min-width: #{$val}) { @content; }
+  @if $point==wildcard-min {
+
+    // Uses variable breakpoint.
+    @media (min-width: #{$val}) {
+      @content;
+    }
   }
 
-  @if $point == wildcard-max { // Uses variable breakpoint.
-    @media (max-width: #{$val}) { @content; }
+  @if $point==wildcard-max {
+
+    // Uses variable breakpoint.
+    @media (max-width: #{$val}) {
+      @content;
+    }
   }
 
   // @if $point == highres {
   //   @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) { @content; }
   // }
 
-  @if $point == print {
-    @media only print { @content; }
+  @if $point==print {
+    @media only print {
+      @content;
+    }
   }
 
 }
 
-@mixin em_width($px, $default: $fontsize) { width: #{$px / $default}em; }
-@mixin em_height($px, $default: $fontsize) { height: #{$px / $default}em; }
-@mixin em_maxwidth($px, $default: $fontsize) { max-width: #{$px / $default}em; }
-@mixin em_minwidth($px, $default: $fontsize) { min-width: #{$px / $default}em; }
-@mixin em_maxheight($px, $default: $fontsize) { max-height: #{$px / $default}em; }
-@mixin em_minheight($px, $default: $fontsize) { min-height: #{$px / $default}em; }
-@mixin em_margin($top:0,$right:0,$bot:$top,$left:$right, $default: $fontsize) { margin: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em }
-@mixin em_padding($top:0,$right:0,$bot:$top,$left:$right, $default: $fontsize) { padding: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em }
-@mixin em_fontsize($px) { font-size: #{$px / $fontsize}em; }
-@mixin em_lineheight($px, $default: $fontsize) { line-height: #{$px / $default}em; }
+@mixin em_width($px, $default: $fontsize) {
+  width: #{$px / $default}em;
+}
+
+@mixin em_height($px, $default: $fontsize) {
+  height: #{$px / $default}em;
+}
+
+@mixin em_maxwidth($px, $default: $fontsize) {
+  max-width: #{$px / $default}em;
+}
+
+@mixin em_minwidth($px, $default: $fontsize) {
+  min-width: #{$px / $default}em;
+}
+
+@mixin em_maxheight($px, $default: $fontsize) {
+  max-height: #{$px / $default}em;
+}
+
+@mixin em_minheight($px, $default: $fontsize) {
+  min-height: #{$px / $default}em;
+}
+
+@mixin em_margin($top:0, $right:0, $bot:$top, $left:$right, $default: $fontsize) {
+  margin: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em
+}
+
+@mixin em_padding($top:0, $right:0, $bot:$top, $left:$right, $default: $fontsize) {
+  padding: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em
+}
+
+@mixin em_fontsize($px) {
+  font-size: #{$px / $fontsize}em;
+}
+
+@mixin em_lineheight($px, $default: $fontsize) {
+  line-height: #{$px / $default}em;
+}
 
 @mixin box_shadow($hoffset: 0, $voffset: 0, $blur: 0, $spread: 0, $color: $black, $inset: false) {
 
-  @if $inset == false {
+  @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
-  } @else {
+  }
+
+  @else {
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
@@ -95,12 +234,12 @@
 @mixin opacity($i) {
   $forie: $i * 100;
 
-  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
   filter: alpha(opacity=$forie);
   opacity: $i;
 }
 
-@mixin transition($sel: all,$time: 1s,$ease: linear) {
+@mixin transition($sel: all, $time: 1s, $ease: linear) {
   -webkit-transition: $sel $time $time;
   -moz-transition: $sel $time $time;
   -o-transition: $sel $time $time;
@@ -116,9 +255,11 @@
   margin-top: 12px;
   margin-bottom: 24px;
 
-  @if type-of($weight) == string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -136,11 +277,15 @@
 @mixin sub_heading($weight: 800) {
   font-family: $font-stack-heading;
   font-size: 32px;
-  @if type-of($weight) == string {
+
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
+
   line-height: 40px;
 }
 
@@ -149,9 +294,11 @@
   font-size: 22px;
   line-height: 26px;
 
-  @if type-of($weight) == string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -169,22 +316,30 @@
 @mixin sub_section_heading($weight: 800) {
   font-family: $font-stack-heading;
   font-size: 18px;
-  @if type-of($weight) == string {
+
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
+
   line-height: 24px;
 }
 
 @mixin content_heading($weight: 800) {
   font-family: $font-stack-heading;
   font-size: 14px;
-  @if type-of($weight) == string {
+
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
+
   line-height: 18px;
 }
 
@@ -204,9 +359,9 @@
 
 //Paragraphs
 @mixin paragraph() {
-  font-size: 16px;
-  line-height: 20px;
-  margin:0 0 10px 0;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin: 0 0 0.625rem 0;
   font-weight: 400;
 }
 
@@ -225,7 +380,8 @@
 
 @mixin fluid-width-video-container() {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
+  padding-bottom: 56.25%;
+  /* 16:9 */
   height: 0;
 
   & iframe {
@@ -236,14 +392,17 @@
     height: 100% !important;
   }
 }
+
 @mixin aspect_ratio($width, $height) {
   position: relative;
+
   &:before {
     display: block;
     content: "";
     width: 100%;
     padding-top: ($height / $width) * 100%;
   }
+
   img {
     position: absolute;
     top: 0;
@@ -274,7 +433,8 @@
     font-size: 16px;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: darken($bg-color, 7%);
     @include transition(background-color);
   }
@@ -296,9 +456,11 @@
 }
 
 @mixin form-control-focus($color) {
-  $color-rgba:   rgba(red($color), green($color), blue($color), 0.6);
+  $color-rgba: rgba(red($color), green($color), blue($color), 0.6);
   $border-color: rgba(red($color), green($color), blue($color), 0.8);
-  &:focus, &:active {
+
+  &:focus,
+  &:active {
     border-color: $border-color;
     outline: 0;
     box-shadow: 0 0 5px $color-rgba;
@@ -306,13 +468,26 @@
 }
 
 @mixin theme-color-classes($primary) {
-  .theme-bg-color       { background-color: $primary; }
-  .theme-border-color   { border-color: $primary; }
-  .theme-button { @include button($primary); }
-  .theme-text-color  { color: $primary }
+  .theme-bg-color {
+    background-color: $primary;
+  }
+
+  .theme-border-color {
+    border-color: $primary;
+  }
+
+  .theme-button {
+    @include button($primary);
+  }
+
+  .theme-text-color {
+    color: $primary
+  }
 
   @include media($large-screen) {
-    .theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
+    .theme-bg-color-alpha {
+      background-color: rgba(red($primary), green($primary), blue($primary), 0.95);
+    }
   }
 }
 

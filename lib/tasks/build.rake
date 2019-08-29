@@ -150,6 +150,7 @@ task build: :environment do
     zip rails_asset_path, dist_assets_path
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
   end
+  system %{open './dist/'}
 end
 
 task do_precompile: :environment do
