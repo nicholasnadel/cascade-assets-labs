@@ -148,15 +148,40 @@ task build: :environment do
     prep_dist
 
     zip rails_asset_path, dist_assets_path
+    Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
   end
-  system %{open './dist/'}
 end
 
 task do_precompile: :environment do
   Rake::Task['assets:clobber'].invoke
   Rake::Task['assets:precompile'].invoke
 end
+
+desc "Log Git Changes."
+task :changelog do
+  dist_folder = "./dist"
+
+  git_log = './dist/changelog.log'
+  current_branch = `git rev-parse --abbrev-ref HEAD`
+
+  puts "👀👀👀 LOGGING CHANGES 👀👀👀"
+  File.delete(git_log) if File.exist?(git_log)
+  open(git_log, 'w') { |f|
+    f.puts "--------------------------------------------------------------------------"
+    f.puts "Comparing commits from current branch #{current_branch} to MASTER "
+    f.puts "--------------------------------------------------------------------------"
+    f.puts `git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)`
+    f.puts "--------------------------------------------------------------------------"
+    puts
+    puts
+    f.puts "Uncommitted local changes:"
+    f.puts "--------------------------------------------------------------------------"
+    f.puts `git status`
+    }
+  `open #{git_log}`
+  system %(open "./dist")
+end 
 
 ####################
 # HELPER FUNCTIONS #
@@ -167,6 +192,7 @@ def prep_dist
   FileUtils.rm_rf dist_folder
   FileUtils.mkdir dist_folder
 end
+
 
 def rails_asset_path
   Rails.root.join('public', '_assets')
