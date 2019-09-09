@@ -1,0 +1,17 @@
+## Used to inject block of raw html into a page. Be careful how it's used.
+#macro(outputHtmlBlock $element)  
+##
+	#set ( $blockType = $element.getChild('html-block').getChild('block-type').value )
+##
+	#if ($blockType == "Cascade Block")
+		#set ( $codeBlock = $element.getChild('html-block').getChild('cascade-block').getChild('code-block').getChild('content').getChild('system-data-structure').value )
+		<div class="html-block-widget">
+			$codeBlock
+		</div>
+	#elseif ($blockType == "External Block") 
+		#set ( $codeBlock = $element.getChild('html-block').getChild('external-block').getChild('code-block').value )
+		<div class="html-block-widget">
+			<!--#protect$codeBlock#protect-->
+		</div>
+	#end
+#end

@@ -18,6 +18,8 @@
 #import( "/_cascade/formats/modular/widgets/Shared Content - Contacts Primary Content" )
 #import( "/_cascade/formats/modular/widgets/Shared Content - Degrees Primary Content" )
 #import( "/_cascade/formats/modular/widgets/Faculty Info Primary" )
+#import( "/_cascade/formats/modular/widgets/Html Block" )
+## Reserved Block Format not finished/working:
 #import( "/_cascade/formats/modular/widgets/Reserved Block Format" )
 ##
 #set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
@@ -48,14 +50,14 @@
         #outputCollapsibles($widget)
         #end
     #end
-##    
+##
     #if ($widgetType == 'Form Embed') 
         #set ($displayFormEmbed = $widget.getChild('form-embed').getChild('display-form-embed').value)
         #if ($displayFormEmbed == 'Yes')
         #outputFormEmbed($widget)
         #end
     #end
-##    
+##
     #if ($widgetType == 'Form') 
         #set ($displayForm = $widget.getChild('form').getChild('display-form').value)
         #if ($displayForm == 'Yes')
@@ -63,8 +65,6 @@
         #end
     #end
 ##     
-    ## 1/15/2019 M Thomas temporarily removed on production because Yahoo YQL api to convert xml to json is unavailable,
-    ## but 1/29/2019 putting this back in on DEV only so can troubleshoot:
     #if ($widgetType == 'Featured / News / Events') 
         #outputFeaturedNewsEvents($widget)
     #end
@@ -139,6 +139,13 @@
         #end
     #end
 ##    
+    #if ($widgetType == 'Html Block')
+        #set ($displayHtmlBlock = $widget.getChild('html-block').getChild('display-html-block').value)
+        #if ($displayHtmlBlock == 'Yes')
+        #outputHtmlBlock($widget)
+        #end
+    #end
+## not finished/working yet:  
     #if ($widgetType == 'Reserved Block-Formats')
         #set ($displayReservedBlockFormat = $widget.getChild('reserved-block-formats').getChild('display-reserved-block-formats').value)
         #if ($displayReservedBlockFormat == 'Yes')
