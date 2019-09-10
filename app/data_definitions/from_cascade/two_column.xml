@@ -148,7 +148,8 @@
         <dropdown-item show-fields="primaryContent/widget/twitterTimeline" value="Twitter Feed"/>
         <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live"/>
         <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>
-        <dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>
+        <dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
+        <!--<dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>-->
         <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
       </text>
@@ -375,7 +376,23 @@
         </text>
         <asset help-text="choose an index block from _cascade/blocks/ folder" identifier="blockName" label="Block" type="block"/>
       </group>
-      <group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats">
+      <group collapsed="true" identifier="html-block" label="Html block">
+        <text default="Yes" identifier="display-html-block" label="Show" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Cascade Block" identifier="block-type" label="Block Type" required="true" type="radiobutton">
+          <radio-item label="Cascade Block" show-fields="primaryContent/widget/html-block/cascade-block" value="Cascade Block"/>
+          <radio-item label="Paste In External Code" show-fields="primaryContent/widget/html-block/external-block" value="External Block"/>
+        </text>
+        <group identifier="cascade-block" label="Cascade Block">
+          <asset help-text="link to _cascade/blocks/html" identifier="code-block" label="Block" render-content-depth="unlimited" type="block"/>
+        </group>
+        <group identifier="external-block" label="External Block">
+          <text help-text="paste in raw html or Javascript link to render code or iFrame" identifier="code-block" label="HTml of Javascript Embed or IFrame Code Block" multi-line="true" required="true"/>
+        </group>
+      </group>
+      <!--<group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats">
         <text default="Yes" identifier="display-reserved-block-formats" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
           <radio-item value="No"/>
@@ -387,6 +404,7 @@
           <dropdown-item value="A to Z Listing"/>
         </text>
       </group>
+      -->
       <group collapsed="true" identifier="wysiwyg-editor" label="Text Editor">
         <text default="Yes" identifier="display-wysiwyg-editor" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
