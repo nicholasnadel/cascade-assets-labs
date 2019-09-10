@@ -10,12 +10,15 @@ $element.getChild('collapsibleRegions').getChild('copy'), true ) )
         <h2 class="sectionHeader">${_EscapeTool.xml($mainheader)}</h2>
     #end 
     #if ($element.getChild('collapsibleRegions').getChild('copy').value != "" or
-    $element.getChild('collapsibleRegions').getChild('copy').getChildren().size() > 0)
+        $element.getChild('collapsibleRegions').getChild('copy').getChildren().size() > 0)
         <div class="editableContent summaryText">$sectionCopy
-            <div class="toggle-expand-collapse expand" onclick="expandAll()" tabindex="0">Expand All</div>
-            <div class="toggle-expand-collapse collapse" onclick="collapseAll()" tabindex="0">Collapse All</div>
         </div>
     #end
+    <br/>
+    <div class="row">
+        <div class="toggle-expand-collapse expand" onclick="expandAll()" tabindex="0">Expand All</div>
+        <div class="toggle-expand-collapse collapse" onclick="collapseAll()" tabindex="0">Collapse All</div>
+    </div>
     #foreach ($collapsible in $collapsibles)
         #if ($collapsible.getChild('collapsed').value == 'Yes')
             <div class="accordion collapsed">

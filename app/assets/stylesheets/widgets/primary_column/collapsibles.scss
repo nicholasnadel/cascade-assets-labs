@@ -1,5 +1,4 @@
 .collapsibles-widget {
-  //padding: $primary-column-widget-spacing 0;
   margin: 0 0 20px 0;
 }
 
@@ -132,10 +131,11 @@
 }
 
 .toggle-expand-collapse {
+  margin-top: -25px;
   display: block;
   float: right;
   cursor: pointer;
-  border-bottom: 2px dotted ;
+  border-bottom: 2px dotted;
   color: $cu-red;
 
   &:focus {
