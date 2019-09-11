@@ -47,7 +47,7 @@ $(function () {
                         return "COPA";
                     case "/dodge/about/faculty-directory".toLowerCase():
                         return "CFMA";
-                    case "/engineering/contact/faculty/faculty-directory".toLowerCase():
+                    case "/engineering/about/faculty/faculty-directory".toLowerCase():
                         return "SENG";
                     case "/law/law-faculty/index".toLowerCase():
                         return "SOL";
