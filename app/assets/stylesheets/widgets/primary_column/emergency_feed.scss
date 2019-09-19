@@ -1,0 +1,23 @@
+#emergency-feed.emergency-feed-container {
+
+  .emergency-feed-updates {
+    background-color: white;
+    border: solid 1px #a50035;
+
+    .no-emergency-feed {
+      margin: 2rem 1rem;
+    }
+
+    .feed-item-container {
+      border: 1px solid $cu-red;
+
+      .feed-item-0 {
+        font-size: 1.6rem;
+      }
+
+      .feed-item {
+        margin: 2rem 1rem;
+      }
+    }
+  }
+}
