@@ -1,0 +1,83 @@
+#uninav--cta {
+  padding-right: 1rem;
+  display: flex;
+  grid-area: "logo";
+  // width: 100%;
+  justify-content: right;
+
+  // no caret
+  a {
+    color: white;
+    font-weight: medium;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  li {
+    @include red;
+    margin-left: 1.0rem;
+    line-height: .5rem;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 400;
+
+    &:after {
+      content: none;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      @include hover-drop-shadow;
+      // @include qbal-pulse;
+    }
+  }
+}
+
+@include respond (tab-port) {
+  #uninav--cta {
+    @include linear-300;
+    position: absolute;
+    right: 0;
+    // top: 0;
+    display: inline-flex;
+    margin-top: 100px;
+  }
+}
+
+@include respond (phone) {
+
+  .uninav-navbar {
+    height: auto;
+  }
+
+  #uninav--cta {
+    height: 60px;
+
+    @include linear-300;
+    position: relative;
+    display: inline-flex;
+    margin-top: auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100vw;
+
+  }
+}
+
+@include respond(tiny) {
+  #uninav--cta {
+    margin: 0;
+    padding: 0;
+
+    ul li,
+    a {
+      margin-left: 0;
+      background-color: transparent;
+      color: black;
+    }
+  }
+}

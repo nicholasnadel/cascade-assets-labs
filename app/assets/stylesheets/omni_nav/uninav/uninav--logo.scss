@@ -16,21 +16,21 @@
   vertical-align: middle;
 }
 
-@include respond (uninav__tab-land) {
+@include respond (tab-land) {
   .primary-logo {
     margin-right: 1rem;
     min-width: 300px;
   }
 }
 
-@include respond (uninav__tab-port) {
+@include respond (tab-port) {
   .primary-logo {
     margin-right: 1rem;
     min-width: 250px;
   }
 }
 
-@include respond (uninav__tiny) {
+@include respond (tiny) {
   .primary-logo {
     min-width: auto;
     margin-top: 50px;

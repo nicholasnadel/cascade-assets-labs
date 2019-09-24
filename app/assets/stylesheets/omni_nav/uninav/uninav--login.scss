@@ -1,0 +1,155 @@
+#uninav--login {
+  height: $uninav-height;
+  background-color: $panther-black;
+  display: flex;
+  align-items: center;
+  width: $utility-button-width;
+  justify-content: center;
+
+  span.fa.fa-paw.uninav--dropdown-parent {
+    font-size: 2rem;
+    transition: .3s ease;
+  }
+
+  li.uninav-item.uninav--dropdown-parent.uninav--login {
+    a {
+      color: $light-grey;
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+        background-color: $panther-black;
+
+        span.fa.fa-paw.uninav--dropdown-parent {
+
+          transform: scale(1.1);
+          color: $white;
+        }
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      background-color: $panther-black;
+
+    }
+  }
+
+
+  .uninav--dropdown-parent {
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      // margin-left: -1px;
+      li {
+        width: 100%;
+      }
+    }
+
+    .uninav--dropdown-child {
+      right: 0;
+      // display: none;
+      position: absolute;
+      background-color: $panther-black;
+      min-width: 150px;
+      font-weight: 400;
+      cursor: pointer;
+      box-sizing: inherit;
+      word-wrap: break-word;
+      width: 200px;
+      box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 1rem;
+
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 200ms linear,
+        visibility 0s linear;
+
+      a:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 1px;
+        left: 50%;
+        position: relative;
+        background: $white;
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
+
+      a:hover,
+      a:focus,
+      a:focus-within {
+
+        &:after {
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      .uninav-item {
+        color: $light-grey;
+      }
+
+      .uninav-item:hover {
+        background-color: $panther-black;
+        color: $white;
+      }
+
+      ul {
+        line-height: 2rem;
+      }
+
+      li,
+      a {
+        color: $light-grey;
+        transition: color 300ms linear;
+
+        &:hover,
+        &:focus,
+        &:focus-within {
+          color: white;
+
+        }
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      .uninav--dropdown-child {
+        z-index: 2;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        min-width: 300px;
+        display: block;
+        visibility: visible;
+        opacity: 1;
+
+      }
+    }
+  }
+}
+
+
+@include respond(phone) {
+  #uninav--login {
+    background-color: transparent;
+  }
+
+  .fa.fa-paw {
+    color: $panther-black;
+  }
+}

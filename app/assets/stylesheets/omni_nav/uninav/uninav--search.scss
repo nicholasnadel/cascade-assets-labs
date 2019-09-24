@@ -43,7 +43,7 @@ li.uninav--search:after {
   display: none;
 }
 
-@include respond(uninav__tab-land) {
+@include respond(tab-land) {
   .uninav--search {
     a {
       border-left: none;
@@ -52,7 +52,7 @@ li.uninav--search:after {
   }
 }
 
-@include respond(uninav__phone) {
+@include respond(phone) {
   .uninav-item.uninav--search {
     border: none;
   }
