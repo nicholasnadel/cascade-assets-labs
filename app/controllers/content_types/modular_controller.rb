@@ -85,7 +85,7 @@ module ContentTypes
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
+        "OMNI-NAV" => render_static_partial("app/views/uninav/uninav"),
         "NAVIGATION" => render_static_partial(navigation_path),
         "PRIMARY CONTENT" => render_static_one_column_primary_content,
         "GLOBAL FOOTER" => render_static_partial(footer_path),
@@ -123,7 +123,7 @@ module ContentTypes
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
+        "OMNI-NAV" => render_static_partial("/uninav/uninav"),
         "NAVIGATION" => render_static_partial(navigation_path),
         "PRIMARY CONTENT" => render_static_one_column_primary_content_business_grad,
         "GLOBAL FOOTER" => render_static_partial(footer_path),

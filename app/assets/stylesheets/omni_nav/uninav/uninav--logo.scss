@@ -1,0 +1,47 @@
+#uninav--logo {
+  padding-top: 8px;
+}
+
+.primary-logo {
+  width: 100%;
+  max-width: 300px;
+  list-style: none;
+  padding-left: 1rem;
+  // @include  qbal-expandHorizontal164-enter ;
+  grid-area: "logo";
+}
+
+.logo img {
+  width: 175px;
+  vertical-align: middle;
+}
+
+@include respond (uninav__tab-land) {
+  .primary-logo {
+    margin-right: 1rem;
+    min-width: 300px;
+  }
+}
+
+@include respond (uninav__tab-port) {
+  .primary-logo {
+    margin-right: 1rem;
+    min-width: 250px;
+  }
+}
+
+@include respond (uninav__tiny) {
+  .primary-logo {
+    min-width: auto;
+    margin-top: 50px;
+  }
+
+  .fa.fa-bars {
+    position: absolute;
+    top: 0;
+  }
+
+  #uninav--utility-nav {
+    margin-top: 50px;
+  }
+}
