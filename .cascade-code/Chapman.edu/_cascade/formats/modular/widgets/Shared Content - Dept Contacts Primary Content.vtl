@@ -1,0 +1,380 @@
+#* #set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ($primaryContent = $currentPage.getChild('system-data-structure').getChild('primaryContent') )
+#set ($widgets = $_XPathTool.selectNodes($primaryContent, "widget") )
+#foreach ($widget in $widgets)
+    #set ($widgetType = $widget.getChild('widgetType').value ) 
+    #if ($widgetType == 'Department Contact Info')
+        #displayContactsPrimary($widget)
+    #end
+#end *#
+
+#macro(displayContactsPrimary $cWidget $hSize)  
+##Multiple Department Listing 
+    ### move this to cascade-assets CSS _files later:
+    <style>
+        table {
+            border: none;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            vertical-align: top;
+            padding: 16px;
+        }
+    
+        tr:nth-child(even) {background-color: #fff;}
+        .contact {padding-bottom:16px;}
+    </style>
+    ###
+    #set($type = $_XPathTool.selectSingleNode($cWidget, "contact/type").value)
+    #set($display = $_XPathTool.selectSingleNode($cWidget, "contact/display").value)
+    #set($umbrella = $_XPathTool.selectSingleNode($cWidget, "contact/umbrella").value)
+
+    #if($type == "Individual Department")
+        #set($contact = $_XPathTool.selectSingleNode($cWidget, "contact/info/content/system-data-structure"))
+        #outputContact($contact, $hSize)
+    #else
+        #########################
+        ### Multiple Departments:
+        #########################
+        #set ( $parentFolder = $_.locateFolder("/_shared-content/departments"))
+        ###<br/>parentFolder.name: $parentFolder.name
+        <table>
+            #*<tr>
+                <th>University Service</th>
+                <th>Contact Information</th>
+                <th>Hours</th>
+                <th>Location</th>
+            </tr>
+            *#
+        #foreach($child in $parentFolder.children) 
+            #set ($blockPath = $child.identifier.path.pathAsString)
+            #if (!$_PropertyTool.isNull($_.locateBlock($blockPath)))
+                #set ($deptBlock = $_.locateBlock($blockPath))
+                #set ($thisUmbrella = $deptBlock.getStructuredDataNode("umbrella").textValue)
+                #if ($umbrella == 'All')
+                    #set ($deptName = $deptBlock.getStructuredDataNode("dept").textValue)
+                #elseif ($thisUmbrella == $umbrella)
+                     #set ($deptName = $deptBlock.getStructuredDataNode("dept").textValue)
+                #else
+                    #set ($deptName = "" )
+                #end
+            #else
+                ##for non-block children it finds such as _files folder:
+                #set ( $deptName = "")
+            #end
+
+            #if ($deptName != "")
+                #set ($deptDesc = $deptBlock.getStructuredDataNode("desc").textValue)
+                #set ($deptKeywords = $deptBlock.getStructuredDataNode("keywords").textValue) 
+                #set ($deptPhone = $deptBlock.getStructuredDataNode("phone").textValue)
+                #set ($deptPhoneStripped = $deptPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+                #set ($deptEmail = $deptBlock.getStructuredDataNode("email").textValue)
+                #set ($deptHours = $deptBlock.getStructuredDataNode("hours").textValue)
+                #set ($PhysAddrBldg = $deptBlock.getStructuredDataNode("address/building").textValue)
+                #set ($PhysAddrLine1 = $deptBlock.getStructuredDataNode("address/line").textValue)
+                #set ($PhysAddrLine2 = $deptBlock.getStructuredDataNode("address/line2").textValue)
+                #set ($PhysAddrCity = $deptBlock.getStructuredDataNode("address/city").textValue)
+                #set ($PhysAddrState = $deptBlock.getStructuredDataNode("address/state").textValue)
+                #set ($PhysAddrCountry = $deptBlock.getStructuredDataNode("address/country").textValue)
+                #set ($mailingAddrType = $deptBlock.getStructuredDataNode("mailingAddrType").textValue)
+                #set($mLine1 = $deptBlock.getStructuredDataNode("mAddress/line").textValue)
+                #set($mLine2 = $deptBlock.getStructuredDataNode("mAddress/line2").textValue)
+                #set($mCity = $deptBlock.getStructuredDataNode("mAddress/city").textValue)
+                #set($mState = $deptBlock.getStructuredDataNode("mAddress/state").textValue)
+                #set($mCountry = $deptBlock.getStructuredDataNode("mAddress/country").textValue)
+                #set($mZip = $deptBlock.getStructuredDataNode("mAddress/zip").textValue)
+            
+                <tr>
+                    <th colspan="3">
+                        <h2>${_EscapeTool.xml($deptName)}</h2>
+                    </th>
+                </tr>
+                <tr>
+                    #*<th style="width:25%">
+                        ${_EscapeTool.xml($deptName)}
+                        ###br/>blockPath: $blockPath
+                        ###<br/>umbrella: ${_EscapeTool.xml($umbrella)}
+                        ###<br/>$deptDesc
+                        ###<br/>$deptKeywords
+                    </th>
+                    *#
+                    <td style="width:33%">
+                        <div class="contact">
+                            Main:<br/>
+                            <a href="tel:${deptPhoneStripped}">${deptPhone}</a>
+                            #if ($deptEmail != "")
+                                <br/><a href="mailto:$deptEmail">$deptEmail</a>
+                            #end
+                        </div>
+                        ###
+                        ### loop over supplementary contacts:
+                        ###
+                        #set ($suppContacts = $deptBlock.getStructuredDataNodes("supplementary/contact"))
+                        #set ($suppItemCntr = 0)
+                        #foreach ($suppContact in $suppContacts)
+                            #foreach ($suppItem in $suppContact.children)
+                                #if (!$_PropertyTool.isNull($suppItem.textValue))
+                                    #set ($suppItemCntr = $suppItemCntr + 1)
+                                #end
+                            #end
+                       #end
+                        #if ($suppItemCntr >= 1)
+                            ###<br/>Supplemental Contacts ($suppContacts.size()):
+                            #foreach ($suppContact in $suppContacts)
+                                #set ($suppContactLabel = $suppContact.getChild("label").textValue)
+                                #set ($suppContactPhone = $suppContact.getChild("phone").textValue)
+                                #set ($suppContactPhoneStripped = $suppContactPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+                                #set ($suppContactEmail = $suppContact.getChild("email").textValue)
+                                    <div class="contact">
+                                        #if ($suppContactLabel != "")
+                                            $suppContactLabel<br/>
+                                        #end
+                                        #if ($suppContactPhone != "")
+                                            <a href="tel:${suppContactPhoneStripped}">${suppContactPhone}</a><br/>
+                                        #end
+                                        #if ($suppContactEmail != "")
+                                            <a href="mailto:$suppContactEmail">$suppContactEmail</a><br/>
+                                        #end
+                                    </div>
+                           #end
+                       #end
+                    </td>
+                    <td style="width:33%">
+                        $deptHours
+                    </td>
+                    <td style="width:34%">
+                        <p>
+                        Physical Location:<br/>
+                        #if (!$_PropertyTool.isNull($PhysAddrBldg))
+                            ${_EscapeTool.xml($PhysAddrBldg)} <br/>
+                        #end
+                        #if (!$_PropertyTool.isNull($PhysAddrLine1))
+                            ${_EscapeTool.xml($PhysAddrLine1)} <br/>
+                        #end
+                        #if (!$_PropertyTool.isNull($PhysAddrLine2))
+                            ${_EscapeTool.xml($PhysAddrLine2)} <br/>
+                        #end
+                        </p>
+                        
+                        #if ($mailingAddrType == "main campus in Orange")
+                            <p>
+                                Mailing Address:<br/>
+                                One University Drive<br/>
+                                Orange, CA 92866
+                            </p>
+                        #elseif ($mailingAddrType == "Rinker campus in Irvine")
+                            <p>
+                                Mailing Address:<br/>
+                                9401 Jeronimo Road<br/>
+                                Irvine, CA 92618
+                            </p>
+                        #elseif ($mailingAddrType == "Custom address" && $mLine1 != "")
+                            <p>
+                                Mailing Address:<br/>
+                                ${_EscapeTool.xml($mLine1)}<br/>
+                                #if($mLine2 != "")
+                                     ${_EscapeTool.xml($mLine2)}<br/> 
+                                 #end
+                                ${_EscapeTool.xml($mCity)}, ${_EscapeTool.xml($mState)}<br/>
+                                #if($mCountry != "")
+                                    ${_EscapeTool.xml($mCountry)}
+                                #end
+                                #if($mZip != "")
+                                    ${_EscapeTool.xml($mZip)}
+                                #end
+                            </p>
+                        #end
+                    </td>
+                </tr>
+            #end
+        #end
+        </table>
+    #end            
+
+
+   ##         #else
+   ##             #set($contacts = $_XPathTool.selectNodes($contentRoot, "//system-block[system-data-structure[umbrella = '${umbrella}']]"))
+   ##         #end
+
+   ##         #foreach($contact in $contacts)
+    ##            #set($info = $_XPathTool.selectSingleNode($contact, "system-data-structure"))
+    ##            #outputContact($info, $hSize)
+    ##        #end
+    ## #end
+##    
+#end 
+
+##########################
+### Individual Department:
+##########################
+#macro(outputContact $contact $headingSize)
+        #set($dept = $_EscapeTool.xml($contact.getChild('dept').value))
+        #set($keywords = $_EscapeTool.xml($contact.getChild('keywords').value))
+        #set($desc = $_SerializerTool.serialize($contact.getChild('desc').value, true))
+        ###set($phone = $_EscapeTool.xml($contact.getChild('phone').value))
+        ###set($phoneStripped = $phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+        #set ($deptPhone = $contact.getChild('phone').value)
+        #set ($deptPhoneStripped = $deptPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+        #set($email = $_EscapeTool.xml($contact.getChild('email').value))
+        ###loop over this to extract supplementary contacts later in code
+        #set($suppContacts = $_XPathTool.selectNodes($contact, "supplementary/contact"))
+        ###loop over this to extract individual contacts later in code
+        #set($indContacts = $_XPathTool.selectNodes($contact, "individual/contact"))
+        
+        #set($address = $contact.getChild('address'))
+        #set($line = $_EscapeTool.xml($address.getChild('line').value))
+        #set($line2 = $_EscapeTool.xml($address.getChild('line2').value))
+        #set($city = $_EscapeTool.xml($address.getChild('city').value))
+        #set($state = $_EscapeTool.xml($address.getChild('state').value))
+        #set($country = $_EscapeTool.xml($address.getChild('country').value)) 
+        #set($zip = $_EscapeTool.xml($address.getChild('zip').value))
+        #set($map = $_EscapeTool.xml($address.getChild('map').value))
+     
+        ### only applies if Custom Address selected otherwise we hardcode in Orange or Rinker.
+            #set($mAddress = $contact.getChild('mAddress'))
+            #set($mLine1 = $mAddress.getChild('line').value)
+            #set($mLine2 = $mAddress.getChild('line2').value)
+            #set($mCity = $mAddress.getChild('city').value)
+            #set($mState = $mAddress.getChild('state').value)
+            #set($mCountry = $mAddress.getChild('country').value)
+            #set($mZip = $mAddress.getChild('zip').value)
+        ###end
+     
+        #set($hours = $_SerializerTool.serialize($contact.getChild('hours'), true))
+        
+        <div>
+            <div class="editableContent">
+                #if($display !="People Only")
+                    <p><strong>${dept}</strong></p> 
+                    
+                    <h3>Physical Location</h3>   
+                    <p>
+                        #if($line2 != "")
+                            <strong>${line2}</strong><br/> 
+                        #end
+                            ${line}<br/>
+                        ${city}, ${state}
+                        #if($contact.getChild('country').value != "")
+                            ${country}
+                        #end
+                        #if($contact.getChild('zip').value != "")
+                            ${zip}
+                        #end
+                        #if($address.getChild('map').value != "")
+                           #set($map = $_EscapeTool.xml($address.getChild('map').value))
+                           <br/><a href="${map}">View Map</a>
+                        #end
+                    </p>
+                    
+                    ###if($contact.getChild("check").value == "Yes" && $display == "Basic Address")
+                    #if ($display == "Basic Address")
+                        <h3>Mailing Address</h3>
+                        #if ($contact.getChild('mailingAddrType').value == "main campus in Orange")
+                            <p>
+                                One University Drive<br/>
+                                Orange, CA 92866
+                            </p>
+                        #elseif ($contact.getChild('mailingAddrType').value == "Rinker campus in Irvine")
+                            <p>
+                                9401 Jeronimo Road<br/>
+                                Irvine, CA 92618
+                            </p>
+                        #elseif ($contact.getChild('mailingAddrType').value == "Custom address" && $mLine1 != "")
+                            <p>
+                                ${_EscapeTool.xml($mLine1)}<br/>
+                                #if($mLine2 != "")
+                                     ${_EscapeTool.xml($mLine2)}<br/> 
+                                 #end
+                                ${_EscapeTool.xml($mCity)}, ${_EscapeTool.xml($mState)}<br/>
+                                #if($mCountry != "")
+                                    ${_EscapeTool.xml($mCountry)}
+                                #end
+                                #if($mZip != "")
+                                    ${_EscapeTool.xml($mZip)}
+                                #end
+                            </p>
+                        #end
+                    #end
+                    
+                    <h3>Contact Us</h3>
+                    <div class="contact">
+                        Main:<br/>
+                        <a href="tel:${$deptPhoneStripped}">${deptPhone}</a><br/> 
+                        <a href="mailto:${email}">${email}</a>
+                    </div>
+                    #foreach($suppContact in $suppContacts)
+                        #set($suppContactLabel = $_XPathTool.selectSingleNode($suppContact, "label").value)
+                        #set($suppContactPhone = $_XPathTool.selectSingleNode($suppContact, "phone").value)
+                        #set($suppContactPhoneStripped = $suppContactPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+                        #set($suppContactEmail = $_XPathTool.selectSingleNode($suppContact, "email").value)
+                        <div class="contact">
+                            #if ($suppContactLabel != "")
+                                $suppContactLabel<br/>
+                            #end
+                            #if ($suppContactPhone != "")
+                                <a href="tel:${suppContactPhoneStripped}">${suppContactPhone}</a><br/>
+                            #end
+                            #if ($suppContactEmail != "")
+                                <a href="mailto:$suppContactEmail">$suppContactEmail</a><br/>
+                            #end
+                        </div>
+                    #end
+                    #if($contact.getChild('hours').value != "")
+                        <h3>Hours</h3>
+                        <div>${hours}</div>
+                     #end
+                #end
+                #if($display == "Main / People" || $display == "People Only")
+                    <h3>Individual Contacts</h3>
+                    #foreach($ind in $indContacts)
+                        #set($iPhoto = $_XPathTool.selectSingleNode($ind, "photo/link").value)
+                        #set($iName = $_EscapeTool.xml($ind.getChild("name").value))
+                        #set($iTitle = $_EscapeTool.xml($ind.getChild("title").value))
+                        #set($iDesc = $_SerializerTool.serialize($ind.getChild("desc").value, true))
+                        #set($iPhone = $_EscapeTool.xml($ind.getChild("phone").value))
+                        #set($iPhoneStripped = $iPhone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+                        #set($iEmail = $_EscapeTool.xml($ind.getChild("email").value))
+                        #set($linkURL = "")
+                        #set ($linkType = $ind.getChild('link').getChild('linkType').value )
+                        #if ($linkType == 'Internal Link')
+                        #set ($linkURL = $ind.getChild('link').getChild('internalLink').getChild('path').value )
+                        #elseif ($linkType == 'External Link')
+                        #set ($linkURL = $_EscapeTool.xml($ind.getChild('link').getChild('externalLink').value))
+                        #else 
+                        #set ($linkURL = $ind.getChild('link').getChild('fileLink').getChild('path').value )
+                        #end
+                        #set ($iLabel2 = $_EscapeTool.xml($ind.getChild('link').getChild('label').value))
+                        #if($_XPathTool.selectSingleNode($ind, "photo/link"))
+                         <p style="float:left;">
+                            <img src="${photo}" alt="${name} - ${title}" /> &#160;
+                        </p>
+                         <p style="float:left;">
+                        #else
+                         <p>
+                        #end
+                        <div class="contact">
+                            ${iName}<br/>
+                            ${iTitle}<br/>
+                            <a href="tel:${iPhoneStripped}">${iPhone}</a><br/> 
+                            <a href="mailto:${iEmail}">${iEmail}</a>
+                        </div>
+                        #if($linkURL != "")
+                            <div>
+                                <a href="${linkURL}" target="_parent">
+                                #if($iLabel2 != "")
+                                    ${iLabel2} »
+                                #else
+                                    More Information »
+                                #end
+                                </a>
+                         </div>
+                        #end
+                        </p>
+                        <br style="clear:both;" />
+                    #end
+    
+                #end
+            </div>
+        </div>
+#end
