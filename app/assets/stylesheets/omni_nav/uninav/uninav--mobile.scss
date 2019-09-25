@@ -2,7 +2,7 @@
   display: none;
 }
 
-@include respond(phone) {
+@include respond(uninav__phone) {
   .uninav-navbar {
     display: flex;
     justify-content: space-around;
@@ -176,7 +176,7 @@ a:hover {
   transform: none;
 }
 
-@include respond(tiny) {
+@include respond(uninav__tiny) {
   .uninav-navbar {
     display: inline-flex;
   }

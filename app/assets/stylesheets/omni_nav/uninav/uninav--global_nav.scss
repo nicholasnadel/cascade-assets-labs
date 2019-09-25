@@ -104,7 +104,7 @@
   }
 }
 
-@include respond(tab-land) {
+@include respond(uninav__tab-land) {
   .uninav--global-nav {
     a {
       display: inline-block;
@@ -125,7 +125,7 @@
 
 }
 
-@include respond(phone) {
+@include respond(uninav__phone) {
   .uninav-navbar {
 
     border-bottom: none;

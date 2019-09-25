@@ -144,7 +144,7 @@
 }
 
 
-@include respond(phone) {
+@include respond(uninav__phone) {
   #uninav--login {
     background-color: transparent;
   }

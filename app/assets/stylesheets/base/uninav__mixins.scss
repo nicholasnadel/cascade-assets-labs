@@ -171,7 +171,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $breakpoint==uninav__phone {
-    @media only screen and (max-width: 37.5em) {
+    @media only screen and (max-width: 800px) {
       @content
     }
 
@@ -179,7 +179,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $breakpoint==uninav__tab-port {
-    @media only screen and (max-width: 56.25em) {
+    @media only screen and (max-width: 900px) {
       @content
     }
 
@@ -187,7 +187,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $breakpoint==uninav__tab-land {
-    @media only screen and (max-width: 75em) {
+    @media only screen and (max-width: 1200px) {
       @content
     }
 
@@ -195,7 +195,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $breakpoint==uninav__big-desktop {
-    @media only screen and (min-width: 112.5em) {
+    @media only screen and (min-width: 1800px) {
       @content
     }
 

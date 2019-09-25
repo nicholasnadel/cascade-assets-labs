@@ -14,6 +14,7 @@
     background: none;
     margin-left: 10px;
     font-size: 1rem;
+    box-shadow: none;
 
     &:before {
       content: '';
@@ -43,7 +44,7 @@ li.uninav--search:after {
   display: none;
 }
 
-@include respond(tab-land) {
+@include respond(uninav__tab-land) {
   .uninav--search {
     a {
       border-left: none;
@@ -52,7 +53,7 @@ li.uninav--search:after {
   }
 }
 
-@include respond(phone) {
+@include respond(uninav__phone) {
   .uninav-item.uninav--search {
     border: none;
   }

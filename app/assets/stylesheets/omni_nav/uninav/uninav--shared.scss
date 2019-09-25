@@ -34,7 +34,7 @@ break {
   //   margin-left: -1px;  }
 
   .uninav--menu-item-piped {
-    li {
+    >li {
       flex-grow: 1;
       flex-basis: auto;
       // margin: .25em 0;
@@ -46,6 +46,7 @@ break {
 
     ul li ul li {
       text-align: left;
+      border-left: none;
     }
   }
 
@@ -91,6 +92,12 @@ break {
     opacity: 0;
     transition: opacity 200ms linear,
       visibility 0s linear;
+
+    li {
+      border-left: none;
+      text-align: left;
+    }
+
   }
 
   &:hover,

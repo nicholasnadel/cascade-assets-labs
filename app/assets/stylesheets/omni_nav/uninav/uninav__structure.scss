@@ -88,7 +88,7 @@ nav {
 
 // media queries / breakpoints
 
-@include respond(tab-land) {
+@include respond(uninav__tab-land) {
   input#uninav--search {
     // visibility: hidden;
     // opacity: 0;
