@@ -3,7 +3,6 @@
   flex-flow: row wrap;
 
   // list items pipe characters
-  // TODO: checkout cool gradient variants https://stackoverflow.com/questions/4131490/any-way-to-limit-border-length
   li {
     position: relative;
     float: left;
@@ -15,7 +14,7 @@
 
   // pipe
   .uninav--menu-item-pipe {
-    ul>li+li:after {
+    p ul>li+li:after {
       content: "";
       background: $light-grey;
       position: absolute;
@@ -98,7 +97,7 @@
   a:after {
     font-family: FontAwesome;
     font-weight: 900;
-    content: "\f0d7";
+    content: "\25be";
     padding-left: 12px;
     margin-right: 10px;
   }
