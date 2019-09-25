@@ -145,11 +145,5 @@
 
 
 @include respond(uninav__phone) {
-  #uninav--login {
-    background-color: transparent;
-  }
 
-  .fa.fa-paw {
-    color: $panther-black;
-  }
 }

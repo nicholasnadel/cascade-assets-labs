@@ -1,10 +1,7 @@
 <div class="uninav--wrapper">
   <div id="uninav" class="qbal-fade-enter">
     <nav class="uninav-navbar">
-      <span class="uninav--mobile-menu-wrapper">
-        <li class="fa fa-bars" aria-hidden="true"></li>
-      </span>
-      <!-- <include src="components/uninav--mobile-menu.html"></include> -->
+      <%= render 'uninav/mobile_menu' %>
       <%= render 'uninav/logo'  %>
       <%= render 'uninav/utility_nav'  %>
 

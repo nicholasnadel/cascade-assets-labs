@@ -47,7 +47,8 @@
     display: inline-flex;
     margin-top: 100px;
   }
-}
+
+} 
 
 @include respond (uninav__phone) {
 
@@ -56,17 +57,7 @@
   }
 
   #uninav--cta {
-    height: 60px;
-
-    @include linear-300;
-    position: relative;
-    display: inline-flex;
-    margin-top: auto;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    width: 100vw;
-
+    display: none;
   }
 }
 

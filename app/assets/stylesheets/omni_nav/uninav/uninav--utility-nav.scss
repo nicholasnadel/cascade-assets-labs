@@ -13,13 +13,7 @@
   }
 
   @include respond(uninav__tab-land) {
-    .uninav--search {
-      order: 2;
-    }
 
-    #uninav--login {
-      order: 2;
-    }
 
     .fa.fa-caret-down {
       display: none;
@@ -58,6 +52,14 @@
       display: inline-flex;
       align-items: center;
       margin-top: 50px;
+    }
+
+    #uninav--utility-nav {
+
+      flex-grow: 1;
+      margin: unset;
+      display: inline-flex;
+
     }
   }
 }

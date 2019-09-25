@@ -25,7 +25,6 @@
   }
 }
 
-// codepen
 /*
  * Made by Erik Terwan
  * 24th of November 2015
@@ -36,15 +35,8 @@
  * production code, beware of the browser
  * prefixes.
  */
-body {
-  margin: 0;
-  padding: 0;
 
-  /* make it look decent enough */
-  background: #232323;
-  color: #cdcdcd;
-  font-family: "Avenir Next", "Avenir", sans-serif;
-}
+
 
 a {
   text-decoration: none;
@@ -57,11 +49,11 @@ a:hover {
   color: tomato;
 }
 
-#menuToggle {
+#uninav--mobile-menu-toggle {
   display: block;
   position: relative;
-  top: 50px;
-  left: 50px;
+  top: 0;
+  left: 0;
 
   z-index: 1;
 
@@ -69,7 +61,7 @@ a:hover {
   user-select: none;
 }
 
-#menuToggle input {
+#uninav--mobile-menu-toggle input {
   display: block;
   width: 40px;
   height: 32px;
@@ -90,14 +82,14 @@ a:hover {
 /*
   * Just a quick hamburger
   */
-#menuToggle span {
+#uninav--mobile-menu-toggle span {
   display: block;
   width: 33px;
   height: 4px;
   margin-bottom: 5px;
   position: relative;
 
-  background: #cdcdcd;
+  background: $panther-black;
   border-radius: 3px;
 
   z-index: 1;
@@ -109,11 +101,11 @@ a:hover {
     opacity 0.55s ease;
 }
 
-#menuToggle span:first-child {
+#uninav--mobile-menu-toggle span:first-child {
   transform-origin: 0% 0%;
 }
 
-#menuToggle span:nth-last-child(2) {
+#uninav--mobile-menu-toggle span:nth-last-child(2) {
   transform-origin: 0% 100%;
 }
 
@@ -121,7 +113,7 @@ a:hover {
   * Transform all the slices of hamburger
   * into a crossmark.
   */
-#menuToggle input:checked~span {
+#uninav--mobile-menu-toggle input:checked~span {
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
   background: #232323;
@@ -130,7 +122,7 @@ a:hover {
 /*
   * But let's hide the middle one.
   */
-#menuToggle input:checked~span:nth-last-child(3) {
+#uninav--mobile-menu-toggle input:checked~span:nth-last-child(3) {
   opacity: 0;
   transform: rotate(0deg) scale(0.2, 0.2);
 }
@@ -138,7 +130,7 @@ a:hover {
 /*
   * Ohyeah and the last one should go the other direction
   */
-#menuToggle input:checked~span:nth-last-child(2) {
+#uninav--mobile-menu-toggle input:checked~span:nth-last-child(2) {
   transform: rotate(-45deg) translate(0, -1px);
 }
 
@@ -165,14 +157,14 @@ a:hover {
 }
 
 #menu li {
-  // padding: 10px 0;
+  padding: 10px 0;
   font-size: 22px;
 }
 
 /*
   * And let's slide it in from the left
   */
-#menuToggle input:checked~ul {
+#uninav--mobile-menu-toggle input:checked~ul {
   transform: none;
 }
 

@@ -123,9 +123,7 @@
 
 @include respond(uninav__phone) {
   .uninav-navbar {
-
-    border-bottom: none;
-
+    // border-bottom: none;
   }
 
   .uninav--global-nav {
@@ -139,4 +137,7 @@
       justify-content: space-around;
     }
   }
+  #uninav--global-nav-wrapper {
+    display: none;
+}
 }
