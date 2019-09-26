@@ -1,0 +1,157 @@
+// MIXINS
+@mixin uninav__menu-item--piped {
+  display: flex;
+  justify-content: center;
+  border-right: 1px solid #8a8a8a;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+@mixin uninav__menu-item--dropdown-parent {
+  content: "\f0d7";
+}
+
+// END MIXINS
+// RESETS
+html {
+  padding-top: 0;
+}
+
+#uninav {
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+
+  li {
+    margin: unset;
+  }
+
+  input {
+    margin: unset;
+  }
+}
+
+// END RESETS
+
+
+// UNINAV STRUCTURE
+#uninav {
+  display: grid;
+  // width: 100%;
+  // height: 250px;
+  grid-template-areas: "logo utility"
+    "global cta";
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1em;
+  background-color: $white;
+}
+
+#uninav>div.uninav--utility-nav {
+  grid-area: utility;
+  background-color: orange;
+  width: 100%;
+  height: 100%;
+
+  ul {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    li {
+      flex: 1 100%;
+      list-style: none;
+      @include uninav__menu-item--piped;
+
+      &:nth-last-child(3) {
+        border-right: none;
+      }
+    }
+  }
+}
+
+#uninav>div.uninav--global-nav {
+  grid-area: global;
+  background-color: orange;
+
+
+  ul {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    li {
+      flex: 1 100%;
+      list-style: none;
+      @include uninav__menu-item--piped;
+    }
+  }
+}
+
+#uninav>div.uninav--cta {
+  grid-area: cta;
+  background-color: wheat;
+  width: 100%;
+
+  ul {
+    display: flex;
+
+    li {
+      flex: 1 100%;
+      list-style: none;
+
+      a {
+        @include button($red);
+      }
+    }
+  }
+}
+
+#uninav>nav {
+  grid-area: nav;
+  background-color: #ffa08c;
+}
+
+#uninav>global {
+  grid-area: global;
+  background-color: #ffa08c;
+}
+
+
+#uninav>div.primary-logo {
+  max-width: 300px;
+  grid-area: logo;
+}
+
+// UNINAV STRUCTURE
+
+// UNINAV DROPDOWNS
+
+.uninav__menu-item-dropdown-child {
+  display: none;
+}
+
+.uninav__menu-item-dropdown-parent {
+  border: 5px solid black;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  a:after {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f0d7";
+    padding-left: 1rem;
+  }
+
+  &:hover {
+    .uninav__menu-item-dropdown-child {
+      // display: flex;
+      // position: absolute;
+      // background-color: white;
+    }
+  }
+
+}
+
+
+// END UNINAV DROPDOWNS
