@@ -32,8 +32,6 @@ html {
 }
 
 // END RESETS
-
-
 // UNINAV STRUCTURE
 #uninav {
   display: grid;
@@ -52,7 +50,7 @@ html {
   width: 100%;
   height: 100%;
 
-  ul {
+  &>ul {
     display: flex;
     align-items: center;
     height: 100%;
@@ -73,16 +71,19 @@ html {
   grid-area: global;
   background-color: orange;
 
-
-  ul {
+  &>ul {
     display: flex;
     align-items: center;
     height: 100%;
 
-    li {
+    &>li {
       flex: 1 100%;
       list-style: none;
       @include uninav__menu-item--piped;
+    }
+
+    ul li ul {
+      justify-content: start;
     }
   }
 }
@@ -116,18 +117,28 @@ html {
   background-color: #ffa08c;
 }
 
-
 #uninav>div.primary-logo {
   max-width: 300px;
   grid-area: logo;
 }
 
 // UNINAV STRUCTURE
-
 // UNINAV DROPDOWNS
-
 .uninav__menu-item-dropdown-child {
   display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background-color: white;
+  flex-direction: column;
+
+  >ul {
+    flex-direction: column;
+    justify-content: start;
+    text-align: left;
+    align-items: start;
+  }
 }
 
 .uninav__menu-item-dropdown-parent {
@@ -145,13 +156,10 @@ html {
 
   &:hover {
     .uninav__menu-item-dropdown-child {
-      // display: flex;
-      // position: absolute;
-      // background-color: white;
+      display: flex;
+      @include qbal-fade-enter;
     }
   }
-
 }
-
 
 // END UNINAV DROPDOWNS
