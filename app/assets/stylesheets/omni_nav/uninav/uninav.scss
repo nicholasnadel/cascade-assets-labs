@@ -54,6 +54,13 @@ html {
     .uninav__menu-item--audiences {
       display: none
     }
+
+    .uninav--utility-nav {
+
+      display: flex;
+      justify-content: end;
+
+    }
   }
 }
 
@@ -107,9 +114,18 @@ html {
 
   a {
     display: flex;
-    border-right: 1px solid $light-grey;
     justify-content: center;
+    // border-right: 1px solid $light-grey;
+
+    &:after {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      content: "\f0d7";
+      padding-left: 1rem;
+    }
+
   }
+
 
   &>ul {
     display: flex;
