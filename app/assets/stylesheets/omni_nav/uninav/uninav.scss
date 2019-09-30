@@ -190,6 +190,7 @@ html {
   justify-content: end;
   align-content: center;
   align-items: center;
+  @include qbal-fade-enter;
   @include uninav-border-bottom;
 
   ul {
@@ -277,6 +278,13 @@ html {
 }
 
 // END UNINAV DROPDOWNS
+
+@include respond(tab-land) {
+  .uninav--cta {
+    @include qbal-fade-enter;
+  }
+}
+
 // MEDIA QUERIES
 @include respond(tab-land) {
   .uninav__menu-item--audiences {
@@ -357,11 +365,12 @@ html {
     margin-right: 0 !important;
   }
 
+  .uninav--utility-nav ul li {
+    border-right: none;
+  }
 }
 
-.uninav--utility-nav ul li {
-  border-right: none;
-}
+
 
 // END TABLET PORTRAIT
 // END MEDIA QUERIES
