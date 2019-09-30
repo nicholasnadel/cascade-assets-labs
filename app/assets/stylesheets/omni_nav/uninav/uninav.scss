@@ -1,8 +1,18 @@
 $uninav-height: 60px;
 
-
-
 // MIXINS
+@mixin futura-pt {
+  font-family: "futura-pt", arial, sans-serif;
+}
+
+@mixin uninav-border-top {
+  border-bottom: 1px solid $light-grey;
+}
+
+@mixin uninav-border-bottom {
+  border-bottom: 1px solid $light-grey;
+}
+
 @mixin uninav__menu-item--piped {
   display: flex;
   justify-content: center;
@@ -29,11 +39,7 @@ html {
   li {
     margin: unset;
     list-style: none;
-  }
-
-  .uninav__utility-nav--search-wrapper input {
-    border: none;
-    box-shadow: none;
+    font-family: "futura-pt", arial, sans-serif;
   }
 }
 
@@ -55,14 +61,24 @@ html {
   }
 
   .uninav__utility-nav--search-wrapper {
-    border: 2px solid $light-grey;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    border: 2px solid grey;
+    margin-right: 2rem;
+  }
+
+  li.uninav__search-input {
+    // height: 30px;
   }
 }
 
 
+.uninav--hamburger-menu {
+  display: none;
+}
+
 /* Inline #7 | http://localhost:5000/uninav */
-
-
 .uninav__logo-wrapper {
   display: flex;
   justify-content: start;
@@ -74,7 +90,6 @@ html {
 
   border-bottom: 1px solid $light-grey;
 }
-
 
 .uninav--utility-nav {
   grid-area: utility;
@@ -94,23 +109,54 @@ html {
       text-align: center;
       border-right: 1px solid #ccc;
 
+      &.uninav__search-input {
+        // border-right: none;
+      }
+
       &:last-of-type {
         flex-grow: 0;
         flex-basis: unset;
       }
     }
+
+    .uninav__utility-nav--search-wrapper input {
+      border: none;
+      box-shadow: none;
+      margin-bottom: 0;
+    }
+
+    .fas.fa-search {
+      color: $grey;
+      padding-right: 1.2rem;
+      padding-left: 1.2rem;
+      cursor: pointer;
+    }
+
+
+  }
+
+  .uninav__menu-item-dropdown-child {
+    background-color: $panther-black;
+    color: $white;
+    // display: block;
+    width: 300px;
+    right: 0;
+    position: absolute;
+    margin-left: auto;
   }
 }
 
 .uninav--global-nav {
   grid-area: global;
   height: $uninav-height;
-  // background-color: orange;
+  @include uninav-border-top;
 
+  // background-color: orange;
   a {
     display: flex;
     justify-content: center;
-    // border-right: 1px solid $light-grey;
+
+    border-right: 1px solid $light-grey;
 
     &:after {
       font-family: 'Font Awesome 5 Free';
@@ -118,9 +164,7 @@ html {
       content: "\f0d7";
       padding-left: 1rem;
     }
-
   }
-
 
   &>ul {
     display: flex;
@@ -129,8 +173,6 @@ html {
 
     &>li {
       flex: 100%;
-
-
     }
 
     ul li ul {
@@ -143,12 +185,12 @@ html {
   grid-area: cta;
   // background-color: wheat;
   width: 100%;
-
   // CTA CHILDREN ITEMS
   display: flex;
   justify-content: end;
   align-content: center;
   align-items: center;
+  @include uninav-border-bottom;
 
   ul {
     display: flex;
@@ -159,8 +201,12 @@ html {
 
       a {
         @include button($red);
-        padding: 10px;
+        @include futura-pt;
+        padding: 5px;
         margin-right: 10px;
+        min-width: 100px;
+        display: block;
+        text-align: center;
       }
     }
   }
@@ -202,15 +248,14 @@ html {
       border-right: none;
     }
   }
-
 }
 
 .uninav__menu-item-dropdown-parent {
   display: block;
   flex-direction: column;
   position: relative;
-  // text-align: center;
 
+  // text-align: center;
   a:after {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
@@ -221,7 +266,7 @@ html {
   &:hover {
     .uninav__menu-item-dropdown-child {
       display: flex;
-      @include qbal-grow-enter;
+      @include qbal-dropdown-enter;
       @include linear-300;
     }
   }
@@ -232,8 +277,6 @@ html {
 }
 
 // END UNINAV DROPDOWNS
-
-
 // MEDIA QUERIES
 @include respond(tab-land) {
   .uninav__menu-item--audiences {
@@ -242,10 +285,79 @@ html {
     display: none;
   }
 
+  #uninav {
+    display: grid;
+    grid-template-areas: "logo cta utility"
+      "global global global";
+    background-color: $white;
+
+    #uninav--cta {
+      @include uninav-border-bottom;
+      @include qbal-drop-enter;
+    }
+  }
+
+
   .uninav--utility-nav {
     display: flex;
     justify-content: end;
   }
 }
 
+// TABLET PORTRAIT
+@include respond(tab-port) {
+  #uninav {
+    grid-template-areas: "hamburger logo utility";
+    grid-template-columns: 80px 1fr 1fr;
+    @include uninav-border-bottom;
+  }
+
+
+  .uninav--hamburger-menu {
+    content: "\f805";
+    grid-area: "hamburger";
+    display: block;
+    @include qbal-slideRight-enter;
+
+  }
+
+  .uninav--utility-nav {
+    border-bottom: none;
+  }
+
+  .uninav__logo-wrapper {
+    @include qbal-fade-enter;
+    border-bottom: none;
+  }
+
+  #uninav>div.uninav--cta {
+    display: none;
+  }
+
+  #uninav>div.uninav--global-nav {
+    display: none;
+  }
+
+  .uninav__search-input {
+    // display: none;
+    @include qbal-collapseHorizontal164-exit;
+  }
+
+  .uninav__utility-nav--search-wrapper {
+    @include qbal-slideRight-enter;
+
+    height: 100%;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    margin-right: 0 !important;
+  }
+
+}
+
+.uninav--utility-nav ul li {
+  border-right: none;
+}
+
+// END TABLET PORTRAIT
 // END MEDIA QUERIES
