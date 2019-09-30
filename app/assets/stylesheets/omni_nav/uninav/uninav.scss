@@ -31,8 +31,9 @@ html {
     list-style: none;
   }
 
-  input {
-    margin: unset;
+  .uninav__utility-nav--search-wrapper input {
+    border: none;
+    box-shadow: none;
   }
 }
 
@@ -48,19 +49,13 @@ html {
   // grid-gap: 1em;
   background-color: $white;
 
-  @include respond(uninav__tab-port) {}
+  .uninav__menu-item--audiences:nth-child(4),
+  .uninav__menu-item--audiences:nth-child(5) {
+    border-right: none;
+  }
 
-  @include respond(tab-land) {
-    .uninav__menu-item--audiences {
-      display: none
-    }
-
-    .uninav--utility-nav {
-
-      display: flex;
-      justify-content: end;
-
-    }
+  .uninav__utility-nav--search-wrapper {
+    border: 2px solid $light-grey;
   }
 }
 
@@ -202,7 +197,12 @@ html {
     justify-content: start;
     text-align: left;
     align-items: start;
+
+    li {
+      border-right: none;
+    }
   }
+
 }
 
 .uninav__menu-item-dropdown-parent {
@@ -232,3 +232,20 @@ html {
 }
 
 // END UNINAV DROPDOWNS
+
+
+// MEDIA QUERIES
+@include respond(tab-land) {
+  .uninav__menu-item--audiences {
+    // need a slicker preferably non-js fadeout solution since display: none is not animatable 
+    @include qbal-slideLeft-exit;
+    display: none;
+  }
+
+  .uninav--utility-nav {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+// END MEDIA QUERIES
