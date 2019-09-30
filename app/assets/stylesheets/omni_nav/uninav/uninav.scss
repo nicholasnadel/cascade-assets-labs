@@ -291,6 +291,10 @@ html {
       "global global global";
     background-color: $white;
 
+    .uninav--global-nav {
+      @include qbal-growExaggerated-enter;
+    }
+
     #uninav--cta {
       @include uninav-border-bottom;
       @include qbal-drop-enter;
@@ -326,7 +330,7 @@ html {
   }
 
   .uninav__logo-wrapper {
-    @include qbal-fade-enter;
+    @include qbal-grow-enter;
     border-bottom: none;
   }
 
