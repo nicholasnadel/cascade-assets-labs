@@ -413,14 +413,15 @@ module ContentTypes
 
     def render_static_one_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s %s %s",
+      format("%s %s %s %s",
              render_static_partial("widgets/single_column/call_to_action_block"),
              render_static_partial("widgets/primary_content/multi_photo_callout"),
              render_static_partial("widgets/single_column/chapman_events_feed"),
-             render_static_partial("widgets/single_column/messaging_1_column_facts"),
-             render_static_partial("widgets/single_column/campus_map"),
-             render_static_partial("widgets/single_column/messaging_2_column_youtube_video"),
-             render_static_partial("widgets/single_column/messaging_2_column_vimeo_video"))
+            #  render_static_partial("widgets/single_column/messaging_1_column_facts"),
+            #  render_static_partial("widgets/single_column/campus_map"),
+            #  render_static_partial("widgets/single_column/messaging_2_column_youtube_video"),
+            #  render_static_partial("widgets/single_column/messaging_2_column_vimeo_video"),
+             render_static_partial("widgets/single_column/chapman_stories_feed"))
     end
 
     def render_static_one_column_primary_content_business_grad
