@@ -697,7 +697,6 @@
 }
 
 .ma5menu__panel>ul li a:hover {
-  color: $white;
   background-color: transparent;
   -o-transition: none;
   transition: none;
@@ -776,8 +775,29 @@
   right: 0;
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%206L8.59%207.41%2013.17%2012l-4.58%204.59L10%2018l6-6z%22/%3E%3C/svg%3E");
+  // background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%206L8.59%207.41%2013.17%2012l-4.58%204.59L10%2018l6-6z%22/%3E%3C/svg%3E");
   width: 50px;
+
+  display: flex;
+  justify-content: center;
+
+  &:after {
+    font-family: "Font Awesome 5 Free";
+
+    content: "\f0da";
+
+    font-weight: 900;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 2rem;
+
+    color: $panther-black;
+  }
 }
 
 .ma5menu__btn--enter:hover {
