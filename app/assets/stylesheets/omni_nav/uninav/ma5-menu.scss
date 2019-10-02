@@ -103,14 +103,11 @@
   color: #ffffff;
   // width: 40px;
   // height: 40px;
-
   background-size: 40px 40px;
   background-position: 50% 50%;
 }
 
-.ma5menu__home:hover .ma5menu__logo {
-  color: #ffc107;
-}
+.ma5menu__home:hover .ma5menu__logo {}
 
 .ma5menu__home {
   font-weight: 700;
@@ -133,13 +130,9 @@
   text-transform: none;
 }
 
-.ma5menu__footer a {
-  color: #ffc107;
-}
+.ma5menu__footer a {}
 
-.ma5menu__footer a:hover {
-  color: #ffc107;
-}
+.ma5menu__footer a:hover {}
 
 .ma5menu__toggle {
   cursor: pointer;
@@ -186,7 +179,7 @@
 }
 
 .ma5menu__header .ma5menu__toggle:hover {
-  color: #ffc107;
+
   background-color: transparent;
 }
 
@@ -298,7 +291,7 @@
   -o-transition: none !important;
   transition: none !important;
   position: fixed;
-  background-color: $light-grey;
+  background-color: $white;
   height: 100%;
   top: 0;
   line-height: 19px;
@@ -485,7 +478,7 @@
   list-style-type: none;
   z-index: 100;
   color: rgba(255, 255, 255, 0.1);
-  background-color: $light-grey;
+  background-color: $white;
   scrollbar-color: #0a4b87 #0e65b6;
   scrollbar-width: thin;
 }
@@ -664,6 +657,7 @@
   padding-right: 0;
   margin-bottom: 0;
   line-height: 0;
+  border-bottom: 1px solid $light-grey;
 }
 
 .ma5menu__panel>ul li:first-of-type {
@@ -711,7 +705,7 @@
 }
 
 .ma5menu__panel>ul li .ma5menu__category:hover {
-  color: #ffc107;
+
   background-color: transparent;
   -o-transition: none;
   transition: none;
@@ -777,31 +771,22 @@
   background-color: rgba(255, 255, 255, 0.1);
   // background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%206L8.59%207.41%2013.17%2012l-4.58%204.59L10%2018l6-6z%22/%3E%3C/svg%3E");
   width: 50px;
-
   display: flex;
   justify-content: center;
 
   &:after {
     font-family: "Font Awesome 5 Free";
-
     content: "\f0da";
-
     font-weight: 900;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     font-size: 2rem;
-
     color: $panther-black;
   }
 }
 
 .ma5menu__btn--enter:hover {
-  color: #ffc107;
   background-color: rgba(255, 255, 255, 0.3);
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%206L8.59%207.41%2013.17%2012l-4.58%204.59L10%2018l6-6z%22/%3E%3C/svg%3E");
 }
@@ -823,31 +808,29 @@
   left: 0;
   right: auto;
   color: #ffffff;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.1);
   // background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
   width: 50px;
-}
 
-.ma5menu__btn--leave::before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0d9";
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: $panther-black;
+  &:after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0d9";
+    font-weight: 900;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: $panther-black;
+  }
 }
 
 .ma5menu__btn--leave:hover {
-  color: #ffc107;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.3);
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
 }
 
 .ma5menu__leave:hover .ma5menu__btn--leave {
-  color: #ffc107;
-  background-color: transparent;
+  // background-color: transparent;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffc107%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
 }
 
@@ -859,7 +842,7 @@
   top: 0;
   bottom: 0;
   right: -2px;
-  background-color: transparent;
+  // background-color: transparent;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
@@ -889,7 +872,7 @@
 }
 
 .ma5menu__leave:hover {
-  color: #ffc107;
+
   background-color: rgba(255, 255, 255, 0.1);
 }
 

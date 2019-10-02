@@ -4,8 +4,9 @@
 <!-- mobile menu toggle button end -->
 <div style="display: none;">
 
+  <%= render 'uninav' %>
   <!-- source for mobile menu start -->e
-  <div id="cu-global-nav">
+  <!-- <div id="cu-global-nav">
     <nav aria-label="global navigation bar">
       <ul class="global-nav-links site-menu">
         <li class="primary-link">
@@ -121,7 +122,7 @@
         </li>
       </ul>
     </nav>
-  </div>
+  </div> -->
   <!-- source for mobile menu end -->
 
   <!-- source for mobile menu footer start -->
@@ -135,9 +136,9 @@
   $(document).ready(function () {
     console.log('ma5');
     ma5menu({
-      menu: '.site-menu',
+      menu: '.uninav__include-in-mobile-menu',
       activeClass: 'active',
-      footer: '#ma5menu-tools',
+      footer: '.uninav--cta, .uninav--utility-nav',
       position: 'left',
       closeOnBodyClick: true
     });
