@@ -298,7 +298,7 @@
   -o-transition: none !important;
   transition: none !important;
   position: fixed;
-  background-color: #0e65b6;
+  background-color: $light-grey;
   height: 100%;
   top: 0;
   line-height: 19px;
@@ -824,8 +824,19 @@
   right: auto;
   color: #ffffff;
   background-color: transparent;
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
+  // background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http://www.w3.org/2000/svg%22%20fill%3D%22%23ffffff%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.41%207.41L14%206l-6%206%206%206%201.41-1.41L10.83%2012z%22/%3E%3C/svg%3E");
   width: 50px;
+}
+
+.ma5menu__btn--leave::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f0d9";
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: $panther-black;
 }
 
 .ma5menu__btn--leave:hover {
@@ -855,7 +866,7 @@
 
 .ma5menu__leave {
   font-size: 15px;
-  color: #ffffff;
+  color: $panther-black;
   background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   display: block;
