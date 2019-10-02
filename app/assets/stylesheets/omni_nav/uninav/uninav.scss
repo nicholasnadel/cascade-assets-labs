@@ -74,7 +74,7 @@ html {
 }
 
 
-.uninav--hamburger-menu {
+.uninav__hamburger-menu {
   display: none;
 }
 
@@ -298,6 +298,8 @@ html {
     grid-template-areas: "logo cta utility"
       "global global global";
     background-color: $white;
+    border-bottom: none !important;
+
 
     .uninav--global-nav {
       @include qbal-growExaggerated-enter;
@@ -321,14 +323,15 @@ html {
   #uninav {
     grid-template-areas: "hamburger logo utility";
     grid-template-columns: 80px 1fr 1fr;
-    @include uninav-border-bottom;
   }
 
 
-  .uninav--hamburger-menu {
-    content: "\f805";
+  .uninav__hamburger-menu {
     grid-area: "hamburger";
-    display: block;
+    display: flex;
+    align-items: center;
+    // transform: scale(1.2);
+    // margin-top: -5px;
     @include qbal-slideRight-enter;
 
   }
