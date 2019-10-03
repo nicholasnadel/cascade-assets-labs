@@ -160,11 +160,13 @@ html {
     border-right: 1px solid $light-grey;
   }
 
-  .uninav__menu-item-dropdown-parent>a::after {
+  .uninav__dropdown-wrapper>a::after {
+
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f0d7";
     padding-left: 1rem;
+
   }
 
   &>ul {
@@ -258,12 +260,6 @@ html {
   position: relative;
 
   // text-align: center;
-  a:after {
-    font-family: 'Font Awesome 5 Free';
-    font-weight: 900;
-    content: "\f0d7";
-    padding-left: 1rem;
-  }
 
   &:hover {
     .uninav__menu-item-dropdown-child {
