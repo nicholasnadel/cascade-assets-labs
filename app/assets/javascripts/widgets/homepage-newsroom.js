@@ -1,5 +1,6 @@
 $(document).ready(function () {
-  var cachedNewsroomFeed = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+  var cachedNewsroomFeed = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+
   var $selectors = {
     featuredStory: {
       tag:          new chapDOM('.homepage #featured_newsroom_stories .maxWidth .announcement .tag'),
@@ -97,9 +98,9 @@ $(document).ready(function () {
         $selectors.featuredStory.img.changeAttr('src', story.post_image);
         $selectors.featuredStory.img.changeAttr('alt', story.post_image_alt);
         $selectors.featuredStory.h2Link.changeAttr('href',story.post_url);
-        $selectors.featuredStory.h2Link.changeAttr('data-cta-label', story.post_title);
-        $selectors.featuredStory.h2Link.changeText(story.post_title);
-        $selectors.featuredStory.description.changeText(trimDescription(story.featured_description, story.post_title));
+        $selectors.featuredStory.h2Link.changeAttr('data-cta-label', story.post_title_excerpt || story.post_title);
+        $selectors.featuredStory.h2Link.changeText(story.post_title_excerpt || story.post_title);
+        $selectors.featuredStory.description.changeText(trimDescription(story.featured_description_excerpt || story.featured_description, story.post_title_excerpt || story.post_title));
 
         return
       }
@@ -107,10 +108,10 @@ $(document).ready(function () {
       $selectors.stories[idx - 1].tag.changeAttr('href', story.primary_category_link);
       $selectors.stories[idx - 1].tag.changeText('#' + decodeEntities(story.primary_category));
 
-      $selectors.stories[idx - 1].main.changeAttr('aria-label', story.post_title);
+      $selectors.stories[idx - 1].main.changeAttr('aria-label', story.post_title_excerpt || story.post_title);
       $selectors.stories[idx - 1].permaLink.changeAttr('href', story.post_url);
-      $selectors.stories[idx - 1].permaLink.changeAttr('data-cta-label', story.post_title);
-      $selectors.stories[idx - 1].h2Title.changeText(trimTitle(story.post_title));
+      $selectors.stories[idx - 1].permaLink.changeAttr('data-cta-label', story.post_title_excerpt || story.post_title);
+      $selectors.stories[idx - 1].h2Title.changeText(trimTitle(story.post_title_excerpt || story.post_title));
       $selectors.stories[idx - 1].bgImg.changeAttr('style', 'background-image:url(' + story.post_image + ')');
       $selectors.stories[idx - 1].bgImg.changeAttr('aria-label', story.post_image_alt);
       $selectors.stories[idx - 1].img.changeAttr('alt', story.post_image_alt);
