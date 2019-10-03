@@ -160,13 +160,12 @@ html {
     border-right: 1px solid $light-grey;
   }
 
-  a.uninav__dropdown-parent:after {
+  .uninav__menu-item-dropdown-parent>a::after {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f0d7";
     padding-left: 1rem;
   }
-
 
   &>ul {
     display: flex;
