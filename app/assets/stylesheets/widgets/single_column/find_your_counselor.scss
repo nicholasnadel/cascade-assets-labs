@@ -1,0 +1,296 @@
+#theme.admission.admission__undergraduate.admission__undergraduate__contact-us
+#main .primary-content.one-column  {
+
+  .subbrand-masthead-wrapper { display: none; }
+
+  .find-counselor {
+
+    &-button {
+      width: auto;
+      font-size: 2.4rem;        
+      font-family: $futura-condensed;
+    }
+
+    &-container {
+      height: 100%;
+      width: 100%;
+      background-color: $white;
+
+      .title {
+        font-size: 4.8rem;
+        line-height: 100%;
+        margin-bottom: 2rem;
+      }
+
+      .small-title {
+        font-size: 3.6rem;
+        text-align: center;
+      }
+
+      p.faux-link {
+        display: inline;
+        font-size: 2.4rem;
+        border-bottom: 2px solid $cu-red;
+        font-weight: bold;
+        color: $cu-red;
+        cursor: pointer;
+      }
+    }
+
+    &-intro {
+      position: relative;
+      min-height: 75vh;
+      display: flex;
+
+      .text-container {
+        position: relative;
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        color: black;
+        z-index: 5;
+
+        @include respond(phone) {
+          width: 80%;
+        }
+
+        .faux-link {
+
+          &::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f054 \f054";
+            font-size: 2rem;
+            padding-left: 8px;
+          }
+        }
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        opacity: .5;
+      }
+    }
+
+    &-applicant-type {
+      width: 80%;
+      margin: auto;
+      text-align: center;
+
+      @include respond(tab-port) {
+        width: 100%;
+      }
+
+      .small-title {
+        margin: 7rem 0 2rem 0;
+      }
+
+      .student-types-container {
+        display: flex;
+        justify-content: space-evenly;
+
+        @include respond(phone) {
+          flex-direction: column;
+        }
+
+        .student-types {
+          width: 20%;
+
+          @include respond(phone) {
+            width: 95%;
+            margin: 2rem;
+          }
+        }
+
+        img {
+          object-fit: cover;
+
+          @include respond(phone) {
+            width: 50%;
+            margin-bottom: 2rem;
+          }
+        }
+
+        .student-type-heading {
+          font-size: 1.8rem;
+          display: inline;
+        }
+
+        .student-type-description {
+          margin-top: 2rem;
+        }
+
+        .student-type-footnote {
+          color: $cu-red;
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+
+
+      }
+
+    }
+
+    &-school {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .school-text {
+        margin: 2rem 0;
+        text-align: center;
+      }
+
+      .school-input-container {
+        display: flex;
+        align-items: center;
+        width: 25%;
+        height: 4rem;
+        padding: 1rem;
+        border: 1px solid #cbcac5;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        line-height: normal;
+
+        @include respond(tab-port) {
+          width: 45%;
+        }
+
+        @include respond(phone) {
+          width: 60%;
+        }
+      }
+
+      .school-input {
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        height: 100%;
+        width: 90%;
+        margin: 0;
+
+        
+      }
+
+      .fas.fa-search { color: $cu-red;}
+
+    }
+
+    &-transfer {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      margin: auto;
+      text-align: center;
+
+      @include respond(tab-port) {
+        width: 100%;
+      }
+
+      .find-counselor-button {
+        align-self: center;
+      }
+
+      .transfer-counslors-profile-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+      }
+
+      .transfer-counselor {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+
+        @include respond(tab-port) {
+          width: 45%;
+        }
+
+        img {
+          border-radius: 50%;
+          width: 25rem;
+          height: 25rem;
+          object-fit: cover;
+
+          @include respond(phone) {
+            width: 15rem;
+            height: 15rem;
+          }
+        }
+
+        .counselor-link {
+          border-bottom: 2px solid $cu-red;
+          margin-bottom: .8rem;
+        }
+      }
+
+      .transfer-counselor-description {
+        width: 50%;
+        margin: auto;
+        margin-bottom: 3rem;
+
+        @include respond(tab-port) {
+          width: 85%;
+        }
+      }
+    }
+
+    &-international {
+      width: 75%;
+      margin: 5rem auto;
+
+      @include respond(tab-port) {
+        width: 95%;
+      }
+
+      .international-counselor {
+        &-container {
+          display: flex;
+          margin: 3rem 0;
+
+          @include respond(phone) {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+          }
+
+          .find-counselor-button {
+            align-self: flex-start;
+
+            @include respond(phone) {
+              align-self: center;
+            }
+          }
+         
+          img {
+            height: 25rem;
+            width: 25rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid darkgrey;
+
+            @include respond(phone) {
+              height: 15rem;
+              width: 15rem;
+            }
+          }
+        }
+
+        &-text {
+          display: flex;
+          flex-direction: column;
+          width: 70%;
+
+          @include respond(tab-port) {
+            width: 60%;
+          }
+        }
+      }
+    }
+  }
+}

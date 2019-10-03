@@ -47,6 +47,7 @@ module ContentTypes
         "OG_TAGS" => "",
         "PAGE WRAPPER CLOSE" => "",
         "PAGE WRAPPER OPEN" => "",
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action. There are action items.
         "PRIMARY CONTENT" => render_static_ad_landing_primary_content,
@@ -83,6 +84,7 @@ module ContentTypes
         "OG_TAGS" => "",
         "PAGE WRAPPER CLOSE" => cascade_format("_cascade/formats/modular/page_wrapper_close"),
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
@@ -121,6 +123,7 @@ module ContentTypes
         "OG_TAGS" => "",
         "PAGE WRAPPER CLOSE" => cascade_format("_cascade/formats/modular/page_wrapper_close"),
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
@@ -154,6 +157,7 @@ module ContentTypes
         "OG_TAGS" => "",
         "PAGE WRAPPER CLOSE" => cascade_format("_cascade/formats/modular/page_wrapper_close"),
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "OMNI-NAV" => render_static_partial("widgets/shared/omninav"), #update this
@@ -186,11 +190,43 @@ module ContentTypes
         "OG_TAGS" => "",
         "PAGE WRAPPER CLOSE" => cascade_format("_cascade/formats/modular/page_wrapper_close"),
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
         "NAVIGATION" => render_static_partial(navigation_path),
         "PRIMARY CONTENT" => render_static_one_column_primary_content_subbrand,
+        "GLOBAL FOOTER" => render_static_partial(footer_path),
+      }
+      render @configuration_set.template
+    end
+
+    def one_column_html_block
+      @configuration_set = ConfigurationSet.one_column
+      @metadata_set = MetadataSet.page(title: "Modular One Column")
+      @data_definition = DataDefinitions::OneColumn.default
+      theme = params.fetch(:theme, "admission")
+      @current_page_path = "#{theme}/undergraduate/contact-us/index.aspx"
+
+      # Define configuration set regions.
+      @configuration_set.regions = {
+        "ADDITIONAL BODY AT-END" => "",
+        "ADDITIONAL HEAD" => "",
+        "CASCADE ASSETS" => cascade_block("_cascade/blocks/html/cascade_assets"),
+        "FB_JS_SDK" => cascade_block("_cascade/blocks/html/facebook_javascript_sdk"),
+        "GOOGLE_ANALYTICS" => "",
+        "JQUERY" => cascade_block("_cascade/blocks/html/jquery"),
+        "JUMP LINK" => cascade_block("_cascade/blocks/html/jump_link"),
+        "MASTHEAD" => cascade_format("_cascade/formats/modular/mastheads/subbrand"),
+        "META VIEWPORT" => cascade_block("_cascade/blocks/html/global_meta_viewport"),
+        "OG_TAGS" => "",
+        "PAGE WRAPPER CLOSE" => cascade_format("_cascade/formats/modular/page_wrapper_close"),
+        "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
+
+        # TODO: convert these to cascade_format action.
+        "OMNI-NAV" => render_static_partial("widgets/shared/header"),
+        "PRIMARY CONTENT" => render_static_one_column_primary_content_html_block,
         "GLOBAL FOOTER" => render_static_partial(footer_path),
       }
       render @configuration_set.template
@@ -245,6 +281,7 @@ module ContentTypes
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
         "PRIMARY CONTENT" => render_static_two_column_primary_content,
         "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
@@ -304,6 +341,7 @@ module ContentTypes
         "PRIMARY CONTENT" => render_static_three_column_primary_content,
         "RIGHT COLUMN CONTENT" => render_static_three_column_right_column,
         "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "GLOBAL FOOTER" => render_static_partial("_cascade/blocks/html/footer"),
@@ -353,6 +391,7 @@ module ContentTypes
         "PRIMARY CONTENT" => render_static_three_column_primary_content,
         "RIGHT COLUMN CONTENT" => render_static_three_column_right_column,
         "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
+        "TYPEKIT" => cascade_format("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
         "GLOBAL FOOTER" => render_static_partial("_cascade/blocks/html/footer"),
@@ -456,6 +495,12 @@ module ContentTypes
       #  render_static_partial('widgets/single_column/messaging_1_column_facts'),
       #  render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
       #  render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
+    end
+
+    def render_static_one_column_primary_content_html_block
+      format("%s",
+        render_static_partial("widgets/single_column/html_block")
+      )
     end
 
     def render_static_two_column_primary_content
