@@ -35,6 +35,8 @@ html {
 
 #uninav {
   font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  position: fixed;
+  width: 100vw;
 
   li {
     margin: unset;
@@ -155,16 +157,16 @@ html {
   a {
     display: flex;
     justify-content: center;
-
     border-right: 1px solid $light-grey;
-
-    &:after {
-      font-family: 'Font Awesome 5 Free';
-      font-weight: 900;
-      content: "\f0d7";
-      padding-left: 1rem;
-    }
   }
+
+  a.uninav__dropdown-parent:after {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    content: "\f0d7";
+    padding-left: 1rem;
+  }
+
 
   &>ul {
     display: flex;
@@ -330,6 +332,7 @@ html {
     grid-area: "hamburger";
     display: flex;
     align-items: center;
+    justify-content: center;
     // transform: scale(1.2);
     // margin-top: -5px;
     @include qbal-slideRight-enter;
