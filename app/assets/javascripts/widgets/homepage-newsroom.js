@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var cachedNewsroomFeed = 'https://dev-www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
+  var cachedNewsroomFeed = 'https://www.chapman.edu/getFeed.ashx?name=newsEditorsPicks';
 
   var $selectors = {
     featuredStory: {
