@@ -25,13 +25,18 @@ $(document).ready( function() {
   });
 
   $('#go-back').on('click',  function() {
-    var sectionClasses        = ['find-counselor-intro', 'find-counselor-applicant-type',
-                          '     find-counselor-transfer', 'find-counselor-international', 'find-counselor-school'];
-    var sectionPostion        = ['inactive-top', 'inactive-bottom'];
-    var $currentActiveSection = $('.find-counselor-container').find('.active');
-    var currentSectionClass   = sectionClasses[$currentActiveSection.attr('class').split(' ').some( function(class) { return class } )]
-    var 
+    var sectionClasses                = ['find-counselor-intro', 'find-counselor-applicant-type',
+                                        'find-counselor-transfer', 'find-counselor-international', 'find-counselor-school'];
+    var sectionPostion                = ['inactive-top', 'inactive-bottom'];
+    var $currentActiveSectionClasses  = $('.find-counselor-container').find('.active').attr('class').split(' ')
+    var currentSection                = null;
 
-    debugger
+    $currentActiveSection.some( function(cssClass) {
+      if (sectionClasses.indexOf(cssClass) > -1) {
+        currentSection = cssClass;
+        return true;
+      }
+    });
+
   });
 });
