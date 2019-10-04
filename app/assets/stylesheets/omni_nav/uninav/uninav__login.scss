@@ -1,9 +1,40 @@
+.uninav__login-button {
+  z-index: 2;
+
+  ul li {
+    color: $white;
+  }
+}
+
+.uninav__login-button a {
+  color: $white;
+  fill: $white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  svg {
+    height: 2rem;
+
+    &#Layer_1 {
+      margin-right: .8rem;
+      margin-left: .8rem;
+    }
+  }
+
+}
+
+.uninav__login-button ul li {
+  border-bottom: 1px solid #333;
+}
+
 .uninav__menu-item-login {
   background-color: $panther-black;
   width: 80px;
   height: 100%;
   font-size: 1.2em;
-  color: $light-grey;
+  color: $uninav-light-grey;
   text-align: center;
   height: 50px;
   display: flex;
@@ -11,6 +42,14 @@
   align-items: center;
   @include linear-300;
   cursor: pointer;
+
+  .uninav__menu-item-dropdown-child ul a {
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
 
   &:hover {
     color: $white;

@@ -1,0 +1,37 @@
+span.underline {
+  position: relative;
+}
+
+// todo: cycle through color keyframes https://codepen.io/metagrapher/pen/tgcLl
+
+span.underline::before,
+span.underline::after {
+  // content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-image: $red;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+span.underline::before {
+  top: 0;
+  transform-origin: center right;
+}
+
+span.underline:hover::before {
+  transform-origin: center left;
+  transform: scaleX(1);
+}
+
+span.underline::after {
+  bottom: 0;
+  transform-origin: center left;
+}
+
+span.underline:hover::after {
+  transform-origin: center right;
+  transform: scaleX(1);
+}
