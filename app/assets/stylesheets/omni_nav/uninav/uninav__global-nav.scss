@@ -1,3 +1,12 @@
+.uninav--global-nav {
+  min-width: 800px;
+
+  a {
+    border-right: none;
+    color: $panther-black;
+  }
+}
+
 .uninav__dropdown-wrapper,
 .uninav__dropdown-parent {
   a {
@@ -36,12 +45,7 @@
       @include uninav-border-bottom;
     }
 
-    .uninav--global-nav {
-      a {
-        border-right: none;
-        color: $panther-black;
-      }
-    }
+
   }
 
   .icon::before {
