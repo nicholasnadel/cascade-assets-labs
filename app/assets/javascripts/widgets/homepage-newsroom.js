@@ -80,16 +80,6 @@ $(document).ready(function () {
     return descriptionNoHTML;
   }
 
-  function trimTitle(title) {
-
-    if (title.length > 55) {
-      title = title.substring(0, title.indexOf(" ", 55) < 0 ? 56 : title.indexOf(" ", 55));
-      title = title + '...'
-    }
-
-    return title
-  }
-
   function updateWidgetStories(newsStories) {
     newsStories.forEach( function(story, idx) {
       if (idx === 0) {
@@ -111,7 +101,7 @@ $(document).ready(function () {
       $selectors.stories[idx - 1].main.changeAttr('aria-label', story.post_title_excerpt || story.post_title);
       $selectors.stories[idx - 1].permaLink.changeAttr('href', story.post_url);
       $selectors.stories[idx - 1].permaLink.changeAttr('data-cta-label', story.post_title_excerpt || story.post_title);
-      $selectors.stories[idx - 1].h2Title.changeText(trimTitle(story.post_title_excerpt || story.post_title));
+      $selectors.stories[idx - 1].h2Title.changeText(story.post_title_excerpt || story.post_title);
       $selectors.stories[idx - 1].bgImg.changeAttr('style', 'background-image:url(' + story.post_image + ')');
       $selectors.stories[idx - 1].bgImg.changeAttr('aria-label', story.post_image_alt);
       $selectors.stories[idx - 1].img.changeAttr('alt', story.post_image_alt);
