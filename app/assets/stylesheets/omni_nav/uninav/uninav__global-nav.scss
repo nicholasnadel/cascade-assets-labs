@@ -1,0 +1,40 @@
+.uninav__menu-item-dropdown-child {
+  min-width: 300px;
+
+  ul {
+    display: flex;
+    padding: 4rem;
+    -webkit-font-smoothing: antialiased;
+    color: #2f2f2f;
+    font-family: "futura-pt", arial, sans-serif;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-weight: 400;
+    cursor: pointer;
+    visibility: visible;
+    box-sizing: inherit;
+    word-wrap: break-word;
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 1.5rem;
+
+    li {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid black;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      padding-left: 2rem;
+    }
+
+    a {
+      border-right: none;
+    }
+  }
+
+  .icon::before {
+    margin-right: 1rem;
+  }
+}
