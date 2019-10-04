@@ -12,8 +12,12 @@
     }
 
     &-container {
+      display: flex;
+      justify-content: center;
+      position: relative;
       height: 100%;
       width: 100%;
+      min-height: 75vh;
       background-color: $white;
 
       .title {
@@ -34,6 +38,81 @@
         font-weight: bold;
         color: $cu-red;
         cursor: pointer;
+      }
+
+      button#go-back {
+        position: absolute;
+        height: auto;
+        left: 1.5rem;
+        bottom: 1.5rem;
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 2.4rem;
+        font-family: $futura-condensed;
+        background: $cu-red no-repeat center;
+        color: #ffffff;
+        border-radius: 3px;
+        border: 1px dotted $cu-red;
+        z-index: 5;
+        transition: all .25s ease;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0.125em 0.125em 0.125em 0 rgba(0, 0, 0, 0.5);
+        }
+
+        &:focus { outline: none; }
+      }
+
+      section {
+        position: absolute;
+        width: 100%;
+        z-index: 0;
+        
+        .position-above {
+          top: -100rem;
+        }
+
+        .position-below {
+          bottom: 100rem;
+        }
+      }
+
+      .move-in-top {
+        animation: slide-in-top 1s linear forwards;
+      }
+
+      .move-in-bottom {
+        color: pink;
+        animation: slide-in-bottom 1s linear forwards;
+      }
+
+      .move-out-top {
+        animation: slide-out-top 1s linear forwards;
+      }
+
+      .move-out-bottom {
+        animation: slide-out-bottom 1s linear forwards;
+      }
+
+      @keyframes slide-in-top {
+        from { top: -100rem }
+        to  { top: 0 }
+      }
+
+      @keyframes slide-out-top {
+        from { top: 0 }
+        to { top: 100rem }
+      }
+
+      @keyframes slide-in-bottom {
+        from { bottom: -100rem }
+        to  { bottom: 0 }
+      }
+
+      @keyframes slide-out-bottom {
+        from { bottom: 0 }
+        to { bottom: 100rem }
       }
     }
 
@@ -130,8 +209,6 @@
           font-size: 1.2rem;
           margin-bottom: 1rem;
         }
-
-
       }
 
     }
@@ -140,6 +217,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      height: 100%;
 
       .school-text {
         margin: 2rem 0;
@@ -241,17 +320,22 @@
     }
 
     &-international {
-      width: 75%;
-      margin: 5rem auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
 
-      @include respond(tab-port) {
-        width: 95%;
-      }
+
 
       .international-counselor {
         &-container {
           display: flex;
-          margin: 3rem 0;
+          width: 75%;
+          margin: 0 auto;
+
+          @include respond(tab-port) {
+            width: 95%;
+          }
 
           @include respond(phone) {
             flex-direction: column;
