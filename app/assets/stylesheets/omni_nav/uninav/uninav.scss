@@ -220,7 +220,7 @@ html {
   justify-content: end;
   align-content: center;
   align-items: center;
-  @include qbal-stagger-children;
+  // @include qbal-stagger-children;
   @include uninav-border-bottom;
 
   ul {
@@ -314,12 +314,32 @@ html {
   div.uninav--cta {
     @include qbal-slideLeft-enter;
   }
+
+  .uninav__logo-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    #uninav--logo {
+      width: 300px;
+    }
+  }
 }
 
 
 
 // MEDIA QUERIES
 @include respond(tab-land) {
+  .uninav__logo-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    #uninav--logo {
+      width: 300px;
+    }
+  }
+
   .uninav__menu-item--audiences {
     // need a slicker preferably non-js fadeout solution since display: none is not animatable 
     @include qbal-slideLeft-exit;
@@ -361,6 +381,16 @@ html {
   #uninav {
     grid-template-areas: "hamburger logo utility";
     grid-template-columns: 80px 1fr 1fr;
+  }
+
+  .uninav__logo-wrapper {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    #uninav--logo {
+      width: auto;
+    }
   }
 
 
