@@ -1,0 +1,22 @@
+#uninav {
+  .gsc-search-button {
+    background-color: white;
+    background: white;
+    border: none;
+    fill: black;
+  }
+
+  /* master.self.css | http://localhost:5000/_assets/master.self.css?body=1 */
+
+  .gsc-search-button-v2 svg {
+    /* fill: #fff; */
+    fill: $panther-black;
+    height: 2rem;
+    width: 1.8rem;
+  }
+
+  .gsc-input {
+    min-width: 150px;
+  }
+
+}
