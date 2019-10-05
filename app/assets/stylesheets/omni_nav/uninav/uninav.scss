@@ -173,6 +173,7 @@ html {
   grid-area: global;
   height: $uninav-height;
   @include uninav-border-top;
+  min-width: 800px;
 
   // background-color: orange;
   a {
