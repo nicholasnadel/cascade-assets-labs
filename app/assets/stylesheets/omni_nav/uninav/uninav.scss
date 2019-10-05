@@ -220,7 +220,7 @@ html {
   justify-content: end;
   align-content: center;
   align-items: center;
-  @include qbal-fade-enter;
+  @include qbal-stagger-children;
   @include uninav-border-bottom;
 
   ul {
@@ -231,6 +231,8 @@ html {
       list-style: none;
       color: $panther-black;
       @include uninav-drop-shadow;
+      @include qbal-slideLeft-enter;
+      // @include qbal-fade-enter;
 
       a {
         @include button($red);

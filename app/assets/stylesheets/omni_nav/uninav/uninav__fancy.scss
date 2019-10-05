@@ -1,3 +1,12 @@
+@mixin delay($rule, $number, $value) {
+  @for $i from 1 to ($number + 1) {
+    &:nth-child(#{$i}) {
+      -webkit-#{$rule}-delay: (#{$i*$value});
+      #{$rule}-delay: (#{$i*$value});
+    }
+  }
+}
+
 span.underline {
   position: relative;
 }

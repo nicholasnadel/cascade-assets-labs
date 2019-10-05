@@ -1,12 +1,3 @@
-.uninav--global-nav {
-  min-width: 800px;
-
-  a {
-    border-right: none;
-    color: $panther-black;
-  }
-}
-
 .uninav__dropdown-wrapper,
 .uninav__dropdown-parent {
   a {
@@ -16,6 +7,7 @@
 
 .uninav__menu-item-dropdown-child {
   min-width: 300px;
+  @include qbal-fade-exit;
 
   ul {
     display: flex;
@@ -35,6 +27,7 @@
     margin: 0;
     padding: 0;
     padding-top: 1.5rem;
+    @include qbal-stagger-children;
 
     li {
       width: 100%;
@@ -43,9 +36,25 @@
       padding-bottom: 1rem;
       padding-left: 2rem;
       @include uninav-border-bottom;
+      @include qbal-slideUp-enter;
+      // @include qbal-stagger-children;
+      // @for $i from 1 to 10 {
+      //   &:nth-child(#{$i}) {
+      //     animation-delay: $i * 0.25s;
+      //   }
+      // }
     }
 
+    .uninav--global-nav {
+      min-width: 800px;
+      @include qbal-stagger-children;
 
+      a {
+        border-right: none;
+        color: $panther-black;
+        @include qbal-stagger-children;
+      }
+    }
   }
 
   .icon::before {
