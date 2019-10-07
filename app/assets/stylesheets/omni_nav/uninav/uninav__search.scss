@@ -1,22 +1,79 @@
 #uninav {
   .gsc-search-button {
-    background-color: white;
-    background: white;
+    background-color: $white;
+    background: $white;
     border: none;
     fill: black;
   }
 
+  .gsc-input-box {
+    border: unset;
+  }
+
+  .gsc-search-box.gsc-search-box-tools {
+    border: 1px solid $uninav-light-grey;
+  }
+
+  .gsc-search-button.gsc-search-button-v2 {
+    width: 55px;
+  }
+
+  .gsc-search-box tbody {
+    // border: 1px solid #ddd;
+  }
+
+  #gs_tti50 {
+    border: none !important;
+  }
+
   /* master.self.css | http://localhost:5000/_assets/master.self.css?body=1 */
+  .uninav__utility-nav--search-wrapper {
+    .gsc-search-button-v2 svg {
+      /* fill: #fff; */
+      fill: $panther-black;
+      height: 2rem;
+      width: 1.8rem;
+    }
 
-  .gsc-search-button-v2 svg {
-    /* fill: #fff; */
-    fill: $panther-black;
-    height: 2rem;
-    width: 1.8rem;
+    .gsc-input {
+      min-width: 150px;
+      padding-right: 0 !important;
+    }
+
+    input.gsc-input {
+      background: none !important;
+    }
+
+    input.gsc-input {
+      opacity: 0;
+      text-indent: 0 !important;
+      transition: all 1s;
+      -webkit-transition: all 1s;
+      // animation: fadeInPlaceholder 3s forwards;
+      // animation-delay: 1s;
+      // animation-iteration-count: 1;
+    }
+
+    // @keyframes fadeInPlaceholder {
+    //   0% {
+    //     opacity: 0;
+    //   }
+    //   /* Finish changes by here */
+    //   20% {
+    //     opacity: 0.2;
+    //   }
+    //   50% {
+    //     opacity: 0.5;
+    //   }
+    //   100% {
+    //     opacity: 1
+    //   }
+    // }
+    // inserts icon into google search
+    // #gs_st50::before {
+    //   content: "\f002";
+    //   font-family: 'Font Awesome 5 Free';
+    //   font-weight: 900;
+    // }
   }
-
-  .gsc-input {
-    min-width: 150px;
-  }
-
 }

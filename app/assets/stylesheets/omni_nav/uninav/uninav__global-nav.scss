@@ -27,7 +27,8 @@
     margin: 0;
     padding: 0;
     padding-top: 1.5rem;
-    @include qbal-stagger-children;
+    // @include qbal-stagger-children;
+    // @include qbal-fade-enter;
 
     li {
       width: 100%;
@@ -36,6 +37,7 @@
       padding-bottom: 1rem;
       padding-left: 2rem;
       @include uninav-border-bottom;
+      // @include qbal-fade-enter;
       @include qbal-slideUp-enter;
       // @include qbal-stagger-children;
       // @for $i from 1 to 10 {
@@ -46,18 +48,30 @@
     }
 
     .uninav--global-nav {
-      min-width: 800px;
-      @include qbal-stagger-children;
+
 
       a {
         border-right: none;
         color: $panther-black;
-        @include qbal-stagger-children;
       }
     }
   }
 
   .icon::before {
     margin-right: 1rem;
+  }
+}
+
+
+@include respond(big-desktop) {
+  .uninav--global-nav {
+    width: 800px;
+  }
+}
+
+@include respond(tab-land) {
+  .uninav--global-nav {
+    min-width: unset;
+    width: 100vw;
   }
 }

@@ -1,5 +1,9 @@
-@include respond (tab-port) {
-  #uninav>div.primary-logo {
-    min-width: 300px;
+@include respond(tab-land) {
+  uninav__logo-wrapper {
+    width: 300px;
+  }
+
+  #uninav--logo {
+    width: 300px !important;
   }
 }
