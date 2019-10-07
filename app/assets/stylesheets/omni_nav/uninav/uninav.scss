@@ -62,6 +62,13 @@ html {
     margin: unset;
     list-style: none;
     font-family: "futura-pt", arial, sans-serif;
+    will-change: background-color;
+
+    &:hover {
+      background-color: $uninav-light-grey;
+      transition: background-color 0.3s ease-out;
+    }
+
   }
 }
 
@@ -73,7 +80,8 @@ html {
   // height: 250px;
   grid-template-areas: "logo utility"
     "global cta";
-  grid-template-columns: repeat(2, 1fr);
+  // grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 30% 70%;
   // grid-gap: 1em;
   background-color: $white;
 
@@ -86,7 +94,7 @@ html {
     display: flex;
     align-content: center;
     align-items: center;
-    border: 1px solid $uninav-light-grey;
+    // border: 1px solid $uninav-light-grey;
     margin-right: 2rem;
   }
 
