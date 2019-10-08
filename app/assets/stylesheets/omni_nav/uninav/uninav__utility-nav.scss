@@ -8,6 +8,10 @@
     justify-content: end;
     border-bottom: 1px solid $uninav-light-grey;
 
+    .uninav__search-input {
+      @include qbal-fade-enter;
+    }
+
     ul {
       display: flex;
       justify-content: space-between;
