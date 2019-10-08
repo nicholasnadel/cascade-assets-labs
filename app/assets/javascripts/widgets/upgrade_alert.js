@@ -7,7 +7,7 @@ var $buoop = {
     c: -3
   },
   insecure: true,
-  test: true,
+  test: false,
   api: 2019.10,
   url: "https://www.chapman.edu/upgrade-browser.aspx",
 };
