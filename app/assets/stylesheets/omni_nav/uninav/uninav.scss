@@ -84,23 +84,6 @@ html {
   grid-template-columns: 30% 70%;
   // grid-gap: 1em;
   background-color: $white;
-
-  .uninav__menu-item--audiences:nth-child(4),
-  .uninav__menu-item--audiences:nth-child(5) {
-    border-right: none;
-  }
-
-  .uninav__utility-nav--search-wrapper {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    // border: 1px solid $uninav-light-grey;
-    margin-right: 2rem;
-  }
-
-  li.uninav__search-input {
-    // height: 30px;
-  }
 }
 
 

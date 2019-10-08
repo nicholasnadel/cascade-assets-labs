@@ -54,6 +54,10 @@
       // animation-iteration-count: 1;
     }
 
+    .gsst_a {
+      display: none;
+    }
+
     // @keyframes fadeInPlaceholder {
     //   0% {
     //     opacity: 0;
@@ -75,5 +79,27 @@
     //   font-family: 'Font Awesome 5 Free';
     //   font-weight: 900;
     // }
+  }
+}
+
+.gstl_50.gssb_c {
+  // @include qbal-stagger-children;
+  @include qbal-slideUp-enter;
+
+  tr {
+    // @include qbal-fade-enter;
+  }
+
+  td {
+    font-size: 1.8rem;
+    font-family: $futura-regular;
+    text-transform: capitalize;
+    padding-bottom: 1.2rem;
+  }
+}
+
+@include respond(tab-land) {
+  .uninav__utility-nav--search-wrapper {
+    // display: none !important;
   }
 }

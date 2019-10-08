@@ -1,9 +1,17 @@
 @include respond(tab-land) {
-  uninav__logo-wrapper {
+  .uninav__logo-wrapper {
     width: 300px;
   }
 
   #uninav--logo {
     width: 300px !important;
+  }
+}
+
+@include respond(tab-port) {
+
+  #uninav--logo,
+  .uninav__logo-wrapper {
+    width: auto;
   }
 }
