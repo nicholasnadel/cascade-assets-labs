@@ -266,6 +266,10 @@ html {
 
 // MEDIA QUERIES
 @include respond(tab-land) {
+  #uninav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .uninav__logo-wrapper {
     display: flex;
     justify-content: start;

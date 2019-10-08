@@ -10,6 +10,7 @@
 
     .uninav__search-input {
       @include qbal-fade-enter;
+      border-right: none;
     }
 
     ul {
@@ -22,10 +23,6 @@
         flex-basis: auto;
         text-align: center;
         border-right: 1px solid #ccc;
-
-        &.uninav__search-input {
-          // border-right: none;
-        }
 
         &:last-of-type {
           flex-grow: 0;
