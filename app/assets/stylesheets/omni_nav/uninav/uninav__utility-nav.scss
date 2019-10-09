@@ -15,7 +15,7 @@
 
     ul {
       display: flex;
-      justify-content: space-between;
+      justify-content: end;
       align-items: center;
 
       li {
@@ -89,5 +89,27 @@
     .uninav__utility-nav {
       min-width: auto;
     }
+
+    .uninav__utility-nav--search-wrapper {
+      margin-right: 0;
+    }
+
+    .gsc-search-box table tbody tr {
+      border: none !important;
+    }
+
+    tr {
+      border-image: none !important;
+      border: none !important;
+    }
+
+    .gsc-search-box {
+      border: none !important;
+    }
+
+    #___gcse_0 {
+      border: 1px solid grey;
+    }
+
   }
 }

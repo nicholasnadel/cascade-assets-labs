@@ -276,7 +276,7 @@ html {
     align-items: center;
 
     #uninav--logo {
-      width: 300px;
+      width: 100%;
     }
   }
 
@@ -320,7 +320,32 @@ html {
 @include respond(tab-port) {
   #uninav {
     grid-template-areas: "hamburger logo utility";
-    grid-template-columns: 80px 1fr 1fr;
+    grid-template-columns: 10% 40% 50%;
+  }
+
+  .uninav__utility-nav {
+    /* min-width: auto; */
+    /* min-width: 100%; */
+    width: 100%;
+  }
+
+  #uninav .uninav__utility-nav--wrapper ul {
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: end;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: start;
+    // all: unset;
+    display: unset;
+    justify-content: unset;
+    display: flex;
+    justify-content: space-between;
+
   }
 
   .uninav__logo-wrapper {
@@ -338,7 +363,7 @@ html {
     grid-area: "hamburger";
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     // transform: scale(1.2);
     // margin-top: -5px;
     @include qbal-slideRight-enter;
@@ -362,27 +387,10 @@ html {
     display: none;
   }
 
-  .uninav__search-input {
-    // display: none;
-    @include qbal-collapseHorizontal164-exit;
-  }
-
-  .uninav__utility-nav--search-wrapper {
-    @include qbal-slideRight-enter;
-
-    height: 100%;
-    width: 80px;
-    display: flex;
-    justify-content: center;
-    margin-right: 0 !important;
-  }
-
   .uninav__utility-nav--wrapper ul li {
     border-right: none;
   }
 }
-
-
 
 // END TABLET PORTRAIT
 // END MEDIA QUERIES
