@@ -106,7 +106,7 @@ html {
   align-items: center;
 
   #uninav--logo {
-    max-width: 300px;
+    width: 300px;
   }
 
   border-bottom: 1px solid $uninav-light-grey;
@@ -203,7 +203,7 @@ html {
 }
 
 #uninav>div.primary-logo {
-  max-width: 300px;
+  width: 300px;
   grid-area: logo;
 }
 
