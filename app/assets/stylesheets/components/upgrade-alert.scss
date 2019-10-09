@@ -1,0 +1,26 @@
+body {
+  .buorg {
+    font: 1.6rem $font-stack-heading;
+    font: 1.6rem $font-stack-body;
+  }
+
+  #buorgul {
+    // background: $red;
+    @include button;
+    padding: 2px 5px;
+    border-radius: 0;
+  }
+
+  #buorgig {
+    background: $cu-light-grey;
+    color: $panther-black;
+    padding: 2px 5px;
+    border-radius: 0;
+    transition: 1s ease;
+
+    &:hover {
+      background: $white;
+    }
+  }
+
+}
