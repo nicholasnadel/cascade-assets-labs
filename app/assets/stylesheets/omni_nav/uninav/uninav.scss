@@ -65,10 +65,18 @@ html {
     will-change: background-color;
 
     &:hover {
-      background-color: $uninav-light-grey;
-      transition: background-color 0.3s ease-out;
+      // background-color: $uninav-light-grey;
+      // transition: background-color 0.3s ease-out;
     }
+  }
 
+  ul li ul {
+    li {
+      &:hover {
+        // background-color: $uninav-light-grey;
+        // transition: background-color 0.3s ease-out;
+      }
+    }
   }
 }
 

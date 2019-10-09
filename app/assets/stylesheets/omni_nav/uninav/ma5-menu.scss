@@ -251,6 +251,7 @@
   transition: background-position .4s ease-in .3s;
   will-change: auto;
   pointer-events: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -510,13 +511,13 @@
 
 .ma5menu__panel::-webkit-scrollbar {
   width: 9px;
-  background-color: #0d60ad;
+  background-color: $uninav-light-grey;
 }
 
 .ma5menu__panel::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.15);
   outline: none;
-  border-right: 3px solid #0d60ad;
+  border-right: 3px solid $uninav-light-grey;
 }
 
 .ma5menu__panel:first-of-type {
@@ -763,6 +764,9 @@
   background-size: 24px 24px;
   -o-transition: background-color 0.2s ease-out;
   transition: background-color 0.2s ease-out;
+  -webkit-transition: background-color 0.2s ease-out;
+  -moz-transition: background-color 0.2s ease-out;
+  -ms-transition: background-color 0.2s ease-out;
 }
 
 .ma5menu__btn--enter:hover,
