@@ -1,26 +1,108 @@
 body {
   .buorg {
-    font: 1.6rem $font-stack-heading;
-    font: 1.6rem $font-stack-body;
+    font: 1.8rem "futura-pt", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased
   }
 
   #buorgul {
-    // background: $red;
-    @include button;
-    padding: 2px 5px;
-    border-radius: 0;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+    line-height: 2rem;
+    -webkit-box-direction: normal;
+    text-align: center;
+    word-wrap: break-word;
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 3px;
+    -webkit-transition: background-color 0.4s;
+    transition: background-color 0.4s;
+    box-sizing: border-box;
+    width: auto;
+    background: #a50034 no-repeat center;
+    color: #FFFFFF;
+    background-size: 15px;
+    background-position: 15px center;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 5px
+  }
+
+  #buorgul:hover {
+    background-color: #C8003F
   }
 
   #buorgig {
-    background: $cu-light-grey;
-    color: $panther-black;
-    padding: 2px 5px;
-    border-radius: 0;
-    transition: 1s ease;
-
-    &:hover {
-      background: $white;
-    }
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+    line-height: 2rem;
+    -webkit-box-direction: normal;
+    text-align: center;
+    word-wrap: break-word;
+    text-decoration: none;
+    border-bottom: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 3px;
+    background: #cfcfcf no-repeat center;
+    color: #313131;
+    -webkit-transition: background-color 0.4s;
+    transition: background-color 0.4s;
+    box-sizing: border-box;
+    width: auto;
+    background-size: 15px;
+    background-position: 15px center;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 5px
   }
 
+  #buorgig:hover {
+    background: #ffffff
+  }
+
+  .buorg-buttons {
+    padding-top: 15px
+  }
+
+  #buorg {
+    border-bottom: none;
+    background-color: #f6f2e8
+  }
+
+  .buorg-pad {
+    padding: 35px 20px 35px 20px;
+    line-height: 1.7em
+  }
+
+  .buorg-test {
+    width: 300px;
+    top: 0;
+    right: 0;
+    background-color: #a50034;
+    font-size: 1.4rem;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #ffffff;
+    display: none
+  }
+
+}
+
+@supports (display: grid) {
+  div#buorg {
+    display: none;
+  }
 }
