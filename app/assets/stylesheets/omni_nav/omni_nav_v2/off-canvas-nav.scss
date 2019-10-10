@@ -9,7 +9,7 @@
     top: 0px;
     right: 0px;
     padding: 20px;
-    
+
     &:focus {
       outline: 2px dotted $cu-red;
       outline-offset: -2px;
@@ -116,8 +116,8 @@
       position: relative;
       left: 0;
       @include transition(all,
-      0.375s,
-      ease-in-out);
+        0.375s,
+        ease-in-out);
 
       li {
         list-style: none;
@@ -126,8 +126,8 @@
       a {
         left: 0;
         @include transition(all,
-        0.175s,
-        ease-in-out);
+          0.175s,
+          ease-in-out);
 
         &:hover {
           left: 5px;
@@ -209,7 +209,7 @@
 
               .toggle>span {
                 @include vendorize(transform,
-                rotate(45deg));
+                  rotate(45deg));
               }
             }
 
@@ -228,8 +228,8 @@
               position: relative;
               display: block;
               @include transition(all,
-              0.175s,
-              ease-in-out);
+                0.175s,
+                ease-in-out);
               vertical-align: middle;
               font-size: 16px;
 
@@ -253,8 +253,8 @@
                 display: block;
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 @include transition(all,
-                0.175s,
-                ease-in-out);
+                  0.175s,
+                  ease-in-out);
 
                 svg {
                   width: 13px;
@@ -317,7 +317,7 @@
 
               .toggle>span {
                 @include vendorize(transform,
-                rotate(45deg));
+                  rotate(45deg));
               }
             }
 
@@ -332,8 +332,8 @@
               position: relative;
               display: block;
               @include transition(all,
-              0.175s,
-              ease-in-out);
+                0.175s,
+                ease-in-out);
               vertical-align: middle;
               font-size: 16px;
 
@@ -341,8 +341,8 @@
               svg {
                 position: relative;
                 @include transition(all,
-                0.175s,
-                ease-in-out);
+                  0.175s,
+                  ease-in-out);
               }
 
               &:before {
@@ -371,8 +371,8 @@
                 display: block;
                 font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
                 @include transition(all,
-                0.175s,
-                ease-in-out);
+                  0.175s,
+                  ease-in-out);
 
                 svg {
                   width: 13px;

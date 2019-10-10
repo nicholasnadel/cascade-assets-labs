@@ -4,7 +4,7 @@
     // background-color: orange;
     width: 100%;
     height: 100%;
-    display: flex;
+    display: grid;
     justify-content: end;
     border-bottom: 1px solid $uninav-light-grey;
 
@@ -44,7 +44,8 @@
       }
 
       .uninav__menu-item--audiences {
-        min-width: 118px;
+        // min-width: 118px;
+        // max-width: 120px;
       }
 
       .uninav__menu-item--audiences:nth-child(4),
