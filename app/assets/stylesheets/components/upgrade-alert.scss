@@ -113,15 +113,8 @@ body {
     }
   }
 
-  // IE9 
-  @media screen and (min-width:0) and (min-resolution: .001dpcm) {
-    #buorg {
-      top: 0;
-      margin-top: 60px;
-      position: absolute;
-      width: 100%;
-      z-index: 9;
-    }
+  // IE 9 and 10
+  @media screen and (min-width:0) {
 
     .noscript {
       #buorg {
