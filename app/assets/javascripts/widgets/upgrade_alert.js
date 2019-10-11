@@ -1,4 +1,7 @@
-if (!(CSS.supports("display: grid"))) {
+
+if ((navigator.appVersion.indexOf("MSIE 9.") !== -1) || !(CSS.supports("display: grid"))) {
+// if ((IElt10) || !(CSS.supports("display: grid"))) {
+
   var $buoop = {
     required: {
       e: -8,
@@ -24,3 +27,7 @@ if (!(CSS.supports("display: grid"))) {
     window.attachEvent("onload", $buo_f)
   }
 }
+
+
+
+

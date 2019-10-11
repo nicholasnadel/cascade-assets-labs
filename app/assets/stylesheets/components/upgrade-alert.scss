@@ -113,9 +113,26 @@ body {
     }
   }
 
-  // IE 9 and 10
-  @media screen and (min-width:0) {
+  // IE 9
+  #omni-nav-v2 {
+    // display: none \9;
+  }
 
+  #buorg {
+    top: 0 \9 !important;
+    margin-top: 60px \9 !important;
+    position: absolute \9 !important;
+    width: 100% \9 !important;
+    z-index: 9 \9 !important;
+    display: block \9 !important;
+  }
+
+  .buorg-pad {
+    display: block \9 !important;
+    text-align: center \9 !important;
+  }
+
+  @media screen and (min-width:0) and (min-resolution:.001dpcm) {
     .noscript {
       #buorg {
         top: 0;
@@ -165,7 +182,7 @@ body {
 
     #buorg,
     #bourg>* {
-      // display: none !important;
+      display: none !important;
     }
   }
 }
