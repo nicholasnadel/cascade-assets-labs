@@ -1,14 +1,16 @@
 
-if ((navigator.appVersion.indexOf("MSIE 9.") !== -1) || !(CSS.supports("display: grid"))) {
-// if ((IElt10) || !(CSS.supports("display: grid"))) {
 
+
+if ((navigator.appVersion.indexOf("MSIE ") !== -1) || !(CSS.supports("display: grid"))) {
+  // $('.noscript').css('display', 'block');
   var $buoop = {
     required: {
-      e: -8,
-      f: -6,
-      o: -3,
-      s: -1,
-      c: -4
+      i: 11,
+      e: 15,
+      f: 52,
+      o: 44,
+      s: 10.1,
+      c: 57
     },
     insecure: true,
     test: false,
@@ -31,3 +33,9 @@ if ((navigator.appVersion.indexOf("MSIE 9.") !== -1) || !(CSS.supports("display:
 
 
 
+
+
+var isIE10OrBelow = function()
+{
+   return /MSIE\s/.test(navigator.userAgent) && parseFloat(navigator.appVersion.split("MSIE")[1]) < 11;
+}
