@@ -1,36 +1,18 @@
-var parent = $(this).closest('.collapsibles-widget').attr('id');
-parent = '#' + parent;
-contentClass = ' .content';
-console.log(parent);
-var content = parent + contentClass;
-console.log(content);
-
+var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
 var accordionClass = ' .accordion';
-var currentAccordion = parent + accordionClass;
-
-var expandClass = ' .toggle-expand-collapse.expand';
-var collapseClass = ' .toggle-expand-collapse.collapse';
-var currentExpand = parent + expandClass;
-var currentCollapse = parent + collapseClass;
-
+var currentAccordion = currentCollapsibleWidget + accordionClass;
 $(function () {
-  // add unique ID to each accordion on page
+  // ADD UNIQUE ID TO EACH ACCORDION ON PAGE
   $.each($('.collapsibles-widget'), function (ind) {
     $(this).attr('id', 'accordion-' + parseInt(ind + 1));
-
     // if multiple accordions, change text
     if ((currentAccordion).length > 1) {
-      $('.toggle-expand-collapse.expand').text('Expand Each Dropdown In This Section');
-      $('.toggle-expand-collapse.collapse').text('Collapse Each Dropdown In This Section');
+      $('.toggle-expand-collapse').text('Expand Each Dropdown In This Section');
     } else {
-      $('.toggle-expand-collapse.expand').text('Expand')
+      $('#collapsibles-widget__toggle').text('Expand')
     }
   });
-
-});
-
-$(function () {
-  // $(".accordion .content").not(".accordion.active .content").css("display", "none");
+  // HANDLE CLICKS ON HEADERS
   $(".accordion .header").click(function () {
     $(this).parent(".accordion").toggleClass("active").children(".content").slideToggle('fast');
   });
@@ -40,85 +22,65 @@ $(function () {
       return false
     }
   })
-
-  function expandAll() {
-    $(".collapsibles-widget .toggle-expand-collapse.expand").on('click keypress', function (event) {
-      var parent = $(this).closest('.collapsibles-widget').attr('id');
-      var parent = '#' + parent;
-      var contentClass = ' .content';
-      console.log(parent);
-      var content = parent + contentClass;
-      console.log(content);
-
-      var accordionClass = ' .accordion';
-      var currentAccordion = parent + accordionClass;
-
-      var expandClass = ' .toggle-expand-collapse.expand';
-      var collapseClass = ' .toggle-expand-collapse.collapse';
-      var currentExpand = parent + expandClass;
-      var currentCollapse = parent + collapseClass;
-
-      console.log('currentAccordion' + currentAccordion);
-
-      var introTextHeight = $('.editableContent.summaryText').height() + 20;
+  // HANDLE EXPAND TOGGLES
+  $(".collapsibles-widget .toggle-expand-collapse").on('click keypress', function (event) {
+    var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
+    var currentCollapsibleWidget = '#' + currentCollapsibleWidget;
+    var contentClass = ' .content';
+    var content = currentCollapsibleWidget + contentClass;
+    var accordionClass = ' .accordion';
+    var currentAccordion = currentCollapsibleWidget + accordionClass;
+    var toggleClass = ' .toggle-expand-collapse';
+    var currentToggle = currentCollapsibleWidget + toggleClass;
+    var expandClass = ' .toggle-expand-collapse.expand';
+    var toggleId = ' #collapsibles-widget__toggle';
+    var currentToggle = currentCollapsibleWidget + toggleId;
+    var expandId = ' #collapsibles-widget__expand';
+    var currentExpand = currentCollapsibleWidget + expandId;
+    var collapseId = ' #collapsibles-widget__collapse';
+    var currentCollapse = currentCollapsibleWidget + collapseId;
+    var collapseClass = ' .toggle-expand-collapse.collapse';
+    var introTextHeight = $('.editableContent.summaryText').height() + 20;
+    // EXPAND
+    if ($(currentToggle).hasClass('expand')) {
       $(content).fadeIn('fast');
       $(currentAccordion).addClass('active');
-      $(currentExpand).hide()
+      $(currentToggle).removeClass('expand');
+      $(currentToggle).addClass('collapse');
       $(currentCollapse).fadeIn('fast')
       // focus on collapse toggle
       $(currentCollapse).focus();
       // scroll to top of id
-
-      console.log('introtextheight:' + introTextHeight);
+      if ((currentAccordion).length > 1) {
+        $(currentToggle).text('Collapse Each Dropdown In This Section');
+      } else {
+        $(currentToggle).text('Collapse');
+      }
       $('html, body').animate({
-        scrollTop: $(parent).offset().top - introTextHeight
+        scrollTop: $(currentCollapsibleWidget).offset().top - introTextHeight
       }, 100);
-    });
-
-  }
-
-  function collapseAll() {
-    $(".collapsibles-widget .toggle-expand-collapse.collapse").on('click keypress', function (event) {
-      var parent = $(this).closest('.collapsibles-widget').attr('id');
-      parent = '#' + parent;
-
-      console.log('collapse parent: ' + parent)
-      var contentClass = ' .content';
-      var accordionClass = ' .accordion';
-      var content = parent + contentClass;
-
-      var currentAccordion = parent + accordionClass;
-      console.log('currentAccordion' + currentAccordion);
-
-      var expandClass = ' .toggle-expand-collapse.expand';
-      var collapseClass = ' .toggle-expand-collapse.collapse';
-      var currentExpand = parent + expandClass;
-      var currentCollapse = parent + collapseClass;
-
-
-      console.log('currentAccordion: ' + currentAccordion);
+    }
+    // HANDLE COLLAPSE TOGGLES
+    else if ($(currentToggle).hasClass('collapse')) {
       $(currentAccordion).removeClass('active');
       $(content).css('display', 'none');
       $(currentExpand).fadeIn('fast');
       $(currentCollapse).hide();
-
-      var introTextHeight = $('.editableContent.summaryText').height() + 20;
-      console.log('introtextheight:' + introTextHeight);
-      $('html, body').animate({
-        scrollTop: $(parent).offset().top - introTextHeight
-      }, 100);
-
+      $(currentToggle).removeClass('collapse');
+      $(currentToggle).addClass('expand');
       $(currentExpand).focus();
-
-    })
-  }
-  $('.collapsibles-widget .toggle-expand-collapse.collapse').hide();
-  expandAll();
-  collapseAll();
+      if ((currentAccordion).length > 1) {
+        $(currentToggle).text('Expand Each Dropdown In This Section');
+      } else {
+        $(currentToggle).text('Expand');
+      }
+      $('html, body').animate({
+        scrollTop: $(currentCollapsibleWidget).offset().top - introTextHeight
+      }, 100);
+    }
+  });
 });
-
-
-// keys 🎹
+// KEYS 🎹
 function a11yClick(event) {
   if (event.type === 'click') {
     return true;
