@@ -12,9 +12,19 @@ var expandClass = ' .toggle-expand-collapse.expand';
 var collapseClass = ' .toggle-expand-collapse.collapse';
 var currentExpand = parent + expandClass;
 var currentCollapse = parent + collapseClass;
+
 $(function () {
+  // add unique ID to each accordion on page
   $.each($('.collapsibles-widget'), function (ind) {
     $(this).attr('id', 'accordion-' + parseInt(ind + 1));
+
+    // if multiple accordions, change text
+    if ((currentAccordion).length > 1) {
+      $('.toggle-expand-collapse.expand').text('Expand Each Dropdown In This Section');
+      $('.toggle-expand-collapse.collapse').text('Collapse Each Dropdown In This Section');
+    } else {
+      $('.toggle-expand-collapse.expand').text('Expand')
+    }
   });
 
 });
@@ -34,8 +44,8 @@ $(function () {
   function expandAll() {
     $(".collapsibles-widget .toggle-expand-collapse.expand").on('click keypress', function (event) {
       var parent = $(this).closest('.collapsibles-widget').attr('id');
-      parent = '#' + parent;
-      contentClass = ' .content';
+      var parent = '#' + parent;
+      var contentClass = ' .content';
       console.log(parent);
       var content = parent + contentClass;
       console.log(content);
@@ -50,35 +60,25 @@ $(function () {
 
       console.log('currentAccordion' + currentAccordion);
 
-      // var childContent = $('childContent' + parent)
-      // console.log(childContent);
-      // console.log('childcontent::' + content);
-      // childContent = "'" + childContent + "'";
-      // console.log('childcontent w quotes' + childContent);
-      $(content).fadeIn();
+      var introTextHeight = $('.editableContent.summaryText').height() + 20;
+      $(content).fadeIn('fast');
       $(currentAccordion).addClass('active');
       $(currentExpand).hide()
-      $(currentCollapse).fadeIn()
+      $(currentCollapse).fadeIn('fast')
+      // focus on collapse toggle
+      $(currentCollapse).focus();
+      // scroll to top of id
+
+      console.log('introtextheight:' + introTextHeight);
+      $('html, body').animate({
+        scrollTop: $(parent).offset().top - introTextHeight
+      }, 100);
     });
-    
 
-
-    // old
-    // $(".collapsibles-widget .toggle-expand-collapse.expand").keydown(function (e) {
-    //   if (e.keyCode === 32 || e.keyCode === 13) {
-    //     $(currentAccordion).addClass('active');
-    //     $(".accordion .content").css('display', 'block');
-    //     $(content).fadeIn();
-
-    //     $(currentAccordion).addClass('active');
-    //     $(currentExpand).hide()
-    //     $(currentCollapse).fadeIn()
-    //   }
-    // })
   }
 
   function collapseAll() {
-    $(".collapsibles-widget .toggle-expand-collapse.collapse").click(function () {
+    $(".collapsibles-widget .toggle-expand-collapse.collapse").on('click keypress', function (event) {
       var parent = $(this).closest('.collapsibles-widget').attr('id');
       parent = '#' + parent;
 
@@ -99,17 +99,17 @@ $(function () {
       console.log('currentAccordion: ' + currentAccordion);
       $(currentAccordion).removeClass('active');
       $(content).css('display', 'none');
-      $(currentExpand).fadeIn();
+      $(currentExpand).fadeIn('fast');
       $(currentCollapse).hide();
-    })
-    // keys 🎹
-    $(".collapsibles-widget .toggle-expand-collapse.collapse").keydown(function (e) {
-      if (e.keyCode === 32 || e.keyCode === 13) {
-        $(".accordion").removeClass('active');
-        $(".accordion .content").css('display', 'none');
-        $('.collapsibles-widget .toggle-expand-collapse.collapse').hide();
-        $('.collapsibles-widget .toggle-expand-collapse.expand').fadeIn().focus();
-      }
+
+      var introTextHeight = $('.editableContent.summaryText').height() + 20;
+      console.log('introtextheight:' + introTextHeight);
+      $('html, body').animate({
+        scrollTop: $(parent).offset().top - introTextHeight
+      }, 100);
+
+      $(currentExpand).focus();
+
     })
   }
   $('.collapsibles-widget .toggle-expand-collapse.collapse').hide();
