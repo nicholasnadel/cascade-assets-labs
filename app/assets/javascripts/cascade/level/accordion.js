@@ -1,16 +1,23 @@
-var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
-var accordionClass = ' .accordion';
-var currentAccordion = currentCollapsibleWidget + accordionClass;
 $(function () {
   // ADD UNIQUE ID TO EACH ACCORDION ON PAGE
   $.each($('.collapsibles-widget'), function (ind) {
+    var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
+    var accordionClass = ' .accordion';
+    var accordionChildren = ' > .accordion'
+    var currentAccordion = currentCollapsibleWidget + accordionClass;
+    var currentAccordionChildren = currentCollapsibleWidget + currentAccordionChildren;
+    var toggleId = ' #collapsibles-widget__toggle';
+    var currentToggle = currentCollapsibleWidget + toggleId;
+
     $(this).attr('id', 'accordion-' + parseInt(ind + 1));
     // if multiple accordions, change text
-    if ((currentAccordion).length > 1) {
-      $('.toggle-expand-collapse').text('Expand Each Dropdown In This Section');
-    } else {
-      $('#collapsibles-widget__toggle').text('Expand')
+    if ($(this).find('.accordion').length == 1) {
+      $(this).find(toggleId).hide();
+    } 
+    else if ($(this).find('.accordion').length > 1) {
+      $(this).find(toggleId).text('Expand Each Dropdown In This Section');
     }
+   
   });
   // HANDLE CLICKS ON HEADERS
   $(".accordion .header").click(function () {
@@ -59,8 +66,6 @@ $(function () {
       // scroll to top of id
       if ((currentAccordion).length > 1) {
         $(currentToggle).text('Collapse Each Dropdown In This Section');
-      } else {
-        $(currentToggle).text('Collapse');
       }
       console.log(currentIntroTextHeight);
       console.log('omniheight: ' + omniHeight);
@@ -80,8 +85,6 @@ $(function () {
       $(currentExpand).focus();
       if ((currentAccordion).length > 1) {
         $(currentToggle).text('Expand Each Dropdown In This Section');
-      } else {
-        $(currentToggle).text('Expand');
       }
       $('html, body').animate({
         scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
