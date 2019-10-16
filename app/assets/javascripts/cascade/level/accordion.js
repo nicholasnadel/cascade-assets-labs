@@ -1,4 +1,5 @@
 $(function () {
+  $(".accordion .content").not(".accordion.active .content").css("display", "none");
   // ADD UNIQUE ID TO EACH ACCORDION ON PAGE
   $.each($('.collapsibles-widget'), function (ind) {
     var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
