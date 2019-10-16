@@ -40,7 +40,13 @@ $(function () {
     var collapseId = ' #collapsibles-widget__collapse';
     var currentCollapse = currentCollapsibleWidget + collapseId;
     var collapseClass = ' .toggle-expand-collapse.collapse';
-    var introTextHeight = $('.editableContent.summaryText').height() + 20;
+    var introText = ' .editableContent.summaryText';
+    var currentIntroText = currentCollapsibleWidget + introText;
+    console.log('currentinrotext: ' + currentIntroText);
+    var currentIntroTextHeight = $(currentIntroText).height();
+    console.log('currentintrotextheight: ' + currentIntroTextHeight);
+    var omniHeight = $('#omni-nav-v2').height();
+
     // EXPAND
     if ($(currentToggle).hasClass('expand')) {
       $(content).fadeIn('fast');
@@ -56,8 +62,11 @@ $(function () {
       } else {
         $(currentToggle).text('Collapse');
       }
+      console.log(currentIntroTextHeight);
+      console.log('omniheight: ' + omniHeight);
+
       $('html, body').animate({
-        scrollTop: $(currentCollapsibleWidget).offset().top - introTextHeight
+        scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
       }, 100);
     }
     // HANDLE COLLAPSE TOGGLES
@@ -65,7 +74,7 @@ $(function () {
       $(currentAccordion).removeClass('active');
       $(content).css('display', 'none');
       $(currentExpand).fadeIn('fast');
-      $(currentCollapse).hide();
+      $(currentCollapse).fadeOut('fast');
       $(currentToggle).removeClass('collapse');
       $(currentToggle).addClass('expand');
       $(currentExpand).focus();
@@ -75,7 +84,7 @@ $(function () {
         $(currentToggle).text('Expand');
       }
       $('html, body').animate({
-        scrollTop: $(currentCollapsibleWidget).offset().top - introTextHeight
+        scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
       }, 100);
     }
   });
