@@ -1,5 +1,6 @@
 $(function () {
   $(".accordion .content").not(".accordion.active .content").css("display", "none");
+  $(".accordion.active .content").css("display", "block");
   // ADD UNIQUE ID TO EACH ACCORDION ON PAGE
   $.each($('.collapsibles-widget'), function (ind) {
     var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
@@ -23,6 +24,7 @@ $(function () {
   // HANDLE CLICKS ON HEADERS
   $(".accordion .header").click(function () {
     $(this).parent(".accordion").toggleClass("active").children(".content").slideToggle('fast');
+    $(".accordion.active .content").css("display", "block");
   });
   $(".accordion").children(".header").keydown(function (e) {
     if (e.keyCode === 32 || e.keyCode === 13) {
