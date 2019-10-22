@@ -215,3 +215,12 @@ body {
     }
   }
 }
+
+// Change management requested time to research how the alert would affect them
+body {
+  #buorg,
+  #bourg>* {
+    display: none !important;
+  }
+}
+
