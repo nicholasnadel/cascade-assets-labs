@@ -49,9 +49,9 @@ $(function () {
     var collapseClass = ' .toggle-expand-collapse.collapse';
     var introText = ' .editableContent.summaryText';
     var currentIntroText = currentCollapsibleWidget + introText;
-    console.log('currentinrotext: ' + currentIntroText);
+    //console.log('currentinrotext: ' + currentIntroText);
     var currentIntroTextHeight = $(currentIntroText).height();
-    console.log('currentintrotextheight: ' + currentIntroTextHeight);
+    //console.log('currentintrotextheight: ' + currentIntroTextHeight);
     var omniHeight = $('#omni-nav-v2').height();
     // EXPAND
     if ($(currentToggle).hasClass('expand')) {
@@ -66,8 +66,8 @@ $(function () {
       if ((currentAccordion).length > 1) {
         $(currentToggle).text('Collapse Each Dropdown In This Section');
       }
-      console.log(currentIntroTextHeight);
-      console.log('omniheight: ' + omniHeight);
+      //console.log(currentIntroTextHeight);
+      //console.log('omniheight: ' + omniHeight);
       $('html, body').animate({
         scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
       }, 100);
