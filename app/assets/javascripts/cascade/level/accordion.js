@@ -5,21 +5,18 @@ $(function () {
   $.each($('.collapsibles-widget'), function (ind) {
     var currentCollapsibleWidget = $(this).closest('.collapsibles-widget').attr('id');
     var accordionClass = ' .accordion';
-    var accordionChildren = ' > .accordion'
+    var accordionChildren = ' > .accordion';
     var currentAccordion = currentCollapsibleWidget + accordionClass;
     var currentAccordionChildren = currentCollapsibleWidget + currentAccordionChildren;
     var toggleId = ' #collapsibles-widget__toggle';
     var currentToggle = currentCollapsibleWidget + toggleId;
-
     $(this).attr('id', 'accordion-' + parseInt(ind + 1));
-    // if multiple accordions, change text
+    // IF MULTIPLE ACCORDIONS, CHANGE TEXT
     if ($(this).find('.accordion').length == 1) {
       $(this).find(toggleId).hide();
-    } 
-    else if ($(this).find('.accordion').length > 1) {
+    } else if ($(this).find('.accordion').length > 1) {
       $(this).find(toggleId).text('Expand Each Dropdown In This Section');
     }
-   
   });
   // HANDLE CLICKS ON HEADERS
   $(".accordion .header").click(function () {
@@ -52,27 +49,25 @@ $(function () {
     var collapseClass = ' .toggle-expand-collapse.collapse';
     var introText = ' .editableContent.summaryText';
     var currentIntroText = currentCollapsibleWidget + introText;
-    console.log('currentinrotext: ' + currentIntroText);
+    //console.log('currentinrotext: ' + currentIntroText);
     var currentIntroTextHeight = $(currentIntroText).height();
-    console.log('currentintrotextheight: ' + currentIntroTextHeight);
+    //console.log('currentintrotextheight: ' + currentIntroTextHeight);
     var omniHeight = $('#omni-nav-v2').height();
-
     // EXPAND
     if ($(currentToggle).hasClass('expand')) {
       $(content).fadeIn('fast');
       $(currentAccordion).addClass('active');
       $(currentToggle).removeClass('expand');
       $(currentToggle).addClass('collapse');
-      $(currentCollapse).fadeIn('fast')
-      // focus on collapse toggle
+      $(currentCollapse).fadeIn('fast');
+      // FOCUS ON COLLAPSE TOGGLE
       $(currentCollapse).focus();
-      // scroll to top of id
+      // SCROLL TO TOP OF ID
       if ((currentAccordion).length > 1) {
         $(currentToggle).text('Collapse Each Dropdown In This Section');
       }
-      console.log(currentIntroTextHeight);
-      console.log('omniheight: ' + omniHeight);
-
+      //console.log(currentIntroTextHeight);
+      //console.log('omniheight: ' + omniHeight);
       $('html, body').animate({
         scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
       }, 100);
