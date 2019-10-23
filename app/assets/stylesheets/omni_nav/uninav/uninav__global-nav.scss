@@ -69,12 +69,12 @@
 }
 
 .uninav--global-nav {
-  width: 800px;
+  width: 900px;
 }
 
 @include respond(big-desktop) {
   .uninav--global-nav {
-    width: 800px;
+    // min-width: 900px;
   }
 }
 
