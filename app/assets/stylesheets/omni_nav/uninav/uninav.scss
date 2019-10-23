@@ -197,6 +197,8 @@ html {
         display: block;
         text-align: center;
         font-weight: 300;
+        transition: 250ms ease-in-out;
+        will-change: background-color;
       }
     }
   }
