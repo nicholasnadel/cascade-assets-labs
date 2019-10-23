@@ -11,18 +11,21 @@
     background-color: $uninav-light-grey;
     transition: background-color 0.3s ease-out;
   }
+  a {
+    color: $panther-black;
+  }
 }
 
 .uninav__menu-item-dropdown-child {
   min-width: 300px;
-  @include qbal-fade-exit;
+  // @include qbal-fade-exit;
 
   ul {
     display: flex;
     padding: 4rem;
     -webkit-font-smoothing: antialiased;
-    color: #2f2f2f;
-    font-family: "futura-pt", arial, sans-serif;
+    color: $panther-black;
+    font-family: $futura-regular;
     font-size: 1.6rem;
     line-height: 2.4rem;
     font-weight: 400;
@@ -35,6 +38,7 @@
     margin: 0;
     padding: 0;
     padding-top: 1.5rem;
+    @include qbal-slideUp-enter;
     // @include qbal-stagger-children;
     // @include qbal-fade-enter;
 
@@ -44,15 +48,17 @@
       padding-top: 1rem;
       padding-bottom: 1rem;
       padding-left: 2rem;
+
       @include uninav-border-bottom;
       // @include qbal-fade-enter;
-      @include qbal-slideUp-enter;
+      // @include qbal-slideUp-enter;
       // @include qbal-stagger-children;
       // @for $i from 1 to 10 {
       //   &:nth-child(#{$i}) {
       //     animation-delay: $i * 0.25s;
       //   }
       // }
+
     }
 
     .uninav--global-nav {
@@ -68,13 +74,13 @@
   }
 }
 
-.uninav--global-nav {
-  width: 900px;
-}
+// .uninav--global-nav {
+//   width: 900px;
+// }
 
 @include respond(big-desktop) {
   .uninav--global-nav {
-    // min-width: 900px;
+    width: 900px;
   }
 }
 
