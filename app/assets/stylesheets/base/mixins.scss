@@ -435,13 +435,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
   &:hover,
   &:focus {
-    background-color: darken($bg-color, 7%);
+    background-color: lighten($bg-color, 7%);
     @include transition(background-color);
   }
 
   &:active {
     transition: none;
-    background-color: darken($bg-color, 7%);
+    background-color: lighten($bg-color, 7%);
   }
 }
 
