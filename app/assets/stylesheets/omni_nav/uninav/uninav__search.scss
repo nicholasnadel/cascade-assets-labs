@@ -15,7 +15,9 @@
     padding: 0;
     margin: 0;
   }
-
+  .gsc-modal-background-image {
+    background-color: $panther-black;
+  }
   .uninav__utility-nav--search-wrapper {
     display: flex;
     align-content: center;
