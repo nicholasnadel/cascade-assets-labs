@@ -74,13 +74,14 @@
   }
 }
 
-// .uninav--global-nav {
-//   width: 900px;
-// }
+// TODO: Would prefer not to use a fixed width but #uninav grid-template-columns: 30% 70% is causing crowding here
+.uninav--global-nav {
+  width: 900px;
+}
 
 @include respond(big-desktop) {
   .uninav--global-nav {
-    width: 900px;
+    // width: 900px;
   }
 }
 
