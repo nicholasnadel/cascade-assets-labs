@@ -15,7 +15,7 @@ $(function () {
     if ($(this).find('.accordion').length == 1) {
       $(this).find(toggleId).hide();
     } else if ($(this).find('.accordion').length > 1) {
-      $(this).find(toggleId).text('Expand Each Dropdown In This Section');
+      $(this).find(toggleId).text('Expand');
     }
   });
   // HANDLE CLICKS ON HEADERS
@@ -64,7 +64,7 @@ $(function () {
       $(currentCollapse).focus();
       // SCROLL TO TOP OF ID
       if ((currentAccordion).length > 1) {
-        $(currentToggle).text('Collapse Each Dropdown In This Section');
+        $(currentToggle).text('Collapse');
       }
       //console.log(currentIntroTextHeight);
       //console.log('omniheight: ' + omniHeight);
@@ -82,7 +82,7 @@ $(function () {
       $(currentToggle).addClass('expand');
       $(currentExpand).focus();
       if ((currentAccordion).length > 1) {
-        $(currentToggle).text('Expand Each Dropdown In This Section');
+        $(currentToggle).text('Expand');
       }
       $('html, body').animate({
         scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
