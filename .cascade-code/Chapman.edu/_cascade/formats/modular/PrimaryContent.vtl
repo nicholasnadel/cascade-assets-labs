@@ -50,23 +50,26 @@
         #outputCollapsibles($widget)
         #end
     #end
-##
+##    
     #if ($widgetType == 'Form Embed') 
         #set ($displayFormEmbed = $widget.getChild('form-embed').getChild('display-form-embed').value)
         #if ($displayFormEmbed == 'Yes')
         #outputFormEmbed($widget)
         #end
     #end
-##
+##    
     #if ($widgetType == 'Form') 
         #set ($displayForm = $widget.getChild('form').getChild('display-form').value)
         #if ($displayForm == 'Yes')
         #outputForm($widget)
         #end
     #end
-##     
-    #if ($widgetType == 'Featured / News / Events') 
-        #outputFeaturedNewsEvents($widget)
+##
+    #if ($widgetType == 'Featured / News / Events')
+        #set ($displayNewsEvents = $widget.getChild('FeaturedNewsEvents').getChild('options').value)
+        #if ($displayNewsEvents != "Do Not Show")
+            #outputFeaturedNewsEvents($widget)
+        #end
     #end
 ##    
     #if ($widgetType == 'Funnels 2up')
@@ -145,14 +148,14 @@
         #outputHtmlBlock($widget)
         #end
     #end
-## not finished/working yet:  
+## not finished/working yet:   
     #if ($widgetType == 'Reserved Block-Formats')
         #set ($displayReservedBlockFormat = $widget.getChild('reserved-block-formats').getChild('display-reserved-block-formats').value)
         #if ($displayReservedBlockFormat == 'Yes')
         #outputReservedBlockFormat($widget)
         #end
     #end
-##    
+##
     #if ($widgetType == 'Department Contact Info')
         #if ($widget.getChild('contact').getChild('display-contact').value == 'Yes')
             #set($wHeading = 2)
