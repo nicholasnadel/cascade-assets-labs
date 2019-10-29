@@ -147,7 +147,7 @@
         <dropdown-item show-fields="primaryContent/widget/twitterTimeline" value="Twitter Feed"/>
         <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live"/>
         <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>
-				<dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
+        <dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
         <!--<dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>-->
         <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
@@ -358,7 +358,8 @@
           <text help-text="paste in raw html or Javascript link to render code or iFrame" identifier="code-block" label="HTml of Javascript Embed or IFrame Code Block" multi-line="true" required="true"/>
         </group>
       </group>
-      <!--<group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats">
+      <!--
+      <group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats">
         <text default="Yes" identifier="display-reserved-block-formats" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
           <radio-item value="No"/>
@@ -400,23 +401,23 @@
         </group>
       </group>
       <group collapsed="true" identifier="form-embed" label="Form Embed">
-    <text default="Yes" identifier="display-form-embed" label="Show" required="true" type="radiobutton">
-      <radio-item value="Yes"/>
-      <radio-item value="No"/>
-    </text>
-    <text default="Cascade Block" identifier="block-type" label="Block Type" required="true" type="radiobutton">
-      <radio-item label="Cascade Block" show-fields="primaryContent/widget/form-embed/cascade-block" value="Cascade Block"/>
-      <radio-item label="External Javascript Embed or iFrame Block" show-fields="primaryContent/widget/form-embed/external-block" value="External Block"/>
-    </text>
-    <group identifier="cascade-block" label="Cascade Block">
-      <text identifier="header" label="Header"/>
-      <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
-      <asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="code-block" label="Form Block" render-content-depth="unlimited" type="block"/>
-    </group>
-    <group identifier="external-block" label="External Block">
-      <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
-      <text help-text="paste in Javascript block provided by Embed Form action or iFrame in Formstack (check checkboxes for Don't Need Jquery or Jquery UI or Modernizer)" identifier="code-block" label="Embed or IFrame Code Block" multi-line="true" required="true"/>
-    </group>
+        <text default="Yes" identifier="display-form-embed" label="Show" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Cascade Block" identifier="block-type" label="Block Type" required="true" type="radiobutton">
+          <radio-item label="Cascade Block" show-fields="primaryContent/widget/form-embed/cascade-block" value="Cascade Block"/>
+          <radio-item label="External Javascript Embed or iFrame Block" show-fields="primaryContent/widget/form-embed/external-block" value="External Block"/>
+        </text>
+        <group identifier="cascade-block" label="Cascade Block">
+          <text identifier="header" label="Header"/>
+          <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
+          <asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="code-block" label="Form Block" render-content-depth="unlimited" type="block"/>
+        </group>
+        <group identifier="external-block" label="External Block">
+          <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
+          <text help-text="paste in Javascript block provided by Embed Form action or iFrame in Formstack (check checkboxes for Don't Need Jquery or Jquery UI or Modernizer)" identifier="code-block" label="Embed or IFrame Code Block" multi-line="true" required="true"/>
+        </group>
       </group>
       <group collapsed="true" identifier="form" label="Form">
         <text default="Yes" identifier="display-form" label="Show" required="true" type="radiobutton">
@@ -768,6 +769,7 @@
       <asset identifier="feature" label="Feature" type="page"/>
       <text default="Default" help-text="Default is stories from Newsroom maintained by Marketing Dept at Chapman" identifier="newsFeed" label="News Feed" type="dropdown">
         <dropdown-item value="Default"/>
+        <dropdown-item value="Academics"/>
         <dropdown-item value="Admissions"/>
         <dropdown-item value="ASBE"/>
         <dropdown-item value="Commencement"/>
