@@ -50,14 +50,14 @@
         #outputCollapsibles($widget)
         #end
     #end
-##    
+##
     #if ($widgetType == 'Form Embed') 
         #set ($displayFormEmbed = $widget.getChild('form-embed').getChild('display-form-embed').value)
         #if ($displayFormEmbed == 'Yes')
         #outputFormEmbed($widget)
         #end
     #end
-##    
+##
     #if ($widgetType == 'Form') 
         #set ($displayForm = $widget.getChild('form').getChild('display-form').value)
         #if ($displayForm == 'Yes')
