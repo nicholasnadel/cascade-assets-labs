@@ -30,10 +30,11 @@
         #end
     #end
 ##
-    ## 1/15/2019 M Thomas temporarily removed on production because Yahoo YQL api to convert xml to json is unavailable,
-    ## but 1/29/2019 putting this back in on DEV only so can troubleshoot:
-    #if ($widgetType == 'Featured / News / Events') 
-        #outputFeaturedNewsEvents($widget)
+    #if ($widgetType == 'Featured / News / Events')
+        #set ($displayNewsEvents = $widget.getChild('FeaturedNewsEvents').getChild('options').value)
+        #if ($displayNewsEvents != "Do Not Show")
+            #outputFeaturedNewsEvents($widget)
+        #end
     #end
 ##
     #if ($widgetType == 'Department Contact Info')
