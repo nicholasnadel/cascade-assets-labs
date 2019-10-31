@@ -9,7 +9,8 @@
       c: 57
     },
     insecure: true,
-    api: 2019.10
+    api: 2019.10,
+    url: "https://www.chapman.edu/upgrade-browser.aspx",
   };
 
 function $buo_f() {
