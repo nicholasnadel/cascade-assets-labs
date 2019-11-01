@@ -206,11 +206,6 @@
         'text': 'Center for Undergraduate Excellence',
         'link': '/research/center-for-undergraduate-excellence/index',
         'iconClass': 'icon-lamp8'
-      },
-      {
-        'text': 'Graduate Research Support',
-        'link': '/research/graduate-research/index',
-        'iconClass': 'icon-microscope'
       }
     ]
   },
