@@ -38,7 +38,8 @@
     margin: 0;
     padding: 0;
     padding-top: 1.5rem;
-    @include qbal-slideUp-enter;
+    @include qbal-fade-enter;
+    // @include qbal-slideUp-enter;
     // @include qbal-stagger-children;
     // @include qbal-fade-enter;
 
@@ -52,6 +53,8 @@
       @include uninav-border-bottom;
       // @include qbal-fade-enter;
       // @include qbal-slideUp-enter;
+      @include qbal-fade-enter;
+
       // @include qbal-stagger-children;
       // @for $i from 1 to 10 {
       //   &:nth-child(#{$i}) {
