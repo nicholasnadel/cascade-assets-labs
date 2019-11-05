@@ -70,6 +70,14 @@
       margin-left: auto;
       @include uninav-drop-shadow;
     }
+
+    .uninav__utility-nav--audiences-container {
+      display: flex;
+      align-items: center;
+    }
+    .uninav__utility-nav--audiences-container li:last-of-type {
+      border-right: none;
+    }
   }
 
   @include respond(big-desktop) {
