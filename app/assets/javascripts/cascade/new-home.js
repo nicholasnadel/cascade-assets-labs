@@ -1,5 +1,5 @@
 (function($) {
-	$(document).ready(function() {
+  $( window ).load(function() {
 		var onHomePage = $('.homepage').length > 0;
 
 		if (onHomePage) {
