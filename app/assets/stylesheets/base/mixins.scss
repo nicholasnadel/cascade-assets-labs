@@ -496,3 +496,33 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-weight: 800;
   text-transform: uppercase;
 }
+
+// write CSS variables without like "v(thevariable);"
+@function v($var) {
+  @return var(--#{$var});
+}
+
+@mixin dotted-underline($color, $pixels) {
+  outline: $pixels dotted $color;
+}
+
+// button mixin
+@mixin button-bg($bg) {
+  background-color: $bg;
+  border-radius: 4px;
+  font-size: 2rem;
+  font-family: $futura-regular;
+  font-weight: 400;
+  padding-top: 4%;
+  padding-bottom: 4%;
+
+  &:hover {
+    background-color: lighten($bg, 8%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background-color: lighten($bg, 25%);
+
+  }
+}
