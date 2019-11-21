@@ -1,21 +1,51 @@
 .callout {
-  @include clearfix;
-  background-color: $white;
-  border: 1px solid #c1c1c1;
-  line-height: 20px;
-  margin: 0 0 20px 0;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
 
-  .editableContent, h2 {
+  .editableContent,
+  h2,
+  .preheader {
     padding: 0 $base-spacing;
     margin: $base-spacing 0;
-    line-height: 20px;
-    a {
-      border-bottom: 2px dotted #a8a8a8;
+
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.preheader {
+  font-size: 1rem;
+  font-family: $futura;
+  text-transform: uppercase;
+}
+
+// red
+.red {
+  background-color: $cu-red;
+  color: $white;
+
+  .editableContent span {
+    font-family: $arial;
+    color: $white;
+  }
+
+  .buttonLinks li a {
+    background-color: $cu-light-grey;
+    color: $panther-black;
+    @include button-bg($cu-light-grey);
+    text-align: center;
+
+    &:after {
+      content: none;
     }
   }
-  
-  img { display: block; }
+
+  span,
+  li,
+  a {
+    color: $white;
+  }
+
 }
+
+// end red
