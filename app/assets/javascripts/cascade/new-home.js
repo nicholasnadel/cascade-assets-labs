@@ -105,7 +105,7 @@
   // A class to manage window resizer and scroller functions
   var cu_window_manager = {
     // Manual Configs
-    resizerLatency: 40, // in milliseconds. Higher = less CPU, lower = faster UI
+    resizerLatency: 20, // in milliseconds. Higher = less CPU, lower = faster UI
 
     // Automagic Configs (changed by the script)
     useTransitions: true,
@@ -366,16 +366,16 @@
         $bigstat.css('opacity', 0);
         $label.css('opacity', 0);
 
-        setTimeout(function () {
-          cu_parallax_fx.animateSingleNumber($bigstat);
+        cu_parallax_fx.animateSingleNumber($bigstat);
 
-          $bigstat.animate({
-            opacity: 1
-          }, 600);
-          $label.animate({
-            opacity: 1
-          }, 400);
-        }, 100 * Math.floor(Math.random() * 10 + 1));
+        $bigstat.animate({
+          opacity: 1
+        }, 600);
+        $label.animate({
+          opacity: 1
+        }, 400);
+
+        100 * Math.floor(Math.random() * 10 + 1);
       });
     },
 
