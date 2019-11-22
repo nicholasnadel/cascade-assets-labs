@@ -6,6 +6,16 @@
     @include outer-container();
   }
 
+  .section-heading {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    width: 100%;
+    margin-bottom: 1em;
+    font-size: 2em;
+    line-height: 1em;
+    text-align: center;
+  }
+    
   .column {
     margin-bottom: $base-spacing*3;
 
