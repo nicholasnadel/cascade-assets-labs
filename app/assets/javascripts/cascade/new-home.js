@@ -368,15 +368,25 @@
 
         cu_parallax_fx.animateSingleNumber($bigstat);
 
-        $bigstat.animate({
-          opacity: 1
-        }, 600);
-        $label.animate({
-          opacity: 1
-        }, 400);
-
+        increaseOpactiyWhenVisible();
+        
         100 * Math.floor(Math.random() * 10 + 1);
+
+        function increaseOpactiyWhenVisible(){
+          $(window).scroll(function() {
+            var scrollTop = $('#undergraduateAdmission').scrollTop();
+            $bigstat.animate({
+              opacity: 1
+            }, 600);
+            $label.animate({
+              opacity: 1
+            }, 400);    
+          });
+      }
       });
+
+     
+      
     },
 
     /***************************************************
