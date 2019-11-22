@@ -366,11 +366,12 @@
         $bigstat.css('opacity', 0);
         $label.css('opacity', 0);
 
+        setTimeout(function () {
         cu_parallax_fx.animateSingleNumber($bigstat);
 
         increaseOpactiyWhenVisible();
         
-        100 * Math.floor(Math.random() * 10 + 1);
+      }, 100 * Math.floor(Math.random() * 10 + 1));
 
         function increaseOpactiyWhenVisible(){
           $(window).scroll(function() {
