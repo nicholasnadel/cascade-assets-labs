@@ -367,27 +367,27 @@
         $label.css('opacity', 0);
 
         setTimeout(function () {
-        cu_parallax_fx.animateSingleNumber($bigstat);
+          cu_parallax_fx.animateSingleNumber($bigstat);
 
-        increaseOpactiyWhenVisible();
-        
-      }, 100 * Math.floor(Math.random() * 10 + 1));
+          increaseOpactiyWhenVisible();
 
-        function increaseOpactiyWhenVisible(){
-          $(window).scroll(function() {
+        }, 100 * Math.floor(Math.random() * 10 + 1));
+
+        function increaseOpactiyWhenVisible() {
+          $(window).scroll(function () {
             var scrollTop = $('#undergraduateAdmission').scrollTop();
             $bigstat.animate({
               opacity: 1
             }, 600);
             $label.animate({
               opacity: 1
-            }, 400);    
+            }, 400);
           });
-      }
+        }
       });
 
-     
-      
+
+
     },
 
     /***************************************************
@@ -403,7 +403,6 @@
 
 
       if ($($elem.attr('data-count').length)) {
-        console.log($elem.attr('data-count'));
         var original_num = $elem.attr('data-count');
       }
 
