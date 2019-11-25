@@ -29,7 +29,6 @@ $cardinal: #a50034;
 $cardinal-hover: #810029;
 $pillar: #686259;
 $panther-black: #231f20;
-$pb: $panther-black;
 $theme-bg-color-alpha: transparent;
 $cardinal-hover: #810029;
 $panther-black: #231f20;
@@ -126,7 +125,6 @@ $panther-black-alpha: rgba($panther-black, .8);
 $pillar: #686259;
 $sand: #ddcba4;
 
-$red-dots: 2px dotted $cu-red;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
 $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
