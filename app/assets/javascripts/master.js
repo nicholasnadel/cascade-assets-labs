@@ -1,6 +1,7 @@
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree ../../../lib/assets/javascripts
 
+
 //= require omni-nav
 //= require _helpers/chapDOM
 //= require_tree ./widgets
@@ -66,3 +67,5 @@
 //= require cascade/level/scroll-bar
 //= require cascade/level/social
 //= require cascade/level/sponsor
+
+//= require ./app-js.js

@@ -1,0 +1,33 @@
+{
+  "name": "cascade-assets",
+  "version": "1.0.0",
+  "description": "This repository consists of sample HTML that Cascade Server generates for www.chapman.edu. It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu. Use this repository to develop for www.chapman.edu locally, then deploy your HTML changes and asset files to the Cascade Server when they are ready.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chapmanu/cascade-assets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chapmanu/cascade-assets/issues"
+  },
+  "homepage": "https://github.com/chapmanu/cascade-assets#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^2.7.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
