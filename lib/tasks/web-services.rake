@@ -64,10 +64,10 @@ task pull: :environment do
     puts response["asset"]["scriptFormat"]["script"]
     format_name = response["asset"]["scriptFormat"]["name"]
     puts "format_name: " + format_name
-    format_path = response["asset"]["scriptFormat"]["name"]
+    format_path = response["asset"]["scriptFormat"]["path"]
     puts "format_path: " + format_path
 
-    current_formats_directory = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/"
+    current_formats_directory = format_path
     FileUtils.mkdir_p(current_formats_directory) unless File.directory?(current_formats_directory)
 
     filetype = ".vtl"
