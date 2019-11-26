@@ -1,6 +1,4 @@
 // UNINAV.SCSS
-$uninav-height: 60px;
-
 // MIXINS
 @mixin futura-pt {
   font-family: "futura-pt", arial, sans-serif;
@@ -43,7 +41,7 @@ $uninav-height: 60px;
 // END MIXINS
 // RESETS
 html {
-  padding-top: 0;
+  padding-top: $uninav-total-height;
 }
 
 #uninav {
@@ -126,7 +124,7 @@ html {
 
 .uninav--global-nav {
   grid-area: global;
-  height: $uninav-height;
+  height: $uninav-div-height;
   @include uninav-border-top;
 
   // background-color: orange;

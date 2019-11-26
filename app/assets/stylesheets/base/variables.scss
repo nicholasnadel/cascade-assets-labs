@@ -1,4 +1,4 @@
-$uninav-height: 60px;
+$uninav-div-height: 60px;
 $utility-button-width: 60px;
 // Colors
 /* These are colors commonly found on the site.
@@ -134,3 +134,5 @@ $slate: #666;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
 $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
+$uninav-div-height: 60px;
+$uninav-total-height: 120px;

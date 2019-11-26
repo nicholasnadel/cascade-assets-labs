@@ -42,6 +42,7 @@
   align-items: center;
   @include linear-300;
   cursor: pointer;
+  height: $uninav-div-height;
 
   .uninav__menu-item-dropdown-child ul a {
     color: $white;

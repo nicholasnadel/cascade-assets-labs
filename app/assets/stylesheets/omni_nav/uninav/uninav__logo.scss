@@ -4,6 +4,7 @@
 @include respond(tab-land) {
   .uninav__logo-wrapper {
     width: 100%;
+    height: $uninav-div-height;
   }
 
   #uninav--logo {
