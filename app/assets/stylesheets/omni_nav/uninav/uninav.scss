@@ -43,7 +43,11 @@
 html {
   padding-top: $uninav-total-height;
 }
-
+@include respond(tab-port) {
+  html {
+    padding-top: $uninav-div-height;
+  } 
+}
 #uninav {
   font-family: Futura, Trebuchet MS, Arial, sans-serif;
   position: fixed;
