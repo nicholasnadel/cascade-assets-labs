@@ -14,13 +14,13 @@ task pull: :environment do
   rest_action = "read/" # ! KEEP TRAILING SLASH
 
   # * 3) ASSET TYPE
-  # this is easy to find in cascade's edit/preview url
+  # this is easy to find in cascade's edit/preview url.
   # ie https://dev-cascade.chapman.edu/entity/open.act?id=7f74b81ec04d744c7345a74906ded22a&type=page
   asset_type = 'folder/' # ! KEEP TRAILING SLASH 
 
   # * 4) ASSET PATH OR ID
   # you can also use its path (ie "Chapman.edu/_cascade/formats/modular/widgets/1-column")... but.. whitespace.
-  asset_path = "c7980059c04d744c4832d6757ebbde37" # ! NO TRAILING SLASH
+  asset_path = "a8975632c0a81e4b22b523b84ee99921" # ! NO TRAILING SLASH
 
   # * 5) SECRETS
   # set these in application.yml (a la figaro 🐈)
@@ -28,11 +28,11 @@ task pull: :environment do
   cascade_password = '&p=' + ENV['CASCADE_PASSWORD']
 
   # the constructed url should look something like:
-  # "https://dev-cascade.chapman.edu/api/v1/read/folder/Chapman.edu/_cascade/formats/modular/widgets/foldername?u=username&p=password"
+  # https://dev-cascade.chapman.edu/api/v1/read/folder/Chapman.edu/_cascade/formats/modular/widgets/foldername?u=username&p=password
 
   url = base_url + rest_action + asset_type + asset_path + cascade_username + cascade_password
 
-  # puts url
+  puts url
 
   response = HTTParty.get(url)
   response = response.parsed_response
@@ -55,14 +55,18 @@ task pull: :environment do
     # IDENTIFIERS
     id = child['id']
     format_url = 'https://dev-cascade.chapman.edu/api/v1/read/format/' + id + cascade_username + cascade_password
-    # puts format_url
+    puts "format_url: " + format_url
 
     # GET EACH FORMAT'S VELOCITY CODE FROM JSON RESPONSE - AKA "script"
+    # See https://dev-cascade.chapman.edu/api/v1/read/format/a897589cc0a81e4b22b523b8d1b3a0af?u=USERNAME&p=PASSWORD
     response = HTTParty.get(format_url)
     response = response.parsed_response
     puts response["asset"]["scriptFormat"]["script"]
     format_name = response["asset"]["scriptFormat"]["name"]
-    
+    puts "format_name: " + format_name
+    format_path = response["asset"]["scriptFormat"]["name"]
+    puts "format_path: " + format_path
+
     current_formats_directory = "../../.cascade-code/Chapman.edu/_cascade/formats/modular/widgets/one_column/"
     FileUtils.mkdir_p(current_formats_directory) unless File.directory?(current_formats_directory)
 
