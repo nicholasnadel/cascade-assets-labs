@@ -1,6 +1,6 @@
 #*
  * OmniNav v3 format.
- * Chapman.edu/test-section/nick-test/uninav-refactor-velocity/omni_nav_v3.vtl
+ * Chapman.edu/_cascade/formats/modular/omni_nav_v3/omni_nav_v3.vtl
  *
  * Note: the site://Chapman.edu/ seen in most href is not a hardcoded subdomain but a Cascade variable 
  * that allows path to render correctly even when a page published to other webservers not www
@@ -240,7 +240,7 @@ On a page level, configure via:
 
 #macro ( buildPrimaryNavLogoContainer )
       ##NEW WAY:
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_logo_container.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_logo_container.vtl" )
       #* OLD WAY:
       <div class="primary-logo">
         <a href="site://Chapman.edu/index" title="Chapman University Website Home Page">
@@ -264,11 +264,11 @@ On a page level, configure via:
 #end
 
 #macro ( uninavMobileMenu ) 
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_mobile_global.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_mobile_global.vtl" )
 #end
 
 #macro ( uninavLogo )
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_logo.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_logo.vtl" )
 
       #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
@@ -278,22 +278,22 @@ On a page level, configure via:
 #end
 
 #macro ( uninavUtility ) 
-  #import ( "/test-section/nick-test/uninav-refactor-velocity/_utilityNav.vtl" )
+  #import ( "/_cascade/formats/modular/omni_nav_v3/_utilityNav.vtl" )
 #end
 
 #macro ( uninavAudiences ) 
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_audiences.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_audiences.vtl" )
 #end
 #macro ( uninavCTA ) 
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_cta.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_cta.vtl" )
 #end
 
 #macro ( uninavSeach ) 
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_search.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_search.vtl" )
 #end
 
 #macro ( uninavGlobal ) 
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_global.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_global.vtl" )
 #end
 
 
@@ -317,7 +317,7 @@ On a page level, configure via:
         <div class="uninav__menu-item-dropdown-child uninav__login-button">
           <ul>
 
-        #import("/test-section/nick-test/uninav-refactor-velocity/_login.vtl" )
+        #import("/_cascade/formats/modular/omni_nav_v3/_login.vtl" )
 
 
 
@@ -342,7 +342,7 @@ On a page level, configure via:
 ##
 #macro( buildGlobalNav )
   ##NEW WAY:
-  #import( "/test-section/nick-test/uninav-refactor-velocity/_globalNav_menu.vtl" )
+  #import( "/_cascade/formats/modular/omni_nav_v3/_globalNav_menu.vtl" )
   #* OLD WAY:
   <div class="nav-container global-nav">
     <div id="cu-global-nav">
@@ -433,7 +433,7 @@ On a page level, configure via:
     <ul class="utility-list">
       
         ##NEW WAY:
-        #import ( "/test-section/nick-test/uninav-refactor-velocity/_utility_nav_findInfoFor_menu.vtl" )
+        #import ( "/_cascade/formats/modular/omni_nav_v3/_utility_nav_findInfoFor_menu.vtl" )
         #* OLD WAY:
         <li class="utility-cell utility-has-dropdown">
         <a href="#">Find information for</a>
@@ -450,7 +450,7 @@ On a page level, configure via:
       *#
       
       ##NEW WAY:
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_utility_nav_links.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_utility_nav_links.vtl" )
       #*OLD WAY:
       <li class="utility-cell"><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
       <li class="utility-cell"><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
@@ -460,7 +460,7 @@ On a page level, configure via:
       *#
       
       ##NEW WAY:
-      #import ( "/test-section/nick-test/uninav-refactor-velocity/_utility_nav_social_menu.vtl" )
+      #import ( "/_cascade/formats/modular/omni_nav_v3/_utility_nav_social_menu.vtl" )
       #*OLD WAY:
       <li class="utility-cell utility-has-dropdown">
         <a href="#" role="listbox" aria-label="Social listbox">Social</a>
@@ -615,7 +615,7 @@ On a page level, configure via:
     </div>
 
     ##NEW WAY:
-    #import( "/test-section/nick-test/uninav-refactor-velocity/_offCanvas_main_menu.vtl" )
+    #import( "/_cascade/formats/modular/omni_nav_v3/_offCanvas_main_menu.vtl" )
     #* OLD way:
     <ul>
       <li>
@@ -708,7 +708,7 @@ On a page level, configure via:
       <ul>
         
         ##NEW WAY:
-        #import ( "/test-section/nick-test/uninav-refactor-velocity/_utility_nav_findInfoFor_menu.vtl" )
+        #import ( "/_cascade/formats/modular/omni_nav_v3/_utility_nav_findInfoFor_menu.vtl" )
         #*OLD WAY:
         <li>
           <a href="site://Chapman.edu/audiences/index">Find information for...</a>
@@ -724,7 +724,7 @@ On a page level, configure via:
         *#
         
         ##NEW WAY:
-        #import ( "/test-section/nick-test/uninav-refactor-velocity/_offCanvas_utility_menu.vtl" )
+        #import ( "/_cascade/formats/modular/omni_nav_v3/_offCanvas_utility_menu.vtl" )
         #*OLD WAY:
         <li><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
         <li><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
@@ -819,19 +819,8 @@ On a page level, configure via:
   #end
 #end
 
-#import ( "/test-section/nick-test/uninav-refactor-velocity/_buildToggleIcon_macro.vtl")
-#* moved from inline to above file so can use here and in other partials that are imported
-#macro ( buildToggleIcon $displayName )
-  <span class="toggle">
-    <span>
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-        <title>Toggle ${_EscapeTool.xml($displayName)}</title>
-        <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-      </svg>
-    </span>
-  </span>
-#end
-*#
+#import ( "/_cascade/formats/modular/omni_nav_v3/_buildToggleIcon_macro.vtl")
+
 
 
 #macro ( buildOffCanvasNavCloseIcon )
