@@ -6,7 +6,7 @@
     display: none;
 }
   #___gcse_0 {
-    height: 50px;
+    height: $uninav-div-height;
     display: flex;
     align-items: center;
   }
@@ -179,7 +179,7 @@
 
         width: auto;
         display: flex;
-        // height: $uninav-height;
+        // height: $uninav-div-height;
       }
 
       // #gsc-i-id1
