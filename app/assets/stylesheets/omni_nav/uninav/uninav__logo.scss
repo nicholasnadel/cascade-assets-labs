@@ -1,6 +1,7 @@
 #uninav--logo {
   margin-left: 2.5rem;
 }
+
 @include respond(tab-land) {
   .uninav__logo-wrapper {
     width: 100%;
@@ -8,7 +9,7 @@
   }
 
   #uninav--logo {
-    width: 300px !important;
+    min-width: 300px !important;
   }
 }
 
@@ -19,3 +20,31 @@
     width: auto;
   }
 }
+
+.secondary-logo {
+  font-weight: 800;
+  font-size: 1.2em;
+  width: 100%;
+  min-width: 300px;
+  border-left: 1px solid $cu-red;
+  align-self: center;
+
+margin-left: 5%;
+
+padding-left: 5%;
+}
+
+
+// .secondary-logo::before {
+//   content: "|";
+//   margin-left: 10px;
+//   color: $cu-red;
+// }
+
+// .secondary-logo {
+//   font-weight: 800;
+//   font-size: 1.2em;
+//   width: 100%;
+//   min-width: 300px;
+// }
+

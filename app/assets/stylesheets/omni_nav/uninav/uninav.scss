@@ -113,14 +113,17 @@ html {
   display: none;
 }
 
-/* Inline #7 | http://localhost:5000/uninav */
+
+
+
 .uninav__logo-wrapper {
-  display: flex;
-  justify-content: start;
-  align-items: center;
+  display: grid;
+  align-content: center;
+  grid-auto-flow: column;
+
 
   #uninav--logo {
-    width: 300px;
+    min-width: 300px;
   }
 
   border-bottom: 1px solid $uninav-light-grey;
@@ -274,12 +277,16 @@ html {
   }
 
   .uninav__logo-wrapper {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: grid;
+        -ms-flex-align: center;
+            align-items: center;
+    align-content: center;
+    grid-auto-flow: column;
+  
     #uninav--logo {
-      width: 300px;
+      min-width: 300px;
     }
   }
 }

@@ -84,6 +84,9 @@ On a page level, configure via:
   #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
 
   #if ( $isUmbrellaCategory )
+  <script>
+  console.log('umbrella category')
+  </script>
     #set ( $umbrellaDirectory = $pageUmbrellaCategory[0] )
 
     ## These 2 were originally different values and could differ in the future.
@@ -269,12 +272,6 @@ On a page level, configure via:
 
 #macro ( uninavLogo )
       #import ( "/_cascade/formats/modular/omni_nav_v3/_logo.vtl" )
-
-      #if ( $isUmbrellaCategory )
-      <div class="secondary-logo">
-        <a class="branded-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
-      </div>
-      #end
 #end
 
 #macro ( uninavUtility ) 
