@@ -43,11 +43,13 @@
 html {
   padding-top: $uninav-total-height;
 }
+
 @include respond(tab-port) {
   html {
     padding-top: $uninav-div-height;
-  } 
+  }
 }
+
 #uninav {
   font-family: Futura, Trebuchet MS, Arial, sans-serif;
   position: fixed;
@@ -117,13 +119,13 @@ html {
 
 
 .uninav__logo-wrapper {
-  display: grid;
-  align-content: center;
-  grid-auto-flow: column;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 
 
   #uninav--logo {
-    min-width: 300px;
+    // min-width: 300px;
   }
 
   border-bottom: 1px solid $uninav-light-grey;
@@ -280,13 +282,13 @@ html {
     display: -webkit-box;
     display: -ms-flexbox;
     display: grid;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     align-content: center;
     grid-auto-flow: column;
-  
+
     #uninav--logo {
-      min-width: 300px;
+      // min-width: 300px;
     }
   }
 }

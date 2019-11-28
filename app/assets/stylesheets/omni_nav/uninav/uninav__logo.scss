@@ -9,7 +9,7 @@
   }
 
   #uninav--logo {
-    min-width: 300px !important;
+    // min-width: 300px !important;
   }
 }
 
@@ -25,26 +25,31 @@
   font-weight: 800;
   font-size: 1.2em;
   width: 100%;
-  min-width: 300px;
+  // min-width: 300px;
   border-left: 1px solid $cu-red;
   align-self: center;
 
-margin-left: 5%;
+  margin-left: 5%;
 
-padding-left: 5%;
+  padding-left: 5%;
 }
 
 
-// .secondary-logo::before {
-//   content: "|";
-//   margin-left: 10px;
-//   color: $cu-red;
-// }
+@include respond(tab-land) {
+  .secondary_logo {
+    min-width: auto;
+  }
 
-// .secondary-logo {
-//   font-weight: 800;
-//   font-size: 1.2em;
-//   width: 100%;
-//   min-width: 300px;
-// }
+  nav#uninav #uninav--cta {
 
+    // display: none;
+    a {
+
+      // background: none;
+ // color: $panther-black;
+ // min-width: auto;
+
+    }
+
+  }
+}
