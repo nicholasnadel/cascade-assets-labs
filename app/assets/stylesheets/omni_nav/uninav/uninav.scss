@@ -103,9 +103,9 @@ html {
 // UNINAV STRUCTURE
 #uninav {
   display: grid;
-  grid-template-areas: "logo utility"
-    "global cta";
-  grid-template-columns: 30% 70%;
+  grid-template-areas: "logo secondaryLogo utility"
+    "global global cta";
+  grid-template-columns: 1fr;
   background-color: $white;
   top: 0;
   z-index: 999;

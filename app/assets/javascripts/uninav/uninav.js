@@ -23,10 +23,10 @@ $(window).on("load resize", function (e) {
 
 function gs__mobileReveal() {
   console.log('gs__mobileReveal')
-  if (window.matchMedia("(max-width: 1200px)").matches) {
+  if (window.matchMedia("(max-width: 1300px)").matches) {
     $('button.gsc-search-button.gsc-search-button-v2').click(function (event) {
       event.preventDefault();
-      console.log('smaller than 1200 media query');
+      console.log('smaller than 1300 media query');
 
       $('.gsc-input').toggle();
       $('.uninav__search-input').toggleClass('uninav__search-input--desktop');
