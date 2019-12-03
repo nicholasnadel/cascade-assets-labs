@@ -162,7 +162,7 @@ From this point you can now install any javascript dependencies you need for the
 
 Webpack is a module bundler that takes assets like JavaScript files with many dependencies and turns them into something that you can provide to a client web page. The configuration for webpack has already been created in the file `webpack.config.js` if any changes are needed for loading files and js compilation they can be done there. For more info regarding webpack configuration see [webpack documentation](https://webpack.js.org/configuration/)
 
-To begin writting javascript es6 locate the `app-js` directory and add a javascript file or modify an exisitng file. Once finished locate the `main.js` file and create the approprite import statements to include the files/code that needs to be compiled for es6 conversion to es5 that will be used in the main application. see the example below for how a simple way on how this is done
+To begin writting javascript es6 locate the `/app-js` directory and add a javascript file or modify an exisitng file. Once finished locate the `main.js` file and create the appropriate import statements to include the files/code that needs to be compiled for es6 conversion to es5 that will be used in the main application. see the example below for how a simple way on how this is done
 
 `headingChange.js`
 
