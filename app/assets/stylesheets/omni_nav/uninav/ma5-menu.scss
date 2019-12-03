@@ -4,9 +4,15 @@
 *   Copyright (c) 2016 Tomasz Kalinowski
 *   GitHub: https://github.com/ma-5/ma5-mobile-menu
 */
+
 .ma5menu {
   display: none;
   box-sizing: border-box;
+}
+
+
+.ma5menu__panel span span svg {
+  display: none;
 }
 
 .ma5menu *,
@@ -1569,5 +1575,3 @@ html.ma5menu--active {
     opacity: 1;
   }
 }
-
-
