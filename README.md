@@ -145,3 +145,49 @@ So we put the stylesheet at [/static/\_files/css/level_2013.css](https://github.
 At runtime, the [application controller will move this directory](https://github.com/chapmanu/cascade-assets/blob/development/app/controllers/content_types/school_home_pages_controller.rb#L12) under the `public` directory that is accessible under dev server's document root. And, thus, we can use the [same layout template](https://github.com/chapmanu/cascade-assets/blob/development/app/views/_cascade/templates/school_home_pages/slideshow.html) that Cascade uses without any changes.
 
 This can also be used for other assets that you don't want bundled and deployed to Cascade, like those to style the Cascade Assets dashboard.
+
+## Using Javascript es6
+
+Javascript es6 compilation used in cascade-assets is based on [this article](https://revs.runtime-revolution.com/want-to-use-es6-with-rails-right-now-webpack-to-the-rescue-ebefb2004e9e).
+
+To begin writting es6 javascript ensure you have `node` installed on your machine. If it is not installed you can do so by running the following command if using brew:
+
+    brew install node
+
+Now that node is installed you can install the dependencies needed to write es6 code. The application already has the appropriate dependencies installed via the `package.json` file located in the root directory of the application which include `babel-loader, babel-core, babel-preset-es2015, babel-polyfill` do not change the version as these are the best versions that will work with `ruby version 2.5.1` and `rails 4.2.8`. To begin run the command in the application root directory:
+
+    npm install
+
+From this point you can now install any javascript dependencies you need for the application by running `npm install <package name>` from the applications root directory.
+
+Webpack is a module bundler that takes assets like JavaScript files with many dependencies and turns them into something that you can provide to a client web page. The configuration for webpack has already been created in the file `webpack.config.js` if any changes are needed for loading files and js compilation they can be done there. For more info regarding webpack configuration see [webpack documentation](https://webpack.js.org/configuration/)
+
+To begin writting javascript es6 locate the `app-js` directory and add a javascript file or modify an exisitng file. Once finished locate the `main.js` file and create the approprite import statements to include the files/code that needs to be compiled for es6 conversion to es5 that will be used in the main application. see the example below for how a simple way on how this is done
+
+`headingChange.js`
+
+```javascript
+const changeHeading = () => {
+  $('.login-menu a').text('NEW JS');
+}
+
+module.exports = changeHeading;
+```
+
+`main.js`
+
+```javascript
+const headingChange = require('./headingChange');
+
+$(document).ready( () => {
+  const $selector = $('#cu-global-nav .primary-link a');
+  $selector.text('ES6!!!');
+  headingChange();
+})
+```
+
+To compile the js es6 files and place the code in the asset-pipeline to be used in the application run the following command from the application root directory 
+
+    node_modules/.bin/webpack
+
+Which will compile the javascript in the `main.js` file and create a file called `app-js.js` in the `app/assets/javascripts/` directory.
