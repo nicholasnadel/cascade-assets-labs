@@ -3,7 +3,6 @@ $(function () {
   $(".accordion.active .content").css("display", "block");
   // ADD UNIQUE ID TO EACH ACCORDION ON PAGE
   $.each($('.collapsibles-widget'), function (ind) {
-    debugger
     var currentCollapsibleWidget  = $(this).closest('.collapsibles-widget').attr('id'),
         accordionClass            = ' .accordion',
         accordionChildren         = ' > .accordion',
