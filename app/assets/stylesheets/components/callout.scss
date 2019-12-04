@@ -326,3 +326,8 @@
 .rightColumn h2 {
   line-height: 1.2em;
 }
+
+.callout-box-widget--left.callout.callout-box-widget--contact-widget {
+  background-color: var(--cu-light-grey);
+  color: var(--panther-black);
+}
