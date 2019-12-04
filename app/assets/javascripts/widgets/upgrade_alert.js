@@ -11,6 +11,14 @@
     insecure: true,
     api: 2019.10,
     url: "https://www.chapman.edu/upgrade-browser.aspx",
+    onshow: function() {
+      var e = document.getElementsByTagName('b')[0];
+      var d = document.createElement('strong');
+      d.innerHTML = e.innerHTML;
+      d.classList.add('buorg-mainmsg');
+
+      e.parentNode.replaceChild(d, e);
+    }
   };
 
 function $buo_f() {
