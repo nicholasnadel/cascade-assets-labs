@@ -27,6 +27,7 @@
     h2 {
       font-weight: 500;
       max-width: 200px;
+      line-height: 1.2em;
     }
 
     hr {
@@ -69,9 +70,7 @@
         margin-top: 2%;
       }
     }
-
   }
-
 
   // RED
   .callout-box-widget--red {
@@ -300,6 +299,30 @@
   }
 }
 
-.rightColumn .callout-box-widget {
-  margin-bottom: 20px;
+.rightColumn {
+
+  .callout-box-widget {
+    margin-bottom: 20px;
+  }
+
+  .callout-box-widget.styleOne .editableContent,
+  .callout-box-widget.styleTwo .editableContent,
+  h2 {
+    line-height: 20px;
+    margin: 16px 0;
+    overflow-wrap: break-word;
+    padding: 0 16px;
+  }
+
+  .callout-box-widget,
+  .simple-form-widget .callout {
+    h2 {
+      line-height: 1.2em;
+    }
+  }
+}
+
+.rightColumn .callout-box-widget.styleTwo .editableContent,
+.rightColumn h2 {
+  line-height: 1.2em;
 }
