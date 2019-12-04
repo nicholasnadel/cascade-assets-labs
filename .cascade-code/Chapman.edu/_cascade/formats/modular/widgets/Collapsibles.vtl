@@ -17,7 +17,7 @@
 ##
     <br/>
     <div class="row">
-          <div id="collapsibles-widget__toggle" class="toggle-expand-collapse expand" tabindex="0">Toggle Section</div>
+          <div data-toggle="collapsibles-widget__toggle" class="toggle-expand-collapse expand" tabindex="0">Toggle Section</div>
     </div>
     #foreach ($collapsible in $collapsibles)
         #if ($collapsible.getChild('active').value == 'Yes')
