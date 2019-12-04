@@ -2,7 +2,7 @@ $(function () {
   if ($(".secondary-logo").length) {
     console.log('contextual/secondary menu found');
     ma5menu({
-      menu: '.uninav__menu-drilldown--contextual',
+      menu: '.uninav__menu-drilldown--contextual-plus-global',
       activeClass: 'active',
       footer: '.uninav--cta',
       position: 'left',
