@@ -64,18 +64,16 @@
 					<radio-item value="Yes"/>
 					<radio-item value="No"/>
 				</text>
-				<group collapsed="true" identifier="color-wrapper" label="Color">
-					<text default="Grey" identifier="color-value" label="Color" required="False" type="dropdown">
-						<dropdown-item value="Grey"/>
-						<dropdown-item value="Red"/>
-						<dropdown-item value="Black"/>
-						<dropdown-item value="Sand"/>
-						<dropdown-item value="White"/>
-					</text>
-				</group>
+          <text default="Grey" identifier="color-value" label="Color" required="False" type="dropdown">
+            <dropdown-item value="Grey"/>
+            <dropdown-item value="Red"/>
+            <dropdown-item value="Black"/>
+            <dropdown-item value="Sand"/>
+            <dropdown-item value="White"/>
+          </text>
 				<group identifier="text" label="Text">
-					<text default="[preheader]" identifier="preheader" label="Preheader (Optional)" multi-line="false" required="false"/>
-					<text default="[headline]" identifier="headline" label="Headline" multi-line="true"/>
+					<text default="" identifier="preheader" label="Preheader (Optional)" multi-line="false" required="false" help-text="Preheader" />
+					<text default="" identifier="headline" label="Headline" multi-line="true" help-text="Headline"/>
 					<text identifier="copy" label="Copy" wysiwyg="true"/>
 				</group>
 				<group identifier="links" label="Links">
