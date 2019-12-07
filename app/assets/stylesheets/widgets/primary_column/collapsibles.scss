@@ -11,7 +11,7 @@
   background-color: $white;
   border: 1px solid #c1c1c1;
   border-radius: 2px;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 
   &.first {
     margin-top: 20px;
@@ -39,31 +39,49 @@
 
     .show,
     .hide {
-      background-image: image-url('miscButtons.png');
-      background-position: -23px 0;
-      background-repeat: no-repeat;
+      // background-image: image-url('miscButtons.png');
+      // background-position: -23px 0;
+      // background-repeat: no-repeat;
       position: absolute;
-      text-indent: -9999px;
+      // text-indent: -9999px;
       // color: $white;
       top: 8px;
       right: 13px;
       width: 27px;
       height: 27px;
+      position: absolute;
+      font-family: 'Font Awesome 5 Free';
+      visibility: visible;
+      font-weight: 900;
     }
 
     .show {
-      background-position: -23px 0;
       display: block;
 
+      &:after {
+        content: "\f077";
+      }
+
       &:hover {
-        background-position: -51px 0;
         display: block;
       }
+    }
+
+    .show,
+    .hide {
+      position: absolute;
+      font-family: 'Font Awesome 5 Free';
+      visibility: visible;
+      font-weight: 900;
     }
 
     .hide {
       background-position: -23px -29px;
       display: none;
+
+      &:after {
+        content: "\f078";
+      }
 
       &:hover {
         background-position: -51px -29px;
@@ -80,12 +98,13 @@
 
   &.active {
     header {
-      background-color: $white;
+      background-color: $cu-light-grey;
     }
 
     .header {
       font-weight: 800;
       background: $white;
+      color: $cu-red;
 
       .show {
         display: none;
@@ -109,7 +128,7 @@
     }
 
     .header {
-      background-color: #d8d8d8;
+      background-color: $cu-light-grey;
       overflow: hidden;
       width: 100%;
     }
