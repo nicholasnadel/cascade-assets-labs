@@ -9,9 +9,9 @@
 
 .collapsibles-widget .accordion {
   background-color: $white;
-  border: 1px solid #c1c1c1;
   border-radius: 2px;
   margin-bottom: 10px;
+  border: 1px solid $cu-light-grey;
 
   &.first {
     margin-top: 20px;
@@ -27,7 +27,7 @@
   }
 
   .header {
-    background-color: #d8d8d8;
+    background-color: $cu-light-grey;
     font-size: 16px;
     padding: 10px 45px 10px 20px;
     margin: 0;
@@ -39,12 +39,7 @@
 
     .show,
     .hide {
-      // background-image: image-url('miscButtons.png');
-      // background-position: -23px 0;
-      // background-repeat: no-repeat;
       position: absolute;
-      // text-indent: -9999px;
-      // color: $white;
       top: 8px;
       right: 13px;
       width: 27px;
@@ -59,7 +54,7 @@
       display: block;
 
       &:after {
-        content: "\f077";
+        content: "\f078";
       }
 
       &:hover {
@@ -80,7 +75,7 @@
       display: none;
 
       &:after {
-        content: "\f078";
+        content: "\f077";
       }
 
       &:hover {
@@ -103,7 +98,7 @@
 
     .header {
       font-weight: 800;
-      background: $white;
+      background: $cu-light-grey;
       color: $cu-red;
 
       .show {
@@ -120,7 +115,7 @@
     zoom: normal;
 
     &.active header {
-      background-color: $white;
+      background-color: $cu-light-grey;
     }
 
     h3 {
