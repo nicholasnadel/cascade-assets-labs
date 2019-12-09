@@ -5,7 +5,15 @@
 #set ($photos = $_XPathTool.selectNodes($element.getChild('multiImageContentBlocks'), "photoCallout"))
 #set ($calloutHeading = $element.getChild('multiImageContentBlocks').getChild('multiImageHeading').value)
 #set ($shapeClass = $element.getChild('multiImageContentBlocks').getChild('multiImageBlocksShape').value)
-    <div class="multi-image-content-blocks-widget">
+#set ($displayToggle = $element.getChild('multiImageContentBlocks').getChild('display-multi-image-content-blocks').value)
+
+    #if ($displayToggle == 'No')
+        #set ($hiddenClass = 'hidden')
+    #else
+        #set ($hiddenClass = '')
+    #end
+  
+    <div class="multi-image-content-blocks-widget ${_EscapeTool.xml($hiddenClass)}">
         <div class="multi-image-content-blocks-container ${_EscapeTool.xml($shapeClass)}">
         <h2 class="multi-image-content-heading">${_EscapeTool.xml($calloutHeading)}</h2>
         #foreach ($photo in $photos)
