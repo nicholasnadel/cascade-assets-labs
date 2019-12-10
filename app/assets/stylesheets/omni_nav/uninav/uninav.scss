@@ -59,6 +59,10 @@ html {
   -webkit-font-smoothing: antialiased;
   box-shadow: 0 37.125px 70px -12.125px rgba(0, 0, 0, 0.1);
 
+  a {
+    cursor: pointer;
+  }
+
   li {
     margin: unset;
     list-style: none;
@@ -256,7 +260,6 @@ html {
   flex-direction: column;
   position: relative;
 
-  // text-align: center;
   &:hover,
   &:focus,
   &:focus-within {
