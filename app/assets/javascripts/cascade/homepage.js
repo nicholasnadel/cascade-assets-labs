@@ -943,7 +943,7 @@ if (!Array.prototype.forEach) {
 }
 
 // FIX MOBILE UNDERGRADUATE SECTION
-if ($(window).width() < 678) {
+if ($(window).width() < 678 && $('.homepage').length > 0) {
   $(window).on('scroll', function () {
     $('#undergraduateAdmission').find('.fade-elem').each(function (i) {
       var el = $(this);
