@@ -267,16 +267,15 @@ p span.label {
     animation-delay: 1s;
   }
 }
+// @include respond(tab-port) {
+//   .bigstat {
+//     animation-delay: 2s;
+//   }
 
-@include respond(tab-port) {
-  .bigstat {
-    animation-delay: 2s;
-  }
-
-  .fade-elem,
-  .bigstat {
-    -webkit-animation: fadeIn 1s linear forwards;
-    animation: fadeIn 1s linear forwards;
-    animation-delay: 1s;
-  }
-}
+//   .fade-elem,
+//   .bigstat {
+//     -webkit-animation: fadeIn 1s linear forwards;
+//     animation: fadeIn 1s linear forwards;
+//     animation-delay: 1s;
+//   }
+// }
