@@ -941,15 +941,7 @@ if (!Array.prototype.forEach) {
     var original_num = $elem.attr('data-count');
   }
 }
-var uga = $('#undergraduateAdmission');
 
-function isScrolledIntoView(uga) {
-  var docViewTop = $(window).scrollTop();
-  var docViewBottom = docViewTop + $(window).height();
-  var elemTop = $(elem).offset().top;
-  var elemBottom = elemTop + $(elem).height();
-  return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-}
 // FIX MOBILE UNDERGRADUATE SECTION
 if ($(window).width() < 678) {
   $(window).on('scroll', function () {
