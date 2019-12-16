@@ -1,127 +1,310 @@
-<!-- <script type="text/javascript">
-  $(document).ready(function () {
-    $(".testimonial-widget").lightSlider();
+<!-- Add the slick-theme.css if you want default styling -->
+<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" /> -->
+<script>
+  $().ready(function () {
+    $('.testimonial-widget').slick({
+      arrows: false,
+      centerPadding: "0px",
+      dots: true,
+      slidesToShow: 1,
+      infinite: true,
+      variableWidth: false,
+    });
+    $('.testimonial-widget__button--left').click(function () {
+      console.log('clicked')
+      $(this).closest('.testimonial-widget').slick('slickPrev');
+    });
+    $('.testimonial-widget__button--right').click(function () {
+      console.log('clicked')
+      $(this).closest('.testimonial-widget').slick('slickNext');
+    });
+
   });
-</script> -->
-<div class="testimonial-widget">
-  <div class="testimonial-widget__placeholder-img">
-    <img src="https://placekitten.com/600/600" alt="">
+</script>
+
+<!-- START --WHITE -->
+<div class="testimonial-widget testimonial-widget--white">
+  <!-- "SLIDE" -->
+  <div class=" testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://answersafrica.com/wp-content/uploads/2018/09/Jeff-Goldblum-640x427.jpg" alt="">
+    </div>
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        BARBARA HOLLAND, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
   </div>
-  <div class="testimonial-widget__text">
-    <div class="faux-h2 testimonial-widget__faux-h2">
-      BARBARA HOLLAND, MA `89
+  <!-- "SLIDE" -->
+  <div class="testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img
+        src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE4MDAzNDEwODQwOTQ2MTkw/ada-lovelace-20825279-1-402.jpg"
+        alt="">
     </div>
-    <div class="testimonial-widget__department-title">
-      COMPUTER ENGINEER, SPACEX
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        ELON MUSK, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
     </div>
-    <div class="testimonial-widget__body">
-      Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
-      community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
-      teaching
-      grand modernisation region distinguished emeritus nobel.
-      <div class="testimonial-widget__buttons">
-        <i class="far fa-angle-left"></i>
-        <i class="far fa-angle-right"></i>
-        <div class="testimonial-widget__button--left" aria-label="previous testimonial"></div>
-        <div class="testimonial-widget__button--right" aria-label="next testimonial"></div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" title="Previous Testimonial" role="button"
+        aria-label="Previous Testimonial">
+      </div>
+      <div class="testimonial__button testimonial-widget__button--right" title="Next Testimonial" role="button"
+        aria-label="Next Testimonial">
       </div>
     </div>
   </div>
 </div>
-
+<!-- END --WHITE -->
+<!-- START --RED -->
 <div class="testimonial-widget testimonial-widget--red">
-  <div class="testimonial-widget__placeholder-img">
-    <img src="https://placekitten.com/600/600" alt="">
+  <!-- "SLIDE" -->
+  <div class=" testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
+    </div>
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        BARBARA HOLLAND, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
   </div>
-  <div class="testimonial-widget__text">
-    <div class="faux-h2 testimonial-widget__faux-h2">
-      BARBARA HOLLAND, MA `89
+  <!-- "SLIDE" -->
+  <div class="testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
     </div>
-    <div class="testimonial-widget__department-title">
-      COMPUTER ENGINEER, SPACEX
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        ELON MUSK, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
     </div>
-    <div class="testimonial-widget__body">
-      Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
-      community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
-      teaching
-      grand modernisation region distinguished emeritus nobel.
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" title="Previous Testimonial" role="button"
+        aria-label="Previous Testimonial">
+      </div>
+      <div class="testimonial__button testimonial-widget__button--right" title="Next Testimonial" role="button"
+        aria-label="Next Testimonial">
+      </div>
     </div>
-  </div>
-  <div class="testimonial-widget__buttons">
-    <div class="testimonial-widget__button--left" aria-label="previous testimonial"></div>
-    <div class="testimonial-widget__button--right" aria-label="next testimonial"></div>
   </div>
 </div>
-
+<!-- END --RED -->
+<!-- START --BLACK -->
 <div class="testimonial-widget testimonial-widget--black">
-  <div class="testimonial-widget__placeholder-img">
-    <img src="https://placekitten.com/600/600" alt="">
+  <!-- "SLIDE" -->
+  <div class=" testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
+    </div>
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        BARBARA HOLLAND, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
   </div>
-  <div class="testimonial-widget__text">
-    <div class="faux-h2 testimonial-widget__faux-h2">
-      BARBARA HOLLAND, MA `89
+  <!-- "SLIDE" -->
+  <div class="testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
     </div>
-    <div class="testimonial-widget__department-title">
-      COMPUTER ENGINEER, SPACEX
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        ELON MUSK, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
     </div>
-    <div class="testimonial-widget__body">
-      Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
-      community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
-      teaching
-      grand modernisation region distinguished emeritus nobel.
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" title="Previous Testimonial" role="button"
+        aria-label="Previous Testimonial">
+      </div>
+      <div class="testimonial__button testimonial-widget__button--right" title="Next Testimonial" role="button"
+        aria-label="Next Testimonial">
+      </div>
     </div>
-  </div>
-  <div class="testimonial-widget__buttons">
-    <div class="testimonial-widget__button--left" aria-label="previous testimonial"></div>
-    <div class="testimonial-widget__button--right" aria-label="next testimonial"></div>
   </div>
 </div>
+<!-- END --BLACK -->
 
+<!-- START --SAND -->
 <div class="testimonial-widget testimonial-widget--sand">
-  <div class="testimonial-widget__placeholder-img">
-    <img src="https://placekitten.com/600/600" alt="">
+  <!-- "SLIDE" -->
+  <div class=" testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
+    </div>
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        BARBARA HOLLAND, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
   </div>
-  <div class="testimonial-widget__text">
-    <div class="faux-h2 testimonial-widget__faux-h2">
-      BARBARA HOLLAND, MA `89
+  <!-- "SLIDE" -->
+  <div class="testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
     </div>
-    <div class="testimonial-widget__department-title">
-      COMPUTER ENGINEER, SPACEX
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        ADA LOVELACE, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
     </div>
-    <div class="testimonial-widget__body">
-      Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
-      community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
-      teaching
-      grand modernisation region distinguished emeritus nobel.
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" title="Previous Testimonial" role="button"
+        aria-label="Previous Testimonial">
+      </div>
+      <div class="testimonial__button testimonial-widget__button--right" title="Next Testimonial" role="button"
+        aria-label="Next Testimonial">
+      </div>
     </div>
-  </div>
-  <div class="testimonial-widget__buttons">
-    <div class="testimonial-widget__button--left" aria-label="previous testimonial"></div>
-    <div class="testimonial-widget__button--right" aria-label="next testimonial"></div>
   </div>
 </div>
+<!-- END --SAND -->
 
+
+<!-- START --GREY -->
 <div class="testimonial-widget testimonial-widget--grey">
-  <div class="testimonial-widget__placeholder-img">
-    <img src="https://placekitten.com/600/600" alt="">
+  <!-- "SLIDE" -->
+  <div class=" testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
+    </div>
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        BARBARA HOLLAND, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
   </div>
-  <div class="testimonial-widget__text">
-    <div class="faux-h2 testimonial-widget__faux-h2">
-      BARBARA HOLLAND, MA `89
+  <!-- "SLIDE" -->
+  <div class="testimonial-widget__slide">
+    <div class=" testimonial-widget__placeholder-img">
+      <img src="https://placekitten.com/600/600" alt="">
     </div>
-    <div class="testimonial-widget__department-title">
-      COMPUTER ENGINEER, SPACEX
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        ELON MUSK, MA `89
+      </div>
+      <div class="testimonial-widget__department-title">
+        COMPUTER ENGINEER, SPACEX
+      </div>
+      <div class="testimonial-widget__body">
+        Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
+        community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
+        teaching
+        grand modernisation region distinguished emeritus nobel.
+      </div>
     </div>
-    <div class="testimonial-widget__body">
-      Academic world-class institution scholarly global impact challenge. Intelligence, ingenuity esquire respect
-      community engagement. Laureate emiratus graduands chancellor citizen procession quadrangle. Network fellow
-      teaching
-      grand modernisation region distinguished emeritus nobel.
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" title="Previous Testimonial" role="button"
+        aria-label="Previous Testimonial">
+      </div>
+      <div class="testimonial__button testimonial-widget__button--right" title="Next Testimonial" role="button"
+        aria-label="Next Testimonial">
+      </div>
     </div>
-  </div>
-  <div class="testimonial-widget__buttons">
-    <div class="testimonial-widget__button--left" aria-label="previous testimonial"></div>
-    <div class="testimonial-widget__button--right" aria-label="next testimonial"></div>
-
   </div>
 </div>
+<!-- END --GREY -->

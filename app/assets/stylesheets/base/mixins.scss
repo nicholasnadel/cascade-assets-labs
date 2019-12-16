@@ -496,3 +496,75 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-weight: 800;
   text-transform: uppercase;
 }
+
+
+// write CSS variables without like "v(thevariable);"
+@function v($var) {
+  @return var(--#{$var});
+}
+
+// @include dotted-underline($cu-red, 2px);
+@mixin dotted-underline($color, $spacing, $position: bottom) {
+  background-position: $position;
+  background-repeat: repeat-x;
+  background-size: $spacing 5px;
+  background-image: linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1.0) 0%);
+  background-image: -webkit-linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1.0) 0%);
+}
+
+// button mixin
+@mixin button-bg($bg) {
+  --padding: 15px;
+  background-color: $bg;
+  border-radius: 4px;
+  font-size: 2rem;
+  font-family: $futura-regular;
+  font-weight: 400;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  @include dc($bg);
+
+  &:hover {
+    background-color: lighten($bg, 8%);
+    transition: all 0.3s ease;
+  }
+
+  &:active {
+    background-color: lighten($bg, 25%);
+    @include dc($bg);
+  }
+}
+
+
+@mixin underline($color) {
+  border-bottom: 2px dotted ($color);
+
+}
+
+
+// automatic text contrast https://codepen.io/kevinpowell/pen/45ed86610f4fbdb2d05c8d6261e45b75
+@function text($bg) {
+  @if(lightness($bg) > 50) {
+    @return $panther-black;
+  }
+
+  @else {
+    @return $white;
+  }
+}
+
+@mixin dc($color) {
+  // dc is short for dynamic color
+  background: $color;
+  color: text($color);
+}
+
+// example: 
+// $bg: white;
+// body {
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   @include dc($bg);
+// }
