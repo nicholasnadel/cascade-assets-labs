@@ -41,6 +41,7 @@
 //= require cascade/plugins/super-pager
 //= require cascade/plugins/touchwipe
 //= require cascade/plugins/lightslider
+//= require cascade/plugins/slick
 //= require cascade/plugins/isOnScreen
 //= require cascade/level/plugins/tipsy
 //= require cascade/level/accordion
