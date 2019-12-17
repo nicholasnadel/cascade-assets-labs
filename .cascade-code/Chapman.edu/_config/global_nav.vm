@@ -112,7 +112,7 @@
       },
       {
         'text': 'Campus Tours',
-        'link': '/admission/undergraduate/visit/index',
+        'link': '/admission/undergraduate/visit',
         'iconClass': 'icon-office'
       }
     ]
