@@ -1,0 +1,93 @@
+#macro(outputTestimonialWidget $element)  
+
+#set ($tw = $element.getChild('testimonial-widget'))
+
+## BG COLOR
+#set ($color = $tw.getChild('color-value').value.toLowerCase() )
+#set ($color = "testimonial-widget--" + $color )
+
+## IMAGE
+
+#set ($imageShape = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__img').getChild('testimonial-widget__img--shape').value.toLowerCase())
+#set ($imageType = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__img').value.toLowerCase())
+
+#set ($altText = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__img').getChild('altText').value)
+
+imageType $imageType
+$imageUrlInt
+$imageUrlExt
+$altText
+
+imagelink $imageLink
+## TEXT
+#set ($endorserName = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__faux-h2').value)
+#set ($endorserTitle = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__department-title').value)
+#set ($endorserTitle = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__department-title').value)
+#set ($testimonyText = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__text').value)
+
+## <h2>Ihatecascade</h2>
+## $color
+## $imageShape
+## $endorserName
+## $endorserTitle
+## $testimonyText
+
+<div class="testimonial-widget $color">
+  <div class=" testimonial-widget__slide">
+    
+    #if ($imageType.value == "none")
+    <h2>no image</h2>
+    #end
+    
+    #if ($imageType.value != "none")
+        #set ($imageUrlInt = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__img').getChild('internalCascadeImage').getChild('path').value )
+        #set ($imageUrlExt = $tw.getChild('testimonial-widget__slide').getChild('testimonial-widget__img').getChild('externalImageURL').value )
+    #end
+    #if ($imageUrlInt != "")      
+        <div class="testimonial-widget__img testimonial-widget__img--$imageShape">
+          <img src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]" alt=""/>
+        </div>
+    #elseif ($imageUrlExt != "")
+        <div class="testimonial-widget__img testimonial-widget__img--circle">
+          <img src="[system-asset]${_EscapeTool.xml($imageUrlExt)}[/system-asset]" alt=""/>
+        </div>
+    #end
+    
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        $endorserName
+      </div>
+      <div class="testimonial-widget__department-title">
+        $endorserTitle
+      </div>
+      <div class="testimonial-widget__body">
+        $testimonyText
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
+  </div>
+    <div class=" testimonial-widget__slide">
+    <div class="testimonial-widget__img testimonial-widget__img--circle">
+      <img src="https://answersafrica.com/wp-content/uploads/2018/09/Jeff-Goldblum-640x427.jpg" alt=""/>
+    </div>
+    <div class="testimonial-widget__text">
+      <div class="faux-h2 testimonial-widget__faux-h2">
+        $endorserName
+      </div>
+      <div class="testimonial-widget__department-title">
+        $endorserTitle
+      </div>
+      <div class="testimonial-widget__body">
+        $testimonyText
+      </div>
+    </div>
+    <div class="testimonial-widget__buttons">
+      <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+      <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
+    </div>
+  </div>
+</div>
+#end
