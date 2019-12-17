@@ -1,5 +1,4 @@
 #uninav {
-  transition: all 2s linear;
 
 
   .off-canvas-nav-container {
@@ -9,15 +8,12 @@
     left: 0;
     background-color: white;
     overflow: hidden;
-    transition: all 2s linear;
 
 
     .off-canvas-nav {
-      transition: all 2s linear;
 
       .off-canvas-menu#off-canvas-umbrella {
         position: relative;
-        transition: all 2s linear;
 
         // display: none;
         .off-canvas-umbrella-list-container {
@@ -30,21 +26,20 @@
           grid-auto-rows: 0;
           grid-auto-columns: 0;
           height: 100%;
-          transition: all 2s linear;
 
           ul.root-umbrella-nav {
             transform: translateX(0);
-            transition: all 1s linear;
+            transition: all .5s linear;
           }
 
           ul.drilldown-menu {
             display: none;
             position: absolute;
             height: 100%;
+            width: 100%;
             left: 40rem;
             top: 0;
             border: 2px solid red;
-            transition: all 2s linear;
           }
 
           ul.drilldown-menu.show {
@@ -59,13 +54,5 @@
 
       }
     }
-  }
-
-  .slide-out {
-    transform: translateX(-20rem);
-  }
-
-  .slide-in {
-    transform: translateX(0);
   }
 }
