@@ -1,20 +1,6 @@
 <div class="off-canvas-nav-container" id="js-off-canvas-nav-container">
   <div class="cu-off-canvas-header">
     <div class="cu-logo-wrapper">
-      <div class="toggle-logo" id="umbrella-logo">
-        <a class="off-logo" href="index.aspx" title="School of Communication">
-          <!-- logo set as background image by class -->
-          School of Communication Logo
-        </a>
-        <span class="close js-close-off-canvas-nav" tabindex="0">
-          <svg xmlns="http://www.w3.org/2000/svg" height="13" version="1.1" viewBox="0 0 512 512" width="13">
-            <title>Close</title>
-            <path
-              d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z">
-            </path>
-          </svg>
-        </span>
-      </div>
 
       <div class="toggle-logo" id="main-logo">
         <a class="default off-logo" href="../index.aspx" title="Chapman University Website Home Page">
@@ -43,9 +29,7 @@
         <ul class="root-umbrella-nav">
 
 
-
           <li class="non-current"><a href="message-from-the-dean.aspx">Message From the Dean</a></li>
-
 
 
 
@@ -53,13 +37,30 @@
 
 
 
-
           <li class="non-current"><a href="contact-us.aspx">Contact Us</a></li>
 
 
 
-
-
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: I am the initial set")
+            }
+          </script>
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: ")
+            }
+          </script>
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: Academic Programs")
+            }
+          </script>
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: Academic Programs")
+            }
+          </script>
 
 
 
@@ -75,34 +76,25 @@
             <a href="academic-programs/index.aspx">Academic Programs</a>
 
             <span class="toggle">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" height="32" version="1.1" viewBox="0 0 512 512" width="32">
-                  <title>Toggle Academic Programs</title>
-                  <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-                </svg>
-              </span>
+              <i class="fas fa-chevron-right"></i>
             </span>
             <ul class="drilldown-menu">
-              <li class="menu-back">Back</li>
-              <li><a href="academic-programs/strategic-corporate-communication.aspx">BA in Strategic &amp; Corporate
-                  Communication</a></li>
-              <li><a href="academic-programs/health-strategic-communication.aspx">MS in Health &amp; Strategic
-                  Communication</a></li>
-              <li><a href="academic-programs/communication-studies.aspx">B.A. in Communication Studies</a></li>
-              <li><a href="academic-programs/4-1-health-strategic-communication.aspx">4 + 1 Integrated
-                  Undergraduate/Masters of Health and Strategic Communication</a></li>
-              <li>
+              <li class="menu-back"><i class="fas fa-chevron-left"></i>Academic Programs</li>
+              <li class="non-current"><a href="academic-programs/strategic-corporate-communication.aspx">BA in Strategic
+                  &amp; Corporate Communication</a></li>
+              <li class="non-current"><a href="academic-programs/health-strategic-communication.aspx">MS in Health &amp;
+                  Strategic Communication</a></li>
+              <li class="non-current"><a href="academic-programs/communication-studies.aspx">B.A. in Communication
+                  Studies</a></li>
+              <li class="non-current"><a href="academic-programs/4-1-health-strategic-communication.aspx">4 + 1
+                  Integrated Undergraduate/Masters of Health and Strategic Communication</a></li>
+              <li class="non-current">
                 <a href="academic-programs/drilldown-test/index.aspx">Drill Down Test</a>
                 <span class="toggle">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="32" version="1.1" viewBox="0 0 512 512" width="32">
-                      <title>Toggle ${_EscapeTool.xml($displayName)}</title>
-                      <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-                    </svg>
-                  </span>
+                  <i class="fas fa-chevron-right"></i>
                 </span>
                 <ul class="drilldown-menu">
-                  <li class="menu-back">Back</li>
+                  <li class="menu-back"><i class="fas fa-chevron-left"></i>Academic Programs</li>
                   <li class="non-current"><a
                       href="academic-programs/drilldown-test/change-of-major-application-form-thank-you.aspx">Thank You
                       for Change Your Major/Minor Application Form Omniv-Nav V3</a></li>
@@ -110,30 +102,62 @@
                     <a href="academic-programs/drilldown-test/drilldown-test-second/index.aspx">Drill Down Test
                       Second</a>
                     <span class="toggle">
-                      <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="32" version="1.1" viewBox="0 0 512 512"
-                          width="32">
-                          <title>Toggle Drill Down Test Second</title>
-                          <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-                        </svg>
-                      </span>
+                      <i class="fas fa-chevron-right"></i>
                     </span>
                     <ul class="drilldown-menu">
-                      <li class="menu-back">Back</li>
+                      <li class="menu-back"><i class="fas fa-chevron-left"></i>Academic Programs</li>
                       <li class="non-current"><a
                           href="academic-programs/drilldown-test/drilldown-test-second/faculty-student-research.aspx">Faculty
                           and Student Research Drilldown Second</a></li>
                     </ul>
                   </li>
+                  <script>
+                    if (window.location.href.indexOf("//dev-") > -1) {
+                      console.log("(ง •̀_•́)ง VELOCITY: I am the third set")
+                    }
+                  </script>
+                  <script>
+                    if (window.location.href.indexOf("//dev-") > -1) {
+                      console.log("(ง •̀_•́)ง VELOCITY: Academic Programs")
+                    }
+                  </script>
+                  <script>
+                    if (window.location.href.indexOf("//dev-") > -1) {
+                      console.log("(ง •̀_•́)ง VELOCITY: Drill Down Test")
+                    }
+                  </script>
+                  <script>
+                    if (window.location.href.indexOf("//dev-") > -1) {
+                      console.log("(ง •̀_•́)ง VELOCITY: Drill Down Test Second")
+                    }
+                  </script>
                 </ul>
               </li>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: I am the second set")
+                }
+              </script>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: Drill Down Test Second")
+                }
+              </script>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: Academic Programs")
+                }
+              </script>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: Drill Down Test Second")
+                }
+              </script>
             </ul>
           </li>
 
 
-
           <li class="non-current"><a href="faculty-directory.aspx">Faculty Directory</a></li>
-
 
 
 
@@ -141,14 +165,11 @@
 
 
 
-
           <li class="non-current"><a href="about.aspx">About the School of Communication</a></li>
 
 
 
-
           <li class="non-current"><a href="nick_omni_nav_v3_secondary_logo.aspx">School of Communication</a></li>
-
 
 
 
@@ -157,14 +178,31 @@
 
 
 
-
           <li class="non-current"><a href="nick_omni_nav_v3_contextual-menu-toggle.aspx">School of Communication</a>
           </li>
 
 
 
-
-
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: I am the initial set")
+            }
+          </script>
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: Drill Down Test Second")
+            }
+          </script>
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: Drill Down Other")
+            }
+          </script>
+          <script>
+            if (window.location.href.indexOf("//dev-") > -1) {
+              console.log("(ง •̀_•́)ง VELOCITY: Drill Down Other")
+            }
+          </script>
 
 
 
@@ -175,32 +213,43 @@
             <a href="drilldown-other/index.aspx">Drill Down Other</a>
 
             <span class="toggle">
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" height="32" version="1.1" viewBox="0 0 512 512" width="32">
-                  <title>Toggle Drill Down Other</title>
-                  <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-                </svg>
-              </span>
+              <i class="fas fa-chevron-right"></i>
             </span>
             <ul class="drilldown-menu">
-              <li class="menu-back">Back</li>
-              <li><a href="drilldown-other/faculty-directory-drilldown.aspx">Faculty Directory Other Drilldown</a></li>
-              <li>
+              <li class="menu-back"><i class="fas fa-chevron-left"></i>Drill Down Other</li>
+              <li class="non-current"><a href="drilldown-other/faculty-directory-drilldown.aspx">Faculty Directory Other
+                  Drilldown</a></li>
+              <li class="non-current">
                 <a href="drilldown-other/drilldown-other-second/index.aspx">Drill Down Other Second</a>
                 <span class="toggle">
-                  <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" height="32" version="1.1" viewBox="0 0 512 512" width="32">
-                      <title>Toggle ${_EscapeTool.xml($displayName)}</title>
-                      <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-                    </svg>
-                  </span>
+                  <i class="fas fa-chevron-right"></i>
                 </span>
                 <ul class="drilldown-menu">
-                  <li class="menu-back">Back</li>
+                  <li class="menu-back"><i class="fas fa-chevron-left"></i>Drill Down Other</li>
                   <li class="non-current"><a href="drilldown-other/drilldown-other-second/support.aspx">Support the
                       School of Communication Drilldown other second</a></li>
                 </ul>
               </li>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: I am the second set")
+                }
+              </script>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: Drill Down Other")
+                }
+              </script>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: Drill Down Other")
+                }
+              </script>
+              <script>
+                if (window.location.href.indexOf("//dev-") > -1) {
+                  console.log("(ง •̀_•́)ง VELOCITY: Drill Down Other")
+                }
+              </script>
             </ul>
           </li>
         </ul>

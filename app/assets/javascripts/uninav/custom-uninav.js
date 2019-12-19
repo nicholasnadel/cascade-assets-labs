@@ -6,7 +6,7 @@ $(document).ready( function() {
     // $(this).siblings('.drilldown-menu').addClass('show');
     // console.log($rootNav.css());
     // debugger
-    var rootNavTranslateXVal = parseInt(getTranslateXVal($rootNav)) - 400;
+    var rootNavTranslateXVal = parseInt(getTranslateXVal($rootNav)) - 410;
 
     $rootNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px"  });
   });
@@ -19,7 +19,7 @@ $(document).ready( function() {
       $backButton.parent().hide();
     }, 1000);
     
-    var rootNavTranslateXVal = parseInt(getTranslateXVal($rootNav)) + 400;
+    var rootNavTranslateXVal = parseInt(getTranslateXVal($rootNav)) + 410;
     
     $rootNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px"  });
   })

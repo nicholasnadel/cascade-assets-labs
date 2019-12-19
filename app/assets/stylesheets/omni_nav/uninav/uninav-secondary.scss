@@ -1,5 +1,51 @@
 #uninav {
 
+  .menu-header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+
+    .toggle-menu-label {
+      padding-left: 16px;
+    }
+  }
+
+  .cu-off-canvas-header {
+    // For menu-toggling
+    width: 200%;
+    height: 60px;
+    position: relative;
+    padding: 0;
+    background: $cu-off-canvas-nav-background;
+
+    div.cu-logo-wrapper {
+      width: 100%;
+      position: relative;
+
+      div.toggle-logo {
+        float: left;
+        width: 50%;
+        padding: 18px;
+        position: relative;
+
+        a.off-logo {
+          display: block;
+          height: 23px;
+          width: 75%;
+          background: image-url('off-canvas-logo.png'); // IE 8
+          background: image-url('off-canvas-logo.svg'), linear-gradient(transparent, transparent);
+          background-repeat: no-repeat;
+          background-size: contain;
+          /* WAVE error reports empty anchor tag because logo is a background image.
+           * Use color:transparent to add text that users can't see, to give context. */
+          color: transparent;
+        }
+      }
+
+      svg {
+        color: $black;
+      }
+    }
+  }
 
   .off-canvas-nav-container {
     display: block;
@@ -7,6 +53,7 @@
     top: 0;
     left: 0;
     background-color: white;
+    border: 1px solid #CFCFCF;
     overflow: hidden;
 
 
@@ -27,6 +74,12 @@
           grid-auto-columns: 0;
           height: 100%;
 
+          a {
+            line-height: 1.8rem;
+            color: #231f20;
+            padding: 20px 50px 20px 30px;
+          }
+
           ul.root-umbrella-nav {
             transform: translateX(0);
             transition: all .5s linear;
@@ -39,19 +92,63 @@
             width: 100%;
             left: 40rem;
             top: 0;
-            border: 2px solid red;
-          }
 
-          ul.drilldown-menu.show {
-            left: 0rem;
+            li {
+              border-bottom: 1px solid #CFCFCF;
+            }
+
+            .menu-back {
+              justify-content: start;
+              align-items: center;
+              background: #eee;
+              font-weight: bold;
+              padding: 20px 50px 20px 20px;
+
+              .fas {
+                margin-right: 2rem;
+              }
+            }
           }
         }
         li {
-          // position: relative;
           display: flex;
+          justify-content: space-between;
+
+          &.current {
+
+            a {
+              border-bottom: 1px solid #ccc;
+              font-weight: 800;
+            }
+          }
+
+          &.non-current {
+            border-bottom: 1px solid #CFCFCF;
+          }
+
+          span.toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 4rem;
+            background-color: #EAEAEA;
+
+
+            .fas {
+              display: flex;
+              font-weight: 900;
+              font-size: 1.4rem;
+            }
+          }
         }
 
-
+        span.menu-label {
+          font-weight: bold;
+          color: #a50034;
+          border-right: 1px solid #ccc;
+          padding-right: 2rem;
+        }
       }
     }
   }
