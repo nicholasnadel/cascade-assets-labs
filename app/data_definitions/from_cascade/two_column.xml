@@ -186,9 +186,8 @@
         					<radio-item value="Circle"/>
         					<radio-item value="Square"/>
                         </text>
-                        <text help-text="Image size in pixels (e.g. '300px' will result in a 300x300 image)" identifier="imgSize" label="Image Size" multiple="false"/>
-                        <text help-text="Object position Y Alignment (.e.g. '10px' or '22%' or 'top')" identifier="objPosY" label="Vertical Alignment" multiple="false"/>
-                        <text help-text="Object position X Alignment (.e.g. '10px' or '22%' or 'center')" identifier="objPosX" label="Horizontal Alignment" multiple="false"/>
+                        <text help-text="Object position Y Alignment (.e.g. '10px' or '22%' or 'top') | https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" identifier="objPosY" label="Vertical Alignment" multiple="false"/>
+                        <text help-text="Object position X Alignment (.e.g. '10px' or '22%' or 'center') | https://developer.mozilla.org/en-US/docs/Web/CSS/object-position" identifier="objPosX" label="Horizontal Alignment" multiple="false"/>
 					</group>
 					<text help-text="100 chracters max" identifier="testimonial-widget__faux-h2" label="Endorser's Name" required="true"/>
 					<text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="testimonial-widget__department-title" label="Endorser's Department/Title (Optional)" wysiwyg="false"/>
