@@ -23,7 +23,6 @@
     -ms-flex-align: center;
     align-items: center;
     padding-top: 7rem;
-    // margin-top: 25px;
     max-width: 100%;
     padding-right: 1rem;
     padding-left: 5rem;
@@ -80,7 +79,7 @@
     grid-area: navButtons;
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 5rem;
   }
 
