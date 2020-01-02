@@ -2,7 +2,7 @@ $(function () {
   $('.testimonial-widget').slick({
     arrows: false,
     centerPadding: "0px",
-    dots: true,
+    dots: false,
     slidesToShow: 1,
     infinite: true,
     variableWidth: false,
