@@ -1,3 +1,19 @@
+html.three-column-template {
+  .testimonial-widget {
+    --imgSize: 150px;
+  }
+
+  .testimonial-widget__slide {
+    padding-top: 3em;
+    padding-left: 1em;
+  }
+
+  .testimonial-widget__buttons {
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+}
+
 .testimonial-widget {
   --imgSize: 200px;
 
@@ -8,8 +24,6 @@
       border: 2px dotted red;
     }
   }
-
-
 
   .testimonial-widget__slide {
     grid-template-areas: 'image text''. navButtons';
@@ -57,6 +71,7 @@
     display: grid;
     align-content: center;
     padding-right: 5rem;
+
 
     .faux-h2 {
       // padding-bottom: 2%;
@@ -243,6 +258,8 @@
     padding-left: 4rem;
     padding-right: 4rem;
     padding-bottom: 2rem;
+    min-width: unset;
+
   }
 
   .testimonial-widget__img {
