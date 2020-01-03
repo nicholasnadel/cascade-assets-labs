@@ -1,0 +1,17 @@
+<system-data-structure>
+	<group identifier="link" label="Call to Action">
+		<text default="Text Link" identifier="linkStyle" label="Link Style" type="radiobutton">
+			<radio-item value="Text Link"/>
+			<radio-item value="Button Link"/>
+		</text>
+		<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+			<radio-item show-fields="link/internalLink" value="Internal Link"/>
+			<radio-item show-fields="link/externalLink" value="External Link"/>
+			<radio-item show-fields="link/fileLink" value="File Link"/>
+		</text>
+		<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+		<asset identifier="internalLink" label="Internal Link" type="page"/>
+		<asset identifier="fileLink" label="File Link" type="file"/>
+		<text identifier="label" label="Label"/>
+	</group>
+</system-data-structure>
