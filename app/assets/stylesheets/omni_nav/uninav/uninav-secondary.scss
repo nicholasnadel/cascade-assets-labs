@@ -1,14 +1,6 @@
 #uninav {
 
-  .menu-header {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-
-    .toggle-menu-label {
-      padding-left: 16px;
-    }
-  }
-
+  //SHARED BY BOTH UMBRELLA AND MAIN
   .cu-off-canvas-header {
     // For menu-toggling
     width: 200%;
@@ -47,6 +39,16 @@
     }
   }
 
+  //SHARED BY BOTH UMBRELLA AND MAIN
+  .menu-header {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+
+    .toggle-menu-label {
+      padding-left: 16px;
+    }
+  }
+
   .off-canvas-nav-container {
     display: block;
     position: absolute;
@@ -58,29 +60,41 @@
 
 
     .off-canvas-nav {
+      display: grid;
+      grid-template-rows: 100%;
+      grid-template-columns: 100%;
+      grid-auto-rows: 0;
+      grid-auto-columns: 0;
 
-      .off-canvas-menu#off-canvas-umbrella {
+      .off-canvas-menu#off-canvas-umbrella + .off-canvas-menu#off-canvas-main {
+        transform: translateX(-410px);
+      }
+
+      .off-canvas-menu#off-canvas-umbrella, 
+      .off-canvas-menu#off-canvas-main {
         position: relative;
+        grid-row: 1 / span 1;
+        grid-column: 1 / span 1;
+        min-height: 93vh;
+        background-color: $white;
+        transition: all 1s;
 
         // display: none;
-        .off-canvas-umbrella-list-container {
+        .off-canvas-umbrella-list-container, 
+        .off-canvas-main-list-container {
           position: relative;
-          min-height: 90vh;
-          left: 0rem;
-          display: grid;
-          grid-template-columns: 100% 100%;
-          grid-template-rows: 100%;
-          grid-auto-rows: 0;
-          grid-auto-columns: 0;
           height: 100%;
+          width: 410px;
+          background: white;
 
-          a {
+          a, .folder {
             line-height: 1.8rem;
             color: #231f20;
             padding: 20px 50px 20px 30px;
           }
 
-          ul.root-umbrella-nav {
+          ul.root-umbrella-nav,
+          ul.root-main-nav {
             transform: translateX(0);
             transition: all .5s linear;
           }
@@ -90,7 +104,7 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            left: 40rem;
+            left: 410px;
             top: 0;
 
             li {

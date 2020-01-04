@@ -1,5 +1,5 @@
 $(document).ready( function() {
-  var $rootNav = $('.root-umbrella-nav');
+  var $rootNav            = $('.root-umbrella-nav');
 
   $('#uninav .off-canvas-nav .toggle').on('click', function() {
     $(this).siblings('.drilldown-menu').show();
@@ -23,6 +23,16 @@ $(document).ready( function() {
     
     $rootNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px"  });
   })
+
+  $('#uninav #off-canvas-umbrella .menu-header .toggle-menu-label').on('click', function() {
+    $('#uninav #off-canvas-umbrella').css({ transform: "translateX(-410px)"});
+    $('#uninav #off-canvas-main').css({ transform: "translateX(0)"});
+  });
+
+  $('#uninav #off-canvas-main .menu-header .toggle-menu-label').on('click', function() {
+    $('#uninav #off-canvas-main').css({ transform: "translateX(-410px)"});
+    $('#uninav #off-canvas-umbrella').css({ transform: "translateX(0)"});
+  });
 
   function getTranslateXVal(selector) {
     var transformMatrix = selector.css("-webkit-transform") ||
