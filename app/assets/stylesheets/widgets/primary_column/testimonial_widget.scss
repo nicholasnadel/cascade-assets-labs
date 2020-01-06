@@ -7,6 +7,10 @@
     &:focus-within {
       border: 2px dotted red;
     }
+
+    .button.testimonial__button {
+      font-size: 1.6rem;
+    }
   }
 
   .testimonial-widget__slide {
@@ -82,7 +86,7 @@
     margin-top: 5rem;
   }
 
-  .testimonial__button {
+  .testimonial__button, .button.testimonial__button {
     margin-right: 2px;
     border-radius: 4px;
     cursor: pointer;
@@ -146,9 +150,15 @@
     }
   }
 
-  .testimonial__button {
+  .testimonial__button, .button.testimonial__button {
     $bg: $panther-black;
     @include button-bg($bg);
+
+    &:hover, 
+    &:active {
+      background-color: darken($bg, 8%);
+      transition: all 0.3s ease;
+    }
   }
 }
 
@@ -163,7 +173,7 @@
     }
   }
 
-  .testimonial__button {
+  .testimonial__button, .button.testimonial__button {
     $bg: $cu-red;
     @include button-bg($bg);
   }
@@ -183,7 +193,7 @@
     }
   }
 
-  .testimonial__button {
+  .testimonial__button, .button.testimonial__button {
     $bg: $cu-red;
     @include button-bg($bg);
   }
@@ -201,7 +211,7 @@
 
   }
 
-  .testimonial__button {
+  .testimonial__button, .button.testimonial__button {
     $bg: $cu-red;
     @include button-bg($bg);
   }
