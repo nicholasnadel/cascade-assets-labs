@@ -512,8 +512,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background-image: -webkit-linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1.0) 0%);
 }
 
-// Button mixin
-// On hover, buttons should lighten if light and darken if dark
+// button mixin
 @mixin button-bg($bg) {
   --padding: 15px;
   background-color: $bg;
@@ -525,27 +524,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
   padding-bottom: 15px;
   @include dc($bg);
 
-  @if(lightness($bg) > 50) {
-    &:hover {
-      background-color: lighten($bg, 8%);
-      transition: all 0.3s ease;
-    }
-
-    &:active {
-      background-color: lighten($bg, 25%);
-      @include dc($bg);
-    }
+  &:hover {
+    background-color: lighten($bg, 8%);
+    transition: all 0.3s ease;
   }
-  @else {
-    &:hover {
-      background-color: darken($bg, 8%);
-      transition: all 0.3s ease;
-    }
 
-    &:active {
-      background-color: darken($bg, 25%);
-      @include dc($bg);
-    }
+  &:active {
+    background-color: lighten($bg, 25%);
+    @include dc($bg);
   }
 }
 
