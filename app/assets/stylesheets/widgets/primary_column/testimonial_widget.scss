@@ -47,7 +47,8 @@
       margin: 0 auto;
       height: 100%;
       width: auto;
-      object-fit: cover;
+      -o-object-fit: cover;
+         object-fit: cover;
     }
   }
 
@@ -60,9 +61,13 @@
     grid-area: text;
     min-height: var(--imgSize);
     display: grid;
-    align-content: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
     padding-right: 5rem;
-    user-select: text;
+    -webkit-user-select: text;
+       -moz-user-select: text;
+        -ms-user-select: text;
+            user-select: text;
 
     .faux-h2 {
       // padding-bottom: 2%;
@@ -84,8 +89,12 @@
   .testimonial-widget__buttons {
     grid-area: navButtons;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     margin-top: 5rem;
   }
 
@@ -100,7 +109,8 @@
       // vertical align
       position: relative;
       top: 50%;
-      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
     }
   }
 
@@ -111,7 +121,9 @@
     width: 50px;
     display: inline-block;
     display: grid;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     justify-items: center;
 
     &:after {
@@ -130,7 +142,9 @@
     width: 50px;
     display: inline-block;
     display: grid;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     justify-items: center;
 
     &:after {
@@ -160,6 +174,7 @@
     &:hover, 
     &:active {
       background-color: darken($bg, 8%);
+      -webkit-transition: all 0.3s ease;
       transition: all 0.3s ease;
     }
   }
@@ -235,7 +250,9 @@
     }
 
     .testimonial-widget__buttons {
-      justify-content: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
     }
 
     .testimonial-widget__slide {
