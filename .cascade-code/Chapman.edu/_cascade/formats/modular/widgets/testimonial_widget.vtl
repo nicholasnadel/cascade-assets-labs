@@ -2,12 +2,9 @@
 
 #macro(outputTestimonialWidget $element) 
 
-#set ($tw = $element.getChild('testimonial-widget'))
 #set ( $slides = $_XPathTool.selectNodes($element, 'testimonial-widget/testimonial-widget__slide') )
-
 #set ($color = $element.getChild('testimonial-widget').getChild('color-value').value.toLowerCase() )
 #set ($color = "testimonial-widget--" + $color )
-
   
 <div class="testimonial-widget $color">
     #foreach ($slide in $slides)
@@ -75,17 +72,14 @@
         
                             #if ($linkLabel != '')
                                 #if ($linkStyle == 'Text Link')
-                                    <br/>
                                     <a tabindex="1" href="$linkURL" class="text--link">${_EscapeTool.xml($linkLabel)}</a>
                                 #else 
                                     <a tabindex="0" href="$linkURL" class="button testimonial__button">${_EscapeTool.xml($linkLabel)}</a>
                                 #end
                             #end
-                        #end
-                    
+                        #end             
                     </div>
                 </div>
-                
             <div class="testimonial-widget__buttons">
                 <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
                 <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
@@ -94,5 +88,4 @@
         #end
     #end
 </div>
-
 #end
