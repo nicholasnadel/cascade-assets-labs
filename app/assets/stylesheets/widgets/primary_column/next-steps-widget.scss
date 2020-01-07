@@ -1,0 +1,53 @@
+@import "base/base";
+
+.next-steps-widget {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: $white;
+  min-height: 200px;
+
+  .faux-h2.next-steps-widget__heading {
+    justify-self: center;
+    padding-top: 8%;
+    color: $cu-red;
+
+    &~.next-steps-widget__text {
+      padding-top: 4% !important;
+      max-width: 88%;
+      justify-self: center;
+
+      &~.next-steps-widget__buttons {
+        padding-top: unset;
+      }
+    }
+
+    &~.next-steps-widget__buttons {
+
+      padding-top: 4%;
+
+    }
+  }
+
+  .next-steps-widget__text {
+    padding-left: 8%;
+
+    padding-right: 8%;
+
+    padding-top: 2%;
+
+    padding-bottom: 2%;
+  }
+
+  .next-steps-widget__buttons {
+    display: block;
+    justify-self: center;
+    padding-top: 4%;
+    padding-bottom: 5%;
+  }
+
+  .next-steps-widget__button {
+    @include button-bg($cu-red);
+  }
+
+}
