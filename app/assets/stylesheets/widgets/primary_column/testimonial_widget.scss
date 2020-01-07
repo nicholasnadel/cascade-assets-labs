@@ -1,6 +1,7 @@
 .testimonial-widget {
   --imgSize: 200px;
   margin-top: 30px;
+
   .slick__display-prop {
     display: inline-grid;
 
@@ -14,10 +15,20 @@
       display: inline-grid;
       justify-items: center;
     }
+
+    .button.testimonial__button~br {
+      margin-bottom: 5%;
+    }
+
+    .text--link {
+      margin-right: 10px;
+    }
   }
 
   .testimonial-widget__slide {
-    grid-template-areas: 'image text''. navButtons';
+    grid-template-areas: 'image text'
+      '. testimonialCTA'
+      '. navButtons';
     display: -ms-inline-grid;
     display: inline-grid;
     background-color: $white;
@@ -41,6 +52,8 @@
     overflow: hidden;
     grid-area: image;
     margin-right: 25px;
+    // offsets buttons
+    margin-top: -2%;
 
     img {
       display: inline;
@@ -48,7 +61,7 @@
       height: 100%;
       width: auto;
       -o-object-fit: cover;
-         object-fit: cover;
+      object-fit: cover;
     }
   }
 
@@ -59,18 +72,16 @@
 
   .testimonial-widget__text {
     grid-area: text;
-    min-height: var(--imgSize);
     display: grid;
     -ms-flex-line-pack: center;
-        align-content: center;
+    align-content: center;
     padding-right: 5rem;
     -webkit-user-select: text;
-       -moz-user-select: text;
-        -ms-user-select: text;
-            user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 
     .faux-h2 {
-      // padding-bottom: 2%;
       margin-top: 0;
       font-size: 2.8rem;
       font-family: $futura-regular;
@@ -86,6 +97,10 @@
     font-family: $futura-regular;
   }
 
+  .testimonial-cta {
+    grid-area: testimonialCTA;
+  }
+
   .testimonial-widget__buttons {
     grid-area: navButtons;
     width: 100%;
@@ -93,12 +108,13 @@
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
     margin-top: 5rem;
   }
 
-  .testimonial__button, .button.testimonial__button {
+  .testimonial__button,
+  .button.testimonial__button {
     margin-right: 2px;
     border-radius: 4px;
     cursor: pointer;
@@ -110,7 +126,7 @@
       position: relative;
       top: 50%;
       -webkit-transform: translateY(-50%);
-              transform: translateY(-50%);
+      transform: translateY(-50%);
     }
   }
 
@@ -122,8 +138,8 @@
     display: inline-block;
     display: grid;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     justify-items: center;
 
     &:after {
@@ -143,8 +159,8 @@
     display: inline-block;
     display: grid;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     justify-items: center;
 
     &:after {
@@ -162,16 +178,22 @@
     color: $white;
 
     .testimonial-widget__department-title,
-    .testimonial-widget__text {
+    .testimonial-widget__text,
+    .text--link {
       color: $white;
+    }
+
+    .text--link {
+      @include underline($white);
     }
   }
 
-  .testimonial__button, .button.testimonial__button {
+  .testimonial__button,
+  .button.testimonial__button {
     $bg: $panther-black;
     @include button-bg($bg);
 
-    &:hover, 
+    &:hover,
     &:active {
       background-color: darken($bg, 8%);
       -webkit-transition: all 0.3s ease;
@@ -191,7 +213,8 @@
     }
   }
 
-  .testimonial__button, .button.testimonial__button {
+  .testimonial__button,
+  .button.testimonial__button {
     $bg: $cu-red;
     @include button-bg($bg);
   }
@@ -211,7 +234,8 @@
     }
   }
 
-  .testimonial__button, .button.testimonial__button {
+  .testimonial__button,
+  .button.testimonial__button {
     $bg: $cu-red;
     @include button-bg($bg);
   }
@@ -229,7 +253,8 @@
 
   }
 
-  .testimonial__button, .button.testimonial__button {
+  .testimonial__button,
+  .button.testimonial__button {
     $bg: $cu-red;
     @include button-bg($bg);
   }
@@ -247,12 +272,20 @@
 
     .slick__display-prop {
       display: block;
+
+      .button.testimonial__button {
+        margin-top: unset;
+
+        &:first-of-type {
+          margin-top: 10px;
+        }
+      }
     }
 
     .testimonial-widget__buttons {
       -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
     }
 
     .testimonial-widget__slide {
