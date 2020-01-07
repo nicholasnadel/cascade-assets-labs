@@ -1,5 +1,5 @@
 #uninav {
-
+  $nav-width: 410px;
   //SHARED BY BOTH UMBRELLA AND MAIN
   .cu-off-canvas-header {
     // For menu-toggling
@@ -54,10 +54,11 @@
     position: absolute;
     top: 0;
     left: 0;
+    height: 100vh;
     background-color: white;
     border: 1px solid #CFCFCF;
     overflow: hidden;
-
+    overflow-y: scroll;
 
     .off-canvas-nav {
       display: grid;
@@ -67,7 +68,11 @@
       grid-auto-columns: 0;
 
       .off-canvas-menu#off-canvas-umbrella + .off-canvas-menu#off-canvas-main {
-        transform: translateX(-410px);
+        transform: translateX(-$nav-width);
+        display: none;
+
+        @include slide-in-out('out',0px,-$nav-width, 1s);
+        @include slide-in-out('in',-$nav-width, 0px, 1s);
       }
 
       .off-canvas-menu#off-canvas-umbrella, 
@@ -75,9 +80,11 @@
         position: relative;
         grid-row: 1 / span 1;
         grid-column: 1 / span 1;
-        min-height: 93vh;
         background-color: $white;
         transition: all 1s;
+
+        @include slide-in-out('out',0px,-$nav-width, 1s);
+        @include slide-in-out('in',-$nav-width, 0px, 1s);
 
         // display: none;
         .off-canvas-umbrella-list-container, 
@@ -86,13 +93,14 @@
         .off-canvas-cta-container {
           position: relative;
           height: 100%;
-          width: 410px;
+          width: $nav-width;
           background: white;
 
           a, .drill-down-parent {
             line-height: 1.8rem;
             color: #231f20;
             padding: 20px 50px 20px 30px;
+            width: 100%;
           }
 
           ul.root-umbrella-nav,
@@ -106,11 +114,12 @@
             position: absolute;
             height: 100%;
             width: 100%;
-            left: 410px;
+            left: $nav-width;
             top: 0;
 
             li {
               border-bottom: 1px solid #CFCFCF;
+              
             }
 
             .menu-back {
@@ -135,6 +144,10 @@
         li {
           display: flex;
           justify-content: space-between;
+
+          &:hover {
+            cursor: pointer;
+          }
 
           &.current {
 
@@ -174,4 +187,6 @@
       }
     }
   }
+
+
 }

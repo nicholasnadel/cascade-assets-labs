@@ -496,3 +496,26 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-weight: 800;
   text-transform: uppercase;
 }
+
+@mixin slide-in-out($type, $from, $to, $duration: 1s ) {
+  @if $type == in {
+    &.slide-in {
+      animation: #{$type} $duration forwards;
+      @keyframes #{$type} {
+        0% { transform: translateX($from); }
+        100% { transform: translateX($to); }
+      }
+    }
+  }
+
+  @if $type == out {
+    &.slide-out {
+      animation: #{$type} $duration forwards;
+
+      @keyframes #{$type} {
+        0% { transform: translateX($from); }
+        100% { transform: translateX($to); }
+      }
+    }
+  }
+}

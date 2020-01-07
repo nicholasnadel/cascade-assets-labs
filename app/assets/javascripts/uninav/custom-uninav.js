@@ -2,31 +2,43 @@ $(document).ready( function() {
   var $rootUmbrellaNav      = $('#uninav .root-umbrella-nav'),
   $rootMainNav              = $('#uninav .root-main-nav'),
   $rootUmbrellaDiv          = $('#uninav #off-canvas-umbrella'),
-  $rooMainDiv               = $('#uninav #off-canvas-main'),
+  $rootMainDiv              = $('#uninav #off-canvas-main'),
   $umbrellaDrillDownMenus   = $('#uninav .root-umbrella-nav .drilldown-menu'),
   $mainDrillDownMenus       = $('#uninav .root-main-nav .drilldown-menu'),
+  $offCanvasNavContainer    = $('#uninav .off-canvas-nav-container'),
   menuWidth                 = 410,
   menuVisibleXVal           = 0;
 
 
-  $('#uninav .off-canvas-nav .toggle').on('click', function() {
-    drillMenuDown($(this))
-  });
-
-  $('#uninav .off-canvas-nav .drilldown-menu .menu-back').on('click', function() {
-    drillMenuUp($(this))
-  });
-
   $('#uninav .off-canvas-nav .menu-header .menu-label').on('click', function() {
+    debugger
     moveOffCanvasToRoot($(this));
   });
 
   $('#uninav .off-canvas-nav .menu-header .toggle-menu-label').on('click', function() {
-    changeContextualMenus($(this))
+    debugger
+    changeContextualMenus($(this));
   });
+
+  $('#uninav .off-canvas-nav li').on('click', function(event) {
+    debugger
+    if($(this).hasClass('menu-back')) {
+      drillMenuUp($(this));
+      event.stopPropagation();
+      return;
+    }
+      
+    if($(this).children('ul.drilldown-menu').length === 1) {
+      drillMenuDown($(this).children('.toggle'));
+      event.stopPropagation();
+      return;
+    }
+  })
 
   function drillMenuDown($element) {
     $element.siblings('.drilldown-menu').show();
+    // debugger
+    $offCanvasNavContainer .animate({ scrollTop: 0}, 'slow');
     // debugger
     if ($element.parents('.root-umbrella-nav').length === 1) {
       var rootNavTranslateXVal = parseInt(getTranslateXVal($rootUmbrellaNav)) - menuWidth;
@@ -38,37 +50,59 @@ $(document).ready( function() {
     var rootNavTranslateXVal = parseInt(getTranslateXVal($rootMainNav)) - menuWidth;
     
     $rootMainNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px)"  });
+    $element.siblings('ul.drilldown-menu').scrollTop(0)
     
     return
   }
 
   function drillMenuUp($element) {
+    $element.parent('.drilldown-menu').hide();
 
     if ($element.parents('.root-umbrella-nav').length === 1) {
       var rootNavTranslateXVal = parseInt(getTranslateXVal($rootUmbrellaNav)) + menuWidth;
 
       $rootUmbrellaNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px)" });
-      return
+
+      return;
     }
 
     var rootNavTranslateXVal = parseInt(getTranslateXVal($rootMainNav)) + menuWidth;
     
     $rootMainNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px)" });
     
-    return
+    return;
   }
 
-  function changeContextualMenus(element) {
-    // debugger
-    if (element.parents('#off-canvas-umbrella').length === 1) {
-      $rootUmbrellaDiv .css({ transform: "translateX(-" + menuWidth + "px)" });
-      $rooMainDiv.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
-      return
+  function changeContextualMenus($element) {
+
+    if ($element.parents('#off-canvas-umbrella').length === 1) {
+      
+      $rootMainDiv.show();
+
+      $rootUmbrellaDiv.removeClass('slide-in');
+      $rootUmbrellaDiv.addClass('slide-out');
+
+      $rootMainDiv.removeClass('slide-out');
+      $rootMainDiv.addClass('slide-in');
+      setTimeout(function() {
+        $rootUmbrellaDiv.hide();
+      }, 1000);
+
+      return;
     }
 
-    $rootUmbrellaDiv.css({ transform: "translateX(-" + menuVisibleXVal + "px)" });
-    $rooMainDiv.css({ transform: "translateX(" + menuWidth + "px)" });
-    return
+    $rootUmbrellaDiv.show();
+
+    $rootMainDiv.addClass('slide-out');
+    $rootMainDiv.removeClass('slide-in');
+
+    $rootUmbrellaDiv.removeClass('slide-out');
+    $rootUmbrellaDiv.addClass('slide-in');
+    setTimeout(function() {
+      $rootMainDiv.hide();
+    }, 1000);
+
+    return;
   }
 
   function moveOffCanvasMenuToCurrent(element) {
@@ -76,7 +110,6 @@ $(document).ready( function() {
   }
 
   function moveOffCanvasToRoot(element) {
-    debugger
 
     if (element.parents('#off-canvas-umbrella').length === 1) {
       $rootUmbrellaNav.css({ transform: "translateX(-" + menuVisibleXVal + "px" });
@@ -89,26 +122,6 @@ $(document).ready( function() {
 
     return;
   }
-
-  // $('#uninav .off-canvas-nav .menu-back').on('click', function() {
-  //   // debugger
-  //   var $backButton = $(this);
-
-  //   setTimeout(function() {
-  //     $backButton.parent().hide();
-  //   }, 1000);
-    
-  //   var rootNavTranslateXVal = parseInt(getTranslateXVal($rootNav)) + 410;
-    
-  //   $rootNav.css({ transform: "translateX(" + rootNavTranslateXVal + "px"  });
-  // })
-
-
-
-  // $('#uninav #off-canvas-main .menu-header .toggle-menu-label').on('click', function() {
-  //   $('#uninav #off-canvas-main').css({ transform: "translateX(-410px)"});
-  //   $('#uninav #off-canvas-umbrella').css({ transform: "translateX(0)"});
-  // });
 
   function getTranslateXVal(selector) {
     var transformMatrix = selector.css("-webkit-transform") ||
