@@ -8,6 +8,7 @@
 #set ($color = $element.getChild('testimonial-widget').getChild('color-value').value.toLowerCase() )
 #set ($color = "testimonial-widget--" + $color )
 
+  
 <div class="testimonial-widget $color">
     #foreach ($slide in $slides)
         ## IMAGE
@@ -26,8 +27,7 @@
         ## TEXT
         #set ($endorserName = $slide.getChild('testimonial-widget__faux-h2').value)
         #set ($endorserTitle = $slide.getChild('testimonial-widget__department-title').value)
-        #set ($testimonyText = $_SerializerTool.serialize($slide.getChild('testimonial-widget__text'), true)
-        )
+        #set ($testimonyText = $_SerializerTool.serialize($slide.getChild('testimonial-widget__text'), true) )
 
         ## CTA
         #set ( $linkItems = $_XPathTool.selectNodes($slide, 'link') )
@@ -42,8 +42,7 @@
                         class="testimonial-widget__img testimonial-widget__img--$imageShape"
                         style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
                         #if (!$imageUrlInt != "") 
-                            <img
-                                src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
+                            <img src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
                                 alt="${_EscapeTool.xml($altText)}"/>
                         #end
                     </div>
@@ -58,40 +57,40 @@
                     </div>
                     <div class="testimonial-widget__body">
                         ${_DisplayTool.truncate($testimonyText,200,"...")}
-                    </div>
-                </div>
-
-                ## CTA 
-                <div class="testimonial-cta">
-                    #foreach ($link in $linkItems)
-                        #set ($linkStyle = $link.getChild('linkStyle').value) 
-                        #set ($linkType = $link.getChild('linkType').value)
-                        #set ($linkLabel = $link.getChild('label').value)
-
-                        #if ($linkType == 'Internal Link')
-                            #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
-                            #elseif ($linkType == 'External Link')
-                            #set ($linkURL = $link.getChild('externalLink').value )
-                        #else 
-                            #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
-                        #end
-
-                        #if ($linkLabel != '')
-                            #if ($linkStyle == 'Text Link')
-                                <br/>
-                                <a tabindex="1" href="$linkURL" class="text--link">${_EscapeTool.xml($linkLabel)}</a>
+                        
+                         ## CTA 
+                        <br/>
+                        #foreach ($link in $linkItems)
+                            #set ($linkStyle = $link.getChild('linkStyle').value) 
+                            #set ($linkType =  $link.getChild('linkType').value)
+                            #set ($linkLabel = $link.getChild('label').value)
+                            
+                            #if ($linkType == 'Internal Link')
+                                #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
+                                #elseif ($linkType == 'External Link')
+                                    #set ($linkURL = $link.getChild('externalLink').value )
                             #else 
-                                <a tabindex="0" href="$linkURL" class="button testimonial__button">${_EscapeTool.xml($linkLabel)}</a>
+                                #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
+                            #end
+        
+                            #if ($linkLabel != '')
+                                #if ($linkStyle == 'Text Link')
+                                    <br/>
+                                    <a tabindex="1" href="$linkURL" class="text--link">${_EscapeTool.xml($linkLabel)}</a>
+                                #else 
+                                    <a tabindex="0" href="$linkURL" class="button testimonial__button">${_EscapeTool.xml($linkLabel)}</a>
+                                #end
                             #end
                         #end
-                    #end
+                    
+                    </div>
                 </div>
-
-                <div class="testimonial-widget__buttons">
-                    <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
-                    <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
-                </div>
+                
+            <div class="testimonial-widget__buttons">
+                <div class="testimonial__button testimonial-widget__button--left" aria-label="Previous Testimonial"></div>
+                <div class="testimonial__button testimonial-widget__button--right" aria-label="Next Testimonial"></div>
             </div>
+        </div>
         #end
     #end
 </div>
