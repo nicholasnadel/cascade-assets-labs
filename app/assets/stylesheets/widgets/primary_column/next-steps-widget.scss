@@ -140,6 +140,11 @@
       a.button.next-steps-widget__button {
         background: $cu-light-grey;
         color: $panther-black;
+
+        &:hover {
+          background: $white;
+          transition: all 0.3s ease;
+        }
       }
     }
 
