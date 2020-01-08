@@ -1,11 +1,13 @@
 @import "base/base";
 
 .next-steps-widget {
+  $defaultPadding: 32px;
+
   display: grid;
   justify-content: center;
   align-content: center;
   background-color: $white;
-  min-height: 200px;
+
   margin-top: $wmtop;
 
 
@@ -13,11 +15,10 @@
     justify-self: center;
     color: $cu-red;
     margin-top: 0;
-    padding-top: 50px;
+    padding-top: $defaultPadding;
+    margin-bottom: .5rem;
 
     &~.next-steps-widget__text {
-      // padding-top: 2.8%;
-      max-width: 88%;
       justify-self: center;
 
       &~.next-steps-widget__buttons {
@@ -27,31 +28,83 @@
 
     &~.next-steps-widget__buttons {
 
-      padding-top: 32px;
-      padding-bottom: 50px;
+      padding-top: 10px;
+      padding-bottom: $defaultPadding;
 
     }
   }
 
   .next-steps-widget__text {
-    padding-left: 8%;
+    padding-left: $defaultPadding;
 
-    padding-right: 8%;
+    padding-right: $defaultPadding;
 
-    padding-top: 10px;
+    padding-top: 0;
 
-    padding-bottom: 2%;
+    padding-bottom: 5px;
   }
 
   .next-steps-widget__buttons {
     display: block;
     justify-self: center;
-    padding-top: 4%;
-    padding-bottom: 5%;
+    padding-top: $defaultPadding;
+    padding-bottom: $defaultPadding;
   }
 
   .next-steps-widget__button {
     @include button-bg($cu-red);
   }
 
+
+  &.next-steps-widget--left-aligned {
+    $defaultPadding: 32px;
+    display: grid;
+    justify-content: flex-start;
+    align-content: flex-start;
+    background-color: $sand;
+
+    margin-top: $wmtop;
+
+    .faux-h2.next-steps-widget__heading {
+      justify-self: flex-start;
+      color: $cu-red;
+      margin-top: 0;
+      padding-top: $defaultPadding;
+      padding-left: $defaultPadding;
+
+      &~.next-steps-widget__text {
+        // padding-top: 2.$defaultPadding;
+        max-width: unset;
+        justify-self: flex-start;
+        padding-left: $defaultPadding;
+
+        &~.next-steps-widget__buttons {
+          padding-top: unset;
+        }
+      }
+
+      &~.next-steps-widget__buttons {
+        padding-left: $defaultPadding;
+        padding-top: $defaultPadding;
+        padding-bottom: $defaultPadding;
+
+      }
+    }
+
+    .next-steps-widget__text {
+      padding-left: $defaultPadding;
+      padding-right: $defaultPadding;
+    }
+
+    .next-steps-widget__buttons {
+      display: block;
+      justify-self: flex-start;
+      padding-top: $defaultPadding;
+      padding-bottom: $defaultPadding;
+    }
+
+    .next-steps-widget__button {
+      @include button-bg($cu-red);
+    }
+  }
 }
