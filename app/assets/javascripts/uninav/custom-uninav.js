@@ -9,37 +9,57 @@ $(document).ready( function() {
   menuWidth                 = 410,
   menuVisibleXVal           = 0;
 
+  (function moveOffCanvasToCurrentPathItem() {
+    var currentPath = $('#uninav .off-canvas-nav li.current');
+
+    if (currentPath.length) {
+      if (currentPath.parents('#off-canvas-umbrella').length === 1) {
+        var currentUmbrellaPathDrillDownLists = currentPath.parents('ul.drilldown-menu');
+
+        currentUmbrellaPathDrillDownLists.show();
+        
+        $rootUmbrellaNav.css({ transform: "translateX(-" + ( menuWidth * currentUmbrellaPathDrillDownLists.length ) + "px)"})
+      }
+      
+      if ($rootUmbrellaDiv.length) {
+        $rootUmbrellaDiv.css({ transform: "translateX(-" + menuWidth + "px)" });
+        $rootUmbrellaDiv.hide();
+      }
+
+      $rootMainDiv.show();
+      $rootMainDiv.css({ transform: "translateX(-" + menuVisibleXVal + "px" });
+      var currentMainPathDrillDownLists = currentPath.parents('ul.drilldown-menu');
+      currentMainPathDrillDownLists.show();
+      $rootMainNav.css({ transform: "translateX(-" + (menuWidth * currentMainPathDrillDownLists.length) + "px" });
+
+    }
+  })()
+
 
   $('#uninav .off-canvas-nav .menu-header .menu-label').on('click', function() {
-    debugger
     moveOffCanvasToRoot($(this));
   });
 
   $('#uninav .off-canvas-nav .menu-header .toggle-menu-label').on('click', function() {
-    debugger
     changeContextualMenus($(this));
   });
 
-  $('#uninav .off-canvas-nav li').on('click', function(event) {
-    debugger
-    if($(this).hasClass('menu-back')) {
-      drillMenuUp($(this));
-      event.stopPropagation();
-      return;
-    }
-      
-    if($(this).children('ul.drilldown-menu').length === 1) {
-      drillMenuDown($(this).children('.toggle'));
-      event.stopPropagation();
-      return;
-    }
-  })
+  $('#uninav .off-canvas-nav li.menu-back').on('click', function(event) {
+    drillMenuUp($(this));
+  });
+
+  $('#uninav .drill-down-parent').on('click', function(event) {
+    drillMenuDown($(this));
+  });
+
+  $('#uninav .toggle-drilldown').on('click', function(event) {
+    drillMenuDown($(this));
+  });
+
 
   function drillMenuDown($element) {
     $element.siblings('.drilldown-menu').show();
-    // debugger
     $offCanvasNavContainer .animate({ scrollTop: 0}, 'slow');
-    // debugger
     if ($element.parents('.root-umbrella-nav').length === 1) {
       var rootNavTranslateXVal = parseInt(getTranslateXVal($rootUmbrellaNav)) - menuWidth;
 
@@ -103,10 +123,6 @@ $(document).ready( function() {
     }, 1000);
 
     return;
-  }
-
-  function moveOffCanvasMenuToCurrent(element) {
-
   }
 
   function moveOffCanvasToRoot(element) {

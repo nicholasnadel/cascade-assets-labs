@@ -44,6 +44,12 @@
     padding: 10px;
     border-bottom: 1px solid #ccc;
 
+    .menu-label {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
     .toggle-menu-label {
       padding-left: 16px;
     }
@@ -59,6 +65,7 @@
     border: 1px solid #CFCFCF;
     overflow: hidden;
     overflow-y: scroll;
+    transform: translateX(-$nav-width);
 
     .off-canvas-nav {
       display: grid;
@@ -144,6 +151,7 @@
         li {
           display: flex;
           justify-content: space-between;
+          border-bottom: 1px solid #CFCFCF;
 
           &:hover {
             cursor: pointer;
@@ -151,17 +159,13 @@
 
           &.current {
 
-            a {
+            a, span {
               border-bottom: 1px solid #ccc;
               font-weight: 800;
             }
           }
 
-          &.non-current {
-            border-bottom: 1px solid #CFCFCF;
-          }
-
-          span.toggle {
+          span.toggle-drilldown {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -185,6 +189,32 @@
           padding-right: 2rem;
         }
       }
+    }
+  }
+
+  .uninav__hamburger-menu.container {
+    .hamburger-menu-button {
+      cursor: pointer;
+      background-color: transparent;
+      touch-action: manipulation;
+      width: 52px;
+      height: auto;
+      position: relative;
+      display: inline-block;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      user-select: none;
+      border: none;
+      font-weight: 400;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: box-shadow .15s ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      font-size: 3rem;
     }
   }
 
