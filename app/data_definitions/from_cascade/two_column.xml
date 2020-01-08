@@ -152,6 +152,7 @@
         <!--<dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>-->
         <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
+        <dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
       </text>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
@@ -269,6 +270,15 @@
             </group>
           </group>
         </group>
+      </group>
+      <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
+        <shared-field identifier="link" path="cta"/>
+      </group>
+      <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
+        <shared-field identifier="display" path="display"/>
+        <text identifier="heading" label="Heading" required="true"/>
+        <text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
+        <shared-field identifier="link" path="cta"/>
       </group>
       <group collapsed="true" identifier="personnel" label="Personnel">
         <text default="Yes" identifier="display-personnel" label="Show" required="true" type="radiobutton">
