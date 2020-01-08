@@ -255,6 +255,61 @@ module ContentTypes
       render @configuration_set.template
     end
 
+    def two_column_communications
+      # Cascade Data Models
+      @configuration_set = ConfigurationSet.two_column
+      @metadata_set = MetadataSet.page(title: "Modular Two Column School of Communications")
+      @data_definition = DataDefinitions::TwoColumn.default
+
+      # Set dynamic values. We need to map URL params (with their parameterized format) to
+      # the values we use in Cascade (which are user-ended English in format).
+      # If these options expand in future, we'll probably want to abstract this into its
+      # own method.
+      if params[:masthead] == "branded-old"
+        @data_definition.set_value(:masthead_type, "Branded Masthead")
+      elsif params[:masthead] == "slider-old"
+        @data_definition.set_value(:masthead_type, "Slider")
+      elsif params[:masthead] == "slider"
+        @data_definition.set_value(:masthead_type, "Slider - New")
+      else
+        @data_definition.set_value(:masthead_type, "Branded - New")
+      end
+
+      # Set theme dynamically.
+      theme = params.fetch(:theme, "students")
+      @current_page_path = "#{theme}/path/to/index.aspx"
+
+      # Set regions.
+      @configuration_set.regions = {
+        # Blank Regions
+        "ADDITIONAL BODY AT-END" => "",
+        "ADDITIONAL HEAD" => "",
+
+        # Dynamic Regions
+        "BREADCRUMBS" => "TODO: _cascade/formats/level/Breadcrumbs",
+        "CASCADE ASSETS" => cascade_block("_cascade/blocks/html/cascade_assets"),
+        "FB_JS_SDK" => cascade_block("_cascade/blocks/html/facebook_javascript_sdk"),
+        "GOOGLE_ANALYTICS" => "<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->",
+        "JQUERY" => cascade_block("_cascade/blocks/html/jquery"),
+        "JUMP LINK" => cascade_block("_cascade/blocks/html/jump_link"),
+        "LEFT COLUMN CONTENT" => render_static_two_column_left_column,
+        "MASTHEAD" => cascade_format("_cascade/formats/level/masthead"),
+        "META VIEWPORT" => cascade_block("_cascade/blocks/html/global_meta_viewport"),
+        "OG_TAGS" => "<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->",
+        "PAGE WRAPPER CLOSE" => cascade_format("_cascade/formats/modular/page_wrapper_close"),
+        "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
+        "PRIMARY CONTENT" => render_static_two_column_primary_content,
+        "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
+        "TYPEKIT" => cascade_block("_cascade/blocks/html/typekit"),
+
+        # TODO: convert these to cascade_format action.
+        "OMNI-NAV" => render_static_partial("widgets/shared/uninav"),
+        "GLOBAL FOOTER" => render_static_partial(footer_path),
+      }
+
+      render @configuration_set.template
+    end
+
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     # GET /modular/three_column
@@ -357,7 +412,7 @@ module ContentTypes
         # TODO: convert these to cascade_format action.
         "GLOBAL FOOTER" => render_static_partial("_cascade/blocks/html/footer"),
         "NAVIGATION" => render_static_partial("widgets/shared/navigation"),
-        "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
+        "OMNI-NAV" => render_static_partial("widgets/shared/uninav"),
       }
 
       render @configuration_set.template

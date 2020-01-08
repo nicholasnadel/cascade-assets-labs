@@ -35,6 +35,17 @@ $(document).ready( function() {
     }
   })()
 
+  $('#uninav .uninav__umbrella-nav-button-container button').on('click', function() {
+    $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
+  });
+
+  $('#uninav .close.js-close-off-canvas-nav').on('click', function() {
+    $offCanvasNavContainer.css({ transform: "translateX(-" +  menuWidth + "px)"});
+  });
+
+  $('#uninav .uninav__hamburger-menu .hamburger-menu-button').on('click', function() {
+    $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
+  });
 
   $('#uninav .off-canvas-nav .menu-header .menu-label').on('click', function() {
     moveOffCanvasToRoot($(this));

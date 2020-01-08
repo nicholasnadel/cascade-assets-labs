@@ -65,6 +65,7 @@
     border: 1px solid #CFCFCF;
     overflow: hidden;
     overflow-y: scroll;
+    transition: all .5s;
     transform: translateX(-$nav-width);
 
     .off-canvas-nav {
@@ -184,7 +185,7 @@
 
         span.menu-label {
           font-weight: bold;
-          color: #a50034;
+          color: $cu-red;
           border-right: 1px solid #ccc;
           padding-right: 2rem;
         }
@@ -195,6 +196,27 @@
   .uninav__hamburger-menu.container {
     .hamburger-menu-button {
       height: auto;
+    }
+  }
+
+  .uninav__umbrella-nav-button-container {
+    position: fixed;
+    left: 0;
+    top: 15rem;
+    display: flex;
+
+
+    .umbrella-nav-toggle-button {
+      color: $white;
+      height: 16rem;
+      border-radius: 0 8rem 8rem 0;
+      width: 8rem;
+      font-size: 1.3rem;
+      background-color: rgba($cu-red, .8);
+    }
+
+    @include respond(tab-port) {
+      display: none;
     }
   }
 
