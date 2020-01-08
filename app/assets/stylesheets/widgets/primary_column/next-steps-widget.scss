@@ -30,7 +30,7 @@
 
       padding-top: 10px;
       padding-bottom: $defaultPadding;
-
+      padding-right: $defaultPadding;
     }
   }
 
@@ -53,6 +53,7 @@
 
   .next-steps-widget__button {
     @include button-bg($cu-red);
+    border: none;
   }
 
 
@@ -61,7 +62,6 @@
     display: grid;
     justify-content: flex-start;
     align-content: flex-start;
-    background-color: $sand;
 
     margin-top: $wmtop;
 
@@ -105,6 +105,51 @@
 
     .next-steps-widget__button {
       @include button-bg($cu-red);
+    }
+  }
+
+  &.next-steps-widget--black {
+    background-color: $panther-black;
+    color: $white;
+
+    .faux-h2.next-steps-widget__heading {
+      color: $white;
+    }
+  }
+
+  &.next-steps-widget--white {
+    background-color: $white;
+    border: 1px solid $cu-light-grey;
+  }
+
+  &.next-steps-widget--sand {
+    background-color: $sand;
+  }
+
+  &.next-steps-widget--red {
+    background-color: $red;
+    color: $white;
+
+    .faux-h2.next-steps-widget__heading {
+      color: $white;
+    }
+
+    .next-steps-widget__buttons {
+      color: $panther-black;
+
+      a.button.next-steps-widget__button {
+        background: $cu-light-grey;
+        color: $panther-black;
+      }
+    }
+
+  }
+
+  &.next-steps-widget--grey {
+    background-color: $cu-light-grey;
+
+    .faux-h2.next-steps-widget__heading {
+      color: $panther-black;
     }
   }
 }
