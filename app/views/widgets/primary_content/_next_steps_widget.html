@@ -8,9 +8,11 @@
     // toggle text
     $('.500char').change(function () {
       var nsText = '.next-steps-widget__text';
-      var fillerText = ' <div class="next-steps-widget__text"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, aliaobcaecati, aliaaa</p> </div>'
+      var header = '<div class="faux-h2 next-steps-widget__heading" contenteditable="true"></div>';
+      var fillerText = '<div class="next-steps-widget__text"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, aliaobcaecati, aliaaa</p> </div>';
+      var btn = '.next-steps-widget__buttons';
       if ($(this).prop("checked")) {
-        $('div.next-steps-widget__heading').append(fillerText);
+        $(fillerText).after(header);
       } else {
         $(nsText).fadeOut();
         $(nsText).remove();
@@ -27,8 +29,18 @@
       dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet
       consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed
       voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit.
-      Beatae
-      accusantium corrupti, obcaecati, aliaobcaecati, aliaaa</p>
+      Beatae accusantium corrupti, obcaecati, aliaobcaecati, aliaaa</p>
+  </div>
+  <div class="next-steps-widget__buttons">
+    <a class="button next-steps-widget__button" href="#" tabindex="0"">Go to School</a>
+    <a class=" button next-steps-widget__button" href="#" tabindex="0">Admission</a>
+    <a class="button next-steps-widget__button" href="#" tabindex="0">Alumni</a>
+  </div>
+</div>
+
+<div class="next-steps-widget">
+  <div class="faux-h2 next-steps-widget__heading">
+    Next Steps
   </div>
   <div class="next-steps-widget__buttons">
     <a class="button next-steps-widget__button" href="#" tabindex="0"">Go to School</a>
