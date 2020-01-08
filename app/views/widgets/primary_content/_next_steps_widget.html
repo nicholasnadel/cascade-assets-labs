@@ -10,7 +10,7 @@
       var nsText = '.next-steps-widget__text';
       var fillerText = ' <div class="next-steps-widget__text"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, alias adipisci dolor, et fugit aut ad sed voluptas magnam libero dolores necessitatibus! NobisLorem ipsum dolor sit amet consectetur adipisicing elit. Beatae accusantium corrupti, obcaecati, aliaobcaecati, aliaaa</p> </div>'
       if ($(this).prop("checked")) {
-        $('.next-steps-widget__heading').append(fillerText);
+        $('div.next-steps-widget__heading').append(fillerText);
       } else {
         $(nsText).fadeOut();
         $(nsText).remove();
