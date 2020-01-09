@@ -18,7 +18,8 @@ $(document).ready( function() {
 
         currentUmbrellaPathDrillDownLists.show();
         
-        $rootUmbrellaNav.css({ transform: "translateX(-" + ( menuWidth * currentUmbrellaPathDrillDownLists.length ) + "px)"})
+        $rootUmbrellaNav.css({ transform: "translateX(-" + ( menuWidth * currentUmbrellaPathDrillDownLists.length ) + "px)"});
+        return;
       }
       
       if ($rootUmbrellaDiv.length) {
@@ -36,6 +37,7 @@ $(document).ready( function() {
   })()
 
   $('#uninav .uninav__umbrella-nav-button-container button').on('click', function() {
+    // moveOffCanvasToCurrentPathItem();
     $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
   });
 
@@ -44,6 +46,7 @@ $(document).ready( function() {
   });
 
   $('#uninav .uninav__hamburger-menu .hamburger-menu-button').on('click', function() {
+    // moveOffCanvasToCurrentPathItem();
     $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
   });
 
