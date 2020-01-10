@@ -561,6 +561,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       width: 100%;
       left: $width;
       top: 0;
+      transform: translateX(0);
+      transition: all 1s;
 
       .menu-back {
         justify-content: start;

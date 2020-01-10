@@ -18,7 +18,7 @@ $nav-width: 410px;
     font-family: "futura-pt", arial, sans-serif;
     will-change: background-color;
   }
-  @include drill-down-menu-style
+  @include drill-down-menu-style(10%);
 
 
 }
