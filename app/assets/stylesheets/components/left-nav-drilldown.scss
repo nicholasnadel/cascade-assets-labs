@@ -1,0 +1,24 @@
+$nav-width: 410px; 
+
+
+#left-column-navigation.left-nav-drilldown {
+  position: relative;
+  height: 45vh;
+  width: 100%;
+  overflow-y: scroll;
+  margin-bottom: 1.4rem;
+  background-color: $white;
+  border: 1px solid #CFCFCF;
+
+  ul { list-style: none; }
+
+  li {
+    margin: unset;
+    list-style: none;
+    font-family: "futura-pt", arial, sans-serif;
+    will-change: background-color;
+  }
+  @include drill-down-menu-style
+
+
+}

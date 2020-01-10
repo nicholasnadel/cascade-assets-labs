@@ -519,3 +519,68 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
   }
 }
+
+@mixin drill-down-menu-style($width: 410px) {
+
+  li {
+    &:hover { cursor: pointer; }
+  }
+
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #CFCFCF;
+
+    a, .drill-down-parent {
+      font-family: "futura-pt", arial, sans-serif;
+      line-height: 1.8rem;
+      color: #231f20;
+      padding: 20px 50px 20px 30px;
+      width: 100%;
+    }
+
+    span.toggle-drilldown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 4rem;
+      background-color: #EAEAEA;
+
+      .fas {
+        display: flex;
+        font-weight: 900;
+        font-size: 1.4rem;
+      }
+    }
+
+    ul.drilldown-menu {
+      display: none;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: $width;
+      top: 0;
+
+      .menu-back {
+        justify-content: start;
+        align-items: center;
+        background: #eee;
+        font-weight: bold;
+        padding: 20px 50px 20px 20px;
+
+        .fas {
+          margin-right: 2rem;
+        }
+      }
+    }
+
+    &.current {
+      a,
+      span {
+        border-bottom: 1px solid #ccc;
+        font-weight: 800;
+      }
+    }
+  }
+}

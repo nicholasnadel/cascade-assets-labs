@@ -1,5 +1,6 @@
 #uninav {
   $nav-width: 410px;
+
   //SHARED BY BOTH UMBRELLA AND MAIN
   .cu-off-canvas-header {
     // For menu-toggling
@@ -75,15 +76,17 @@
       grid-auto-rows: 0;
       grid-auto-columns: 0;
 
-      .off-canvas-menu#off-canvas-umbrella + .off-canvas-menu#off-canvas-main {
+      @include drill-down-menu-style;
+
+      .off-canvas-menu#off-canvas-umbrella+.off-canvas-menu#off-canvas-main {
         transform: translateX(-$nav-width);
         display: none;
 
-        @include slide-in-out('out',0px,-$nav-width, 1s);
-        @include slide-in-out('in',-$nav-width, 0px, 1s);
+        @include slide-in-out('out', 0px, -$nav-width, 1s);
+        @include slide-in-out('in', -$nav-width, 0px, 1s);
       }
 
-      .off-canvas-menu#off-canvas-umbrella, 
+      .off-canvas-menu#off-canvas-umbrella,
       .off-canvas-menu#off-canvas-main {
         position: relative;
         grid-row: 1 / span 1;
@@ -91,25 +94,16 @@
         background-color: $white;
         transition: all 1s;
 
-        @include slide-in-out('out',0px,-$nav-width, 1s);
-        @include slide-in-out('in',-$nav-width, 0px, 1s);
+        @include slide-in-out('out', 0px, -$nav-width, 1s);
+        @include slide-in-out('in', -$nav-width, 0px, 1s);
 
         // display: none;
-        .off-canvas-umbrella-list-container, 
-        .off-canvas-main-list-container,
-        .off-canvas-utility-container,
-        .off-canvas-cta-container {
+        .off-canvas-menu-container {
           position: relative;
           height: 100%;
           width: $nav-width;
           background: white;
 
-          a, .drill-down-parent {
-            line-height: 1.8rem;
-            color: #231f20;
-            padding: 20px 50px 20px 30px;
-            width: 100%;
-          }
 
           ul.root-umbrella-nav,
           ul.root-main-nav {
@@ -117,70 +111,11 @@
             transition: all .5s linear;
           }
 
-          ul.drilldown-menu {
-            display: none;
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            left: $nav-width;
-            top: 0;
-
-            li {
-              border-bottom: 1px solid #CFCFCF;
-              
-            }
-
-            .menu-back {
-              justify-content: start;
-              align-items: center;
-              background: #eee;
-              font-weight: bold;
-              padding: 20px 50px 20px 20px;
-
-              .fas {
-                margin-right: 2rem;
-              }
-            }
-          }
         }
 
-        .off-canvas-utility-container,
-        .off-canvas-cta-container {
+        #off-canvas-utility-item .off-canvas-menu-container,
+        #off-canvas-cta-item .off-canvas-menu-container {
           position: static;
-        }
-        
-        li {
-          display: flex;
-          justify-content: space-between;
-          border-bottom: 1px solid #CFCFCF;
-
-          &:hover {
-            cursor: pointer;
-          }
-
-          &.current {
-
-            a, span {
-              border-bottom: 1px solid #ccc;
-              font-weight: 800;
-            }
-          }
-
-          span.toggle-drilldown {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 4rem;
-            background-color: #EAEAEA;
-
-
-            .fas {
-              display: flex;
-              font-weight: 900;
-              font-size: 1.4rem;
-            }
-          }
         }
 
         span.menu-label {
@@ -211,7 +146,7 @@
       height: 16rem;
       border-radius: 0 8rem 8rem 0;
       width: 8rem;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       background-color: rgba($cu-red, .8);
     }
 
