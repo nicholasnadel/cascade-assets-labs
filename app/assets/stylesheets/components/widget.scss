@@ -1,0 +1,158 @@
+@import "base/base.scss";
+
+.widget {
+  $defaultPadding: 32px;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: $white;
+  margin-top: $wmtop;
+
+
+  .widget__heading {
+    justify-self: center;
+    color: $cu-red;
+    margin-top: 0;
+    padding-top: $defaultPadding;
+    margin-bottom: .5rem;
+
+    &~.widget__text {
+      justify-self: center;
+
+      &~.widget__buttons {
+        padding-top: unset;
+      }
+    }
+
+    &~.widget__buttons {
+
+      padding-top: 10px;
+      padding-bottom: $defaultPadding;
+      padding-right: $defaultPadding;
+    }
+  }
+
+  .widget__text {
+    padding-left: $defaultPadding;
+
+    padding-right: $defaultPadding;
+
+    padding-top: 0;
+
+    padding-bottom: 5px;
+  }
+
+  .widget__buttons {
+    display: block;
+    justify-self: center;
+    padding-top: $defaultPadding;
+    padding-bottom: $defaultPadding;
+  }
+
+  .widget__button {
+    @include button-bg($cu-red);
+    border: none;
+  }
+
+
+  &.widget--left-aligned {
+    $defaultPadding: 32px;
+    display: grid;
+    justify-content: flex-start;
+    align-content: flex-start;
+
+    margin-top: $wmtop;
+
+    .widget__heading {
+      justify-self: flex-start;
+      color: $cu-red;
+      margin-top: 0;
+      padding-top: $defaultPadding;
+      padding-left: $defaultPadding;
+
+      &~.widget__text {
+        // padding-top: 2.$defaultPadding;
+        max-width: unset;
+        justify-self: flex-start;
+        padding-left: $defaultPadding;
+
+        &~.widget__buttons {
+          padding-top: unset;
+        }
+      }
+
+      &~.widget__buttons {
+        padding-left: $defaultPadding;
+        padding-top: $defaultPadding;
+        padding-bottom: $defaultPadding;
+
+      }
+    }
+
+    .widget__text {
+      padding-left: $defaultPadding;
+      padding-right: $defaultPadding;
+    }
+
+    .widget__buttons {
+      display: block;
+      justify-self: flex-start;
+      padding-top: $defaultPadding;
+      padding-bottom: $defaultPadding;
+    }
+
+    .widget__button {
+      @include button-bg($cu-red);
+    }
+  }
+
+  &.widget--black {
+    background-color: $panther-black;
+    color: $white;
+
+    .widget__heading {
+      color: $white;
+    }
+  }
+
+  &.widget--white {
+    background-color: $white;
+    border: 1px solid $cu-light-grey;
+  }
+
+  &.widget--sand {
+    background-color: $sand;
+  }
+
+  &.widget--red {
+    background-color: $red;
+    color: $white;
+
+    .widget__heading {
+      color: $white;
+    }
+
+    .widget__buttons {
+      color: $panther-black;
+
+      a.button.widget__button {
+        background: $cu-light-grey;
+        color: $panther-black;
+
+        &:hover {
+          background: $white;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+
+  }
+
+  &.widget--grey {
+    background-color: $cu-light-grey;
+
+    .widget__heading {
+      color: $panther-black;
+    }
+  }
+}
