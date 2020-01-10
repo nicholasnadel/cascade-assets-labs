@@ -1,0 +1,9 @@
+.img {
+  $imgSize: 200px;
+
+  &--circle {
+    border-radius: 50%;
+    height: $imgSize;
+    width: $imgSize;
+  }
+}
