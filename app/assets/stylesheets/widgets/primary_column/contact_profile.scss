@@ -1,0 +1,36 @@
+.leftNavSubContent {
+  ~.contact-profile-widget {
+    margin-top: 0;
+  }
+}
+
+.contact-profile-widget {
+  --spacing: 20px;
+  text-align: center;
+  margin-top: v(spacing);
+  margin-bottom: v(spacing);
+
+  .faux-h2 {
+    margin-top: v(spacing);
+  }
+
+  .contact-profile-widget {
+
+    &__img {
+      --imgSize: 180px;
+      margin-bottom: v(spacing);
+      margin-top: v(spacing);
+    }
+
+    &__email {
+      margin-bottom: v(spacing);
+      padding-bottom: 30px;
+    }
+
+    &--grey {
+      a {
+        color: $cu-red;
+      }
+    }
+  }
+}
