@@ -1,9 +1,11 @@
 .img {
   --imgSize: 200px;
+  --objPos: cover;
 
   &--circle {
     border-radius: 50%;
     height: var(--imgSize);
     width: var(--imgSize);
+    object-fit: var(--objPos);
   }
 }
