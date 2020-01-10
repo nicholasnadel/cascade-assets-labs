@@ -461,14 +461,13 @@ module ContentTypes
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s %s %s %s %s %s %s",
-             render_static_partial("widgets/primary_content/contact_profile"),
              render_static_partial("widgets/primary_content/a_to_z_anchors"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_3"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_2"),
-             #  render_static_partial("widgets/primary_content/collapsables_3"),
+              render_static_partial("widgets/primary_content/collapsables_3"),
              #  render_static_partial("widgets/primary_content/funnel_1up_boxes_1"),
              #  render_static_partial("widgets/primary_content/funnel_2up_boxes_1"),
              render_static_partial("widgets/primary_content/collapsables_2"),
@@ -482,7 +481,8 @@ module ContentTypes
 
     def render_static_two_column_left_column
       # This reproduces content from the static sample version
-      format("%s %s %s",
+      format("%s %s %s %s",
+            render_static_partial("widgets/left_column/contact_profile"),
              render_static_partial("widgets/left_column/callout_1"),
              render_static_partial("widgets/left_column/callout_2"),
              render_static_partial("widgets/left_column/news_event_left_col"))
