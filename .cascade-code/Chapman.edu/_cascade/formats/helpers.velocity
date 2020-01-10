@@ -2,25 +2,75 @@
 ## helpers.velocity
 ## Master Version: Chapman.edu/_cascade/formats/helpers.velocity
 ##
-## Pass a certain XML structure into this macro, and get a string that looks
-## like "background-image: url('https://mycoolimage.com/file1.png')
-##
-## Useage: <div style=#addBackgroundImage($content) >
-##
-## The xml in the $content variable passed in must look like the following:
-## <media>
-##     <fileLink>
-##         <path>/_files/image1.png</path>
-##     </fileLink>
-## </media>
-#macro(addBackgroundImage $content)
-    #set ($linkUrl = $content.getChild('fileLink').getChild('path').value)
-    #if ($linkUrl != '')
-        "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
-    #else
-        ""
+
+## BACKGROUND COLOR CHOOSER
+## Outputs shared field 'background-color'
+## You just need to pass your respective top level path eg 'next-steps-widget'
+## USAGE: #bgColorChooser('next-steps-widget'). $bgColor will result in a class such as 'next-steps-widget--red'. 
+#macro(bgColorChooser $wxp)
+    #set ($bgColor = $element.getChild($wxp).getChild('bgColor').value.toLowerCase())
+    #set ($bgColor = $wxp + '--' + $bgColor)
+#end
+
+## 3 CTA BUTTONS
+## Outputs shared field 'CTA' (https://dev-cascade.chapman.edu/entity/open.act?id=6ccc49b1c0a81e4b7fe96604d9f0dee2&type=sharedfield).
+## EXAMPLE: #cta($element, 'next-steps-widget/link') ... see https://dev-cascade.chapman.edu/entity/open.act?id=866641d7c0a81e4b7fe96604393cd7cb&type=format
+## EXAMPLE 2: Collection (slides) within a collection (slider): #wtf($slide 'link') ... see https://dev-cascade.chapman.edu/entity/open.act?id=11e3bb1ac0a81e4b7fe96604d894fc25&type=format
+
+#macro(cta $elem $linkXPath $wxp)
+    ## this will create 'next-steps-widget__button' down below
+    #set ($bemButtonClass = $wxp + '__button')
+    #set ($bemButtonClass = $bemButtonClass.value)
+    
+    #set ( $linkItems = $_XPathTool.selectNodes($elem, $linkXPath) )
+    #foreach ($link in $linkItems)
+        #set ($linkStyle = $link.getChild('linkStyle').value) 
+        #set ($linkType =  $link.getChild('linkType').value)
+        #set ($linkLabel = $link.getChild('label').value)
+        
+        ## ACCESSIBILITY
+        #set ($ariaLabel = $link.getChild('accessibility').getChild('ariaLabel').value)
+        #set ($title = $link.getChild('accessibility').getChild('title').value)
+
+        ## ANALYTICS
+        #set ($customID = $link.getChild('tracking').getChild('customID').value)
+        #set ($dataAttr = $link.getChild('tracking').getChild('dataAttr').value)
+
+        #if ($customID != '')
+            #set ($customID = $link.getChild('customID').value)
+        #else
+            #set ( $customID = $linkLabel.replaceAll(" ", "-").replaceAll("[^a-zA-Z-]", "").replaceAll("--", "-").toLowerCase() )
+        #end
+        
+        #if ($dataAttr != '')
+            #set ($dataAttr = $link.getChild('dataAttr').value)
+            #set ($dataAttr = 'data-' + $dataAttr)
+        #else
+            #set ($dataAttr = '')
+        #end
+            
+        #if ($linkType == 'Internal Link')
+            #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
+            #elseif ($linkType == 'External Link')
+                #set ($linkURL = $link.getChild('externalLink').value )
+        #else 
+            #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
+        #end
+    
+        
+   
+        #if ($linkLabel != '')
+            #if ($linkStyle == 'Text Link')
+                <a tabindex="1" href="$linkURL" id="$customID" data-attribute="$dataAttr" aria-label="$ariaLabel" title="$title" class="text--link">#escape($linkLabel)</a>
+            #elseif (($linkStyle == 'Button Link') && ($bemButtonClass != '$bemButtonClass'))
+                <a tabindex="0" href="$linkURL" id="$customID" data-attribute="$dataAttr" aria-label="$ariaLabel" title="$title" class="button $bemButtonClass">#escape($linkLabel)</a>
+            #else 
+                <a tabindex="0" href="$linkURL" id="$customID" data-attribute="$dataAttr" aria-label="$ariaLabel" title="$title" class="button">#escape($linkLabel)</a>
+            #end    
+        #end
     #end
 #end
+
 ## Log velocity variables in the browser console on dev
 #macro(log $v)
   <script>
@@ -30,6 +80,73 @@
           }
       #protect]]>
   </script>
+#end
+
+#macro ( buildDrillDownList $asset )
+  #set ( $drillDownPagePath = $currentPage.path )
+  #if ( $drillDownPagePath == $asset.path ) 
+    #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
+  #else
+    #set( $isCurrentDrillDownPage = "drill-down-list-item")
+  #end
+  #set ( $isVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes")
+  #if ($asset.assetType == "folder" && $isVisible)
+    #set ( $visibleChildren = false )
+    #foreach( $childAsset in $asset.children )
+      #if ($visibleChildren == false)
+        #if ( $childAsset.assetType == 'symlink' )
+          #set ( $visibleChildren = true ) 
+        #end
+        #if ( $childAsset.assetType == 'page' )
+          #set ( $visibleChildren = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+        #end
+        #if ( $childAsset.assetType == 'folder')
+          #foreach ($childAsset in $childAsset.children)
+            #if ( $visibleChildren != true )
+              #set ( $visibleChildren = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            #end
+          #end
+        #end
+      #end
+    #end
+    #if ($visibleChildren)
+      <li class="${isCurrentDrillDownPage}">
+        <span class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
+        <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
+        <ul class="drilldown-menu">
+          <li class="menu-back"><i class="fas fa-chevron-left"></i>${asset.label} - Menu</li>
+          #foreach( $childAsset in $asset.children)
+            #if ( $drillDownPagePath == $childAsset.path ) 
+              #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
+            #else
+              #set( $isCurrentDrillDownPage = "drill-down-list-item")
+            #end
+            #set ( $isVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes")
+            #if ($childAsset.assetType == 'page' && $isVisible)
+              <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
+            #elseif ($childAsset.assetType == 'symlink')
+              <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+            #elseif ($childAsset.assetType == 'folder' && $isVisible)
+              #buildDrillDownList($childAsset)
+            #end
+          #end
+        </ul>
+      </li>
+    #end
+  #elseif ($asset.assetType == 'page' && $isVisible)
+    <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
+  #elseif ($asset.assetType == 'symlink')
+    <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+  #end
+#end
+
+#macro(addBackgroundImage $content)
+    #set ($linkUrl = $content.getChild('fileLink').getChild('path').value)
+    #if ($linkUrl != '')
+        "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
+    #else
+        ""
+    #end
 #end
 
 #macro(alert $v)
@@ -185,3 +302,15 @@
     #set($colorClass = "${widgetClass}__#if($bgColor == 'Light')light-bg#{elseif}($bgColor == 'Medium')medium-bg#{else}dark-bg#end")
     $colorClass
 #end
+
+## Pass a certain XML structure into this macro, and get a string that looks
+## like "background-image: url('https://mycoolimage.com/file1.png')
+##
+## Useage: <div style=#addBackgroundImage($content) >
+##
+## The xml in the $content variable passed in must look like the following:
+## <media>
+##     <fileLink>
+##         <path>/_files/image1.png</path>
+##     </fileLink>
+## </media>
