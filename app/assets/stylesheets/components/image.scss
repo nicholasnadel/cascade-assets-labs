@@ -1,9 +1,9 @@
 .img {
-  $imgSize: 200px;
+  --imgSize: 200px;
 
   &--circle {
     border-radius: 50%;
-    height: $imgSize;
-    width: $imgSize;
+    height: var(--imgSize);
+    width: var(--imgSize);
   }
 }
