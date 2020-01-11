@@ -12,13 +12,17 @@ $nav-width: 410px;
 
   ul { list-style: none; }
 
+  .root-left-nav {
+    transition: all .5s;
+  }
+
   li {
     margin: unset;
     list-style: none;
     font-family: "futura-pt", arial, sans-serif;
     will-change: background-color;
   }
-  @include drill-down-menu-style(10%);
+  @include drill-down-menu-style(100%);
 
 
 }

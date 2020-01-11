@@ -1,28 +1,14 @@
 
 $(document).ready(function() {
-  /**
- * A number, or a string containing a number.
- * @typedef {(Object)} jQueryObject
- */
-  debugger
-  var $rootLeftNav      = $('#left-column-navigation .root-left-nav'),
-
-  
-  $rootMainNav              = $('#left-column-navigation .root-main-nav'),
-  $rootUmbrellaDiv          = $('#left-column-navigation #off-canvas-umbrella'),
-  $rootMainDiv              = $('#left-column-navigation #off-canvas-main'),
-  $umbrellaDrillDownMenus   = $('#left-column-navigation .root-umbrella-nav .drilldown-menu'),
-  $mainDrillDownMenus       = $('#left-column-navigation .root-main-nav .drilldown-menu'),
-  $offCanvasNavContainer    = $('#left-column-navigation .off-canvas-nav-container'),
-  menuWidth                 = 410,
-  menuVisibleXVal           = 0;
 
   var drillDownSelectorsLeftNav = {
     rootDrillDownNav: '#left-column-navigation .root-left-nav',
+    scrollToTop: '#left-column-navigation'
   }
-  debugger
-  var $rootDrillDownMenu = $(drillDownSelectorsLeftNav.rootDrillDownNav);
-  debugger
+
+  var $rootDrillDownMenu  = $(drillDownSelectorsLeftNav.rootDrillDownNav);
+  var $scrollToTopElement = $(drillDownSelectorsLeftNav.scrollToTop)
+
   $rootDrillDownMenu.on('click', '.drill-down-parent', function(event) {
     drillMenuDown($(this));
   });
@@ -35,6 +21,7 @@ $(document).ready(function() {
     drillMenuUp($(this));
   });
 
+  moveOffCanvasToCurrentPathItem();
   /**@function
    * @name drillMenuDown
    * @description translates the rootUl class provided aross the x-axis
@@ -46,9 +33,10 @@ $(document).ready(function() {
     widthAmount             = $rootDrillDownMenu.width(),
     ulCurrentPos            = getTranslateXVal($rootDrillDownMenu),
     translateXVal           = ulCurrentPos - widthAmount;
-    debugger
+    
     $menuToDrillDownTo.show();
     $rootDrillDownMenu.css({ transform: "translateX(" + translateXVal + "px)"  });
+    $scrollToTopElement.length && $scrollToTopElement.animate({ scrollTop: 0 }, 'slow');
     
     return
   }
@@ -83,39 +71,15 @@ $(document).ready(function() {
   }
 
   function moveOffCanvasToCurrentPathItem() {
-    var currentPath = $(selector.rootDrillDownNav).;
+    var currentPath = $rootDrillDownMenu.find('li .current');
 
     if (currentPath.length) {
-      if (currentPath.parents('#off-canvas-umbrella').length === 1) {
-        var currentUmbrellaPathDrillDownLists = currentPath.parents('ul.drilldown-menu');
-
-        currentUmbrellaPathDrillDownLists.show();
-        
-        $rootUmbrellaNav.css({ transform: "translateX(-" + ( menuWidth * currentUmbrellaPathDrillDownLists.length ) + "px)"});
-        return;
-      }
-      
-      if ($rootUmbrellaDiv.length) {
-        $rootUmbrellaDiv.css({ transform: "translateX(-" + menuWidth + "px)" });
-        $rootUmbrellaDiv.hide();
-      }
-
-      $rootMainDiv.show();
-      $rootMainDiv.css({ transform: "translateX(-" + menuVisibleXVal + "px" });
-      var currentMainPathDrillDownLists = currentPath.parents('ul.drilldown-menu');
-      currentMainPathDrillDownLists.show();
-      $rootMainNav.css({ transform: "translateX(-" + (menuWidth * currentMainPathDrillDownLists.length) + "px" });
+      var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
+      widthAmount                       = $rootDrillDownMenu.width();
+      $drillDownParents.show();
+      $rootDrillDownMenu.show();
+      $rootDrillDownMenu.css({ transform: "translateX(-" + (widthAmount * $drillDownParents.length) + "px" });
 
     }
   }
-
-  // function DrillDownMenu {
-    
-  // }
 })
-// $('#left-column-navigation')
-
-// {
-//   menuWidth: '45rem',
-//   root
-// }

@@ -73,7 +73,7 @@ $(document).ready( function() {
 
   function drillMenuDown($element) {
     $element.siblings('.drilldown-menu').show();
-    $offCanvasNavContainer.animate({ scrollTop: 0}, 'slow');
+    $offCanvasNavContainer.animate({ scrollTop: 0 }, 'slow');
     if ($element.parents('.root-umbrella-nav').length === 1) {
       var rootNavTranslateXVal = parseInt(getTranslateXVal($rootUmbrellaNav)) - menuWidth;
 
