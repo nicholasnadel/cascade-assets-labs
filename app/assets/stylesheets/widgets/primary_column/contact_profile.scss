@@ -10,6 +10,10 @@
   margin-top: v(spacing);
   margin-bottom: v(spacing);
 
+  a {
+    padding-top: 0;
+  }
+
   .faux-h2 {
     margin-top: v(spacing);
   }
@@ -18,9 +22,17 @@
 
     &__img {
       --imgSize: 180px;
-      margin-bottom: v(spacing);
-      margin-top: v(spacing);
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
+    
+    &__name,
+    &__dept,
+    &__subheading,
+    &__phone-number {
+      padding-bottom: 2px;
+    }
+
 
     &__email {
       margin-bottom: v(spacing);
