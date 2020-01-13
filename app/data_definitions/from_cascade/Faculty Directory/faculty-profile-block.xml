@@ -1,11 +1,11 @@
 <system-data-structure>
   <text default="0000001" help-text="7 digit ID number from PeopleSoft (old Datatel ID)" identifier="id" label="Employee ID" maxlength="7" regular-expression="\d{7}" required="true"/>
   <text help-text="Examples: they/them/theirs or she/her/hers or he/him/his or Please use my name, etc." identifier="pronouns" label="Pronouns"/>
-  <asset identifier="thumbnailPhoto" label="Thumbnail Photo (110x130)" type="file" help-text="Used on listing pages (and profile page if a large one not supplied)"/>
-  <asset identifier="largePhoto" label="Large Photo (206px wide)" type="file" help-text="Optional. Used only on profile page not listing pages"/>
+  <asset help-text="Used on listing pages (and profile page if a large one not supplied)" identifier="thumbnailPhoto" label="Thumbnail Photo (110x130)" type="file"/>
+  <asset help-text="Optional. Used only on profile page not listing pages" identifier="largePhoto" label="Large Photo (206px wide)" type="file"/>
   <text help-text="name of photographer (if need to show credit on website)" identifier="photoCredit" label="photoCredit"/>
   <text help-text="A couple paragraphs summarizing their expertise or interests or accomplishments, NOT a repeat of CV" identifier="bio" label="Biography" wysiwyg="true"/>
-  <text help-text="one short paragraph summarizing bio. May be used on faculty widget listings" identifier="short-bio" label="Synopsis or very brief Bio (1000 char limit)" wysiwyg="true"/>
+  <text help-text="one short paragraph summarizing bio. Used on some faculty listing pages" identifier="short-bio" label="Synopsis or very brief Bio (1000 char limit)" wysiwyg="true"/>
   <text help-text="short paragraph or bulleted list. Used on profile page and faculty widget listings" identifier="researchInterests" label="Teaching and Research Interests" wysiwyg="true"/>
   <text help-text="short paragraph or bulleted list. Used on profile page and faculty widget listings" identifier="coursesTaught" label="Courses Taught" wysiwyg="true"/>
   <text identifier="websiteUrl" label="Website Link"/>
