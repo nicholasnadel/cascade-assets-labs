@@ -28,6 +28,16 @@
       font-size: 2.8rem;
       font-weight: 500;
       max-width: 70%;
+
+      ~.contact-profile-widget {
+        &__name {
+          margin-top: 15px;
+        }
+
+        &__email {
+          padding-bottom: 20px;
+        }
+      }
     }
 
     &__name {
@@ -44,10 +54,11 @@
       padding-right: 20px;
     }
 
-
     &__email {
       margin-bottom: v(spacing);
       padding-bottom: 30px;
     }
   }
+
+
 }
