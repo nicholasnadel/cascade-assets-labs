@@ -17,6 +17,7 @@
     margin-top: 0;
     padding-top: $defaultPadding;
     margin-bottom: .5rem;
+    line-height: 1.2em;
   }
 
   [class*='__text'] {
@@ -97,7 +98,7 @@
     background-color: $panther-black;
     color: $white;
 
-    .widget__heading {
+    [class*='__heading'] {
       color: $white;
     }
   }
@@ -105,6 +106,12 @@
   &[class*='--white'] {
     background-color: $white;
     border: 1px solid $cu-light-grey;
+    color: $panther-black;
+
+    [class*='__heading'] {
+      color: $panther-black;
+    }
+
   }
 
   &[class*='--sand'] {
