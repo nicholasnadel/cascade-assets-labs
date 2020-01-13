@@ -91,16 +91,16 @@
 					</group>
 				</group>
 			</group>
-			<group collapsed="true" identifier="contact-profile-widget" label="Contact Profile">
-				<shared-field identifier="display" path="display"/>
-				<shared-field identifier="image" path="image"/>
-				<shared-field identifier="bgColor" path="background-color"/>
-				<text identifier="heading" label="Heading" required="false"/>
-				<text identifier="name" label="Name" required="true"/>
-				<text identifier="dept" label="Department" required="false"/>
-				<text identifier="phone" label="Phone" required="false"/>
-				<text identifier="email" label="Email" required="false"/>
-			</group>
+			<group identifier="contact-profile-widget" label="Contact Profile" collapsed="true">
+        <shared-field path="display" identifier="display" />
+        <shared-field path="background-color" identifier="bgColor" />
+        <shared-field path="image" identifier="image" required="true" />
+        <text identifier="heading" label="Heading" required="true" maxlength="100" />
+        <text identifier="name" label="Name" required="true" maxlength="50" />
+        <text identifier="dept" label="Department" maxlength="100" />
+        <text identifier="phone" label="Phone" />
+        <text identifier="email" label="Email" />
+      </group>
 			<group collapsed="true" identifier="actionButtons" label="Buttons">
 				<text default="Yes" identifier="display-action-buttons" label="Show" type="radiobutton">
 					<radio-item value="Yes"/>
