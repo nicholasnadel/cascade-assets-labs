@@ -1,37 +1,25 @@
 @import "base/base.scss";
+// Base widget class for shared BEM components such as --red background modifier. Non-global widget modifications should be made on a new class in the widget's respective file, such as .contact-profile-widget__text in contact-profile-widget.scss
 
-.widget {
+[class*='-widget'] {
   $defaultPadding: 32px;
   display: grid;
   justify-content: center;
   align-content: center;
-  background-color: $white;
-  margin-top: $wmtop;
 
-  .widget__heading {
+  a {
+    text-decoration: underline;
+  }
+
+  [class*='__heading'] {
     justify-self: center;
     color: $cu-red;
     margin-top: 0;
     padding-top: $defaultPadding;
     margin-bottom: .5rem;
-
-    // &~.widget__text {
-    //   justify-self: center;
-
-    //   &~.widget__buttons {
-    //     padding-top: unset;
-    //   }
-    // }
-
-    // &~.widget__buttons {
-
-    //   padding-top: 10px;
-    //   padding-bottom: $defaultPadding;
-    //   padding-right: $defaultPadding;
-    // }
   }
 
-  .widget__text {
+  [class*='__text'] {
     padding-left: $defaultPadding;
 
     padding-right: $defaultPadding;
@@ -41,20 +29,20 @@
     padding-bottom: 5px;
   }
 
-  .widget__buttons {
+  [class*='__buttons'] {
     display: block;
     justify-self: center;
     padding-top: $defaultPadding;
     padding-bottom: $defaultPadding;
   }
 
-  .widget__button {
+  [class*='__button'] {
     @include button-bg($cu-red);
     border: none;
   }
 
 
-  &.widget--left-aligned {
+  &[class*='--left-aligned'] {
     $defaultPadding: 32px;
     display: grid;
     justify-content: flex-start;
@@ -62,25 +50,25 @@
 
     margin-top: $wmtop;
 
-    .widget__heading {
+    [class*='__heading'] {
       justify-self: flex-start;
       color: $cu-red;
       margin-top: 0;
       padding-top: $defaultPadding;
       padding-left: $defaultPadding;
 
-      &~.widget__text {
+      &~[class*='__text'] {
         // padding-top: 2.$defaultPadding;
         max-width: unset;
         justify-self: flex-start;
         padding-left: $defaultPadding;
 
-        &~.widget__buttons {
+        &~[class*='__buttons'] {
           padding-top: unset;
         }
       }
 
-      &~.widget__buttons {
+      &~[class*='__buttons'] {
         padding-left: $defaultPadding;
         padding-top: $defaultPadding;
         padding-bottom: $defaultPadding;
@@ -88,24 +76,24 @@
       }
     }
 
-    .widget__text {
+    &[class*='__text'] {
       padding-left: $defaultPadding;
       padding-right: $defaultPadding;
     }
 
-    .widget__buttons {
+    &[class*='__buttons'] {
       display: block;
       justify-self: flex-start;
       padding-top: $defaultPadding;
       padding-bottom: $defaultPadding;
     }
 
-    .widget__button {
+    &[class*='__button'] {
       @include button-bg($cu-red);
     }
   }
 
-  &.widget--black {
+  &[class*='--black'] {
     background-color: $panther-black;
     color: $white;
 
@@ -114,27 +102,28 @@
     }
   }
 
-  &.widget--white {
+  &[class*='--white'] {
     background-color: $white;
     border: 1px solid $cu-light-grey;
   }
 
-  &.widget--sand {
+  &[class*='--sand'] {
     background-color: $sand;
   }
 
-  &.widget--red {
+  &[class*='--red'] {
     background-color: $red;
     color: $white;
 
-    .widget__heading {
+    [class*='__heading'],
+    a {
       color: $white;
     }
 
-    .widget__buttons {
+    &[class*='__buttons'] {
       color: $panther-black;
 
-      a.button.widget__button {
+      [class*='__button'] {
         background: $cu-light-grey;
         color: $panther-black;
 
@@ -147,10 +136,10 @@
 
   }
 
-  &.widget--grey {
+  &[class*='--grey'] {
     background-color: $cu-light-grey;
 
-    .widget__heading {
+    &[class*='__heading'] {
       color: $panther-black;
     }
   }
