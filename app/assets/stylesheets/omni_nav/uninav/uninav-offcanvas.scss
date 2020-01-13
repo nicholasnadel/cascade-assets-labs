@@ -98,7 +98,8 @@
         @include slide-in-out('in', -$nav-width, 0px, 1s);
 
         // display: none;
-        .off-canvas-menu-container {
+        #off-canvas-umbrella-navigation,
+        #off-canvas-main-navigation {
           position: relative;
           height: 100%;
           width: $nav-width;
@@ -116,6 +117,7 @@
         #off-canvas-utility-item .off-canvas-menu-container,
         #off-canvas-cta-item .off-canvas-menu-container {
           position: static;
+          width: 100%;
         }
 
         span.menu-label {

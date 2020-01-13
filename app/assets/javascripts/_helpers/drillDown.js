@@ -1,17 +1,14 @@
 
 var DrillDownMenu = (function(selectors) {
-  // var $rootDrillDownMenu  = $(selectors.rootDrillDownNav);
-  // var $scrollToTopElement = $(selectors.scrollToTop);
-  var self = null;
 
   var Constructor = function (selectors) {
-    // if (!selector) return;
-    self = this;
 
     if (!selectors.rootDrillDownNav) return;
 
     this.$rootDrillDownNav    = $(selectors.rootDrillDownNav);
-    this.$scrollToTopElement  = $(selectors.scrollToTop);
+    this.$scrollToTopElement  = $(selectors.scrollToTopElement);
+    this.translateXVal        = selectors.translateXVal;
+    this.resizeTimer          = null;
     return;
 
   };
@@ -24,10 +21,12 @@ var DrillDownMenu = (function(selectors) {
     var $menuToDrillDownTo  = $element.siblings('.drilldown-menu'),
     widthAmount             = this.$rootDrillDownNav[0].getBoundingClientRect().width,
     ulCurrentPos            = this.getTranslateXVal(this.$rootDrillDownNav),
-    translateXVal           = ulCurrentPos - widthAmount;
-    debugger
+    translateXVal           = this.translateXVal ? 
+                                                "-" + (this.translateXVal - ulCurrentPos) + "px" : 
+                                                Math.floor(((ulCurrentPos - widthAmount) * 100) / 100 )  + "px"
     $menuToDrillDownTo.show();
-    this.$rootDrillDownNav.css({ transform: "translateX(" + translateXVal + "px)"  });
+    this.$rootDrillDownNav.css({ transform: "translateX(" + translateXVal + ")"  });
+
     this.$scrollToTopElement && this.$scrollToTopElement.animate({ scrollTop: 0 }, 'slow');
     
     return;
@@ -40,9 +39,10 @@ var DrillDownMenu = (function(selectors) {
   Constructor.prototype.drillMenuUp = function($element) {
     var widthAmount = this.$rootDrillDownNav.width(),
     ulCurrentPos    = this.getTranslateXVal(this.$rootDrillDownNav),
-    translateXVal   = ulCurrentPos + widthAmount;
+    translateXVal   = this.translateXVal ? (ulCurrentPos + this.translateXVal) + "px" : 
+                                        Math.floor(((ulCurrentPos + widthAmount) * 100) / 100 )  + "px"
 
-    this.$rootDrillDownNav.css({ transform: "translateX(" + translateXVal + "px)"  });
+    this.$rootDrillDownNav.css({ transform: "translateX(" + translateXVal + ")"  });
     $element.parent().hide();
 
     return;
@@ -56,7 +56,6 @@ var DrillDownMenu = (function(selectors) {
                           selector.css("transform");
     
     transformMatrix = transformMatrix === "none" ? 0 : transformMatrix;
-
     if (!isNaN(transformMatrix))
       return 0;
     
@@ -67,19 +66,27 @@ var DrillDownMenu = (function(selectors) {
   }
 
   Constructor.prototype.moveOffCanvasToCurrentPathItem = function() {
-    var currentPath = $rootDrillDownMenu.find('li .current');
-
+    var currentPath = this.$rootDrillDownNav.find('li .current');
+    debugger
     if (currentPath.length) {
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
-      widthAmount           = $rootDrillDownMenu.width();
+      widthAmount           = Math.floor(((this.$rootDrillDownNav[0].getBoundingClientRect().width) * 100) / 100 ) || this.translateXVal
       $drillDownParents.show();
-      $rootDrillDownMenu.show();
-      $rootDrillDownMenu.css({ transform: "translateX(-" + (widthAmount * $drillDownParents.length) + "px" });
+      this.$rootDrillDownNav.show();
+      this.$rootDrillDownNav.css({ transform: "translateX(-" + (widthAmount * $drillDownParents.length) + "px" });
     }
   }
 
+  Constructor.prototype.resizeRootDrillDown = function() {
+    var widthAmount       = this.$rootDrillDownNav[0].getBoundingClientRect().width,
+    ulCurrentPos          = this.getTranslateXVal(this.$rootDrillDownNav),
+    $drillDownMenus       = this.$rootDrillDownNav.find('.drilldown-menu');
+    $drillDownMenuVisible = this.$rootDrillDownNav.find('.drilldown-menu[style*="display: block"]')
+    $drillDownMenus.css({ left: widthAmount + "px" });
+    this.$rootDrillDownNav.css({ transform: "translateX(-" + (!ulCurrentPos ? ulCurrentPos :  widthAmount * $drillDownMenuVisible.length) + "px"});
+  }
+
   Constructor.prototype.createClickHandlers = function() {
-    // debugger
     var drillMenuDown = function(event) {
       this.drillMenuDown($(event.currentTarget));
     };
@@ -88,22 +95,23 @@ var DrillDownMenu = (function(selectors) {
       this.drillMenuUp($(event.currentTarget));
     };
 
-    
-    // this.$rootDrillDownNav.on('click', '.drill-down-parent', (event) => {
-    //   debugger
-    //   self.drillMenuDown($(this));
-    // });
-    // debugger
+    var resizeRootDrillDown = function(event) {
+      clearTimeout(this.resizeTimer);
+      this.resizeTimer = setTimeout(this.resizeRootDrillDown.bind(this), 500);
+    };
+
+    if (!this.translateXVal)
+      $(window).resize(resizeRootDrillDown.bind(this));
+
     this.$rootDrillDownNav.on('click', '.drill-down-parent', drillMenuDown.bind(this));
   
     this.$rootDrillDownNav.on('click', '.toggle-drilldown', drillMenuDown.bind(this));
   
     this.$rootDrillDownNav.on('click', '.menu-back', drillMenuUp.bind(this));
-  }
 
-  Constructor.prototype.hideDrillDownMenus = function() {
-    self.$scrollToTopElement.children('.drilldown-menu').hide();
-  };
+    this.moveOffCanvasToCurrentPathItem();
+
+  }
 
   var instantiate = function (selectors) {
     return new Constructor(selectors);
@@ -114,87 +122,3 @@ var DrillDownMenu = (function(selectors) {
   */
   return instantiate
 })();
-
-// $(document).ready(function() {
-
-//   var drillDownSelectorsLeftNav = {
-//     rootDrillDownNav: '#left-column-navigation .root-left-nav',
-//     scrollToTop: '#left-column-navigation'
-//   }
-
-//   var $rootDrillDownMenu  = $(drillDownSelectorsLeftNav.rootDrillDownNav);
-//   var $scrollToTopElement = $(drillDownSelectorsLeftNav.scrollToTop)
-
-//   $rootDrillDownMenu.on('click', '.drill-down-parent', function(event) {
-//     drillMenuDown($(this));
-//   });
-
-//   $rootDrillDownMenu.on('click', '.toggle-drilldown', function(event) {
-//     drillMenuDown($(this));
-//   });
-
-//   $rootDrillDownMenu.on('click', '.menu-back', function() {
-//     drillMenuUp($(this));
-//   });
-
-//   moveOffCanvasToCurrentPathItem();
-//   /**@function
-//    * @name drillMenuDown
-//    * @description translates the rootUl class provided aross the x-axis
-//    * @param {jQueryObject} $element - the this context of the clicked element
-//    * @param {onject} selectors - object of selectors and width for translation
-//    */
-//   function drillMenuDown($element) {
-//     var $menuToDrillDownTo  = $element.siblings('.drilldown-menu'),
-//     widthAmount             = $rootDrillDownMenu.width(),
-//     ulCurrentPos            = getTranslateXVal($rootDrillDownMenu),
-//     translateXVal           = ulCurrentPos - widthAmount;
-    
-//     $menuToDrillDownTo.show();
-//     $rootDrillDownMenu.css({ transform: "translateX(" + translateXVal + "px)"  });
-//     $scrollToTopElement.length && $scrollToTopElement.animate({ scrollTop: 0 }, 'slow');
-    
-//     return
-//   }
-
-//   function drillMenuUp($element, selectors) {
-//     var widthAmount = $rootDrillDownMenu.width(),
-//     ulCurrentPos    = getTranslateXVal($rootDrillDownMenu),
-//     translateXVal   = ulCurrentPos + widthAmount;
-
-//     $rootDrillDownMenu.css({ transform: "translateX(" + translateXVal + "px)"  });
-//     $element.parent().hide();
-
-//     return;
-//   }
-
-//   function getTranslateXVal(selector) {
-//     var transformMatrix = selector.css("-webkit-transform") ||
-//                           selector.css("-moz-transform")    ||
-//                           selector.css("-ms-transform")     ||
-//                           selector.css("-o-transform")      ||
-//                           selector.css("transform");
-    
-//     transformMatrix = transformMatrix === "none" ? 0 : transformMatrix;
-
-//     if (!isNaN(transformMatrix))
-//       return 0;
-    
-//     var matrix = transformMatrix.replace(/[^0-9\-.,]/g, '').split(',');
-//     var x = matrix[12] || matrix[4];//translate x
-
-//     return parseInt(x);
-//   }
-
-//   function moveOffCanvasToCurrentPathItem() {
-//     var currentPath = $rootDrillDownMenu.find('li .current');
-
-//     if (currentPath.length) {
-//       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
-//       widthAmount                       = $rootDrillDownMenu.width();
-//       $drillDownParents.show();
-//       $rootDrillDownMenu.show();
-//       $rootDrillDownMenu.css({ transform: "translateX(-" + (widthAmount * $drillDownParents.length) + "px" });
-//     }
-//   }
-// })
