@@ -126,6 +126,12 @@
     background-color: $red;
     color: $white;
 
+    ::selection,
+    ::-moz-selection {
+      background: $panther-black;
+    }
+
+
     [class*='__heading'],
     a {
       color: $white;
