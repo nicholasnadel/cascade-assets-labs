@@ -97,7 +97,8 @@
     background-color: $panther-black;
     color: $white;
 
-    [class*='__heading'] {
+    [class*='__heading'],
+    a {
       color: $white;
     }
   }
@@ -115,6 +116,10 @@
 
   &[class*='--sand'] {
     background-color: $sand;
+
+    [class*='__heading'] {
+      color: $panther-black;
+    }
   }
 
   &[class*='--red'] {
@@ -145,8 +150,13 @@
   &[class*='--grey'] {
     background-color: $cu-light-grey;
 
-    &[class*='__heading'] {
+    [class*='__heading'] {
       color: $panther-black;
     }
+
+    a {
+      color: $cu-red;
+    }
+
   }
 }
