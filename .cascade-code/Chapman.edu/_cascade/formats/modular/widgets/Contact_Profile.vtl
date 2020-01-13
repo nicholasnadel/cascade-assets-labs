@@ -1,71 +1,72 @@
 #import( "/_cascade/formats/helpers.velocity" )
 
 #macro(outputContactProfile $element) 
-#set ($wxp = 'contact-profile-widget')
+#set ($widgetXPath = 'contact-profile-widget')
+#set ($widgetXPath = ${_EscapeTool.xml($widgetXPath)})
 ## todo: automate camelcase to snakecase
 
-#set ($display = $element.getChild($wxp).getChild('display').value)
-#bgColorChooser($wxp)
+#set ($display = $element.getChild($widgetXPath).getChild('display').value)
+#bgColorChooser($widgetXPath)
 
 ## IMAGE
 #set ($imageType =
-$element.getChild($wxp).getChild('image').getChild('imageType').value.toLowerCase())
+$element.getChild($widgetXPath).getChild('image').getChild('imageType').value.toLowerCase())
 #set ($imageShape =
-$element.getChild($wxp).getChild('image').getChild('imageShape').value.toLowerCase())
+$element.getChild($widgetXPath).getChild('image').getChild('imageShape').value.toLowerCase())
 #set ($imageUrlInt =
-$element.getChild($wxp).getChild('image').getChild('imageUrlInt').getChild('path').value )
+$element.getChild($widgetXPath).getChild('image').getChild('imageUrlInt').getChild('path').value )
 #set ($imageUrlExt =
-$element.getChild($wxp).getChild('image').getChild('imageUrlExt').getChild('path').value )
+$element.getChild($widgetXPath).getChild('image').getChild('imageUrlExt').getChild('path').value )
 #set ($altText =
-$element.getChild($wxp).getChild('image').getChild('altText').value)
-## #set ($imgSize = $element.getChild($wxp).getChild('imgSize').value.toLowerCase())
-#set ($objPosY = $element.getChild($wxp).getChild('image').getChild('objPosY').value.toLowerCase())
-#set ($objPosX = $element.getChild($wxp).getChild('image').getChild('objPosX').value.toLowerCase())
+$element.getChild($widgetXPath).getChild('image').getChild('altText').value)
+#set ($objectPositionX = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionX').value.toLowerCase())
+#set ($objectPositionY = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionY').value.toLowerCase())
 
-imageType: $imageType imageUrlInt: $imageUrlInt #set ($wtf =
-$element.getChild($wxp).getChild('image').getChild('imageType').value()) wxp: $wxp wtf: $wtf ## TEXT
-#set ($heading = $element.getChild($wxp).getChild('heading').value) #set ($name =
-$element.getChild($wxp).getChild('name').value) #set ($dept =
-$element.getChild($wxp).getChild('dept').value) #set ($phone =
-$element.getChild($wxp).getChild('phone').value) #set ($email =
-$element.getChild($wxp).getChild('email').value) ## use snake-case here for BEM naming convention ##
-todo: automate camelcase to snakecase #set ($wxpSnakeCase= 'contact-profile-widget') #set ($wxp =
-$wxpSnakeCase)
 
-<div class="$wxp $bgColor">
-    <div class="faux-h2 $wxp__heading">
+## TEXT
+#set ($heading = $element.getChild($widgetXPath).getChild('heading').value)
+#set ($name = $element.getChild($widgetXPath).getChild('name').value)
+#set ($dept = $element.getChild($widgetXPath).getChild('dept').value)
+#set ($phone = $element.getChild($widgetXPath).getChild('phone').value)
+#set ($email = $element.getChild($widgetXPath).getChild('email').value)
+
+
+## use snake-case here for BEM naming convention
+## todo: automate camelcase to snakecase
+#set ($widgetXPathSnakeCase= 'contact-profile-widget')
+#set ($widgetXPath = $widgetXPathSnakeCase)
+
+#set ($widgetXPath = 'contact-profile-widget')
+<div class="#escape($widgetXPath) $bgColor">
+    <div class="faux-h2 ${_EscapeTool.xml($widgetXPath)}__heading">
         ${_EscapeTool.xml($heading)}
     </div>
     ## IMAGE
     ## IF AN IMAGE HAS BEEN SET
     ## ADD ITS SHAPE CLASS
-    ## #if (!$imageType.contains("none"))
-    <div
-        class="widget__img widget__img--$imageShape {$wxp}__img"
-        style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
-        ## #if (!$imageUrlInt != "") 
-        <img
-            src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
-            alt="${_EscapeTool.xml($altText)}"/>
-        ## #end
-    </div>
-    ## #end
+        #if (!$imageType.contains("none"))
+        <div
+            class="${_EscapeTool.xml($widgetXPath)}__img--${_EscapeTool.xml($imageShape)} ${_EscapeTool.xml($widgetXPath)}__img"
+            style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
+                <img class="${_EscapeTool.xml($widgetXPath)}__img img--${_EscapeTool.xml($imageShape)} "
+                    src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
+                    alt="${_EscapeTool.xml($altText)}" title="${_EscapeTool.xml($altText)}" style="object-position:${_EscapeTool.xml($objectPositionX)} ${_EscapeTool.xml($objectPositionY)}"/>
+        </div>
+        #end
 
+    
     #if ($text != "")
-        <div class="$wxp__heading">
-            ${_EscapeTool.xml($heading)}
+        <div class="${_EscapeTool.xml($widgetXPath)}__name">
+                ${_EscapeTool.xml($name)}
         </div>
-        <div class="$wxp__name">
-            ${_EscapeTool.xml($name)}
+        <div class="${_EscapeTool.xml($widgetXPath)}__dept">
+                ${_EscapeTool.xml($dept)}
         </div>
-        <div class="$wxp__dept">
-            ${_EscapeTool.xml($dept)}
+        <div class="${_EscapeTool.xml($widgetXPath)}__phone-number">
+                <a href="tel:${_EscapeTool.xml($phone)}" title="${_EscapeTool.xml($phone)}" aria-label="${_EscapeTool.xml($phone)}">${_EscapeTool.xml($phone)}</a>
         </div>
-        <div class="$wxp__phone">
-            ${_EscapeTool.xml($phone)}
-        </div>
-        <div class="$wxp__email">
-            ${_EscapeTool.xml($email)}
+        <div class="${_EscapeTool.xml($widgetXPath)}__email">
+                <a href="mailto:${_EscapeTool.xml($email)}" title="${_EscapeTool.xml($email)}" >${_EscapeTool.xml($email)}</a>
         </div>
     #end
 
