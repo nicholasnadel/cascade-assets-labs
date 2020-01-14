@@ -5,21 +5,28 @@ $(document).ready( function() {
   menuWidth                   = 410,
   $rootUmbrellaDiv            = $('#uninav #off-canvas-umbrella'),
   $rootMainDiv                = $('#uninav #off-canvas-main'),
-  drillDownSelectorsOffCanvasUmbrella = {
-    rootDrillDownNav: '#off-canvas-umbrella-navigation .root-umbrella-nav',
-    rootElement: '.off-canvas-nav-container',
-    translateXVal: menuWidth
-  },
-  drillDownSelectorsOffCanvasMain = {
-    rootDrillDownNav: '#off-canvas-main-navigation .root-main-nav',
-    rootElement: '.off-canvas-nav-container',
-    translateXVal: menuWidth
-  },
-  offCanvasMainDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasMain),
-  offCanvasUmbrellaDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasUmbrella);
+  $rootDrillDownNavUmbrella   = $('#off-canvas-umbrella-navigation .root-umbrella-nav'),
+  $rootElementUmbrella        = $('.off-canvas-nav-container'),
+  $rootDrillDownNavMain       = $('#off-canvas-main-navigation .root-main-nav'),
+  $rootElementMain            = $('.off-canvas-nav-container')
+  translateXVal               = menuWidth;
 
-  offCanvasMainDrillDown.createClickHandlers();
-  offCanvasUmbrellaDrillDown.createClickHandlers();
+
+  // drillDownSelectorsOffCanvasUmbrella = {
+  //   rootDrillDownNav: '#off-canvas-umbrella-navigation .root-umbrella-nav',
+  //   rootElement: '.off-canvas-nav-container',
+  //   translateXVal: menuWidth
+  // },
+  // drillDownSelectorsOffCanvasMain = {
+  //   rootDrillDownNav: '#off-canvas-main-navigation .root-main-nav',
+  //   rootElement: '.off-canvas-nav-container',
+  //   translateXVal: menuWidth
+  // },
+  // offCanvasMainDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasMain),
+  // offCanvasUmbrellaDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasUmbrella);
+
+  // offCanvasMainDrillDown.createClickHandlers();
+  // offCanvasUmbrellaDrillDown.createClickHandlers();
 
 
   $('#uninav .uninav__umbrella-nav-button-container button').on('click', function() {
@@ -90,3 +97,16 @@ $(document).ready( function() {
     return;
   }
 });
+
+
+
+///////////////////////////////////////
+
+
+$rootDrillDownNavUmbrella.on('click', '.drill-down-parent', drillMenuDown);
+  
+$rootDrillDownNavMain.on('click', '.toggle-drilldown', drillMenuDown);
+
+$rootDrillDownNavUmbrella.on('click', '.menu-back', drillMenuDown);
+
+$rootDrillDownNavMain.on('click', '.menu-back', drillMenuDown);
