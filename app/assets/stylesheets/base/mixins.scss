@@ -38,6 +38,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     ; //600px
   }
 
+  @if $breakpoint==small {
+    @media only screen and (max-width: 47em) {
+      @content
+    }
+
+    ; // 767px
+  }
+
   @if $breakpoint==tab-port {
     @media only screen and (max-width: 56.25em) {
       @content
@@ -557,7 +565,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     ul.drilldown-menu {
       display: none;
       position: absolute;
-      height: 100%;
+      // height: 100%;
       width: 100%;
       left: $width;
       top: 0;

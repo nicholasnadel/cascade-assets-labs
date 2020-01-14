@@ -5,10 +5,12 @@ var DrillDownMenu = (function(selectors) {
 
     if (!selectors.rootDrillDownNav) return;
 
-    this.$rootDrillDownNav    = $(selectors.rootDrillDownNav);
-    this.$scrollToTopElement  = $(selectors.scrollToTopElement);
-    this.translateXVal        = selectors.translateXVal;
-    this.resizeTimer          = null;
+    this.$rootDrillDownNav  = $(selectors.rootDrillDownNav);
+    this.$rootElement       = $(selectors.rootElement);
+    this.rootDrillDownNav   = selectors.rootDrillDownNav;
+    this.rootElement        = selectors.rootElement;
+    this.translateXVal      = selectors.translateXVal;
+    this.resizeTimer        = null;
     return;
 
   };
@@ -27,7 +29,7 @@ var DrillDownMenu = (function(selectors) {
     $menuToDrillDownTo.show();
     this.$rootDrillDownNav.css({ transform: "translateX(" + translateXVal + ")"  });
 
-    this.$scrollToTopElement && this.$scrollToTopElement.animate({ scrollTop: 0 }, 'slow');
+    this.$rootElement && this.$rootElement.animate({ scrollTop: 0 }, 'slow');
     
     return;
   }
@@ -46,6 +48,18 @@ var DrillDownMenu = (function(selectors) {
     $element.parent().hide();
 
     return;
+  }
+
+  Constructor.prototype.setRootNavHeight = function() {
+    var $rootElementChildren  = this.$rootElement.children();
+    var rootChildrenHeight    = 0;
+    
+    $rootElementChildren.each( function(idx, childElement) {
+      var currentNav = childElement.find(this.rootDrillDownNav);
+      if (!currentNav) {
+        rootChildrenHeight = rootChildrenHeight + childElement.height;
+      }
+    });
   }
 
   Constructor.prototype.getTranslateXVal = function(selector) {
@@ -67,7 +81,7 @@ var DrillDownMenu = (function(selectors) {
 
   Constructor.prototype.moveOffCanvasToCurrentPathItem = function() {
     var currentPath = this.$rootDrillDownNav.find('li .current');
-    debugger
+
     if (currentPath.length) {
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
       widthAmount           = Math.floor(((this.$rootDrillDownNav[0].getBoundingClientRect().width) * 100) / 100 ) || this.translateXVal

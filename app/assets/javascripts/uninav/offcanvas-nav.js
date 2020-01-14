@@ -7,12 +7,12 @@ $(document).ready( function() {
   $rootMainDiv                = $('#uninav #off-canvas-main'),
   drillDownSelectorsOffCanvasUmbrella = {
     rootDrillDownNav: '#off-canvas-umbrella-navigation .root-umbrella-nav',
-    scrollToTopElement: '.off-canvas-nav-container',
+    rootElement: '.off-canvas-nav-container',
     translateXVal: menuWidth
   },
   drillDownSelectorsOffCanvasMain = {
     rootDrillDownNav: '#off-canvas-main-navigation .root-main-nav',
-    scrollToTopElement: '.off-canvas-nav-container',
+    rootElement: '.off-canvas-nav-container',
     translateXVal: menuWidth
   },
   offCanvasMainDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasMain),

@@ -1,5 +1,6 @@
 #uninav {
   $nav-width: 410px;
+  
 
   //SHARED BY BOTH UMBRELLA AND MAIN
   .cu-off-canvas-header {
@@ -64,11 +65,18 @@
     height: 100vh;
     background-color: white;
     border: 1px solid #CFCFCF;
-    overflow: hidden;
-    overflow-y: scroll;
+    overflow-x: hidden;
     transition: all .5s;
     transform: translateX(-$nav-width);
-
+    //HIDE SCROLLBARS
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    //END HIDE SCROLLBARS
     .off-canvas-nav {
       display: grid;
       grid-template-rows: 100%;
@@ -101,13 +109,13 @@
         #off-canvas-umbrella-navigation,
         #off-canvas-main-navigation {
           position: relative;
-          height: 100%;
           width: $nav-width;
           background: white;
 
 
           ul.root-umbrella-nav,
           ul.root-main-nav {
+            height: 100%;
             transform: translateX(0);
             transition: all .5s linear;
           }
