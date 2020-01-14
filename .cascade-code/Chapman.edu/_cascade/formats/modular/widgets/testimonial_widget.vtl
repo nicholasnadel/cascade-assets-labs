@@ -3,25 +3,14 @@
 #macro(outputTestimonialWidget $element) 
 
 #set ( $slides = $_XPathTool.selectNodes($element, 'testimonial-widget/testimonial-widget__slide') )
+
 #set ( $wxp = 'testimonial-widget')
+#set ( $widgetXPath = $wxp)
 
 #bgColorChooser($wxp)
 
 <div class="testimonial-widget $bgColor">
     #foreach ($slide in $slides)
-        ## IMAGE
-        #set ($imageShape =
-        $slide.getChild('testimonial-widget__img').getChild('testimonial-widget__img--shape').value.toLowerCase())
-        #set ($imageType =
-        $slide.getChild('testimonial-widget__img').value.toLowerCase())
-        #set ($imageUrlInt =
-        $slide.getChild('testimonial-widget__img').getChild('internalCascadeImage').getChild('path').value )
-        #set ($altText =
-        $slide.getChild('testimonial-widget__img').getChild('alternateText').value)
-        ## #set ($imgSize = $slide.getChild('testimonial-widget__img').getChild('imgSize').value.toLowerCase())
-        #set ($objPosY = $slide.getChild('testimonial-widget__img').getChild('objPosY').value.toLowerCase())
-        #set ($objPosX = $slide.getChild('testimonial-widget__img').getChild('objPosX').value.toLowerCase())
-
         ## TEXT
         #set ($endorserName = $slide.getChild('testimonial-widget__faux-h2').value)
         #set ($endorserTitle = $slide.getChild('testimonial-widget__department-title').value)
@@ -31,19 +20,8 @@
         #if ($endorserName != "")
             $endorserName
             <div class=" testimonial-widget__slide" tabindex="0">
-                ## IF AN IMAGE HAS BEEN SET
-                ## ADD ITS SHAPE CLASS
-                #if (!$imageType.contains("none"))
-                    <div
-                        class="testimonial-widget__img testimonial-widget__img--$imageShape"
-                        style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
-                        #if (!$imageUrlInt != "") 
-                            <img
-                                src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
-                                alt="${_EscapeTool.xml($altText)}"/>
-                        #end
-                    </div>
-                #end
+
+        #imageInCollection($slide)
 
                 <div class="testimonial-widget__text">
                     <div class="faux-h2 testimonial-widget__faux-h2">
