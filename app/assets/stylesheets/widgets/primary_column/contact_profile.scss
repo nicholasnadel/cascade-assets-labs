@@ -10,6 +10,10 @@
   margin-top: v(spacing);
   margin-bottom: v(spacing);
 
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
   a {
     padding-top: 0;
   }
