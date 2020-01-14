@@ -8,28 +8,12 @@
 #set ($display = $element.getChild($widgetXPath).getChild('display').value)
 #bgColorChooser($widgetXPath)
 
-## IMAGE
-#set ($imageType =
-$element.getChild($widgetXPath).getChild('image').getChild('imageType').value.toLowerCase())
-#set ($imageShape =
-$element.getChild($widgetXPath).getChild('image').getChild('imageShape').value.toLowerCase())
-#set ($imageUrlInt =
-$element.getChild($widgetXPath).getChild('image').getChild('imageUrlInt').getChild('path').value )
-#set ($imageUrlExt =
-$element.getChild($widgetXPath).getChild('image').getChild('imageUrlExt').getChild('path').value )
-#set ($altText =
-$element.getChild($widgetXPath).getChild('image').getChild('altText').value)
-#set ($objectPositionX = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionX').value.toLowerCase())
-#set ($objectPositionY = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionY').value.toLowerCase())
-
-
 ## TEXT
 #set ($heading = $element.getChild($widgetXPath).getChild('heading').value)
 #set ($name = $element.getChild($widgetXPath).getChild('name').value)
 #set ($dept = $element.getChild($widgetXPath).getChild('dept').value)
 #set ($phone = $element.getChild($widgetXPath).getChild('phone').value)
 #set ($email = $element.getChild($widgetXPath).getChild('email').value)
-
 
 ## use snake-case here for BEM naming convention
 ## todo: automate camelcase to snakecase
@@ -41,32 +25,24 @@ $element.getChild($widgetXPath).getChild('image').getChild('altText').value)
     <div class="faux-h2 ${_EscapeTool.xml($widgetXPath)}__heading">
         ${_EscapeTool.xml($heading)}
     </div>
-    ## IMAGE
-    ## IF AN IMAGE HAS BEEN SET
-    ## ADD ITS SHAPE CLASS
-        #if (!$imageType.contains("none"))
-        <div
-            class="${_EscapeTool.xml($widgetXPath)}__img--${_EscapeTool.xml($imageShape)} ${_EscapeTool.xml($widgetXPath)}__img"
-            style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
-                <img class="${_EscapeTool.xml($widgetXPath)}__img img--${_EscapeTool.xml($imageShape)} "
-                    src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
-                    alt="${_EscapeTool.xml($altText)}" title="${_EscapeTool.xml($altText)}" style="object-position:${_EscapeTool.xml($objectPositionX)} ${_EscapeTool.xml($objectPositionY)}"/>
-        </div>
-        #end
 
-    
+    #image()
+
     #if ($text != "")
         <div class="${_EscapeTool.xml($widgetXPath)}__name">
-                ${_EscapeTool.xml($name)}
+            ${_EscapeTool.xml($name)}
         </div>
         <div class="${_EscapeTool.xml($widgetXPath)}__dept">
-                ${_EscapeTool.xml($dept)}
+            ${_EscapeTool.xml($dept)}
         </div>
         <div class="${_EscapeTool.xml($widgetXPath)}__phone-number">
-                <a href="tel:${_EscapeTool.xml($phone)}" title="${_EscapeTool.xml($phone)}" aria-label="${_EscapeTool.xml($phone)}">${_EscapeTool.xml($phone)}</a>
+            <a
+                href="tel:${_EscapeTool.xml($phone)}"
+                title="${_EscapeTool.xml($phone)}"
+                aria-label="${_EscapeTool.xml($phone)}">${_EscapeTool.xml($phone)}</a>
         </div>
         <div class="${_EscapeTool.xml($widgetXPath)}__email">
-                <a href="mailto:${_EscapeTool.xml($email)}" title="${_EscapeTool.xml($email)}" >${_EscapeTool.xml($email)}</a>
+            <a href="mailto:${_EscapeTool.xml($email)}" title="${_EscapeTool.xml($email)}">${_EscapeTool.xml($email)}</a>
         </div>
     #end
 

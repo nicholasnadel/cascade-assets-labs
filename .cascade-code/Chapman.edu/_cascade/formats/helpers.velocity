@@ -2,6 +2,34 @@
 ## helpers.velocity
 ## Master Version: Chapman.edu/_cascade/formats/helpers.velocity
 ##
+## IMAGE CHOOSER
+## Outputs shared field 'image'
+## USAGE: #bgColorChooser('next-steps-widget'). $bgColor will result in a class such as 'next-steps-widget--red'. 
+#macro(image)
+    #set ($imageType =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageType').value.toLowerCase())
+    #set ($imageShape =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageShape').value.toLowerCase())
+    #set ($imageUrlInt =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageUrlInt').getChild('path').value )
+    #set ($imageUrlExt =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageUrlExt').getChild('path').value )
+    #set ($altText =
+    $element.getChild($widgetXPath).getChild('image').getChild('altText').value)
+    #set ($objectPositionX = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionX').value.toLowerCase())
+    #set ($objectPositionY = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionY').value.toLowerCase())
+
+    #if (!$imageType.contains("none"))
+        <div
+            class="${_EscapeTool.xml($widgetXPath)}__img--${_EscapeTool.xml($imageShape)} ${_EscapeTool.xml($widgetXPath)}__img"
+            style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
+                <img class="${_EscapeTool.xml($widgetXPath)}__img img--${_EscapeTool.xml($imageShape)} "
+                    src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
+                    alt="${_EscapeTool.xml($altText)}" title="${_EscapeTool.xml($altText)}" style="object-position:${_EscapeTool.xml($objectPositionX)} ${_EscapeTool.xml($objectPositionY)}"/>
+        </div>
+    #end
+#end
+
 ## Pass a certain XML structure into this macro, and get a string that looks
 ## like "background-image: url('https://mycoolimage.com/file1.png')
 ##
