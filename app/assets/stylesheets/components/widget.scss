@@ -1,11 +1,7 @@
 @import "base/base.scss";
-// Base widget class for shared BEM components such as --red background modifier. Non-global widget modifications should be made on a new class in the widget's respective file, such as .contact-profile-widget__text in contact-profile-widget.scss
 
+// Base widget class for shared BEM components such as --red background modifier. Non-global widget modifications should be made on a new class in the widget's respective file, such as .contact-profile-widget__text in contact-profile-widget.scss
 [class*='-widget'] {
-  $defaultPadding: 32px;
-  // display: grid;
-  // justify-content: center;
-  // align-content: center;
 
   [class*='__phone-number'],
   [class*='__email'] {
@@ -16,27 +12,11 @@
 
   [class*='__heading'] {
     justify-self: center;
-    color: $cu-red;
-    margin-top: 0;
-    padding-top: $defaultPadding;
-    margin-bottom: .5rem;
-  }
-
-  [class*='__text'] {
-    padding-left: $defaultPadding;
-
-    padding-right: $defaultPadding;
-
-    padding-top: 0;
-
-    padding-bottom: 5px;
   }
 
   [class*='__buttons'] {
     display: block;
     justify-self: center;
-    padding-top: $defaultPadding;
-    padding-bottom: $defaultPadding;
   }
 
   [class*='__button'] {
@@ -45,55 +25,35 @@
     text-decoration: none;
   }
 
-
   &[class*='--left-aligned'] {
-    $defaultPadding: 32px;
     display: grid;
     justify-content: flex-start;
     align-content: flex-start;
-
     margin-top: $wmtop;
 
-    [class*='__heading'] {
+    [class*='__heading'],
+    [class*='__img'],
+    [class*='__text'],
+    [class*='__name'],
+    [class*='__dept'],
+    [class*='__email'],
+    [class*='__phone-number'],
+    [class*='__buttons'] {
       justify-self: flex-start;
-      color: $cu-red;
+      text-align: left;
       margin-top: 0;
-      padding-top: $defaultPadding;
-      padding-left: $defaultPadding;
-
-      &~[class*='__text'] {
-        // padding-top: 2.$defaultPadding;
-        max-width: unset;
-        justify-self: flex-start;
-        padding-left: $defaultPadding;
-
-        &~[class*='__buttons'] {
-          padding-top: unset;
-        }
-      }
-
-      &~[class*='__buttons'] {
-        padding-left: $defaultPadding;
-        padding-top: $defaultPadding;
-        padding-bottom: $defaultPadding;
-
-      }
+      max-width: unset;
+      display: grid;
+      padding-left: 0;
     }
 
-    &[class*='__text'] {
-      padding-left: $defaultPadding;
-      padding-right: $defaultPadding;
+    [class*='__buttons'] {
+      padding-top: unset;
     }
 
-    &[class*='__buttons'] {
-      display: block;
-      justify-self: flex-start;
-      padding-top: $defaultPadding;
-      padding-bottom: $defaultPadding;
-    }
-
-    &[class*='__button'] {
+    [class*='__button'] {
       @include button-bg($cu-red);
+      justify-self: flex-start;
     }
   }
 
