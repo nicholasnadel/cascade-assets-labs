@@ -7,6 +7,19 @@ Master Version: Chapman.edu/_cascade/formats/helpers.velocity
 
 #*
 --------------------------------------------------------------------------------
+ Converts camelCase to SNAKE_CASE
+ USAGE: #camelToSnake('chapmanUniversity') or #camelToSnake($widgetName)
+--------------------------------------------------------------------------------
+*#
+#macro(camelToSnake $camelCase)
+    #set( $regex = "([a-z])([A-Z]+)")
+    #set( $replacement = "$1-$2")
+    #set( $snakeCase = $camelCase.replaceAll($regex, $replacement).toLowerCase())
+#end
+
+
+#*
+--------------------------------------------------------------------------------
  OUTPUTS IMAGES IN A COLLECTION (AN IMAGE WITHIN A SLIDE IN A SERIES OF SLIDES)
  USAGE: #imageInCollection( $slide )
 --------------------------------------------------------------------------------
