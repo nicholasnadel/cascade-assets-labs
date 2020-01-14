@@ -9,6 +9,7 @@ $(document).ready( function() {
   $rootDrillDownNavMain       = $('#off-canvas-main-navigation .root-main-nav'),
   $rootElement                = $('.off-canvas-nav-container')
   translateXVal               = menuWidth;
+  headerHeight                = $('#uninav .cu-off-canvas-header').height() + $('#uninav .menu-header').height();
 
 
   $('#uninav .uninav__umbrella-nav-button-container button').on('click', function() {
@@ -61,10 +62,30 @@ $(document).ready( function() {
     $currentContextualMenu   = $element.parents('.off-canvas-menu');
     $currentContextualMenu.removeClass('slide-in');
     $currentContextualMenu.addClass('slide-out');
-    
     $otherContextualMenu.show();
     $otherContextualMenu.removeClass('slide-out');
     $otherContextualMenu.addClass('slide-in');
+
+    if (!$rootDrillDownNavMain.initialHeight)
+      $rootDrillDownNavMain.initialHeight = $('.root-main-nav').height();
+
+    if (!$rootDrillDownNavUmbrella.initialHeight)
+      $rootDrillDownNavUmbrella.initialHeight = $('.root-umbrella-nav').height();
+
+    debugger
+    if ($otherContextualMenu.find('.root-umbrella-nav').length) {
+      if ( $rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
+    } else {
+      if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
+    }
     
     setTimeout(function() {
       $currentContextualMenu.hide();
@@ -101,8 +122,8 @@ $(document).ready( function() {
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)" });
       $rootElement.animate({ scrollTop: 0 }, 'slow');
       $rootDrillDownNavUmbrella.css({ height: $menuToDrillDownTo.height() });
-
-      if ($menuToDrillDownTo.height() > $(window).height()) {
+      debugger
+      if ($menuToDrillDownTo.height() + headerHeight > $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
         return
       }
@@ -139,7 +160,7 @@ $(document).ready( function() {
       if (translateXVal == 0) {
         $rootDrillDownNavUmbrella.css({ height: $rootDrillDownNavUmbrella.initialHeight });
 
-        if ($rootDrillDownNavUmbrella.initialHeight >= $(window).height()) {
+        if ($rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
           $rootElement.css({ overflowY: 'scroll' });
         } else {
           $rootElement.css({ overflowY: 'hidden' });
@@ -150,7 +171,7 @@ $(document).ready( function() {
 
       $rootDrillDownNavUmbrella.css({ height: parentDrillDownMenuHeight });
 
-      if ( parentDrillDownMenuHeight >= $(window).height()) {
+      if ( parentDrillDownMenuHeight + headerHeight >= $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
       } else {
         $rootElement.css({ overflowY: 'hidden' });
@@ -163,12 +184,12 @@ $(document).ready( function() {
     $(this).parent().hide();
 
     if (translateXVal == 0) {
-      $rootDrillDownNavMain.css({ height: rootDrillDownNavMain.initialHeight });
+      $rootDrillDownNavMain.css({ height: $rootDrillDownNavMain.initialHeight });
       
       return;
     };
 
-    if ($rootDrillDownNavMain.initialHeight >= $(window).height())
+    if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height())
       $rootElement.css({ overflowY: 'scroll' });
 
     $rootDrillDownNavMain.css({ height: parentDrillDownMenuHeight });
@@ -204,7 +225,7 @@ $(document).ready( function() {
       umbrellaDrillDown     = currentPath.parents('#off-canvas-umbrella').length;
       
       $drillDownParents.show();
-      $rootDrillDownNavUmbrella.initialHeight  = $('.off-canvas-menu').height();
+      $rootDrillDownNavUmbrella.initialHeight  = $('.root-umbrella-nav').height();
 
       if (umbrellaDrillDown) {
         $rootUmbrellaDiv.show();
@@ -212,7 +233,7 @@ $(document).ready( function() {
         $rootUmbrellaDiv.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
         $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
 
-        if ( $rootDrillDownNavUmbrella.initialHeight >= $(window).height()) {
+        if ( $rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
           $rootElement.css({ overflowY: 'scroll' });
         } else {
           $rootElement.css({ overflowY: 'hidden' });
@@ -223,11 +244,11 @@ $(document).ready( function() {
 
       $rootMainDiv.show();
       $rootUmbrellaDiv.hide();
-      $rootDrillDownNavMain.initialHeight = $('.off-canvas-menu').height();
+      $rootDrillDownNavMain.initialHeight = $('.root-umbrella-nav').height();
       $rootMainDiv.css({ transform: "translateX(-" + ((menuWidth * 2) * $drillDownParents.length) + "px" });
       $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
 
-      if ( $rootDrillDownNavMain.initialHeight >= $(window).height()) {
+      if ( $rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
 
       } else {
@@ -237,9 +258,9 @@ $(document).ready( function() {
     }
 
     if (umbrellaNav) {
-      $rootDrillDownNavUmbrella.initialHeight  = $('.off-canvas-menu').height();
+      $rootDrillDownNavUmbrella.initialHeight = $('.root-umbrella-nav').height();
 
-      if ($rootDrillDownNavUmbrella.initialHeight >= $(window).height()) {
+      if ($rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
       } else {
         $rootElement.css({ overflowY: 'hidden' });
@@ -247,9 +268,9 @@ $(document).ready( function() {
       return;
     }
     
-    $rootDrillDownNavMain.initialHeight  = $('.off-canvas-menu').height();
+    $rootDrillDownNavMain.initialHeight  = $('.root-main-nav').height();
 
-    if ($rootDrillDownNavMain.initialHeight >= $(window).height()) {
+    if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
       $rootElement.css({ overflowY: 'scroll' });
     } else {
       $rootElement.css({ overflowY: 'hidden' });
