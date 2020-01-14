@@ -72,6 +72,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow: -moz-scrollbars-none;
+    overflow-y: hidden;
     
     &::-webkit-scrollbar {
       display: none;

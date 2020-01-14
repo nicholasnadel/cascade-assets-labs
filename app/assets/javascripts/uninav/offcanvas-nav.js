@@ -6,27 +6,10 @@ $(document).ready( function() {
   $rootUmbrellaDiv            = $('#uninav #off-canvas-umbrella'),
   $rootMainDiv                = $('#uninav #off-canvas-main'),
   $rootDrillDownNavUmbrella   = $('#off-canvas-umbrella-navigation .root-umbrella-nav'),
-  $rootElementUmbrella        = $('.off-canvas-nav-container'),
   $rootDrillDownNavMain       = $('#off-canvas-main-navigation .root-main-nav'),
-  $rootElementMain            = $('.off-canvas-nav-container')
+  $rootElement                = $('.off-canvas-nav-container')
   translateXVal               = menuWidth;
 
-
-  // drillDownSelectorsOffCanvasUmbrella = {
-  //   rootDrillDownNav: '#off-canvas-umbrella-navigation .root-umbrella-nav',
-  //   rootElement: '.off-canvas-nav-container',
-  //   translateXVal: menuWidth
-  // },
-  // drillDownSelectorsOffCanvasMain = {
-  //   rootDrillDownNav: '#off-canvas-main-navigation .root-main-nav',
-  //   rootElement: '.off-canvas-nav-container',
-  //   translateXVal: menuWidth
-  // },
-  // offCanvasMainDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasMain),
-  // offCanvasUmbrellaDrillDown = new DrillDownMenu(drillDownSelectorsOffCanvasUmbrella);
-
-  // offCanvasMainDrillDown.createClickHandlers();
-  // offCanvasUmbrellaDrillDown.createClickHandlers();
 
   $('#uninav .uninav__umbrella-nav-button-container button').on('click', function() {
     $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
@@ -109,42 +92,91 @@ $(document).ready( function() {
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
     translateXVal           = ulCurrentPos - menuWidth;
-    // debugger
+
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos - menuWidth;
 
       $menuToDrillDownTo.show();
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)" });
-      $rootElementUmbrella.animate({ scrollTop: 0 }, 'slow');
-      return
+      $rootElement.animate({ scrollTop: 0 }, 'slow');
+      $rootDrillDownNavUmbrella.css({ height: $menuToDrillDownTo.height() });
+
+      if ($menuToDrillDownTo.height() > $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+        return
+      }
+
+      $rootElement.css({ overflowY: 'hidden' })
+      return;
     }
     
     $menuToDrillDownTo.show();
     $rootDrillDownNavMain.css({ transform: "translateX(" + translateXVal + "px)" });
-    $rootElementMain.animate({ scrollTop: 0 }, 'slow');
+    $rootElement.animate({ scrollTop: 0 }, 'slow');
+    if ($menuToDrillDownTo.height() > $(window).height()) {
+      $rootElement.css({ overflowY: 'scroll' });
+      return
+    }
+
+    $rootElement.css({ overflowY: 'scroll' })
     return;
   }
   
   function drillMenuUp() {
-    var umbrellaDrillDown = $(this).parents('#off-canvas-umbrella').length,
-    ulCurrentPos  = getTranslateXVal($rootDrillDownNavMain),
-    translateXVal     = ulCurrentPos + menuWidth;
-
+    var umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
+    ulCurrentPos                = getTranslateXVal($rootDrillDownNavMain),
+    translateXVal               = ulCurrentPos + menuWidth,
+    parentDrillDownMenuHeight   = $(this).closest('.drill-down-list-item').closest('.drilldown-menu').height();
+    debugger
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos + menuWidth;
-
+      debugger
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)"  });
       $(this).parent().hide();
+
+      if (translateXVal == 0) {
+        $rootDrillDownNavUmbrella.css({ height: $rootDrillDownNavUmbrella.initialHeight });
+
+        if ($rootDrillDownNavUmbrella.initialHeight >= $(window).height()) {
+          $rootElement.css({ overflowY: 'scroll' });
+        } else {
+          $rootElement.css({ overflowY: 'hidden' });
+        }
+        
+        return;
+      };
+
+      $rootDrillDownNavUmbrella.css({ height: parentDrillDownMenuHeight });
+
+      if ( parentDrillDownMenuHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
+
       return;
     }
-  
+
     $rootDrillDownNavMain.css({ transform: "translateX(" + translateXVal + "px)"  });
     $(this).parent().hide();
+
+    if (translateXVal == 0) {
+      $rootDrillDownNavMain.css({ height: rootDrillDownNavMain.initialHeight });
+      
+      return;
+    };
+
+    if ($rootDrillDownNavMain.initialHeight >= $(window).height())
+      $rootElement.css({ overflowY: 'scroll' });
+
+    $rootDrillDownNavMain.css({ height: parentDrillDownMenuHeight });
   
     return;
   }
+
+
   
   function getTranslateXVal(selector) {
     var transformMatrix = selector.css("-webkit-transform") ||
@@ -163,34 +195,68 @@ $(document).ready( function() {
     return parseInt(x);
   }
   
-  function moveOffCanvasToCurrentPathItem() {
-    var currentPath = $offCanvasNavContainer.find('li .current');
-  
+  function moveToCurrentSetHeight() {
+    var currentPath = $rootElement.find('li.current'),
+    umbrellaNav     = $rootDrillDownNavUmbrella.length;
+
     if (currentPath.length) {
-      
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
       umbrellaDrillDown     = currentPath.parents('#off-canvas-umbrella').length;
+      
       $drillDownParents.show();
-  
+      $rootDrillDownNavUmbrella.initialHeight  = $('.off-canvas-menu').height();
+
       if (umbrellaDrillDown) {
         $rootUmbrellaDiv.show();
         $rootMainDiv.hide();
         $rootUmbrellaDiv.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
         $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
+
+        if ( $rootDrillDownNavUmbrella.initialHeight >= $(window).height()) {
+          $rootElement.css({ overflowY: 'scroll' });
+        } else {
+          $rootElement.css({ overflowY: 'hidden' });
+        }
+      
+        return;
       }
+
       $rootMainDiv.show();
       $rootUmbrellaDiv.hide();
+      $rootDrillDownNavMain.initialHeight = $('.off-canvas-menu').height();
       $rootMainDiv.css({ transform: "translateX(-" + ((menuWidth * 2) * $drillDownParents.length) + "px" });
       $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
+
+      if ( $rootDrillDownNavMain.initialHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
+      return;
     }
+
+    if (umbrellaNav) {
+      $rootDrillDownNavUmbrella.initialHeight  = $('.off-canvas-menu').height();
+
+      if ($rootDrillDownNavUmbrella.initialHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
+      return;
+    }
+    
+    $rootDrillDownNavMain.initialHeight  = $('.off-canvas-menu').height();
+
+    if ($rootDrillDownNavMain.initialHeight >= $(window).height()) {
+      $rootElement.css({ overflowY: 'scroll' });
+    } else {
+      $rootElement.css({ overflowY: 'hidden' });
+    }
+
+    return;
   }
 
-  moveOffCanvasToCurrentPathItem();
+  moveToCurrentSetHeight();
 });
-
-
-
-///////////////////////////////////////
-
-
-

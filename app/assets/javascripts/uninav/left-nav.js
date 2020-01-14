@@ -1,20 +1,7 @@
 $(document).ready(function() {
-  // var drillDownSelectorsLeftNav = {
-  //   rootDrillDownNav: '#left-column-navigation .root-left-nav',
-  //   rootElement: '#left-column-navigation',
-  // };
-
-  // var leftNavDrillDown = new DrillDownMenu(drillDownSelectorsLeftNav);
-  
-  // leftNavDrillDown.createClickHandlers();
-
-
-  /////////////////////////////
   var $rootDrillDownNav   = $('#left-column-navigation .root-left-nav'),
   $rootElement            = $('#left-column-navigation'),
-  // rootDrillDownNav   = selectors.rootDrillDownNav;
-  // rootElement        = selectors.rootElement;
-  resizeTimer        = null;
+  resizeTimer             = null;
 
 
   $rootElement.initialHeight = $rootDrillDownNav.css("height");
@@ -69,7 +56,7 @@ $(document).ready(function() {
   }
 
   function moveOffCanvasToCurrentPathItem() {
-    var currentPath = $rootDrillDownNav.find('li .current');
+    var currentPath = $rootDrillDownNav.find('li.current');
 
     if (currentPath.length) {
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
