@@ -2,6 +2,34 @@
 ## helpers.velocity
 ## Master Version: Chapman.edu/_cascade/formats/helpers.velocity
 ##
+## 
+## IMAGE CHOOSER
+## Outputs shared field 'image'
+## USAGE: #bgColorChooser('next-steps-widget'). $bgColor will result in a class such as 'next-steps-widget--red'. 
+#macro(image)
+    #set ($imageType =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageType').value.toLowerCase())
+    #set ($imageShape =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageShape').value.toLowerCase())
+    #set ($imageUrlInt =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageUrlInt').getChild('path').value )
+    #set ($imageUrlExt =
+    $element.getChild($widgetXPath).getChild('image').getChild('imageUrlExt').getChild('path').value )
+    #set ($altText =
+    $element.getChild($widgetXPath).getChild('image').getChild('altText').value)
+    #set ($objectPositionX = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionX').value.toLowerCase())
+    #set ($objectPositionY = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionY').value.toLowerCase())
+
+    #if (!$imageType.contains("none"))
+        <div
+            class="${_EscapeTool.xml($widgetXPath)}__img--${_EscapeTool.xml($imageShape)} ${_EscapeTool.xml($widgetXPath)}__img"
+            style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
+                <img class="${_EscapeTool.xml($widgetXPath)}__img img--${_EscapeTool.xml($imageShape)} "
+                    src="[system-asset]${_EscapeTool.xml($imageUrlInt)}[/system-asset]"
+                    alt="${_EscapeTool.xml($altText)}" title="${_EscapeTool.xml($altText)}" style="object-position:${_EscapeTool.xml($objectPositionX)} ${_EscapeTool.xml($objectPositionY)}"/>
+        </div>
+    #end
+#end
 
 ## BACKGROUND COLOR CHOOSER
 ## Outputs shared field 'background-color'
@@ -12,6 +40,10 @@
     #set ($bgColor = $wxp + '--' + $bgColor)
 #end
 
+## 3 CTA BUTTONS
+## Outputs shared field 'CTA' (https://dev-cascade.chapman.edu/entity/open.act?id=6ccc49b1c0a81e4b7fe96604d9f0dee2&type=sharedfield).
+## EXAMPLE: #cta($element, 'next-steps-widget/link') ... see https://dev-cascade.chapman.edu/entity/open.act?id=866641d7c0a81e4b7fe96604393cd7cb&type=format
+## EXAMPLE 2: Collection (slides) within a collection (slider): #wtf($slide 'link') ... see https://dev-cascade.chapman.edu/entity/open.act?id=11e3bb1ac0a81e4b7fe96604d894fc25&type=format
 #macro(cta $elem $linkXPath $wxp)
     ## this will create 'next-steps-widget__button' down below
     #set ($bemButtonClass = $wxp + '__button')
@@ -115,7 +147,7 @@
         <span class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
         <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
         <ul class="drilldown-menu">
-          <li class="menu-back"><i class="fas fa-chevron-left"></i>${asset.label} - Menu</li>
+          <li class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)} - Menu</li>
           #foreach( $childAsset in $asset.children)
             #if ( $drillDownPagePath == $childAsset.path ) 
               #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
