@@ -575,7 +575,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .menu-back {
         justify-content: start;
         align-items: center;
-        background: #eee;
+        background: $cu-red;
+        color: $white;
         font-weight: bold;
         padding: 20px 50px 20px 20px;
 
@@ -590,6 +591,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
       span {
         border-bottom: 1px solid #ccc;
         font-weight: 800;
+
+        &::before {
+          content: "\25CF";
+          color: $cu-red;
+          padding: 0 5px;
+        }
       }
     }
   }
