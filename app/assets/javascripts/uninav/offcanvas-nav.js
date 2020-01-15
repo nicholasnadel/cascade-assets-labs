@@ -185,7 +185,7 @@ $(document).ready( function() {
     var umbrellaDrillDown = $(this).parents('#off-canvas-umbrella').length,
     ulCurrentPos          = getTranslateXVal($rootDrillDownNavMain),
     translateXVal         = ulCurrentPos + menuWidth,
-    $parentDrillDownMenu   = $(this).closest('.drill-down-list-item').closest('.drilldown-menu');
+    $parentDrillDownMenu  = $(this).closest('.drill-down-list-item').closest('.drilldown-menu');
 
     if (umbrellaDrillDown) {
       $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
