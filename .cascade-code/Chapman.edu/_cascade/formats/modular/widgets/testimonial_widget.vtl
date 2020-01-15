@@ -2,7 +2,7 @@
 
 #macro(outputTestimonialWidget $element) 
 
-#set ( $slides = $_XPathTool.selectNodes($element, 'testimonial-widget/testimonial-widget__slide') )
+#set ( $slides = $_XPathTool.selectNodes($element, 'testimonial-widget/testimonialSlide') )
 
 #set ( $wxp = 'testimonial-widget')
 #set ( $widgetXPath = $wxp)
@@ -12,8 +12,8 @@
 <div class="testimonial-widget $bgColor">
     #foreach ($slide in $slides)
         ## TEXT
-        #set ($endorserName = $slide.getChild('testimonial-widget__faux-h2').value)
-        #set ($endorserTitle = $slide.getChild('testimonial-widget__department-title').value)
+        #set ($endorserName = $slide.getChild('endorserName').value)
+        #set ($endorserTitle = $slide.getChild('endorserTitle').value)
         #set ($testimonyText = $_SerializerTool.serialize($slide.getChild('testimonial-widget__text'), true)
         )
 
