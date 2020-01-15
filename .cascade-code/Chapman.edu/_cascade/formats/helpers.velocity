@@ -8,15 +8,16 @@ Master Version: Chapman.edu/_cascade/formats/helpers.velocity
 #*
 --------------------------------------------------------------------------------
  Converts camelCase to SNAKE_CASE
- USAGE: #camelToSnake('chapmanUniversity') or #camelToSnake($widgetName)
+ USAGE: #imageInCollection( $slide )
 --------------------------------------------------------------------------------
 *#
-#macro(camelToSnake $camelCase)
-    #set( $regex = "([a-z])([A-Z]+)")
-    #set( $replacement = "$1-$2")
-    #set( $snakeCase = $camelCase.replaceAll($regex, $replacement).toLowerCase())
-#end
 
+#macro(camelToSnake $camelCase)
+    #set ( $camelCase = 'camelCase' )
+    #set( $regex = "([a-z])([A-Z]+)")
+    #set( $snakeCase = "$1-$2")
+    #set( $toDash = $camelCase.replaceAll($regex, $snakeCase).toLowerCase())
+#end
 
 #*
 --------------------------------------------------------------------------------
