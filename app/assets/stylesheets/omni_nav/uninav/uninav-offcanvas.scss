@@ -172,6 +172,13 @@
 
       .section-menu-hamburger-icon {
         display: none;
+        fill: $white;
+        width: 40%;
+      }
+
+      .section-menu-small {
+        width: 4rem;
+        height: 8rem;
       }
     }
 

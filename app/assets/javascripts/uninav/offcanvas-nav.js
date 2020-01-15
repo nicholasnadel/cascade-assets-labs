@@ -354,21 +354,22 @@ $(document).ready( function() {
   }
 
   function setSectionMenuButtonSize() {
-    console.log('hello world');
-    var scrollThreshHold = (20 / $(window).height()) * 20;
-    var $hamburgerSvg = $('')
+    // console.log('hello world');
+    var scrollThreshHold = .20 * $(window).height();
 
-    if ($(window).scrollTop() > scrollThreshHold && $sectionMenuButton.children('svg').length) {
-      $sectionMenuButton.empty();
+    if ($(window).scrollTop() < scrollThreshHold && $sectionMenuButton.hasClass('section-menu-small')) {
+      debugger
+      $('.section-menu-hamburger-icon').toggle();
+      $('.section-menu-text').toggle();
+      $sectionMenuButton.removeClass('section-menu-small');
+      return;
     }
 
-    if ($(window).scrollTop() < scrollThreshHold && $sectionMenuButton.children('p').length) {
-      $sectionMenuButton.empty();
-      $sectionMenuButton.css({
-        height: '8rem',
-        width: '4rem',
-      });
-      
+    if ($(window).scrollTop() > scrollThreshHold && !$sectionMenuButton.hasClass('section-menu-small')) {
+      debugger
+      $('.section-menu-hamburger-icon').toggle();
+      $('.section-menu-text').toggle();
+      $sectionMenuButton.addClass('section-menu-small');
     }
   }
 
