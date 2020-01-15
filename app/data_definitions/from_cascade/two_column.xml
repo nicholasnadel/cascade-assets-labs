@@ -272,10 +272,12 @@
         </group>
       </group>
       <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
-        <shared-field identifier="link" path="cta"/>
-      </group>
-      <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
         <shared-field identifier="display" path="display"/>
+        <text default="left-aligned" identifier="layout" label="Layout" type="radiobutton">
+          <radio-item label="Left Aligned" value="left-aligned"/>
+          <radio-item label="Centered" value="centered"/>
+        </text>
+        <shared-field identifier="bgColor" path="background-color"/>
         <text identifier="heading" label="Heading" required="true"/>
         <text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
         <shared-field identifier="link" path="cta"/>
