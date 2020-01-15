@@ -163,22 +163,7 @@
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
       </text>
       <group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
-        <text default="Yes" identifier="testimonial-widget__display" label="Show" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="Grey" identifier="color-value" label="Color" type="dropdown">
-          <dropdown-item value="Black"/>
-          <dropdown-item value="Grey"/>
-          <dropdown-item value="Red"/>
-          <dropdown-item value="Sand"/>
-          <dropdown-item value="White"/>
-        </text>
-        <group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
-        <text default="Yes" identifier="testimonial-widget__display" label="Show" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
+        <shared-field identifier="display" path="display" />
         <shared-field identifier="bgColor" path="background-color"/>
         <group identifier="testimonial-widget__slide" label="Testimonial Slide" multiple="true">
           <shared-field identifier="image" label="Headshot Image" path="image"/>
