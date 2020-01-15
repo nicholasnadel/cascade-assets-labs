@@ -58,35 +58,53 @@ $(document).ready( function() {
   $rootDrillDownNavMain.on('click', '.menu-back', drillMenuUp);
 
   function changeContextualMenus($element) {
-    var $otherContextualMenu = $element.parents('.off-canvas-menu').siblings('.off-canvas-menu'),
-    $currentContextualMenu   = $element.parents('.off-canvas-menu');
+    var $otherContextualMenu  = $element.parents('.off-canvas-menu').siblings('.off-canvas-menu'),
+    $currentContextualMenu    = $element.parents('.off-canvas-menu'),
+    $activeDrillDownMenu      = $otherContextualMenu.find('.drilldown-menu.active')
     $currentContextualMenu.removeClass('slide-in');
     $currentContextualMenu.addClass('slide-out');
     $otherContextualMenu.show();
     $otherContextualMenu.removeClass('slide-out');
     $otherContextualMenu.addClass('slide-in');
 
-    if (!$rootDrillDownNavMain.initialHeight)
-      $rootDrillDownNavMain.initialHeight = $('.root-main-nav').height();
+    if (!$activeDrillDownMenu.length) {
+      if (!$rootDrillDownNavMain.initialHeight)
+        $rootDrillDownNavMain.initialHeight = $('.root-main-nav').height();
 
-    if (!$rootDrillDownNavUmbrella.initialHeight)
-      $rootDrillDownNavUmbrella.initialHeight = $('.root-umbrella-nav').height();
+      if (!$rootDrillDownNavUmbrella.initialHeight)
+        $rootDrillDownNavUmbrella.initialHeight = $('.root-umbrella-nav').height();
 
-    debugger
-    if ($otherContextualMenu.find('.root-umbrella-nav').length) {
-      if ( $rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
-        $rootElement.css({ overflowY: 'scroll' });
+      if ($otherContextualMenu.find('.root-umbrella-nav').length) {
+        if ( $rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
+          $rootElement.css({ overflowY: 'scroll' });
+        } else {
+          $rootElement.css({ overflowY: 'hidden' });
+        }
+        $rootDrillDownNavUmbrella.css({ height: $rootDrillDownNavUmbrella.initialHeight });
       } else {
-        $rootElement.css({ overflowY: 'hidden' });
+        if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
+          $rootElement.css({ overflowY: 'scroll' });
+        } else {
+          $rootElement.css({ overflowY: 'hidden' });
+        }
+        $rootDrillDownNavMain.css({ height: $rootDrillDownNavMain.initialHeight });
       }
-    } else {
-      if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
-        $rootElement.css({ overflowY: 'scroll' });
-      } else {
-        $rootElement.css({ overflowY: 'hidden' });
-      }
+
+
+
+      setTimeout(function() {
+        $currentContextualMenu.hide();
+      }, 500)
+
+      return;
     }
-    
+
+    if ($activeDrillDownMenu.height() + headerHeight >= $(window).height()) {
+      $rootElement.css({ overflowY: 'scroll' });
+    } else {
+      $rootElement.css({ overflowY: 'hidden' });
+    }
+
     setTimeout(function() {
       $currentContextualMenu.hide();
     }, 500)
@@ -95,16 +113,31 @@ $(document).ready( function() {
   }
 
   function moveOffCanvasToRoot(element) {
-
     if (element.parents('#off-canvas-umbrella').length === 1) {
+      $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
       $rootUmbrellaDiv.find('.root-umbrella-nav').css({ transform: "translateX(-" + menuVisibleXVal + "px" });
       $rootUmbrellaDiv.find('.drilldown-menu').hide();
 
+      if ($rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
+
+      $rootDrillDownNavUmbrella.css({ height: $rootDrillDownNavUmbrella.initialHeight });
       return;
     }
+    $rootDrillDownNavMain.find('.drilldown-menu.active').removeClass('active');
     $rootMainDiv.find('.root-main-nav').css({ transform: "translateX(-" + menuVisibleXVal + "px"  });
     $rootMainDiv.find('.drilldown-menu').hide();
 
+    if ( $rootDrillDownNavMain.height() + headerHeight >= $(window).height()) {
+      $rootElement.css({ overflowY: 'scroll' });
+    } else {
+      $rootElement.css({ overflowY: 'hidden' });
+    }
+
+    $rootDrillDownNavMain.css({ height: $rootDrillDownNavMain.initialHeight });
     return;
   }
 
@@ -113,16 +146,19 @@ $(document).ready( function() {
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
     translateXVal           = ulCurrentPos - menuWidth;
+    // debugger
 
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos - menuWidth;
+      $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
+      $menuToDrillDownTo.addClass('active');
 
       $menuToDrillDownTo.show();
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)" });
       $rootElement.animate({ scrollTop: 0 }, 'slow');
       $rootDrillDownNavUmbrella.css({ height: $menuToDrillDownTo.height() });
-      debugger
+      // debugger
       if ($menuToDrillDownTo.height() + headerHeight > $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
         return
@@ -132,28 +168,33 @@ $(document).ready( function() {
       return;
     }
     
+    $rootDrillDownNavMain.find('.drilldown-menu.active').removeClass('active');
+    $menuToDrillDownTo.addClass('active');
     $menuToDrillDownTo.show();
     $rootDrillDownNavMain.css({ transform: "translateX(" + translateXVal + "px)" });
     $rootElement.animate({ scrollTop: 0 }, 'slow');
-    if ($menuToDrillDownTo.height() > $(window).height()) {
+    if ($menuToDrillDownTo.height() + headerHeight > $(window).height()) {
       $rootElement.css({ overflowY: 'scroll' });
       return
     }
 
-    $rootElement.css({ overflowY: 'scroll' })
+    $rootElement.css({ overflowY: 'hidden' })
     return;
   }
   
   function drillMenuUp() {
-    var umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
-    ulCurrentPos                = getTranslateXVal($rootDrillDownNavMain),
-    translateXVal               = ulCurrentPos + menuWidth,
-    parentDrillDownMenuHeight   = $(this).closest('.drill-down-list-item').closest('.drilldown-menu').height();
-    debugger
+    var umbrellaDrillDown = $(this).parents('#off-canvas-umbrella').length,
+    ulCurrentPos          = getTranslateXVal($rootDrillDownNavMain),
+    translateXVal         = ulCurrentPos + menuWidth,
+    $parentDrillDownMenu   = $(this).closest('.drill-down-list-item').closest('.drilldown-menu');
+
+    // debugger
     if (umbrellaDrillDown) {
+      $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
+      $parentDrillDownMenu.addClass('active');
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos + menuWidth;
-      debugger
+
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)"  });
       $(this).parent().hide();
 
@@ -169,9 +210,9 @@ $(document).ready( function() {
         return;
       };
 
-      $rootDrillDownNavUmbrella.css({ height: parentDrillDownMenuHeight });
+      $rootDrillDownNavUmbrella.css({ height: $parentDrillDownMenu.height() });
 
-      if ( parentDrillDownMenuHeight + headerHeight >= $(window).height()) {
+      if ( $parentDrillDownMenu.height() + headerHeight >= $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
       } else {
         $rootElement.css({ overflowY: 'hidden' });
@@ -180,11 +221,19 @@ $(document).ready( function() {
       return;
     }
 
+    $rootDrillDownNavMain.find('.drilldown-menu.active').removeClass('active');
+    $parentDrillDownMenu.addClass('active');
     $rootDrillDownNavMain.css({ transform: "translateX(" + translateXVal + "px)"  });
     $(this).parent().hide();
 
     if (translateXVal == 0) {
       $rootDrillDownNavMain.css({ height: $rootDrillDownNavMain.initialHeight });
+
+      if ($rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
+        $rootElement.css({ overflowY: 'scroll' });
+      } else {
+        $rootElement.css({ overflowY: 'hidden' });
+      }
       
       return;
     };
@@ -192,7 +241,7 @@ $(document).ready( function() {
     if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height())
       $rootElement.css({ overflowY: 'scroll' });
 
-    $rootDrillDownNavMain.css({ height: parentDrillDownMenuHeight });
+    $rootDrillDownNavMain.css({ height: $parentDrillDownMenuHeight });
   
     return;
   }
@@ -217,10 +266,12 @@ $(document).ready( function() {
   }
   
   function moveToCurrentSetHeight() {
-    var currentPath = $rootElement.find('li.current'),
-    umbrellaNav     = $rootDrillDownNavUmbrella.length;
-
+    var currentPath           = $rootElement.find('li.current'),
+    umbrellaNav               = $rootDrillDownNavUmbrella.length,
+    $currentPathDrillDownMenu = currentPath.parent('.drilldown-menu');
+    debugger
     if (currentPath.length) {
+      $currentPathDrillDownMenu.addClass('active');
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
       umbrellaDrillDown     = currentPath.parents('#off-canvas-umbrella').length;
       
@@ -230,13 +281,21 @@ $(document).ready( function() {
       if (umbrellaDrillDown) {
         $rootUmbrellaDiv.show();
         $rootMainDiv.hide();
-        $rootUmbrellaDiv.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
+        $rootDrillDownNavUmbrella.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
         $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
-
-        if ( $rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
-          $rootElement.css({ overflowY: 'scroll' });
+        debugger
+        if ( $currentPathDrillDownMenu.length) {
+          if ($currentPathDrillDownMenu.height() + headerHeight >= $(window).height()) {
+            $rootElement.css({ overflowY: 'scroll' });
+          } else {
+            $rootElement.css({ overflowY: 'hidden' });
+          }
         } else {
-          $rootElement.css({ overflowY: 'hidden' });
+          if ($rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
+            $rootElement.css({ overflowY: 'scroll' });
+          } else {
+            $rootElement.css({ overflowY: 'hidden' });
+          }
         }
       
         return;
@@ -245,14 +304,21 @@ $(document).ready( function() {
       $rootMainDiv.show();
       $rootUmbrellaDiv.hide();
       $rootDrillDownNavMain.initialHeight = $('.root-umbrella-nav').height();
-      $rootMainDiv.css({ transform: "translateX(-" + ((menuWidth * 2) * $drillDownParents.length) + "px" });
-      $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
+      $rootDrillDownNavMain.css({ transform: "translateX(-" + ((menuWidth * 2) * $drillDownParents.length) + "px" });
+      $rootUmbrellaDiv.css({ transform: "translateX(-" + menuWidth + "px" });
 
-      if ( $rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
-        $rootElement.css({ overflowY: 'scroll' });
-
+      if ($currentPathDrillDownMenu.length) {
+        if ($currentPathDrillDownMenu.height() + headerHeight >= $(window).height()) {
+          $rootElement.css({ overflowY: 'scroll' });
+        } else {
+          $rootElement.css({ overflowY: 'hidden' });
+        }
       } else {
-        $rootElement.css({ overflowY: 'hidden' });
+        if ($rootDrillDownNavMain.initialHeight + headerHeight >= $(window).height()) {
+          $rootElement.css({ overflowY: 'scroll' });
+        } else {
+          $rootElement.css({ overflowY: 'hidden' });
+        }
       }
       return;
     }

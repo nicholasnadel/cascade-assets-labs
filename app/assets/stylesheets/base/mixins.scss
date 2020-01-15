@@ -590,6 +590,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
       span {
         border-bottom: 1px solid #ccc;
         font-weight: 800;
+
+        &::before {
+          content: &#9679;
+          color: $cu-red;
+        }
       }
     }
   }

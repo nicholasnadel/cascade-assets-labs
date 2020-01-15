@@ -35,8 +35,11 @@
         }
       }
 
-      svg {
-        color: $black;
+      i {
+        color: $cu-red;
+        font-size: 2rem;
+        background-color: white;
+        border-radius: 50%;
       }
     }
   }
@@ -159,6 +162,8 @@
       width: 8rem;
       font-size: 1.4rem;
       background-color: rgba($cu-red, .8);
+      text-align: left;
+      padding-left: 10px;
     }
 
     @include respond(tab-port) {
