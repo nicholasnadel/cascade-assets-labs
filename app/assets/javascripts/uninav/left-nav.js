@@ -2,7 +2,6 @@ $(window).load(function() {
   var $rootDrillDownNav   = $('#left-column-navigation .root-left-nav'),
   $rootElement            = $('#left-column-navigation'),
   resizeTimer             = null;
-  debugger
 
   function drillMenuDown() {
     var $menuToDrillDownTo  = $(this).siblings('.drilldown-menu'),

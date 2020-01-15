@@ -9,16 +9,26 @@ $(document).ready( function() {
   $rootDrillDownNavMain       = $('#off-canvas-main-navigation .root-main-nav'),
   $rootElement                = $('.off-canvas-nav-container')
   translateXVal               = menuWidth;
-  headerHeight                = $('#uninav .cu-off-canvas-header').height() + $('#uninav .menu-header').height();
+  headerHeight                = $('#uninav .cu-off-canvas-header').height() + $('#uninav .menu-header').height(),
+  $sectionMenuButton          = $('#uninav .uninav__umbrella-nav-button-container button');
 
 
-  $('#uninav .uninav__umbrella-nav-button-container button').on('click', function() {
-    $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
+  $sectionMenuButton.on('click', function() {
+    $offCanvasNavContainer.css({ 
+      transform: "translateX(" + menuVisibleXVal + "px)",
+      visibility: 'visible'
+    });
   });
+
+  $(window).on('scroll', setSectionMenuButtonSize)
 
   //CLOSE OFF-CANVAS-NAV
   $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
-    $offCanvasNavContainer.css({ transform: "translateX(-" +  menuWidth + "px)"});
+    $offCanvasNavContainer.css({ 
+      transform: "translateX(-" +  menuWidth + "px)",
+      visibility: 'hidden'
+    });
+
   });
 
   $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
@@ -341,6 +351,25 @@ $(document).ready( function() {
     }
 
     return;
+  }
+
+  function setSectionMenuButtonSize() {
+    console.log('hello world');
+    var scrollThreshHold = (20 / $(window).height()) * 20;
+    var $hamburgerSvg = $('')
+
+    if ($(window).scrollTop() > scrollThreshHold && $sectionMenuButton.children('svg').length) {
+      $sectionMenuButton.empty();
+    }
+
+    if ($(window).scrollTop() < scrollThreshHold && $sectionMenuButton.children('p').length) {
+      $sectionMenuButton.empty();
+      $sectionMenuButton.css({
+        height: '8rem',
+        width: '4rem',
+      });
+      
+    }
   }
 
   moveToCurrentSetHeight();
