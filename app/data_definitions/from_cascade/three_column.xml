@@ -174,30 +174,19 @@
           <dropdown-item value="White" />
         </text>
         <group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
-          <text default="Yes" identifier="testimonial-widget__display" label="Show" type="radiobutton">
-            <radio-item value="Yes" />
-            <radio-item value="No" />
-          </text>
-          <shared-field identifier="bgColor" path="background-color" />
-          <group identifier="testimonial-widget__slide" label="Testimonial Slide" multiple="true">
-            <group identifier="testimonial-widget__img" label="Headshot Image (Optional)">
-              <text default="Internal" help-text="200x200 circular or square image" identifier="testimonial-widget__img-link" label="Image Link" type="radiobutton">
-                <radio-item show-fields="primaryContent/widget/testimonial-widget/testimonial-widget__slide/testimonial-widget__img/internalCascadeImage, primaryContent/widget/testimonial-widget/testimonial-widget__slide/testimonial-widget__img/alternateText, primaryContent/widget/testimonial-widget/testimonial-widget__slide/testimonial-widget__img/testimonial-widget__img--shape, primaryContent/widget/testimonial-widget/testimonial-widget__slide/testimonial-widget__img/imgSize, primaryContent/widget/testimonial-widget/testimonial-widget__slide/testimonial-widget__img/objPosY, primaryContent/widget/testimonial-widget/testimonial-widget__slide/testimonial-widget__img/objPosX" value="Internal Cascade Image" />
-                <radio-item value="None" />
-              </text>
-              <asset identifier="internalCascadeImage" label="Internal Cascade Image" type="file" />
-              <text help-text="Be succinct, accurate, and equivalent in presenting the same content and function of the image. Do NOT be redundant or provide the same information as text within the context of the image. Do NOT use the phrases &quot;image of ...&quot; or &quot;graphic of ...&quot; to describe the image. https://webaim.org/techniques/alttext/" identifier="alternateText" label="Alternate Text" required="true" />
-              <text default="Image Shape" identifier="testimonial-widget__img--shape" label="Image Shape" type="radiobutton">
-                <radio-item value="Circle" />
-                <radio-item value="Square" />
-              </text>
-            </group>
-            <text help-text="100 chracters max" identifier="testimonial-widget__faux-h2" label="Endorser's Name" required="true" />
-            <text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="testimonial-widget__department-title" label="Endorser's Department/Title" />
-            <text help-text="200 characters max" identifier="testimonial-widget__text" label="Testimonial Text" required="true" />
-            <shared-field identifier="link" path="cta" />
-          </group>
+        <text default="Yes" identifier="testimonial-widget__display" label="Show" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <group identifier="testimonial-widget__slide" label="Testimonial Slide" multiple="true">
+          <shared-field identifier="image" label="Headshot Image" path="image"/>
+          <text help-text="100 chracters max" identifier="testimonial-widget__faux-h2" label="Endorser's Name" required="true"/>
+          <text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="testimonial-widget__department-title" label="Endorser's Department/Title"/>
+          <text help-text="200 characters max" identifier="testimonial-widget__text" label="Testimonial Text" multi-line="true" required="true"/>
+          <shared-field identifier="link" path="cta"/>
         </group>
+      </group>
       </group>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
