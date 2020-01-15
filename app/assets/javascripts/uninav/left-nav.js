@@ -1,9 +1,8 @@
-$(document).ready(function() {
+$(window).load(function() {
   var $rootDrillDownNav   = $('#left-column-navigation .root-left-nav'),
   $rootElement            = $('#left-column-navigation'),
   resizeTimer             = null;
-
-  $rootDrillDownNav.initialHeight = $rootDrillDownNav.height();
+  debugger
 
   function drillMenuDown() {
     var $menuToDrillDownTo  = $(this).siblings('.drilldown-menu'),
@@ -13,7 +12,7 @@ $(document).ready(function() {
 
     $menuToDrillDownTo.show();
     $rootDrillDownNav.css({ transform: "translateX(" + translateXVal + "px)"  });
-    $rootElement.css({ height: $menuToDrillDownTo.height() + 5 });
+    $rootElement.css({ height: $menuToDrillDownTo.height() });
 
     // if ($menuToDrillDownTo.height() >= $(window).height()) {
     //   $rootElement.css({ overflowY: 'scroll' });
@@ -35,13 +34,13 @@ $(document).ready(function() {
 
     $rootDrillDownNav.css({ transform: "translateX(" + translateXVal + "px)"  });
     $(this).parent().hide();
-    debugger
+
     if (translateXVal >= 0) {
-      $rootElement.css({ height: ($rootDrillDownNav.initialHeight + 5) });
+      $rootElement.css({ height: ($rootDrillDownNav.initialHeight) });
       return;
     }
     
-    $rootElement.css({ height: ($parentDrillDownMenu.height() + 5) });
+    $rootElement.css({ height: ($parentDrillDownMenu.height()) });
 
     // if ($menuToDrillDownTo.height() >= $(window).height()) {
     //   $rootElement.css({ overflowY: 'scroll' });
@@ -49,7 +48,7 @@ $(document).ready(function() {
     //   $rootElement.css({ overflowY: 'hidden' });
     // }
 
-    $('html').scrollTop($('#left-column-navigation').offset().top - 120);
+    $('html').scrollTop($('#left-column-navigation').offset().top - 120, 'slow');
 
     return;
   }
@@ -82,13 +81,19 @@ $(document).ready(function() {
 
       $drillDownParents.show();
       $rootDrillDownNav.css({ transform: "translateX(-" + (widthAmount * $drillDownParents.length) + "px" });
-      $rootElement.css({ height: $currentPathDrillDownMenu.height() + 5 })
+      $rootElement.css({ height: $currentPathDrillDownMenu.height() });
+
+      $rootDrillDownNav.initialHeight = $rootDrillDownNav.height();
+
       return;
     }
 
-    $rootElement.css({ height: $rootDrillDownNav.initialHeight + 5 });
+    $rootElement.css({ height: $rootDrillDownNav.initialHeight });
 
     $('html').scrollTop($('#left-column-navigation').offset().top - 120);
+
+    $rootDrillDownNav.initialHeight = $rootDrillDownNav.height();
+    return;
   }
 
   function resizeRootDrillDown() {
@@ -101,7 +106,6 @@ $(document).ready(function() {
   }
 
   // function disableScroll() {
-  //   // debugger
   //   $rootElement.scrollTop(0);
   //   // console.log(this.pageYOffset);
   //   // console.log(this.scrollTop);

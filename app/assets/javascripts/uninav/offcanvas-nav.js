@@ -146,7 +146,6 @@ $(document).ready( function() {
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
     translateXVal           = ulCurrentPos - menuWidth;
-    // debugger
 
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
@@ -158,7 +157,7 @@ $(document).ready( function() {
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)" });
       $rootElement.animate({ scrollTop: 0 }, 'slow');
       $rootDrillDownNavUmbrella.css({ height: $menuToDrillDownTo.height() });
-      // debugger
+
       if ($menuToDrillDownTo.height() + headerHeight > $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
         return
@@ -188,7 +187,6 @@ $(document).ready( function() {
     translateXVal         = ulCurrentPos + menuWidth,
     $parentDrillDownMenu   = $(this).closest('.drill-down-list-item').closest('.drilldown-menu');
 
-    // debugger
     if (umbrellaDrillDown) {
       $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
       $parentDrillDownMenu.addClass('active');
@@ -269,7 +267,7 @@ $(document).ready( function() {
     var currentPath           = $rootElement.find('li.current'),
     umbrellaNav               = $rootDrillDownNavUmbrella.length,
     $currentPathDrillDownMenu = currentPath.parent('.drilldown-menu');
-    debugger
+
     if (currentPath.length) {
       $currentPathDrillDownMenu.addClass('active');
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
@@ -283,7 +281,7 @@ $(document).ready( function() {
         $rootMainDiv.hide();
         $rootDrillDownNavUmbrella.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
         $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
-        debugger
+
         if ( $currentPathDrillDownMenu.length) {
           if ($currentPathDrillDownMenu.height() + headerHeight >= $(window).height()) {
             $rootElement.css({ overflowY: 'scroll' });
