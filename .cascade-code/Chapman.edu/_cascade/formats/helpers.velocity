@@ -71,7 +71,7 @@ USAGE: #image()
     #set ($objectPositionX = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionX').value.toLowerCase())
     #set ($objectPositionY = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionY').value.toLowerCase())
 
-    #if (!$imageType.contains("none"))
+    #if (!$imageType.contains(["none"))
         <div
             class="${_EscapeTool.xml($widgetXPath)}__img--${_EscapeTool.xml($imageShape)} ${_EscapeTool.xml($widgetXPath)}__img"
             style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
@@ -131,7 +131,7 @@ EXAMPLE 2: Collection (slides) within a collection (slider): #wtf($slide 'link')
         
         #if ($dataAttr != '')
             #set ($dataAttr = $link.getChild('dataAttr').value)
-            #set ($dataAttr = 'data-' + $dataAttr)
+            #set ($dataAttr = $dataAttr)
         #else
             #set ($dataAttr = '')
         #end
