@@ -3,7 +3,6 @@
 
 
 //= require _helpers/chapDOM
-//= require _helpers/drillDown
 //= require_tree ./widgets
 //= require_tree ./components
 //= require_tree ./regions
