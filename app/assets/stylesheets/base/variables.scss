@@ -75,9 +75,9 @@ $theme-blue: #006185; // Blue found in multiple themes
 $asbe-primary: #006185;
 $asbe-secondary: #276b87;
 $asbe-tertiary: #005270;
-$education-primary: #003764;
-$education-secondary: #00457d;
-$education-tertiary: #012746;
+$education-primary: $red;
+$education-secondary: $red-secondary;
+$education-tertiary: $red-tertiary;
 $communication-primary: $cardinal;
 $communication-secondary: $red-hover;
 $communication-tertiary: $cardinal-hover;
@@ -105,9 +105,9 @@ $scst-tertiary: #3d4f09;
 $theatre-primary: #002e5f;
 $theatre-secondary: #063b74;
 $theatre-tertiary: #001f41;
-$wilkinson-primary: $cardinal;
-$wilkinson-secondary: #209cc9;
-$wilkinson-tertiary: #007ba7;
+$wilkinson-primary: $red;
+$wilkinson-secondary: $red-secondary;
+$wilkinson-tertiary: $red-tertiary;
 $law-primary: $cardinal;
 $law-secondary: $cardinal-hover;
 /* Our Base Spacing Unit: Use multiples of this variable */
