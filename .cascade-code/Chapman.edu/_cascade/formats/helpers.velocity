@@ -71,7 +71,7 @@
         
         #if ($dataAttr != '')
             #set ($dataAttr = $link.getChild('dataAttr').value)
-            #set ($dataAttr = 'data-' + $dataAttr)
+            #set ($dataAttr = $dataAttr)
         #else
             #set ($dataAttr = '')
         #end
