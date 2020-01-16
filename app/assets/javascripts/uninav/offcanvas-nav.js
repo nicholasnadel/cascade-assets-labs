@@ -83,6 +83,13 @@ $(document).ready( function() {
 
   $rootDrillDownNavMain.on('click', '.menu-back', drillMenuUp);
 
+  $rootDrillDownNavUmbrella.on('keydown', '.drill-down-parent', function(e) {
+    if(e.key === "Enter") {
+      var drillDown = drillMenuDown.bind(this);
+      drillDown();
+    }
+  });
+
   function changeContextualMenus($element) {
     var $otherContextualMenu  = $element.parents('.off-canvas-menu').siblings('.off-canvas-menu'),
     $currentContextualMenu    = $element.parents('.off-canvas-menu'),
@@ -387,5 +394,33 @@ $(document).ready( function() {
     }
   }
 
+  function selectLastDrillDownElement() {
+    var umbrellaLastItem    = $rootDrillDownNavUmbrella.find('li').last(),
+    mainLastItem            = $rootDrillDownNavMain.find('li').last(),
+    umbrellaDrillDownMenus  = $rootDrillDownNavUmbrella.find('drilldown-menu'),
+    mainDrillDownMenus      = $rootDrillDownNavMain.find('drilldown-menu');
+    debugger
+    
+    umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
+      debugger
+      if(e.key === "Enter") {
+        var drillUp = drillMenuUp.bind(this);
+        // drillDown();
+      }
+    });
+
+    mainDrillDownMenus.find('li').last().on('keydown', function(e) {
+      debugger
+      if(e.key === "Enter") {
+        var drillUp = drillMenuUp.bind(this);
+        // drillDown();
+      }
+    });
+
+    // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
+    // addTabHandlersToDrillDown($rootDrillDownNavMain);
+  }
+
+  selectLastDrillDownElement();
   moveToCurrentSetHeight();
 });

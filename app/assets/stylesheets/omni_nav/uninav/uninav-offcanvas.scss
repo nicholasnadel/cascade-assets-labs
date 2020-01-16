@@ -84,6 +84,7 @@
     overflow-x: hidden;
     transition: all .5s;
     transform: translateX(-$nav-width);
+    z-index: 10;
     //HIDE SCROLLBARS
     -ms-overflow-style: none;
     scrollbar-width: none;
