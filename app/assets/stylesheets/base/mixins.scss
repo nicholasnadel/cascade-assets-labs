@@ -591,13 +591,29 @@ ORDER: Base + typography > general layout + grid > page layout > components
     &.current {
       a,
       span {
-        border-bottom: 1px solid #ccc;
         font-weight: 800;
 
         &::before {
           content: "\25CF";
           color: $cu-red;
           padding: 0 5px;
+        }
+      }
+    }
+
+    &.home-menu {
+      background: $cu-red;
+      font-weight: bold;
+      color: $white;
+      i {
+        padding: 20px 0px 20px 30px;
+      }
+      a { 
+        color: $white;
+        padding: 20px 50px 20px 10px;
+
+        &::before {
+          display: none;
         }
       }
     }
