@@ -85,9 +85,30 @@ $(document).ready( function() {
 
   $rootDrillDownNavUmbrella.on('keydown', '.drill-down-parent', function(e) {
     if(e.key === "Enter") {
+      var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
       var drillDown = drillMenuDown.bind(this);
+
+      function setTabFocusToNextMenu() {
+        $nextTabableItem.focus();
+        return;
+      }
+
       drillDown();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
     }
+  });
+  $('#off-canvas-umbrella-navigation .root-umbrella-nav .menu-back').each(function(idx, item) {
+    Mousetrap(item).bind('shift+tab', function(e) {
+      var currentMenuBack = $(document.activeElement);
+      var drillUp = drillMenuUp.bind(currentMenuBack);
+      drillUp();
+    });
   });
 
   function changeContextualMenus($element) {
@@ -174,7 +195,7 @@ $(document).ready( function() {
     return;
   }
 
-  function drillMenuDown() {
+  function drillMenuDown(cb) {
     var $menuToDrillDownTo  = $(this).siblings('.drilldown-menu'),
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
@@ -187,8 +208,9 @@ $(document).ready( function() {
       $menuToDrillDownTo.addClass('active');
 
       $menuToDrillDownTo.show();
+      $rootElement.animate({ scrollTop: 0 });
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)" });
-      $rootElement.animate({ scrollTop: 0 }, 'slow');
+
       $rootDrillDownNavUmbrella.css({ height: $menuToDrillDownTo.height() });
 
       if ($menuToDrillDownTo.height() + headerHeight > $(window).height()) {
@@ -197,6 +219,7 @@ $(document).ready( function() {
       }
 
       $rootElement.css({ overflowY: 'hidden' })
+
       return;
     }
     
@@ -214,7 +237,7 @@ $(document).ready( function() {
     return;
   }
   
-  function drillMenuUp() {
+  function drillMenuUp(cb) {
     var umbrellaDrillDown = $(this).parents('#off-canvas-umbrella').length,
     ulCurrentPos          = getTranslateXVal($rootDrillDownNavMain),
     translateXVal         = ulCurrentPos + menuWidth,
@@ -225,8 +248,15 @@ $(document).ready( function() {
       $parentDrillDownMenu.addClass('active');
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos + menuWidth;
-
+      
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)"  });
+
+      // $rootDrillDownNavUmbrella.animate({ transform: "translateX(" + translateXVal + "px)"  }, function() {
+      //   debugger
+      //   cb && cb();
+      // });
+
+      // cb && cb();
       $(this).parent().hide();
 
       if (translateXVal == 0) {
@@ -394,33 +424,45 @@ $(document).ready( function() {
     }
   }
 
-  function selectLastDrillDownElement() {
-    var umbrellaLastItem    = $rootDrillDownNavUmbrella.find('li').last(),
-    mainLastItem            = $rootDrillDownNavMain.find('li').last(),
-    umbrellaDrillDownMenus  = $rootDrillDownNavUmbrella.find('drilldown-menu'),
-    mainDrillDownMenus      = $rootDrillDownNavMain.find('drilldown-menu');
-    debugger
+  // function selectLastDrillDownElement() {
+  //   var umbrellaLastItem    = $rootDrillDownNavUmbrella.find('li').last(),
+  //   mainLastItem            = $rootDrillDownNavMain.find('li').last(),
+  //   $umbrellaDrillDownMenus  = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
+  //   $mainDrillDownMenus      = $rootDrillDownNavMain.find('.drilldown-menu');
+  //   // debugger
+
+  //   $umbrellaDrillDownMenus.each( function(idx, drillDownMenu) {
+
+  //     // $drillDownMenu.find('li').last().on('focusout', drillMenuUp);
+  //     // debugger
+  //     $(drillDownMenu).children(':last-child').on('focusout', function() {
+  //       if ($this.hasClass('drilldown-parent')) {
+  //         return
+  //       }
+  //       drillMenuUp
+  //     });
+  //   })
     
-    umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
-      debugger
-      if(e.key === "Enter") {
-        var drillUp = drillMenuUp.bind(this);
-        // drillDown();
-      }
-    });
+  //   $umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
+  //     debugger
+  //     if (e.key === "Enter") {
+  //       var drillUp = drillMenuUp.bind(this);
+  //       // drillDown();
+  //     }
+  //   });
 
-    mainDrillDownMenus.find('li').last().on('keydown', function(e) {
-      debugger
-      if(e.key === "Enter") {
-        var drillUp = drillMenuUp.bind(this);
-        // drillDown();
-      }
-    });
+  //   $mainDrillDownMenus.find('li').last().on('keydown', function(e) {
+  //     // debugger
+  //     if(e.key === "Enter") {
+  //       var drillUp = drillMenuUp.bind(this);
+  //       // drillDown();
+  //     }
+  //   });
 
-    // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
-    // addTabHandlersToDrillDown($rootDrillDownNavMain);
-  }
+  //   // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
+  //   // addTabHandlersToDrillDown($rootDrillDownNavMain);
+  // }
 
-  selectLastDrillDownElement();
+  // selectLastDrillDownElement();
   moveToCurrentSetHeight();
 });
