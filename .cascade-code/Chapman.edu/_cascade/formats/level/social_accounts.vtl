@@ -1,0 +1,57 @@
+#* 
+ * This block is used for the social "Follow Us" ribbon at the top of pages.
+ *
+ * It is currently supporting two different xml page structures.
+ *   1. The Standard templates
+ *   2. The Modular templates
+ *
+ * The goal is to migrate completely to the modular templates, in which case, we
+ * will be able to modify this code's conditional.
+ * 
+ * Note: A similar file exists in _cascade/formats/modular/meta/social_accounts (NOT BEING USED)
+ *******************************************************************************#
+##
+## Get the data for the page
+##
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ( $data        = $currentPage.getChild('system-data-structure') )
+## Get the data for the social accounts
+##
+## The modular templates social accounts use data defs at  //system-data-structure/meta/social_accounts
+## The standard templates social accounts use data defs at //system-data-structure/social_accounts
+##
+## this format used for both old templates and new Modular templates. 
+## New modular templates have social_accounts under a new parent node called meta so check for that before proceeding so get right node
+##
+#if ($data.getChild('meta').getChild('social_accounts')) 
+    #set ( $social_node = $data.getChild('meta').getChild('social_accounts') )    
+#else 
+    #set ( $social_node = $data.getChild('social_accounts') )
+#end
+##
+#set ( $accounts = $social_node.getChild('content').getChild('system-data-structure').getChildren('account') ) 
+#set ( $length = $accounts.size() )
+#set ( $socialAccounts = $social_node.getChild('path').value )
+##
+## Output the html for the accounts
+##
+#if ( $accounts )    
+<div id="social_follow_us">
+    <div class="banner"></div>
+    <ul>
+    #foreach ($account in $accounts)
+        #set ( $name = $account.getChild('account_type').text )
+        #set ( $url = $_SerializerTool.serialize( $account.getChild('account_url'), true) )
+        #if ( $velocityCount == 1 and $length == 1)
+            <li class="$name first-last"><span class="inactive_state"></span><span class="hover_state"></span><a href="$url"><span class="hide">$name</span></a></li>
+        #elseif ( $velocityCount == 1 )
+            <li class="$name first"><span class="inactive_state"></span><span class="hover_state"></span><a href="$url"><span class="hide">$name</span></a></li>
+        #elseif ( $velocityCount == $length)
+            <li class="$name last"><span class="inactive_state"></span><span class="hover_state"></span><a href="$url"><span class="hide">$name</span></a></li>    
+        #else
+            <li class="$name"><span class="inactive_state"></span><span class="hover_state"></span><a href="$url"><span class="hide">$name</span></a></li>
+        #end
+    #end
+    </ul>
+</div>
+#end
