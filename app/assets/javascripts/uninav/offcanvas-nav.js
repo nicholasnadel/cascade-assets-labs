@@ -84,14 +84,9 @@ $(document).ready( function() {
   $rootDrillDownNavMain.on('click', '.menu-back', drillMenuUp);
 
   $rootDrillDownNavUmbrella.on('keydown', '.drill-down-parent', function(e) {
-    if(e.key === "Enter") {
+    if(e.key === "Enter" || e.key === "Space") {
       var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
       var drillDown = drillMenuDown.bind(this);
-
-      function setTabFocusToNextMenu() {
-        $nextTabableItem.focus();
-        return;
-      }
 
       drillDown();
 
@@ -103,6 +98,23 @@ $(document).ready( function() {
       return;
     }
   });
+
+  $rootDrillDownNavUmbrella.on('keydown', '.menu-back', function(e) {
+    if (e.key === "Enter" || e.key === "Space") {
+      var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
+      var drillup = drillMenuUp.bind(this);
+
+      drillup();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
+    }
+  });
+
   $('#off-canvas-umbrella-navigation .root-umbrella-nav .menu-back').each(function(idx, item) {
     Mousetrap(item).bind('shift+tab', function(e) {
       var currentMenuBack = $(document.activeElement);
@@ -424,45 +436,91 @@ $(document).ready( function() {
     }
   }
 
-  // function selectLastDrillDownElement() {
-  //   var umbrellaLastItem    = $rootDrillDownNavUmbrella.find('li').last(),
-  //   mainLastItem            = $rootDrillDownNavMain.find('li').last(),
-  //   $umbrellaDrillDownMenus  = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
-  //   $mainDrillDownMenus      = $rootDrillDownNavMain.find('.drilldown-menu');
-  //   // debugger
+  function selectLastDrillDownElement() {
+    var $umbrellaLastItem      = $rootDrillDownNavUmbrella.find('li').last(),
+    $mainLastItem              = $rootDrillDownNavMain.find('li').last(),
+    $umbrellaDrillDownMenus   = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
+    $mainDrillDownMenus       = $rootDrillDownNavMain.find('.drilldown-menu');
+    // debugger
 
-  //   $umbrellaDrillDownMenus.each( function(idx, drillDownMenu) {
+    $umbrellaDrillDownMenus.each( function(idx, drillDownMenu) {
 
-  //     // $drillDownMenu.find('li').last().on('focusout', drillMenuUp);
-  //     // debugger
-  //     $(drillDownMenu).children(':last-child').on('focusout', function() {
-  //       if ($this.hasClass('drilldown-parent')) {
-  //         return
-  //       }
-  //       drillMenuUp
-  //     });
-  //   })
+      // $drillDownMenu.find('li').last().on('focusout', drillMenuUp);
+      // debugger
+      $(drillDownMenu).children(':last-child').on('focusin', function(e) {
+        var drilldown = null,
+        self          = this;
+
+        $(document).on('click', function() {
+          $(document).off('click');
+          clearTimeout(drilldown);
+        });
+
+
+
+        $(this).on("focusout", function(e) {
+          var $menuBack = $(this).siblings('.menu-back');
+
+          drilldown = setTimeout(function(e) {
+            // $(document).off('click');
+            // Mousetrap.unbind(self, 'shift+tab');
+            if ($(self).find('.active').length) {
+              return;
+            }
+            
+            drillMenuUp.call($menuBack);
+            return;
+          }, 500);
+          e.stopPropagation();
+          // debugger
+          // setTimeout(function() {
+
+          // }, 500)
+          // if ($(this).find('.active').length) {
+          //   // e.stopPropagation();
+          //   return;
+          // }
+
+          // if ($(this.))
+        });
+
+        Mousetrap(this).bind('shift+tab', function(e) {
+          clearTimeout(drilldown);
+          debugger
+          // Mousetrap.unbind(e.currentTarget, 'shift+tab');
+        });
+        e.stopPropagation();
+      });
+    });
+
+    $umbrellaLastItem.on('keydown', function() {
+      $offCanvasNavContainer.css({ 
+        transform: "translateX(-" +  menuWidth + "px)",
+        visibility: 'hidden'
+      });
+      $offCanvasOverlay.hide();
+    });
     
-  //   $umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
-  //     debugger
-  //     if (e.key === "Enter") {
-  //       var drillUp = drillMenuUp.bind(this);
-  //       // drillDown();
-  //     }
-  //   });
+    // $umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
+    //   debugger
+    //   if (e.key === "Enter") {
+    //     var drillUp = drillMenuUp.bind(this);
+    //     // drillDown();
+    //   }
+    // });
 
-  //   $mainDrillDownMenus.find('li').last().on('keydown', function(e) {
-  //     // debugger
-  //     if(e.key === "Enter") {
-  //       var drillUp = drillMenuUp.bind(this);
-  //       // drillDown();
-  //     }
-  //   });
+    // $mainDrillDownMenus.find('li').last().on('keydown', function(e) {
+    //   // debugger
+    //   if(e.key === "Enter") {
+    //     var drillUp = drillMenuUp.bind(this);
+    //     // drillDown();
+    //   }
+    // });
 
-  //   // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
-  //   // addTabHandlersToDrillDown($rootDrillDownNavMain);
-  // }
+    // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
+    // addTabHandlersToDrillDown($rootDrillDownNavMain);
+  }
 
-  // selectLastDrillDownElement();
+  selectLastDrillDownElement();
   moveToCurrentSetHeight();
 });
