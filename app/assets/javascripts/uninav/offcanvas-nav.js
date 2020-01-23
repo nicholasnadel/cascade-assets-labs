@@ -105,7 +105,7 @@ $(document).ready( function() {
   $rootDrillDownNavMain.on('click', '.menu-back', drillMenuUp);
 
   $rootDrillDownNavUmbrella.on('keydown', '.drill-down-parent', function(e) {
-    if(e.key === "Enter") {
+    if(e.key === "Enter" || e.key === "Space") {
       var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
       var drillDown = drillMenuDown.bind(this);
 
