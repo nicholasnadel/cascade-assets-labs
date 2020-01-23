@@ -20,7 +20,7 @@ $(document).ready( function() {
       visibility: 'visible'
     });
     $offCanvasOverlay.show();
-  });
+  }); 
 
   $(window).on('scroll', setSectionMenuButtonSize)
 
@@ -207,11 +207,17 @@ $(document).ready( function() {
     return;
   }
 
-  function drillMenuDown(cb) {
+  function drillMenuDown() {
     var $menuToDrillDownTo  = $(this).siblings('.drilldown-menu'),
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
     translateXVal           = ulCurrentPos - menuWidth;
+    // var hello = 0;
+    // $menuToDrillDownTo.find(':last').off('focusin').on('focusin', function() {
+    //   hello++
+    //   console.log('hello', hello);
+    //   debugger
+    // });
 
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
@@ -445,81 +451,142 @@ $(document).ready( function() {
 
     $umbrellaDrillDownMenus.each( function(idx, drillDownMenu) {
 
-      // $drillDownMenu.find('li').last().on('focusout', drillMenuUp);
-      // debugger
-      $(drillDownMenu).children(':last-child').on('focusin', function(e) {
+      $(drillDownMenu).children(':last-child').off('focusin').on('focusin', function(e) {
         var drilldown = null,
-        self          = this;
-
-        $(document).on('click', function() {
+        self          = this,
+        eventListeners = {
+          click: false,
+          shiftTab: false
+        }
+        
+        $(document).off('click').on('click', function(e) {
+          e.stopPropagation();
           $(document).off('click');
-          clearTimeout(drilldown);
+          eventListeners.click = true;
         });
 
+        
+        $(this).off("focusout").on("focusout", function(e) {
+          e.stopPropagation();
 
-
-        $(this).on("focusout", function(e) {
           var $menuBack = $(this).siblings('.menu-back');
 
-          drilldown = setTimeout(function(e) {
-            // $(document).off('click');
-            // Mousetrap.unbind(self, 'shift+tab');
+          drilldown = setTimeout(function() {
             if ($(self).find('.active').length) {
               return;
             }
-            
+
+            if (!e.relatedTarget) {
+              return;
+            }
+
+            if (eventListeners.shiftTab) {
+              return;
+            }
+
+            if (eventListeners.click) {
+              return
+            }
+            $(document.activeElement).blur();
             drillMenuUp.call($menuBack);
+            $(self).parent().closest('.drill-down-list-item').children('.drill-down-parent').focus()
             return;
           }, 500);
-          e.stopPropagation();
-          // debugger
-          // setTimeout(function() {
 
-          // }, 500)
-          // if ($(this).find('.active').length) {
-          //   // e.stopPropagation();
-          //   return;
-          // }
-
-          // if ($(this.))
+          return;
         });
 
         Mousetrap(this).bind('shift+tab', function(e) {
-          clearTimeout(drilldown);
-          debugger
-          // Mousetrap.unbind(e.currentTarget, 'shift+tab');
+          e.stopPropagation();
+          Mousetrap.unbind('shift+tab');
+
+          eventListeners.shiftTab = true;
         });
-        e.stopPropagation();
       });
     });
 
-    $umbrellaLastItem.on('keydown', function() {
-      $offCanvasNavContainer.css({ 
-        transform: "translateX(-" +  menuWidth + "px)",
-        visibility: 'hidden'
+    $mainDrillDownMenus.each( function(idx, drillDownMenu) {
+
+      $(drillDownMenu).children(':last-child').off('focusin').on('focusin', function(e) {
+        var drilldown = null,
+        self          = this,
+        eventListeners = {
+          click: false,
+          shiftTab: false
+        }
+        
+        $(document).off('click').on('click', function(e) {
+          e.stopPropagation();
+          $(document).off('click');
+          eventListeners.click = true;
+        });
+
+        
+        $(this).off("focusout").on("focusout", function(e) {
+          e.stopPropagation();
+
+          var $menuBack = $(this).siblings('.menu-back');
+
+          drilldown = setTimeout(function() {
+            if ($(self).find('.active').length) {
+              return;
+            }
+
+            if (!e.relatedTarget) {
+              return;
+            }
+
+            if (eventListeners.shiftTab) {
+              return;
+            }
+
+            if (eventListeners.click) {
+              return
+            }
+            $(document.activeElement).blur();
+            drillMenuUp.call($menuBack);
+            $(self).parent().closest('.drill-down-list-item').children('.drill-down-parent').focus()
+            return;
+          }, 500);
+
+          return;
+        });
+
+        Mousetrap(this).bind('shift+tab', function(e) {
+          e.stopPropagation();
+          Mousetrap.unbind('shift+tab');
+
+          eventListeners.shiftTab = true;
+        });
       });
-      $offCanvasOverlay.hide();
     });
-    
-    // $umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
-    //   debugger
-    //   if (e.key === "Enter") {
-    //     var drillUp = drillMenuUp.bind(this);
-    //     // drillDown();
-    //   }
-    // });
 
-    // $mainDrillDownMenus.find('li').last().on('keydown', function(e) {
-    //   // debugger
-    //   if(e.key === "Enter") {
-    //     var drillUp = drillMenuUp.bind(this);
-    //     // drillDown();
-    //   }
-    // });
+    $umbrellaLastItem.on('keydown', function(e) {
 
-    // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
-    // addTabHandlersToDrillDown($rootDrillDownNavMain);
+      if (e.key === "Tab") {
+        $offCanvasNavContainer.css({ 
+          transform: "translateX(-" +  menuWidth + "px)",
+          visibility: 'hidden'
+        });
+        $offCanvasOverlay.hide();
+      }
+    });
+
+    $mainLastItem.on('keydown', function() {
+      if (e.key === "Tab") {
+
+        $offCanvasNavContainer.css({ 
+          transform: "translateX(-" +  menuWidth + "px)",
+          visibility: 'hidden'
+        });
+        $offCanvasOverlay.hide();
+      }
+    });
   }
+
+  $rootUmbrellaDiv.find('.toggle-menu-label').off('focusout').on('focusout', function() {
+    $rootDrillDownNavUmbrella.find('.drilldown-menu.active').children('.menu-back').focus();
+  });
 
   selectLastDrillDownElement();
   moveToCurrentSetHeight();
