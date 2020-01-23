@@ -99,7 +99,39 @@ $(document).ready( function() {
     }
   });
 
+  $rootDrillDownNavMain.on('keydown', '.drill-down-parent', function(e) {
+    if(e.key === "Enter" || e.key === "Space") {
+      var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
+      var drillDown = drillMenuDown.bind(this);
+
+      drillDown();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
+    }
+  });
+
   $rootDrillDownNavUmbrella.on('keydown', '.menu-back', function(e) {
+    if (e.key === "Enter" || e.key === "Space") {
+      var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
+      var drillup = drillMenuUp.bind(this);
+
+      drillup();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
+    }
+  });
+
+  $rootDrillDownNavMain.on('keydown', '.menu-back', function(e) {
     if (e.key === "Enter" || e.key === "Space") {
       var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
       var drillup = drillMenuUp.bind(this);
@@ -123,10 +155,19 @@ $(document).ready( function() {
     });
   });
 
+  $('#off-canvas-main-navigation .root-main-nav .menu-back').each(function(idx, item) {
+    Mousetrap(item).bind('shift+tab', function(e) {
+      var currentMenuBack = $(document.activeElement);
+      var drillUp = drillMenuUp.bind(currentMenuBack);
+      drillUp();
+    });
+  });
+
   function changeContextualMenus($element) {
     var $otherContextualMenu  = $element.parents('.off-canvas-menu').siblings('.off-canvas-menu'),
     $currentContextualMenu    = $element.parents('.off-canvas-menu'),
     $activeDrillDownMenu      = $otherContextualMenu.find('.drilldown-menu.active')
+    
     $currentContextualMenu.removeClass('slide-in');
     $currentContextualMenu.addClass('slide-out');
     $otherContextualMenu.show();
@@ -160,7 +201,7 @@ $(document).ready( function() {
 
       setTimeout(function() {
         $currentContextualMenu.hide();
-      }, 500)
+      }, 500);
 
       return;
     }
@@ -173,7 +214,7 @@ $(document).ready( function() {
 
     setTimeout(function() {
       $currentContextualMenu.hide();
-    }, 500)
+    }, 500);
 
     return;
   }
@@ -212,12 +253,6 @@ $(document).ready( function() {
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
     translateXVal           = ulCurrentPos - menuWidth;
-    // var hello = 0;
-    // $menuToDrillDownTo.find(':last').off('focusin').on('focusin', function() {
-    //   hello++
-    //   console.log('hello', hello);
-    //   debugger
-    // });
 
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
@@ -444,7 +479,7 @@ $(document).ready( function() {
 
   function selectLastDrillDownElement() {
     var $umbrellaLastItem      = $rootDrillDownNavUmbrella.find('li').last(),
-    $mainLastItem              = $rootDrillDownNavMain.find('li').last(),
+    $mainLastItem              = $rootDrillDownNavMain.find('#off-canvas-cta-item li a').last(),
     $umbrellaDrillDownMenus   = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
     $mainDrillDownMenus       = $rootDrillDownNavMain.find('.drilldown-menu');
     // debugger
@@ -572,7 +607,7 @@ $(document).ready( function() {
       }
     });
 
-    $mainLastItem.on('keydown', function() {
+    $mainLastItem.on('keydown', function(e) {
       if (e.key === "Tab") {
 
         $offCanvasNavContainer.css({ 
@@ -584,8 +619,72 @@ $(document).ready( function() {
     });
   }
 
-  $rootUmbrellaDiv.find('.toggle-menu-label').off('focusout').on('focusout', function() {
-    $rootDrillDownNavUmbrella.find('.drilldown-menu.active').children('.menu-back').focus();
+
+  $offCanvasNavContainer.find('.toggle-menu-label').off('focusin').on('focusin', function() {
+    var eventListeners  = { shiftTab: false };
+    setTabFocus         = null;
+
+
+    Mousetrap(this).bind('shift+tab', function(e) {
+      Mousetrap.unbind('shift+tab');
+      eventListeners.shiftTab = true;
+      return;
+    });
+    
+    $(this).off('focusout').on('focusout', function() {
+
+      // setTabFocus = setTimeout(function() {
+      //   if (eventListeners.shiftTab === true) {
+      //     eventListeners.shiftTab = false;
+      //     return;
+      //   }
+      //   setTabOnToggleMenuFocusOut();
+      // }, 5000);
+
+      // function setTabOnToggleMenuFocusOut() {
+        if (eventListeners.shiftTab === true) {
+          eventListeners.shiftTab = false;
+          return;
+        }
+        
+        var umbrellaNav = $rootUmbrellaDiv.is(':visible');
+        
+        if (umbrellaNav) {
+          var $activeUmbrellaDrillDown = $rootDrillDownNavUmbrella.find('.drilldown-menu.active').children('.menu-back');
+          if ($activeUmbrellaDrillDown.length) {
+            $activeUmbrellaDrillDown.focus();
+            return;
+          }
+    
+          var $firstMenuItem = $rootDrillDownNavUmbrella.find('.drill-down-list-item:first');
+    
+          if ($firstMenuItem.find('.drilldown-menu').length) {
+            $firstMenuItem.find('.drill-down-parent').focus();
+            return;
+          }
+      
+          $firstMenuItem.find('a').focus();
+          return;
+        }
+    
+        var $activeMainDrillDown = $rootDrillDownNavMain.find('.drilldown-menu.active').children('.menu-back');
+        if ($activeMainDrillDown.length) {
+          $activeMainDrillDown.focus();
+          return;
+        }
+        
+        var $firstMenuItem = $rootDrillDownNavMain.find('.drill-down-list-item:first');
+    
+        if ($firstMenuItem.find('.drilldown-menu').length) {
+          $firstMenuItem.find('.drill-down-parent').focus();
+          return;
+        }
+    
+        $firstMenuItem.find('a').focus();
+        
+        return;
+      // }
+    });
   });
 
   selectLastDrillDownElement();
