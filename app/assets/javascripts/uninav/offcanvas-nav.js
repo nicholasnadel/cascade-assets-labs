@@ -33,6 +33,15 @@ $(document).ready( function() {
     $offCanvasOverlay.hide();
   });
 
+  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === "Space")
+      $offCanvasNavContainer.css({ 
+        transform: "translateX(-" +  menuWidth + "px)",
+        visibility: 'hidden'
+      });
+      $offCanvasOverlay.hide();
+  });
+
   $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
     $(this).parents('.off-canvas-menu').css({ transform: "translateX(-" +  menuWidth + "px)"});
   });
@@ -61,6 +70,18 @@ $(document).ready( function() {
 
   $rootUmbrellaDiv.find('.menu-header .menu-label').on('click', function() {
     moveOffCanvasToRoot($(this));
+  });
+
+  $rootMainDiv.find('.menu-header .menu-label').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === "Space") {
+      moveOffCanvasToRoot($(this));
+    }
+  });
+
+  $rootUmbrellaDiv.find('.menu-header .menu-label').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === "Space") {
+      moveOffCanvasToRoot($(this));
+    }
   });
 
   $offCanvasOverlay.on('click', function() {
