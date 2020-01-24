@@ -3,61 +3,143 @@ $(document).ready( function() {
   var $offCanvasNavContainer  = $('#uninav .off-canvas-nav-container'),
   menuVisibleXVal             = 0,
   menuWidth                   = 410,
-  $rootUmbrellaDiv            = $('#uninav #off-canvas-umbrella'),
-  $rootMainDiv                = $('#uninav #off-canvas-main'),
+  $rootUmbrellaDiv            = $('#off-canvas-umbrella'),
+  $rootMainDiv                = $('#off-canvas-main'),
   $rootDrillDownNavUmbrella   = $('#off-canvas-umbrella-navigation .root-umbrella-nav'),
   $rootDrillDownNavMain       = $('#off-canvas-main-navigation .root-main-nav'),
   $rootElement                = $('.off-canvas-nav-container')
-  translateXVal               = menuWidth;
+  translateXVal               = menuWidth,
   headerHeight                = $('#uninav .cu-off-canvas-header').height() + $('#uninav .menu-header').height(),
   $sectionMenuButton          = $('#uninav .uninav__umbrella-nav-button-container button'),
   $offCanvasOverlay           = $('.off-canvas-overlay#js-off-canvas-overlay');
 
 
-  $sectionMenuButton.on('click', function() {
-    $offCanvasNavContainer.css({ 
-      transform: "translateX(" + menuVisibleXVal + "px)",
-      visibility: 'visible'
-    });
-    $offCanvasOverlay.show();
-  }); 
+  var $containerSelectors = {
+    main: $('#uninav .off-canvas-nav-container'),
+    overlay: $('.off-canvas-overlay#js-off-canvas-overlay')
+  },
+  $umbrellaSelectors = {
+    root: $('#off-canvas-umbrella'),
+    rootDrillDown: $('#off-canvas-umbrella-navigation .root-umbrella-nav'),
+    menuToggle: $('#off-canvas-umbrella .toggle-menu-label')
+  },
+  $mainSelectors = {
+    root: $('#off-canvas-main'),
+    rootDrillDown: $('#off-canvas-main-navigation .root-main-nav'),
+    menuToggle: $('#off-canvas-main .toggle-menu-label')
+  },
+  $buttonSelectors = {
+    sectionMenu: $('#uninav .uninav__umbrella-nav-button-container button'),
+    hamburgerMenu: $('#uninav .uninav__hamburger-menu .hamburger-menu-button')
+  };
+
+  bindContainerEventHandlers = function() {
+    //If umbrella nav on page open offcanvas nav on section menu click, enter, or space
+    $buttonSelectors.sectionMenu
+      .on('click keypress', function(e) {
+        if (a11yClickSpaceEnter(e)) {
+          $offCanvasNavContainer.css({ 
+            transform: "translateX(" + menuVisibleXVal + "px)",
+            visibility: 'visible'
+          });
+          $offCanvasOverlay.show();
+          return;
+        }
+      });
+
+    $buttonSelectors.hamburgerMenu
+      .on('click keypress', function(e) {
+        if (a11yClickSpaceEnter(e)) {
+
+        }
+      })
+
+    //If umbrella nav is open close nav on click, enter, or space
+    $containerSelectors.main
+      .find('.close.js-close-off-canvas-nav')
+        .on('click keypress', function(e) {
+          if (a11yClickSpaceEnter(e)) {
+            $offCanvasNavContainer.css({ 
+              transform: "translateX(-" +  menuWidth + "px)",
+              visibility: 'hidden'
+            });
+            $offCanvasOverlay.hide();
+            return;
+          }
+        });
+      
+  };
+
+  bindUmbrellaEventHandlers = function() {
+    $umbrellaSelectors.root
+      .find('.toggle-menu-label')
+        .on('click keypress', function(e) {
+          if (a11yClickSpaceEnter(e)) {
+            changeContextualMenus($(this));
+          }
+        });
+    
+    $umbrellaSelectors.menuToggle
+      .off('focusin').on('focusin', function(e) {
+        var options = {
+          cancelShiftTab: true,
+          $rootDrillDown: $umbrellaSelectors.rootDrillDown
+        },
+        setFocusOnTabOut = setNextFocus.bind(this, e, options);
+        debugger
+        setFocusOnTabOut();
+      });
+  
+  }
+
+  bindContainerEventHandlers();
+  bindUmbrellaEventHandlers();
+
+
+  // $buttonSelectors.sectionMenu.on('click', function() {
+  //   $offCanvasNavContainer.css({ 
+  //     transform: "translateX(" + menuVisibleXVal + "px)",
+  //     visibility: 'visible'
+  //   });
+  //   $offCanvasOverlay.show();
+  // }); 
 
   $(window).on('scroll', setSectionMenuButtonSize)
 
   //CLOSE OFF-CANVAS-NAV
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
-    $offCanvasNavContainer.css({ 
-      transform: "translateX(-" +  menuWidth + "px)",
-      visibility: 'hidden'
-    });
-    $offCanvasOverlay.hide();
-  });
+  // $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
+  //   $offCanvasNavContainer.css({ 
+  //     transform: "translateX(-" +  menuWidth + "px)",
+  //     visibility: 'hidden'
+  //   });
+  //   $offCanvasOverlay.hide();
+  // });
 
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function(e) {
-    if(e.key === "Enter" || e.key === "Space")
-      $offCanvasNavContainer.css({ 
-        transform: "translateX(-" +  menuWidth + "px)",
-        visibility: 'hidden'
-      });
-      $offCanvasOverlay.hide();
-  });
+  // $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function(e) {
+  //   if(e.key === "Enter" || e.key === "Space")
+  //     $offCanvasNavContainer.css({ 
+  //       transform: "translateX(-" +  menuWidth + "px)",
+  //       visibility: 'hidden'
+  //     });
+  //     $offCanvasOverlay.hide();
+  // });
 
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
-    $(this).parents('.off-canvas-menu').css({ transform: "translateX(-" +  menuWidth + "px)"});
-  });
+  // $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
+  //   $(this).parents('.off-canvas-menu').css({ transform: "translateX(-" +  menuWidth + "px)"});
+  // });
 
-  $rootUmbrellaDiv.find('.toggle-menu-label').on('click', function() {
-    changeContextualMenus($(this));
-  });
+  // $rootUmbrellaDiv.find('.toggle-menu-label').on('click', function() {
+  //   changeContextualMenus($(this));
+  // });
 
   $rootMainDiv.find('.toggle-menu-label').on('click', function() {
     changeContextualMenus($(this));
   });
 
-  $rootUmbrellaDiv.find('.close.js-close-off-canvas-nav').on('click', function() {
-    $offCanvasNavContainer.css({ transform: "translateX(-" +  menuWidth + "px)"});
-    $offCanvasOverlay.hide();
-  });
+  // $rootUmbrellaDiv.find('.close.js-close-off-canvas-nav').on('click', function() {
+  //   $offCanvasNavContainer.css({ transform: "translateX(-" +  menuWidth + "px)"});
+  //   $offCanvasOverlay.hide();
+  // });
 
   $('#uninav .uninav__hamburger-menu .hamburger-menu-button').on('click', function() {
     $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
@@ -640,73 +722,154 @@ $(document).ready( function() {
     });
   }
 
+  /////// START FOCUS EVENT FOR TOGGLING MENU /////////////
+  // $offCanvasNavContainer.find('.toggle-menu-label').off('focusin').on('focusin', function() {
+  //   var eventListeners  = { shiftTab: false };
+  //   // setTabFocus         = null;
 
-  $offCanvasNavContainer.find('.toggle-menu-label').off('focusin').on('focusin', function() {
-    var eventListeners  = { shiftTab: false };
-    setTabFocus         = null;
 
+  //   Mousetrap(this).bind('shift+tab', function(e) {
+  //     Mousetrap.unbind('shift+tab');
+  //     eventListeners.shiftTab = true;
+  //     return;
+  //   });
+    
+  //   $(this).off('focusout').on('focusout', function() {
 
+  //       if (eventListeners.shiftTab === true) {
+  //         eventListeners.shiftTab = false;
+  //         return;
+  //       }
+        
+  //       var umbrellaNav = $rootUmbrellaDiv.is(':visible');
+        
+  //       if (umbrellaNav) {
+  //         var $activeUmbrellaDrillDown = $rootDrillDownNavUmbrella.find('.drilldown-menu.active').children('.menu-back');
+  //         if ($activeUmbrellaDrillDown.length) {
+  //           $activeUmbrellaDrillDown.focus();
+  //           return;
+  //         }
+    
+  //         var $firstMenuItem = $rootDrillDownNavUmbrella.find('.drill-down-list-item:first');
+    
+  //         if ($firstMenuItem.find('.drilldown-menu').length) {
+  //           $firstMenuItem.find('.drill-down-parent').focus();
+  //           return;
+  //         }
+      
+  //         $firstMenuItem.find('a').focus();
+  //         return;
+  //       }
+    
+  //       var $activeMainDrillDown = $rootDrillDownNavMain.find('.drilldown-menu.active').children('.menu-back');
+  //       if ($activeMainDrillDown.length) {
+  //         $activeMainDrillDown.focus();
+  //         return;
+  //       }
+        
+  //       var $firstMenuItem = $rootDrillDownNavMain.find('.drill-down-list-item:first');
+    
+  //       if ($firstMenuItem.find('.drilldown-menu').length) {
+  //         $firstMenuItem.find('.drill-down-parent').focus();
+  //         return;
+  //       }
+    
+  //       $firstMenuItem.find('a').focus();
+        
+  //       return;
+  //     // }
+  //   });
+  // });
+  /////// END FOCUS EVENT FOR TOGGLING MENU /////////////
+  
+  /////// NEW FUNCTIONS START ////////////
+
+  var setNextFocus = function(e, options) {
+    var eventListeners = { shiftTab: false };
+    debugger
+
+    // if next-focus has shift+tab functionality it needs to 
+    // determine before timeout ends set shift+tab check to true
     Mousetrap(this).bind('shift+tab', function(e) {
       Mousetrap.unbind('shift+tab');
       eventListeners.shiftTab = true;
+    });
+
+    // on focusout determine if the keboard is shiftin
+    $(this).off('focusout').on('focusout', function(e) {
+      debugger
+      if (options.cancelShiftTab && eventListeners.shiftTab) {
+        Mousetrap.unbind('shift+tab');
+        eventListeners.shiftTab = false;
+        return;
+      }
+
+      var $activeDrillDownMenu = findActiveDrillDown(options.$rootDrillDown);
+
+      if ($activeDrillDownMenu) {
+        $activeDrillDownMenu.children('.menu-back').focus();
+        return;
+      }
+
+      var $findFirstListItem = options.rootDrillDown.find('.drill-down-list-item:first');
+
+      if ($findFirstListItem.find('.drilldown-menu').length) {
+        $firstMenuItem.find('.drill-down-parent').focus();
+        return;
+      }
+
+      $findFirstListItem.find('a').focus();
       return;
     });
-    
-    $(this).off('focusout').on('focusout', function() {
+  }
 
-      // setTabFocus = setTimeout(function() {
-      //   if (eventListeners.shiftTab === true) {
-      //     eventListeners.shiftTab = false;
-      //     return;
-      //   }
-      //   setTabOnToggleMenuFocusOut();
-      // }, 5000);
+  function findActiveDrillDown($element) {
+    var $activeDrillDownMenu = $element.find('.drilldown-menu.active');
+    debugger
+    if ($activeDrillDownMenu.length) {
+      return $activeDrillDownMenu;
+    }
 
-      // function setTabOnToggleMenuFocusOut() {
-        if (eventListeners.shiftTab === true) {
-          eventListeners.shiftTab = false;
-          return;
-        }
-        
-        var umbrellaNav = $rootUmbrellaDiv.is(':visible');
-        
-        if (umbrellaNav) {
-          var $activeUmbrellaDrillDown = $rootDrillDownNavUmbrella.find('.drilldown-menu.active').children('.menu-back');
-          if ($activeUmbrellaDrillDown.length) {
-            $activeUmbrellaDrillDown.focus();
-            return;
-          }
+    return false;
+  }
+
+  function openCloseOffCanvasNav() {
     
-          var $firstMenuItem = $rootDrillDownNavUmbrella.find('.drill-down-list-item:first');
-    
-          if ($firstMenuItem.find('.drilldown-menu').length) {
-            $firstMenuItem.find('.drill-down-parent').focus();
-            return;
-          }
-      
-          $firstMenuItem.find('a').focus();
-          return;
-        }
-    
-        var $activeMainDrillDown = $rootDrillDownNavMain.find('.drilldown-menu.active').children('.menu-back');
-        if ($activeMainDrillDown.length) {
-          $activeMainDrillDown.focus();
-          return;
-        }
-        
-        var $firstMenuItem = $rootDrillDownNavMain.find('.drill-down-list-item:first');
-    
-        if ($firstMenuItem.find('.drilldown-menu').length) {
-          $firstMenuItem.find('.drill-down-parent').focus();
-          return;
-        }
-    
-        $firstMenuItem.find('a').focus();
-        
-        return;
-      // }
-    });
-  });
+  }
+
+  /////// NEW FUNCTIONS END ////////////
+
+
+  ///////// A11Y CLICK FUNCTION //////////////
+  function a11yClickSpaceEnter(event){
+    if(event.type === 'click'){
+      return true;
+    }
+    else if(event.type === 'keypress'){
+      var code = event.key
+      if((code === "Enter")|| (code === " ")){
+          return true;
+      }
+    }
+    else{
+      return false;
+    }
+  }
+
+  function a11yClickTab(event){
+    if(event.type === 'click'){
+      return true;
+    }
+    else if(event.type === 'keypress'){
+      var code = event.key;
+      if(code === "Tab"){
+          return true;
+      }
+    }
+    else{
+      return false;
+    }
+  }
 
   selectLastDrillDownElement();
   moveToCurrentSetHeight();
