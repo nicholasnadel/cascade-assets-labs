@@ -13,6 +13,7 @@ $(document).ready( function() {
   $sectionMenuButton          = $('#uninav .uninav__umbrella-nav-button-container button'),
   $offCanvasOverlay           = $('.off-canvas-overlay#js-off-canvas-overlay');
 
+  
 
   $sectionMenuButton.on('click', function() {
     $offCanvasNavContainer.css({ 
@@ -34,17 +35,22 @@ $(document).ready( function() {
   });
 
   $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function(e) {
-    if(e.key === "Enter" || e.key === "Space")
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       $offCanvasNavContainer.css({ 
         transform: "translateX(-" +  menuWidth + "px)",
         visibility: 'hidden'
       });
       $offCanvasOverlay.hide();
+    }
   });
 
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
-    $(this).parents('.off-canvas-menu').css({ transform: "translateX(-" +  menuWidth + "px)"});
-  });
+  // $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
+  //   $(this).parents('.off-canvas-menu').css({ 
+  //     transform: "translateX(-" +  menuWidth + "px)",
+  //     visibility: 'hidden'
+  //   });
+  // });
 
   $rootUmbrellaDiv.find('.toggle-menu-label').on('click', function() {
     changeContextualMenus($(this));
@@ -54,14 +60,37 @@ $(document).ready( function() {
     changeContextualMenus($(this));
   });
 
-  $rootUmbrellaDiv.find('.close.js-close-off-canvas-nav').on('click', function() {
-    $offCanvasNavContainer.css({ transform: "translateX(-" +  menuWidth + "px)"});
-    $offCanvasOverlay.hide();
+  $rootUmbrellaDiv.find('.toggle-menu-label').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      changeContextualMenus($(this));
+    }
+  });
+
+  $rootMainDiv.find('.toggle-menu-label').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      changeContextualMenus($(this));
+    }
   });
 
   $('#uninav .uninav__hamburger-menu .hamburger-menu-button').on('click', function() {
-    $offCanvasNavContainer.css({ transform: "translateX(" + menuVisibleXVal + "px)"});
+    $offCanvasNavContainer.css({ 
+      transform: "translateX(" + menuVisibleXVal + "px)",
+      visibility: 'visible'
+    });
     $offCanvasOverlay.show();
+  });
+
+  $('#uninav .uninav__hamburger-menu .hamburger-menu-button').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      $offCanvasNavContainer.css({ 
+        transform: "translateX(" + menuVisibleXVal + "px)",
+        visibility: 'visible'
+      });
+      $offCanvasOverlay.show();
+    }
   });
 
   $rootMainDiv.find('.menu-header .menu-label').on('click', function() {
@@ -73,13 +102,15 @@ $(document).ready( function() {
   });
 
   $rootMainDiv.find('.menu-header .menu-label').on('keydown', function(e) {
-    if(e.key === "Enter" || e.key === "Space") {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       moveOffCanvasToRoot($(this));
     }
   });
 
   $rootUmbrellaDiv.find('.menu-header .menu-label').on('keydown', function(e) {
-    if(e.key === "Enter" || e.key === "Space") {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       moveOffCanvasToRoot($(this));
     }
   });
@@ -105,7 +136,8 @@ $(document).ready( function() {
   $rootDrillDownNavMain.on('click', '.menu-back', drillMenuUp);
 
   $rootDrillDownNavUmbrella.on('keydown', '.drill-down-parent', function(e) {
-    if(e.key === "Enter" || e.key === "Space") {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
       var drillDown = drillMenuDown.bind(this);
 
@@ -121,7 +153,8 @@ $(document).ready( function() {
   });
 
   $rootDrillDownNavMain.on('keydown', '.drill-down-parent', function(e) {
-    if(e.key === "Enter" || e.key === "Space") {
+    if(e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
       var drillDown = drillMenuDown.bind(this);
 
@@ -137,7 +170,8 @@ $(document).ready( function() {
   });
 
   $rootDrillDownNavUmbrella.on('keydown', '.menu-back', function(e) {
-    if (e.key === "Enter" || e.key === "Space") {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
       var drillup = drillMenuUp.bind(this);
 
@@ -153,7 +187,8 @@ $(document).ready( function() {
   });
 
   $rootDrillDownNavMain.on('keydown', '.menu-back', function(e) {
-    if (e.key === "Enter" || e.key === "Space") {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
       var drillup = drillMenuUp.bind(this);
 
