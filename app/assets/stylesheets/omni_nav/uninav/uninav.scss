@@ -50,10 +50,9 @@ html {
 }
 
 #uninav {
-  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  font-family: $futura-regular;
   position: fixed;
   width: 100vw;
-  font-family: "futura-pt", arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   box-shadow: 0 37.125px 70px -12.125px rgba(0, 0, 0, 0.1);
@@ -300,7 +299,8 @@ html {
 }
 
 // MEDIA QUERIES
-@include respond(tab-land) {
+@media only screen and (max-width: 1300px) {
+
   #uninav {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -326,7 +326,6 @@ html {
     grid-template-areas: "logo cta utility"
       "global global global";
     background-color: $white;
-    border-bottom: none !important;
 
     .uninav--global-nav {
       @include qbal-growExaggerated-enter;
@@ -419,6 +418,49 @@ html {
   .uninav__utility-nav--wrapper ul li {
     border-right: none;
   }
+}
+
+
+html.off-canvas__blur {
+
+  #js-off-canvas-overlay {
+    background-color: rgba(0, 0, 0, .95);
+    animation: increaseOpacity;
+    animation-direction: normal;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    z-index: 1;
+
+    @keyframes increaseOpacity {
+      0% {
+        opacity: 0;
+      }
+
+      25% {
+        opacity: .25;
+      }
+
+      50% {
+        opacity: .50;
+      }
+
+      75% {
+        opacity: .75
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  #main {
+    @include qbal-slideRight-exit;
+  }
+}
+
+.uninav__animation--exit {
+  @include qbal-slideRight-exit;
 }
 
 // END TABLET PORTRAIT

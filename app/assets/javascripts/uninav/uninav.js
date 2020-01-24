@@ -1,3 +1,15 @@
+$(function () {
+  var sectionMenuButton = $('#section-menu-hamburger-icon')
+  $('#umbrella-nav-button-toggle').on('click', function () {
+    console.log('clicked');
+    $('html, #main').addClass('off-canvas__blur');
+  });
+  $('.js-close-off-canvas-nav').on('click', function () {
+    console.log('clicked');
+    $('html, #main').removeClass('off-canvas__blur');
+  });
+});
+
 // gs = Google Search
 
 // replace Google Custom Search default placeholder
