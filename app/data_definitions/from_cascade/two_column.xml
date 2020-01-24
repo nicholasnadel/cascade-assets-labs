@@ -158,7 +158,6 @@
         <shared-field identifier="display" path="display" />
         <shared-field identifier="bgColor" path="background-color" />
         <text help-text="300 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="true" />
-        <shared-field identifier="link" path="cta" />
       </group>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">

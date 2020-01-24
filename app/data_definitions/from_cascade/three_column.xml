@@ -132,6 +132,7 @@
     <group identifier="widget" label="Widgets" multiple="true">
       <text help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
         <dropdown-item value="(select one)"/>
+        <dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
         <dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
         <dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
         <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
@@ -152,6 +153,11 @@
         <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
       </text>
+      <group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
+        <shared-field identifier="display" path="display" />
+        <shared-field identifier="bgColor" path="background-color" />
+        <text help-text="300 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="true" />
+      </group>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
