@@ -424,32 +424,42 @@ html {
 html.off-canvas__blur {
 
   #js-off-canvas-overlay {
-    background-color: rgba(0, 0, 0, .95);
+
     animation: increaseOpacity;
     animation-direction: normal;
-    animation-duration: 500ms;
+    animation-duration: 350ms;
+    animation-delay: 50ms;
     animation-timing-function: linear;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
     z-index: 1;
 
     @keyframes increaseOpacity {
       0% {
         opacity: 0;
+        background-color: rgba(0, 0, 0, 0);
       }
 
       25% {
-        opacity: .25;
+        background-color: rgba(0, 0, 0, .25);
+
       }
 
       50% {
-        opacity: .50;
+        background-color: rgba(0, 0, 0, .50);
+
       }
 
       75% {
-        opacity: .75
+        background-color: rgba(0, 0, 0, .75);
+
       }
 
       100% {
-        opacity: 1;
+        background-color: rgba(0, 0, 0, .95);
       }
     }
   }
