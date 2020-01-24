@@ -1,4 +1,4 @@
-#uninav--logo {
+#uninav-logo {
   margin-left: 2.5rem;
   // min-width: 300px;
 
@@ -8,26 +8,26 @@
 }
 
 @include respond(tab-land) {
-  .uninav__logo-wrapper {
+  .uninav__logo {
     width: 100%;
     height: $uninav-div-height;
   }
 
-  #uninav--logo {
+  #uninav-logo {
     // min-width: 200px;
   }
 }
 
 @include respond(tab-port) {
 
-  #uninav--logo,
-  .uninav__logo-wrapper {
+  #uninav-logo,
+  .uninav__logo {
     // width: auto;
     // min-width: 200px;
   }
 }
 
-.secondary-logo {
+.uninav__logo--secondary {
   font-weight: 800;
   font-size: 1.2em;
   width: 100%;
@@ -39,7 +39,7 @@
   grid-area: secondaryLogo;
 }
 
-.uninav__logo-wrapper {
+.uninav__logo {
 
   width: 100%;
 
@@ -47,30 +47,30 @@
 
 
 @include respond(tab-land) {
-  .uninav__logo-wrapper {
+  .uninav__logo {
     // width: 300px;
 
-    #uninav--logo {
+    #uninav-logo {
       // min-width: 100%;
     }
   }
 
-  .secondary-logo {
+  .uninav__logo--secondary {
     // min-width: 100%;
     display: none;
   }
 }
 
 @include respond(tab-port) {
-  .uninav__logo-wrapper {
+  .uninav__logo {
     // width: 300px;
 
-    #uninav--logo {
+    #uninav-logo {
       // min-width: 100%;
     }
   }
 
-  .secondary-logo {
+  .uninav__logo--secondary {
     // min-width: 100%;
     display: none;
   }
@@ -78,8 +78,8 @@
 
 @include respond(phone) {
 
-  .uninav__logo-wrapper,
-  #uninav--logo .chapman-logo {
+  .uninav__logo,
+  #uninav-logo .chapman-logo {
     width: 100%;
   }
 }

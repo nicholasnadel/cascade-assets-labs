@@ -128,13 +128,13 @@ html {
   position: fixed;
 }
 
-.uninav__logo-wrapper {
+.uninav__logo {
   display: flex;
   justify-content: start;
   align-items: center;
 
 
-  #uninav--logo {
+  #uninav-logo {
     // min-width: 300px;
   }
 
@@ -231,7 +231,7 @@ html {
   // background-color: #ffa08c;
 }
 
-#uninav>div.primary-logo {
+#uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
 }
@@ -287,7 +287,7 @@ html {
     @include qbal-slideLeft-enter;
   }
 
-  .uninav__logo-wrapper {
+  .uninav__logo {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -296,7 +296,7 @@ html {
     align-content: center;
     grid-auto-flow: column;
 
-    #uninav--logo {
+    #uninav-logo {
       // min-width: 300px;
     }
   }
@@ -308,12 +308,12 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .uninav__logo-wrapper {
+  .uninav__logo {
     display: flex;
     justify-content: start;
     align-items: center;
 
-    #uninav--logo {
+    #uninav-logo {
       width: 100%;
     }
   }
@@ -382,12 +382,12 @@ html {
     justify-content: space-between;
   }
 
-  .uninav__logo-wrapper {
+  .uninav__logo {
     display: flex;
     justify-content: start;
     align-items: center;
 
-    #uninav--logo {
+    #uninav-logo {
       width: auto;
     }
   }
@@ -406,7 +406,7 @@ html {
     border-bottom: none;
   }
 
-  .uninav__logo-wrapper {
+  .uninav__logo {
     @include qbal-grow-enter;
     border-bottom: none;
   }

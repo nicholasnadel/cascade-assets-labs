@@ -12,8 +12,8 @@
 #end
 #set ($iconType = $logoContainer.getChild('icon').value )
 
-<div class="uninav__logo-wrapper">
-  <div class="primary-logo" id="uninav--logo">
+<div class="uninav__logo">
+  <div class="uninav__logo--primary" id="uninav-logo">
         #if ($linkURL != '' && $linkURL != '/')
             <a href="${_EscapeTool.xml($linkURL)}" 
                 title="${_EscapeTool.xml($linkTitle)}"
@@ -30,7 +30,7 @@
         #end
     </div>
     #if ( $isUmbrellaCategory )
-      <div class="secondary-logo">
+      <div class="uninav__logo--secondary">
         <a class="branded-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
       </div>
       #end
