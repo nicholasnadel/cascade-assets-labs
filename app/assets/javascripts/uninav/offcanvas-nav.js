@@ -20,7 +20,7 @@ $(document).ready( function() {
       visibility: 'visible'
     });
     $offCanvasOverlay.show();
-  });
+  }); 
 
   $(window).on('scroll', setSectionMenuButtonSize)
 
@@ -31,6 +31,15 @@ $(document).ready( function() {
       visibility: 'hidden'
     });
     $offCanvasOverlay.hide();
+  });
+
+  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === "Space")
+      $offCanvasNavContainer.css({ 
+        transform: "translateX(-" +  menuWidth + "px)",
+        visibility: 'hidden'
+      });
+      $offCanvasOverlay.hide();
   });
 
   $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
@@ -63,6 +72,18 @@ $(document).ready( function() {
     moveOffCanvasToRoot($(this));
   });
 
+  $rootMainDiv.find('.menu-header .menu-label').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === "Space") {
+      moveOffCanvasToRoot($(this));
+    }
+  });
+
+  $rootUmbrellaDiv.find('.menu-header .menu-label').on('keydown', function(e) {
+    if(e.key === "Enter" || e.key === "Space") {
+      moveOffCanvasToRoot($(this));
+    }
+  });
+
   $offCanvasOverlay.on('click', function() {
     $offCanvasNavContainer.css({ 
       transform: "translateX(-" +  menuWidth + "px)",
@@ -84,14 +105,9 @@ $(document).ready( function() {
   $rootDrillDownNavMain.on('click', '.menu-back', drillMenuUp);
 
   $rootDrillDownNavUmbrella.on('keydown', '.drill-down-parent', function(e) {
-    if(e.key === "Enter") {
+    if(e.key === "Enter" || e.key === "Space") {
       var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
       var drillDown = drillMenuDown.bind(this);
-
-      function setTabFocusToNextMenu() {
-        $nextTabableItem.focus();
-        return;
-      }
 
       drillDown();
 
@@ -103,7 +119,64 @@ $(document).ready( function() {
       return;
     }
   });
+
+  $rootDrillDownNavMain.on('keydown', '.drill-down-parent', function(e) {
+    if(e.key === "Enter" || e.key === "Space") {
+      var $nextTabableItem = $(this).siblings('.drilldown-menu').children('.menu-back')
+      var drillDown = drillMenuDown.bind(this);
+
+      drillDown();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
+    }
+  });
+
+  $rootDrillDownNavUmbrella.on('keydown', '.menu-back', function(e) {
+    if (e.key === "Enter" || e.key === "Space") {
+      var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
+      var drillup = drillMenuUp.bind(this);
+
+      drillup();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
+    }
+  });
+
+  $rootDrillDownNavMain.on('keydown', '.menu-back', function(e) {
+    if (e.key === "Enter" || e.key === "Space") {
+      var $nextTabableItem = $(this).closest('.drill-down-list-item').children('.drill-down-parent');
+      var drillup = drillMenuUp.bind(this);
+
+      drillup();
+
+      //REASON FOR SET TIMEOUT SEE THIS SO 
+      //https://stackoverflow.com/questions/3580068/is-settimeout-with-no-delay-the-same-as-executing-the-function-instantly/3580703#3580703
+      setTimeout(function() {
+        $nextTabableItem.focus();
+      },500);
+      return;
+    }
+  });
+
   $('#off-canvas-umbrella-navigation .root-umbrella-nav .menu-back').each(function(idx, item) {
+    Mousetrap(item).bind('shift+tab', function(e) {
+      var currentMenuBack = $(document.activeElement);
+      var drillUp = drillMenuUp.bind(currentMenuBack);
+      drillUp();
+    });
+  });
+
+  $('#off-canvas-main-navigation .root-main-nav .menu-back').each(function(idx, item) {
     Mousetrap(item).bind('shift+tab', function(e) {
       var currentMenuBack = $(document.activeElement);
       var drillUp = drillMenuUp.bind(currentMenuBack);
@@ -115,6 +188,7 @@ $(document).ready( function() {
     var $otherContextualMenu  = $element.parents('.off-canvas-menu').siblings('.off-canvas-menu'),
     $currentContextualMenu    = $element.parents('.off-canvas-menu'),
     $activeDrillDownMenu      = $otherContextualMenu.find('.drilldown-menu.active')
+    
     $currentContextualMenu.removeClass('slide-in');
     $currentContextualMenu.addClass('slide-out');
     $otherContextualMenu.show();
@@ -148,7 +222,7 @@ $(document).ready( function() {
 
       setTimeout(function() {
         $currentContextualMenu.hide();
-      }, 500)
+      }, 500);
 
       return;
     }
@@ -161,7 +235,7 @@ $(document).ready( function() {
 
     setTimeout(function() {
       $currentContextualMenu.hide();
-    }, 500)
+    }, 500);
 
     return;
   }
@@ -195,7 +269,7 @@ $(document).ready( function() {
     return;
   }
 
-  function drillMenuDown(cb) {
+  function drillMenuDown() {
     var $menuToDrillDownTo  = $(this).siblings('.drilldown-menu'),
     ulCurrentPos            = getTranslateXVal($rootDrillDownNavMain),
     umbrellaDrillDown       = $(this).parents('#off-canvas-umbrella').length,
@@ -424,45 +498,216 @@ $(document).ready( function() {
     }
   }
 
-  // function selectLastDrillDownElement() {
-  //   var umbrellaLastItem    = $rootDrillDownNavUmbrella.find('li').last(),
-  //   mainLastItem            = $rootDrillDownNavMain.find('li').last(),
-  //   $umbrellaDrillDownMenus  = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
-  //   $mainDrillDownMenus      = $rootDrillDownNavMain.find('.drilldown-menu');
-  //   // debugger
+  function selectLastDrillDownElement() {
+    var $umbrellaLastItem      = $rootDrillDownNavUmbrella.find('li').last(),
+    $mainLastItem              = $rootDrillDownNavMain.find('#off-canvas-cta-item li a').last(),
+    $umbrellaDrillDownMenus   = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
+    $mainDrillDownMenus       = $rootDrillDownNavMain.find('.drilldown-menu');
+    // debugger
 
-  //   $umbrellaDrillDownMenus.each( function(idx, drillDownMenu) {
+    $umbrellaDrillDownMenus.each( function(idx, drillDownMenu) {
 
-  //     // $drillDownMenu.find('li').last().on('focusout', drillMenuUp);
-  //     // debugger
-  //     $(drillDownMenu).children(':last-child').on('focusout', function() {
-  //       if ($this.hasClass('drilldown-parent')) {
-  //         return
-  //       }
-  //       drillMenuUp
-  //     });
-  //   })
+      $(drillDownMenu).children(':last-child').off('focusin').on('focusin', function(e) {
+        var drilldown = null,
+        self          = this,
+        eventListeners = {
+          click: false,
+          shiftTab: false
+        }
+        
+        $(document).off('click').on('click', function(e) {
+          e.stopPropagation();
+          $(document).off('click');
+          eventListeners.click = true;
+        });
+
+        
+        $(this).off("focusout").on("focusout", function(e) {
+          e.stopPropagation();
+
+          var $menuBack = $(this).siblings('.menu-back');
+
+          drilldown = setTimeout(function() {
+            if ($(self).find('.active').length) {
+              return;
+            }
+
+            if (!e.relatedTarget) {
+              return;
+            }
+
+            if (eventListeners.shiftTab) {
+              return;
+            }
+
+            if (eventListeners.click) {
+              return
+            }
+            $(document.activeElement).blur();
+            drillMenuUp.call($menuBack);
+            $(self).parent().closest('.drill-down-list-item').children('.drill-down-parent').focus()
+            return;
+          }, 500);
+
+          return;
+        });
+
+        Mousetrap(this).bind('shift+tab', function(e) {
+          e.stopPropagation();
+          Mousetrap.unbind('shift+tab');
+
+          eventListeners.shiftTab = true;
+        });
+      });
+    });
+
+    $mainDrillDownMenus.each( function(idx, drillDownMenu) {
+
+      $(drillDownMenu).children(':last-child').off('focusin').on('focusin', function(e) {
+        var drilldown = null,
+        self          = this,
+        eventListeners = {
+          click: false,
+          shiftTab: false
+        }
+        
+        $(document).off('click').on('click', function(e) {
+          e.stopPropagation();
+          $(document).off('click');
+          eventListeners.click = true;
+        });
+
+        
+        $(this).off("focusout").on("focusout", function(e) {
+          e.stopPropagation();
+
+          var $menuBack = $(this).siblings('.menu-back');
+
+          drilldown = setTimeout(function() {
+            if ($(self).find('.active').length) {
+              return;
+            }
+
+            if (!e.relatedTarget) {
+              return;
+            }
+
+            if (eventListeners.shiftTab) {
+              return;
+            }
+
+            if (eventListeners.click) {
+              return
+            }
+            $(document.activeElement).blur();
+            drillMenuUp.call($menuBack);
+            $(self).parent().closest('.drill-down-list-item').children('.drill-down-parent').focus()
+            return;
+          }, 500);
+
+          return;
+        });
+
+        Mousetrap(this).bind('shift+tab', function(e) {
+          e.stopPropagation();
+          Mousetrap.unbind('shift+tab');
+
+          eventListeners.shiftTab = true;
+        });
+      });
+    });
+
+    $umbrellaLastItem.on('keydown', function(e) {
+
+      if (e.key === "Tab") {
+        $offCanvasNavContainer.css({ 
+          transform: "translateX(-" +  menuWidth + "px)",
+          visibility: 'hidden'
+        });
+        $offCanvasOverlay.hide();
+      }
+    });
+
+    $mainLastItem.on('keydown', function(e) {
+      if (e.key === "Tab") {
+
+        $offCanvasNavContainer.css({ 
+          transform: "translateX(-" +  menuWidth + "px)",
+          visibility: 'hidden'
+        });
+        $offCanvasOverlay.hide();
+      }
+    });
+  }
+
+
+  $offCanvasNavContainer.find('.toggle-menu-label').off('focusin').on('focusin', function() {
+    var eventListeners  = { shiftTab: false };
+    setTabFocus         = null;
+
+
+    Mousetrap(this).bind('shift+tab', function(e) {
+      Mousetrap.unbind('shift+tab');
+      eventListeners.shiftTab = true;
+      return;
+    });
     
-  //   $umbrellaDrillDownMenus.find('li').last().on('keydown', function(e) {
-  //     debugger
-  //     if (e.key === "Enter") {
-  //       var drillUp = drillMenuUp.bind(this);
-  //       // drillDown();
-  //     }
-  //   });
+    $(this).off('focusout').on('focusout', function() {
 
-  //   $mainDrillDownMenus.find('li').last().on('keydown', function(e) {
-  //     // debugger
-  //     if(e.key === "Enter") {
-  //       var drillUp = drillMenuUp.bind(this);
-  //       // drillDown();
-  //     }
-  //   });
+      // setTabFocus = setTimeout(function() {
+      //   if (eventListeners.shiftTab === true) {
+      //     eventListeners.shiftTab = false;
+      //     return;
+      //   }
+      //   setTabOnToggleMenuFocusOut();
+      // }, 5000);
 
-  //   // addTabHandlersToDrillDown($rootDrillDownNavUmbrella);
-  //   // addTabHandlersToDrillDown($rootDrillDownNavMain);
-  // }
+      // function setTabOnToggleMenuFocusOut() {
+        if (eventListeners.shiftTab === true) {
+          eventListeners.shiftTab = false;
+          return;
+        }
+        
+        var umbrellaNav = $rootUmbrellaDiv.is(':visible');
+        
+        if (umbrellaNav) {
+          var $activeUmbrellaDrillDown = $rootDrillDownNavUmbrella.find('.drilldown-menu.active').children('.menu-back');
+          if ($activeUmbrellaDrillDown.length) {
+            $activeUmbrellaDrillDown.focus();
+            return;
+          }
+    
+          var $firstMenuItem = $rootDrillDownNavUmbrella.find('.drill-down-list-item:first');
+    
+          if ($firstMenuItem.find('.drilldown-menu').length) {
+            $firstMenuItem.find('.drill-down-parent').focus();
+            return;
+          }
+      
+          $firstMenuItem.find('a').focus();
+          return;
+        }
+    
+        var $activeMainDrillDown = $rootDrillDownNavMain.find('.drilldown-menu.active').children('.menu-back');
+        if ($activeMainDrillDown.length) {
+          $activeMainDrillDown.focus();
+          return;
+        }
+        
+        var $firstMenuItem = $rootDrillDownNavMain.find('.drill-down-list-item:first');
+    
+        if ($firstMenuItem.find('.drilldown-menu').length) {
+          $firstMenuItem.find('.drill-down-parent').focus();
+          return;
+        }
+    
+        $firstMenuItem.find('a').focus();
+        
+        return;
+      // }
+    });
+  });
 
-  // selectLastDrillDownElement();
+  selectLastDrillDownElement();
   moveToCurrentSetHeight();
 });
