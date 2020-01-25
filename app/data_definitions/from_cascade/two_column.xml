@@ -590,7 +590,7 @@
           <dropdown-item label="Fowler School of Engineering" value="SENG"/>
           <dropdown-item label="Fowler Law" value="SOL"/>
           <dropdown-item label="Schmid College" value="COS"/>
-          <dropdown-item label="School of Communication" value="COMM"/>
+          <dropdown-item label="School of Communication" value="SOC"/>
         </text>
         <text default="All" identifier="dept" label="Dept Affiliation" type="dropdown">
           <dropdown-item value="All"/>
