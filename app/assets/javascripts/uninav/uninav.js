@@ -1,9 +1,20 @@
 // uninav accessibility
 $(function () {
-  hideDropdownMenuWhenLoseFocus();
+  hideCurrentDropdownWhenLoseFocus();
+  closePrevDropdownWhenFocusChanges()
   toggleAriaExpandVal();
   handleEscapeKeypress();
+
 });
+
+function closePrevDropdownWhenFocusChanges() {
+  $('.uninav__menu-item-dropdown-parent').on('click keypress', function (e) {
+    $('.uninav__menu-item-dropdown-parent').not(this).each(function () {
+      $(this).attr("aria-expanded", "false");
+    });
+
+  })
+}
 
 function handleEscapeKeypress() {
   document.onkeydown = function (evt) {
@@ -16,7 +27,6 @@ function handleEscapeKeypress() {
 
 function toggleAriaExpandVal() {
   $('#uninav li').on('click keypress', function (e) {
-
     if (a11yClick(event) === true) {
       var menuItem = $(e.currentTarget);
       if (menuItem.attr('aria-expanded') === 'true') {
@@ -28,18 +38,20 @@ function toggleAriaExpandVal() {
   });
 }
 
-function hideDropdownMenuWhenLoseFocus() {
+function hideCurrentDropdownWhenLoseFocus() {
   $(".uninav__menu-item-dropdown-child li:last-of-type").on('keydown blur', function (e) {
+    // SHIFT TAB KEY COMBO
     if (e.shiftKey && e.keyCode === 9) {
       // console.log('shift tab')
+      $(dropdownParent).attr('aria-expanded', 'false');
       //     return false;
     } else if (e.keyCode === 9) {
-      // if tab
+      // TAB KEY PRESS
       // console.log('tab')
       var dropdownParent = $(this).closest('.uninav__menu-item-dropdown-parent')
       // console.log(dropdownParent)
       $(dropdownParent).attr('aria-expanded', 'false');
-      return false;
+      // return false;
     } else if (e.type == 'blur') {
       $(dropdownParent).attr('aria-expanded', 'false');
       // console.log('mosueOUt');
