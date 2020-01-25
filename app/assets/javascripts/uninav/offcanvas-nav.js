@@ -313,6 +313,7 @@ $(document).ready( function() {
     if (umbrellaDrillDown) {
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos - menuWidth;
+      $rootDrillDownNavUmbrella.addClass('drilled-down');
       $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
       $menuToDrillDownTo.addClass('active');
 
@@ -336,6 +337,7 @@ $(document).ready( function() {
     $menuToDrillDownTo.addClass('active');
     $menuToDrillDownTo.show();
     $rootDrillDownNavMain.css({ transform: "translateX(" + translateXVal + "px)" });
+    $rootDrillDownNavMain.addClass('drilled-down');
     $rootElement.animate({ scrollTop: 0 }, 'slow');
     if ($menuToDrillDownTo.height() + headerHeight > $(window).height()) {
       $rootElement.css({ overflowY: 'scroll' });
@@ -346,7 +348,7 @@ $(document).ready( function() {
     return;
   }
   
-  function drillMenuUp(cb) {
+  function drillMenuUp() {
     var umbrellaDrillDown = $(this).parents('#off-canvas-umbrella').length,
     ulCurrentPos          = getTranslateXVal($rootDrillDownNavMain),
     translateXVal         = ulCurrentPos + menuWidth,
@@ -357,15 +359,13 @@ $(document).ready( function() {
       $parentDrillDownMenu.addClass('active');
       ulCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella),
       translateXVal = ulCurrentPos + menuWidth;
+
+      if (translateXVal === 0) {
+        $rootDrillDownNavUmbrella.removeClass('drilled-down');
+      }
       
       $rootDrillDownNavUmbrella.css({ transform: "translateX(" + translateXVal + "px)"  });
 
-      // $rootDrillDownNavUmbrella.animate({ transform: "translateX(" + translateXVal + "px)"  }, function() {
-      //   debugger
-      //   cb && cb();
-      // });
-
-      // cb && cb();
       $(this).parent().hide();
 
       if (translateXVal == 0) {
@@ -389,6 +389,10 @@ $(document).ready( function() {
       }
 
       return;
+    }
+
+    if (translateXVal === 0) {
+      $rootDrillDownNavMain.removeClass('drilled-down');
     }
 
     $rootDrillDownNavMain.find('.drilldown-menu.active').removeClass('active');
@@ -451,6 +455,7 @@ $(document).ready( function() {
       if (umbrellaDrillDown) {
         $rootUmbrellaDiv.show();
         $rootMainDiv.hide();
+        $rootDrillDownNavUmbrella.addClass('drilled-down');
         $rootDrillDownNavUmbrella.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
         $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
 
@@ -653,8 +658,12 @@ $(document).ready( function() {
     });
 
     $umbrellaLastItem.on('keydown', function(e) {
-
+      
       if (e.key === "Tab") {
+        if (e.shiftKey) {
+          return;
+        }
+        
         $offCanvasNavContainer.css({ 
           transform: "translateX(-" +  menuWidth + "px)",
           visibility: 'hidden'
@@ -663,8 +672,13 @@ $(document).ready( function() {
       }
     });
 
+
+
     $mainLastItem.on('keydown', function(e) {
       if (e.key === "Tab") {
+        if (e.shiftKey) {
+          return;
+        }
 
         $offCanvasNavContainer.css({ 
           transform: "translateX(-" +  menuWidth + "px)",
@@ -743,6 +757,11 @@ $(document).ready( function() {
     });
   });
 
+  function addTopLevelDrillDownClasses() {
+    $rootDrillDownNavMain.children().addClass('top-drill-down-list-item');
+    $rootDrillDownNavUmbrella.children().addClass('top-drill-down-list-item');
+  }
+  addTopLevelDrillDownClasses();
   selectLastDrillDownElement();
   moveToCurrentSetHeight();
 });
