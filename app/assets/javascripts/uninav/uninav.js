@@ -58,19 +58,24 @@ function hideCurrentDropdownWhenLoseFocus() {
     }
   });
 
+  $(".uninav__menu-item-dropdown-child li:first-child").on('keydown blur', function (e) {
+    // SHIFT TAB KEY COMBO
+    var dropdownParent = $(this).closest('.uninav__menu-item-dropdown-parent')
+
+    if (e.shiftKey && e.keyCode === 9) {
+      console.log('shift tab')
+      $(dropdownParent).attr('aria-expanded', 'false');
+      //     return false;
+    }
+  });
+
   // handle clicking outside of dropdown item
-  $(document).on('click', function (e) {
+  $(document).on('click keydown blur focusOut', function (e) {
     if ($(e.target).closest(".uninav__menu-item-dropdown-parent").length === 0) {
       $(".uninav__menu-item-dropdown-parent").attr('aria-expanded', 'false');
     }
   });
 
-  // handle clicking outside of dropdown item
-  $('.uninav__menu-item-dropdown-parent').on('click', function (e) {
-    if ($(e.target).closest(".uninav__menu-item-dropdown-parent").length === 0) {
-      $(".uninav__menu-item-dropdown-parent").attr('aria-expanded', 'false');
-    }
-  });
 
 
 
