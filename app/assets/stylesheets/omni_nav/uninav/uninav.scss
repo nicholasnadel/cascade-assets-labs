@@ -263,14 +263,19 @@ html {
   position: relative;
 
   &:hover,
-  &:focus,
-  &:focus-within {
+  &[aria-expanded="true"] {
     .uninav__menu-item-dropdown-child {
       display: flex;
       @include qbal-dropdown-enter;
-      // @include linear-300;
     }
   }
+
+  &[aria-expanded="false"] {
+    .uninav__menu-item-dropdown-child {
+      @include qbal-slideUpSubtle-exit;
+    }
+  }
+
 }
 
 .uninav__dropdown-wrapper {
@@ -356,8 +361,6 @@ html {
   }
 
   .uninav__utility-nav {
-    /* min-width: auto; */
-    /* min-width: 100%; */
     width: 100%;
   }
 
