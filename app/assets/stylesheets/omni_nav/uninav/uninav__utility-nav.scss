@@ -15,6 +15,7 @@
         border-right: none;
       }
 
+
       ul {
         display: flex;
         justify-content: end;
@@ -54,14 +55,18 @@
       }
     }
 
-    &__menu-item-dropdown-child {
-      background-color: $panther-black;
-      color: $white;
-      width: 300px;
-      right: 0;
-      position: absolute;
-      margin-left: auto;
-      @include uninav-drop-shadow;
+    &__login {
+      .uninav {
+        &__menu-item-dropdown-child {
+          background-color: $panther-black;
+          color: $white;
+          width: 300px;
+          right: 0;
+          position: absolute;
+          margin-left: auto;
+          @include uninav-drop-shadow;
+        }
+      }
     }
 
     &__utility-nav--audiences-container {
