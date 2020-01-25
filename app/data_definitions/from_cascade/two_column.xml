@@ -569,6 +569,14 @@
             <radio-item value="Yes"/>
             <radio-item value="No"/>
           </text>
+          <text default="Yes" identifier="show-research-interests" label="Show Research Interests" required="true" type="radiobutton">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+          </text>
+          <text default="Yes" identifier="show-courses-taught" label="Show Courses Taught" required="true" type="radiobutton">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+          </text>
           <text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
             <radio-item value="Yes"/>
             <radio-item value="No"/>
