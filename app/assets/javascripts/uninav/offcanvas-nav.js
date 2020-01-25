@@ -455,11 +455,12 @@ $(document).ready( function() {
       if (umbrellaDrillDown) {
         $rootUmbrellaDiv.show();
         $rootMainDiv.hide();
-        $rootDrillDownNavUmbrella.addClass('drilled-down');
+
         $rootDrillDownNavUmbrella.css({ transform: "translateX(-" + (menuWidth * $drillDownParents.length) + "px" });
         $rootMainDiv.css({ transform: "translateX(-" + menuWidth + "px" });
 
         if ( $currentPathDrillDownMenu.length) {
+          $rootDrillDownNavUmbrella.addClass('drilled-down');
           if ($currentPathDrillDownMenu.height() + headerHeight >= $(window).height()) {
             $rootElement.css({ overflowY: 'scroll' });
           } else {
@@ -483,6 +484,7 @@ $(document).ready( function() {
       $rootUmbrellaDiv.css({ transform: "translateX(-" + menuWidth + "px" });
 
       if ($currentPathDrillDownMenu.length) {
+        $rootDrillDownNavMain.addClass('drilled-down');
         if ($currentPathDrillDownMenu.height() + headerHeight >= $(window).height()) {
           $rootElement.css({ overflowY: 'scroll' });
         } else {
@@ -761,6 +763,7 @@ $(document).ready( function() {
     $rootDrillDownNavMain.children().addClass('top-drill-down-list-item');
     $rootDrillDownNavUmbrella.children().addClass('top-drill-down-list-item');
   }
+
   addTopLevelDrillDownClasses();
   selectLastDrillDownElement();
   moveToCurrentSetHeight();
