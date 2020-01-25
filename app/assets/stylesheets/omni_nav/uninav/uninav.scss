@@ -464,6 +464,14 @@ html.off-canvas__blur {
     }
   }
 
+  .uninav__logo,
+  .uninav__utility-nav--wrapper,
+  .uninav--global-nav,
+  .uninav--cta {
+    @include qbal-slideRight-exit;
+
+  }
+
   #main {
     @include qbal-slideRight-exit;
   }
