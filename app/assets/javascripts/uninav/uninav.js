@@ -8,8 +8,8 @@ $(function () {
 });
 
 function closePrevDropdownWhenFocusChanges() {
-  $('.uninav__menu-item-dropdown-parent').on('click keypress', function (e) {
-    $('.uninav__menu-item-dropdown-parent').not(this).each(function () {
+  $('.uninav__dropdown--parent').on('click keypress', function (e) {
+    $('.uninav__dropdown--parent').not(this).each(function () {
       $(this).attr("aria-expanded", "false");
     });
 
@@ -20,7 +20,7 @@ function handleEscapeKeypress() {
   document.onkeydown = function (evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
-      $(".uninav__menu-item-dropdown-parent").attr('aria-expanded', 'false');
+      $(".uninav__dropdown--parent").attr('aria-expanded', 'false');
     }
   };
 }
@@ -39,7 +39,7 @@ function toggleAriaExpandVal() {
 }
 
 function hideCurrentDropdownWhenLoseFocus() {
-  $(".uninav__menu-item-dropdown-child li:last-of-type").on('keydown blur', function (e) {
+  $(".uninav__dropdown--child li:last-of-type").on('keydown blur', function (e) {
     // SHIFT TAB KEY COMBO
     if (e.shiftKey && e.keyCode === 9) {
       // console.log('shift tab')
@@ -48,7 +48,7 @@ function hideCurrentDropdownWhenLoseFocus() {
     } else if (e.keyCode === 9) {
       // TAB KEY PRESS
       // console.log('tab')
-      var dropdownParent = $(this).closest('.uninav__menu-item-dropdown-parent')
+      var dropdownParent = $(this).closest('.uninav__dropdown--parent')
       // console.log(dropdownParent)
       $(dropdownParent).attr('aria-expanded', 'false');
       // return false;
@@ -58,9 +58,9 @@ function hideCurrentDropdownWhenLoseFocus() {
     }
   });
 
-  $(".uninav__menu-item-dropdown-child li:first-child").on('keydown blur', function (e) {
+  $(".uninav__dropdown--child li:first-child").on('keydown blur', function (e) {
     // SHIFT TAB KEY COMBO
-    var dropdownParent = $(this).closest('.uninav__menu-item-dropdown-parent')
+    var dropdownParent = $(this).closest('.uninav__dropdown--parent')
 
     if (e.shiftKey && e.keyCode === 9) {
       console.log('shift tab')
@@ -71,8 +71,8 @@ function hideCurrentDropdownWhenLoseFocus() {
 
   // handle clicking outside of dropdown item
   $(document).on('click keydown blur focusOut', function (e) {
-    if ($(e.target).closest(".uninav__menu-item-dropdown-parent").length === 0) {
-      $(".uninav__menu-item-dropdown-parent").attr('aria-expanded', 'false');
+    if ($(e.target).closest(".uninav__dropdown--parent").length === 0) {
+      $(".uninav__dropdown--parent").attr('aria-expanded', 'false');
     }
   });
 
@@ -83,7 +83,7 @@ function hideCurrentDropdownWhenLoseFocus() {
 
 function collapseAriaWhenClickOutside() {
   $(document).mouseup(function (e) {
-    var container = $(".uninav__menu-item-dropdown-parent");
+    var container = $(".uninav__dropdown--parent");
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0) {
       container.hide();

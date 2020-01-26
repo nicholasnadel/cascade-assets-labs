@@ -1,44 +1,10 @@
-## LOGIN NAV:
-#set ( $menuItems = $_XPathTool.selectNodes($contentRoot,
-"/system-data-structure/omninav/login/submenuItem") )
+## LOGIN NAV: #set ($menuItems=$_XPathTool.selectNodes($contentRoot,
+    "/system-data-structure/omninav/login/submenuItem")) <li class="uninav__login uninav__dropdown--parent"tabindex="0"aria-expanded="false"><span class="uninav__menu-item-login"><i class="fas fa-paw"></i></span><div class="uninav__login--wrapper uninav__dropdown--child uninav__login-button">#if ($menuItems.size() >=1) <ul>#foreach ($menuItem in $menuItems) #set ($label=$menuItem.getChild('label').value) #set ($linkType=$menuItem.getChild('linkType').value) #if ($linkType=='Internal Link') #set ($linkURL=$menuItem.getChild('internalLink').getChild('path').value) #elseif ($linkType=='External Link') #set ($linkURL=$menuItem.getChild('externalLink').value) #else #set ($linkURL=$menuItem.getChild('fileLink').getChild('path').value) #end #set ($iconType=$menuItem.getChild('icon').value) #if ($linkURL !=''&& $linkURL !='/'&& $label !='') <li><a href="${_EscapeTool.xml($linkURL)}"
+#if="#if"
+($icontype=="CSS Class"&& $menuItem.getChild('icon_cssClass').value !="") class="icon icon-${_EscapeTool.xml($menuItem.getChild('icon_cssClass').value)}"
 
-<li class="uninav__login uninav__menu-item-dropdown-parent" tabindex="0" aria-expanded="false">
-    <span class="uninav__menu-item-login">
-        <i class="fas fa-paw"></i>
-    </span>
-    <div class="uninav__login--wrapper uninav__menu-item-dropdown-child uninav__login-button">
-        #if ($menuItems.size() >= 1)
-            <ul>
-                #foreach ($menuItem in $menuItems)
-                    #set ($label = $menuItem.getChild('label').value )
-                    #set ($linkType = $menuItem.getChild('linkType').value )
-                    #if ($linkType == 'Internal Link')
-                        #set ($linkURL = $menuItem.getChild('internalLink').getChild('path').value )
-                        #elseif ($linkType == 'External Link')
-                        #set ($linkURL = $menuItem.getChild('externalLink').value )
-                    #else 
-                        #set ($linkURL = $menuItem.getChild('fileLink').getChild('path').value )
-                    #end
-                    #set ($iconType = $menuItem.getChild('icon').value )
-                    #if ($linkURL != '' && $linkURL != '/' && $label != '')
-                        <li>
-                            <a
-                                href="${_EscapeTool.xml($linkURL)}"
-                                #if="#if"
-                                ($icontype == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")
-                                class="icon icon-${_EscapeTool.xml($menuItem.getChild('icon_cssClass').value)}"
-                                #end="#end">
-                                #if ($iconType == "SVG" && $menuItem.getChild('icon_svg').value != "")
-                                    $menuItem.getChild('icon_svg').value
-                                #end
-                                ${_EscapeTool.xml($label)}
-                            </a>
-                        </li>
-                    #end
+#end="#end">#if ($iconType=="SVG"&& $menuItem.getChild('icon_svg').value !="") $menuItem.getChild('icon_svg').value #end $ {
+  _EscapeTool.xml($label)
+}
 
-                #end
-            </ul>
-        #end
-    </div>
-</li>
-## LOGIN NAV (END)
+</a></li>#end #end </ul>#end </div></li>## LOGIN NAV (END)

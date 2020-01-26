@@ -57,7 +57,7 @@
 
     &__login {
       .uninav {
-        &__menu-item-dropdown-child {
+        &__dropdown--child {
           background-color: $panther-black;
           color: $white;
           width: 300px;

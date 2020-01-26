@@ -172,7 +172,7 @@ html {
       justify-content: start;
     }
 
-    .uninav__menu-item-dropdown-child a {
+    .uninav__dropdown--child a {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -234,7 +234,7 @@ html {
 
 // UNINAV STRUCTURE
 // UNINAV DROPDOWNS
-.uninav__menu-item-dropdown-child {
+.uninav__dropdown--child {
   display: none;
   position: absolute;
   left: 0;
@@ -257,21 +257,20 @@ html {
   }
 }
 
-.uninav__menu-item-dropdown-parent {
+.uninav__dropdown--parent {
   display: block;
   flex-direction: column;
   position: relative;
 
-  &:hover,
   &[aria-expanded="true"] {
-    .uninav__menu-item-dropdown-child {
+    .uninav__dropdown--child {
       display: flex;
       @include qbal-dropdown-enter;
     }
   }
 
   &[aria-expanded="false"] {
-    .uninav__menu-item-dropdown-child {
+    .uninav__dropdown--child {
       @include qbal-slideUpSubtle-exit;
     }
   }

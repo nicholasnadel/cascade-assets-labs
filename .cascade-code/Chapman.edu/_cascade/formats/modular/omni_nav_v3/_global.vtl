@@ -22,12 +22,12 @@
                         ##main menu item with no dropdown eg Arts:
                         <li class="uninav__menu-item--no-dropdown"><a href="${menuItemLink.getChild('path').value}"><span class="uninav__underline--center">${menuItem.value}</span></a></li>
                     #else
-                        <li class="uninav__menu-item-dropdown-parent">
+                        <li class="uninav__dropdown--parent">
                             ## main menu item eg. About, Academics followed by dropdown of sub items:
                             <span class="uninav__dropdown-wrapper">
                                 <a tabindex="0"><span class="uninav__underline--center">${_EscapeTool.xml($menuItem.value)}</span></a>
                             </span>
-                            <div class="uninav__menu-item-dropdown-child">
+                            <div class="uninav__dropdown--child">
                                 <ul>
                                     ## first item in dropdown is overview and links to main menu item's landing page:
                                     <li><a href="${menuItemLink.getChild('path').value}">${menuItem.value} Overview</a></li>

@@ -5,7 +5,7 @@
   }
 }
 
-.uninav--global-nav .uninav__menu-item-dropdown-child li {
+.uninav--global-nav .uninav__dropdown--child li {
 
   &:hover {
     background-color: $uninav-light-grey;
@@ -16,7 +16,7 @@
   }
 }
 
-.uninav__menu-item-dropdown-child {
+.uninav__dropdown--child {
   min-width: 300px;
   // @include qbal-fade-exit;
 

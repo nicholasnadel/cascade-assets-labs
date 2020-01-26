@@ -44,7 +44,7 @@
   cursor: pointer;
   height: $uninav-div-height;
 
-  .uninav__menu-item-dropdown-child ul a {
+  .uninav__dropdown--child ul a {
     color: $white;
     display: flex;
     justify-content: center;
@@ -73,7 +73,7 @@
 
 @include respond(tab-land) {
 
-  .uninav__menu-item-dropdown-child:hover>ul {
+  .uninav__dropdown--child:hover>ul {
 
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;

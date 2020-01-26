@@ -1,8 +1,8 @@
-.uninav__menu-item-dropdown-child {
+.uninav__dropdown--child {
   min-width: 300px;
 }
 
-.uninav__menu-item-dropdown-child ul {
+.uninav__dropdown--child ul {
   display: flex;
   padding: 4rem;
   -webkit-font-smoothing: antialiased;
@@ -22,7 +22,7 @@
   padding-top: 1.5rem;
 }
 
-.uninav__menu-item-dropdown-child ul li {
+.uninav__dropdown--child ul li {
   width: 100%;
   display: flex;
   border-bottom: 1px solid black;
@@ -31,10 +31,10 @@
   padding-left: 2rem;
 }
 
-.uninav__menu-item-dropdown-child ul a {
+.uninav__dropdown--child ul a {
   border-right: none;
 }
 
-.uninav__menu-item-dropdown-child .icon::before {
+.uninav__dropdown--child .icon::before {
   margin-right: 1rem;
 }
