@@ -87,19 +87,6 @@ html {
       }
     }
   }
-
-  // THIS IS ONLY DISPLAYED IN THE DRILLDOWN
-  .uninav__menu-item--drilldown-only {
-    display: none;
-  }
-
-  .ma5menu__container {
-    @include respond(tab-land) {
-      .uninav__menu-item--drilldown-only {
-        display: block;
-      }
-    }
-  }
 }
 
 // END RESETS
