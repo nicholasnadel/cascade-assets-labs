@@ -743,8 +743,7 @@ html.off-canvas__blur {
   #js-off-canvas-overlay {
     animation: increaseOpacity;
     animation-direction: normal;
-    animation-duration: 500ms;
-    animation-delay: 10ms;
+    animation-duration: 450ms;
     animation-timing-function: ease-in-out;
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
