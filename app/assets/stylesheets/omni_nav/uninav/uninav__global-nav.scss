@@ -5,7 +5,7 @@
   }
 }
 
-.uninav--global-nav .uninav__dropdown--child li {
+.uninav__global-nav .uninav__dropdown--child li {
 
   &:hover {
     background-color: $uninav-light-grey;
@@ -64,7 +64,7 @@
 
     }
 
-    .uninav--global-nav {
+    .uninav__global-nav {
       a {
         border-right: none;
         color: $panther-black;
@@ -78,18 +78,18 @@
 }
 
 // TODO: Would prefer not to use a fixed width but #uninav grid-template-columns: 30% 70% is causing crowding here
-.uninav--global-nav {
+.uninav__global-nav {
   width: 900px;
 }
 
 @include respond(big-desktop) {
-  .uninav--global-nav {
+  .uninav__global-nav {
     // width: 900px;
   }
 }
 
 @include respond(tab-land) {
-  .uninav--global-nav {
+  .uninav__global-nav {
     min-width: unset;
     width: 100vw;
   }
