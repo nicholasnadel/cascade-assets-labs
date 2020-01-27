@@ -247,7 +247,7 @@ module ContentTypes
         "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("widgets/shared/omninav"),
+        "OMNI-NAV" => render_static_partial("/omni_nav_v2/omninav"),
         "NAVIGATION" => render_static_partial(navigation_path),
         "GLOBAL FOOTER" => render_static_partial(footer_path),
       }
@@ -520,10 +520,15 @@ module ContentTypes
              render_static_partial("widgets/primary_content/a_to_z_anchors"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_3"),
-             render_static_partial("widgets/primary_content/funnel_1up_boxes_1"),
-             render_static_partial("widgets/primary_content/funnel_2up_boxes_1"),
-             render_static_partial("widgets/primary_content/personnel_region_1"),
-             render_static_partial("widgets/primary_content/personnel_region_2"),
+             render_static_partial("widgets/primary_content/collapsables_2"),
+             render_static_partial("widgets/primary_content/collapsables_2"),
+             render_static_partial("widgets/primary_content/collapsables_2"),
+             #  render_static_partial("widgets/primary_content/collapsables_3"),
+             #  render_static_partial("widgets/primary_content/funnel_1up_boxes_1"),
+             #  render_static_partial("widgets/primary_content/funnel_2up_boxes_1"),
+             render_static_partial("widgets/primary_content/collapsables_2"),
+             #  render_static_partial("widgets/primary_content/personnel_region_1"),
+             #  render_static_partial("widgets/primary_content/personnel_region_2"),
              render_static_partial("widgets/primary_content/form_1"),
              render_static_partial("widgets/primary_content/logo_image_rotator_1"),
              render_static_partial("widgets/primary_content/featured_news_events_feed_1"),

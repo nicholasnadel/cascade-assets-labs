@@ -112,7 +112,7 @@
       },
       {
         'text': 'Campus Tours',
-        'link': '/admission/undergraduate/visit',
+        'link': '/admission/undergraduate/visit/index',
         'iconClass': 'icon-office'
       }
     ]
@@ -208,9 +208,9 @@
         'iconClass': 'icon-lamp8'
       },
       {
-        'text': 'Graduate Research Support',
-        'link': '/research/graduate-research/index',
-        'iconClass': 'icon-microscope'
+        'text': 'Industry Alliances and Commercialization',
+        'link': '/research/industry-alliances-commercialization/index',
+        'iconClass': 'icon-office'
       }
     ]
   },

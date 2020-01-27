@@ -1,42 +1,33 @@
-function dismiss() {
-  $('div.upgrade-browser-wrapper > a.dismiss, div.upgrade-browser-wrapper span.dismiss, div.upgrade-browser-wrapper label.upgrade-notice, div.upgrade-browser-wrapper label.label-dismiss, div.upgrade-browser-wrapper div.dismiss').click(function () {
-    $('div.upgrade-browser-wrapper, #upgrade-browser').css('display', 'none')
-  })
-}
 
-function localStorageAvailable() {
-  if (typeof (Storage) !== "undefined") {
-    $('#persistence input').click(function () {
-      if ($("#persistence input").is(':checked')) {
-        if (localStorageAvailable())
-          localStorage.DoNotShowMessageAgain = "true";
-      }
-    })
-    return true;
+  var $buoop = {
+    required: {
+      i: 11,
+      e: 15,
+      f: 52,
+      o: 44,
+      s: 10.1,
+      c: 57
+    },
+    insecure: true,
+    api: 2019.10,
+    url: "https://www.chapman.edu/upgrade-browser.aspx",
+    onshow: function() {
+      var e = document.getElementsByTagName('b')[0];
+      var d = document.createElement('strong');
+      d.innerHTML = e.innerHTML;
+      d.classList.add('buorg-mainmsg');
 
-  } else {
-    return false;
-  }
-}
-
-function cacheDismissal() {
-  $('#persistence').click(function () {
-    if ($('#persistence').attr('checked')) {
-      if (localStorageAvailable())
-        localStorage.DoNotShowMessageAgain = "true";
-    }
-  })
-}
-
-function checkPref() {
-  if (localStorageAvailable()) {
-    if (localStorage.DoNotShowMessageAgain && localStorage.DoNotShowMessageAgain === "true") {
-      $('div.upgrade-browser-wrapper, #upgrade-browser').css('display', 'none')
+      e.parentNode.replaceChild(d, e);
     }
   };
+
+function $buo_f() {
+  var e = document.createElement("script");
+  e.src = "//browser-update.org/update.min.js";
+  document.body.appendChild(e);
+};
+try {
+  document.addEventListener("DOMContentLoaded", $buo_f, false)
+} catch (e) {
+  window.attachEvent("onload", $buo_f)
 }
-$(function () {
-  checkPref();
-  dismiss();
-  cacheDismissal();
-});

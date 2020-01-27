@@ -49,7 +49,6 @@ var chapDOM = (function () {
    * Change the html element attribute
    * @param {String} type The html attribute
    * @param {String} data Value to set the html attribute to
-   */
   Constructor.prototype.changeAttr = function (type, data) {
     if (!this.elems.length) return
 
@@ -57,6 +56,7 @@ var chapDOM = (function () {
 
     if (this.elems.length > 1) {
       this.each(function (elem) {
+
         elem.setAttribute(type, data);
       });
       return this;
@@ -89,10 +89,9 @@ var chapDOM = (function () {
   /**
    * Remove a class to elements
    * @param {String} className The class name
-   */
+
   Constructor.prototype.removeClass = function (className) {
     if (!this.elems.length) return;
-
     this.each(function (item) {
       item.classList.remove(className);
     });
