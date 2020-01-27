@@ -1,0 +1,117 @@
+#uninav {
+  .uninav__utility-nav--wrapper {
+    grid-area: utility;
+    // background-color: orange;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: end;
+    border-bottom: 1px solid $uninav-light-grey;
+    height: $uninav-div-height;
+    align-items: center;
+
+    .uninav__search-input {
+      @include qbal-fade-enter;
+      border-right: none;
+    }
+
+    ul {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+
+      li {
+        flex-grow: 1;
+        flex-basis: auto;
+        text-align: center;
+        border-right: 1px solid #ccc;
+
+        &:last-of-type {
+          flex-grow: 0;
+          flex-basis: unset;
+        }
+      }
+
+      .uninav__utility-nav--search-wrapper input {
+        border: none;
+        box-shadow: none;
+        margin-bottom: 0;
+      }
+
+      .fas.fa-search {
+        color: $grey;
+        padding-right: 1.2rem;
+        padding-left: 1.2rem;
+        cursor: pointer;
+      }
+
+      .uninav__menu-item--audiences {
+        // min-width: 118px;
+        // max-width: 120px;
+      }
+
+      .uninav__menu-item--audiences:nth-child(4),
+      .uninav__menu-item--audiences:nth-child(5) {
+        border-right: none;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      li.uninav__search-input {
+        // height: 30px;
+      }
+    }
+
+    .uninav__menu-item-dropdown-child {
+      background-color: $panther-black;
+      color: $white;
+      // display: block;
+      width: 300px;
+      right: 0;
+      position: absolute;
+      margin-left: auto;
+      @include uninav-drop-shadow;
+    }
+
+    .uninav__utility-nav--audiences-container {
+      display: flex;
+      align-items: center;
+    }
+    .uninav__utility-nav--audiences-container li:last-of-type {
+      border-right: none;
+    }
+  }
+
+  @include respond(big-desktop) {
+    .uninav__utility-nav {
+      min-width: 800px;
+    }
+  }
+
+  @include respond(tab-land) {
+    .uninav__utility-nav {
+      min-width: auto;
+    }
+
+    .uninav__utility-nav--search-wrapper {
+      margin-right: 0;
+    }
+
+    .gsc-search-box table tbody tr {
+      border: none !important;
+    }
+
+    tr {
+      border-image: none !important;
+      border: none !important;
+    }
+
+    .gsc-search-box {
+      border: none !important;
+    }
+
+    #___gcse_0 {
+      border: 1px solid grey;
+    }
+  }
+}

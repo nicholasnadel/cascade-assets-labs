@@ -1,3 +1,6 @@
+@import 'mixins.scss';
+$uninav-div-height: 60px;
+$utility-button-width: 60px;
 // Colors
 /* These are colors commonly found on the site.
 Typically, if a color is used more than once or twice,
@@ -26,6 +29,7 @@ $cu-light-grey-2: #ddd;
 $cu-warm-light-grey: #eaeaea;
 $cardinal: #a50034;
 $cardinal-hover: #810029;
+$red-hover: $cardinal-hover;
 $pillar: #686259;
 $panther-black: #231f20;
 $theme-bg-color-alpha: transparent;
@@ -68,6 +72,9 @@ all in one place. Variables prefixed with "theme" are
 colors found in multiple themes. The others are specific
 to a theme. */
 $theme-light-grey: #dbdfcf; // Light grey found in multiple themes
+$grey-light: #ccc;
+$light-grey: $grey-light;
+$uninav-light-grey: #ddd;
 $theme-yellow: #d4e13c; // Yellow found in multiple themes
 $theme-blue: #006185; // Blue found in multiple themes
 $asbe-primary: #006185;
@@ -113,6 +120,7 @@ $base-spacing: 16px;
 
 /* Widget specific colors */
 $cardinal: #a50034;
+// $cardinal-alpha: rgba(165, 0, 52, .5);
 $pillar: #686259;
 $sand: #ddcba4;
 $panther-black: #231f20;
@@ -123,7 +131,9 @@ $sand-alpha: rgba($sand, .8);
 $panther-black-alpha: rgba($panther-black, .8);
 $pillar: #686259;
 $sand: #ddcba4;
-
+$slate: #666;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
 $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
+$uninav-div-height: 60px;
+$uninav-total-height: 120px;
