@@ -113,6 +113,51 @@ html {
       }
     }
 
+    &--cta {
+      grid-area: cta;
+      width: 100%;
+      display: grid;
+      justify-content: end;
+      align-content: center;
+      align-items: center;
+      // @include qbal-stagger-children;
+      @include uninav-border-bottom;
+
+      ul {
+        display: flex;
+
+        &>li {
+          flex: 1 100%;
+          list-style: none;
+          color: $panther-black;
+          @include uninav-drop-shadow;
+          @include qbal-slideLeft-enter;
+
+          a {
+            @include button($red);
+            @include futura-pt;
+            padding: 5px;
+            margin-right: 10px;
+            display: block;
+            text-align: center;
+            font-weight: 300;
+            transition: 250ms ease-in-out;
+            will-change: background-color;
+            font-weight: 600;
+            min-width: 120px;
+            animation-duration: 3s;
+
+            @for $i from 1 to 5 {
+              &:nth-child(#{$i}) {
+                animation-delay: $i * 0.05s;
+              }
+            }
+          }
+        }
+      }
+    }
+
+
     &__utility-nav--wrapper {
       grid-area: utility;
       width: 100%;
@@ -352,7 +397,7 @@ html {
     border-right: 1px solid $uninav-light-grey;
   }
 
-  .uninav__dropdown-wrapper > a::after {
+  .uninav__dropdown-wrapper>a::after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0d7";
@@ -360,12 +405,12 @@ html {
     font-size: 1.4rem;
   }
 
-  & > ul {
+  &>ul {
     display: flex;
     align-items: center;
     height: 100%;
 
-    & > li {
+    &>li {
       flex: 100%;
     }
 
@@ -381,59 +426,16 @@ html {
   }
 }
 
-#uninav > div.uninav--cta {
-  grid-area: cta;
-  width: 100%;
-  display: grid;
-  justify-content: end;
-  align-content: center;
-  align-items: center;
-  // @include qbal-stagger-children;
-  @include uninav-border-bottom;
 
-  ul {
-    display: flex;
-
-    & > li {
-      flex: 1 100%;
-      list-style: none;
-      color: $panther-black;
-      @include uninav-drop-shadow;
-      @include qbal-slideLeft-enter;
-
-      a {
-        @include button($red);
-        @include futura-pt;
-        padding: 5px;
-        margin-right: 10px;
-        display: block;
-        text-align: center;
-        font-weight: 300;
-        transition: 250ms ease-in-out;
-        will-change: background-color;
-        font-weight: 600;
-        min-width: 120px;
-        animation-duration: 3s;
-
-        @for $i from 1 to 5 {
-          &:nth-child(#{$i}) {
-            animation-delay: $i * 0.05s;
-          }
-        }
-      }
-    }
-  }
-}
-
-#uninav > nav {
+#uninav>nav {
   grid-area: nav;
 }
 
-#uninav > global {
+#uninav>global {
   grid-area: global;
 }
 
-#uninav > div.uninav__logo--primary {
+#uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
 }
@@ -450,7 +452,7 @@ html {
   flex-direction: column;
   @include uninav-drop-shadow();
 
-  > ul {
+  >ul {
     flex-direction: column;
     justify-content: start;
     text-align: left;
@@ -470,14 +472,18 @@ html {
 
   &[aria-expanded="true"] {
     .uninav__dropdown--child {
+      z-index: 99999999;
       display: flex;
       @include qbal-dropdown-enter;
     }
   }
 
   &[aria-expanded="false"] {
+
+    // TODO: refactor first .uninav__dropdown--child... display: none is not animitable. 
+    .uninav__dropdown--parent,
     .uninav__dropdown--child {
-      @include qbal-slideUpSubtle-exit;
+      @include qbal-shrink-exit;
     }
   }
 }
@@ -536,7 +542,7 @@ html {
       @include qbal-growExaggerated-enter;
 
       ul li,
-      & > a {
+      &>a {
         color: $panther-black;
       }
     }
@@ -553,6 +559,21 @@ html {
   }
 }
 
+
+
+@media only screen and (max-width: 1150px) {
+  #uninav {
+    .uninav {
+      &--cta {
+        ul {
+          @include qbal-slideUp-exit;
+        }
+      }
+    }
+  }
+}
+
+
 // TABLET LANDSCAPE
 @include respond(tab-land) {
   .uninav {
@@ -565,7 +586,7 @@ html {
       }
     }
 
-    &__menu-item-dropdown-child:hover > ul {
+    &__menu-item-dropdown-child:hover>ul {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -710,6 +731,7 @@ html {
 
 @include respond(phone) {
   .uninav {
+
     &__logo,
     #uninav-logo .chapman-logo {
       width: 100%;
@@ -721,9 +743,9 @@ html.off-canvas__blur {
   #js-off-canvas-overlay {
     animation: increaseOpacity;
     animation-direction: normal;
-    animation-duration: 350ms;
-    animation-delay: 50ms;
-    animation-timing-function: linear;
+    animation-duration: 500ms;
+    animation-delay: 10ms;
+    animation-timing-function: ease-in-out;
     -webkit-animation-fill-mode: forwards;
     -moz-animation-fill-mode: forwards;
     -o-animation-fill-mode: forwards;
@@ -750,22 +772,23 @@ html.off-canvas__blur {
       }
 
       100% {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.9);
       }
     }
   }
 
   .uninav {
+
     &__logo,
     &__utility-nav--wrapper,
     &__global-nav,
     &--cta {
-      @include qbal-slideRight-exit;
+      // @include qbal-slideRight-exit;
     }
   }
 
   #main {
-    @include qbal-slideRight-exit;
+    // @include qbal-slideRight-exit;
   }
 }
 
