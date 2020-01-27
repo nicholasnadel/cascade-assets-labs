@@ -4,7 +4,6 @@ $(function () {
   closePrevDropdownWhenFocusChanges()
   toggleAriaExpandVal();
   handleEscapeKeypress();
-
 });
 
 function closePrevDropdownWhenFocusChanges() {
@@ -12,7 +11,6 @@ function closePrevDropdownWhenFocusChanges() {
     $('.uninav__dropdown--parent').not(this).each(function () {
       $(this).attr("aria-expanded", "false");
     });
-
   })
 }
 
@@ -57,28 +55,21 @@ function hideCurrentDropdownWhenLoseFocus() {
       // console.log('mosueOUt');
     }
   });
-
-  $(".uninav__dropdown--child li:first-child").on('keydown blur', function (e) {
+  $(".uninav__dropdown--child li:first-child, .uninav__dropdown--parent").on('keydown blur', function (e) {
     // SHIFT TAB KEY COMBO
     var dropdownParent = $(this).closest('.uninav__dropdown--parent')
-
     if (e.shiftKey && e.keyCode === 9) {
       console.log('shift tab')
       $(dropdownParent).attr('aria-expanded', 'false');
       //     return false;
     }
   });
-
   // handle clicking outside of dropdown item
   $(document).on('click keydown blur focusOut', function (e) {
     if ($(e.target).closest(".uninav__dropdown--parent").length === 0) {
       $(".uninav__dropdown--parent").attr('aria-expanded', 'false');
     }
   });
-
-
-
-
 }
 
 function collapseAriaWhenClickOutside() {
@@ -104,7 +95,6 @@ function a11yClick(event) {
   }
 }
 // end uninav accessibility
-
 // off-canvas overlay - add to main content when expanded
 $(function () {
   var sectionMenuButton = $('#section-menu-hamburger-icon')
