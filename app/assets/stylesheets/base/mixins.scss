@@ -443,7 +443,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
   &:hover,
   &:focus {
-    background-color: lighten($bg-color, 7%);
+    background-color: lighten($bg-color, 8%);
     @include transition(background-color);
   }
 
