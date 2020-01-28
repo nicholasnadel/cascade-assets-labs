@@ -505,6 +505,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-transform: uppercase;
 }
 
+
 // write CSS variables without like "v(thevariable);"
 @function v($var) {
   @return var(--#{$var});
@@ -574,6 +575,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 //   justify-content: center;
 //   align-items: center;
 //   @include dc($bg);
+// }
 // }
 @mixin slide-in-out($type, $from, $to, $duration: 1s ) {
   @if $type == in {

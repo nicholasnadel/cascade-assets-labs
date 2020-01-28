@@ -10,6 +10,7 @@
 #import( "/_cascade/formats/modular/widgets/Logo Image Rotator" )
 #import( "/_cascade/formats/modular/widgets/Personnel" )
 #import( "/_cascade/formats/modular/widgets/Tabs" )
+#import( "/_cascade/formats/modular/widgets/Testimonial" )
 #import( "/_cascade/formats/modular/widgets/Text Editor" )
 #import( "/_cascade/formats/modular/widgets/Three Photo Callout" )
 #import( "/_cascade/formats/modular/widgets/Twitter Feed" )
@@ -50,14 +51,14 @@
         #outputCollapsibles($widget)
         #end
     #end
-##
+##    
     #if ($widgetType == 'Form Embed') 
         #set ($displayFormEmbed = $widget.getChild('form-embed').getChild('display-form-embed').value)
         #if ($displayFormEmbed == 'Yes')
         #outputFormEmbed($widget)
         #end
     #end
-##
+##    
     #if ($widgetType == 'Form') 
         #set ($displayForm = $widget.getChild('form').getChild('display-form').value)
         #if ($displayForm == 'Yes')
@@ -113,6 +114,12 @@
         #outputWYSIWYGEditor($widget)
         #end
     #end
+        #if ($widgetType == 'Testimonial')
+        #set ($displayTestimonial = $widget.getChild('testimonial-widget').getChild('display').value)
+        #if ($displayTestimonial == 'Yes')
+        #outputTestimonialWidget($widget)
+        #end
+    #end
 ##    
     #if ($widgetType == 'Three Photo Callout')
         #set ($displayCallout = $widget.getChild('threePhotoCallout').getChild('display-three-photo-callout').value)
@@ -148,7 +155,7 @@
         #outputHtmlBlock($widget)
         #end
     #end
-## not finished/working yet:
+## not finished/working yet:   
     #if ($widgetType == 'Reserved Block-Formats')
         #set ($displayReservedBlockFormat = $widget.getChild('reserved-block-formats').getChild('display-reserved-block-formats').value)
         #if ($displayReservedBlockFormat == 'Yes')
