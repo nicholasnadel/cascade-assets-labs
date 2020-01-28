@@ -66,7 +66,6 @@ html {
   }
 }
 
-
 @media screen and (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -468,7 +467,6 @@ table {
   button,
   input {
     *overflow: auto;
-
   }
 
   caption {
@@ -629,7 +627,135 @@ p {
   margin-bottom: 2rem;
 }
 
-// experimenting with sliding up global content on page load
-#main { 
-  @include qbal-slideUp-enter;
+[class*='-widget'] {
+  [class*='__button'] {
+    border: none;
+  }
+}
+
+.text--link {
+  color: $cu-red;
+  @include underline(currentColor);
+
+  &:hover,
+  &:focus {
+    color: lighten($cu-red, 8%);
+    transition: all 0.3s ease;
+
+  }
+}
+
+
+[class*='--black'] {
+  background-color: $panther-black;
+  color: $white;
+
+  [class*='__heading'],
+  a {
+    color: $white;
+  }
+
+  [class*='__button'] {
+    $bg: $cu-red;
+    @include button-bg($bg);
+  }
+
+  .text--link {
+    color: $cu-red;
+    @include underline($cu-red);
+
+    &:hover,
+    &:focus {
+      color: lighten($cu-red, 8%);
+      @include underline(currentColor);
+      transition: all 0.3s ease;
+
+    }
+  }
+
+}
+
+[class*='--white'] {
+  background-color: $white;
+  border: 1px solid $cu-light-grey;
+  color: $panther-black;
+
+  [class*='__heading'] {
+    color: $panther-black;
+  }
+
+  [class*='__button'] {
+    $bg: $cu-red;
+    @include button-bg($bg);
+  }
+}
+
+[class*='--sand'] {
+  background-color: $sand;
+
+  [class*='__heading'] {
+    color: $panther-black;
+  }
+
+  [class*='__button'] {
+    $bg: $cu-red;
+    @include button-bg($bg);
+  }
+}
+
+[class*='--red'] {
+  background-color: $red;
+  color: $white;
+
+  ::selection,
+  ::-moz-selection {
+    background: $panther-black;
+  }
+
+  [class*='__heading'],
+  a {
+    color: $white;
+  }
+
+
+  [class*='__button'] {
+    $bg: $panther-black;
+    @include button-bg($bg);
+
+    &:hover,
+    &:active {
+      background-color: darken($bg, 8%);
+      -webkit-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .text--link {
+    color: $cu-light-grey;
+    @include underline(currentColor);
+
+    &:hover,
+    &:focus {
+      color: $white;
+      @include underline(currentColor);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+[class*='--grey'] {
+  background-color: $cu-light-grey;
+
+  [class*='__heading'] {
+    color: $panther-black;
+  }
+
+  [class*='__button'] {
+    $bg: $cu-red;
+    @include button-bg($bg);
+  }
+
+  a {
+    color: $cu-red;
+  }
 }

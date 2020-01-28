@@ -1,0 +1,54 @@
+.main>.banner-notification-widget {
+  margin-top: 0;
+}
+
+.banner-notification-widget {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+
+  .banner-notification-widget__text {
+    margin-top: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-family: $futura-regular;
+
+    a {
+      @include underline(currentColor);
+    }
+
+    p {
+      margin-bottom: 0;
+      font-family: $futura-regular;
+    }
+
+    &~.banner-notification-widget__button,
+    &~.text--link {
+      margin-bottom: 20px;
+      margin-top: -5px;
+    }
+  }
+
+  .banner-notification-widget__button {
+    font-size: 1.6rem;
+
+    &:hover {
+      padding-top: -6px;
+    }
+  }
+
+  &--left-aligned {
+    justify-content: start;
+    justify-items: start;
+
+    .banner-notification-widget__button,
+    .text--link {
+      margin-left: 20px;
+    }
+  }
+}
