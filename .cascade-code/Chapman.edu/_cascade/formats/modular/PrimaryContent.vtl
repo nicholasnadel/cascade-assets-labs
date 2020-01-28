@@ -53,14 +53,14 @@
             #outputCollapsibles($widget)
         #end
     #end
-    ##    
+##    
     #if ($widgetType == 'Form Embed') 
         #set ($displayFormEmbed = $widget.getChild('form-embed').getChild('display-form-embed').value)
         #if ($displayFormEmbed == 'Yes')
             #outputFormEmbed($widget)
         #end
     #end
-    ##    
+##    
     #if ($widgetType == 'Form') 
         #set ($displayForm = $widget.getChild('form').getChild('display-form').value)
         #if ($displayForm == 'Yes')
@@ -168,7 +168,7 @@
             #outputHtmlBlock($widget)
         #end
     #end
-    ## not finished/working yet:   
+## not finished/working yet:   
     #if ($widgetType == 'Reserved Block-Formats')
         #set ($displayReservedBlockFormat =
         $widget.getChild('reserved-block-formats').getChild('display-reserved-block-formats').value)
