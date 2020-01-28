@@ -132,6 +132,9 @@ $panther-black-alpha: rgba($panther-black, .8);
 $pillar: #686259;
 $sand: #F6F2E8;
 
+// spacing
+$widget-margin-top: 30px;
+$wmtop: $widget-margin-top;
 
 $red-dots: 2px dotted $cu-red;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/

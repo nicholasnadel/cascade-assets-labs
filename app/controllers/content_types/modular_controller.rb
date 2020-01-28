@@ -516,6 +516,7 @@ module ContentTypes
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s %s %s %s %s %s %s",
+            render_static_partial("widgets/primary_content/next_steps_widget"),
              render_static_partial("widgets/primary_content/testimonial_widget"),
              render_static_partial("widgets/primary_content/wysiwyg_editor_3"),
              render_static_partial("widgets/primary_content/a_to_z_anchors"),
@@ -564,6 +565,7 @@ module ContentTypes
              render_static_partial("widgets/primary_content/twitter_feed_1"),
              render_static_partial("widgets/primary_content/logo_image_rotator_1"),
              render_static_partial("widgets/primary_content/featured_news_events_feed_1"))
+
     end
 
     # rubocop:enable Metrics/AbcSize

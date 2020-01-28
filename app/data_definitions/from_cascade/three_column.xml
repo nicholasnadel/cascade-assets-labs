@@ -60,22 +60,36 @@
         <dropdown-item show-fields="leftColumn/widget/contact" value="Department Contact Info" />
       </text>
       <group collapsed="true" identifier="calloutBox" label="Callout Box">
-        <text default="Yes" identifier="display-callout-box" label="Show" type="radiobutton">
-          <radio-item value="Yes" />
-          <radio-item value="No" />
-        </text>
-        <text default="Grey" identifier="color-value" label="Color" required="False" type="dropdown">
-          <dropdown-item value="Grey" />
-          <dropdown-item value="Red" />
-          <dropdown-item value="Black" />
-          <dropdown-item value="Sand" />
-          <dropdown-item value="White" />
-        </text>
-        <group identifier="text" label="Text">
-          <text default="" help-text="Preheader" identifier="preheader" label="Preheader (Optional)" multi-line="false" required="false" />
-          <text default="" help-text="Headline" identifier="headline" label="Headline" multi-line="true" />
-          <text identifier="copy" label="Copy" wysiwyg="true" />
-        </group>
+				<text default="Yes" identifier="display-callout-box" label="Show" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Grey" identifier="color-value" label="Color" type="dropdown">
+					<dropdown-item value="Grey"/>
+					<dropdown-item value="Red"/>
+					<dropdown-item value="Black"/>
+					<dropdown-item value="Sand"/>
+					<dropdown-item value="White"/>
+				</text>
+				<group identifier="text" label="Text">
+					<text help-text="Preheader" identifier="preheader" label="Preheader (Optional)"/>
+					<text help-text="Headline" identifier="headline" label="Headline" multi-line="true"/>
+					<text identifier="copy" label="Copy" wysiwyg="true"/>
+				</group>
+				<group identifier="links" label="Links">
+					<group identifier="link" label="Link" multiple="true">
+						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+							<radio-item show-fields="leftColumn/widget/calloutBox/links/link/internalLink" value="Internal Link"/>
+							<radio-item show-fields="leftColumn/widget/calloutBox/links/link/externalLink" value="External Link"/>
+							<radio-item show-fields="leftColumn/widget/calloutBox/links/link/fileLink" value="File Link"/>
+						</text>
+						<text identifier="externalLink" label="External Link"/>
+						<asset identifier="internalLink" label="Internal Link" type="page"/>
+						<asset identifier="fileLink" label="File Link" type="file"/>
+						<text identifier="label" label="Label"/>
+					</group>
+				</group>
+			</group>
         <group identifier="links" label="Links">
           <group identifier="link" label="Link" multiple="true">
             <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
@@ -139,39 +153,39 @@
     <text default="[page title]" identifier="pageTitle" label="Page Title" required="true" />
     <group identifier="widget" label="Widgets" multiple="true">
       <text help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
-        <dropdown-item value="(select one)" />
-        <dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel" />
-        <dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions" />
-        <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info" />
-        <dropdown-item show-fields="primaryContent/widget/FeaturedNewsEvents" value="Featured / News / Events" />
-        <dropdown-item show-fields="primaryContent/widget/form-embed" value="Form Embed" />
-        <dropdown-item show-fields="primaryContent/widget/form" value="Form" />
-        <dropdown-item show-fields="primaryContent/widget/funnels-1up" value="Funnels 1up" />
-        <dropdown-item show-fields="primaryContent/widget/logo-image-rotator" value="Logo Image Rotator" />
-        <dropdown-item show-fields="primaryContent/widget/personnel" value="Personnel Table" />
-        <dropdown-item show-fields="primaryContent/widget/tabs" value="Tabs" />
-        <dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial" />
-        <dropdown-item show-fields="primaryContent/widget/wysiwyg-editor" value="Text Editor" />
-        <dropdown-item show-fields="primaryContent/widget/threePhotoCallout" value="Three Photo Callout" />
-        <dropdown-item show-fields="primaryContent/widget/twitterTimeline" value="Twitter Feed" />
-        <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live" />
-        <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing" />
-        <dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block" />
-        <!--<dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>-->
-        <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info" />
-        <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info" />
+        <dropdown-item value="(select one)"/>
+        <dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
+        <dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
+        <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
+        <dropdown-item show-fields="primaryContent/widget/FeaturedNewsEvents" value="Featured / News / Events"/>
+        <dropdown-item show-fields="primaryContent/widget/form-embed" value="Form Embed"/>
+        <dropdown-item show-fields="primaryContent/widget/form" value="Form"/>
+        <dropdown-item show-fields="primaryContent/widget/funnels-1up" value="Funnels 1up"/>
+        <dropdown-item show-fields="primaryContent/widget/logo-image-rotator" value="Logo Image Rotator"/>
+        <dropdown-item show-fields="primaryContent/widget/personnel" value="Personnel Table"/>
+        <dropdown-item show-fields="primaryContent/widget/tabs" value="Tabs"/>
+        <dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial"/>
+        <dropdown-item show-fields="primaryContent/widget/wysiwyg-editor" value="Text Editor"/>
+        <dropdown-item show-fields="primaryContent/widget/threePhotoCallout" value="Three Photo Callout"/>
+        <dropdown-item show-fields="primaryContent/widget/twitterTimeline" value="Twitter Feed"/>
+        <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live"/>
+        <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>
+        <dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
+        <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
+        <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
+        <dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Degree Info"/>
       </text>
       <group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
-        <shared-field identifier="display" path="display"/>
-        <shared-field identifier="bgColor" path="background-color"/>
-        <group identifier="testimonialSlide" label="Testimonial Slide" multiple="true">
-          <shared-field identifier="image" label="Headshot Image" maximum-number="1" path="image"/>
-          <text help-text="100 chracters max" identifier="endorserName" label="Endorser's Name" required="true"/>
-          <text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="endorserTitle" label="Endorser's Department/Title"/>
-          <text help-text="200 characters max" identifier="testimonyText" label="Testimonial Text" multi-line="true" required="true"/>
-          <shared-field identifier="link" path="cta"/>
-        </group>
-      </group>
+				<shared-field identifier="display" path="display"/>
+				<shared-field identifier="bgColor" path="background-color"/>
+				<group identifier="testimonialSlide" label="Testimonial Slide" multiple="true">
+					<shared-field identifier="image" label="Headshot Image" maximum-number="1" path="image"/>
+					<text help-text="100 chracters max" identifier="endorserName" label="Endorser's Name" required="true"/>
+					<text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="endorserTitle" label="Endorser's Department/Title"/>
+					<text help-text="200 characters max" identifier="testimonyText" label="Testimonial Text" multi-line="true" required="true"/>
+					<shared-field identifier="link" path="cta"/>
+				</group>
+			</group>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes" />
@@ -255,6 +269,17 @@
             </group>
           </group>
         </group>
+      </group>
+      <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
+        <shared-field identifier="display" path="display"/>
+        <text default="left-aligned" identifier="layout" label="Layout" type="radiobutton">
+          <radio-item label="Left Aligned" value="left-aligned"/>
+          <radio-item label="Centered" value="centered"/>
+        </text>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <text identifier="heading" label="Heading" required="true"/>
+        <text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
+        <shared-field identifier="link" path="cta"/>
       </group>
       <group collapsed="true" identifier="personnel" label="Personnel">
         <text default="Yes" identifier="display-personnel" label="Show" required="true" type="radiobutton">

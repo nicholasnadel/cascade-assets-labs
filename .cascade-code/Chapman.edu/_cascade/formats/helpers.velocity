@@ -8,15 +8,20 @@ Master Version: Chapman.edu/_cascade/formats/helpers.velocity
 #*
 --------------------------------------------------------------------------------
  Converts camelCase to SNAKE_CASE
- USAGE: #imageInCollection( $slide )
+ USAGE: #camelToSnake( $var )
 --------------------------------------------------------------------------------
 *#
 
 #macro(camelToSnake $camelCase)
-    #set ( $camelCase = 'camelCase' )
     #set( $regex = "([a-z])([A-Z]+)")
-    #set( $snakeCase = "$1-$2")
-    #set( $toDash = $camelCase.replaceAll($regex, $snakeCase).toLowerCase())
+    #set( $replacement = "$1-$2")
+    #set( $snakeCase = $camelCase.replaceAll($regex, $replacement).toLowerCase())
+    
+    ## set widget value to this-widget for BEM conventions
+    ## example: this-widget--red 
+    #set ( $widgetXPath = $snakeCase)
+    ## $wxp is just an acronym for $widgetXPath
+    #set ( $wxp = $snakeCase)
 #end
 
 #*
@@ -71,7 +76,7 @@ USAGE: #image()
     #set ($objectPositionX = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionX').value.toLowerCase())
     #set ($objectPositionY = $element.getChild($widgetXPath).getChild('image').getChild('objectPositionY').value.toLowerCase())
 
-    #if (!$imageType.contains(["none"))
+    #if (!$imageType.contains("none"))
         <div
             class="${_EscapeTool.xml($widgetXPath)}__img--${_EscapeTool.xml($imageShape)} ${_EscapeTool.xml($widgetXPath)}__img"
             style="width: ${_EscapeTool.xml($imgSize)}; height: ${_EscapeTool.xml($imgSize)}; ">
@@ -93,6 +98,7 @@ USAGE: #bgColorChooser('next-steps-widget'). $bgColor will result in a class suc
 
 #macro(bgColorChooser $wxp)
     #set ($bgColor = $element.getChild($wxp).getChild('bgColor').value.toLowerCase())
+    #camelToSnake($wxp)
     #set ($bgColor = $wxp + '--' + $bgColor)
 #end
 
@@ -195,12 +201,16 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
 
 #macro ( buildDrillDownList $asset )
   #set ( $drillDownPagePath = $currentPage.path )
+  #set ( $isVisible         = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes")
+  #set ( $rootPageName      = $asset.path.replaceAll("^[\w]+\/", "") )
+
   #if ( $drillDownPagePath == $asset.path ) 
     #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
   #else
     #set( $isCurrentDrillDownPage = "drill-down-list-item")
   #end
-  #set ( $isVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes")
+  
+  
   #if ($asset.assetType == "folder" && $isVisible)
     #set ( $visibleChildren = false )
     #foreach( $childAsset in $asset.children )
@@ -222,10 +232,10 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #end
     #if ($visibleChildren)
       <li class="${isCurrentDrillDownPage}">
-        <span class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
+        <span tabindex="0" class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
         <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
         <ul class="drilldown-menu">
-          <li class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)} - Menu</li>
+          <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)}</li>
           #foreach( $childAsset in $asset.children)
             #if ( $drillDownPagePath == $childAsset.path ) 
               #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
@@ -245,9 +255,21 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
       </li>
     #end
   #elseif ($asset.assetType == 'page' && $isVisible)
-    <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
+    #if ($rootPageName == "index")
+        <li class="${isCurrentDrillDownPage} home-menu">
+            <i class="fas fa-home"></i>
+            <a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+        </li>
+    #else
+        <li class="${isCurrentDrillDownPage}">
+            <a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+        </li>
+    #end
   #elseif ($asset.assetType == 'symlink')
     <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+##   #testing for sym link 
+##   #else
+##     <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
   #end
 #end
 
