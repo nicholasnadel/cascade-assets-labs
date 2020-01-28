@@ -64,8 +64,16 @@
           <radio-item value="Yes"/>
           <radio-item value="No"/>
         </text>
+        <text default="Grey" identifier="color-value" label="Color" required="False" type="dropdown">
+          <dropdown-item value="Grey"/>
+          <dropdown-item value="Red"/>
+          <dropdown-item value="Black"/>
+          <dropdown-item value="Sand"/>
+          <dropdown-item value="White"/>
+        </text>
         <group identifier="text" label="Text">
-          <text default="[headline]" identifier="headline" label="Headline" multi-line="true"/>
+          <text default="" help-text="Preheader" identifier="preheader" label="Preheader (Optional)" multi-line="false" required="false"/>
+          <text default="" help-text="Headline" identifier="headline" label="Headline" multi-line="true"/>
           <text identifier="copy" label="Copy" wysiwyg="true"/>
         </group>
         <group identifier="links" label="Links">
@@ -149,10 +157,23 @@
         <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live"/>
         <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>
         <dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
+        <dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial"/>
         <!--<dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>-->
         <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
+        <dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
       </text>
+      <group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
+        <shared-field identifier="display" path="display"/>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <group identifier="testimonialSlide" label="Testimonial Slide" multiple="true">
+          <shared-field identifier="image" label="Headshot Image" maximum-number="1" path="image"/>
+          <text help-text="100 chracters max" identifier="endorserName" label="Endorser's Name" required="true"/>
+          <text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="endorserTitle" label="Endorser's Department/Title"/>
+          <text help-text="200 characters max" identifier="testimonyText" label="Testimonial Text" multi-line="true" required="true"/>
+          <shared-field identifier="link" path="cta"/>
+        </group>
+      </group>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
@@ -269,6 +290,17 @@
             </group>
           </group>
         </group>
+      </group>
+      <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
+        <shared-field identifier="display" path="display"/>
+        <text default="left-aligned" identifier="layout" label="Layout" type="radiobutton">
+          <radio-item label="Left Aligned" value="left-aligned"/>
+          <radio-item label="Centered" value="centered"/>
+        </text>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <text identifier="heading" label="Heading" required="true"/>
+        <text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
+        <shared-field identifier="link" path="cta"/>
       </group>
       <group collapsed="true" identifier="personnel" label="Personnel">
         <text default="Yes" identifier="display-personnel" label="Show" required="true" type="radiobutton">
@@ -393,340 +425,329 @@
         </group>
       </group>
       <!--
-      <group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats">
-        <text default="Yes" identifier="display-reserved-block-formats" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="A to Z Listing" help-text="identifies pre-paired block and formats of data" identifier="BlockFormatType" label="Block/Format Type" type="dropdown">
-          <dropdown-item value="University-wide Faculty By Rank Listing"/>
-          <dropdown-item value="University-wide Tenure/Tenure-Track Faculty Listing"/>
-          <dropdown-item value="University-wide Presidential Fellows Listing"/>
-          <dropdown-item value="A to Z Listing"/>
-        </text>
-      </group>
+      <group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats"><text default="Yes" identifier="display-reserved-block-formats" label="Show" required="true" type="radiobutton"><radio-item value="Yes"/><radio-item value="No"/></text><text default="A to Z Listing" help-text="identifies pre-paired block and formats of data" identifier="BlockFormatType" label="Block/Format Type" type="dropdown"><dropdown-item value="University-wide Faculty By Rank Listing"/><dropdown-item value="University-wide Tenure/Tenure-Track Faculty Listing"/><dropdown-item value="University-wide Presidential Fellows Listing"/><dropdown-item value="A to Z Listing"/></text></group>
       -->
-      <group collapsed="true" identifier="wysiwyg-editor" label="Text Editor">
-        <text default="Yes" identifier="display-wysiwyg-editor" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text identifier="content" label="Content" wysiwyg="true"/>
-      </group>
-      <group collapsed="true" identifier="logo-image-rotator" label="Logo Image Rotator">
-        <text default="Yes" identifier="display-logo-image-rotator" label="Show" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text identifier="label" label="Label" maxlength="20"/>
-        <group identifier="image" label="Image" maximum-number="25" multiple="true">
-          <asset identifier="image-file" label="Image (114 x 100)" type="file"/>
-          <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
-          <group identifier="link" label="Link">
-            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
-              <radio-item show-fields="primaryContent/widget/logo-image-rotator/image/link/internalLink" value="Internal Link"/>
-              <radio-item show-fields="primaryContent/widget/logo-image-rotator/image/link/externalLink" value="External Link"/>
-              <radio-item show-fields="primaryContent/widget/logo-image-rotator/image/link/fileLink" value="File Link"/>
-            </text>
-            <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
-            <asset identifier="internalLink" label="Internal Link" type="page"/>
-            <asset identifier="fileLink" label="File Link" type="file"/>
-          </group>
-        </group>
-      </group>
-      <group collapsed="true" identifier="form-embed" label="Form Embed">
-        <text default="Yes" identifier="display-form-embed" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="Cascade Block" identifier="block-type" label="Block Type" required="true" type="radiobutton">
-          <radio-item label="Cascade Block" show-fields="primaryContent/widget/form-embed/cascade-block" value="Cascade Block"/>
-          <radio-item label="External Javascript Embed or iFrame Block" show-fields="primaryContent/widget/form-embed/external-block" value="External Block"/>
-        </text>
-        <group identifier="cascade-block" label="Cascade Block">
-          <text identifier="header" label="Header"/>
-          <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
-          <asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="code-block" label="Form Block" render-content-depth="unlimited" type="block"/>
-        </group>
-        <group identifier="external-block" label="External Block">
-          <text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
-          <text help-text="paste in Javascript block provided by Embed Form action or iFrame in Formstack (check checkboxes for Don't Need Jquery or Jquery UI or Modernizer)" identifier="code-block" label="Embed or IFrame Code Block" multi-line="true" required="true"/>
-        </group>
-      </group>
-      <group collapsed="true" identifier="form" label="Form">
-        <text default="Yes" identifier="display-form" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text identifier="header" label="Header"/>
-        <text identifier="copy" label="Copy" wysiwyg="true"/>
-        <asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="formBlock" label="Form Block" render-content-depth="unlimited" type="block"/>
-      </group>
-      <group collapsed="true" identifier="contact" label="Department Contact">
-        <text default="Yes" identifier="display-contact" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text identifier="heading" label="Heading"/>
-        <text identifier="copy" label="Copy" wysiwyg="true"/>
-        <text default="Multiple Department Listing" identifier="type" label="Display" required="true" type="radiobutton">
-          <radio-item show-fields="primaryContent/widget/contact/umbrella" value="Multiple Department Listing"/>
-          <radio-item show-fields="primaryContent/widget/contact/info" value="Individual Department"/>
-        </text>
-        <asset identifier="info" label="Choose Department" render-content-depth="2" required="true" type="block"/>
-        <text default="All" identifier="umbrella" label="Umbrella Group" type="dropdown">
-          <dropdown-item value="All"/>
-          <dropdown-item value="About"/>
-          <dropdown-item value="Academics"/>
-          <dropdown-item value="Admission"/>
-          <dropdown-item value="Alumni"/>
-          <dropdown-item value="Argyros School of Business"/>
-          <dropdown-item value="Attallah College"/>
-          <dropdown-item value="Campus Services"/>
-          <dropdown-item value="College of Performing Arts"/>
-          <dropdown-item value="Crean College"/>
-          <dropdown-item value="Dodge College"/>
-          <dropdown-item value="Faculty and Staff"/>
-          <dropdown-item value="Families"/>
-          <dropdown-item value="Fowler Law School"/>
-          <dropdown-item value="Research and Institutions"/>
-          <dropdown-item value="Schmid College"/>
-          <dropdown-item value="School of Communication"/>
-          <dropdown-item value="School of Pharmacy"/>
-          <dropdown-item value="Students"/>
-          <dropdown-item value="Student Affairs"/>
-          <dropdown-item value="Support Chapman"/>
-          <dropdown-item value="Wilkinson College"/>
-        </text>
-        <text default="Basic Address" identifier="display" label="Information to Display" type="dropdown">
-          <dropdown-item value="Basic Address"/>
-          <dropdown-item value="Basic Location"/>
-          <dropdown-item value="Main / People"/>
-          <dropdown-item value="People Only"/>
-        </text>
-      </group>
-      <group collapsed="true" identifier="degree" label="Degree Information">
-        <text default="Yes" identifier="display-degree" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text identifier="heading" label="Heading"/>
-        <text identifier="copy" label="Copy" wysiwyg="true"/>
-        <text default="Single Degree" identifier="type" label="Display" required="true" type="radiobutton">
-          <radio-item show-fields="primaryContent/widget/degree/show, primaryContent/widget/degree/block" value="Single Degree"/>
-          <radio-item show-fields="primaryContent/widget/degree/school, primaryContent/widget/degree/cat, primaryContent/widget/degree/level" value="Degree Listing"/>
-        </text>
-        <asset identifier="block" label="Degree" render-content-depth="2" required="true" type="block"/>
-        <text default="All" identifier="school" label="School Affliation" type="dropdown">
-          <dropdown-item value="All"/>
-          <dropdown-item value="Argyros School of Business and Economics"/>
-          <dropdown-item value="Attallah College of Educational Studies"/>
-          <dropdown-item value="Dodge College of Film and Media Arts"/>
-          <dropdown-item value="Crean College of Health and Behavioral Sciences"/>
-          <dropdown-item value="Wilkinson College of Arts, Humanities, and Social Sciences"/>
-          <dropdown-item value="College of Performing Arts"/>
-          <dropdown-item value="School of Pharmacy"/>
-          <dropdown-item value="Fowler School of Law"/>
-          <dropdown-item value="Schmid College of Science and Technology"/>
-          <dropdown-item value="School of Communication"/>
-        </text>
-        <text identifier="level" label="Degree Level" type="checkbox">
-          <checkbox-item value="Bachelors"/>
-          <checkbox-item value="Masters"/>
-          <checkbox-item value="Doctorate"/>
-          <checkbox-item value="Certificate"/>
-          <checkbox-item value="4+1 and Bridge"/>
-          <checkbox-item value="Major"/>
-          <checkbox-item value="Minor"/>
-        </text>
-        <text default="No" identifier="show" label="Show Photo" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-      </group>
-      <group collapsed="true" identifier="faculty" label="Faculty">
-        <text default="Yes" identifier="display-faculty" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text identifier="heading" label="Heading"/>
-        <text identifier="copy" label="Copy" wysiwyg="true"/>
-        <text default="Individual Faculty" identifier="type" label="Display" required="true" type="radiobutton">
-          <radio-item show-fields="primaryContent/widget/faculty/person" value="Individual Faculty"/>
-          <radio-item label="Faculty Listing" show-fields="primaryContent/widget/faculty/school, primaryContent/widget/faculty/dept, primaryContent/widget/faculty/filter, primaryContent/widget/faculty/facultyUnit, primaryContent/widget/faculty/photo, primaryContent/widget/faculty/bio-link, primaryContent/widget/faculty/short-bio, primaryContent/widget/faculty/office-info, primaryContent/widget/faculty/show-school-affiliations" value="Faculty Listing"/>
-        </text>
-        <group identifier="person" label="Person" multiple="true">
-          <asset identifier="faculty-block" label="Faculty Member" required="true" type="block"/>
-          <text default="Yes" identifier="photo" label="Show Photo" required="true" type="radiobutton">
-            <radio-item value="Yes"/>
-            <radio-item value="No"/>
-          </text>
-          <text default="Yes" identifier="bio-link" label="Link to Full Bio" required="true" type="radiobutton">
-            <radio-item value="Yes"/>
-            <radio-item value="No"/>
-          </text>
-          <text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
-            <radio-item value="Yes"/>
-            <radio-item value="No"/>
-          </text>
-          <text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
-            <radio-item value="Yes"/>
-            <radio-item value="No"/>
-          </text>
-          <text default="Yes" identifier="show-school-affiliations" label="Show School Affiliation(s)" required="true" type="radiobutton">
-            <radio-item value="Yes"/>
-            <radio-item value="No"/>
-          </text>
-        </group>
-        <text default="All" identifier="school" label="School Affiliation" type="dropdown">
-          <dropdown-item label="All" value="All"/>
-          <dropdown-item label="Argyros School" value="SBE"/>
-          <dropdown-item label="Attallah College" value="CES"/>
-          <dropdown-item label="Dodge College" value="CFMA"/>
-          <dropdown-item label="Crean College" value="CHBS"/>
-          <dropdown-item label="Wilkinson College" value="CHSS"/>
-          <dropdown-item label="College of Performing Arts" value="COPA"/>
-          <dropdown-item label="School of Pharmacy" value="SOP"/>
-          <dropdown-item label="Fowler School of Engineering" value="SENG"/>
-          <dropdown-item label="Fowler Law" value="SOL"/>
-          <dropdown-item label="Schmid College" value="COS"/>
-          <dropdown-item label="School of Communication" value="COMM"/>
-        </text>
-        <text default="All" identifier="dept" label="Dept Affiliation" type="dropdown">
-          <dropdown-item value="All"/>
-          <dropdown-item label="Art" value="ARTS"/>
-          <dropdown-item label="Athletic Training Program " value="ATPE"/>
-          <dropdown-item label="Biological Sciences " value="BIOL"/>
-          <dropdown-item label="Business and Economics " value="BUSI"/>
-          <dropdown-item label="Chapman Ability Project " value="CAPX"/>
-          <dropdown-item label="Chemistry " value="CHEM"/>
-          <dropdown-item label="Communication Studies " value="COMM"/>
-          <dropdown-item label="Communication Sciences and Disorders " value="CSD"/>
-          <dropdown-item label="Computational and Data Science " value="CADS"/>
-          <dropdown-item label="Creative and Cultural Industries " value="CMCI"/>
-          <dropdown-item label="Dance " value="DANC"/>
-          <dropdown-item label="Economic Science Institute " value="ESI"/>
-          <dropdown-item label="Education " value="EDUC"/>
-          <dropdown-item label="Electrical Engineering and Computer Science " value="EECS"/>
-          <dropdown-item label="English " value="ENGL"/>
-          <dropdown-item label="Environmental Science " value="ENV"/>
-          <dropdown-item label="Film and Media Arts " value="FILM"/>
-          <dropdown-item label="Food Science " value="FOOD"/>
-          <dropdown-item label="Health and Strategic Communication " value="HCOM"/>
-          <dropdown-item label="Health Sciences " value="HSK"/>
-          <dropdown-item label="History " value="HIST"/>
-          <dropdown-item label="Honors Program " value="HNRS"/>
-          <dropdown-item label="International Studies " value="INTS"/>
-          <dropdown-item label="(World) Languages and Cultures " value="LANG"/>
-          <dropdown-item label="Law " value="LAWS"/>
-          <dropdown-item label="Leadership Programs " value="LEAD"/>
-          <dropdown-item label="Marriage and Family Therapy " value="MFT"/>
-          <dropdown-item label="Mathematics " value="MATH"/>
-          <dropdown-item label="Music, Conservatory of " value="MUSI"/>
-          <dropdown-item label="Peace Studies " value="PCST"/>
-          <dropdown-item label="Pharmacy " value="PHRM"/>
-          <dropdown-item label="Philosophy " value="PHIL"/>
-          <dropdown-item label="Physical Activity " value="PAC"/>
-          <dropdown-item label="Physical Therapy " value="PT"/>
-          <dropdown-item label="Physician Assistant Studies " value="PAS"/>
-          <dropdown-item label="Physics " value="PHYZ"/>
-          <dropdown-item label="Physics, Computational Science and Engineering " value="PCSE"/>
-          <dropdown-item label="Political Science " value="POLI"/>
-          <dropdown-item label="Psychology " value="PSYC"/>
-          <dropdown-item label="Religious Studies " value="RELI"/>
-          <dropdown-item label="Sociology " value="SOCI"/>
-          <dropdown-item label="Theatre " value="THEA"/>
-        </text>
-        <text default="All" identifier="filter" label="Filter By" required="true" type="dropdown">
-          <dropdown-item value="All"/>
-          <dropdown-item value="Emeriti only"/>
-          <dropdown-item value="Presidential Fellows only"/>
-          <dropdown-item value="Tenured/Tenure-Track only"/>
-          <dropdown-item value="Core Faculty only"/>
-        </text>
-        <text default="All" identifier="facultyUnit" label="Faculty Unit" type="dropdown">
-          <dropdown-item value="All"/>
-          <dropdown-item value="SCST-CBFS"/>
-          <dropdown-item value="SCST-LES"/>
-          <dropdown-item value="SCST-MPC"/>
-          <dropdown-item value="WILK-PEAC"/>
-          <dropdown-item value="PHRM-BPS"/>
-          <dropdown-item value="PHRM-PHP"/>
-        </text>
-        <text default="Yes" identifier="photo" label="Show Photo" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="Yes" identifier="bio-link" label="Link to Full Bio" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="Yes" identifier="show-school-affiliations" label="Show School Affiliation(s)" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-      </group>
-    </group>
-  </group>
-  <group collapsed="true" identifier="meta" label="Supplemental Content">
-    <asset identifier="social_accounts" label="Social Accounts" render-content-depth="10" type="block"/>
-    <group collapsed="true" identifier="sharing" label="Sharing ">
-      <asset help-text="Image used for sharing on facebook (130px w, 110px h exactly)" identifier="og_image" label="OG Image" type="file"/>
-      <text help-text="Overrides title for when page is shared to facebook (defaults to Display Name)" identifier="og_title" label="OG Title"/>
-      <text help-text="Overrides description when page is shared to facebook" identifier="og_description" label="OG Description"/>
-      <text help-text="The text that prepopulates on twitter (followed by URL and hashtags)" identifier="twitter_text" label="Twitter Share Text"/>
-      <text help-text="Hashtags to get appended to tweet (no #!)" identifier="twitter_hashtag" label="Twitter Hashtag" maximum-number="3" multiple="true"/>
-    </group>
-    <group identifier="news-events-options" label="Featured / News / Events Feeds">
-      <asset identifier="feature" label="Feature" type="page"/>
-      <text default="Default" help-text="Default is stories from Newsroom maintained by Marketing Dept at Chapman" identifier="newsFeed" label="News Feed" type="dropdown">
-        <dropdown-item value="Default"/>
-        <dropdown-item value="Academics"/>
-        <dropdown-item value="Admissions"/>
-        <dropdown-item value="ASBE"/>
-        <dropdown-item value="Commencement"/>
-        <dropdown-item value="COPA"/>
-        <dropdown-item value="Crean"/>
-        <dropdown-item value="Dodge"/>
-        <dropdown-item value="Education"/>
-        <dropdown-item value="Information Systems"/>
-        <dropdown-item value="Law"/>
-        <dropdown-item value="Pharmacy"/>
-        <dropdown-item value="Schmid"/>
-        <dropdown-item value="SOC"/>
-        <dropdown-item value="Students"/>
-        <dropdown-item value="Thompson Policy Institute"/>
-        <dropdown-item value="Wilkinson"/>
-      </text>
-      <text default="Default" help-text="Default is today's events on events.chapman.edu" identifier="eventsFeed" label="Events Feed" type="dropdown">
-        <dropdown-item value="Default"/>
-        <dropdown-item value="ASBE"/>
-        <dropdown-item value="CDC"/>
-        <dropdown-item value="COPA"/>
-        <dropdown-item value="CREAN"/>
-        <dropdown-item value="DANCE"/>
-        <dropdown-item value="DODGE"/>
-        <dropdown-item value="Education"/>
-        <dropdown-item value="Information Systems"/>
-        <dropdown-item value="LAW"/>
-        <dropdown-item value="MUSIC"/>
-        <dropdown-item value="PHARMACY"/>
-        <dropdown-item value="SCHMID"/>
-        <dropdown-item value="SOC"/>
-        <dropdown-item value="STUDENTS"/>
-        <dropdown-item value="THEATRE"/>
-        <dropdown-item value="Thompson Policy Institute"/>
-        <dropdown-item value="WILKINSON"/>
-        <dropdown-item value="ESI"/>
-      </text>
-    </group>
-  </group>
+			<group collapsed="true" identifier="wysiwyg-editor" label="Text Editor">
+				<text default="Yes" identifier="display-wysiwyg-editor" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text identifier="content" label="Content" wysiwyg="true"/>
+			</group>
+			<group collapsed="true" identifier="logo-image-rotator" label="Logo Image Rotator">
+				<text default="Yes" identifier="display-logo-image-rotator" label="Show" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text identifier="label" label="Label" maxlength="20"/>
+				<group identifier="image" label="Image" maximum-number="25" multiple="true">
+					<asset identifier="image-file" label="Image (114 x 100)" type="file"/>
+					<text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+					<group identifier="link" label="Link">
+						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+							<radio-item show-fields="primaryContent/widget/logo-image-rotator/image/link/internalLink" value="Internal Link"/>
+							<radio-item show-fields="primaryContent/widget/logo-image-rotator/image/link/externalLink" value="External Link"/>
+							<radio-item show-fields="primaryContent/widget/logo-image-rotator/image/link/fileLink" value="File Link"/>
+						</text>
+						<text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+						<asset identifier="internalLink" label="Internal Link" type="page"/>
+						<asset identifier="fileLink" label="File Link" type="file"/>
+					</group>
+				</group>
+			</group>
+			<group collapsed="true" identifier="form-embed" label="Form Embed">
+				<text default="Yes" identifier="display-form-embed" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Cascade Block" identifier="block-type" label="Block Type" required="true" type="radiobutton">
+					<radio-item label="Cascade Block" show-fields="primaryContent/widget/form-embed/cascade-block" value="Cascade Block"/>
+					<radio-item label="External Javascript Embed or iFrame Block" show-fields="primaryContent/widget/form-embed/external-block" value="External Block"/>
+				</text>
+				<group identifier="cascade-block" label="Cascade Block">
+					<text identifier="header" label="Header"/>
+					<text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
+					<asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="code-block" label="Form Block" render-content-depth="unlimited" type="block"/>
+				</group>
+				<group identifier="external-block" label="External Block">
+					<text identifier="copy" label="Introductory Copy" wysiwyg="true"/>
+					<text help-text="paste in Javascript block provided by Embed Form action or iFrame in Formstack (check checkboxes for Don't Need Jquery or Jquery UI or Modernizer)" identifier="code-block" label="Embed or IFrame Code Block" multi-line="true" required="true"/>
+				</group>
+			</group>
+			<group collapsed="true" identifier="form" label="Form">
+				<text default="Yes" identifier="display-form" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text identifier="header" label="Header"/>
+				<text identifier="copy" label="Copy" wysiwyg="true"/>
+				<asset help-text="link to _cascade/blocks/html/Forms-primary-content" identifier="formBlock" label="Form Block" render-content-depth="unlimited" type="block"/>
+			</group>
+			<group collapsed="true" identifier="contact" label="Department Contact">
+				<text default="Yes" identifier="display-contact" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text identifier="heading" label="Heading"/>
+				<text identifier="copy" label="Copy" wysiwyg="true"/>
+				<text default="Multiple Department Listing" identifier="type" label="Display" required="true" type="radiobutton">
+					<radio-item show-fields="primaryContent/widget/contact/umbrella" value="Multiple Department Listing"/>
+					<radio-item show-fields="primaryContent/widget/contact/info" value="Individual Department"/>
+				</text>
+				<asset identifier="info" label="Choose Department" render-content-depth="2" required="true" type="block"/>
+				<text default="All" identifier="umbrella" label="Umbrella Group" type="dropdown">
+					<dropdown-item value="All"/>
+					<dropdown-item value="About"/>
+					<dropdown-item value="Academics"/>
+					<dropdown-item value="Admission"/>
+					<dropdown-item value="Alumni"/>
+					<dropdown-item value="Argyros School of Business"/>
+					<dropdown-item value="Attallah College"/>
+					<dropdown-item value="Campus Services"/>
+					<dropdown-item value="College of Performing Arts"/>
+					<dropdown-item value="Crean College"/>
+					<dropdown-item value="Dodge College"/>
+					<dropdown-item value="Faculty and Staff"/>
+					<dropdown-item value="Families"/>
+					<dropdown-item value="Fowler Law School"/>
+					<dropdown-item value="Research and Institutions"/>
+					<dropdown-item value="Schmid College"/>
+					<dropdown-item value="School of Communication"/>
+					<dropdown-item value="School of Pharmacy"/>
+					<dropdown-item value="Students"/>
+					<dropdown-item value="Student Affairs"/>
+					<dropdown-item value="Support Chapman"/>
+					<dropdown-item value="Wilkinson College"/>
+				</text>
+				<text default="Basic Address" identifier="display" label="Information to Display" type="dropdown">
+					<dropdown-item value="Basic Address"/>
+					<dropdown-item value="Basic Location"/>
+					<dropdown-item value="Main / People"/>
+					<dropdown-item value="People Only"/>
+				</text>
+			</group>
+			<group collapsed="true" identifier="degree" label="Degree Information">
+				<text default="Yes" identifier="display-degree" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text identifier="heading" label="Heading"/>
+				<text identifier="copy" label="Copy" wysiwyg="true"/>
+				<text default="Single Degree" identifier="type" label="Display" required="true" type="radiobutton">
+					<radio-item show-fields="primaryContent/widget/degree/show, primaryContent/widget/degree/block" value="Single Degree"/>
+					<radio-item show-fields="primaryContent/widget/degree/school, primaryContent/widget/degree/cat, primaryContent/widget/degree/level" value="Degree Listing"/>
+				</text>
+				<asset identifier="block" label="Degree" render-content-depth="2" required="true" type="block"/>
+				<text default="All" identifier="school" label="School Affliation" type="dropdown">
+					<dropdown-item value="All"/>
+					<dropdown-item value="Argyros School of Business and Economics"/>
+					<dropdown-item value="Attallah College of Educational Studies"/>
+					<dropdown-item value="Dodge College of Film and Media Arts"/>
+					<dropdown-item value="Crean College of Health and Behavioral Sciences"/>
+					<dropdown-item value="Wilkinson College of Arts, Humanities, and Social Sciences"/>
+					<dropdown-item value="College of Performing Arts"/>
+					<dropdown-item value="School of Pharmacy"/>
+					<dropdown-item value="Fowler School of Law"/>
+					<dropdown-item value="Schmid College of Science and Technology"/>
+					<dropdown-item value="School of Communication"/>
+				</text>
+				<text identifier="level" label="Degree Level" type="checkbox">
+					<checkbox-item value="Bachelors"/>
+					<checkbox-item value="Masters"/>
+					<checkbox-item value="Doctorate"/>
+					<checkbox-item value="Certificate"/>
+					<checkbox-item value="4+1 and Bridge"/>
+					<checkbox-item value="Major"/>
+					<checkbox-item value="Minor"/>
+				</text>
+				<text default="No" identifier="show" label="Show Photo" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+			</group>
+			<group collapsed="true" identifier="faculty" label="Faculty">
+				<text default="Yes" identifier="display-faculty" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text identifier="heading" label="Heading"/>
+				<text identifier="copy" label="Copy" wysiwyg="true"/>
+				<text default="Individual Faculty" identifier="type" label="Display" required="true" type="radiobutton">
+					<radio-item show-fields="primaryContent/widget/faculty/person" value="Individual Faculty"/>
+					<radio-item label="Faculty Listing" show-fields="primaryContent/widget/faculty/school, primaryContent/widget/faculty/dept, primaryContent/widget/faculty/filter, primaryContent/widget/faculty/facultyUnit, primaryContent/widget/faculty/photo, primaryContent/widget/faculty/bio-link, primaryContent/widget/faculty/short-bio, primaryContent/widget/faculty/office-info, primaryContent/widget/faculty/show-school-affiliations" value="Faculty Listing"/>
+				</text>
+				<group identifier="person" label="Person" multiple="true">
+					<asset identifier="faculty-block" label="Faculty Member" required="true" type="block"/>
+					<text default="Yes" identifier="photo" label="Show Photo" required="true" type="radiobutton">
+						<radio-item value="Yes"/>
+						<radio-item value="No"/>
+					</text>
+					<text default="Yes" identifier="bio-link" label="Link to Full Bio" required="true" type="radiobutton">
+						<radio-item value="Yes"/>
+						<radio-item value="No"/>
+					</text>
+					<text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
+						<radio-item value="Yes"/>
+						<radio-item value="No"/>
+					</text>
+					<text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
+						<radio-item value="Yes"/>
+						<radio-item value="No"/>
+					</text>
+					<text default="Yes" identifier="show-school-affiliations" label="Show School Affiliation(s)" required="true" type="radiobutton">
+						<radio-item value="Yes"/>
+						<radio-item value="No"/>
+					</text>
+				</group>
+				<text default="All" identifier="school" label="School Affiliation" type="dropdown">
+					<dropdown-item label="All" value="All"/>
+					<dropdown-item label="Argyros School" value="SBE"/>
+					<dropdown-item label="Attallah College" value="CES"/>
+					<dropdown-item label="Dodge College" value="CFMA"/>
+					<dropdown-item label="Crean College" value="CHBS"/>
+					<dropdown-item label="Wilkinson College" value="CHSS"/>
+					<dropdown-item label="College of Performing Arts" value="COPA"/>
+					<dropdown-item label="School of Pharmacy" value="SOP"/>
+					<dropdown-item label="Fowler School of Engineering" value="SENG"/>
+					<dropdown-item label="Fowler Law" value="SOL"/>
+					<dropdown-item label="Schmid College" value="COS"/>
+					<dropdown-item label="School of Communication" value="COMM"/>
+				</text>
+				<text default="All" identifier="dept" label="Dept Affiliation" type="dropdown">
+					<dropdown-item value="All"/>
+					<dropdown-item label="Art" value="ARTS"/>
+					<dropdown-item label="Athletic Training Program " value="ATPE"/>
+					<dropdown-item label="Biological Sciences " value="BIOL"/>
+					<dropdown-item label="Business and Economics " value="BUSI"/>
+					<dropdown-item label="Chapman Ability Project " value="CAPX"/>
+					<dropdown-item label="Chemistry " value="CHEM"/>
+					<dropdown-item label="Communication Studies " value="COMM"/>
+					<dropdown-item label="Communication Sciences and Disorders " value="CSD"/>
+					<dropdown-item label="Computational and Data Science " value="CADS"/>
+					<dropdown-item label="Creative and Cultural Industries " value="CMCI"/>
+					<dropdown-item label="Dance " value="DANC"/>
+					<dropdown-item label="Economic Science Institute " value="ESI"/>
+					<dropdown-item label="Education " value="EDUC"/>
+					<dropdown-item label="Electrical Engineering and Computer Science " value="EECS"/>
+					<dropdown-item label="English " value="ENGL"/>
+					<dropdown-item label="Environmental Science " value="ENV"/>
+					<dropdown-item label="Film and Media Arts " value="FILM"/>
+					<dropdown-item label="Food Science " value="FOOD"/>
+					<dropdown-item label="Health and Strategic Communication " value="HCOM"/>
+					<dropdown-item label="Health Sciences " value="HSK"/>
+					<dropdown-item label="History " value="HIST"/>
+					<dropdown-item label="Honors Program " value="HNRS"/>
+					<dropdown-item label="International Studies " value="INTS"/>
+					<dropdown-item label="(World) Languages and Cultures " value="LANG"/>
+					<dropdown-item label="Law " value="LAWS"/>
+					<dropdown-item label="Leadership Programs " value="LEAD"/>
+					<dropdown-item label="Marriage and Family Therapy " value="MFT"/>
+					<dropdown-item label="Mathematics " value="MATH"/>
+					<dropdown-item label="Music, Conservatory of " value="MUSI"/>
+					<dropdown-item label="Peace Studies " value="PCST"/>
+					<dropdown-item label="Pharmacy " value="PHRM"/>
+					<dropdown-item label="Philosophy " value="PHIL"/>
+					<dropdown-item label="Physical Activity " value="PAC"/>
+					<dropdown-item label="Physical Therapy " value="PT"/>
+					<dropdown-item label="Physician Assistant Studies " value="PAS"/>
+					<dropdown-item label="Physics " value="PHYZ"/>
+					<dropdown-item label="Physics, Computational Science and Engineering " value="PCSE"/>
+					<dropdown-item label="Political Science " value="POLI"/>
+					<dropdown-item label="Psychology " value="PSYC"/>
+					<dropdown-item label="Religious Studies " value="RELI"/>
+					<dropdown-item label="Sociology " value="SOCI"/>
+					<dropdown-item label="Theatre " value="THEA"/>
+				</text>
+				<text default="All" identifier="filter" label="Filter By" required="true" type="dropdown">
+					<dropdown-item value="All"/>
+					<dropdown-item value="Emeriti only"/>
+					<dropdown-item value="Presidential Fellows only"/>
+					<dropdown-item value="Tenured/Tenure-Track only"/>
+					<dropdown-item value="Core Faculty only"/>
+				</text>
+				<text default="All" identifier="facultyUnit" label="Faculty Unit" type="dropdown">
+					<dropdown-item value="All"/>
+					<dropdown-item value="SCST-CBFS"/>
+					<dropdown-item value="SCST-LES"/>
+					<dropdown-item value="SCST-MPC"/>
+					<dropdown-item value="WILK-PEAC"/>
+					<dropdown-item value="PHRM-BPS"/>
+					<dropdown-item value="PHRM-PHP"/>
+				</text>
+				<text default="Yes" identifier="photo" label="Show Photo" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="bio-link" label="Link to Full Bio" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="No" identifier="office-info" label="Show Office Info" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-school-affiliations" label="Show School Affiliation(s)" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+			</group>
+		</group>
+	</group>
+	<group collapsed="true" identifier="meta" label="Supplemental Content">
+		<asset identifier="social_accounts" label="Social Accounts" render-content-depth="10" type="block"/>
+		<group collapsed="true" identifier="sharing" label="Sharing ">
+			<asset help-text="Image used for sharing on facebook (130px w, 110px h exactly)" identifier="og_image" label="OG Image" type="file"/>
+			<text help-text="Overrides title for when page is shared to facebook (defaults to Display Name)" identifier="og_title" label="OG Title"/>
+			<text help-text="Overrides description when page is shared to facebook" identifier="og_description" label="OG Description"/>
+			<text help-text="The text that prepopulates on twitter (followed by URL and hashtags)" identifier="twitter_text" label="Twitter Share Text"/>
+			<text help-text="Hashtags to get appended to tweet (no #!)" identifier="twitter_hashtag" label="Twitter Hashtag" maximum-number="3" multiple="true"/>
+		</group>
+		<group identifier="news-events-options" label="Featured / News / Events Feeds">
+			<asset identifier="feature" label="Feature" type="page"/>
+			<text default="Default" help-text="Default is stories from Newsroom maintained by Marketing Dept at Chapman" identifier="newsFeed" label="News Feed" type="dropdown">
+				<dropdown-item value="Default"/>
+				<dropdown-item value="Academics"/>
+				<dropdown-item value="Admissions"/>
+				<dropdown-item value="ASBE"/>
+				<dropdown-item value="Commencement"/>
+				<dropdown-item value="COPA"/>
+				<dropdown-item value="Crean"/>
+				<dropdown-item value="Dodge"/>
+				<dropdown-item value="Education"/>
+				<dropdown-item value="Information Systems"/>
+				<dropdown-item value="Law"/>
+				<dropdown-item value="Pharmacy"/>
+				<dropdown-item value="Schmid"/>
+				<dropdown-item value="SOC"/>
+				<dropdown-item value="Students"/>
+				<dropdown-item value="Thompson Policy Institute"/>
+				<dropdown-item value="Wilkinson"/>
+			</text>
+			<text default="Default" help-text="Default is today's events on events.chapman.edu" identifier="eventsFeed" label="Events Feed" type="dropdown">
+				<dropdown-item value="Default"/>
+				<dropdown-item value="ASBE"/>
+				<dropdown-item value="CDC"/>
+				<dropdown-item value="COPA"/>
+				<dropdown-item value="CREAN"/>
+				<dropdown-item value="DANCE"/>
+				<dropdown-item value="DODGE"/>
+				<dropdown-item value="Education"/>
+				<dropdown-item value="Information Systems"/>
+				<dropdown-item value="LAW"/>
+				<dropdown-item value="MUSIC"/>
+				<dropdown-item value="PHARMACY"/>
+				<dropdown-item value="SCHMID"/>
+				<dropdown-item value="SOC"/>
+				<dropdown-item value="STUDENTS"/>
+				<dropdown-item value="THEATRE"/>
+				<dropdown-item value="Thompson Policy Institute"/>
+				<dropdown-item value="WILKINSON"/>
+				<dropdown-item value="ESI"/>
+			</text>
+		</group>
+	</group>
 </system-data-structure>
