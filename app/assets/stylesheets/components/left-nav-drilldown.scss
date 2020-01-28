@@ -1,0 +1,36 @@
+$nav-width: 410px; 
+
+
+#left-column-navigation {
+  overflow-y: hidden;
+  
+  &.left-nav-drilldown {
+    position: relative;
+    // height: 45vh;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 1.4rem;
+    background-color: $white;
+    border: 1px solid #CFCFCF;
+    overflow-x: hidden;
+
+    ul { list-style: none; }
+
+    .root-left-nav {
+      transition: all .5s;
+    }
+
+    li {
+      margin: unset;
+      list-style: none;
+      font-family: "futura-pt", arial, sans-serif;
+      will-change: background-color;
+    }
+
+    @include drill-down-menu-style(100%);
+
+    @include respond(small) {
+      display: none;
+    }
+  }
+}

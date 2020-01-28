@@ -38,6 +38,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     ; //600px
   }
 
+  @if $breakpoint==small {
+    @media only screen and (max-width: 47em) {
+      @content
+    }
+
+    ; // 767px
+  }
+
   @if $breakpoint==tab-port {
     @media only screen and (max-width: 56.25em) {
       @content
@@ -435,13 +443,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
   &:hover,
   &:focus {
-    background-color: darken($bg-color, 7%);
+    background-color: lighten($bg-color, 8%);
     @include transition(background-color);
   }
 
   &:active {
     transition: none;
-    background-color: darken($bg-color, 7%);
+    background-color: lighten($bg-color, 7%);
   }
 }
 
@@ -568,3 +576,154 @@ ORDER: Base + typography > general layout + grid > page layout > components
 //   align-items: center;
 //   @include dc($bg);
 // }
+// }
+@mixin slide-in-out($type, $from, $to, $duration: 1s ) {
+  @if $type == in {
+    &.slide-in {
+      animation: #{$type} $duration forwards;
+      @keyframes #{$type} {
+        0% { transform: translateX($from); }
+        100% { transform: translateX($to); }
+      }
+    }
+  }
+
+  @if $type == out {
+    &.slide-out {
+      animation: #{$type} $duration forwards;
+
+      @keyframes #{$type} {
+        0% { transform: translateX($from); }
+        100% { transform: translateX($to); }
+      }
+    }
+  }
+}
+
+@mixin drill-down-menu-style($width: 410px) {
+
+  li {
+    &:hover { cursor: pointer; }
+  }
+
+  // .drill-down-menu {
+    
+  // }
+
+
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #CFCFCF;
+
+    a, .drill-down-parent {
+      font-family: "futura-pt", arial, sans-serif;
+      line-height: 1.8rem;
+      color: #231f20;
+      padding: 15px 50px 15px 30px;
+      width: 100%;
+
+      &:focus {
+        // outline-color: $cu-red;
+        // outline-style: auto;
+        // outline-width: 5px;
+        outline: none;
+      }
+    }
+
+    span.toggle-drilldown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 7rem;
+
+      .fas {
+        display: flex;
+        font-weight: 900;
+        font-size: 1.4rem;
+      }
+    }
+
+    ul.drilldown-menu {
+      display: none;
+      position: absolute;
+      // height: 100%;
+      width: 100%;
+      left: $width;
+      top: 0;
+      transform: translateX(0);
+      transition: all 1s;
+
+      &.active {
+        .drill-down-list-item {
+
+          &:focus-within {
+            outline-color: $cu-red;
+            outline-style: auto;
+            outline-width: 5px;
+          }
+
+          &.home-menu {
+            &:focus-within {
+              outline-color: $cu-red;
+              outline-style: auto;
+              outline-width: 5px;
+            }
+          }
+        }
+      }
+
+      .menu-back {
+        justify-content: start;
+        align-items: center;
+        background: $cu-red;
+        color: $white;
+        font-weight: bold;
+        line-height: 1.6rem;
+        font-family: $futura-regular;
+        padding: 20px 50px 20px 20px;
+
+        .fas {
+          margin-right: 2rem;
+        }
+
+        &:focus {
+          outline-color: $cu-red;
+          outline-style: auto;
+          outline-width: 5px;
+        }
+      }
+    }
+
+    &.current {
+      a,
+      span {
+        font-weight: 800;
+
+        &::before {
+          content: "\25CF";
+          color: $cu-red;
+          padding: 0 5px;
+        }
+      }
+    }
+
+    &.home-menu {
+      background: $cu-red;
+      font-weight: bold;
+      color: $white;
+      i {
+        padding: 20px 0px 20px 30px;
+      }
+      a { 
+        color: $white;
+        padding: 20px 50px 20px 10px;
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+}
