@@ -1,0 +1,17 @@
+#uninav {
+  /* master.self.css | http://localhost:5000/_assets/master.self.css?body=1 */
+}
+
+#uninav .gsc-search-button {
+  background-color: white;
+  background: white;
+  border: none;
+  fill: black;
+}
+
+#uninav .gsc-search-button-v2 svg {
+  /* fill: #fff; */
+  fill: black;
+  height: 2rem;
+  width: 1.8rem;
+}

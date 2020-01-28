@@ -628,3 +628,8 @@ p {
   font-size: 1.6rem;
   margin-bottom: 2rem;
 }
+
+// experimenting with sliding up global content on page load
+#main { 
+  @include qbal-slideUp-enter;
+}
