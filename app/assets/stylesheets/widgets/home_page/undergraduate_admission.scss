@@ -18,7 +18,6 @@
       max-width: 100%;
       padding: 10px;
       background: url('../img/gray_50.png');
-
       /*
        * This is required for IE since IE defaults to border-box, which will shrink
        * content to fit in width. For more info on this setting, see:
@@ -88,7 +87,6 @@
       opacity: 1;
     }
   }
-
 }
 
 @media only screen and (min-width: 680px) {
@@ -205,7 +203,6 @@
 /***************************************************
 * Undergraduate Admission Section
 ***************************************************/
-
 #undergraduateAdmission {
   background: #111111 image-url('undergrad-admissions.jpg') no-repeat center;
   background-size: cover;
