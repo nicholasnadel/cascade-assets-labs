@@ -59,7 +59,7 @@ html {
     &__logo {
       &--secondary {
         @include qbal-slideRight-exit;
-        // display: none;
+        display: none;
       }
     }
 
