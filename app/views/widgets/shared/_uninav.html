@@ -1,22 +1,22 @@
+<!-- debug -->
 <script>
   window.onbeforeunload = function () {
-    return "Data will be lost if you leave the page, are you sure?";
+    return "are you sure?";
   };
-
 </script>
 <nav class="branded" id="uninav">
-  <!-- pagePath: dodge/apply/index -->
+  <!-- pagePath: dodge/index -->
   <!-- pageUmbrellaCategory: [dodge, Dodge College] -->
-  <!-- umbrellaAssets count: 13 -->
+  <!-- umbrellaAssets count: 14 -->
 
 
   <div class="uninav__umbrella-nav-button-container">
-    <button aria-label="Toggle site menu" class="umbrella-nav-toggle-button" id="umbrella-nav-button-toggle"
-      type="button">
+    <button aria-label="Toggle site menu" class="umbrella-nav-toggle-button section-menu-small"
+      id="umbrella-nav-button-toggle" type="button">
       <div>
-        <p class="section-menu-text">Section</p>
-        <p class="section-menu-text">Menu</p>
-        <svg class="section-menu-hamburger-icon" height="32" viewBox="0 0 16 16" width="32">
+        <p class="section-menu-text" style="display: none;">Section</p>
+        <p class="section-menu-text" style="display: none;">Menu</p>
+        <svg class="section-menu-hamburger-icon" height="32" viewBox="0 0 16 16" width="32" style="display: inline;">
           <title>Toggle Section Menu</title>
           <path d="M1 3h14v2h-14v-2z"></path>
           <path d="M1 7h14v2h-14v-2z"></path>
@@ -26,8 +26,20 @@
       <span class="sr-only">Menu</span>
     </button>
   </div>
-  <div class="off-canvas-overlay" id="js-off-canvas-overlay"></div>
-  <div class="off-canvas-nav-container" id="js-off-canvas-nav-container" style="overflow-y: hidden;">
+  <div class="uninav__hamburger-menu">
+    <button aria-label="Toggle site menu" class="hamburger-menu-button" type="button">
+      <svg class="hamburger-icon" height="32" viewBox="0 0 16 16" width="32">
+        <title>Toggle Mobile Menu</title>
+        <path d="M1 3h14v2h-14v-2z"></path>
+        <path d="M1 7h14v2h-14v-2z"></path>
+        <path d="M1 11h14v2h-14v-2z"></path>
+      </svg>
+      <span class="sr-only">Menu</span>
+    </button>
+  </div>
+  <div class="off-canvas-overlay" id="js-off-canvas-overlay" style="display: none;"></div>
+  <div class="off-canvas-nav-container" id="js-off-canvas-nav-container"
+    style="overflow-y: hidden; transform: translateX(-410px); visibility: hidden;">
     <div class="cu-off-canvas-header">
       <div class="cu-logo-wrapper">
         <div class="toggle-logo" id="main-logo">
@@ -44,58 +56,40 @@
       </div>
     </div>
     <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-      <div class="off-canvas-menu" id="off-canvas-umbrella">
+      <div class="off-canvas-menu slide-out" id="off-canvas-umbrella" style="display: none;">
         <div class="menu-header">
           <span class="menu-label" tabindex="0">Dodge College</span>
-          <a class="toggle-menu-label" href="#">Chapman Menu</a>
+          <span class="toggle-menu-label" tabindex="0">Chapman Menu</span>
         </div>
 
         <div id="off-canvas-umbrella-navigation">
-          <ul class="root-umbrella-nav" style="transform: translateX(-410px);">
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Dodge College - Home")
-              }
-
-            </script>
+          <ul class="root-umbrella-nav" style="transform: translateX(0px); height: 696px;">
 
 
 
-            <li class="drill-down-list-item home-menu">
+            <li class="drill-down-list-item current home-menu top-drill-down-list-item">
               <i class="fas fa-home"></i>
               <a href="/entity/open.act?type=page&amp;id=1fd5862fc04d744c580ddf89ccaf49f5&amp;confId=8667bb00c0a81e4b7fe96604eff4cff5"
                 target="_parent">Dodge College - Home</a>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Academic Programs")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Academic Programs</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Academic Programs</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3eb73a8ac04d744c580ddf89ed2280a6&amp;confId=f8de6ceac04d744c54334ecadcc06792"
                     target="_parent">Academic Programs</a></li>
-                <script>
-                  if (window.location.href.indexOf("//dev-") > -1) {
-                    console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Undergraduate Programs")
-                  }
-
-                </script>
 
 
 
                 <li class="drill-down-list-item">
                   <span class="drill-down-parent" tabindex="0">Undergraduate Programs</span>
                   <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-                  <ul class="drilldown-menu">
+                  <ul class="drilldown-menu" style="display: none;">
                     <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Undergraduate Programs</li>
                     <li class="drill-down-list-item"><a
                         href="/entity/open.act?type=page&amp;id=cfa04dd0c04d744c7b41aa2527377f23&amp;confId=f8de6ceac04d744c54334ecadcc06792"
@@ -135,19 +129,13 @@
                         target="_parent">International Programs</a></li>
                   </ul>
                 </li>
-                <script>
-                  if (window.location.href.indexOf("//dev-") > -1) {
-                    console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Graduate Programs")
-                  }
-
-                </script>
 
 
 
                 <li class="drill-down-list-item">
                   <span class="drill-down-parent" tabindex="0">Graduate Programs</span>
                   <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-                  <ul class="drilldown-menu">
+                  <ul class="drilldown-menu" style="display: none;">
                     <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Graduate Programs</li>
                     <li class="drill-down-list-item"><a
                         href="/entity/open.act?type=page&amp;id=d970df0ec04d744c7cf56489aee1d162&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
@@ -186,19 +174,13 @@
                 </li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Industry Programs")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Industry Programs</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Industry Programs</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3f8a16e4c04d744c580ddf897333ebef&amp;confId=f8de6ceac04d744c54334ecadcc06792"
@@ -220,36 +202,24 @@
                     target="_parent">CNA Sound and Storytelling Conference</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Summer Programs")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Summer Programs</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Summer Programs</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=d828d6e6c04d744c421e6b1c7849b389&amp;confId=f8de6ceac04d744c54334ecadcc06792"
                     target="_parent">Summer Programs</a></li>
-                <script>
-                  if (window.location.href.indexOf("//dev-") > -1) {
-                    console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Summer Film Academy")
-                  }
-
-                </script>
 
 
 
                 <li class="drill-down-list-item">
                   <span class="drill-down-parent" tabindex="0">Summer Film Academy</span>
                   <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-                  <ul class="drilldown-menu">
+                  <ul class="drilldown-menu" style="display: none;">
                     <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Summer Film Academy</li>
                     <li class="drill-down-list-item"><a
                         href="/entity/open.act?type=page&amp;id=c096492cc04d744c2d059fd67553d79d&amp;confId=f8de6ceac04d744c54334ecadcc06792"
@@ -273,36 +243,24 @@
                     target="_parent">Chapman University Summer Film Academy, China</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Apply")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Apply</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu active" style="display: block;">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Apply</li>
-                <li class="drill-down-list-item current"><a
+                <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3f9ce98ec04d744c580ddf895fade70a&amp;confId=89371a0ec0a81e4b7fe96604c69524c9"
                     target="_parent">Apply</a></li>
-                <script>
-                  if (window.location.href.indexOf("//dev-") > -1) {
-                    console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Undergraduate Applications")
-                  }
-
-                </script>
 
 
 
                 <li class="drill-down-list-item">
                   <span class="drill-down-parent" tabindex="0">Undergraduate Applications</span>
                   <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-                  <ul class="drilldown-menu">
+                  <ul class="drilldown-menu" style="display: none;">
                     <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Undergraduate Applications
                     </li>
                     <li class="drill-down-list-item"><a
@@ -346,26 +304,20 @@
                         target="_parent">Transfer Admission FAQs</a></li>
                   </ul>
                 </li>
-                <script>
-                  if (window.location.href.indexOf("//dev-") > -1) {
-                    console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Graduate Applications")
-                  }
-
-                </script>
 
 
 
                 <li class="drill-down-list-item">
                   <span class="drill-down-parent" tabindex="0">Graduate Applications</span>
                   <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-                  <ul class="drilldown-menu">
+                  <ul class="drilldown-menu" style="display: none;">
                     <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Graduate Applications</li>
-                    <li class="drill-down-list-item"><a
-                        href="/entity/open.act?type=page&amp;id=edb1b439c04d744c7cf56489aa1c0d73&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
-                        target="_parent">Apply - Documentary Filmmaking</a></li>
                     <li class="drill-down-list-item"><a
                         href="/entity/open.act?type=page&amp;id=3fbf1a28c04d744c580ddf89db817f15&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
                         target="_parent">Graduate Applications</a></li>
+                    <li class="drill-down-list-item"><a
+                        href="/entity/open.act?type=page&amp;id=edb1b439c04d744c7cf56489aa1c0d73&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                        target="_parent">Apply - Documentary Filmmaking</a></li>
                     <li class="drill-down-list-item"><a
                         href="/entity/open.act?type=page&amp;id=3fbf1ef9c04d744c580ddf8915e4c87e&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
                         target="_parent">Apply - Film Studies</a></li>
@@ -409,19 +361,13 @@
                 </li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH About Dodge")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">About Dodge</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>About Dodge</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3fd1fe84c04d744c580ddf89823cdbd3&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
@@ -435,19 +381,13 @@
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3fd18a81c04d744c580ddf892a48eb34&amp;confId=f8de6ceac04d744c54334ecadcc06792"
                     target="_parent">About Dodge</a></li>
-                <script>
-                  if (window.location.href.indexOf("//dev-") > -1) {
-                    console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Press Room")
-                  }
-
-                </script>
 
 
 
                 <li class="drill-down-list-item">
                   <span class="drill-down-parent" tabindex="0">Press Room</span>
                   <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-                  <ul class="drilldown-menu">
+                  <ul class="drilldown-menu" style="display: none;">
                     <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Press Room</li>
                     <li class="drill-down-list-item"><a
                         href="/entity/open.act?type=page&amp;id=3fd599cdc04d744c580ddf895a827d45&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
@@ -465,19 +405,13 @@
                     target="_parent">Trustee Professors</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Facilities")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Facilities</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Facilities</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3fcefd0cc04d744c580ddf89cd0642a8&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
@@ -493,19 +427,13 @@
                     target="_parent">Chapman Studios West</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Student Life")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Student Life</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Student Life</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3ca86df5c04d744c220fee85be226e71&amp;confId=f8de6ceac04d744c54334ecadcc06792"
@@ -530,38 +458,26 @@
                     target="_parent">Change or Add Majors or Minors</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Student Work Showcase")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Student Work Showcase</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Student Work Showcase</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3fdeb32bc04d744c580ddf89b8141b9c&amp;confId=f8de6ceac04d744c54334ecadcc06792"
                     target="_parent">Student Work Showcase</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Alumni Life")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Alumni Life</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Alumni Life</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=0ce57b94c04d744c2006c9b2c7682c43&amp;confId=f8de6ceac04d744c54334ecadcc06792"
@@ -574,19 +490,13 @@
                     target="_parent">Alumni Support</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Support Dodge")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <span class="drill-down-parent" tabindex="0">Support Dodge</span>
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
-              <ul class="drilldown-menu">
+              <ul class="drilldown-menu" style="display: none;">
                 <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Support Dodge</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=3fd4560dc04d744c580ddf89bd64ee1c&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
@@ -602,59 +512,58 @@
                     target="_parent">Ways to Give</a></li>
               </ul>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Visit Dodge")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <a href="/entity/open.act?type=page&amp;id=3fd3b5a7c04d744c580ddf89a89844f3&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
                 target="_parent">Visit Dodge</a>
             </li>
-            <script>
-              if (window.location.href.indexOf("//dev-") > -1) {
-                console.log("(ง •̀_•́)ง VELOCITY: IM THE ASSET PATH Contact Us")
-              }
-
-            </script>
 
 
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
               <a href="/entity/open.act?type=page&amp;id=3fd4baafc04d744c580ddf89fbb86f26&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
                 target="_parent">Contact Us</a>
+            </li>
+
+
+
+            <li class="drill-down-list-item top-drill-down-list-item">
+              <a href="/entity/open.act?type=page&amp;id=ecf02ab0c0a81e4b052754613eedae15&amp;confId=ecf02ab9c0a81e4b0527546108850245"
+                target="_parent">Dodge College - Home</a>
             </li>
           </ul>
         </div>
       </div>
 
 
-      <div class="off-canvas-menu" id="off-canvas-main" style="display: none; transform: translateX(-410px);">
+      <div class="off-canvas-menu slide-in" id="off-canvas-main" style="transform: translateX(-410px); display: block;">
         <div class="menu-header">
-          <span class="menu-label" tabindex="0">Main Menu</span>
+          <span class="menu-label" tabindex="0">Chapman Menu</span>
 
-          <a class="toggle-menu-label" href="#">Dodge College Menu</a>
+          <span class="toggle-menu-label" tabindex="0">Dodge College Menu</span>
         </div>
 
 
 
         <div id="off-canvas-main-navigation">
-          <ul class="root-main-nav">
+          <ul class="root-main-nav" style="height: 639px;">
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
-              <span class="drill-down-parent" tabindex="0">Ross is great</span>
+              <span class="drill-down-parent" tabindex="0">About</span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Ross is great - Menu</li>
-                <li class="drill-down-list-item"><a
-                    href="/entity/open.act?type=page&amp;id=1fe3c8cdc04d744c580ddf895f0ee499&amp;confId=c2f6c072c0a81e4b7075cabaa2270eaf"
-                    target="_parent">Ross is great</a></li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>About</li>
+                <li class="drill-down-list-item"><a href="/">About</a></li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=1fe3c8cdc04d744c580ddf895f0ee499&amp;confId=c2f6c072c0a81e4b7075cabaa2270eaf"
+                    target="_parent">About Overview</a>
+                </li>
 
 
                 <li class="drill-down-list-item">
@@ -663,20 +572,54 @@
                 </li>
 
 
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=830949e1c04d744c4cce81072ec9f657&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                    target="_parent">Visit Chapman</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=828fd498c04d744c4cce81073c4e99d8&amp;confId=337c97c6c04d744c0e10c0b22524d505"
+                    target="_parent">Facts and Ranking</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=699d2e49c0a81e4b38da37b37af7142d&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Leadership</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=2022f00ac04d744c580ddf89bde767e2&amp;confId=2fc1aea5c04d744c5575300293aeb2b7"
+                    target="_parent">Campus Services</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=c76587e3c04d744c1743fa4a0c57ae94&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Connect</a>
+                </li>
               </ul>
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
               <span class="drill-down-parent" tabindex="0">Academics</span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Academics - Menu</li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Academics</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=ec36e97fc04d744c580ddf89561fb8e1&amp;confId=84e36aaac04d744c3c858d8551dbe282"
                     target="_parent">Academics</a></li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=ec36e97fc04d744c580ddf89561fb8e1&amp;confId=84e36aaac04d744c3c858d8551dbe282"
+                    target="_parent">Academics Overview</a>
+                </li>
 
 
                 <li class="drill-down-list-item">
@@ -686,19 +629,49 @@
 
 
                 <li class="drill-down-list-item">
-                  <a href="https://catalog.chapman.edu/">Course Catalog</a>
+                  <a href="/entity/open.act?type=page&amp;id=f4508037c04d744c2006c9b2c0ccba45&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Schools &amp; Colleges</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=f4508037c04d744c2006c9b2c0ccba45&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Academic Calendar</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=78566db6c04d744c193499fd8ee94302&amp;confId=44abe14ac04d744c580ddf899ec52b5a"
+                    target="_parent">Faculty Directory</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=e96fd218c04d744c7b41aa2570318c7c&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Libraries</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="https://catalog.chapman.edu/">Course Catalogs</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=c666cedbc04d744c7b41aa254c6d01a2&amp;confId=41ee5648c04d744c086780a82c9c1f00"
+                    target="_parent">Course Catalogs</a>
                 </li>
               </ul>
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
               <span class="drill-down-parent" tabindex="0">Admission</span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Admission - Menu</li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Admission</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=eca500f7c04d744c580ddf893c3683fe&amp;confId=f71a5d64c0a81e4b18acb605ce9af32e"
                     target="_parent">Admission</a></li>
@@ -706,34 +679,87 @@
 
                 <li class="drill-down-list-item">
                   <a href="/entity/open.act?type=page&amp;id=77e4d3d0c04d744c193499fd894e280f&amp;confId=d8fc0749c0a81e416c36856d4360daf6"
+                    target="_parent">Admission Overview</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=77e4d3d0c04d744c193499fd894e280f&amp;confId=d8fc0749c0a81e416c36856d4360daf6"
                     target="_parent">Undergraduate Admission</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=bfd432adc04d744c6ab45b2974fb9fd7&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                    target="_parent">Undergraduate Application</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=780dd5e6c04d744c193499fd31422e53&amp;confId=3031bb38c04d744c179c17c122154a9a"
+                    target="_parent">Graduate Admission</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=7811f872c04d744c193499fd1e875983&amp;confId=1ad5156ac0a81e416c36856df6c2c105"
+                    target="_parent">Graduate Application</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=2c12d413c04d744c1bc9219a9345b1cc&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                    target="_parent">Affordability</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=67f312dac04d744c193499fda009fdde&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Financial Aid Calculator</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=77fe4ea6c04d744c193499fd085004a8&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                    target="_parent">Campus Tours</a>
                 </li>
               </ul>
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
               <span class="drill-down-parent" tabindex="0">Alumni</span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Alumni - Menu</li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Alumni</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=22edac35c04d744c3c1abb0328b036b7&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
                     target="_parent">Alumni</a></li>
 
 
                 <li class="drill-down-list-item">
-                  <a aria-label="Events for Alumni"
-                    href="/entity/open.act?type=page&amp;id=22ff180ac04d744c3c1abb0327dad54b&amp;confId=f8de6ceac04d744c54334ecadcc06792"
-                    target="_parent">Events</a>
+                  <a href="/entity/open.act?type=page&amp;id=22edac35c04d744c3c1abb0328b036b7&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
+                    target="_parent">Alumni Overview</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=23082160c04d744c3c1abb030a84f567&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Get Involved</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=b641bc53c04d744c40b11b92eff4e9c4&amp;confId=37235beec04d744c08fa992250edcc60"
+                    target="_parent">Careeer Support</a>
                 </li>
               </ul>
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
               <a href="/entity/open.act?type=page&amp;id=e9e952cdc04d744c7b41aa25d1f0fd7a&amp;confId=33e2c470c04d744c08fa99224a72b9a4"
                 target="_parent">Arts</a>
@@ -741,65 +767,161 @@
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
               <span class="drill-down-parent" tabindex="0">Campus Life</span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Campus Life - Menu</li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Campus Life</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=4faa9194c04d744c133582366d86cc45&amp;confId=59cf06b2c04d744c4a95bcc60c83100a"
                     target="_parent">Campus Life</a></li>
 
 
                 <li class="drill-down-list-item">
-                  <a href="https://events.chapman.edu">Events</a>
+                  <a href="/entity/open.act?type=page&amp;id=4faa9194c04d744c133582366d86cc45&amp;confId=59cf06b2c04d744c4a95bcc60c83100a"
+                    target="_parent">Campus Live Overview</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="http://www.chapmanathletics.com/landing/index">Athletics</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=6f95e50fc04d744c326a4d150528b2cc&amp;confId=7f877522c0a81e4b65ff3eb85af170b0"
+                    target="_parent">Diversity and Inclusion</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="https://events.chapman.edu/">Events</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=a8dee5e0c04d744c220fee856297bcdc&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                    target="_parent">Fish Interfaith Center</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=32c84957c04d744c220fee853aa3b9e0&amp;confId=36dd3085c04d744c08fa9922c45e2831"
+                    target="_parent">Health and Safety</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=68b51586c04d744c193499fd6f48fd51&amp;confId=46d3cf9dc04d744c0e10c0b2fb9e2905"
+                    target="_parent">Residence Life</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=693f846dc04d744c193499fd49cf8f03&amp;confId=76989affc04d744c4ad0fad79d6f2627"
+                    target="_parent">Student Life</a>
                 </li>
               </ul>
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
               <span class="drill-down-parent" tabindex="0">Research</span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Research - Menu</li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Research</li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=7d731986c04d744c19cdbc8344c958c1&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
                     target="_parent">Research</a></li>
 
 
                 <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=7d731986c04d744c19cdbc8344c958c1&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
+                    target="_parent">Research Overview</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=d02dee6ac04d744c312df1c3f00e3ee0&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Sponsored Projects Services</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=2380a319c04d744c3a5f4f27a074319d&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Research Integrity</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
                   <a href="/entity/open.act?type=page&amp;id=1fe07cb5c04d744c580ddf892ad24881&amp;confId=c3ff138ec04d744c002d61cb08699ae3"
-                    target="_parent">Instititutes &amp; Centers</a>
+                    target="_parent">Institutes and Centers</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=2c4b2c2fc04d744c220fee85f94f8170&amp;confId=2abd53dcc0a81e416c36856d67282a77"
+                    target="_parent">Center for Undergraduate Excellence</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=155654f2c0a81e4b7fe966044d43df05&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Industry Alliances and Commercialization</a>
                 </li>
               </ul>
 
             </li>
 
-            <li class="drill-down-list-item">
+            <li class="drill-down-list-item top-drill-down-list-item">
 
-              <span class="drill-down-parent" tabindex="0">Support</span>
+              <span class="drill-down-parent" tabindex="0">Support </span>
 
               <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
               <ul class="drilldown-menu">
-                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Support - Menu</li>
+                <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Support </li>
                 <li class="drill-down-list-item"><a
                     href="/entity/open.act?type=page&amp;id=b5b69ddac04d744c421e6b1ccb951f40&amp;confId=21a94b43c0a81e416c36856dcd904543"
-                    target="_parent">Support</a></li>
+                    target="_parent">Support </a></li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=b5b69ddac04d744c421e6b1ccb951f40&amp;confId=21a94b43c0a81e416c36856dcd904543"
+                    target="_parent">Support Chapman Overview</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=e0960467c04d744c7f7f528143f0fe59&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Contact Development</a>
+                </li>
 
 
                 <li class="drill-down-list-item">
                   <a href="/entity/open.act?type=page&amp;id=e095f57bc04d744c7f7f5281daff97e9&amp;confId=d8d76e31c04d744c64d6b676ade5beca"
                     target="_parent">Get Involved</a>
                 </li>
+
+
+                <li class="drill-down-list-item">
+                  <a href="/entity/open.act?type=page&amp;id=534d56e5c04d744c2b81c4824e82fa0e&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Areas to Support</a>
+                </li>
+
+
+                <li class="drill-down-list-item">
+                  <a aria-label="Alumni: Get Involved"
+                    href="/entity/open.act?type=page&amp;id=23082160c04d744c3c1abb030a84f567&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                    target="_parent">Alumni Involvement</a>
+                </li>
               </ul>
 
             </li>
-            <li id="off-canvas-utility-item">
+            <li id="off-canvas-utility-item" class="top-drill-down-list-item">
               <div class="off-canvas-menu-container">
 
                 <!-- _audiences.vtl -->
@@ -815,15 +937,16 @@
                     </span>
                     <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
                     <ul class="drilldown-menu">
-                      <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Staff - Menu</li>
+                      <li class="menu-back" tabindex="0"><i class="fas fa-chevron-left"></i>Staff</li>
                       <li
-                        class="uninav__offCanvas-menu-item--audiences uninav__offCanvas-audiences-menu-item--staff uninav__offCanvas-menu-item-audiences--1 uninav__offCanvas-audiences-menu-item--dropdown-parent">
+                        class="drill-down-list-item uninav__offCanvas-menu-item--audiences uninav__offCanvas-audiences-menu-item--staff uninav__offCanvas-menu-item-audiences--1 uninav__offCanvas-audiences-menu-item--dropdown-parent">
                         <a href="/entity/open.act?type=page&amp;id=f2247fd2c0a81e4b22b523b8ad4cf4a2&amp;confId=f2247fd9c0a81e4b22b523b8edd9ff2b"
                           id="uninav-OffCanvas-audiences-staff" target="_parent">
                           Staff
                         </a>
                       </li>
-                      <li>
+                      <li
+                        class="drill-down-list-item uninav__offCanvas-menu-item--audiences uninav__offCanvas-audiences-menu-item--staff uninav__offCanvas-menu-item-audiences--1 uninav__offCanvas-audiences-menu-item--dropdown-parent">
                         <a class="icon icon-utilnav-sub-class new-toy" href="/">
                           New Staff
                         </a>
@@ -834,7 +957,7 @@
 
 
                   <li
-                    class="off-canvas-menu-item uninav__offCanvas-menu-item--audiences uninav__offCanvas-audiences-menu-item--students uninav__offCanvas-menu-item-audiences--2 uninav__offCanvas-audiences-menu-item--dropdown-parent">
+                    class="drill-down-list-item uninav__offCanvas-menu-item--audiences uninav__offCanvas-audiences-menu-item--students uninav__offCanvas-menu-item-audiences--2 uninav__offCanvas-audiences-menu-item--dropdown-parent">
                     <a href="/entity/open.act?type=page&amp;id=636b2ec2c04d744c193499fdba4408b9&amp;confId=f8de6ceac04d744c54334ecadcc06792"
                       id="uninav-offCanvas-audiences-students" target="_parent">
                       Students
@@ -844,7 +967,7 @@
                 </ul>
               </div>
             </li>
-            <li id="off-canvas-cta-item">
+            <li id="off-canvas-cta-item" class="top-drill-down-list-item">
               <div class="off-canvas-menu-container">
 
                 <ul class="off-canvas-cta">
@@ -881,21 +1004,11 @@
       </div>
     </div>
   </div>
-  <div class="uninav__hamburger-menu">
-    <button aria-label="Toggle site menu" class="hamburger-menu-button" type="button">
-      <svg class="hamburger-icon" height="32" viewBox="0 0 16 16" width="32">
-        <title>Toggle Mobile Menu</title>
-        <path d="M1 3h14v2h-14v-2z"></path>
-        <path d="M1 7h14v2h-14v-2z"></path>
-        <path d="M1 11h14v2h-14v-2z"></path>
-      </svg>
-      <span class="sr-only">Menu</span>
-    </button>
-  </div>
+
 
 
   <div class="uninav__logo uninav__logo--contextual">
-    <div class="uninav__logo--primary" id="uninav-logo">
+    <div class="uninav__logo--primary" id="uninav__logo--primary">
       <a href="/entity/open.act?type=page&amp;id=7e7519b3c04d744c610b81da971fb9c9&amp;confId=15be14d7c0a81e4b7fe9660451d0f621"
         id="uninav-logo-chapman-university-home-page" target="_parent" title="Chapman University home page">
         <svg xmlns="http://www.w3.org/2000/svg" class="chapman-logo" viewBox="0 0 273.7 28.1">
@@ -908,7 +1021,6 @@
               .cls-2 {
                 fill: #231f20;
               }
-
             </style>
           </defs>
           <title>Chapman University</title>
@@ -933,11 +1045,12 @@
     <div class="uninav__utility-nav">
       <ul class="uninav__menu-item-flex uninav__menu-item-flex--utility">
         <span class="uninav__utility-nav--audiences-container">
+
           <!-- _audiences.vtl -->
 
-
-          <li class="uninav__menu-item--audiences uninav__menu-item--audiences--dropdown-parent">
-            <a href="#">Staff</a>
+          <li
+            class="uninav__menu-item--audiences uninav__audiences-menu-item--staff uninav__menu-item-audiences--1 uninav__audiences-menu-item--dropdown-parent ">
+            <a href="#"><span class="uninav__underline--center"> Staff </span></a>
             <span class="uninav__dropdown-wrapper">
               <ul>
               </ul>
@@ -945,11 +1058,12 @@
             </span>
           </li>
 
-          <li class="uninav__menu-item--audiences">
+          <li class="uninav__menu-item--audiences ">
             <a href="/entity/open.act?type=page&amp;id=636b2ec2c04d744c193499fdba4408b9&amp;confId=f8de6ceac04d744c54334ecadcc06792"
-              target="_parent">
-              Students
+              id="uninav-audiences-students" target="_parent">
+              <span class="uninav__underline--center">Students</span>
             </a>
+
           </li>
 
 
@@ -971,24 +1085,132 @@
                 margin-bottom: 2rem !important;
               }
 
+              input#gsc-i-id1 {
+                height: 30px !important;
+                box-shadow: none !important;
+              }
             </style>
-            <li class="uninav__search-input uninav__search-input--desktop">
-              <script async src="https://cse.google.com/cse.js?cx=015856566681218627934:2ndbiubovo4"></script>
-              <div class="gcse-search"></div>
+            <li class="uninav__search-input uninav__search-input--desktop" aria-expanded="false">
+              <script async="true" src="https://cse.google.com/cse.js?cx=015856566681218627934:2ndbiubovo4"></script>
+              <div id="___gcse_0">
+                <div class="gsc-control-cse gsc-control-cse-en">
+                  <div class="gsc-control-wrapper-cse" dir="ltr">
+                    <form class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8" _lpchecked="1">
+                      <table class="gsc-search-box" cellspacing="0" cellpadding="0">
+                        <tbody>
+                          <tr>
+                            <td class="gsc-input">
+                              <div class="gsc-input-box" id="gsc-iw-id1">
+                                <table style="width: 100%; padding: 0px;" id="gs_id50" class="gstl_50 gsc-input"
+                                  cellspacing="0" cellpadding="0">
+                                  <tbody>
+                                    <tr>
+                                      <td id="gs_tti50" class="gsib_a"><input autocomplete="off" type="text" size="10"
+                                          class="gsc-input" name="search" title="search"
+                                          style="width: 100%; padding: 0px; border: medium none; margin: 0px; height: auto; background: rgb(255, 255, 255) none repeat scroll 0% 0%; text-indent: 0px; outline: currentcolor none medium; opacity: 1;"
+                                          id="gsc-i-id1" placeholder="Search..." dir="ltr" spellcheck="false"></td>
+                                      <td class="gsib_b">
+                                        <div class="gsst_b" id="gs_st50" dir="ltr"><a class="gsst_a"
+                                            href="javascript:void(0)" style="" title="Clear search box"
+                                            role="button"><span class="gscb_a" id="gs_cb50"
+                                              aria-hidden="true">×</span></a></div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </td>
+                            <td class="gsc-search-button"><button class="gsc-search-button gsc-search-button-v2"><svg
+                                  width="13" height="13" viewBox="0 0 13 13">
+                                  <title>search</title>
+                                  <path
+                                    d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z">
+                                  </path>
+                                </svg></button></td>
+                            <td class="gsc-clear-button">
+                              <div class="gsc-clear-button" title="clear results">&nbsp;</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                    <div class="gsc-results-wrapper-overlay">
+                      <div class="gsc-results-close-btn" tabindex="0"></div>
+                      <div class="gsc-positioningWrapper">
+                        <div class="gsc-tabsAreaInvisible">
+                          <div aria-label="refinement" role="tab" class="gsc-tabHeader gsc-inline-block gsc-tabhActive">
+                            Custom Search</div><span class="gs-spacer"> </span>
+                        </div>
+                      </div>
+                      <div class="gsc-positioningWrapper">
+                        <div class="gsc-tabsAreaInvisible"></div>
+                      </div>
+                      <div class="gsc-above-wrapper-area-invisible">
+                        <table class="gsc-above-wrapper-area-container" cellspacing="0" cellpadding="0">
+                          <tbody>
+                            <tr>
+                              <td class="gsc-result-info-container">
+                                <div class="gsc-result-info-invisible"></div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="gsc-adBlockInvisible"></div>
+                      <div class="gsc-wrapper">
+                        <div class="gsc-adBlockInvisible"></div>
+                        <div class="gsc-resultsbox-invisible">
+                          <div class="gsc-resultsRoot gsc-tabData gsc-tabdActive">
+                            <div>
+                              <div class="gsc-expansionArea"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="gsc-modal-background-image" tabindex="0"></div>
+                  </div>
+                </div>
+              </div>
             </li>
           </span>
-
-          <!-- <script async="true" src="https://cse.google.com/cse.js?cx=015856566681218627934:2ndbiubovo4"></script> -->
         </span>
 
-        <li class="uninav__login uninav__dropdown--parent" tabindex="0" aria-expanded="false">
+
+        <li aria-expanded="false" class="uninav__login uninav__dropdown--parent" tabindex="0">
           <span class="uninav__menu-item-login">
             <i class="fas fa-paw"></i>
           </span>
           <div class="uninav__login--wrapper uninav__dropdown--child uninav__login-button">
             <ul>
-              <li tabindex="2">
-                <a href="https://blackboard.chapman.edu/">
+
+              <li class="uninav__internal--info">
+                <a
+                  href="https://dev-cascade.chapman.edu/entity/open.act?id=a94c5727c0a81e4b22b523b8699a6359&amp;type=block">
+                  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
+                    viewBox="0 0 28.1 28.1" width="32">
+                    <style type="text/css">
+                      .st0 {
+                        fill: #ffffff;
+                      }
+                    </style>
+                    <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "></polygon>
+                    <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "></polygon>
+                    <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "></polygon>
+                    <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "></polygon>
+                    <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "></polygon>
+                    <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "></polygon>
+                    <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "></polygon>
+                    <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "></polygon>
+                  </svg>
+                  <span class="uninav__underline--center">
+                    Edit Uninav
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://blackboard.chapman.edu/" id="uninav__login--blackboard">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
                     viewBox="0 0 512 512" width="32">
                     <path
@@ -998,12 +1220,12 @@
                       d="M321.9 138.1c-1.7-32.7-28.4-11.5-29.4-27.9 -0.5-11.5 20.9-6 61.8-34.4 3.2-1.7 4.7-3.5 8-3.7 5-0.2 3.7 9.7 4 13l9.7 177.8c17-17.2 35.9-32.9 58.6-34.2 52.1-2.7 74.3 41.6 75.8 72.8C514.1 370.1 477 408 421.6 411c-40.6 2.2-54.9-15-61.3-14.7 -8.2 0.5-12 18.7-21.9 19.2 -3.2 0.2-5-1.2-5.2-4.7 -0.2-3.2 2.5-13.2 1.2-36.2L321.9 138.1 321.9 138.1zM380.7 350.8c2 37.4 36.6 43.9 49.9 43.1 37.4-2 43.6-38.4 42.1-67.6 -1.7-34.2-19.9-65.8-62.3-63.6 -13 0.7-33.7 10-32.9 26.4L380.7 350.8 380.7 350.8z">
                     </path>
                   </svg>
-                  Blackboard
+                  <span class="uninav__underline--center">Blackboard</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://chapman.joinhandshake.com/login/">
+                <a href="https://chapman.joinhandshake.com/login/" id="uninav__login--handshake">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" id="Layer_1" role="presentation"
                     style="enable-background:new 0 0 82.3 97.8;" version="1.1" viewBox="0 0 82.3 97.8" x="0px"
                     xml:space="preserve" y="0px">
@@ -1011,7 +1233,6 @@
                       .st0 {
                         fill: #FFFFFF;
                       }
-
                     </style>
                     <path class="st0"
                       d="M0.9,37.6c0-1.5,0.9-3.2,2.2-3.9c3.7-1.9,13.5-1.1,15.9-0.4c10.4,3,14.9,15.9,39.5,9.6c9.8-2.5,17.4-0.7,19-0.1  c2,0.8,3.4,2.1,3.4,4.6c0,8.1,0,27.7-0.1,41.4c0,4-3.3,7.3-7.3,7.3c-4.9,0-10.8,0-15.3-0.1c-4,0-7.3-3.3-7.3-7.3  c0-8.5-0.2-18.3-0.4-26.8c-0.2-7.7-7.8-13.2-17.6-10.7c-1.1,0.3-1.6,0.5-1.6,1.4c0,2.4-0.2,23.6-0.3,36.1c0,4-3.3,7.3-7.4,7.3  L8.1,96c-4.1,0-7.4-3.3-7.4-7.4C0.8,74.5,0.9,44.3,0.9,37.6">
@@ -1023,19 +1244,18 @@
                       d="M29.5,14.3c0,7.9-6.4,14.3-14.3,14.3c-7.9,0-14.3-6.4-14.3-14.3C0.9,6.4,7.3,0,15.2,0  C23.1,0,29.5,6.4,29.5,14.3">
                     </path>
                   </svg>
-                  Handshake
+                  <span class="uninav__underline--center">Handshake</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://my.chapman.edu/">
+                <a href="https://my.chapman.edu/" id="uninav__login--my-chapman">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
                     viewBox="0 0 28.1 28.1" width="32">
                     <style type="text/css">
                       .st0 {
                         fill: #ffffff;
                       }
-
                     </style>
                     <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "></polygon>
                     <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "></polygon>
@@ -1046,19 +1266,18 @@
                     <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "></polygon>
                     <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "></polygon>
                   </svg>
-                  My Chapman
+                  <span class="uninav__underline--center">My Chapman</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://mywindow.chapman.edu">
+                <a href="https://mywindow.chapman.edu" id="uninav__login--my-window">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
                     viewBox="0 0 28.1 28.1" width="32">
                     <style type="text/css">
                       .st0 {
                         fill: #ffffff;
                       }
-
                     </style>
                     <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "></polygon>
                     <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "></polygon>
@@ -1069,43 +1288,42 @@
                     <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "></polygon>
                     <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "></polygon>
                   </svg>
-                  My Window
+                  <span class="uninav__underline--center">My Window</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://www.chapman.edu/panthermail/">
+                <a href="https://www.chapman.edu/panthermail/" id="uninav__login--panther-mail">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
                     viewBox="0 0 448 448" width="32">
                     <path
                       d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z">
                     </path>
                   </svg>
-                  Panther Mail
+                  <span class="uninav__underline--center">Panther Mail</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://exchange.chapman.edu/">
+                <a href="https://exchange.chapman.edu/" id="uninav__login--staff-faculty-email">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
                     viewBox="0 0 448 448" width="32">
                     <path
                       d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z">
                     </path>
                   </svg>
-                  Staff &amp; Faculty Email
+                  <span class="uninav__underline--center">Staff &amp; Faculty Email</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://news.chapman.edu/work/">
+                <a href="https://news.chapman.edu/work/" id="uninav__login--workingchapman">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" height="32" role="presentation"
                     viewBox="0 0 28.1 28.1" width="32">
                     <style type="text/css">
                       .st0 {
                         fill: #ffffff;
                       }
-
                     </style>
                     <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "></polygon>
                     <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "></polygon>
@@ -1116,12 +1334,12 @@
                     <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "></polygon>
                     <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "></polygon>
                   </svg>
-                  Working@Chapman
+                  <span class="uninav__underline--center">Working@Chapman</span>
                 </a>
               </li>
 
               <li>
-                <a href="https://news.chapman.edu/work/">
+                <a href="https://news.chapman.edu/work/" id="uninav__login--workingchapman">
                   <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="svg-inline--fa fa-briefcase fa-w-16"
                     data-icon="briefcase" data-prefix="fas" focusable="false" height="32" role="presentation"
                     viewBox="0 0 512 512" width="32">
@@ -1129,7 +1347,7 @@
                       d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z"
                       fill="currentColor"></path>
                   </svg>
-                  Working@Chapman
+                  <span class="uninav__underline--center">Working@Chapman</span>
                 </a>
               </li>
 
@@ -1137,6 +1355,8 @@
             </ul>
           </div>
         </li>
+
+
       </ul>
     </div>
   </div>
@@ -1144,60 +1364,144 @@
     <ul class="uninav__include-in-mobile-menu">
 
 
-      <li
-        class="uninav__dropdown--parent uninav__global--dropdown-parent--ross-is-great uninav__global--dropdown-parent--1">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
-          <a id="uninav-global-ross-is-great" tabindex="0">
-            <span class="uninav__underline--center">Ross is great</span></a>
+          <a id="uninav-global-about" tabindex="0">
+            <span class="uninav__underline--center">About</span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--1-overview uninav__global--ross-is-great-overview">
-              <a href="/entity/open.act?type=page&amp;id=1fe3c8cdc04d744c580ddf895f0ee499&amp;confId=c2f6c072c0a81e4b7075cabaa2270eaf"
-                id="uninav-global-ross-is-great-overview" target="_parent">
-                <span class="uninav__underline--center">Ross is great Overview</span></a>
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--about-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=1fe3c8cdc04d744c580ddf895f0ee499&amp;confId=c2f6c072c0a81e4b7075cabaa2270eaf"
+                id="uninav-global-about-overview" target="_parent">
+                <span class="uninav__underline--center">About Overview</span>
+              </a>
             </li>
 
-
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--maps-directions">
-              <a class="icon icon-location"
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--maps-directions">
+              <a class="icon icon-icon icon-location"
                 href="/entity/open.act?type=page&amp;id=83140acec04d744c4cce81079bab559d&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
                 id="uninav-global-maps-directions" target="_parent">
                 <span class="uninav__underline--center">Maps &amp; Directions</span>
               </a>
             </li>
 
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--visit-chapman">
+              <a class="icon icon-icon icon-california"
+                href="/entity/open.act?type=page&amp;id=830949e1c04d744c4cce81072ec9f657&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                id="uninav-global-visit-chapman" target="_parent">
+                <span class="uninav__underline--center">Visit Chapman</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--4 uninav__global--dropdown-child--facts-and-ranking">
+              <a class="icon icon-icon icon-library4"
+                href="/entity/open.act?type=page&amp;id=828fd498c04d744c4cce81073c4e99d8&amp;confId=337c97c6c04d744c0e10c0b22524d505"
+                id="uninav-global-facts-and-ranking" target="_parent">
+                <span class="uninav__underline--center">Facts and Ranking</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--5 uninav__global--dropdown-child--leadership">
+              <a class="icon icon-icon icon-cu-window"
+                href="/entity/open.act?type=page&amp;id=699d2e49c0a81e4b38da37b37af7142d&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-leadership" target="_parent">
+                <span class="uninav__underline--center">Leadership</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--6 uninav__global--dropdown-child--campus-services">
+              <a class="icon icon-icon icon-wrench"
+                href="/entity/open.act?type=page&amp;id=2022f00ac04d744c580ddf89bde767e2&amp;confId=2fc1aea5c04d744c5575300293aeb2b7"
+                id="uninav-global-campus-services" target="_parent">
+                <span class="uninav__underline--center">Campus Services</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--7 uninav__global--dropdown-child--connect">
+              <a class="icon icon-icon icon-envelop"
+                href="/entity/open.act?type=page&amp;id=c76587e3c04d744c1743fa4a0c57ae94&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-connect" target="_parent">
+                <span class="uninav__underline--center">Connect</span>
+              </a>
+            </li>
           </ul>
         </div>
       </li>
 
 
-      <li
-        class="uninav__dropdown--parent uninav__global--dropdown-parent--academics uninav__global--dropdown-parent--2">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
           <a id="uninav-global-academics" tabindex="0">
             <span class="uninav__underline--center">Academics</span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--2-overview uninav__global--academics-overview">
-              <a href="/entity/open.act?type=page&amp;id=ec36e97fc04d744c580ddf89561fb8e1&amp;confId=84e36aaac04d744c3c858d8551dbe282"
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--academics-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=ec36e97fc04d744c580ddf89561fb8e1&amp;confId=84e36aaac04d744c3c858d8551dbe282"
                 id="uninav-global-academics-overview" target="_parent">
-                <span class="uninav__underline--center">Academics Overview</span></a>
+                <span class="uninav__underline--center">Academics Overview</span>
+              </a>
             </li>
 
-
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--degrees-programs">
-              <a class="icon icon-graduation"
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--degrees-programs">
+              <a class="icon icon-icon icon-graduation"
                 href="/entity/open.act?type=page&amp;id=ce06cdd4c04d744c64d6b6765c849731&amp;confId=ccf4e99ac04d744c64d6b6765ca5de6b"
                 id="uninav-global-degrees-programs" target="_parent">
                 <span class="uninav__underline--center">Degrees &amp; Programs</span>
               </a>
             </li>
 
-            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--course-catalog">
-              <a class="icon icon-book2" href="https://catalog.chapman.edu/" id="uninav-global-course-catalog">
-                <span class="uninav__underline--center">Course Catalog</span>
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--schools-colleges">
+              <a class="icon icon-icon icon-library2"
+                href="/entity/open.act?type=page&amp;id=f4508037c04d744c2006c9b2c0ccba45&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-schools-colleges" target="_parent">
+                <span class="uninav__underline--center">Schools &amp; Colleges</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--4 uninav__global--dropdown-child--academic-calendar">
+              <a class="icon icon-icon icon-calendar4"
+                href="/entity/open.act?type=page&amp;id=f4508037c04d744c2006c9b2c0ccba45&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-academic-calendar" target="_parent">
+                <span class="uninav__underline--center">Academic Calendar</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--5 uninav__global--dropdown-child--faculty-directory">
+              <a class="icon icon-icon icon-profile"
+                href="/entity/open.act?type=page&amp;id=78566db6c04d744c193499fd8ee94302&amp;confId=44abe14ac04d744c580ddf899ec52b5a"
+                id="uninav-global-faculty-directory" target="_parent">
+                <span class="uninav__underline--center">Faculty Directory</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--6 uninav__global--dropdown-child--libraries">
+              <a class="icon icon-icon icon-books"
+                href="/entity/open.act?type=page&amp;id=e96fd218c04d744c7b41aa2570318c7c&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-libraries" target="_parent">
+                <span class="uninav__underline--center">Libraries</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--7 uninav__global--dropdown-child--course-catalogs">
+              <a class="icon icon-icon icon-book2" href="https://catalog.chapman.edu/"
+                id="uninav-global-course-catalogs">
+                <span class="uninav__underline--center">Course Catalogs</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--8 uninav__global--dropdown-child--course-catalogs">
+              <a class="icon icon-icon icon-earth"
+                href="/entity/open.act?type=page&amp;id=c666cedbc04d744c7b41aa254c6d01a2&amp;confId=41ee5648c04d744c086780a82c9c1f00"
+                id="uninav-global-course-catalogs" target="_parent">
+                <span class="uninav__underline--center">Course Catalogs</span>
               </a>
             </li>
           </ul>
@@ -1205,26 +1509,76 @@
       </li>
 
 
-      <li
-        class="uninav__dropdown--parent uninav__global--dropdown-parent--admission uninav__global--dropdown-parent--3">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
           <a id="uninav-global-admission" tabindex="0">
             <span class="uninav__underline--center">Admission</span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--3-overview uninav__global--admission-overview">
-              <a href="/entity/open.act?type=page&amp;id=eca500f7c04d744c580ddf893c3683fe&amp;confId=f71a5d64c0a81e4b18acb605ce9af32e"
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--admission-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=77e4d3d0c04d744c193499fd894e280f&amp;confId=d8fc0749c0a81e416c36856d4360daf6"
                 id="uninav-global-admission-overview" target="_parent">
-                <span class="uninav__underline--center">Admission Overview</span></a>
+                <span class="uninav__underline--center">Admission Overview</span>
+              </a>
             </li>
 
-
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--undergraduate-admission">
-              <a class="icon icon-"
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--undergraduate-admission">
+              <a class="icon icon-icon icon-bookmark"
                 href="/entity/open.act?type=page&amp;id=77e4d3d0c04d744c193499fd894e280f&amp;confId=d8fc0749c0a81e416c36856d4360daf6"
                 id="uninav-global-undergraduate-admission" target="_parent">
                 <span class="uninav__underline--center">Undergraduate Admission</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--undergraduate-application">
+              <a class="icon icon-icon icon-pencil5"
+                href="/entity/open.act?type=page&amp;id=bfd432adc04d744c6ab45b2974fb9fd7&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                id="uninav-global-undergraduate-application" target="_parent">
+                <span class="uninav__underline--center">Undergraduate Application</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--4 uninav__global--dropdown-child--graduate-admission">
+              <a class="icon icon-icon icon-bookmark2"
+                href="/entity/open.act?type=page&amp;id=780dd5e6c04d744c193499fd31422e53&amp;confId=3031bb38c04d744c179c17c122154a9a"
+                id="uninav-global-graduate-admission" target="_parent">
+                <span class="uninav__underline--center">Graduate Admission</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--5 uninav__global--dropdown-child--graduate-application">
+              <a class="icon icon-icon icon-pencil5"
+                href="/entity/open.act?type=page&amp;id=7811f872c04d744c193499fd1e875983&amp;confId=1ad5156ac0a81e416c36856df6c2c105"
+                id="uninav-global-graduate-application" target="_parent">
+                <span class="uninav__underline--center">Graduate Application</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--6 uninav__global--dropdown-child--affordability">
+              <a class="icon icon-icon icon-pencil5"
+                href="/entity/open.act?type=page&amp;id=2c12d413c04d744c1bc9219a9345b1cc&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                id="uninav-global-affordability" target="_parent">
+                <span class="uninav__underline--center">Affordability</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--7 uninav__global--dropdown-child--financial-aid-calculator">
+              <a class="icon icon-icon icon-calculate"
+                href="/entity/open.act?type=page&amp;id=67f312dac04d744c193499fda009fdde&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-financial-aid-calculator" target="_parent">
+                <span class="uninav__underline--center">Financial Aid Calculator</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--8 uninav__global--dropdown-child--campus-tours">
+              <a class="icon icon-icon icon-office"
+                href="/entity/open.act?type=page&amp;id=77fe4ea6c04d744c193499fd085004a8&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                id="uninav-global-campus-tours" target="_parent">
+                <span class="uninav__underline--center">Campus Tours</span>
               </a>
             </li>
           </ul>
@@ -1232,25 +1586,36 @@
       </li>
 
 
-      <li class="uninav__dropdown--parent uninav__global--dropdown-parent--alumni uninav__global--dropdown-parent--4">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
           <a id="uninav-global-alumni" tabindex="0">
             <span class="uninav__underline--center">Alumni</span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--4-overview uninav__global--alumni-overview">
-              <a href="/entity/open.act?type=page&amp;id=22edac35c04d744c3c1abb0328b036b7&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--alumni-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=22edac35c04d744c3c1abb0328b036b7&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
                 id="uninav-global-alumni-overview" target="_parent">
-                <span class="uninav__underline--center">Alumni Overview</span></a>
+                <span class="uninav__underline--center">Alumni Overview</span>
+              </a>
             </li>
 
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--get-involved">
+              <a class="icon icon-icon icon-hand"
+                href="/entity/open.act?type=page&amp;id=23082160c04d744c3c1abb030a84f567&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-get-involved" target="_parent">
+                <span class="uninav__underline--center">Get Involved</span>
+              </a>
+            </li>
 
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--events">
-              <a class="icon icon-calendar4"
-                href="/entity/open.act?type=page&amp;id=22ff180ac04d744c3c1abb0327dad54b&amp;confId=f8de6ceac04d744c54334ecadcc06792"
-                id="uninav-global-events" target="_parent">
-                <span class="uninav__underline--center">Events</span>
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--careeer-support">
+              <a class="icon icon-icon icon-paw"
+                href="/entity/open.act?type=page&amp;id=b641bc53c04d744c40b11b92eff4e9c4&amp;confId=37235beec04d744c08fa992250edcc60"
+                id="uninav-global-careeer-support" target="_parent">
+                <span class="uninav__underline--center">Careeer Support</span>
               </a>
             </li>
           </ul>
@@ -1265,24 +1630,73 @@
       </li>
 
 
-      <li
-        class="uninav__dropdown--parent uninav__global--dropdown-parent--campus-life uninav__global--dropdown-parent--6">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
           <a id="uninav-global-campus-life" tabindex="0">
             <span class="uninav__underline--center">Campus Life</span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--6-overview uninav__global--campus-life-overview">
-              <a href="/entity/open.act?type=page&amp;id=4faa9194c04d744c133582366d86cc45&amp;confId=59cf06b2c04d744c4a95bcc60c83100a"
-                id="uninav-global-campus-life-overview" target="_parent">
-                <span class="uninav__underline--center">Campus Life Overview</span></a>
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--campus-live-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=4faa9194c04d744c133582366d86cc45&amp;confId=59cf06b2c04d744c4a95bcc60c83100a"
+                id="uninav-global-campus-live-overview" target="_parent">
+                <span class="uninav__underline--center">Campus Live Overview</span>
+              </a>
             </li>
 
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--athletics">
+              <a class="icon icon-icon icon-paw" href="http://www.chapmanathletics.com/landing/index"
+                id="uninav-global-athletics">
+                <span class="uninav__underline--center">Athletics</span>
+              </a>
+            </li>
 
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--events">
-              <a class="icon icon-calendar4" href="https://events.chapman.edu" id="uninav-global-events">
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--diversity-and-inclusion">
+              <a class="icon icon-icon icon-hand"
+                href="/entity/open.act?type=page&amp;id=6f95e50fc04d744c326a4d150528b2cc&amp;confId=7f877522c0a81e4b65ff3eb85af170b0"
+                id="uninav-global-diversity-and-inclusion" target="_parent">
+                <span class="uninav__underline--center">Diversity and Inclusion</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--4 uninav__global--dropdown-child--events">
+              <a class="icon icon-icon icon-calendar4" href="https://events.chapman.edu/" id="uninav-global-events">
                 <span class="uninav__underline--center">Events</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--5 uninav__global--dropdown-child--fish-interfaith-center">
+              <a class="icon icon-icon icon-earth"
+                href="/entity/open.act?type=page&amp;id=a8dee5e0c04d744c220fee856297bcdc&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
+                id="uninav-global-fish-interfaith-center" target="_parent">
+                <span class="uninav__underline--center">Fish Interfaith Center</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--6 uninav__global--dropdown-child--health-and-safety">
+              <a class="icon icon-icon icon-heart3"
+                href="/entity/open.act?type=page&amp;id=32c84957c04d744c220fee853aa3b9e0&amp;confId=36dd3085c04d744c08fa9922c45e2831"
+                id="uninav-global-health-and-safety" target="_parent">
+                <span class="uninav__underline--center">Health and Safety</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--7 uninav__global--dropdown-child--residence-life">
+              <a class="icon icon-icon icon-home2"
+                href="/entity/open.act?type=page&amp;id=68b51586c04d744c193499fd6f48fd51&amp;confId=46d3cf9dc04d744c0e10c0b2fb9e2905"
+                id="uninav-global-residence-life" target="_parent">
+                <span class="uninav__underline--center">Residence Life</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--8 uninav__global--dropdown-child--student-life">
+              <a class="icon icon-icon icon-smiley"
+                href="/entity/open.act?type=page&amp;id=693f846dc04d744c193499fd49cf8f03&amp;confId=76989affc04d744c4ad0fad79d6f2627"
+                id="uninav-global-student-life" target="_parent">
+                <span class="uninav__underline--center">Student Life</span>
               </a>
             </li>
           </ul>
@@ -1290,25 +1704,62 @@
       </li>
 
 
-      <li class="uninav__dropdown--parent uninav__global--dropdown-parent--research uninav__global--dropdown-parent--7">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
           <a id="uninav-global-research" tabindex="0">
             <span class="uninav__underline--center">Research</span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--7-overview uninav__global--research-overview">
-              <a href="/entity/open.act?type=page&amp;id=7d731986c04d744c19cdbc8344c958c1&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--research-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=7d731986c04d744c19cdbc8344c958c1&amp;confId=c77cf9f8c04d744c4832d6754a210df7"
                 id="uninav-global-research-overview" target="_parent">
-                <span class="uninav__underline--center">Research Overview</span></a>
+                <span class="uninav__underline--center">Research Overview</span>
+              </a>
             </li>
 
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--sponsored-projects-services">
+              <a class="icon icon-icon icon-medal"
+                href="/entity/open.act?type=page&amp;id=d02dee6ac04d744c312df1c3f00e3ee0&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-sponsored-projects-services" target="_parent">
+                <span class="uninav__underline--center">Sponsored Projects Services</span>
+              </a>
+            </li>
 
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--instititutes-centers">
-              <a class="icon icon-library4"
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--research-integrity">
+              <a class="icon icon-icon icon-clipboard5"
+                href="/entity/open.act?type=page&amp;id=2380a319c04d744c3a5f4f27a074319d&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-research-integrity" target="_parent">
+                <span class="uninav__underline--center">Research Integrity</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--4 uninav__global--dropdown-child--institutes-and-centers">
+              <a class="icon icon-icon icon-library4"
                 href="/entity/open.act?type=page&amp;id=1fe07cb5c04d744c580ddf892ad24881&amp;confId=c3ff138ec04d744c002d61cb08699ae3"
-                id="uninav-global-instititutes-centers" target="_parent">
-                <span class="uninav__underline--center">Instititutes &amp; Centers</span>
+                id="uninav-global-institutes-and-centers" target="_parent">
+                <span class="uninav__underline--center">Institutes and Centers</span>
+              </a>
+            </li>
+
+            <li
+              class="uninav__global--dropdown-child--5 uninav__global--dropdown-child--center-for-undergraduate-excellence">
+              <a class="icon icon-icon icon-lamp8"
+                href="/entity/open.act?type=page&amp;id=2c4b2c2fc04d744c220fee85f94f8170&amp;confId=2abd53dcc0a81e416c36856d67282a77"
+                id="uninav-global-center-for-undergraduate-excellence" target="_parent">
+                <span class="uninav__underline--center">Center for Undergraduate Excellence</span>
+              </a>
+            </li>
+
+            <li
+              class="uninav__global--dropdown-child--6 uninav__global--dropdown-child--industry-alliances-and-commercialization">
+              <a class="icon icon-icon icon-office"
+                href="/entity/open.act?type=page&amp;id=155654f2c0a81e4b7fe966044d43df05&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-industry-alliances-and-commercialization" target="_parent">
+                <span class="uninav__underline--center">Industry Alliances and Commercialization</span>
               </a>
             </li>
           </ul>
@@ -1316,25 +1767,52 @@
       </li>
 
 
-      <li class="uninav__dropdown--parent uninav__global--dropdown-parent--support uninav__global--dropdown-parent--8">
+      <li class="uninav__dropdown--parent " aria-expanded="false">
         <span class="uninav__dropdown-wrapper">
-          <a id="uninav-global-support" tabindex="0">
-            <span class="uninav__underline--center">Support</span></a>
+          <a id="uninav-global-support-" tabindex="0">
+            <span class="uninav__underline--center">Support </span></a>
         </span>
         <div class="uninav__dropdown--child">
           <ul>
-            <li class="uninav__global--dropdown-child--8-overview uninav__global--support-overview">
-              <a href="/entity/open.act?type=page&amp;id=b5b69ddac04d744c421e6b1ccb951f40&amp;confId=21a94b43c0a81e416c36856dcd904543"
-                id="uninav-global-support-overview" target="_parent">
-                <span class="uninav__underline--center">Support Overview</span></a>
+
+
+            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--support-chapman-overview">
+              <a class="icon icon-icon icon-file-text"
+                href="/entity/open.act?type=page&amp;id=b5b69ddac04d744c421e6b1ccb951f40&amp;confId=21a94b43c0a81e416c36856dcd904543"
+                id="uninav-global-support-chapman-overview" target="_parent">
+                <span class="uninav__underline--center">Support Chapman Overview</span>
+              </a>
             </li>
 
+            <li class="uninav__global--dropdown-child--2 uninav__global--dropdown-child--contact-development">
+              <a class="icon icon-icon icon-envelop"
+                href="/entity/open.act?type=page&amp;id=e0960467c04d744c7f7f528143f0fe59&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-contact-development" target="_parent">
+                <span class="uninav__underline--center">Contact Development</span>
+              </a>
+            </li>
 
-            <li class="uninav__global--dropdown-child--1 uninav__global--dropdown-child--get-involved">
-              <a class="icon icon-hand"
+            <li class="uninav__global--dropdown-child--3 uninav__global--dropdown-child--get-involved">
+              <a class="icon icon-icon icon-hand"
                 href="/entity/open.act?type=page&amp;id=e095f57bc04d744c7f7f5281daff97e9&amp;confId=d8d76e31c04d744c64d6b676ade5beca"
                 id="uninav-global-get-involved" target="_parent">
                 <span class="uninav__underline--center">Get Involved</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--4 uninav__global--dropdown-child--areas-to-support">
+              <a class="icon icon-icon icon-cu-window"
+                href="/entity/open.act?type=page&amp;id=534d56e5c04d744c2b81c4824e82fa0e&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-areas-to-support" target="_parent">
+                <span class="uninav__underline--center">Areas to Support</span>
+              </a>
+            </li>
+
+            <li class="uninav__global--dropdown-child--5 uninav__global--dropdown-child--alumni-involvement">
+              <a class="icon icon-icon icon-paw"
+                href="/entity/open.act?type=page&amp;id=23082160c04d744c3c1abb030a84f567&amp;confId=f8de6ceac04d744c54334ecadcc06792"
+                id="uninav-global-alumni-involvement" target="_parent">
+                <span class="uninav__underline--center">Alumni Involvement</span>
               </a>
             </li>
           </ul>
@@ -1347,7 +1825,7 @@
       <ul>
 
 
-        <li class="uninav__menu-item-cta uninav__cta-menu-item--visit-int uninav__cta-menu-item--1">
+        <li class="uninav__menu-item-cta">
           <a href="/entity/open.act?type=page&amp;id=830949e1c04d744c4cce81072ec9f657&amp;confId=f90d2d91c04d744c54334eca7dcdc0d8"
             id="uninav-cta-visit-int" target="_parent">
             Visit (int)
@@ -1356,7 +1834,7 @@
 
 
 
-        <li class="uninav__menu-item-cta uninav__cta-menu-item--apply-ext uninav__cta-menu-item--2">
+        <li class="uninav__menu-item-cta">
           <a href="https://dev-www.chapman.edu/admission/index.aspx" id="uninav-cta-apply-ext">
             Apply (ext)
           </a>
@@ -1364,7 +1842,7 @@
 
 
 
-        <li class="uninav__menu-item-cta uninav__cta-menu-item--give-pdf uninav__cta-menu-item--3">
+        <li class="uninav__menu-item-cta">
           <a href="/renderfile/6fef14a3c04d744c610b81dac0a8d082/support-chapman/_files/2015-donor-impact-report.pdf"
             id="uninav-cta-give-pdf">
             Give (pdf)
