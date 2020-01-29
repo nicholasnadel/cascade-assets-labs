@@ -4,7 +4,7 @@ $(function () {
     ma5menu({
       menu: '.uninav__menu-drilldown--contextual-plus-global',
       activeClass: 'active',
-      footer: '.uninav--cta',
+      footer: '.uninav__cta',
       position: 'left',
       closeOnBodyClick: true
     });
@@ -13,7 +13,7 @@ $(function () {
     ma5menu({
       menu: '.uninav__menu-drilldown--global',
       activeClass: 'active',
-      footer: '.uninav--cta',
+      footer: '.uninav__cta',
       position: 'left',
       closeOnBodyClick: true
     });
