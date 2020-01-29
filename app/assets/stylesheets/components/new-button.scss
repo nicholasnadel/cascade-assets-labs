@@ -33,5 +33,9 @@
     &:active {
       background: $red-active;
     }
+    &:visited {
+    color: $white;
+    border-bottom: none;
+}
   }
 }
