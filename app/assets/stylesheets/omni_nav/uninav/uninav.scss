@@ -113,7 +113,7 @@ html {
       }
     }
 
-    &--cta {
+    &__cta {
       grid-area: cta;
       width: 100%;
       display: grid;
@@ -490,7 +490,7 @@ html {
 
 // END UNINAV DROPDOWNS
 @include respond(big-desktop) {
-  div.uninav--cta {
+  div.uninav__cta {
     @include qbal-slideLeft-enter;
   }
 
@@ -547,7 +547,7 @@ html {
       }
     }
 
-    #uninav--cta {
+    #uninav__cta {
       @include uninav-border-bottom;
       @include qbal-drop-enter;
     }
@@ -564,7 +564,7 @@ html {
 @media only screen and (max-width: 1150px) {
   #uninav {
     .uninav {
-      &--cta {
+      &__cta {
         ul {
           @include qbal-slideUp-exit;
         }
@@ -572,6 +572,19 @@ html {
     }
   }
 }
+
+@media only screen and (max-width: 1148px) {
+  #uninav {
+    .uninav {
+      &__cta {
+        &--wrapper {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
 
 
 // TABLET LANDSCAPE
@@ -715,7 +728,7 @@ html {
       border-bottom: none;
     }
 
-    .uninav--cta {
+    .uninav__cta {
       display: none;
     }
 
@@ -781,7 +794,7 @@ html.off-canvas__blur {
     &__logo,
     &__utility-nav--wrapper,
     &__global-nav,
-    &--cta {
+    &__cta {
       // @include qbal-slideRight-exit;
     }
   }
