@@ -50,13 +50,28 @@ html {
 }
 
 #uninav {
+  $uninavZindex: 2;
+  $uninavZindexPlusOne: $uninavZindex + 1;
   font-family: $futura-regular;
   position: fixed;
   width: 100vw;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   box-shadow: 0 37.125px 70px -12.125px rgba(0, 0, 0, 0.1);
-  z-index: 999999999;
+  z-index: $uninavZindex;
+
+  // debug
+  .gstl_50.gssb_c {
+    display: block !important;
+  }
+
+  .gssb_c,
+  .gssb_c[style] {
+    // z-index: var(--uninavZindex) ;
+    z-index: calc($uninavZindex + 2);
+  }
+
+
 
   a {
     cursor: pointer;
@@ -157,7 +172,6 @@ html {
       }
     }
 
-
     &__utility-nav--wrapper {
       grid-area: utility;
       width: 100%;
@@ -226,6 +240,7 @@ html {
       }
     }
 
+
     &__login {
       .uninav {
         &__dropdown--child {
@@ -267,6 +282,12 @@ html {
         border-bottom: 1px solid $panther-black;
       }
     }
+
+
+    &__zIndexPlusOne {
+      z-index: 999999999999999;
+    }
+
 
     &__menu-item-login {
       background-color: $panther-black;
@@ -376,6 +397,11 @@ html {
         }
       }
     }
+  }
+
+  input#gsc-i-id1 {
+    height: 30px !important;
+    box-shadow: none !important;
   }
 
   .off-canvas-overlay {
@@ -807,6 +833,8 @@ html.off-canvas__blur {
 .uninav__animation--exit {
   @include qbal-slideRight-exit;
 }
+
+
 
 // END TABLET PORTRAIT
 // END MEDIA QUERIES
