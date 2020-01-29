@@ -100,7 +100,7 @@ function a11yClick(event) {
 // off-canvas overlay - add to main content when expanded
 $(function () {
   var sectionMenuButton = $('#section-menu-hamburger-icon')
-  $('#umbrella-nav-button-toggle').on('click', function () {
+  $('#umbrella-nav-button-toggle, .uninav__hamburger-menu').on('click', function () {
     $('html, #main').addClass('off-canvas__blur');
   });
   $('.js-close-off-canvas-nav').on('click', function () {
