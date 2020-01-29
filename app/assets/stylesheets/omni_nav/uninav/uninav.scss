@@ -1,5 +1,4 @@
 // UNINAV.SCSS
-// MIXINS
 @mixin futura-pt {
   font-family: "futura-pt", arial, sans-serif;
 }
@@ -29,7 +28,7 @@
 @mixin uninav-drop-shadow {
   // todo: https://tobiasahlin.com/blog/how-to-animate-box-shadow/
   box-shadow: 0 37.125px 70px -12.125px rgba(0, 0, 0, 0.1);
-  transition: box-shadow .5s ease;
+  transition: box-shadow 0.5s ease;
 
   &:hover,
   &:focus,
@@ -51,14 +50,13 @@ html {
 }
 
 #uninav {
-  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  font-family: $futura-regular;
   position: fixed;
   width: 100vw;
-  font-family: "futura-pt", arial, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   box-shadow: 0 37.125px 70px -12.125px rgba(0, 0, 0, 0.1);
-  z-index: 2000;
+  z-index: 999999999;
 
   a {
     cursor: pointer;
@@ -67,40 +65,8 @@ html {
   li {
     margin: unset;
     list-style: none;
-    font-family: "futura-pt", arial, sans-serif;
+    font-family: $futura-regular;
     will-change: background-color;
-
-    &:hover,
-    &:focus,
-    &:focus-within {
-      // background-color: $uninav-light-grey;
-      // transition: background-color 0.3s ease-out;
-    }
-  }
-
-  ul li ul {
-    li {
-
-      &:hover,
-      &:focus,
-      &:focus-within {
-        // background-color: $uninav-light-grey;
-        // transition: background-color 0.3s ease-out;
-      }
-    }
-  }
-
-  // THIS IS ONLY DISPLAYED IN THE DRILLDOWN
-  .uninav__menu-item--drilldown-only {
-    display: none;
-  }
-
-  .ma5menu__container {
-    @include respond(tab-land) {
-      .uninav__menu-item--drilldown-only {
-        display: block;
-      }
-    }
   }
 }
 
@@ -108,45 +74,323 @@ html {
 // UNINAV STRUCTURE
 #uninav {
   display: grid;
-  grid-template-areas: "logo secondaryLogo utility"
+  grid-template-areas:
+    "logo secondaryLogo utility"
     "global global cta";
   grid-template-columns: 1fr;
   background-color: $white;
   top: 0;
-  z-index: 999;
-}
+  z-index: 999999999;
 
-.uninav__hamburger-menu {
-  display: none;
-}
+  .uninav {
+    &__hamburger-menu {
+      display: none;
+    }
+
+    &__logo {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      border-bottom: 1px solid $uninav-light-grey;
+      margin-left: 2.5rem;
+      white-space: nowrap;
+      @include qbal-fade-enter;
+
+      &--secondary {
+        font-weight: 800;
+        font-size: 1.2em;
+        width: 100%;
+        border-left: 1px solid $cu-red;
+        align-self: center;
+        margin-left: 2rem;
+        padding-left: 2rem;
+        grid-area: secondaryLogo;
+        @include qbal-fade-enter;
+      }
+
+      .chapman-logo {
+        width: 300px;
+      }
+    }
+
+    &--cta {
+      grid-area: cta;
+      width: 100%;
+      display: grid;
+      justify-content: end;
+      align-content: center;
+      align-items: center;
+      // @include qbal-stagger-children;
+      @include uninav-border-bottom;
+
+      ul {
+        display: flex;
+
+        &>li {
+          flex: 1 100%;
+          list-style: none;
+          color: $panther-black;
+          @include uninav-drop-shadow;
+          @include qbal-slideLeft-enter;
+
+          a {
+            @include button($red);
+            @include futura-pt;
+            padding: 5px;
+            margin-right: 10px;
+            display: block;
+            text-align: center;
+            font-weight: 300;
+            transition: 250ms ease-in-out;
+            will-change: background-color;
+            font-weight: 600;
+            min-width: 120px;
+            animation-duration: 3s;
+
+            @for $i from 1 to 5 {
+              &:nth-child(#{$i}) {
+                animation-delay: $i * 0.05s;
+              }
+            }
+          }
+        }
+      }
+    }
 
 
-.off-canvas-overlay {
-  display: none;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-}
+    &__utility-nav--wrapper {
+      grid-area: utility;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      justify-content: end;
+      border-bottom: 1px solid $uninav-light-grey;
+      height: $uninav-div-height;
+      align-items: center;
 
-.uninav__logo-wrapper {
-  display: flex;
-  justify-content: start;
-  align-items: center;
+      .uninav {
+        &__menu-item--audiences {
+          a {
+            color: $panther-black;
+            padding-left: 1.5em;
+            padding-right: 1.5em;
+          }
 
+          &:nth-child(4),
+          &:nth-child(5) {
+            border-right: none;
+            padding-left: 20px;
+            padding-right: 20px;
+          }
+        }
+      }
 
-  #uninav--logo {
-    // min-width: 300px;
+      &__search-input {
+        @include qbal-fade-enter;
+        border-right: none;
+
+        #gsc-i-id1 {
+          height: 38px !important;
+        }
+      }
+
+      ul {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+
+        li {
+          flex-grow: 1;
+          flex-basis: auto;
+          text-align: center;
+          border-right: 1px solid #ccc;
+
+          &:last-of-type {
+            flex-grow: 0;
+            flex-basis: unset;
+          }
+        }
+
+        &__utility-nav--search-wrapper input {
+          border: none;
+          box-shadow: none;
+          margin-bottom: 0;
+        }
+
+        .fas.fa-search {
+          color: $grey;
+          padding-right: 1.2rem;
+          padding-left: 1.2rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__login {
+      .uninav {
+        &__dropdown--child {
+          margin-top: 0;
+          background-color: $panther-black;
+          color: $white;
+          width: 300px;
+          right: 0;
+          position: absolute;
+          margin-left: auto;
+          @include uninav-drop-shadow;
+        }
+      }
+    }
+
+    &__login-button {
+      z-index: 2;
+
+      a {
+        color: $white;
+        fill: $white;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+
+        svg {
+          height: 2rem;
+
+          &#Layer_1 {
+            margin-right: 0.8rem;
+            margin-left: 0.8rem;
+          }
+        }
+      }
+
+      ul li {
+        color: $white;
+        border-bottom: 1px solid $panther-black;
+      }
+    }
+
+    &__menu-item-login {
+      background-color: $panther-black;
+      width: 80px;
+      height: 100%;
+      font-size: 1.2em;
+      color: $uninav-light-grey;
+      text-align: center;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include linear-300;
+      cursor: pointer;
+      height: $uninav-div-height;
+
+      &__menu-item-dropdown-child ul a {
+        color: $white;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+      }
+
+      &:hover {
+        color: $white;
+
+        a,
+        i {
+          transition: 100ms ease-in-out;
+          transform: scale(1);
+          -webkit-transform: scale(1);
+          -moz-transform: scale(1);
+          -ms-transform: scale(1);
+          -o-transform: scale(1);
+          -webkit-transition: 100ms ease-in-out;
+          -moz-transition: 100ms ease-in-out;
+          -ms-transition: 100ms ease-in-out;
+          -o-transition: 100ms ease-in-out;
+        }
+      }
+    }
+
+    &__utility-nav--audiences-container {
+      display: flex;
+      align-items: center;
+
+      li:last-of-type {
+        border-right: none;
+      }
+    }
+
+    // global nav
+    &__global-nav {
+      width: 900px;
+      border-bottom: none;
+
+      a {
+        color: $panther-black;
+      }
+    }
+
+    &__dropdown {
+      &--child {
+        // box-shadow: 1px -1px 1px rgba(50, 50, 50, 0.05);
+        margin-top: 10px;
+        min-width: 300px;
+
+        ul {
+          display: flex;
+          padding: 4rem;
+          -webkit-font-smoothing: antialiased;
+          color: $panther-black;
+          font-family: $futura-regular;
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+          font-weight: 400;
+          cursor: pointer;
+          visibility: visible;
+          box-sizing: inherit;
+          word-wrap: break-word;
+          list-style: none;
+          list-style-image: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            width: 100%;
+            display: flex;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-left: 2rem;
+            @include uninav-border-bottom;
+            animation-duration: 0.05s;
+            @include qbal-drop-enter;
+
+            @for $i from 1 to 10 {
+              &:nth-child(#{$i}) {
+                animation-delay: $i * 0.01s;
+              }
+            }
+          }
+        }
+
+        .icon::before {
+          margin-right: 1rem;
+        }
+      }
+    }
   }
 
-  border-bottom: 1px solid $uninav-light-grey;
+  .off-canvas-overlay {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
 }
 
-.uninav--global-nav {
+.uninav__global-nav {
   grid-area: global;
   height: $uninav-div-height;
   @include uninav-border-top;
 
-  // background-color: orange;
   a {
     display: flex;
     justify-content: center;
@@ -154,7 +398,7 @@ html {
   }
 
   .uninav__dropdown-wrapper>a::after {
-    font-family: 'Font Awesome 5 Free';
+    font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0d7";
     padding-left: 1rem;
@@ -174,7 +418,7 @@ html {
       justify-content: start;
     }
 
-    .uninav__menu-item-dropdown-child a {
+    .uninav__dropdown--child a {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -182,63 +426,23 @@ html {
   }
 }
 
-#uninav>div.uninav--cta {
-  grid-area: cta;
-  // background-color: wheat;
-  width: 100%;
-  // CTA CHILDREN ITEMS
-  display: grid;
-  justify-content: end;
-  align-content: center;
-  align-items: center;
-  // @include qbal-stagger-children;
-  @include uninav-border-bottom;
-
-  ul {
-    display: flex;
-
-    &>li {
-      flex: 1 100%;
-      list-style: none;
-      color: $panther-black;
-      @include uninav-drop-shadow;
-      @include qbal-slideLeft-enter;
-
-      // @include qbal-fade-enter;
-      a {
-        @include button($red);
-        @include futura-pt;
-        padding: 5px;
-        margin-right: 10px;
-        min-width: 100px;
-        display: block;
-        text-align: center;
-        font-weight: 300;
-        transition: 250ms ease-in-out;
-        will-change: background-color;
-      }
-    }
-  }
-}
 
 #uninav>nav {
   grid-area: nav;
-  // background-color: #ffa08c;
 }
 
 #uninav>global {
   grid-area: global;
-  // background-color: #ffa08c;
 }
 
-#uninav>div.primary-logo {
+#uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
 }
 
 // UNINAV STRUCTURE
 // UNINAV DROPDOWNS
-.uninav__menu-item-dropdown-child {
+.uninav__dropdown--child {
   display: none;
   position: absolute;
   left: 0;
@@ -261,24 +465,27 @@ html {
   }
 }
 
-.uninav__menu-item-dropdown-parent {
+.uninav__dropdown--parent {
   display: block;
   flex-direction: column;
   position: relative;
 
-  &:hover,
-  &:focus,
-  &:focus-within {
-    .uninav__menu-item-dropdown-child {
+  &[aria-expanded="true"] {
+    .uninav__dropdown--child {
+      z-index: 99999999;
       display: flex;
       @include qbal-dropdown-enter;
-      // @include linear-300;
     }
   }
-}
 
-.uninav__dropdown-wrapper {
-  // position: relative;
+  &[aria-expanded="false"] {
+
+    // TODO: refactor first .uninav__dropdown--child... display: none is not animitable. 
+    .uninav__dropdown--parent,
+    .uninav__dropdown--child {
+      @include qbal-shrink-exit;
+    }
+  }
 }
 
 // END UNINAV DROPDOWNS
@@ -287,7 +494,7 @@ html {
     @include qbal-slideLeft-enter;
   }
 
-  .uninav__logo-wrapper {
+  .uninav__logo {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -296,42 +503,42 @@ html {
     align-content: center;
     grid-auto-flow: column;
 
-    #uninav--logo {
+    #uninav-logo {
       // min-width: 300px;
     }
   }
 }
 
 // MEDIA QUERIES
-@include respond(tab-land) {
+@media only screen and (max-width: 1300px) {
   #uninav {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .uninav__logo-wrapper {
+  .uninav__logo {
     display: flex;
     justify-content: start;
     align-items: center;
 
-    #uninav--logo {
+    #uninav-logo {
       width: 100%;
     }
   }
 
   .uninav__menu-item--audiences {
-    // need a slicker preferably non-js fadeout solution since display: none is not animatable 
+    // need a slicker preferably non-js fadeout solution since display: none is not animatable
     @include qbal-slideLeft-exit;
     display: none;
   }
 
   #uninav {
     display: grid;
-    grid-template-areas: "logo cta utility"
+    grid-template-areas:
+      "logo cta utility"
       "global global global";
     background-color: $white;
-    border-bottom: none !important;
 
-    .uninav--global-nav {
+    .uninav__global-nav {
       @include qbal-growExaggerated-enter;
 
       ul li,
@@ -352,76 +559,240 @@ html {
   }
 }
 
+
+
+@media only screen and (max-width: 1150px) {
+  #uninav {
+    .uninav {
+      &--cta {
+        ul {
+          @include qbal-slideUp-exit;
+        }
+      }
+    }
+  }
+}
+
+
+// TABLET LANDSCAPE
+@include respond(tab-land) {
+  .uninav {
+    &__logo {
+      width: 100%;
+      height: $uninav-div-height;
+
+      &--secondary {
+        @include qbal-slideRight-exit;
+      }
+    }
+
+    &__menu-item-dropdown-child:hover>ul {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: start;
+      text-align: left;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: start;
+    }
+
+    &__utility-nav {
+      min-width: auto;
+    }
+
+    &__utility-nav--search-wrapper {
+      margin-right: 0;
+    }
+
+    .gsc-search-box table tbody tr {
+      border: none !important;
+    }
+
+    tr {
+      border-image: none !important;
+      border: none !important;
+    }
+
+    .gsc-search-box {
+      border: none !important;
+    }
+
+    #___gcse_0 {
+      border: 1px solid grey;
+    }
+
+    &__global-nav {
+      min-width: unset;
+      width: 100vw;
+    }
+  }
+}
+
 // TABLET PORTRAIT
 @include respond(tab-port) {
   #uninav {
     grid-template-areas: "hamburger logo utility";
     grid-template-columns: 10% 40% 50%;
-  }
+    height: 60px;
 
-  .uninav__utility-nav {
-    /* min-width: auto; */
-    /* min-width: 100%; */
-    width: 100%;
-  }
+    .uninav {
+      &__logo {
+        width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+        @include qbal-fade-enter;
+      }
 
-  #uninav .uninav__utility-nav--wrapper ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: end;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: start;
-    // all: unset;
-    display: unset;
-    justify-content: unset;
-    display: flex;
-    justify-content: space-between;
-  }
+      &__logo--secondary {
+        font-weight: 800;
+        font-size: 1.2em;
+        width: 100%;
+        border-left: 1px solid $cu-red;
+        align-self: center;
+        margin-left: 2rem;
+        padding-left: 2rem;
+        grid-area: secondaryLogo;
+      }
 
-  .uninav__logo-wrapper {
-    display: flex;
-    justify-content: start;
-    align-items: center;
+      &__hamburger-menu {
+        grid-area: "hamburger";
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        @include qbal-slideRight-enter;
 
-    #uninav--logo {
+        .hamburger-menu-button {
+          background-color: white;
+          border: none;
+          padding-left: 2rem;
+        }
+      }
+
+      &__menu-item-login {
+        @include qbal-slideLeft-enter;
+      }
+
+      &__menu-item-login {
+        @include qbal-slideLeft-enter;
+      }
+    }
+
+    &__utility-nav {
+      width: 100%;
+
+      &--wrapper ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: end;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: start;
+        // all: unset;
+        display: unset;
+        justify-content: unset;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    &__logo {
+      display: flex;
+      justify-content: start;
+      align-items: center;
       width: auto;
+      @include qbal-grow-enter;
+      border-bottom: none;
+    }
+
+    &__utility-nav--wrapper {
+      border-bottom: none;
+    }
+
+    .uninav--cta {
+      display: none;
+    }
+
+    &__global-nav {
+      display: none;
+    }
+
+    &__utility-nav--wrapper ul li {
+      border-right: none;
+    }
+  }
+}
+
+@include respond(phone) {
+  .uninav {
+
+    &__logo,
+    #uninav-logo .chapman-logo {
+      width: 100%;
+    }
+  }
+}
+
+html.off-canvas__blur {
+  #js-off-canvas-overlay {
+    animation: increaseOpacity;
+    animation-direction: normal;
+    animation-duration: 450ms;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
+    -ms-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    z-index: 1;
+
+    @keyframes increaseOpacity {
+      0% {
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0);
+      }
+
+      25% {
+        background-color: rgba(0, 0, 0, 0.25);
+      }
+
+      50% {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      75% {
+        background-color: rgba(0, 0, 0, 0.75);
+      }
+
+      100% {
+        background-color: rgba(0, 0, 0, 0.9);
+      }
     }
   }
 
-  .uninav__hamburger-menu {
-    grid-area: "hamburger";
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    // transform: scale(1.2);
-    // margin-top: -5px;
-    @include qbal-slideRight-enter;
+  .uninav {
+
+    &__logo,
+    &__utility-nav--wrapper,
+    &__global-nav,
+    &--cta {
+      // @include qbal-slideRight-exit;
+    }
   }
 
-  .uninav__utility-nav--wrapper {
-    border-bottom: none;
+  #main {
+    // @include qbal-slideRight-exit;
   }
+}
 
-  .uninav__logo-wrapper {
-    @include qbal-grow-enter;
-    border-bottom: none;
-  }
-
-  #uninav>div.uninav--cta {
-    display: none;
-  }
-
-  #uninav>div.uninav--global-nav {
-    display: none;
-  }
-
-  .uninav__utility-nav--wrapper ul li {
-    border-right: none;
-  }
+.uninav__animation--exit {
+  @include qbal-slideRight-exit;
 }
 
 // END TABLET PORTRAIT

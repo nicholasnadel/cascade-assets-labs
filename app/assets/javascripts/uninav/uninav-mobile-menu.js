@@ -1,5 +1,5 @@
 $(function () {
-  if ($(".secondary-logo").length) {
+  if ($(".uninav__logo--secondary").length) {
     console.log('contextual/secondary menu found');
     ma5menu({
       menu: '.uninav__menu-drilldown--contextual-plus-global',
