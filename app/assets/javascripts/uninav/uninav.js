@@ -57,7 +57,7 @@ function hideCurrentDropdownWhenLoseFocus() {
       // console.log('mosueOUt');
     }
   });
-  $(".uninav__dropdown--child li:first-child, .uninav__dropdown--parent").on('keydown blur', function (e) {
+  $(".uninav__dropdown--child li:first-child").on('keydown blur', function (e) {
     // SHIFT TAB KEY COMBO
     var dropdownParent = $(this).closest('.uninav__dropdown--parent')
     if (e.shiftKey && e.keyCode === 9) {
