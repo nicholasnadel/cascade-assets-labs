@@ -19,6 +19,7 @@
   a,
   a:link {
     // a:link selector added by SH
+    $bg: $cu-red;
     position: relative;
     text-align: left;
     padding: 10px 38px 10px 20px;
@@ -26,7 +27,7 @@
     font-weight: 600;
     display: block;
 
-    background-color: $cu-red;
+    background-color: $bg;
     font-size: 1em;
     clear: both;
 
