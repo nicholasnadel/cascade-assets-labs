@@ -627,9 +627,23 @@ p {
   margin-bottom: 2rem;
 }
 
-[class*='-widget'] {
-  [class*='__button'] {
-    border: none;
+html body {
+  [class*='-widget'] {
+    [class*='__button'] {
+      border: none;
+    }
+
+    [class*='__buttons'] {
+      background-color: none;
+      background: none;
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+        background-color: none;
+        background: none;
+      }
+    }
   }
 }
 

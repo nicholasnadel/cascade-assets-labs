@@ -245,7 +245,7 @@ On a page level, configure via:
       ##NEW WAY:
       #import ( "/_cascade/formats/modular/omni_nav_v3/_logo_container.vtl" )
       #* OLD WAY:
-      <div class="primary-logo">
+      <div class="uninav__logo--primary">
         <a href="site://Chapman.edu/index" title="Chapman University Website Home Page">
           <svg class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.7 28.1">
             <defs>
@@ -259,7 +259,7 @@ On a page level, configure via:
       *#
 
       #if ( $isUmbrellaCategory )
-      <div class="secondary-logo">
+      <div class="uninav__logo--secondary">
         <a class="branded-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
       </div>
       #end
@@ -308,10 +308,10 @@ On a page level, configure via:
           <!-- <div class="gcse-searchresults-only"></div> -->
         </li>
       </span>
-      <li class="uninav__menu-item-dropdown-parent" tabindex="0"><span class="uninav__menu-item-login">
+      <li class="uninav__dropdown--parent" tabindex="0"><span class="uninav__menu-item-login">
           <i class="fas fa-paw"></i>
         </span>
-        <div class="uninav__menu-item-dropdown-child uninav__login-button">
+        <div class="uninav__dropdown--child uninav__login-button">
           <ul>
 
         #import("/_cascade/formats/modular/omni_nav_v3/_login.vtl" )

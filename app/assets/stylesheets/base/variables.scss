@@ -129,10 +129,10 @@ $pillar: #686259;
 $panther-black: #231f20;
 $white-alpha: rgba(255, 255, 240, 0.8);
 $white-alpha-50: rgba(255, 255, 240, 0.5);
-$sand-alpha: rgba($sand, .8);
 $panther-black-alpha: rgba($panther-black, .8);
 $pillar: #686259;
 $sand: #F6F2E8;
+$sand-alpha: rgba($sand, .8);
 
 // spacing
 $widget-margin-top: 30px;
@@ -281,7 +281,13 @@ $omniNavHeightMobile: 123px;
   --omniNavHeightDesktop: 60px;
   --omniNavHeightMobile: 123px;
 }
+
 $slate: #666;
+
+// Widget spacing
+// widget margin top
+$wmtop: 30px;
+$widget-margin-top: $wmtop;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
 $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
