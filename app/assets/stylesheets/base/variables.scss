@@ -283,6 +283,11 @@ $omniNavHeightMobile: 123px;
 }
 
 $slate: #666;
+
+// Widget spacing
+// widget margin top
+$wmtop: 30px;
+$widget-margin-top: $wmtop;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
 $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
