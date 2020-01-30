@@ -517,7 +517,7 @@ module ContentTypes
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s %s %s %s %s %s %s",
              render_static_partial("widgets/primary_content/banner_notification"),
-             render_static_partial("widgets/primary_content/a_to_z_anchors"),
+             render_static_partial("widgets/primary_content/testimonial_widget"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_3"),
              render_static_partial("widgets/primary_content/collapsables_2"),
@@ -540,6 +540,7 @@ module ContentTypes
       format("%s %s %s",
              render_static_partial("widgets/left_column/left_nav"),
              render_static_partial("widgets/left_column/callout_2"),
+             render_static_partial("widgets/left_column/contact_profile"),
              render_static_partial("widgets/left_column/news_event_left_col"))
     end
 

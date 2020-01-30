@@ -636,6 +636,13 @@ html body {
     [class*='__buttons'] {
       background-color: none;
       background: none;
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+        background-color: none;
+        background: none;
+      }
     }
   }
 }
