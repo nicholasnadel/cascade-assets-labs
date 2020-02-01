@@ -4,7 +4,6 @@
   align-content: center;
   justify-content: center;
   max-height: 60px;
-
   @include qbal-drop-enter;
 
   &__text {
@@ -29,9 +28,8 @@
       }
     }
 
-
     +[class*="-widget"] {
-      margin-top: 20px;
+      margin: 20px 0 20px 0;
     }
   }
 
@@ -40,7 +38,6 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
-
 
   @include respond(phone) {
     &__container {
