@@ -351,7 +351,7 @@
 				</text>
 				<group collapsed="false" identifier="fact" label="Fact" multiple="true" required="true">
 					<text help-text="Insert FontAwesome Icon from https://fontawesome.com/icons in the format: fas fa-lightbulb" identifier="icon" label="FontAwesome Icon" required="true" wysiwyg="False"/>
-					<text help-text="" identifier="text" label="Text" required="true" wysiwyg="False"/>
+					<text help-text="15 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="False"/>
 				</group>
 			</group>
 			<group collapsed="true" identifier="threePhotoCallout" label="Three Photo Callout">
@@ -757,6 +757,8 @@
 				<dropdown-item value="Dodge"/>
 				<dropdown-item value="Education"/>
 				<dropdown-item value="Information Systems"/>
+        c
+        
 				<dropdown-item value="Law"/>
 				<dropdown-item value="Pharmacy"/>
 				<dropdown-item value="Schmid"/>
