@@ -700,9 +700,12 @@ $(function() {
 $(function() {
   if ($(".rssfeed").length) {
     addTitleToReadMoreText();
+    addUniqueIdToEachPost();
   }
 });
 
+addTitleToReadMoreText();
+addUniqueIdToPosts();
 function addTitleToReadMoreText() {
   $( ".post" ).each(function() {
     var title = $(this).find('strong').text();
@@ -712,4 +715,15 @@ function addTitleToReadMoreText() {
 				$(this).find('a').text(title)
 		}
   });
+}
+
+function addUniqueIdToEachPost() {
+	        $.each($('.post'), function (ind) {
+          var title = $(this).find('strong');
+          $(this).attr('id', 'post-' + parseInt(ind + 1));
+          $(title).attr('id', 'post-' + parseInt(ind + 1) + '__title');
+          var titleID = $(this).find('strong').attr('id');
+          var id = $(this).attr('id');
+          $(this).find('a').attr('aria-labelledby', titleID)
+      });
 }
