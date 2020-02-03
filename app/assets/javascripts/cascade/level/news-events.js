@@ -146,8 +146,10 @@ $(function () {
             //Links
             $this.find(".title>a, .readMore").each(function () {
               $(this).attr('href', newsData.item[i].link[0]);
-            });
+//              addTitleToReadMoreText();
 
+            });
+            addTitleToReadMoreText();
             //Show News
             $(".news .loading").hide().siblings(".story").css("visibility", "visible");
             $(".news .story").css("visibility", "visible");
@@ -281,8 +283,10 @@ $(function () {
                 // Links
                 $this.find(" .title>a, .readMore").each(function () {
                   $(this).attr('href', rssitem.link[0]);
-                });
+    //              addTitleToReadMoreText();
 
+                });
+                addTitleToReadMoreText();
                 // Datestamp: pubdate sometimes contained original but not current
                 // event date; use category field instead (has yyyy/mm/dd format)
                 var datestamp = categoryToDatestamp(rssitem.category[0]);
@@ -479,6 +483,16 @@ $(function () {
 
     $ellipsis = $(".ellipsis");
     if ($ellipsis) $ellipsis.ellipsis();
-
   }
 });
+
+function addTitleToReadMoreText() {
+  $( ".post" ).each(function() {
+    var title = $(this).find('strong').text();
+		var readMoreLink = $(this).find('a').text();
+		
+		if ($(readMoreLink).text().indexOf('read more')) {
+				$(this).find('a').text(title)
+		}
+  });
+}
