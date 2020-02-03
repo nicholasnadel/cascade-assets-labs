@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
   //used with News/Events widget in 2 and 3 Column Modular templates
   //
   // Make it work with old code.
@@ -9,13 +9,13 @@ $(function () {
   // as a category element. The problem is that sometimes category is a string with timestamp
   // value and sometimes an array where one of items is timestamp value. For more info, see
   // https://github.com/chapmanu/cascade-assets/issues/160
-  var categoryToDatestamp = function (category) {
+  var categoryToDatestamp = function(category) {
     // Sample category datestamp: "2017/03/06 (Mon)"
     var datestamp = null;
 
     // Type checking.
     var categoryIsArray = category instanceof Array;
-    var categoryIsString = typeof (category) === 'string';
+    var categoryIsString = typeof category === "string";
 
     // Convert to date object. If value is not in expected format, it will result in
     // invalid date object.
@@ -29,12 +29,14 @@ $(function () {
       var dateStr = category[0].substring(0, 10);
       datestamp = new Date(dateStr);
     } else {
-      console.warn('Feed did not provide category as string or array as expected.');
+      console.warn(
+        "Feed did not provide category as string or array as expected."
+      );
       return null;
     }
 
     // Make sure we got a valid date object: https://stackoverflow.com/a/1353711/6763239
-    var datestampIsValid = !(isNaN(datestamp.getTime()));
+    var datestampIsValid = !isNaN(datestamp.getTime());
     if (datestampIsValid) {
       return datestamp;
     } else {
@@ -47,9 +49,10 @@ $(function () {
     ------------------------------------------------------------------------------------------------*/
 
     //default is NewsAndStories:
-    var newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
-      newsYqlUrl = function () {
-        return ("https://social04.chapman.edu:4040/data?url=" + newsFeedUrl)
+    var newsFeedUrl =
+        "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
+      newsYqlUrl = function() {
+        return "https://social04.chapman.edu:4040/data?url=" + newsFeedUrl;
       },
       newsFeedOptions = $(".newsFeed").text();
 
@@ -69,7 +72,8 @@ $(function () {
         $("  .allNews").attr("href", "http://blogs.chapman.edu/business");
         break;
       case "Commencement":
-        newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCommencement";
+        newsFeedUrl =
+          "http://www.chapman.edu/getFeed.ashx?name=newsCommencement";
         $("  .allNews").attr("href", "http://blogs.chapman.edu/commencement");
         break;
       case "COPA":
@@ -90,7 +94,10 @@ $(function () {
         break;
       case "Information Systems":
         newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsIST";
-        $(" .allNews").attr("href", "http://blogs.chapman.edu/information-systems");
+        $(" .allNews").attr(
+          "href",
+          "http://blogs.chapman.edu/information-systems"
+        );
         break;
       case "Law":
         newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsLaw";
@@ -113,7 +120,8 @@ $(function () {
         $(" .allNews").attr("href", "http://blogs.chapman.edu/students");
         break;
       case "Thompson Policy Institute":
-        newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
+        newsFeedUrl =
+          "http://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
         $(" .allNews").attr("href", "http://blogs.chapman.edu/tpi/");
         break;
       case "Wilkinson":
@@ -125,58 +133,83 @@ $(function () {
         break;
     }
 
-    $(" .news .loading").siblings(".story").css("visibility", "hidden");
+    $(" .news .loading")
+      .siblings(".story")
+      .css("visibility", "hidden");
 
-    var updateNewsWidget = function (data) {
+    var updateNewsWidget = function(data) {
       var newsData = data[0];
       if (newsData) {
-        $(" .newsEvents").each(function () {
-          $(this).find(".news .story").each(function (i) {
-            var $this = $(this);
-            if (newsData.item[i].pubDate) {
-              //Month
-              $this.find(".date .month").html(newsData.item[i].pubDate[0].split(' ')[2].toUpperCase());
-              //Day
-              $this.find(".date .day").html(pad2(parseInt((newsData.item[i].pubDate[0].split(' ')[1]), 10)));
-              //Year
-              $this.find(".date .year").html(newsData.item[i].pubDate[0].split(' ')[3]);
-            }
-            //Title
-            $this.find(".title>a").html(newsData.item[i].title[0]);
-            //Links
-            $this.find(".title>a, .readMore").each(function () {
-              $(this).attr('href', newsData.item[i].link[0]);
-//              addTitleToReadMoreText();
+        $(" .newsEvents").each(function() {
+          $(this)
+            .find(".news .story")
+            .each(function(i) {
+              var $this = $(this);
+              if (newsData.item[i].pubDate) {
+                //Month
+                $this
+                  .find(".date .month")
+                  .html(
+                    newsData.item[i].pubDate[0].split(" ")[2].toUpperCase()
+                  );
+                //Day
+                $this
+                  .find(".date .day")
+                  .html(
+                    pad2(
+                      parseInt(newsData.item[i].pubDate[0].split(" ")[1], 10)
+                    )
+                  );
+                //Year
+                $this
+                  .find(".date .year")
+                  .html(newsData.item[i].pubDate[0].split(" ")[3]);
+              }
+              //Title
+              $this.find(".title>a").html(newsData.item[i].title[0]);
+              //Links
+              $this.find(".title>a, .readMore").each(function() {
+                $(this).attr("href", newsData.item[i].link[0]);
+              });
 
+              //Show News
+              $(".news .loading")
+                .hide()
+                .siblings(".story")
+                .css("visibility", "visible");
+              $(".news .story").css("visibility", "visible");
             });
-            addTitleToReadMoreText();
-            //Show News
-            $(".news .loading").hide().siblings(".story").css("visibility", "visible");
-            $(".news .story").css("visibility", "visible");
-
-          });
         });
       } else {
-        $(".news").html("<p>Oops, <a href='" + newsFeedUrl + "'>" + newsFeedUrl + "</a> appears to be unresponsive or is not returning anything to display at the moment.</p>");
+        $(".news").html(
+          "<p>Oops, <a href='" +
+            newsFeedUrl +
+            "'>" +
+            newsFeedUrl +
+            "</a> appears to be unresponsive or is not returning anything to display at the moment.</p>"
+        );
       }
-    }
+    };
 
-    $.getJSON(newsYqlUrl(), function (data) {
+    $.getJSON(newsYqlUrl(), function(data) {
       updateNewsWidget(data);
-    }).done(function (data) {
-      updateNewsWidget(data);
-    }).fail(function (data) {
-      $(".news").html("<p>There are no news articles found or the news feed is temporarily down.</p>");
     })
-
+      .done(function(data) {
+        updateNewsWidget(data);
+      })
+      .fail(function(data) {
+        $(".news").html(
+          "<p>There are no news articles found or the news feed is temporarily down.</p>"
+        );
+      });
 
     /* Populate events from RSS feeds (converted to JSON with YQL)
     ------------------------------------------------------------------------------------------------ */
     if ($(".events").length) {
       //sample: eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
       var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
-        eventsYqlUrl = function () {
-          return ("https://social04.chapman.edu:4040/data?url=" + eventsFeedUrl)
+        eventsYqlUrl = function() {
+          return "https://social04.chapman.edu:4040/data?url=" + eventsFeedUrl;
         },
         eventsFeedOptions = $(".eventsFeed").text();
 
@@ -184,189 +217,307 @@ $(function () {
 
       switch (eventsFeedOptions) {
         case "ASBE":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventBusiness";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=11,73,29,92,31,163,10");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventBusiness";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=11,73,29,92,31,163,10"
+          );
           break;
         case "CDC":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCDC";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=14");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=14"
+          );
           break;
         case "COPA":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCOPA";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=21,56,105,75,89");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=21,56,105,75,89"
+          );
           break;
         case "CREAN":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCREAN";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=44,108,103,155,152,27,37,114,38");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=44,108,103,155,152,27,37,114,38"
+          );
           break;
         case "DANCE":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDANCE";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=105");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=105"
+          );
           break;
         case "DODGE":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDODGE";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=23");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=23"
+          );
           break;
         case "Education":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventEducation";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventEducation";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=61,20"
+          );
           break;
         case "Information Systems":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventIST";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=133");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=133"
+          );
           break;
         case "LAW":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventLAW";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=28");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=28"
+          );
           break;
         case "MUSIC":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventMUSIC";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=56,89");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=56,89"
+          );
           break;
         case "PHARMACY":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventPHARMACY";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=141");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventPHARMACY";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=141"
+          );
           break;
         case "SCHMID":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=36,101,120,22,123,129,112");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=36,101,120,22,123,129,112"
+          );
           break;
         case "SOC":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSOC";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=146");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=146"
+          );
           break;
         case "STUDENTS":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=53,135,58,70,137,49,99,88,131,14,144,50,126,64,74,71,102,142,41,153,116,15,94,164,19,26,34,30,114,38,117");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=53,135,58,70,137,49,99,88,131,14,144,50,126,64,74,71,102,142,41,153,116,15,94,164,19,26,34,30,114,38,117"
+          );
           break;
         case "THEATRE":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHEATRE";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=75");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventTHEATRE";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=75"
+          );
           break;
         case "Thompson Policy Institute":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHOMPSONPOLICY";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=191");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventTHOMPSONPOLICY";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=191"
+          );
           break;
         case "WILKINSON":
-          eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=84,115,60,86,146,87,134,115,128,160,110,82,132,45,43,40");
+          eventsFeedUrl =
+            "http://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=84,115,60,86,146,87,134,115,128,160,110,82,132,45,43,40"
+          );
           break;
         case "ESI":
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventESI";
-          $(" .allEvents").attr("href", "https://events.chapman.edu/?group_id=83");
+          $(" .allEvents").attr(
+            "href",
+            "https://events.chapman.edu/?group_id=83"
+          );
           break;
         default:
           eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events";
           break;
       }
 
-      var updateEventsWidget = function (data) {
+      var updateEventsWidget = function(data) {
         var eventsData = data[0];
         if (eventsData) {
-          $(".newsEvents").each(function () {
-            $(this).find(".events .story").each(function (i) {
-              var $this = $(this);
-              var rssitem;
-              var maxloop;
-              if (typeof eventsData.item.length == 'undefined') {
-                rssitem = eventsData.item;
-                maxloop = 0;
-              } else {
-                rssitem = eventsData.item[i];
-                maxloop = eventsData.item.length;
-              }
-
-              if (rssitem) {
-                // Title
-                $this.find(" .title>a").html(rssitem.title[0]);
-
-                // Links
-                $this.find(" .title>a, .readMore").each(function () {
-                  $(this).attr('href', rssitem.link[0]);
-    //              addTitleToReadMoreText();
-
-                });
-                addTitleToReadMoreText();
-                // Datestamp: pubdate sometimes contained original but not current
-                // event date; use category field instead (has yyyy/mm/dd format)
-                var datestamp = categoryToDatestamp(rssitem.category[0]);
-                if (datestamp) {
-                  var shortMonthName = utils.toShortMonthName(datestamp.getMonth() + 1);
-                  $this.find(".date .month").html(shortMonthName);
-                  $this.find(".date .day").html(pad2(datestamp.getDate()));
-                  $this.find(".date .year").html(datestamp.getFullYear());
+          $(".newsEvents").each(function() {
+            $(this)
+              .find(".events .story")
+              .each(function(i) {
+                var $this = $(this);
+                var rssitem;
+                var maxloop;
+                if (typeof eventsData.item.length == "undefined") {
+                  rssitem = eventsData.item;
+                  maxloop = 0;
                 } else {
-                  console.warn('Feed did not provide valid datestamp.');
+                  rssitem = eventsData.item[i];
+                  maxloop = eventsData.item.length;
                 }
-              } else {
-                $(this).hide();
-              }
 
-              //Show Events
-              $(" .events .loading").hide().siblings(".story").css("visibility", "visible");
-              $(" .events .story").css("visibility", "visible");
+                if (rssitem) {
+                  // Title
+                  $this.find(" .title>a").html(rssitem.title[0]);
 
-              if (maxloop == i) {
-                return false;
-              }
-            });
+                  // Links
+                  $this.find(" .title>a, .readMore").each(function() {
+                    $(this).attr("href", rssitem.link[0]);
+                  });
+
+                  // Datestamp: pubdate sometimes contained original but not current
+                  // event date; use category field instead (has yyyy/mm/dd format)
+                  var datestamp = categoryToDatestamp(rssitem.category[0]);
+                  if (datestamp) {
+                    var shortMonthName = utils.toShortMonthName(
+                      datestamp.getMonth() + 1
+                    );
+                    $this.find(".date .month").html(shortMonthName);
+                    $this.find(".date .day").html(pad2(datestamp.getDate()));
+                    $this.find(".date .year").html(datestamp.getFullYear());
+                  } else {
+                    console.warn("Feed did not provide valid datestamp.");
+                  }
+                } else {
+                  $(this).hide();
+                }
+
+                //Show Events
+                $(" .events .loading")
+                  .hide()
+                  .siblings(".story")
+                  .css("visibility", "visible");
+                $(" .events .story").css("visibility", "visible");
+
+                if (maxloop == i) {
+                  return false;
+                }
+              });
           });
         } else {
-          $(" .events").html("<p>There are no events found (or <a href='" + eventsFeedUrl + "'>" + eventsFeedUrl + "</a> is temporarily down).</p>");
+          $(" .events").html(
+            "<p>There are no events found (or <a href='" +
+              eventsFeedUrl +
+              "'>" +
+              eventsFeedUrl +
+              "</a> is temporarily down).</p>"
+          );
           //$(".events").html("<p>No events found at this time.</p>");
         }
-      }
+      };
 
-      $(".events .loading").siblings(".story").css("visibility", "hidden");
-      $.getJSON(eventsYqlUrl(), function (data) {
+      $(".events .loading")
+        .siblings(".story")
+        .css("visibility", "hidden");
+      $.getJSON(eventsYqlUrl(), function(data) {
         updateEventsWidget(data);
-      }).done(function (data) {
-        updateEventsWidget(data);
-      }).fail(function (data) {
-        $(".events").html("<p>There are no events found or the events feed is temporarily down).</p>");
-      });
+      })
+        .done(function(data) {
+          updateEventsWidget(data);
+        })
+        .fail(function(data) {
+          $(".events").html(
+            "<p>There are no events found or the events feed is temporarily down).</p>"
+          );
+        });
     }
 
     /* Switch news events tabs
     ------------------------------------------------------------------------------------------------*/
 
-    $(".newsEventsNav li").click(function () {
+    $(".newsEventsNav li").click(function() {
       var $this = $(this),
         i = $this.index();
-      $this.addClass("active").siblings().removeClass("active");
-      $this.parent(".newsEventsNav").siblings(".newsEventsContent").children("li:eq(" + i + ")").addClass("active").siblings().removeClass("active");
+      $this
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
+      $this
+        .parent(".newsEventsNav")
+        .siblings(".newsEventsContent")
+        .children("li:eq(" + i + ")")
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
       $ellipsis = $(".ellipsis");
       if ($ellipsis) $ellipsis.ellipsis();
     });
 
-    $(".newsEventsNav li").keydown(function (e) {
+    $(".newsEventsNav li").keydown(function(e) {
       if (e.keyCode === 32 || e.keyCode === 13) {
         var $this = $(this),
           i = $this.index();
-        $this.addClass("active").siblings().removeClass("active");
-        $this.parent(".newsEventsNav").siblings(".newsEventsContent").children("li:eq(" + i + ")").addClass("active").siblings().removeClass("active");
+        $this
+          .addClass("active")
+          .siblings()
+          .removeClass("active");
+        $this
+          .parent(".newsEventsNav")
+          .siblings(".newsEventsContent")
+          .children("li:eq(" + i + ")")
+          .addClass("active")
+          .siblings()
+          .removeClass("active");
         $ellipsis = $(".ellipsis");
         if ($ellipsis) $ellipsis.ellipsis();
-        return false
+        return false;
       }
-      return true
+      return true;
     });
 
-    $(".tabNav li").click(function () {
+    $(".tabNav li").click(function() {
       var $this = $(this),
         i = $this.index();
-      $this.addClass("active").siblings().removeClass("active");
-      $this.parent(".tabNav").siblings(".tabContent").children("li:eq(" + i + ")").addClass("active").siblings().removeClass("active");
+      $this
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
+      $this
+        .parent(".tabNav")
+        .siblings(".tabContent")
+        .children("li:eq(" + i + ")")
+        .addClass("active")
+        .siblings()
+        .removeClass("active");
       $ellipsis = $(".ellipsis");
       if ($ellipsis) $ellipsis.ellipsis();
     });
 
     // Apply user selected options
-    (function () {
-      var newsEventsOptions = [$(".newsEventsOptions").html(), $(".leftColumnNewsEventsOptions").html()],
-        $featureTab = [$(".main .newsEventsNav li:first-child"), $(".leftNav .newsEventsNav li:first-child")],
-        $newsTab = [$(".main .newsEventsNav li:nth-child(2)"), $(".leftNav .newsEventsNav li:nth-child(2)")],
-        $eventsTab = [$(".main .newsEventsNav li:nth-child(3)"), $(".leftNav .newsEventsNav li:nth-child(3)")],
+    (function() {
+      var newsEventsOptions = [
+          $(".newsEventsOptions").html(),
+          $(".leftColumnNewsEventsOptions").html()
+        ],
+        $featureTab = [
+          $(".main .newsEventsNav li:first-child"),
+          $(".leftNav .newsEventsNav li:first-child")
+        ],
+        $newsTab = [
+          $(".main .newsEventsNav li:nth-child(2)"),
+          $(".leftNav .newsEventsNav li:nth-child(2)")
+        ],
+        $eventsTab = [
+          $(".main .newsEventsNav li:nth-child(3)"),
+          $(".leftNav .newsEventsNav li:nth-child(3)")
+        ],
         $featureContent = [$(".main .featured"), $(".leftNav .featured")],
         $newsContent = [$(".main .news"), $(".leftNav .news")],
         $eventsContent = [$(".main .events"), $(".leftNav .events")],
@@ -448,41 +599,107 @@ $(function () {
     })();
 
     // Show today label if appropriate
-    var todayLabel = function () {
+    var todayLabel = function() {
       var today = new Date(),
         tomorrow = new Date(),
-        month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "DEC"];
+        month = [
+          "JAN",
+          "FEB",
+          "MAR",
+          "APR",
+          "MAY",
+          "JUN",
+          "JUL",
+          "AUG",
+          "SEP",
+          "OCT",
+          "DEC"
+        ];
       tomorrow.setDate(tomorrow.getDate() + 1);
 
       // Today
-      $(".newsEvents .date").each(function (index) {
-        if (today.getFullYear() === parseInt($(this).children(".year").html(), 10)) {
-          if (month[today.getMonth()].toUpperCase() === $(this).children(".month").html()) {
-            if (today.getDate() === parseInt($(this).children(".day").html(), 10)) {
-              $(this).siblings(".todayTomorrow").children(".today").css("display", "inline");
+      $(".newsEvents .date").each(function(index) {
+        if (
+          today.getFullYear() ===
+          parseInt(
+            $(this)
+              .children(".year")
+              .html(),
+            10
+          )
+        ) {
+          if (
+            month[today.getMonth()].toUpperCase() ===
+            $(this)
+              .children(".month")
+              .html()
+          ) {
+            if (
+              today.getDate() ===
+              parseInt(
+                $(this)
+                  .children(".day")
+                  .html(),
+                10
+              )
+            ) {
+              $(this)
+                .siblings(".todayTomorrow")
+                .children(".today")
+                .css("display", "inline");
             }
           }
         }
       });
 
       // Tomorrow
-      $(".newsEvents .date").each(function (index) {
-        if (tomorrow.getFullYear() === parseInt($(this).children(".year").html(), 10)) {
-          if (month[tomorrow.getMonth()].toUpperCase() === $(this).children(".month").html()) {
-            if (tomorrow.getDate() === parseInt($(this).children(".day").html(), 10)) {
-              $(this).siblings(".todayTomorrow").children(".tomorrow").css("display", "inline");
+      $(".newsEvents .date").each(function(index) {
+        if (
+          tomorrow.getFullYear() ===
+          parseInt(
+            $(this)
+              .children(".year")
+              .html(),
+            10
+          )
+        ) {
+          if (
+            month[tomorrow.getMonth()].toUpperCase() ===
+            $(this)
+              .children(".month")
+              .html()
+          ) {
+            if (
+              tomorrow.getDate() ===
+              parseInt(
+                $(this)
+                  .children(".day")
+                  .html(),
+                10
+              )
+            ) {
+              $(this)
+                .siblings(".todayTomorrow")
+                .children(".tomorrow")
+                .css("display", "inline");
             }
           }
         }
       });
     };
 
-    $(".events .copy").each(function (index) {
+    $(".events .copy").each(function(index) {
       $(this).html($(this).text());
     });
 
     $ellipsis = $(".ellipsis");
     if ($ellipsis) $ellipsis.ellipsis();
+  }
+});
+
+$(function() {
+  if ($(".rssfeed").length) {
+    addTitleToReadMoreText();
   }
 });
 
