@@ -169,7 +169,7 @@ task :changelog do
   File.delete(git_log) if File.exist?(git_log)
   open(git_log, 'w') { |f|
     f.puts "--------------------------------------------------------------------------"
-    f.puts "Comparing commits from current branch #{current_branch} to MASTER "
+    f.puts "Comparing commits from current branch <![CDATA[#protect #{current_branch} #protect]]> to MASTER "
     f.puts "--------------------------------------------------------------------------"
     f.puts `git --no-pager diff --name-only FETCH_HEAD $(git merge-base FETCH_HEAD master)`
     f.puts "--------------------------------------------------------------------------"
