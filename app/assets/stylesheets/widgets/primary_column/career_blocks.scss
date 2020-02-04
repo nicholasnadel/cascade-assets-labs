@@ -1,0 +1,53 @@
+.career-block-widget {
+  display: grid;
+  height: auto;
+  justify-content: start;
+  grid-template-rows: 300px;
+  @include qbal-slideUp-enter;
+
+  &__title {
+    font-weight: 400;
+    max-width: 200px;
+    margin-bottom: 2rem;
+  }
+
+  &__text {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    max-height: 300px;
+    margin: 10px 30px 10px 30px;
+    font-family: $futura-regular;
+    font-size: 1.8rem;
+  }
+
+  &__salary {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 35px;
+
+    @for $i from 1 through 20 {
+      :nth-child(#{$i}) {
+        animation-delay: #{$i * .13s};
+      }
+    }
+
+    +[class*="-widget"] {
+      margin: 20px 0 20px 0;
+    }
+  }
+
+  @include respond(tab-port) {
+    @include qbal-drop-enter;
+    animation-delay: -1s;
+    height: auto;
+
+    &__container {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
