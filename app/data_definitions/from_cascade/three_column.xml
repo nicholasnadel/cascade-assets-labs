@@ -161,6 +161,7 @@
 				<dropdown-item show-fields="primaryContent/widget/funnels-1up" value="Funnels 1up"/>
 				<dropdown-item show-fields="primaryContent/widget/logo-image-rotator" value="Logo Image Rotator"/>
 				<dropdown-item show-fields="primaryContent/widget/personnel" value="Personnel Table"/>
+        <dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
 				<dropdown-item show-fields="primaryContent/widget/tabs" value="Tabs"/>
 				<dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial"/>
 				<dropdown-item show-fields="primaryContent/widget/wysiwyg-editor" value="Text Editor"/>
@@ -171,7 +172,7 @@
 				<dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
 				<dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
 				<dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
-				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
+        <dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 			</text>
 			<group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
 				<shared-field identifier="display" path="display"/>
@@ -274,7 +275,7 @@
 				<text identifier="heading" label="Heading" required="true"/>
 				<text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
 				<shared-field identifier="link" path="cta"/>
-			</group>
+      </group>
 			<group collapsed="true" identifier="personnel" label="Personnel">
 				<text default="Yes" identifier="display-personnel" label="Show" required="true" type="radiobutton">
 					<radio-item value="Yes"/>
@@ -303,6 +304,20 @@
 						<asset identifier="fileLink" label="File Link" type="file"/>
 						<text identifier="label" label="Link text (defaults to 'View Full Bio' if blank)"/>
 					</group>
+				</group>
+      </group>
+      <group collapsed="true" identifier="quickFactBlocksWidget" label="Quick Fact Blocks" multiple="true">
+				<shared-field identifier="display" path="display"/>
+				<!-- Red was deliberately removed  normally use the shared bgColor field here -->
+				<text default="Black" identifier="bgColor" label="Background Color" type="dropdown">
+					<dropdown-item value="Grey"/>
+					<dropdown-item value="Black"/>
+					<dropdown-item value="Sand"/>
+					<dropdown-item value="White"/>
+				</text>
+				<group collapsed="false" identifier="fact" label="Fact" multiple="true" required="true">
+					<text help-text="Insert FontAwesome Icon from https://fontawesome.com/icons in the format: fas fa-lightbulb" identifier="icon" label="FontAwesome Icon" required="true" wysiwyg="False"/>
+					<text help-text="15 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="False"/>
 				</group>
 			</group>
 			<group collapsed="true" identifier="threePhotoCallout" label="Three Photo Callout">
