@@ -1,3 +1,43 @@
+<!-- TODO https://services.onetcenter.org/reference/mnm/career/outlook The salary element provides annual and/or hourly wages, from the BLS Occupational Employment Statistics external site wage estimates. -->
+
+<!-- https://services.onetcenter.org/ws/mnm/careers/49-9021.02/job_outlook -->
+<!-- https://services.onetcenter.org/demo -->
+
+<script>
+$.ajax({ 
+    type: 'GET', 
+    url: "https://services.onetcenter.org/ws/online/occupations/17-2051.00?client=chapman", 
+    data: { get_param: 'value' }, 
+    dataType: 'json',
+    success: function (data) {
+		$('.career-block-widget__title').html($('<div>', { 
+      text: 		data.title 
+    }));
+    
+      $('.career-block-widget__body').html($('<div>', {
+      text: data.description
+    }));
+
+				console.log(data)
+
+    }
+});
+
+$.ajax({ 
+    type: 'GET', 
+    url: "https://services.onetcenter.org/ws/mnm/careers/17-2051.00/job_outlook?client=chapman", 
+    data: { get_param: 'value' }, 
+    dataType: 'json',
+    success: function (data) {    
+      $('.career-block-widget__bold').html($('<span>', {
+      text: data.salary.annual_median
+    }));
+				console.log(data.salary.annual_median)
+    }
+});
+
+// https://services.onetcenter.org/ws/mnm/careers/[O*NET-SOC Code]/job_outlook
+</script>
 <div class="career-block-widget__container">
 
   <div class="career-block-widget career-block-widget--black">
