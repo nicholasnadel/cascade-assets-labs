@@ -26,7 +26,7 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  config.assets.debug = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -39,14 +39,5 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-
-  # no cache money
-config.assets.cache_store = :null_store  # Disables the Asset cache
-config.sass.cache = false  # Disable the SASS compiler cache
-
-# Do not compress assets
-config.assets.compress = true
-
-# Expands the lines which load the assets
-config.assets.debug = false
+  config.serve_static_files = false
 end
