@@ -6,7 +6,7 @@
   @include qbal-slideUp-enter;
 
   &--hidden {
-    // display: none;
+    display: none;
     // visibility: hidden;
     // top: -99999px;
     // position: absolute;
@@ -71,10 +71,16 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 35px;
     min-height: 300px;
+
     @for $i from 1 through 20 {
       :nth-child(#{$i}) {
         animation-delay: #{$i * .13s};
       }
+    }
+
+    &--3-or-more-items {
+      // prevents unsightly jump from display:none, while retaining animation
+      min-height: 650px;
     }
 
     +[class*="-widget"] {

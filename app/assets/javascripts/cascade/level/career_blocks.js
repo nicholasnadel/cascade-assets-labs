@@ -1,5 +1,11 @@
 $(function() {
   console.log("ready!");
+  if ($(".career-block-widget__container").children().length > 1) {
+    $(".career-block-widget__container").addClass(
+      "career-block-widget__container--3-or-more-items"
+    );
+  }
+
   $.each($(".career-block-widget"), function(ind) {
     $(this).attr("id", "career-block-widget__" + parseInt(ind + 1));
     var id = $(this).attr("id");
@@ -17,20 +23,18 @@ $(function() {
     console.log("url: " + URL);
     /// ON SUCCESS CALLBACK
     function onSuccess(data) {
- 
       //  $(this)
       //   .find(".career-block-widget__text").addClass('fadeInUp');
-      $(this).removeClass('career-block-widget--hidden');
-      $(this).addClass('career-block-widget--reveal');
+      $(this).removeClass("career-block-widget--hidden");
+      $(this).addClass("career-block-widget--reveal");
       $(this)
         .find(".career-block-widget__title")
-        .text(data.title).addClass('fadeInUp');
+        .text(data.title)
+        .addClass("fadeInUp");
       $(this)
         .find(".career-block-widget__body")
-        .text(data.description).addClass('fadeInUp');
-      
-
-             
+        .text(data.description)
+        .addClass("fadeInUp");
     }
     var bindedOnSuccess = onSuccess.bind(this);
     $.ajax({
@@ -43,7 +47,7 @@ $(function() {
       dataType: "json",
       timeout: 10000,
       error: function(jqxhr, statustext, err) {
-        console.log(id + ' error');
+        console.log(id + " error");
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
         } else if (jqxhr.status) {
@@ -137,6 +141,6 @@ $(function() {
   });
 
   function addErrorClass() {
-            $(this).addClass('career-block-widget--ajax-error');
+    $(this).addClass("career-block-widget--ajax-error");
   }
 });
