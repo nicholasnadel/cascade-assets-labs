@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   console.log("ready!");
   if ($(".career-block-widget__container").children().length > 1) {
     $(".career-block-widget__container").addClass(
@@ -6,7 +6,7 @@ $(function() {
     );
   }
 
-  $.each($(".career-block-widget"), function(ind) {
+  $.each($(".career-block-widget"), function (ind) {
     $(this).attr("id", "career-block-widget__" + parseInt(ind + 1));
     var id = $(this).attr("id");
     console.log("current id: " + id);
@@ -23,9 +23,13 @@ $(function() {
     console.log("url: " + URL);
     /// ON SUCCESS CALLBACK
     function onSuccess(data) {
+
+      if (!$.trim($(this).find('.career-block-widget__body').val())) {
+        $(this).removeClass("career-block-widget--hidden");
+        $(this).removeClass("career-block-widget--loading");
+      }
       //  $(this)
       //   .find(".career-block-widget__text").addClass('fadeInUp');
-      $(this).removeClass("career-block-widget--hidden");
       $(this).addClass("career-block-widget--reveal");
       $(this)
         .find(".career-block-widget__title")
@@ -46,7 +50,7 @@ $(function() {
       async: true,
       dataType: "json",
       timeout: 10000,
-      error: function(jqxhr, statustext, err) {
+      error: function (jqxhr, statustext, err) {
         console.log(id + " error");
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
@@ -90,7 +94,7 @@ $(function() {
       async: true,
       dataType: "json",
       timeout: 10000,
-      error: function(jqxhr, statustext, err) {
+      error: function (jqxhr, statustext, err) {
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
         } else if (jqxhr.status) {
@@ -129,9 +133,9 @@ $(function() {
       i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
       (decPlaces
         ? decSep +
-          Math.abs(number - i)
-            .toFixed(decPlaces)
-            .slice(2)
+        Math.abs(number - i)
+          .toFixed(decPlaces)
+          .slice(2)
         : "")
     );
   }
