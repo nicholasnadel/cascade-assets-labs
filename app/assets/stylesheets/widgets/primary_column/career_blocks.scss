@@ -5,10 +5,12 @@
   grid-template-rows: 300px;
   @include qbal-slideUp-enter;
 
-  &__title {
-    font-weight: 400;
-    max-width: 200px;
-    margin-bottom: 2rem;
+  &--hidden {
+    // display: none;
+    // visibility: hidden;
+    // top: -99999px;
+    // position: absolute;
+    // left: -99999px;
   }
 
   &__text {
@@ -18,18 +20,57 @@
     margin: 10px 30px 10px 30px;
     font-family: $futura-regular;
     font-size: 1.8rem;
+
+  }
+
+  &__title {
+    font-weight: 400;
+    max-width: 200px;
+    margin-bottom: 2rem;
+    animation-delay: 1s;
+    animation: fadein 3s;
+    -moz-animation: fadein s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+    /* Opera */
+  }
+
+
+  &__body {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
+    animation-delay: 3s;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+    /* Opera */
   }
 
   &__salary {
     margin-bottom: 2rem;
     font-size: 2rem;
+    animation-delay: 5s;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+    /* Opera */
   }
 
   &__container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 35px;
-
+    min-height: 300px;
     @for $i from 1 through 20 {
       :nth-child(#{$i}) {
         animation-delay: #{$i * .13s};
@@ -48,6 +89,69 @@
 
     &__container {
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .fadeInUp {
+    // @include qbal-fade-enter;
+    // @include qbal-slideLeft-enter;
+    // @include qbal-grow-enter;
+    // @include qbal-slideDown-enter;
+
+  }
+
+  .staggerChildren {
+    @for $i from 1 through 3 {
+      :nth-child(#{$i}) {
+        animation-delay: #{$i * .13s};
+      }
+    }
+  }
+
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes fadein {
+
+    /* Firefox */
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadein {
+
+    /* Safari and Chrome */
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadein {
+
+    /* Opera */
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
     }
   }
 }
