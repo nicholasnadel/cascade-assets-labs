@@ -1,0 +1,50 @@
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputCareerBlockWidget $element) 
+#set ( $blocks = $_XPathTool.selectNodes($element, 'careerBlockWidget/block') )
+#set ($widgetXPath = 'careerBlockWidget')
+#set ($widgetXPath = ${_EscapeTool.xml($widgetXPath)})
+
+#set ($display = $element.getChild($widgetXPath).getChild('display').value)
+
+## use snake-case here for BEM naming convention
+#camelToSnake($widgetXPath)
+
+#set ( $widgetXPath = $snakeCase ) 
+<div class="career-block-widget__container">
+
+    #foreach ($block in $blocks)
+
+        ## TEXT
+        #set ($text = $_SerializerTool.serialize($block.getChild('text'), true))
+        #set ($careerCode = $_SerializerTool.serialize($block.getChild('careerCode'), true))
+        #set ($id = ${_EscapeTool.xml($widgetXPath)} + '__' + ${_MathTool.add($foreach.index, 1)} )
+        #set ($codeId = ${_EscapeTool.xml($widgetXPath)} + '-career-code__' +
+        ${_MathTool.add($foreach.index, 1)} )
+        ## STYLE
+
+        ## #set ($bgColor = $block.getChild('bgColor').value.toLowerCase())
+        ## #set ($bgColor = $widgetXPath + '--' + $bgColor)
+
+        #bgColorChooserLoop($block)
+
+        <div
+            id="$id"
+            class="${_EscapeTool.xml($widgetXPath)} $bgColor ${_EscapeTool.xml($widgetXPath)}--hidden">
+            <div class="${_EscapeTool.xml($widgetXPath)}__text">
+                <div class="hidden">
+                    <div class="${_EscapeTool.xml($widgetXPath)}__career-code" id="$codeId">
+                        $careerCode
+                    </div>
+                </div>
+                <div class="faux-h3 ${_EscapeTool.xml($widgetXPath)}__title"></div>
+                <div class="${_EscapeTool.xml($widgetXPath)}__body"></div>
+                <br/>
+                <div class="${_EscapeTool.xml($widgetXPath)}__salary">
+                    <span class="${_EscapeTool.xml($widgetXPath)}__bold"></span>
+                </div>
+            </div>
+        </div>
+    #end
+</div>
+#end
