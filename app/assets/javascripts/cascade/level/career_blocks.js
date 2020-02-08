@@ -125,38 +125,24 @@ $(function() {
       if (typeof salary != "undefined") {
         $(this)
           .find(".career-block-widget__salary")
-          .text("$" + formatMoney(salary, 0) + " Median Salary");
+          .text(cashmoney.format(salary) + " Median Salary");
       } else {
         try {
           $(this)
             .find(".career-block-widget__salary")
-            .text("$" + formatMoney(salaryMedianOver, 0) + " Median Salary");
+            .text(cashmoney.format(salaryMedianOver) + " Median Salary");
         } catch {
           console.log($(this).prop(salary));
         }
       }
     }
 
-    function formatMoney(number, decPlaces, decSep, thouSep) {
-      (decPlaces = isNaN((decPlaces = Math.abs(decPlaces))) ? 2 : decPlaces),
-        (decSep = typeof decSep === "undefined" ? "." : decSep);
-      thouSep = typeof thouSep === "undefined" ? "," : thouSep;
-      var sign = number < 0 ? "-" : "";
-      var i = String(
-        parseInt((number = Math.abs(Number(number) || 0).toFixed(decPlaces)))
-      );
-      var j = (j = i.length) > 3 ? j % 3 : 0;
-      return (
-        sign +
-        (j ? i.substr(0, j) + thouSep : "") +
-        i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
-        (decPlaces
-          ? decSep +
-            Math.abs(number - i)
-              .toFixed(decPlaces)
-              .slice(2)
-          : "")
-      );
-    }
+    // Create our number formatter.
+    var cashmoney = new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    });
+
+    // cashmoney.format(2500); /* $2,500.00 */
   });
 });
