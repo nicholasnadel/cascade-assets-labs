@@ -54,10 +54,10 @@
 
 
   &__body {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 6;
-    overflow: hidden;
+    // display: -webkit-box;
+    // -webkit-box-orient: vertical;
+    // -webkit-line-clamp: 3;
+    overflow: scroll;
     opacity: 0;
     animation-delay: 3s;
     animation: fadein 3s forwards;
