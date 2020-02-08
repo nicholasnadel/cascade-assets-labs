@@ -131,18 +131,15 @@ $(function() {
           $(this)
             .find(".career-block-widget__salary")
             .text(cashmoney.format(salaryMedianOver) + " Median Salary");
-        } catch {
+        } finally {
           console.log($(this).prop(salary));
         }
       }
     }
 
-    // Create our number formatter.
     var cashmoney = new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: "USD"
     });
-
-    // cashmoney.format(2500); /* $2,500.00 */
   });
 });
