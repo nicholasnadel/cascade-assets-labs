@@ -303,7 +303,7 @@ module ContentTypes
         "TYPEKIT" => cascade_block("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("widgets/shared/uninav"),
+        "OMNI-NAV" => render_static_partial("uninav/uninav"),
         "GLOBAL FOOTER" => render_static_partial(footer_path),
       }
 
