@@ -16,7 +16,6 @@
       position: relative;
 
       div.toggle-logo {
-        // float: left;
         display: flex;
         width: 50%;
         padding: 18px;
@@ -108,7 +107,7 @@
     background-color: white;
     border: 1px solid #CFCFCF;
     overflow-x: hidden;
-    transition: all .5s;
+    transition: all .40s;
     transform: translateX(-$nav-width);
     z-index: 10;
     //HIDE SCROLLBARS
@@ -134,8 +133,8 @@
         transform: translateX(-$nav-width);
         display: none;
 
-        @include slide-in-out('out', 0px, -$nav-width, 1s);
-        @include slide-in-out('in', -$nav-width, 0px, 1s);
+        @include slide-in-out('out', 0px, -$nav-width, .40s);
+        @include slide-in-out('in', -$nav-width, 0px, .40s);
       }
 
       .off-canvas-menu#off-canvas-umbrella,
@@ -144,10 +143,10 @@
         grid-row: 1 / span 1;
         grid-column: 1 / span 1;
         background-color: $white;
-        transition: all 1s;
+        transition: all .5s;
 
-        @include slide-in-out('out', 0px, -$nav-width, 1s);
-        @include slide-in-out('in', -$nav-width, 0px, 1s);
+        @include slide-in-out('out', 0px, -$nav-width, .40s);
+        @include slide-in-out('in', -$nav-width, 0px, .40s);
 
         // display: none;
         #off-canvas-umbrella-navigation,
@@ -161,7 +160,7 @@
           ul.root-main-nav {
             height: 100%;
             transform: translateX(0);
-            transition: all .5s linear;
+            transition: all .40s linear;
 
             .top-drill-down-list-item.drill-down-list-item {
               &:focus-within {
@@ -248,7 +247,7 @@
       background-color: rgba($cu-red, .9);
       text-align: left;
       padding-left: 10px;
-      transition: .25s all;
+      transition: .40s all;
       animation: pulse 5s;
       animation-iteration-count: 2;
       
