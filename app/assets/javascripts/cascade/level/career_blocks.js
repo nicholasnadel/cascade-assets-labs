@@ -125,12 +125,22 @@ $(function() {
       if (typeof salary != "undefined") {
         $(this)
           .find(".career-block-widget__salary")
-          .text(cashmoney.format(salary) + " Median Salary");
+          .html(
+            '<span class="career-block-widget__bold">' +
+              cashmoney.format(salary) +
+              "</span>" +
+              " Median Salary"
+          );
       } else {
         try {
           $(this)
             .find(".career-block-widget__salary")
-            .text(cashmoney.format(salaryMedianOver) + " Median Salary");
+            .html(
+              '<span class="career-block-widget__bold">' +
+                cashmoney.format(salaryMedianOver) +
+                "</span>" +
+                " Median Salary"
+            );
         } finally {
           console.log($(this).prop(salary));
         }
