@@ -1,4 +1,4 @@
-$(window).load(function() {
+$(document).ready(function() {
   var $rootDrillDownNav   = $('#left-column-navigation .root-left-nav'),
   $rootElement            = $('#left-column-navigation'),
   resizeTimer             = null;
@@ -11,6 +11,7 @@ $(window).load(function() {
 
     $menuToDrillDownTo.show();
     $rootDrillDownNav.css({ transform: "translateX(" + translateXVal + "px)"  });
+
     $rootElement.css({ height: $menuToDrillDownTo.height() });
 
     // if ($menuToDrillDownTo.height() >= $(window).height()) {
@@ -73,6 +74,7 @@ $(window).load(function() {
   function moveOffCanvasToCurrentPathItem() {
     var currentPath = $rootDrillDownNav.find('li.current'),
     $currentPathDrillDownMenu = currentPath.parent('.drilldown-menu');
+    $rootElement.show();
 
     if (currentPath.length) {
       var $drillDownParents = currentPath.parents('ul.drilldown-menu'),
@@ -81,6 +83,7 @@ $(window).load(function() {
       $drillDownParents.show();
       $rootDrillDownNav.css({ transform: "translateX(-" + (widthAmount * $drillDownParents.length) + "px" });
       $rootElement.css({ height: $currentPathDrillDownMenu.height() });
+      $rootDrillDownNav.css({ transition: 'all .5s'});
 
       $rootDrillDownNav.initialHeight = $rootDrillDownNav.height();
 
