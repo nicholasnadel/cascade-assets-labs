@@ -6,7 +6,7 @@
   }
 
   .logo {
-    background: image-url('logo_law_alternate.svg');
+    background: image-url("logo_law_alternate.svg");
     background-repeat: no-repeat;
     height: 57px;
     width: 200px;
@@ -25,7 +25,7 @@
     margin: 115px 0 0 0;
   }
 
-  .mainNavLinks>li>a {
+  .mainNavLinks > li > a {
     background-color: $law-primary;
   }
 
@@ -67,12 +67,12 @@
   }
 
   #social_follow_us .banner {
-    background-image: image-url('law_follow_us.png');
+    background-image: image-url("law_follow_us.png");
   }
 
   #social_follow_us li span.hover_state,
   #social_follow_us li span.inactive_state {
-    background-image: image-url('law_icons.png');
+    background-image: image-url("law_icons.png");
   }
 
   .ie8 .slideDescription,
@@ -84,15 +84,14 @@
     background-color: $law-primary;
   }
 
-  .mainNavLinks>li {
+  .mainNavLinks > li {
     background-color: #353430;
   }
 
   /* ==|== media queries ====================================================== */
   @include bp(m) {
-
     header {
-      padding: 0 0 15px 0;
+      padding: 0 0 0 0;
     }
 
     .infoFor {
@@ -100,32 +99,30 @@
     }
 
     .mainNavLinks {
-      background-image: image-url('ribbon_tails_law.png');
+      background-image: image-url("ribbon_tails_law.png");
     }
 
-    .mainNavLinks>li.noSubNav>a {
+    .mainNavLinks > li.noSubNav > a {
       padding: 0 !important;
     }
 
-    .mainNavLinks>li:hover {
+    .mainNavLinks > li:hover {
       background-color: transparent;
     }
 
-    .mainNavLinks>li>a>span {
+    .mainNavLinks > li > a > span {
       padding-left: 12px;
       padding-right: 12px;
     }
 
     .mainNavLinks,
-    .mainNavLinks>li,
-    .mainNavLinks>li.noSubNav:hover {
+    .mainNavLinks > li,
+    .mainNavLinks > li.noSubNav:hover {
       background-color: $law-primary;
     }
-
   }
 
   @include media(1120px) {
-
     .mainNavLinks {
       background-color: transparent;
     }
@@ -182,18 +179,28 @@
   }
 
   #social_follow_us .banner {
-    background-image: image-url('law_follow_us.png');
+    background-image: image-url("law_follow_us.png");
   }
 
   #social_follow_us li span.hover_state,
   #social_follow_us li span.inactive_state {
-    background-image: image-url('law_icons.png');
+    background-image: image-url("law_icons.png");
   }
 
   .rounded-slider .info-container .blue {
     background-color: $law-primary;
-    background-image: -webkit-gradient(linear, left top, left bottom, from($law-primary), to($law-secondary));
-    background-image: -webkit-linear-gradient(top, $law-primary, $law-secondary);
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from($law-primary),
+      to($law-secondary)
+    );
+    background-image: -webkit-linear-gradient(
+      top,
+      $law-primary,
+      $law-secondary
+    );
     background-image: -moz-linear-gradient(top, $law-primary, $law-secondary);
     background-image: -o-linear-gradient(top, $law-primary, $law-secondary);
     background-image: linear-gradient(to bottom, $law-primary, $law-secondary);
@@ -218,26 +225,21 @@
     background-color: $law-primary;
   }
 
-
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
       background-color: $law-primary;
-      ;
     }
 
     .view-more-link {
       background-color: $law-primary;
-      ;
     }
 
     .view-less-link {
       background-color: $law-primary;
-      ;
     }
 
     .icon-triangle-up {
       color: $law-primary;
-      ;
     }
   }
 
@@ -257,6 +259,6 @@
   }
 
   .link-container-after {
-    background-image: image-url('ribbon_tails_law.png');
+    background-image: image-url("ribbon_tails_law.png");
   }
 }
