@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   console.log("ready!");
   if ($(".career-block-widget__container").children().length > 1) {
     $(".career-block-widget__container").addClass(
@@ -6,7 +6,7 @@ $(function() {
     );
   }
 
-  $.each($(".career-block-widget"), function(ind) {
+  $.each($(".career-block-widget"), function (ind) {
     $(this).attr("id", "career-block-widget__" + parseInt(ind + 1));
     var id = $(this).attr("id");
     console.log("current id: " + id);
@@ -32,7 +32,7 @@ $(function() {
       async: true,
       dataType: "json",
       timeout: 10000,
-      error: function(jqxhr, statustext, err) {
+      error: function (jqxhr, statustext, err) {
         console.log(id + " error");
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
@@ -91,7 +91,7 @@ $(function() {
       async: true,
       dataType: "json",
       timeout: 10000,
-      error: function(jqxhr, statustext, err) {
+      error: function (jqxhr, statustext, err) {
         console.log(id + " error");
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
@@ -127,9 +127,9 @@ $(function() {
           .find(".career-block-widget__salary")
           .html(
             '<span class="career-block-widget__bold">' +
-              cashmoney.format(salary) +
-              "</span>" +
-              " Median Salary"
+            cashmoney.format(salary) +
+            "</span>" +
+            " Median Salary"
           );
       } else {
         try {
@@ -137,9 +137,9 @@ $(function() {
             .find(".career-block-widget__salary")
             .html(
               '<span class="career-block-widget__bold">' +
-                cashmoney.format(salaryMedianOver) +
-                "</span>" +
-                " Median Salary"
+              cashmoney.format(salaryMedianOver) +
+              "</span>" +
+              " Median Salary"
             );
         } finally {
           console.log($(this).prop(salary));
@@ -151,5 +151,22 @@ $(function() {
       style: "currency",
       currency: "USD"
     });
+    removeEllipsis();
   });
 });
+
+
+
+function removeEllipsis() {
+  var overflowText = $('.career-block-widget__body');
+  $(overflowText).on('scroll', function () {
+    if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+      $(this).addClass('career-block-widget__body--remove-ellipsis');
+      console.log('end reached');
+    }
+    else {
+      $(this).removeClass('career-block-widget__body--remove-ellipsis');
+      $(this).addClass('career-block-widget__body--scroll-indicator');
+    }
+  })
+}
