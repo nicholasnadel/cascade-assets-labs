@@ -3,6 +3,8 @@ $(document).ready(function() {
   $rootElement            = $('#left-column-navigation'),
   resizeTimer             = null;
 
+  if (!$rootElement.length || !$rootElement) return;
+
   function drillMenuDown() {
     var $menuToDrillDownTo  = $(this).siblings('.drilldown-menu'),
     widthAmount             = $rootDrillDownNav.width(),

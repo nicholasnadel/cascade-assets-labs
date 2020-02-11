@@ -80,7 +80,7 @@
     .toggle-menu-label {
       background: #231f20;
       padding: .5rem 1.5rem .5rem 1.5rem;
-      margin: 0 0 0 2rem;
+      margin: 0 0 0 1rem;
       color: white;
       font-weight: bold;
       font-size: 1.2rem;
@@ -104,6 +104,7 @@
     top: 0;
     left: 0;
     height: 100vh;
+    width: 410px;
     background-color: white;
     border: 1px solid #CFCFCF;
     overflow-x: hidden;
@@ -219,7 +220,7 @@
           font-weight: bold;
           color: $cu-red;
           border-right: 1px solid #ccc;
-          padding-right: 2rem;
+          padding-right: 1rem;
         }
       }
     }
