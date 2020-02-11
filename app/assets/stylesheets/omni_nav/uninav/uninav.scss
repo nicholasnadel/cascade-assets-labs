@@ -510,7 +510,25 @@ html {
   flex-direction: column;
   position: relative;
 
+  &[aria-expanded="false"] {
+    a {
+      &:after {
+        // content: "\f0d8";
+        content: "\f0d7";
+        transform: rotate(0deg);
+        transition: all linear 0.25s;
+      }
+    }
+  }
   &[aria-expanded="true"] {
+    a {
+      &:after {
+        // content: "\f0d8";
+        content: "\f0d7";
+        transform: rotate(180deg) translateX(-1rem);
+        transition: all linear 0.25s;
+      }
+    }
     .uninav__dropdown--child {
       z-index: 99999999;
       display: flex;
