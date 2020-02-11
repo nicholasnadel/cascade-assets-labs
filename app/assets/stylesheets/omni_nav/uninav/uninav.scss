@@ -216,6 +216,10 @@ html {
             padding-right: 20px;
           }
         }
+
+        &__utility-nav--search-wrapper {
+          margin-right: 1.5rem;
+        }
       }
 
       &__search-input {
@@ -313,7 +317,7 @@ html {
       color: $uninav-light-grey;
       text-align: center;
       height: 50px;
-      display: flex;
+      display: grid;
       justify-content: center;
       align-items: center;
       @include linear-300;
@@ -652,58 +656,92 @@ html {
 
 // TABLET LANDSCAPE
 @include respond(tab-land) {
-  .uninav {
-    &__logo {
-      width: 100%;
-      height: $uninav-div-height;
+  #uninav {
+    .uninav {
+      &__logo {
+        width: 100%;
+        height: $uninav-div-height;
 
-      &--secondary {
-        @include qbal-slideRight-exit;
+        &--secondary {
+          @include qbal-slideRight-exit;
+        }
+      }
+
+      &__menu-item-dropdown-child:hover>ul {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: start;
+        text-align: left;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: start;
+      }
+
+      &__utility-nav--wrapper {
+        &__utility-nav {
+          min-width: auto;
+        }
+
+        .uninav {
+          &__utility-nav--search-wrapper {
+            margin-right: 0;
+
+            .uninav__search-button--mobile {
+              border-right: none;
+            }
+          }
+        }
+      }
+
+      .gsc-search-box table tbody tr {
+        border: none !important;
+      }
+
+      tr {
+        border-image: none !important;
+        border: none !important;
+      }
+
+      .gsc-search-box {
+        border: none !important;
+      }
+
+      #___gcse_0 {
+        border: 1px solid grey;
+      }
+
+      &__global-nav {
+        min-width: unset;
+        width: 100vw;
+      }
+
+      &__search-input--desktop {
+        // @include qbal-slideLeft-enter;
+        display: none;
       }
     }
 
-    &__menu-item-dropdown-child:hover>ul {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      justify-content: start;
-      text-align: left;
-      -webkit-box-align: start;
-      -ms-flex-align: start;
-      align-items: start;
-    }
+    .uninav__search-button--mobile {
 
-    &__utility-nav {
-      min-width: auto;
-    }
+      width: 80px;
+      height: 60px;
+      border: 1px solid $panther-black;
+      border-right: none;
+      display: grid;
 
-    &__utility-nav--search-wrapper {
-      margin-right: 0;
-    }
-
-    .gsc-search-box table tbody tr {
-      border: none !important;
-    }
-
-    tr {
-      border-image: none !important;
-      border: none !important;
-    }
-
-    .gsc-search-box {
-      border: none !important;
-    }
-
-    #___gcse_0 {
-      border: 1px solid grey;
-    }
-
-    &__global-nav {
-      min-width: unset;
-      width: 100vw;
+      &:after {
+        border-right-style: solid;
+        border-right-width: 1px;
+        display: grid;
+        content: "\f002";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        align-items: center;
+      }
     }
   }
 }

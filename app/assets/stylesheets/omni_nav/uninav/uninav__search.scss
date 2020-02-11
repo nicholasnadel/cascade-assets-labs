@@ -23,16 +23,15 @@
   }
 
   .uninav__utility-nav--search-wrapper {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    // border: 1px solid $uninav-light-grey;
-    margin-right: 2rem;
+    // display: flex;
+    // align-content: center;
+    // align-items: center;
+    // margin-right: 2rem;
   }
 
   .uninav__search-input {
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
   }
 
   .gsc-control-cse.gsc-control-cse-en {
@@ -180,15 +179,15 @@
     }
 
     .uninav__search-input--desktop {
-      @include qbal-slideLeft-enter;
+      // @include qbal-slideLeft-enter;
 
       .uninav__utility-nav--search-wrapper {
-        @include qbal-slideRight-enter;
-        height: 100%;
-        width: 80px;
-        display: flex;
-        justify-content: center;
-        margin-right: -1.5px !important;
+        // @include qbal-slideRight-enter;
+        // height: 100%;
+        // width: 80px;
+        // display: flex;
+        // justify-content: center;
+        // margin-right: -1.5px !important;
       }
 
       .uninav__utility-nav--wrapper ul .uninav__utility-nav--search-wrapper {
@@ -197,20 +196,20 @@
 
       .gsc-search-button.gsc-search-button-v2 {
 
-        width: auto;
-        display: flex;
+        // width: auto;
+        // display: flex;
         // height: $uninav-div-height;
       }
 
       // #gsc-i-id1
       #gs_tti50 {
         // @include qbal-collapseHorizontal164-exit;
-        @include qbal-tabContent-exit;
+        // @include qbal-tabContent-exit;
       }
 
       .gsc-input {
-        display: none;
-        @include qbal-collapseHorizontal164-exit;
+        // display: none;
+        // @include qbal-collapseHorizontal164-exit;
       }
     }
   }
