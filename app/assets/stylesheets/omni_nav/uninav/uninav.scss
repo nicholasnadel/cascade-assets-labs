@@ -833,7 +833,8 @@ html {
     grid-template-rows: 60px;
     grid-template-columns: 1fr 1fr;
     .uninav {
-      &__global-nav {
+      &__global-nav,
+      &__logo {
         display: none;
       }
     }
