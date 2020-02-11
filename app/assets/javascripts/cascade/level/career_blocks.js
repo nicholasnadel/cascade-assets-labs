@@ -72,20 +72,6 @@ $(function() {
         .find(".career-block-widget__body")
         .text(data.description)
         .addClass("fadeInUp");
-      if (
-        $(this)
-          .find(".career-block-widget__body")
-          .prop("scrollWidth") > $(".career-block-widget__body").width()
-      ) {
-        console.log("this element is overflowing !!");
-        $(this)
-          .find(".career-block-widget__body")
-          .append(
-            '<span class="career-block-widget__scroll-indicator" title="scrollable content" aria-label="scrollable content"></span>'
-          );
-      } else {
-        console.log("this element is not overflowing!!");
-      }
     }
 
     // salary
@@ -167,18 +153,3 @@ $(function() {
     });
   });
 });
-
-function indicateScrollableSection() {
-  if (
-    $(this)
-      .find(".career-block-widget__body")
-      .prop("scrollWidth") > $(".career-block-widget__body").width()
-  ) {
-    console.log("this element is overflowing !!");
-    $(this)
-      .find(".career-block-widget__body")
-      .append('<span class"career-block-widget__scroll-indicator">down</span>');
-  } else {
-    console.log("this element is not overflowing!!");
-  }
-}

@@ -34,6 +34,7 @@
     -o-animation: fadein 3s forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 3s forwards;
+
   }
 
   &__title {
@@ -51,6 +52,7 @@
     -webkit-animation: fadein 3s forwards;
   }
 
+
   &__body {
     // display: -webkit-box;
     // -webkit-box-orient: vertical;
@@ -64,25 +66,6 @@
     -o-animation: fadein 3s forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 3s forwards;
-  }
-  &__body {
-    display: grid;
-    grid-template-columns: 95% 5%;
-  }
-
-  &--white {
-    &__scroll-indicator {
-      color: $panther-black;
-    }
-  }
-  &__scroll-indicator {
-    display: grid;
-    align-items: center;
-    &:after {
-      content: "\f078";
-      font-family: "Font Awesome\ 5 Free";
-      font-weight: 900;
-    }
   }
 
   &__salary {
@@ -106,9 +89,10 @@
 
     @for $i from 1 through 20 {
       :nth-child(#{$i}) {
-        animation-delay: #{$i * 0.05s};
+        animation-delay: #{$i * .05s};
       }
     }
+
 
     &--3-or-more-items {
       // prevents unsightly jump from display:none, while retaining animation
@@ -119,7 +103,7 @@
       }
     }
 
-    + [class*="-widget"] {
+    +[class*="-widget"] {
       margin: 20px 0 20px 0;
     }
   }
@@ -139,15 +123,17 @@
     // @include qbal-slideLeft-enter;
     // @include qbal-grow-enter;
     // @include qbal-slideDown-enter;
+
   }
 
   .staggerChildren {
     @for $i from 1 through 3 {
       :nth-child(#{$i}) {
-        animation-delay: #{$i * 0.13s};
+        animation-delay: #{$i * .13s};
       }
     }
   }
+
 
   @keyframes fadein {
     from {
@@ -160,6 +146,7 @@
   }
 
   @-moz-keyframes fadein {
+
     /* Firefox */
     from {
       opacity: 0;
@@ -171,6 +158,7 @@
   }
 
   @-webkit-keyframes fadein {
+
     /* Safari and Chrome */
     from {
       opacity: 0;
@@ -182,6 +170,7 @@
   }
 
   @-o-keyframes fadein {
+
     /* Opera */
     from {
       opacity: 0;
