@@ -10,13 +10,36 @@
     --preheaderLight: $white;
     --preheaderDark: $grey;
 
-    // DEFAULTS
-    span {
+    .contact-widget {
       a {
-        @include underline($cu-red);
+        text-decoration: underline;
+      }
+      .faux-h2 {     
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+      }
+      ul.left-social-icons {
+        background-color: transparent;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      ul.left-social-icons li {
+        display: inline-block;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2.4rem;
+        margin: 0;
+      }
+      ul.left-social-icons li .icon {
+        fill: currentColor;
+        font-size: 2.5rem;
+        margin-right: 1rem;
+        width: 1em;
       }
     }
-
+    
+    .editableContent { font-weight: 100; }
     .editableContent,
     h2,
     hr {
@@ -41,13 +64,6 @@
 
     img {
       display: block;
-    }
-
-    .preheader {
-      font-size: 1.4rem;
-      font-family: $futura;
-      text-transform: uppercase;
-      margin: 25px $base-spacing $base-spacing $base-spacing;
     }
 
     @include respond(tab-port) {
@@ -78,41 +94,14 @@
     background-color: $bg;
     color: $white;
 
-    .preheader {
-      color: currentColor;
-    }
-
-    .editableContent {
-      font-weight: 100;
-
-      span {
-        font-family: $arial;
-        color: currentColor;
-      }
-    }
-
-    .buttonLinks li {
-      margin-bottom: 20px;
-
-      a {
-        color: $panther-black;
-        @include button-bg($cu-light-grey);
-        text-align: center;
-        font-weight: 600;
-        font-family: $futura;
-        font-size: 1.8rem;
-
-        &:after {
-          content: none;
-        }
-      }
-    }
-
-    span,
-    li,
     a {
-      color: currentColor;
-      @include dotted-underline($cu-red, 2px);
+      color: $white;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ccc;
+      transition: all 0.3s ease;
     }
   }
 
@@ -121,41 +110,14 @@
     background-color: $panther-black;
     color: $white;
 
-    .preheader {
-      color: v(preheaderLight);
-    }
-
-    .editableContent {
-      font-weight: 100;
-
-      span {
-        font-family: $arial;
-        color: currentColor;
-      }
-    }
-
-    .buttonLinks li {
-      margin-bottom: 20px;
-
-      a {
-        background-color: $cu-light-grey;
-        color: $panther-black;
-        @include button-bg($cu-light-grey);
-        text-align: center;
-        font-weight: 600;
-        font-family: $futura;
-        font-size: 1.8rem;
-
-        &:after {
-          content: none;
-        }
-      }
-    }
-
-    span,
-    li,
     a {
-      color: currentColor;
+      color: $white;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ccc;
+      transition: all 0.3s ease;
     }
   }
 
@@ -164,93 +126,32 @@
     background-color: $cu-light-grey;
     color: $panther-black;
 
-    .preheader {
-      color: v(preheaderDark);
-    }
-
-    h2 {
-      color: currentColor;
-    }
-
-    .editableContent {
-      font-weight: 100;
-
-      span {
-        font-family: $arial;
-        color: currentColor;
-      }
-    }
-
-    span,
-    li,
     a {
-      color: currentColor;
+      color: $cu-red;
     }
-
-    .buttonLinks li {
-      margin-bottom: 20px;
-
-      a {
-        @include button-bg($cu-red);
-        color: $white;
-        background-color: $cu-red;
-        text-align: center;
-        font-weight: 600;
-        font-family: $futura;
-        font-size: 1.8rem;
-
-        &:after {
-          content: none;
-        }
-      }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ce0041;
+      transition: all 0.3s ease;
     }
   }
 
   // SAND
   .contact--sand {
-    // sand is listed as #DDCBA4 at https://brand.chapman.edu/?page_id=4464 but appears to be #f6f2e8 in the design and elsewhere. We need secondary/tertiary naming schemes for this + a SASS mixin
+    // sand is listed as #DDCBA4 at https://brand.chapman.edu/?page_id = 4464 but appears to be #f6f2e8 in the design and elsewhere. We need secondary/tertiary naming schemes for this + a SASS mixin
     --sand: #f6f2e8;
     $bg: $sand;
     @include dc($bg);
-
-    .preheader {
-      color: v(preheaderDark);
-    }
-
-    h2 {
-      color: currentColor;
-    }
-
-    .editableContent {
-      font-weight: 100;
-
-      span {
-        font-family: $arial;
-        color: currentColor;
-      }
-    }
-
-    span,
-    li,
+    
     a {
-      color: $panther-black;
+      color: $cu-red;
     }
-
-    .buttonLinks li {
-      margin-bottom: 20px;
-
-      a {
-        @include button-bg($cu-red);
-        background-color: $cu-red;
-        text-align: center;
-        font-weight: 600;
-        font-family: $futura;
-        font-size: 1.8rem;
-
-        &:after {
-          content: none;
-        }
-      }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ce0041;
+      transition: all 0.3s ease;
     }
   }
 
@@ -260,69 +161,16 @@
     border: 1px solid $cu-light-grey-2;
     color: $panther-black;
 
-    h2 {
-      color: currentColor;
-    }
-
-    .editableContent {
-      font-weight: 100;
-
-      span {
-        font-family: $arial;
-        color: currentColor;
-      }
-    }
-
-    span,
-    li,
     a {
-      color: currentColor;
+      color: $cu-red;
     }
-
-    .buttonLinks li {
-      margin-bottom: 20px;
-
-      a {
-        @include button-bg($cu-red);
-        color: $white;
-        background-color: $cu-red;
-        text-align: center;
-        font-weight: 600;
-        font-family: $futura;
-        font-size: 1.8rem;
-
-        &:after {
-          content: none;
-        }
-      }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ce0041;
+      transition: all 0.3s ease;
     }
   }
 }
 
-.rightColumn {
 
-  .callout-box-widget {
-    margin-bottom: 20px;
-  }
-
-  .callout-box-widget.styleOne .editableContent,
-  .callout-box-widget.styleTwo .editableContent,
-  h2 {
-    line-height: 20px;
-    margin: 16px 0;
-    overflow-wrap: break-word;
-    padding: 0 16px;
-  }
-
-  .callout-box-widget,
-  .simple-form-widget .callout {
-    h2 {
-      line-height: 1.2em;
-    }
-  }
-}
-
-.rightColumn .callout-box-widget.styleTwo .editableContent,
-.rightColumn h2 {
-  line-height: 1.2em;
-}
