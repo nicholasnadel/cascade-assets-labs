@@ -47,7 +47,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $breakpoint==tab-port {
-    @media only screen and (max-width: 56.25em) {
+    @media only screen and (max-width: 56.50em) {
       @content
     }
 
@@ -388,7 +388,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin fluid-width-video-container() {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 56.50%;
   /* 16:9 */
   height: 0;
 
@@ -577,6 +577,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 //   @include dc($bg);
 // }
 // }
+
 @mixin slide-in-out($type, $from, $to, $duration: 1s ) {
   @if $type == in {
     &.slide-in {
@@ -606,11 +607,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     &:hover { cursor: pointer; }
   }
 
-  // .drill-down-menu {
-    
-  // }
-
-
   ul li {
     display: flex;
     justify-content: space-between;
@@ -620,13 +616,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
       font-family: "futura-pt", arial, sans-serif;
       line-height: 1.8rem;
       color: #231f20;
-      padding: 15px 50px 15px 30px;
+      padding: 15px 15px 15px 30px;
       width: 100%;
 
       &:focus {
-        // outline-color: $cu-red;
-        // outline-style: auto;
-        // outline-width: 5px;
         outline: none;
       }
     }
@@ -653,7 +646,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       left: $width;
       top: 0;
       transform: translateX(0);
-      transition: all 1s;
+      transition: all .40s;
 
       &.active {
         .drill-down-list-item {
@@ -682,7 +675,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         font-weight: bold;
         line-height: 1.6rem;
         font-family: $futura-regular;
-        padding: 20px 50px 20px 20px;
+        padding: 20px 15px 20px 20px;
 
         .fas {
           margin-right: 2rem;
@@ -697,6 +690,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 
     &.current {
+      position: relative;
+      
       a,
       span {
         font-weight: 800;
@@ -704,7 +699,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
         &::before {
           content: "\25CF";
           color: $cu-red;
-          padding: 0 5px;
+          position: absolute;
+          left: 10px;
         }
       }
     }
