@@ -708,9 +708,9 @@ html {
 
       &__hamburger-menu {
         grid-area: "hamburger";
-        display: flex;
+        display: grid;
         align-items: center;
-        justify-content: start;
+        justify-content: center;
         @include qbal-slideRight-enter;
 
         .hamburger-menu-button {
@@ -776,6 +776,20 @@ html {
   }
 }
 
+@media only screen and (max-width: 750px) {
+  .uninav {
+    &__logo,
+    #uninav-logo .chapman-logo {
+      width: 100%;
+      border-bottom: none;
+
+      &--secondary {
+        display: none;
+      }
+    }
+  }
+}
+
 @include respond(phone) {
   .uninav {
     &__logo,
@@ -785,6 +799,7 @@ html {
 
       &--secondary {
         @include qbal-slideRight-exit;
+        display: none;
       }
     }
 
