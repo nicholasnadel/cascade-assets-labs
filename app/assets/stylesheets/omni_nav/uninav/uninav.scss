@@ -49,7 +49,6 @@ html {
   }
 
   .uninav {
-
     &__logo,
     #uninav-logo .chapman-logo {
       width: 100%;
@@ -62,7 +61,6 @@ html {
         // display: none;
       }
     }
-
 
     &__utility-nav--wrapper {
       border-bottom: none;
@@ -161,7 +159,7 @@ html {
       ul {
         display: flex;
 
-        &>li {
+        & > li {
           flex: 1 100%;
           list-style: none;
           color: $panther-black;
@@ -440,7 +438,7 @@ html {
     border-right: 1px solid $uninav-light-grey;
   }
 
-  .uninav__dropdown-wrapper>a::after {
+  .uninav__dropdown-wrapper > a::after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0d7";
@@ -448,12 +446,12 @@ html {
     font-size: 1.4rem;
   }
 
-  &>ul {
+  & > ul {
     display: flex;
     align-items: center;
     height: 100%;
 
-    &>li {
+    & > li {
       flex: 100%;
     }
 
@@ -469,15 +467,15 @@ html {
   }
 }
 
-#uninav>nav {
+#uninav > nav {
   grid-area: nav;
 }
 
-#uninav>global {
+#uninav > global {
   grid-area: global;
 }
 
-#uninav>div.uninav__logo--primary {
+#uninav > div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
 }
@@ -494,7 +492,7 @@ html {
   flex-direction: column;
   @include uninav-drop-shadow();
 
-  >ul {
+  > ul {
     flex-direction: column;
     justify-content: start;
     text-align: left;
@@ -521,8 +519,7 @@ html {
   }
 
   &[aria-expanded="false"] {
-
-    // TODO: refactor first .uninav__dropdown--child... display: none is not animitable. 
+    // TODO: refactor first .uninav__dropdown--child... display: none is not animitable.
     .uninav__dropdown--parent,
     .uninav__dropdown--child {
       @include qbal-shrink-exit;
@@ -584,7 +581,7 @@ html {
       @include qbal-growExaggerated-enter;
 
       ul li,
-      &>a {
+      & > a {
         color: $panther-black;
       }
     }
@@ -637,7 +634,7 @@ html {
       }
     }
 
-    &__menu-item-dropdown-child:hover>ul {
+    &__menu-item-dropdown-child:hover > ul {
       -webkit-box-orient: vertical;
       -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -719,7 +716,6 @@ html {
         .hamburger-menu-button {
           background-color: white;
           border: none;
-          padding-left: 2rem;
         }
       }
 
@@ -782,7 +778,6 @@ html {
 
 @include respond(phone) {
   .uninav {
-
     &__logo,
     #uninav-logo .chapman-logo {
       width: 100%;
@@ -792,7 +787,6 @@ html {
         @include qbal-slideRight-exit;
       }
     }
-
 
     &__utility-nav--wrapper {
       border-bottom: none;
@@ -838,7 +832,6 @@ html.off-canvas__blur {
   }
 
   .uninav {
-
     &__logo,
     &__utility-nav--wrapper,
     &__global-nav,
