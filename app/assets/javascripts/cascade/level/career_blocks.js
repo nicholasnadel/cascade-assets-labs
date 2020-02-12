@@ -191,12 +191,8 @@ function removeEllipsis() {
   var overflowText = $(".career-block-widget__body");
   // TODO: improve really bad performance if this hack is even needed after widget redesign
   $(overflowText).on("scroll", function() {
-    if (
-      $(this).scrollTop() + $(this).innerHeight() >=
-      $(this)[0].scrollHeight
-    ) {
+    if ($(this).scrollTop() >= 1) {
       $(this).addClass("career-block-widget__body--remove-line-clamp");
-      // $(".career-block-widget__scroll-indicator").addClass("fadeOut");
       console.log("end reached");
     } else {
       $(this).removeClass("career-block-widget__body--remove-line-clamp");
