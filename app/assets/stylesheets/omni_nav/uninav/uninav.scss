@@ -690,6 +690,7 @@ html {
           &__utility-nav--search-wrapper {
             margin-right: 0;
 
+
             .uninav__search-button--mobile {
               border-right: none;
             }
@@ -732,6 +733,7 @@ html {
       border: 1px solid $panther-black;
       border-right: none;
       display: grid;
+      cursor: pointer;
 
       &:after {
         border-right-style: solid;
@@ -899,15 +901,18 @@ html {
 
 @media only screen and (max-width: 400px) {
   #uninav {
-    grid-template-areas: "hamburger utility";
+    grid-template-areas: "logo hamburger utility";
     grid-template-rows: 60px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: .5fr 2fr 2fr;
 
     .uninav {
 
-      &__global-nav,
-      &__logo {
+      &__global-nav {
         display: none;
+      }
+
+      &__hamburger-menu {
+        justify-content: center;
       }
     }
   }
@@ -922,10 +927,6 @@ html {
     .uninav {
       &__global-nav {
         display: none;
-      }
-
-      &__hamburger-menu {
-        justify-content: center;
       }
     }
   }
