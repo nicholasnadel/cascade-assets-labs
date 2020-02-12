@@ -51,7 +51,6 @@
     }
 
     @include respond(tab-port) {
-
       h2 {
         max-width: 100%;
       }
@@ -71,11 +70,7 @@
         margin-top: 2%;
       }
     }
-
-
   }
-
-
 
   // RED
   .callout-box-widget--red {
@@ -305,10 +300,15 @@
 }
 
 .rightColumn {
-
   .callout-box-widget {
     margin-bottom: 20px;
-    max-width: 201px;
+    max-width: 206px;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .callout-box-widget {
+      max-width: 25%;
+    }
   }
 
   @media only screen and (max-width: 767px) {
