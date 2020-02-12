@@ -159,7 +159,22 @@ $(function() {
   });
 });
 
-$(function() {});
+$(function() {
+  scrollHintTutorial();
+});
+
+function scrollHintTutorial() {
+  var alreadyRanAnimation = true;
+
+  $(".career-block-widget__scroll-indicator").mouseenter(function() {
+    if (alreadyRanAnimation) {
+      $(".career-block-widget__body").animate({ scrollTop: 50 }, 500);
+      $(".career-block-widget__body").animate({ scrollTop: 0 }, 500);
+      $(".career-block-widget__scroll-indicator").addClass("fadeOut");
+      alreadyRanAnimation = false;
+    }
+  });
+}
 
 function addEllipsis() {
   $(".career-block-widget").each(function() {
@@ -167,6 +182,8 @@ function addEllipsis() {
     if ($this.text().length > 260) {
       $this.addClass("career-block-widget__body--scrollable");
       $this.addClass("career-block-widget__body--line-clamp");
+    } else {
+      $this.addClass("career-block-widget__body--no-scroll");
     }
   });
 }
@@ -179,12 +196,10 @@ function removeEllipsis() {
       $(this)[0].scrollHeight
     ) {
       $(this).addClass("career-block-widget__body--remove-line-clamp");
-
       console.log("end reached");
     } else {
       $(this).removeClass("career-block-widget__body--remove-line-clamp");
       $(this).addClass("career-block-widget__body--line-clamp");
-
       console.log("adding line-clamp again");
     }
   });

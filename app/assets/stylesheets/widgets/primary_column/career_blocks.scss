@@ -134,6 +134,7 @@
     -webkit-animation: fadein 3s forwards;
     width: 324px; //unfortunately needed for accurate line clamp
 
+
     &--scrollable {
       &:hover {
         // -webkit-line-clamp: 25;
@@ -152,6 +153,22 @@
         }
       }
     }
+
+    &:not(.career-block-widget__body--scrollable) {
+
+      +.career-block-widget__scroll-indicator,
+      .fas {
+        display: none;
+      }
+    }
+
+    // &--no-scroll {
+
+    //   +.career-block-widget__scroll-indicator,
+    //   .fas {
+    //     // display: none;
+    //   }
+    // }
 
     &--line-clamp {
       display: -webkit-box;
@@ -172,7 +189,7 @@
 
       +.career-block-widget__scroll-indicator .fas {
         // @include qbal-shrinkSubtle-exit;
-        animation: 300ms fadeOut forwards;
+        // animation: 300ms fadeOut forwards;
       }
     }
   }
@@ -224,6 +241,75 @@
     &__container {
       grid-template-columns: repeat(1, 1fr);
     }
+  }
+
+  .fadeOut {
+    animation-delay: 10s;
+    animation: 10s fadeOut linear forwards;
+  }
+
+
+  /* Add this attribute to the element that needs a tooltip */
+  [data-tooltip] {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Hide the tooltip content by default */
+  [data-tooltip]:before,
+  [data-tooltip]:after {
+    visibility: hidden;
+    // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Position tooltip above the element */
+  [data-tooltip]:before {
+    font-family: $futura-regular;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    margin-bottom: 5px;
+    margin-left: -80px;
+    padding: 7px;
+    width: 160px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #000;
+    background-color: hsla(0, 0%, 20%, 0.9);
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  /* Triangle hack to make tooltip look like a speech bubble */
+  [data-tooltip]:after {
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -5px;
+    width: 0;
+    border-top: 5px solid #000;
+    border-top: 5px solid hsla(0, 0%, 20%, 0.9);
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+  }
+
+  /* Show tooltip content on hover */
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+    visibility: visible;
+    // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
   }
 
   .fadeInUp {
@@ -286,113 +372,51 @@
       opacity: 1;
     }
   }
-}
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
   }
 
-  to {
-    opacity: 0;
-  }
-}
+  @-moz-keyframes fadeOut {
 
-@-moz-keyframes fadeOut {
+    /* Firefox */
+    from {
+      opacity: 1;
+    }
 
-  /* Firefox */
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes fadeOut {
-
-  /* Safari and Chrome */
-  from {
-    opacity: 1;
+    to {
+      opacity: 0;
+    }
   }
 
-  to {
-    opacity: 0;
+  @-webkit-keyframes fadeOut {
+
+    /* Safari and Chrome */
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
   }
-}
 
-@-o-keyframes fadeOut {
+  @-o-keyframes fadeOut {
 
-  /* Opera */
-  from {
-    opacity: 1;
+    /* Opera */
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
   }
 
-  to {
-    opacity: 0;
-  }
-}
-
-/* Add this attribute to the element that needs a tooltip */
-[data-tooltip] {
-  position: relative;
-  z-index: 2;
-}
-
-/* Hide the tooltip content by default */
-[data-tooltip]:before,
-[data-tooltip]:after {
-  visibility: hidden;
-  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* Position tooltip above the element */
-[data-tooltip]:before {
-  font-family: $futura-regular;
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  margin-bottom: 5px;
-  margin-left: -80px;
-  padding: 7px;
-  width: 160px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #000;
-  background-color: hsla(0, 0%, 20%, 0.9);
-  color: #fff;
-  content: attr(data-tooltip);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.2;
-}
-
-/* Triangle hack to make tooltip look like a speech bubble */
-[data-tooltip]:after {
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  margin-left: -5px;
-  width: 0;
-  border-top: 5px solid #000;
-  border-top: 5px solid hsla(0, 0%, 20%, 0.9);
-  border-right: 5px solid transparent;
-  border-left: 5px solid transparent;
-  content: " ";
-  font-size: 0;
-  line-height: 0;
-}
-
-/* Show tooltip content on hover */
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-  visibility: visible;
-  // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
-  opacity: 1;
 }
