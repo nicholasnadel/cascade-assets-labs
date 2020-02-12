@@ -51,6 +51,8 @@
     }
 
     @include respond(tab-port) {
+      max-width: 201px;
+
       h2 {
         max-width: 100%;
       }
@@ -70,7 +72,13 @@
         margin-top: 2%;
       }
     }
+
+    @media only screen and (max-width: 768px) {
+      max-width: 100%;
+    }
   }
+
+
 
   // RED
   .callout-box-widget--red {
