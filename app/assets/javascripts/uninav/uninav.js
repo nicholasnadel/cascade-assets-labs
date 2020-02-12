@@ -1,5 +1,5 @@
 // uninav accessibility
-$(function() {
+$(function () {
   hideCurrentDropdownWhenLoseFocus();
   closePrevDropdownWhenFocusChanges();
   toggleAriaExpandVal();
@@ -8,17 +8,17 @@ $(function() {
 });
 
 function closePrevDropdownWhenFocusChanges() {
-  $(".uninav__dropdown--parent").on("click keypress", function(e) {
+  $(".uninav__dropdown--parent").on("click keypress", function (e) {
     $(".uninav__dropdown--parent")
       .not(this)
-      .each(function() {
+      .each(function () {
         $(this).attr("aria-expanded", "false");
       });
   });
 }
 
 function handleEscapeKeypress() {
-  document.onkeydown = function(evt) {
+  document.onkeydown = function (evt) {
     evt = evt || window.event;
     if (evt.keyCode == 27) {
       $(".uninav__dropdown--parent").attr("aria-expanded", "false");
@@ -28,7 +28,7 @@ function handleEscapeKeypress() {
 }
 
 function toggleAriaExpandVal() {
-  $("#uninav li").on("click keypress", function(e) {
+  $("#uninav li").on("click keypress", function (e) {
     if (a11yClick(event) === true) {
       var menuItem = $(e.currentTarget);
       if (menuItem.attr("aria-expanded") === "true") {
@@ -41,7 +41,7 @@ function toggleAriaExpandVal() {
 }
 
 function hideCurrentDropdownWhenLoseFocus() {
-  $(".uninav__dropdown--child li:last-of-type").on("keydown blur", function(e) {
+  $(".uninav__dropdown--child li:last-of-type").on("keydown blur", function (e) {
     // SHIFT TAB KEY COMBO
     if (e.shiftKey && e.keyCode === 9) {
       // console.log('shift tab')
@@ -59,7 +59,7 @@ function hideCurrentDropdownWhenLoseFocus() {
       // console.log('mosueOUt');
     }
   });
-  $(".uninav__dropdown--child li:first-child").on("keydown blur", function(e) {
+  $(".uninav__dropdown--child li:first-child").on("keydown blur", function (e) {
     // SHIFT TAB KEY COMBO
     var dropdownParent = $(this).closest(".uninav__dropdown--parent");
     if (e.shiftKey && e.keyCode === 9) {
@@ -69,7 +69,7 @@ function hideCurrentDropdownWhenLoseFocus() {
     }
   });
   // handle clicking outside of dropdown item
-  $(document).on("click keydown blur focusOut", function(e) {
+  $(document).on("click keydown blur focusOut", function (e) {
     if ($(e.target).closest(".uninav__dropdown--parent").length === 0) {
       $(".uninav__dropdown--parent").attr("aria-expanded", "false");
     }
@@ -77,7 +77,7 @@ function hideCurrentDropdownWhenLoseFocus() {
 }
 
 function collapseAriaWhenClickOutside() {
-  $(document).mouseup(function(e) {
+  $(document).mouseup(function (e) {
     var container = $(".uninav__dropdown--parent");
     // if the target of the click isn't the container nor a descendant of the container
     if (!container.is(e.target) && container.has(e.target).length === 0) {
@@ -100,15 +100,15 @@ function a11yClick(event) {
 }
 // end uninav accessibility
 // off-canvas overlay - add to main content when expanded
-$(function() {
+$(function () {
   var sectionMenuButton = $("#section-menu-hamburger-icon");
   $("#umbrella-nav-button-toggle, .uninav__hamburger-menu").on(
     "click",
-    function() {
+    function () {
       $("html, #main").addClass("off-canvas__blur");
     }
   );
-  $(".js-close-off-canvas-nav").on("click", function() {
+  $(".js-close-off-canvas-nav").on("click", function () {
     // console.log('clicked');
     $("html, #main").removeClass("off-canvas__blur");
   });
@@ -122,24 +122,24 @@ function gs__customPlaceholder() {
   document.getElementById("gsc-i-id1").style.opacity = "1";
 }
 // TODO: iOS style frosted/blurred background. CSS filter: blur(2px) performance is terrible
-$(window).load(function() {
-  $("#gsc-i-id1").on("input focus click", function() {
+$(window).load(function () {
+  $("#gsc-i-id1").on("input focus click", function () {
     gs__blurBg();
   });
 });
 
-$(window).on("load resize", function(e) {
+$(window).on("load resize", function (e) {
   gs__mobileReveal();
 });
 
 function gs__mobileReveal() {
   var searchInputDesktop = $(".uninav__search-input--desktop");
   var searchButtonMobile = $("#uninav__search-button--mobile");
-  $(searchButtonMobile).click(function() {
+  $(searchButtonMobile).click(function () {
     $(this).hide();
-    $(searchInputDesktop).show();
+    $(searchInputDesktop).show().addClass('slide-right');
     $("#gsc-i-id1").focus();
-    $(searchInputDesktop).focusout(function() {
+    $(searchInputDesktop).focusout(function () {
       $(searchInputDesktop).hide();
       $(searchButtonMobile).show();
     });

@@ -723,6 +723,11 @@ html {
       &__search-input--desktop {
         // @include qbal-slideLeft-enter;
         display: none;
+
+        &.slide-right {
+          @include qbal-rightDrawer-enter;
+          margin-right: 15px;
+        }
       }
     }
 
@@ -746,6 +751,8 @@ html {
       }
     }
   }
+
+
 }
 
 // TABLET PORTRAIT
