@@ -51,7 +51,6 @@
     }
 
     @include respond(tab-port) {
-      max-width: 201px;
 
       h2 {
         max-width: 100%;
@@ -73,9 +72,7 @@
       }
     }
 
-    @media only screen and (max-width: 768px) {
-      max-width: 100%;
-    }
+
   }
 
 
@@ -311,6 +308,13 @@
 
   .callout-box-widget {
     margin-bottom: 20px;
+    max-width: 201px;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .callout-box-widget {
+      max-width: 100%;
+    }
   }
 
   .callout-box-widget.styleOne .editableContent,
