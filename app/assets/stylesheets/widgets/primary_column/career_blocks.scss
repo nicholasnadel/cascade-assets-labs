@@ -212,6 +212,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 35px;
     min-height: 300px;
+    margin-bottom: 30px;
 
     @for $i from 1 through 20 {
       :nth-child(#{$i}) {
