@@ -940,7 +940,9 @@ html {
     grid-template-columns: 1fr 1fr;
 
     .uninav {
-      &__global-nav {
+
+      &__global-nav,
+      &__logo {
         display: none;
       }
     }
