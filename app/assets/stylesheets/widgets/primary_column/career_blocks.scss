@@ -132,7 +132,6 @@
     -o-animation: fadein 3s forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 3s forwards;
-    width: 324px; //unfortunately needed for accurate line clamp
 
 
     &--scrollable {
@@ -245,7 +244,7 @@
 
   .fadeOut {
     animation-delay: 5s;
-    animation: 5s fadeOut linear forwards;
+    animation: 3s fadeOut linear forwards;
   }
 
 

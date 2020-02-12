@@ -196,6 +196,7 @@ function removeEllipsis() {
       $(this)[0].scrollHeight
     ) {
       $(this).addClass("career-block-widget__body--remove-line-clamp");
+      $(".career-block-widget__scroll-indicator").addClass("fadeOut");
       console.log("end reached");
     } else {
       $(this).removeClass("career-block-widget__body--remove-line-clamp");
