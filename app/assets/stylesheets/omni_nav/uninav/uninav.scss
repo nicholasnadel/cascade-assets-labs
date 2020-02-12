@@ -696,6 +696,14 @@ html {
             }
           }
         }
+
+        ul li.uninav__login {
+          border-right: none;
+
+          .uninav__login--wrapper ul li {
+            border-right: none;
+          }
+        }
       }
 
       .gsc-search-box table tbody tr {
