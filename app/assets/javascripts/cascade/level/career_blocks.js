@@ -170,7 +170,7 @@ function scrollHintTutorial() {
     if (alreadyRanAnimation) {
       $(".career-block-widget__body").animate({ scrollTop: 50 }, 500);
       $(".career-block-widget__body").animate({ scrollTop: 0 }, 500);
-      $(".career-block-widget__scroll-indicator").addClass("fadeOut");
+      // $(".career-block-widget__scroll-indicator").addClass("fadeOut");
       alreadyRanAnimation = false;
     }
   });
@@ -196,7 +196,7 @@ function removeEllipsis() {
       $(this)[0].scrollHeight
     ) {
       $(this).addClass("career-block-widget__body--remove-line-clamp");
-      $(".career-block-widget__scroll-indicator").addClass("fadeOut");
+      // $(".career-block-widget__scroll-indicator").addClass("fadeOut");
       console.log("end reached");
     } else {
       $(this).removeClass("career-block-widget__body--remove-line-clamp");

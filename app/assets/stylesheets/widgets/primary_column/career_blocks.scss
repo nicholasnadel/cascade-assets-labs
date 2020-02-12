@@ -172,8 +172,9 @@
     &--line-clamp {
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: 6;
+      -webkit-line-clamp: 5;
       overflow-y: scroll;
+      max-height: 100px;
     }
 
     &--remove-line-clamp {
