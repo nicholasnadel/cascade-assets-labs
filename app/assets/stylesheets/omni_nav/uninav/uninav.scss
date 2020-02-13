@@ -261,11 +261,24 @@ html {
           cursor: pointer;
         }
       }
+
+      .uninav__login {
+        border-right: none;
+
+        li {
+          border-right: none;
+        }
+      }
     }
 
     &__login {
       .uninav {
+        &__dropdown--parent {
+          border-right: none;
+        }
+
         &__dropdown--child {
+          border-right: none;
           margin-top: 0;
           background-color: $panther-black;
           color: $white;
@@ -493,7 +506,7 @@ html {
   left: 0;
   top: 100%;
   width: 100%;
-  background-color: white;
+  background-color: $white;
   flex-direction: column;
   @include uninav-drop-shadow();
 
@@ -696,14 +709,6 @@ html {
             }
           }
         }
-
-        ul li.uninav__login {
-          border-right: none;
-
-          .uninav__login--wrapper ul li {
-            border-right: none;
-          }
-        }
       }
 
       .gsc-search-box table tbody tr {
@@ -732,34 +737,66 @@ html {
         // @include qbal-slideLeft-enter;
         display: none;
 
-        &.slide-right {
-          @include qbal-rightDrawer-enter;
+        &.slide-left {
+
+          @include qbal-grow-enter;
+          // animation-delay: 150ms;
+          // animation-duration: 150ms;
           margin-right: 15px;
         }
       }
     }
 
+
     .uninav__search-button--mobile {
 
       width: 80px;
       height: 60px;
-      border-left: 1px solid $panther-black;
-      border-right: none;
+      border-left: 1px solid $cu-light-grey;
+      border-right: none !important;
       display: grid;
       cursor: pointer;
 
       &:after {
-        border-right-style: solid;
-        border-right-width: 1px;
+        // border-right-style: solid;
+        // border-right-width: 1px;
+        border-right: none;
         display: grid;
         content: "\f002";
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         align-items: center;
       }
+
+      &:active {
+        @include qbal-fade-exit;
+        animation-duration: 150ms;
+
+        &:after {
+          transform: rotate(-260deg);
+          transition-duration: 150ms;
+          border-right: none;
+          -webkit-transform: rotate(-260deg);
+          -moz-transform: rotate(-260deg);
+          -ms-transform: rotate(-260deg);
+          -o-transform: rotate(-260deg);
+        }
+      }
     }
   }
 
+  .uninav__global-nav {
+    .uninav__dropdown--parent:last-of-type {
+      .uninav {
+        &__dropdown--child {
+          min-width: 300px;
+          position: absolute;
+          right: 0;
+          margin-left: -100px;
+        }
+      }
+    }
+  }
 
 }
 
@@ -797,7 +834,7 @@ html {
         @include qbal-slideRight-enter;
 
         .hamburger-menu-button {
-          background-color: white;
+          background-color: $white;
           border: none;
         }
       }
@@ -1003,6 +1040,30 @@ html.off-canvas__blur {
 
 .uninav__animation--exit {
   @include qbal-slideRight-exit;
+}
+
+.uninav {
+  &__slide-right {
+    &--exit {
+      @include qbal-slideRight-exit;
+    }
+
+    &--enter {
+      @include qbal-slideRight-enter;
+    }
+  }
+
+  &__slide-left {
+    &--exit {
+      @include qbal-slideLeft-exit;
+    }
+
+    &--enter {
+      @include qbal-slideLeft-enter;
+    }
+  }
+
+
 }
 
 // END TABLET PORTRAIT
