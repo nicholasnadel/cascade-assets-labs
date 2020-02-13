@@ -532,7 +532,8 @@ module ContentTypes
              render_static_partial("widgets/primary_content/form_1"),
              render_static_partial("widgets/primary_content/logo_image_rotator_1"),
              render_static_partial("widgets/primary_content/featured_news_events_feed_1"),
-             render_static_partial("widgets/primary_content/wysiwyg_anchor_links"))
+            #  render_static_partial("widgets/primary_content/wysiwyg_anchor_links"),
+             render_static_partial("widgets/primary_content/program_events"))
     end
 
     def render_static_two_column_left_column
