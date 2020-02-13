@@ -766,12 +766,14 @@ html {
   }
 
   .uninav__global-nav {
-    .uninav {
-      &__dropdown--child:last-of-type {
-        min-width: 300px;
-        position: absolute;
-        right: 0;
-        margin-left: -100px;
+    .uninav__dropdown--parent:last-of-type {
+      .uninav {
+        &__dropdown--child {
+          min-width: 300px;
+          position: absolute;
+          right: 0;
+          margin-left: -100px;
+        }
       }
     }
   }
