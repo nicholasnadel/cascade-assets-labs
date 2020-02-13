@@ -133,20 +133,8 @@
     animation-direction: forwards;
     -webkit-animation: fadein 3s forwards;
 
-
     &--scrollable {
-      &:hover {
-        // -webkit-line-clamp: 25;
-        // overflow-y: auto;
-      }
-
       &:after {
-
-        // content: '↓ scroll ↓ ';
-        // position: absolute;
-        // display: grid;
-        // justify-content: center;
-        // width: 300px;
         &:after {
           @include qbal-slideUp-enter;
         }
@@ -160,14 +148,6 @@
         display: none;
       }
     }
-
-    // &--no-scroll {
-
-    //   +.career-block-widget__scroll-indicator,
-    //   .fas {
-    //     // display: none;
-    //   }
-    // }
 
     &--line-clamp {
       display: -webkit-box;
@@ -185,11 +165,6 @@
         content: '';
         @include qbal-shrinkSubtle-exit;
         // display: none;
-      }
-
-      +.career-block-widget__scroll-indicator .fas {
-        // @include qbal-shrinkSubtle-exit;
-        // animation: 300ms fadeOut forwards;
       }
     }
   }
@@ -248,7 +223,6 @@
     animation-delay: 5s;
     animation: 3s fadeOut linear forwards;
   }
-
 
   /* Add this attribute to the element that needs a tooltip */
   [data-tooltip] {
@@ -311,13 +285,6 @@
     // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
-  }
-
-  .fadeInUp {
-    // @include qbal-fade-enter;
-    // @include qbal-slideLeft-enter;
-    // @include qbal-grow-enter;
-    // @include qbal-slideDown-enter;
   }
 
   .staggerChildren {
@@ -419,5 +386,4 @@
       opacity: 0;
     }
   }
-
 }
