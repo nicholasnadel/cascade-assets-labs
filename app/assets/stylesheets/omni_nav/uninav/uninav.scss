@@ -737,30 +737,50 @@ html {
         // @include qbal-slideLeft-enter;
         display: none;
 
-        &.slide-right {
-          @include qbal-rightDrawer-enter;
+        &.slide-left {
+
+          @include qbal-grow-enter;
+          // animation-delay: 150ms;
+          // animation-duration: 150ms;
           margin-right: 15px;
         }
       }
     }
 
+
     .uninav__search-button--mobile {
 
       width: 80px;
       height: 60px;
-      border-left: 1px solid $panther-black;
-      border-right: none;
+      border-left: 1px solid $cu-light-grey;
+      border-right: none !important;
       display: grid;
       cursor: pointer;
 
       &:after {
-        border-right-style: solid;
-        border-right-width: 1px;
+        // border-right-style: solid;
+        // border-right-width: 1px;
+        border-right: none;
         display: grid;
         content: "\f002";
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
         align-items: center;
+      }
+
+      &:active {
+        @include qbal-fade-exit;
+        animation-duration: 150ms;
+
+        &:after {
+          transform: rotate(-260deg);
+          transition-duration: 150ms;
+          border-right: none;
+          -webkit-transform: rotate(-260deg);
+          -moz-transform: rotate(-260deg);
+          -ms-transform: rotate(-260deg);
+          -o-transform: rotate(-260deg);
+        }
       }
     }
   }
@@ -1020,6 +1040,30 @@ html.off-canvas__blur {
 
 .uninav__animation--exit {
   @include qbal-slideRight-exit;
+}
+
+.uninav {
+  &__slide-right {
+    &--exit {
+      @include qbal-slideRight-exit;
+    }
+
+    &--enter {
+      @include qbal-slideRight-enter;
+    }
+  }
+
+  &__slide-left {
+    &--exit {
+      @include qbal-slideLeft-exit;
+    }
+
+    &--enter {
+      @include qbal-slideLeft-enter;
+    }
+  }
+
+
 }
 
 // END TABLET PORTRAIT

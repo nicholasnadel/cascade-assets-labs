@@ -137,7 +137,7 @@ function gs__mobileReveal() {
   var searchButtonMobile = $("#uninav__search-button--mobile");
   $(searchButtonMobile).click(function () {
     $(this).hide();
-    $(searchInputDesktop).show().addClass('slide-right');
+    $(searchInputDesktop).show().addClass('slide-left');
     $("#gsc-i-id1").focus();
     $(searchInputDesktop).focusout(function () {
       $(searchInputDesktop).hide();
