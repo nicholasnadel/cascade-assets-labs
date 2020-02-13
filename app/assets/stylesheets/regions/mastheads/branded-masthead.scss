@@ -5,6 +5,19 @@
   width: 100%;
   margin-top: 2rem;
 
+  // @include qbal-slideUp-enter;
+
+  @include media($large-screen) {
+    // prevents the annoying content jump when the page loads
+    min-height: 255px;
+
+    img {
+      @include qbal-fade-enter;
+      animation-duration: 3s;
+      min-height: 255px;
+    }
+  }
+
   .grid {
     max-width: 1130px;
     margin: 0 auto;
@@ -54,6 +67,8 @@
       &.header {
         width: 100%;
         color: $white;
+        @include qbal-fade-enter;
+        animation-duration: 2s;
 
         @include media($medium-screen) {
           vertical-align: bottom;
@@ -62,6 +77,9 @@
 
         .faux-h2,
         h2 {
+          @include qbal-slideUp-enter;
+          animation-duration: 1s;
+
           padding: 36px 22px;
           margin: 0;
           font-family: $font-stack-heading;
