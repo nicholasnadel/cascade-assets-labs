@@ -3,6 +3,7 @@
 
   // Overwrites because the hover/active states don't work with the mixin. -SH
   .theme-button {
+
     &:hover,
     &:focus {
       background-color: $red-button-hover;
@@ -17,6 +18,7 @@
     }
 
     a {
+
       &:hover,
       &:visited {
         @include dc($cu-red);
@@ -282,6 +284,7 @@ a {
 
 p.source {
   a {
+
     &:link,
     &:visited {
       color: $cu-red;
@@ -404,6 +407,7 @@ dd {
 }
 
 nav {
+
   ul,
   ol {
     list-style: none;
@@ -487,6 +491,7 @@ button {
 }
 
 input {
+
   &[type="button"],
   &[type="reset"],
   &[type="submit"] {
@@ -648,6 +653,14 @@ html body {
         background: none;
       }
     }
+  }
+}
+
+.editableContent {
+
+  ul,
+  ol {
+    margin-bottom: 3rem;
   }
 }
 
