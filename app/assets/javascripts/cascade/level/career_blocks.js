@@ -1,16 +1,15 @@
-$(function() {
-  console.log("ready!");
+$(function () {
   if ($(".career-block-widget__container").children().length > 1) {
     $(".career-block-widget__container").addClass(
       "career-block-widget__container--3-or-more-items"
     );
   }
 
-  $.each($(".career-block-widget"), function(ind) {
+  $.each($(".career-block-widget"), function (ind) {
     $(this).attr("id", "career-block-widget__" + parseInt(ind + 1));
     var id = $(this).attr("id");
-    console.log("current id: " + id);
-    console.log("this " + id);
+    // console.log("current id: " + id);
+    // console.log("this " + id);
     var careerCode = $(this)
       .find(".career-block-widget__career-code")
       .text()
@@ -20,7 +19,7 @@ $(function() {
       "https://services.onetcenter.org/ws/online/occupations/" +
       careerCode +
       "?client=chapman";
-    console.log("url: " + URL);
+    // console.log("url: " + URL);
 
     var bindedOnSuccess = onSuccess.bind(this);
     $.ajax({
@@ -32,7 +31,7 @@ $(function() {
       async: true,
       dataType: "json",
       timeout: 10000,
-      error: function(jqxhr, statustext, err) {
+      error: function (jqxhr, statustext, err) {
         console.log(id + " error");
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
@@ -96,7 +95,7 @@ $(function() {
       async: true,
       dataType: "json",
       timeout: 10000,
-      error: function(jqxhr, statustext, err) {
+      error: function (jqxhr, statustext, err) {
         console.log(id + " error");
         if (jqxhr.status === 422) {
           console.log(JSON.parse(jqxhr.responseText));
@@ -132,9 +131,9 @@ $(function() {
           .find(".career-block-widget__salary")
           .html(
             '<span class="career-block-widget__bold">' +
-              cashmoney.format(salary) +
-              "</span>" +
-              " Median Salary"
+            cashmoney.format(salary) +
+            "</span>" +
+            " Median Salary"
           );
       } else {
         try {
@@ -142,9 +141,9 @@ $(function() {
             .find(".career-block-widget__salary")
             .html(
               '<span class="career-block-widget__bold">' +
-                cashmoney.format(salaryMedianOver) +
-                "</span>" +
-                " Median Salary"
+              cashmoney.format(salaryMedianOver) +
+              "</span>" +
+              " Median Salary"
             );
         } finally {
           console.log($(this).prop(salary));
@@ -159,14 +158,14 @@ $(function() {
   });
 });
 
-$(function() {
+$(function () {
   scrollHintTutorial();
 });
 
 function scrollHintTutorial() {
   var alreadyRanAnimation = true;
 
-  $(".career-block-widget__scroll-indicator").mouseenter(function() {
+  $(".career-block-widget__scroll-indicator").mouseenter(function () {
     if (alreadyRanAnimation) {
       $(".career-block-widget__body").animate({ scrollTop: 50 }, 500);
       $(".career-block-widget__body").animate({ scrollTop: 0 }, 500);
@@ -177,7 +176,7 @@ function scrollHintTutorial() {
 }
 
 function addEllipsis() {
-  $(".career-block-widget").each(function() {
+  $(".career-block-widget").each(function () {
     $this = $(this).find(".career-block-widget__body");
     if ($this.text().length > 260) {
       $this.addClass("career-block-widget__body--scrollable");
@@ -189,15 +188,15 @@ function addEllipsis() {
 }
 function removeEllipsis() {
   var overflowText = $(".career-block-widget__body");
-  // TODO: improve really bad performance if this hack is even needed after widget redesign
-  $(overflowText).on("scroll", function() {
+  // TODO: improve scroll listener performance if this hack is even needed after widget redesign... a modal/expanding text/something else is probably a more elegant design solution for this recurring overflowing text problem on widgets
+  $(overflowText).on("scroll", function () {
     if ($(this).scrollTop() >= 1) {
       $(this).addClass("career-block-widget__body--remove-line-clamp");
-      console.log("end reached");
+      // console.log("end reached");
     } else {
       $(this).removeClass("career-block-widget__body--remove-line-clamp");
       $(this).addClass("career-block-widget__body--line-clamp");
-      console.log("adding line-clamp again");
+      // console.log("adding line-clamp again");
     }
   });
 }
