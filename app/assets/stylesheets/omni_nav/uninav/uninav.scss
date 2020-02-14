@@ -49,7 +49,6 @@ html {
   }
 
   .uninav {
-
     &__logo,
     #uninav-logo .chapman-logo {
       width: 100%;
@@ -160,7 +159,7 @@ html {
       ul {
         display: flex;
 
-        &>li {
+        & > li {
           flex: 1 100%;
           list-style: none;
           color: $panther-black;
@@ -456,7 +455,7 @@ html {
     border-right: 1px solid $uninav-light-grey;
   }
 
-  .uninav__dropdown-wrapper>a::after {
+  .uninav__dropdown-wrapper > a::after {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f0d7";
@@ -464,12 +463,12 @@ html {
     font-size: 1.4rem;
   }
 
-  &>ul {
+  & > ul {
     display: flex;
     align-items: center;
     height: 100%;
 
-    &>li {
+    & > li {
       flex: 100%;
     }
 
@@ -485,15 +484,15 @@ html {
   }
 }
 
-#uninav>nav {
+#uninav > nav {
   grid-area: nav;
 }
 
-#uninav>global {
+#uninav > global {
   grid-area: global;
 }
 
-#uninav>div.uninav__logo--primary {
+#uninav > div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
 }
@@ -510,7 +509,7 @@ html {
   flex-direction: column;
   @include uninav-drop-shadow();
 
-  >ul {
+  > ul {
     flex-direction: column;
     justify-content: start;
     text-align: left;
@@ -531,7 +530,7 @@ html {
   &[aria-expanded="false"] {
     .uninav {
       &__dropdown-wrapper {
-        &>a {
+        & > a {
           &:after {
             content: "\f0d7";
             transform: rotate(0deg);
@@ -545,7 +544,7 @@ html {
   &[aria-expanded="true"] {
     .uninav {
       &__dropdown-wrapper {
-        &>a {
+        & > a {
           &:after {
             content: "\f0d7";
             transform: rotate(180deg) translateX(-1rem);
@@ -563,7 +562,6 @@ html {
   }
 
   &[aria-expanded="false"] {
-
     // TODO: refactor first .uninav__dropdown--child... display: none is not animitable.
     .uninav__dropdown--parent,
     .uninav__dropdown--child {
@@ -626,7 +624,7 @@ html {
       @include qbal-growExaggerated-enter;
 
       ul li,
-      &>a {
+      & > a {
         color: $panther-black;
       }
     }
@@ -680,7 +678,7 @@ html {
         }
       }
 
-      &__menu-item-dropdown-child:hover>ul {
+      &__menu-item-dropdown-child:hover > ul {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -702,7 +700,6 @@ html {
         .uninav {
           &__utility-nav--search-wrapper {
             margin-right: 0;
-
 
             .uninav__search-button--mobile {
               border-right: none;
@@ -738,8 +735,8 @@ html {
         display: none;
 
         &.slide-left {
-
-          @include qbal-grow-enter;
+          // @include qbal-grow-enter;
+          @include qbal-slideLeft-enter;
           // animation-delay: 150ms;
           // animation-duration: 150ms;
           margin-right: 15px;
@@ -747,9 +744,7 @@ html {
       }
     }
 
-
     .uninav__search-button--mobile {
-
       width: 80px;
       height: 60px;
       border-left: 1px solid $cu-light-grey;
@@ -770,6 +765,7 @@ html {
 
       &:active {
         @include qbal-fade-exit;
+
         animation-duration: 150ms;
 
         &:after {
@@ -797,7 +793,6 @@ html {
       }
     }
   }
-
 }
 
 // TABLET PORTRAIT
@@ -899,7 +894,6 @@ html {
 @media only screen and (max-width: 750px) {
   #uninav {
     .uninav {
-
       &__logo,
       .chapman-logo {
         border-bottom: none;
@@ -955,10 +949,9 @@ html {
   #uninav {
     grid-template-areas: "logo hamburger utility";
     grid-template-rows: 60px;
-    grid-template-columns: .5fr 2fr 2fr;
+    grid-template-columns: 0.5fr 2fr 2fr;
 
     .uninav {
-
       &__global-nav {
         display: none;
       }
@@ -977,7 +970,6 @@ html {
     grid-template-columns: 1fr 1fr;
 
     .uninav {
-
       &__global-nav,
       &__logo {
         display: none;
@@ -1024,7 +1016,6 @@ html.off-canvas__blur {
   }
 
   .uninav {
-
     &__logo,
     &__utility-nav--wrapper,
     &__global-nav,
@@ -1062,8 +1053,6 @@ html.off-canvas__blur {
       @include qbal-slideLeft-enter;
     }
   }
-
-
 }
 
 // END TABLET PORTRAIT
