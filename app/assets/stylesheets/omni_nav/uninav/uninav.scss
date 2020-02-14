@@ -4,11 +4,11 @@
 }
 
 @mixin uninav-border-top {
-  border-bottom: 1px solid $uninav-light-grey;
+  border-bottom: 1px solid $cu-light-grey;
 }
 
 @mixin uninav-border-bottom {
-  border-bottom: 1px solid $uninav-light-grey;
+  border-bottom: 1px solid $cu-light-grey;
 }
 
 @mixin uninav__menu-item--piped {
@@ -122,7 +122,7 @@ html {
       display: flex;
       justify-content: start;
       align-items: center;
-      border-bottom: 1px solid $uninav-light-grey;
+      border-bottom: 1px solid $cu-light-grey;
       padding-left: 2.5rem;
       white-space: nowrap;
       @include qbal-fade-enter;
@@ -131,7 +131,7 @@ html {
         font-weight: 800;
         font-size: 1.2em;
         width: 100%;
-        border-left: 1px solid $cu-red;
+        border-left: 1px solid $cu-light-grey;
         align-self: center;
         margin-left: 2rem;
         padding-left: 2rem;
@@ -194,7 +194,7 @@ html {
       height: 100%;
       display: grid;
       justify-content: flex-end;
-      border-bottom: 1px solid $uninav-light-grey;
+      border-bottom: 1px solid $cu-light-grey;
       height: $uninav-div-height;
       align-items: center;
 
@@ -237,7 +237,7 @@ html {
           flex-grow: 1;
           flex-basis: auto;
           text-align: center;
-          border-right: 1px solid #ccc;
+          border-right: 1px solid $cu-light-grey;
 
           &:last-of-type {
             flex-grow: 0;
@@ -324,7 +324,7 @@ html {
       width: 80px;
       height: 100%;
       font-size: 1.2em;
-      color: $uninav-light-grey;
+      color: $cu-light-grey;
       text-align: center;
       height: 50px;
       display: grid;
@@ -450,7 +450,7 @@ html {
   a {
     display: flex;
     justify-content: center;
-    border-right: 1px solid $uninav-light-grey;
+    border-right: 1px solid $cu-light-grey;
   }
 
   .uninav__dropdown-wrapper>a::after {
