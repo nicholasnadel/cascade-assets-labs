@@ -136,12 +136,13 @@ function gs__mobileReveal() {
   var searchInputDesktop = $(".uninav__search-input--desktop");
   var searchButtonMobile = $("#uninav__search-button--mobile");
   $(searchButtonMobile).click(function () {
-    $(this).hide();
-    $(searchInputDesktop).show().addClass('slide-left');
+    $(this).addClass('uninav__hidden');
+    $(searchInputDesktop).addClass('uninav__reveal').addClass('slide-left');
     $("#gsc-i-id1").focus();
     $(searchInputDesktop).focusout(function () {
-      $(searchInputDesktop).hide();
-      $(searchButtonMobile).show();
+      $(searchInputDesktop).removeClass('uninav__reveal');
+      $(searchButtonMobile).removeClass('uninav__hidden');
+      $(searchInputDesktop).find('input').val('');
     });
   });
 }
