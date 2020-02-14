@@ -13,7 +13,7 @@
 
     img {
       @include qbal-fade-enter;
-      animation-duration: 1s;
+      animation-duration: 3s;
       min-height: 255px;
     }
   }
@@ -94,11 +94,6 @@
             font-size: 36px;
             line-height: 44px;
           }
-        }
-
-        .faux-h3 {
-          @include qbal-slideUp-enter;
-          animation-delay: 300ms;
         }
       }
     }
