@@ -58,25 +58,26 @@ $(function () {
 
     /// ON SUCCESS CALLBACK
     function onSuccess(data) {
-      $(this)
-        .find(".career-block-widget__text")
-        .addClass("fadeInUp");
-      $(this).removeClass("career-block-widget--hidden");
-      $(this).addClass("career-block-widget--reveal");
-      $(this)
-        .find(".career-block-widget__title")
-        .text(data.title)
-        .addClass("fadeInUp");
-      $(this)
-        .find(".career-block-widget__body")
-        .text(data.description)
-        .addClass("fadeInUp");
-      $(this)
-        .find(".career-block-widget__scroll-indicator")
-        .addClass("fadeInUp");
+      var $this = $(this);
+      $this
+      .find(".career-block-widget__text")
+      .addClass("fadeInUp");
+      $this.removeClass("career-block-widget--hidden");
+      $this.addClass("career-block-widget--reveal");
+      $this
+      .find(".career-block-widget__title")
+      .text(data.title)
+      .addClass("fadeInUp");
+      $this
+      .find(".career-block-widget__body")
+      .text(data.description)
+      .addClass("fadeInUp");
+      $this
+      .find(".career-block-widget__scroll-indicator")
+      .addClass("fadeInUp");
       addEllipsis();
       removeEllipsis();
-    }
+      }
 
     // salary
     var bindSalary = setSalary.bind(this);
@@ -125,9 +126,10 @@ $(function () {
       console.log("salary: " + salary);
       var salary = data.salary.annual_median;
       var salaryMedianOver = data.salary.annual_median_over;
-
+      var $this = $(this);
+      
       if (typeof salary != "undefined") {
-        $(this)
+        $this
           .find(".career-block-widget__salary")
           .html(
             '<span class="career-block-widget__bold">' +
@@ -137,7 +139,7 @@ $(function () {
           );
       } else {
         try {
-          $(this)
+          $this
             .find(".career-block-widget__salary")
             .html(
               '<span class="career-block-widget__bold">' +
@@ -146,7 +148,7 @@ $(function () {
               " Median Salary"
             );
         } finally {
-          console.log($(this).prop(salary));
+          console.log($this.prop(salary));
         }
       }
     }
