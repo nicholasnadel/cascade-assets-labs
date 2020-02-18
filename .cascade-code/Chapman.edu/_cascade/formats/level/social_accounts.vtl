@@ -9,6 +9,7 @@
  * will be able to modify this code's conditional.
  * 
  * Note: A similar file exists in _cascade/formats/modular/meta/social_accounts (NOT BEING USED)
+ * FWIW this is configured at its respective _shared-content/social-accounts/ block
  *******************************************************************************#
 ##
 ## Get the data for the page
@@ -53,7 +54,11 @@
             #elseif ( $name == 'vimeo')
                 #set ( $fontAwesomeClass = "fab fa-vimeo-square")    
             #elseif ( $name == 'youtube')
-                #set ( $fontAwesomeClass = "fab fa-youtube-square")    
+                #set ( $fontAwesomeClass = "fab fa-youtube-square")   
+            #elseif ( $name == 'linkedin')
+                #set ( $fontAwesomeClass = "fab fa-linkedin")  
+            #elseif ( $name == 'blog')
+                #set ( $fontAwesomeClass = "fas fa-rss-square")     
             #end
         
             #set ( $url = $_SerializerTool.serialize( $account.getChild('account_url'), true) )
