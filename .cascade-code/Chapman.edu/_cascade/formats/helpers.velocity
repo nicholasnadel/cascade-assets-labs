@@ -202,9 +202,10 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
 #macro ( buildDrillDownList $asset )
   #set ( $drillDownPagePath = $currentPage.path )
   #set ( $isVisible         = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes")
-  #set ( $rootPageName      = $asset.path.replaceAll("^[\w]+\/", "") )
+  #set ( $rootPageName      = $asset.path.replaceAll("^[\w]+\/|^[\w]+-[\w]+\/", "") )
 
   #if ( $drillDownPagePath == $asset.path ) 
+    #set ( $isVisible = true )
     #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
   #else
     #set( $isCurrentDrillDownPage = "drill-down-list-item")
@@ -237,12 +238,14 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
         <ul class="drilldown-menu">
           <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)}</li>
           #foreach( $childAsset in $asset.children)
+            #set ( $isVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes")
+
             #if ( $drillDownPagePath == $childAsset.path ) 
+              #set ( $isVisible = true )
               #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
             #else
               #set( $isCurrentDrillDownPage = "drill-down-list-item")
             #end
-            #set ( $isVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes")
             #if ($childAsset.assetType == 'page' && $isVisible)
               <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
             #elseif ($childAsset.assetType == 'symlink')
@@ -267,19 +270,7 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #end
   #elseif ($asset.assetType == 'symlink')
     <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
-##   #testing for sym link 
-##   #else
-##     <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
   #end
-#end
-
-#macro(addBackgroundImage $content)
-    #set ($linkUrl = $content.getChild('fileLink').getChild('path').value)
-    #if ($linkUrl != '')
-        "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
-    #else
-        ""
-    #end
 #end
 
 #macro(alert $v)
