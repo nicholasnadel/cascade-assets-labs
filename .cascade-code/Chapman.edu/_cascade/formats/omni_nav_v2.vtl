@@ -234,7 +234,7 @@
 #macro ( buildPrimaryNavLogoContainer )
   <div class="nav-container logo-container">
     <div class="cu-logo-wrapper">
-      <div class="primary-logo">
+      <div class="uninav__logo--primary">
         <a href="site://Chapman.edu/index" title="Chapman University Website Home Page">
           <svg role="presentation" aria-hidden="true" class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.7 28.1">
             <defs>
@@ -247,7 +247,7 @@
       </div>
 
       #if ( $isUmbrellaCategory )
-      <div class="secondary-logo">
+      <div class="uninav__logo--secondary">
         <a class="branded-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
       </div>
       #end
@@ -295,6 +295,25 @@
                 <path d="M321.9 138.1c-1.7-32.7-28.4-11.5-29.4-27.9 -0.5-11.5 20.9-6 61.8-34.4 3.2-1.7 4.7-3.5 8-3.7 5-0.2 3.7 9.7 4 13l9.7 177.8c17-17.2 35.9-32.9 58.6-34.2 52.1-2.7 74.3 41.6 75.8 72.8C514.1 370.1 477 408 421.6 411c-40.6 2.2-54.9-15-61.3-14.7 -8.2 0.5-12 18.7-21.9 19.2 -3.2 0.2-5-1.2-5.2-4.7 -0.2-3.2 2.5-13.2 1.2-36.2L321.9 138.1 321.9 138.1zM380.7 350.8c2 37.4 36.6 43.9 49.9 43.1 37.4-2 43.6-38.4 42.1-67.6 -1.7-34.2-19.9-65.8-62.3-63.6 -13 0.7-33.7 10-32.9 26.4L380.7 350.8 380.7 350.8z"/>
               </svg>
               Blackboard
+            </a>
+          </li>
+
+          <li>
+            <a href="https://chapman.instructure.com">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
+                <style type="text/css">
+                  .st0{fill:#ffffff;}
+                </style>
+                <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
+                <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
+                <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
+                <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
+                <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
+                <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
+                <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
+                <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
+              </svg>
+              Canvas
             </a>
           </li>
           
@@ -904,21 +923,6 @@
     display: block \9 !important;
   }
 <![endif]-->
-
-#*
-## waiting for update from Ross on which page this will be restricted to https://trello.com/c/doaNxEcE/1478-add-a-google-translate-button-to-a-webpage
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'en'
-  }, 'google_translate_element');
-}
-
-</script>
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
-</script>
-*#
 
 #macro ( buildGoogleTranslate )
     #set ( $pagePath = $currentPage.path )
