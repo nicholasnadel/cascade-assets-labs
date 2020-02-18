@@ -7,11 +7,6 @@
 
   &--hidden {
 
-    // display: none;
-    // visibility: hidden;
-    // top: -99999px;
-    // position: absolute;
-    // left: -99999px;
     .career-block-widget {
       &__text {
         opacity: 0;
@@ -70,23 +65,10 @@
     }
 
     &--stop-hint {
-      // animation: none;
       opacity: 0;
     }
 
     &:after {
-
-      // content: '↓ scroll ↓ ';
-      // content: '\f078';
-      // position: absolute;
-      // display: grid;
-      // justify-content: center;
-      // width: 300px;
-      // font-family: "Font Awesome 5 Free";
-      // font-weight: 900;
-      // content: "\f0d7";
-      // margin-left: 2px;
-      // font-size: 1.4rem;
       &:hover {
         &:after {
           content: 'scroll';
@@ -97,9 +79,6 @@
 
   &:hover,
   &:focus-within {
-    * {
-      // background-color: red !important
-    }
 
     &__scroll-indicator {
       animation: scrollHint 5s 3 ease-in-out;
@@ -110,7 +89,6 @@
 
     20%,
     50% {
-      // -webkit-transform: translate(0)
       -webkit-transform: translate(0px, 1px)
     }
 
@@ -164,7 +142,6 @@
       &:after {
         content: '';
         @include qbal-shrinkSubtle-exit;
-        // display: none;
       }
     }
   }
@@ -234,8 +211,6 @@
   [data-tooltip]:before,
   [data-tooltip]:after {
     visibility: hidden;
-    // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
     pointer-events: none;
   }
@@ -282,8 +257,6 @@
   [data-tooltip]:hover:before,
   [data-tooltip]:hover:after {
     visibility: visible;
-    // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
   }
 
