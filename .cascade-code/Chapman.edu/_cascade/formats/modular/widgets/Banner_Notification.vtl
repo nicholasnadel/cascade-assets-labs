@@ -16,7 +16,7 @@
 #set ( $widgetXPath = $snakeCase ) 
 <div class="#escape($widgetXPath) $bgColor">
     <div class="text ${_EscapeTool.xml($widgetXPath)}__text">
-        ${_DisplayTool.truncate($text,200,"...")}
+        ${_DisplayTool.truncate($text,100,"...")}
     </div>
 </div>
 
