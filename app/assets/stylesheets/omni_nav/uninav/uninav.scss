@@ -106,8 +106,8 @@ html {
 #uninav {
   display: grid;
   grid-template-areas:
-    "logo secondaryLogo utility"
-    "global global cta";
+  "logo secondaryLogo utility utility"
+  "global global global cta";
   grid-template-columns: 1fr;
   background-color: $white;
   top: 0;
