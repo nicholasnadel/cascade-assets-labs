@@ -204,6 +204,7 @@ html {
             color: $panther-black;
             padding-left: 1.5em;
             padding-right: 1.5em;
+            display: flex;
           }
 
           &:nth-child(4),
@@ -218,11 +219,16 @@ html {
           margin-right: 1.5rem;
         }
       }
-
+      .gsc-input-box {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
       &__search-input {
         @include qbal-fade-enter;
         border-right: none;
-
+        
         #gsc-i-id1 {
           height: 38px !important;
         }
@@ -593,15 +599,13 @@ html {
 // MEDIA QUERIES
 
 @media only screen and (max-width: 1420px)  {
-
-  .uninav__utility-nav--audiences-container {
-    @include qbal-slideLeft-exit;
-
+  .uninav__utility-nav--audiences-container,
+  span.uninav__utility-nav--audiences-container {
     display: none;
   }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1368px) {
   #uninav {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -616,11 +620,14 @@ html {
     }
   }
 
-  .uninav__menu-item--audiences {
-    // need a slicker preferably non-js fadeout solution since display: none is not animatable
-    @include qbal-slideLeft-exit;
-    display: none;
+  #uninav {
+    .uninav__utility-nav--audiences-container,
+    .uninav__menu-item--audiences {
+      // need a slicker preferably non-js fadeout solution since display: none is not animatable
+      display: none;
+    }
   }
+  
 
   #uninav {
     display: grid;
@@ -664,6 +671,13 @@ html {
 
 @media only screen and (max-width: 1148px) {
   #uninav {
+    grid-template-areas:
+    "logo utility utility"
+    "global global global";
+
+    &__cta {
+      display: none !important;
+    }
     .uninav {
       &__cta {
         &--wrapper {
@@ -840,6 +854,9 @@ html {
         justify-content: center;
         @include qbal-slideRight-enter;
 
+        span.fas.fa-bars {
+          font-size: 2.5rem;
+      }
         .hamburger-menu-button {
           background-color: $white;
           border: none;
@@ -952,7 +969,7 @@ html {
       }
 
       &__hamburger-menu {
-        justify-content: start;
+        // justify-content: start;
       }
     }
   }
