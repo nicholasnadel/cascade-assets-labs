@@ -202,6 +202,7 @@ On a page level, configure via:
 #buildOffCanvasNav()
 #uninavLogo()
 #uninavUtility()
+#uninavSearch()
 #uninavGlobal()
 #uninavCTA()
 
@@ -256,6 +257,10 @@ On a page level, configure via:
 
 #macro ( uninavUtility ) 
   #import ( "/_cascade/formats/modular/uninav/_utilityNav.vtl" )
+#end
+
+#macro ( uninavSearch ) 
+    #import ( "/_cascade/formats/modular/uninav/_search.vtl" )
 #end
 
 #macro ( uninavAudiences ) 

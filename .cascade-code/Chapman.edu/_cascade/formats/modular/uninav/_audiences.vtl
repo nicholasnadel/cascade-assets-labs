@@ -2,7 +2,7 @@
 
 <!-- _audiences.vtl -->
 ## UTILITY NAV LINKS:
-#set ( $menuItems = $_XPathTool.selectNodes($contentRoot, "/system-data-structure/uninav/audienceNav/menuItem") )
+#set ( $menuItems = $_XPathTool.selectNodes($contentRoot, "/system-data-structure/omninav/audienceNav/menuItem") )
 #if ($menuItems.size() >= 1)
     #foreach ($menuItem in $menuItems)
         #set ($label = $menuItem.getChild('label').value )
@@ -66,5 +66,4 @@
       
       
       
-#import ( "/_cascade/formats/modular/uninav/_search.vtl" )
 
