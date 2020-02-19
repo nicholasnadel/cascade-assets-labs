@@ -1,0 +1,40 @@
+#google_translate_element {
+  margin-top: 60px;
+}
+
+.goog-te-combo {
+  position: relative;
+}
+
+.skiptranslate.goog-te-gadget {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
+}
+
+.goog-te-gadget .goog-te-combo {
+  margin: 0;
+}
+
+
+#\:0\.targetLanguage {
+  margin-bottom: 0;
+}
+
+
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+}
+
+#\:1\.container {
+  position: fixed;
+  margin-top: 60px;
+  box-shadow: none;
+  -webkit-transition: 300ms linear;
+  transition: 300ms linear;
+}
