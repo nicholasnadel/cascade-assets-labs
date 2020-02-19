@@ -151,6 +151,7 @@ On a page level, configure via:
   #set ( $umbrellaFolder = $_.locateFolder($umbrellaDirectoryPath) )
   
   #foreach( $childAsset in $umbrellaFolder.children )
+    #set ( $isAssetInCurrentPath = $_StringTool.substringAfter($currentPage.path, $childAsset.path).length())
     ## When the 'Hide from navigation' box is not checked, and it has never been checked, the metadata
     ## field doesn't exist for that asset. When the box is not checked, but it was at one point, it exists with a value of ''.
     ## See Github issue: https://github.com/chapmanu/cascade-assets/issues/262
@@ -165,6 +166,11 @@ On a page level, configure via:
       #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
       #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
       #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+      
+      #if ($isAssetInCurrentPath > 0)
+       #set ( $folderVisible = true )
+       #set ( $folderIndexVisible = true )
+      #end
 
       #if ( $folderIndexVisible && $folderVisible )
           #set ( $isVisibleChild = true )

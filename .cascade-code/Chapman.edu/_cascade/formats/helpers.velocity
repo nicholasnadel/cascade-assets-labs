@@ -200,18 +200,22 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
 *#
 
 #macro ( buildDrillDownList $asset )
-  #set ( $drillDownPagePath = $currentPage.path )
-  #set ( $isVisible         = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes")
-  #set ( $rootPageName      = $asset.path.replaceAll("^[\w]+\/|^[\w]+-[\w]+\/", "") )
-
+  #set ( $drillDownPagePath     = $currentPage.path )
+  #set ( $isVisible             = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes")
+  #set ( $rootPageName          = $asset.path.replaceAll("^[\w]+\/|^[\w]+-[\w]+\/", "") )
+  #set ( $assetInCurrentPath    = $_StringTool.substringAfter($currentPage.path, $asset.path).length() )
+  
   #if ( $drillDownPagePath == $asset.path ) 
     #set ( $isVisible = true )
-    #set( $isCurrentDrillDownPage = "drill-down-list-item current" )
+    #set ( $isCurrentDrillDownPage = "drill-down-list-item current" )
   #else
     #set( $isCurrentDrillDownPage = "drill-down-list-item")
   #end
   
-  
+  #if ( $assetInCurrentPath > 0 )
+    #set ( $isVisible = true )
+  #end
+
   #if ($asset.assetType == "folder" && $isVisible)
     #set ( $visibleChildren = false )
     #foreach( $childAsset in $asset.children )
@@ -246,6 +250,12 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
             #else
               #set( $isCurrentDrillDownPage = "drill-down-list-item")
             #end
+            #set ( $currentPageInHiddenFolder = $_StringTool.substringAfter($drillDownPagePath, $childAsset.path).length() )
+            
+            #if ( $currentPageInHiddenFolder > 0 )
+              #set ( $isVisible = true )
+            #end
+            
             #if ($childAsset.assetType == 'page' && $isVisible)
               <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
             #elseif ($childAsset.assetType == 'symlink')
@@ -438,3 +448,76 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
 ##         <path>/_files/image1.png</path>
 ##     </fileLink>
 ## </media>
+
+#*
+--------------------------------------------------------------------------------
+CASCADE DRILL DOWN BUILDER
+USAGE: #processAsset( $asset )
+--------------------------------------------------------------------------------
+*#
+
+#macro ( determineLinkClass $asset )
+  #set ( $linkClass = "drill-down-list-item" )
+  #if ( $currentPage.path == $asset.path )
+    #set ( $linkClass = "${linkClass} current" )
+  #end
+  $linkClass
+#end
+
+#macro ( outputPageLink $page, $isTopLevel)
+  #set ( $linkClass = "${#determineLinkClass($page)}" )
+  #set ( $homeIconHtml = "" )
+  #if ($page.name == "index")
+    #set ( $linkClass = "${linkClass} home-link" )
+    #set ( $homeIconHtml = "<i class='fas fa-home'></i>" )
+  #end
+  <li class="${linkClass}">${homeIconHtml}<a href="${page.link}">${_EscapeTool.xml($page.label)}</a></li>
+#end
+
+#macro ( outputSymlinkLink $symlink)
+  #set ( $linkClass = "${#determineLinkClass($symlink)}" )
+  <li class="${linkClass}"><a href="${symlink.link}">${_EscapeTool.xml($symlink.label)} <span class="fas fa-external-link-alt"></span></a></li>
+#end
+
+#macro ( outputFolder $folder )
+  #set ( $linkClass = "${#determineLinkClass($folder)}" )
+  #set ( $childrenHtml = "" )
+
+  #if ( $folder.children.size() > 0 )
+    #foreach( $childAsset in $folder.children )
+        #log("IM THE CHILD ASSET ${childAsset}")
+      #set ( $childrenHtml = "${childrenHtml}#processAsset($childAsset)" )
+      #log("IM THE CHILD ASSET AFTERWARD ${childrenHtml}")
+    #end
+    #log("IM THE CHILD $childrenHtml")
+    #set ( $childrenHtml = $childrenHtml.replaceAll("\t\s{2,}", "").trim() )
+  #end
+
+  #if ( !$_PropertyTool.isEmpty($childrenHtml) )
+    <li class="${linkClass}">
+      <span tabindex="0" class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
+      <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
+      <ul class="drilldown-menu">
+        <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)}</li>
+        ${childrenHtml}
+      </ul>
+    </li>
+  #end
+#end
+
+#macro ( processAsset $asset )
+  #set ( $isVisible = $asset.metadata.getDynamicField('Hide from navigation').hasValue("Yes") == false )
+  #set ( $linkClass = "${#determineLinkClass}")
+
+  #if ( $currentPage.path == $asset.path )
+    #set ( $isVisible = true )
+  #end
+
+  #if ( $asset.assetType == 'page' && $isVisible )
+    #outputPageLink($asset, false)
+  #elseif ( $asset.assetType == 'symlink' )
+    #outputSymlinkLink($asset)
+  #elseif ( $asset.assetType == 'folder' && $isVisible )
+    #outputFolder($asset)
+  #end
+#end
