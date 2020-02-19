@@ -151,6 +151,7 @@
 		<group identifier="widget" label="Widgets" multiple="true">
 			<text default="(choose one)" help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
 				<dropdown-item value="(select one)"/>
+        <dropdown-item show-fields="primaryContent/widget/programEvents" value="Program Events"/>
 				<dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
 				<dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
 				<dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
@@ -175,6 +176,15 @@
 				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 				<dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
 			</text>
+      <group collapsed="true" identifier="programEvents" label="Program Events">
+				<shared-field identifier="display" path="display"/>
+				<text default="tiles" identifier="tilesBars" label="Program Events Display" required="true" type="radiobutton">
+					<radio-item label="Tiles" value="tiles"/>
+					<radio-item label="Bars" value="bars"/>
+				</text>
+				<text identifier="feedUrl" label="Feed Url" required="true"/>
+				<text identifier="text" label="Text" required="true" wysiwyg="true"/>
+			</group>
 			<group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
 				<shared-field identifier="display" path="display"/>
 				<shared-field identifier="bgColor" path="background-color"/>
