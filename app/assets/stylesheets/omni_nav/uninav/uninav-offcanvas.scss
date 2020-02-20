@@ -3,6 +3,10 @@
   $nav-width-mobile: 350px;
 
   //SHARED BY BOTH UMBRELLA AND MAIN
+
+
+
+
   .cu-off-canvas-header {
     // For menu-toggling
     width: 200%;
@@ -117,16 +121,37 @@
     overflow: -moz-scrollbars-none;
     overflow-y: hidden;
 
+    .off-canvas-cta {
+      li {
+        color: v(white);
+
+        a {
+          color: v(white);
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 1.4rem;
+          letter-spacing: .5px;
+          background-color: v(cu-red);
+          color: v(white);
+
+          &:hover {
+            background-color: v(panther-black);
+          }
+        }
+      }
+    }
+
     @include respond(phone) {
       & {
         width: $nav-width-mobile;
         transform: translateX(-$nav-width-mobile);
       }
     }
-    
+
     &::-webkit-scrollbar {
       display: none;
     }
+
     //END HIDE SCROLLBARS
     .off-canvas-nav {
       display: grid;
@@ -284,8 +309,8 @@
       transition: .40s all;
       animation: pulse 5s;
       animation-iteration-count: 2;
-      
-   
+
+
       .section-menu-text {
         font-size: 1.4rem;
         margin-bottom: 0;
@@ -309,7 +334,7 @@
         font-weight: bold;
       }
 
-      div { 
+      div {
         display: flex;
         flex-direction: column;
       }

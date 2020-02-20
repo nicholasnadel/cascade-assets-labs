@@ -578,24 +578,35 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // }
 // }
 
-@mixin slide-in-out($type, $from, $to, $duration: 1s ) {
-  @if $type == in {
+@mixin slide-in-out($type, $from, $to, $duration: 1s) {
+  @if $type==in {
     &.slide-in {
       animation: #{$type} $duration forwards;
+
       @keyframes #{$type} {
-        0% { transform: translateX($from); }
-        100% { transform: translateX($to); }
+        0% {
+          transform: translateX($from);
+        }
+
+        100% {
+          transform: translateX($to);
+        }
       }
     }
   }
 
-  @if $type == out {
+  @if $type==out {
     &.slide-out {
       animation: #{$type} $duration forwards;
 
       @keyframes #{$type} {
-        0% { transform: translateX($from); }
-        100% { transform: translateX($to); }
+        0% {
+          transform: translateX($from);
+        }
+
+        100% {
+          transform: translateX($to);
+        }
       }
     }
   }
@@ -604,18 +615,21 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @mixin drill-down-menu-style($width: 410px) {
 
   li {
-    &:hover { cursor: pointer; }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   ul li {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #CFCFCF;
+    border-bottom: 1px solid v(cu-light-grey);
 
-    a, .drill-down-parent {
+    a,
+    .drill-down-parent {
       font-family: "futura-pt", arial, sans-serif;
       line-height: 1.8rem;
-      color: #231f20;
+      color: v(panther-black);
       padding: 15px 15px 15px 30px;
       width: 100%;
 
@@ -691,7 +705,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
     &.current {
       position: relative;
-      
+
       a,
       span {
         font-weight: 800;
@@ -709,10 +723,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
       background: $cu-red;
       font-weight: bold;
       color: $white;
+
       i {
         padding: 20px 0px 20px 30px;
       }
-      a { 
+
+      a {
         color: $white;
         padding: 20px 50px 20px 10px;
 
