@@ -11,19 +11,20 @@
   top: -1000px;
   width: 1px;
   z-index: 910000;
-  
-  i { margin-left: 6px; }
+
+  i {
+    margin-left: 6px;
+  }
 }
 
-a.skip-link:active, 
-a.skip-link:focus, 
+a.skip-link:active,
+a.skip-link:focus,
 a.skip-link:hover {
   color: $white;
-  left: 5px; 
+  left: 5px;
   top: 5px;
   outline: none;
-  overflow: visible; 
-  width: auto; 
+  overflow: visible;
+  width: auto;
   z-index: v(zIndexTopmost);
-  
 }
