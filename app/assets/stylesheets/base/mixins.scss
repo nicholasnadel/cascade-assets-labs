@@ -652,6 +652,26 @@ ORDER: Base + typography > general layout + grid > page layout > components
       }
     }
 
+    ul.off-canvas-cta {
+      li {
+
+
+        a {
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 1.4rem;
+          letter-spacing: .5px;
+          background-color: v(cu-red);
+
+          &:hover {
+            background-color: v(panther-black);
+            color: v(white);
+
+          }
+        }
+      }
+    }
+
     ul.drilldown-menu {
       display: none;
       position: absolute;
