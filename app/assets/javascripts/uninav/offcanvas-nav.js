@@ -291,7 +291,7 @@ $(document).ready( function() {
     $rootDrillDownNavMain.find('.drilldown-menu.active').removeClass('active');
     $rootMainDiv.find('.root-main-nav').css({ transform: "translateX(-" + menuVisibleXVal + "px"  });
     $rootMainDiv.find('.drilldown-menu').hide();
-    $rootDrillDownNavUmbrella.removeClass('drilled-down');
+    $rootDrillDownNavMain.removeClass('drilled-down');
 
     if ( $rootDrillDownNavMain.height() + headerHeight >= $(window).height()) {
       $rootElement.css({ overflowY: 'scroll' });
