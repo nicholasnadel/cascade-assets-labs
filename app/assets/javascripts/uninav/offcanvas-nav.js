@@ -16,6 +16,9 @@ $(document).ready( function() {
 
   $(window).resize(checkResizeRootDrillDown);
 
+  $rootDrillDownNavMain.currentWidth = menuWidth;
+  $rootDrillDownNavUmbrella.currentWidth = menuWidth;
+
   $sectionMenuButton.on('click', function() {
     $offCanvasNavContainer.css({ 
       transform: "translateX(" + menuVisibleXVal + "px)",
@@ -422,7 +425,7 @@ $(document).ready( function() {
                           selector.css("-ms-transform")     ||
                           selector.css("-o-transform")      ||
                           selector.css("transform");
-    
+
     transformMatrix = transformMatrix === "none" ? 0 : transformMatrix;
     if (!isNaN(transformMatrix))
       return 0;
@@ -742,40 +745,32 @@ $(document).ready( function() {
   });
 
   function resizeRootDrillDown() {
-    // set ul.drilldown-menu { left }
-    // set .off-canvas-nav-container { width }
-    // set .off-canvas-nav-container { transform: translateX }
-    // set .off-canvas-menu#off-canvas-umbrella+.off-canvas-menu#off-canvas-main { transform: translateX }
-    // set #off-canvas-umbrella-navigation { width }
-    // set #off-canvas-main-navigation { width }
-    // if ($(window).width() < 600 ) {
-    //   menuWidth = 350;
-    //   umbrellaUlCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella);
-    //   mainUlCurrentPos      = getTranslateXVal($rootDrillDownNavMain);
-    //   debugger
-    //   if (umbrellaUlCurrentPos % menuWidth !== 0) {
-    //     var umbrellaDrillDownSize = umbrellaUlCurrentPos / 410;
+    var $umbrellaActiveDrillDown    = $rootDrillDownNavUmbrella.find('.drilldown-menu.active'),
+    $mainActiveDrillDown            = $rootDrillDownNavMain.find('.drilldown-menu.active'),
+    umbrellaActiveDrillDownParents  = $umbrellaActiveDrillDown.parents('.drilldown-menu').length,
+    mainActiveDrillDownParents      = $mainActiveDrillDown.parents('.drilldown-menu').length;
+    // debugger
+    if ($(window).width() < 600 ) {
+      menuWidth = 350;
+    } else {
+      menuWidth = 410;
+    }
 
-    //     $rootDrillDownNavUmbrella.css({ transform: "translateX(" + ( menuWidth * umbrellaDrillDownSize) + "px" });
-    //   }
+    if ($umbrellaActiveDrillDown.length) {
+      if (umbrellaActiveDrillDownParents) {
+        $rootDrillDownNavUmbrella.css({ transform: "translateX(-" + ((menuWidth * 2) * umbrellaActiveDrillDownParents)+ "px" });
+      } else {
+        $rootDrillDownNavUmbrella.css({ transform: "translateX(-" + menuWidth + "px" });
+      }
+    }
 
-    //   if (mainUlCurrentPos % menuWidth !== 0) {
-    //     var mainDrillDownSize = mainUlCurrentPos / 410;
-
-    //     $rootDrillDownNavMain.css({ transform: "translateX(" + ( menuWidth * mainDrillDownSize) + "px" });
-    //   }
-
-    //   return;
-    // } else {
-    //   menuWidth = 410;
-    //   console.log('IM THE WITH MoRE THAN 600', menuWidth)
-    // }
-
-    // ulCurrentPos          = getTranslateXVal($rootDrillDownNav),
-    // $drillDownMenus       = $rootDrillDownNav.find('.drilldown-menu'),
-    // $drillDownMenuVisible = $rootDrillDownNav.find('.drilldown-menu[style*="display: block"]')
-    // $drillDownMenus.css({ left: widthAmount + "px" });
-    // $rootDrillDownNav.css({ transform: "translateX(-" + (!ulCurrentPos ? ulCurrentPos :  widthAmount * $drillDownMenuVisible.length) + "px"});
+    if ($mainActiveDrillDown.length) {
+      if (mainActiveDrillDownParents) {
+        $rootDrillDownNavMain.css({ transform: "translateX(-" + ((menuWidth * 2) * mainActiveDrillDownParents)+ "px" });
+      } else {
+        $rootDrillDownNavMain.css({ transform: "translateX(-" + menuWidth + "px" });
+      }
+    }
   }
 
   function checkResizeRootDrillDown() {
