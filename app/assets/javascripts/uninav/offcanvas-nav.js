@@ -769,7 +769,7 @@ $(document).ready( function() {
     // } else {
     //   menuWidth = 410;
     //   console.log('IM THE WITH MoRE THAN 600', menuWidth)
-    }
+    // }
 
     // ulCurrentPos          = getTranslateXVal($rootDrillDownNav),
     // $drillDownMenus       = $rootDrillDownNav.find('.drilldown-menu'),
