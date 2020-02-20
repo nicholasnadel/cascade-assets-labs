@@ -8,7 +8,6 @@ $(function() {
       $(".contact-profile-widget__img").length)
   ) {
     $("img.contact-profile-widget__img").each(function() {
-      // Note: {.post-thumb img} is css selector of the image tag
       var t = $(this),
         s = "url(" + t.attr("src") + ")",
         p = t.parent(),
