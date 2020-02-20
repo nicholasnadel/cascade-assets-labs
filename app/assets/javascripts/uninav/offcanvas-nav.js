@@ -2,7 +2,7 @@ $(document).ready( function() {
   
   var $offCanvasNavContainer  = $('#uninav .off-canvas-nav-container'),
   menuVisibleXVal             = 0,
-  menuWidth                   = 410,
+  menuWidth                   = $(window).width() > 600 ? 410 : 350,
   $rootUmbrellaDiv            = $('#uninav #off-canvas-umbrella'),
   $rootMainDiv                = $('#uninav #off-canvas-main'),
   $rootDrillDownNavUmbrella   = $('#off-canvas-umbrella-navigation .root-umbrella-nav'),
@@ -11,9 +11,10 @@ $(document).ready( function() {
   translateXVal               = menuWidth;
   headerHeight                = $('#uninav .cu-off-canvas-header').height() + $('#uninav .menu-header').height(),
   $sectionMenuButton          = $('#uninav .uninav__umbrella-nav-button-container button'),
-  $offCanvasOverlay           = $('.off-canvas-overlay#js-off-canvas-overlay');
+  $offCanvasOverlay           = $('.off-canvas-overlay#js-off-canvas-overlay'),
+  resizeTimer                 = null;
 
-  
+  $(window).resize(checkResizeRootDrillDown);
 
   $sectionMenuButton.on('click', function() {
     $offCanvasNavContainer.css({ 
@@ -44,13 +45,6 @@ $(document).ready( function() {
       $offCanvasOverlay.hide();
     }
   });
-
-  // $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function() {
-  //   $(this).parents('.off-canvas-menu').css({ 
-  //     transform: "translateX(-" +  menuWidth + "px)",
-  //     visibility: 'hidden'
-  //   });
-  // });
 
   $rootUmbrellaDiv.find('.toggle-menu-label').on('click', function() {
     changeContextualMenus($(this));
@@ -125,7 +119,7 @@ $(document).ready( function() {
 
   $rootDrillDownNavUmbrella.on('click', '.drill-down-parent', drillMenuDown);
    
-  $rootDrillDownNavMain.on('click', '..drill-down-parent', drillMenuDown);
+  $rootDrillDownNavMain.on('click', '.drill-down-parent', drillMenuDown);
 
   $rootDrillDownNavUmbrella.on('click', '.toggle-drilldown', drillMenuDown);
 
@@ -523,7 +517,6 @@ $(document).ready( function() {
   }
 
   function setSectionMenuButtonSize() {
-    // console.log('hello world');
     var scrollThreshHold = .20 * $(window).height();
 
     if ($(window).scrollTop() < scrollThreshHold && $sectionMenuButton.hasClass('section-menu-small')) {
@@ -704,16 +697,6 @@ $(document).ready( function() {
     });
     
     $(this).off('focusout').on('focusout', function() {
-
-      // setTabFocus = setTimeout(function() {
-      //   if (eventListeners.shiftTab === true) {
-      //     eventListeners.shiftTab = false;
-      //     return;
-      //   }
-      //   setTabOnToggleMenuFocusOut();
-      // }, 5000);
-
-      // function setTabOnToggleMenuFocusOut() {
         if (eventListeners.shiftTab === true) {
           eventListeners.shiftTab = false;
           return;
@@ -755,9 +738,50 @@ $(document).ready( function() {
         $firstMenuItem.find('a').focus();
         
         return;
-      // }
     });
   });
+
+  function resizeRootDrillDown() {
+    // set ul.drilldown-menu { left }
+    // set .off-canvas-nav-container { width }
+    // set .off-canvas-nav-container { transform: translateX }
+    // set .off-canvas-menu#off-canvas-umbrella+.off-canvas-menu#off-canvas-main { transform: translateX }
+    // set #off-canvas-umbrella-navigation { width }
+    // set #off-canvas-main-navigation { width }
+    // if ($(window).width() < 600 ) {
+    //   menuWidth = 350;
+    //   umbrellaUlCurrentPos  = getTranslateXVal($rootDrillDownNavUmbrella);
+    //   mainUlCurrentPos      = getTranslateXVal($rootDrillDownNavMain);
+    //   debugger
+    //   if (umbrellaUlCurrentPos % menuWidth !== 0) {
+    //     var umbrellaDrillDownSize = umbrellaUlCurrentPos / 410;
+
+    //     $rootDrillDownNavUmbrella.css({ transform: "translateX(" + ( menuWidth * umbrellaDrillDownSize) + "px" });
+    //   }
+
+    //   if (mainUlCurrentPos % menuWidth !== 0) {
+    //     var mainDrillDownSize = mainUlCurrentPos / 410;
+
+    //     $rootDrillDownNavMain.css({ transform: "translateX(" + ( menuWidth * mainDrillDownSize) + "px" });
+    //   }
+
+    //   return;
+    // } else {
+    //   menuWidth = 410;
+    //   console.log('IM THE WITH MoRE THAN 600', menuWidth)
+    }
+
+    // ulCurrentPos          = getTranslateXVal($rootDrillDownNav),
+    // $drillDownMenus       = $rootDrillDownNav.find('.drilldown-menu'),
+    // $drillDownMenuVisible = $rootDrillDownNav.find('.drilldown-menu[style*="display: block"]')
+    // $drillDownMenus.css({ left: widthAmount + "px" });
+    // $rootDrillDownNav.css({ transform: "translateX(-" + (!ulCurrentPos ? ulCurrentPos :  widthAmount * $drillDownMenuVisible.length) + "px"});
+  }
+
+  function checkResizeRootDrillDown() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeRootDrillDown, 500);
+  };
 
   function addTopLevelDrillDownClasses() {
     $rootDrillDownNavMain.children().addClass('top-drill-down-list-item');
