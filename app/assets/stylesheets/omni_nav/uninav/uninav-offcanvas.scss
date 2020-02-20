@@ -1,6 +1,6 @@
 #uninav {
   $nav-width: 410px;
-  
+  $nav-width-mobile: 350px;
 
   //SHARED BY BOTH UMBRELLA AND MAIN
   .cu-off-canvas-header {
@@ -104,7 +104,7 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 410px;
+    width: $nav-width;
     background-color: white;
     border: 1px solid #CFCFCF;
     overflow-x: hidden;
@@ -116,6 +116,13 @@
     scrollbar-width: none;
     overflow: -moz-scrollbars-none;
     overflow-y: hidden;
+
+    @include respond(phone) {
+      & {
+        width: $nav-width-mobile;
+        transform: translateX(-$nav-width-mobile);
+      }
+    }
     
     &::-webkit-scrollbar {
       display: none;
@@ -128,7 +135,13 @@
       grid-auto-rows: 0;
       grid-auto-columns: 0;
 
-      @include drill-down-menu-style;
+      @include drill-down-menu-style($nav-width);
+
+      @include respond(phone) {
+        & {
+          @include drill-down-menu-style($nav-width-mobile);
+        }
+      }
 
       .off-canvas-menu#off-canvas-umbrella+.off-canvas-menu#off-canvas-main {
         transform: translateX(-$nav-width);
@@ -136,6 +149,13 @@
 
         @include slide-in-out('out', 0px, -$nav-width, .40s);
         @include slide-in-out('in', -$nav-width, 0px, .40s);
+
+        @include respond(phone) {
+          & {
+            @include slide-in-out('out', 0px, -$nav-width-mobile, .40s);
+            @include slide-in-out('in', -$nav-width-mobile, 0px, .40s);
+          }
+        }
       }
 
       .off-canvas-menu#off-canvas-umbrella,
@@ -149,12 +169,25 @@
         @include slide-in-out('out', 0px, -$nav-width, .40s);
         @include slide-in-out('in', -$nav-width, 0px, .40s);
 
+        @include respond(phone) {
+          & {
+            @include slide-in-out('out', 0px, -$nav-width-mobile, .40s);
+            @include slide-in-out('in', -$nav-width-mobile, 0px, .40s);
+          }
+        }
+
         // display: none;
         #off-canvas-umbrella-navigation,
         #off-canvas-main-navigation {
           position: relative;
           width: $nav-width;
           background: white;
+
+          @include respond(phone) {
+            & {
+              width: $nav-width-mobile;
+            }
+          }
 
 
           ul.root-umbrella-nav,
