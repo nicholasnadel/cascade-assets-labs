@@ -382,26 +382,65 @@
   }
 }
 
+// ie11 specific
 @media all and (-ms-high-contrast: none) {
 
 
   .testimonial-widget {
 
+    margin-bottom: 30px;
 
     &__img {
       height: 200px;
       width: 200px;
       display: block;
+      margin: 50px;
 
       img {
         max-width: 200px;
       }
     }
 
+    &__text {
+      margin: 50px;
+    }
 
+    &__buttons {
+      display: flex;
+      margin-left: 50px;
+    }
 
+    &__button {
+      width: 50px;
+      display: flex;
+      justify-content: center;
+      margin-right: 5px;
 
+    }
 
+    &__cta {
+      margin-top: 50px;
+      margin-left: 50px;
+    }
+
+    .testimonial-widget__button--right {
+
+      &:after {
+        content: '\f105';
+        font-family: 'Font Awesome 5 Free';
+        visibility: visible;
+        font-weight: 900;
+      }
+    }
+
+    .testimonial-widget__button--left {
+      &:after {
+        content: '\f104';
+        font-family: 'Font Awesome 5 Free';
+        visibility: visible;
+        font-weight: 900;
+      }
+    }
   }
 
 }
