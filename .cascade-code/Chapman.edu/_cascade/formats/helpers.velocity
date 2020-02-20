@@ -257,9 +257,9 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
             #end
             
             #if ($childAsset.assetType == 'page' && $isVisible)
-              <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
+              <li class="${isCurrentDrillDownPage}"><a href="/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
             #elseif ($childAsset.assetType == 'symlink')
-              <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+              <li class="${isCurrentDrillDownPage}"><a href="/${childAsset.path}">${_EscapeTool.xml($childAsset.label)} <span class="fas fa-external-link-alt"></span></a></li>
             #elseif ($childAsset.assetType == 'folder' && $isVisible)
               #buildDrillDownList($childAsset)
             #end
@@ -271,15 +271,15 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #if ($rootPageName == "index")
         <li class="${isCurrentDrillDownPage} home-menu">
             <i class="fas fa-home"></i>
-            <a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href="/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #else
         <li class="${isCurrentDrillDownPage}">
-            <a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href="/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #end
   #elseif ($asset.assetType == 'symlink')
-    <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+    <li class="${isCurrentDrillDownPage}"><a href="/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
   #end
 #end
 
