@@ -633,6 +633,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
       padding: 15px 15px 15px 30px;
       width: 100%;
 
+      &:hover,
+      &:focus {
+        color: v(cu-red);
+        font-weight: bold;
+      }
+
       &:focus {
         outline: none;
       }
