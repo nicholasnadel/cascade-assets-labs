@@ -6,7 +6,6 @@
   @include qbal-slideUp-enter;
 
   &--hidden {
-
     .career-block-widget {
       &__text {
         opacity: 0;
@@ -79,7 +78,6 @@
 
   &:hover,
   &:focus-within {
-
     &__scroll-indicator {
       animation: scrollHint 5s 3 ease-in-out;
     }
@@ -291,8 +289,6 @@
   }
 
   @-webkit-keyframes fadein {
-
-    /* Safari and Chrome */
     from {
       opacity: 0;
     }
@@ -325,8 +321,6 @@
   }
 
   @-moz-keyframes fadeOut {
-
-    /* Firefox */
     from {
       opacity: 1;
     }
@@ -337,8 +331,6 @@
   }
 
   @-webkit-keyframes fadeOut {
-
-    /* Safari and Chrome */
     from {
       opacity: 1;
     }
@@ -349,8 +341,6 @@
   }
 
   @-o-keyframes fadeOut {
-
-    /* Opera */
     from {
       opacity: 1;
     }
