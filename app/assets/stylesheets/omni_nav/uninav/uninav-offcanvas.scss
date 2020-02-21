@@ -93,11 +93,11 @@
       text-transform: uppercase;
       border-radius: .5rem;
 
-      &:after {
-        content: "\f064";
+      &:before {
+        content: "\f3e5";
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
-        margin-left: 8px;
+        margin-right: 8px;
       }
 
       cursor: pointer;

@@ -636,7 +636,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
       &:hover,
       &:focus {
         color: v(cu-red);
-        white-space: nowrap;
         margin-left: 2px;
         transition: all 0.175s ease-in-out;
         animation-delay: -.75ms;
