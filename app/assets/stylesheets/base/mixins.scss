@@ -711,6 +711,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
         }
       }
 
+      &:hover:not(.off-canvas-cta),
+      &:focus:not(.off-canvas-cta) {
+        margin-left: 0;
+      }
+
       &:focus {
         outline: none;
       }
@@ -758,7 +763,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
       }
     }
 
-    ul.off-canvas-cta {
+    #uninav-cta-visit:hover {
+      margin-left: 0;
+    }
+
+    ul.off-canvas-cta,
+    .off-canvas-cta a {
+      &:hover {
+        margin-left: none;
+      }
+
       li {
 
 
@@ -773,7 +787,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           &:hover {
             background-color: v(panther-black);
             color: v(white);
-
           }
         }
       }
