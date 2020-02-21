@@ -636,8 +636,80 @@ ORDER: Base + typography > general layout + grid > page layout > components
       &:hover,
       &:focus {
         color: v(cu-red);
-        font-weight: bold;
         white-space: nowrap;
+        margin-left: 2px;
+        transition: all 0.175s ease-in-out;
+        animation-delay: -.75ms;
+
+        &+.toggle-drilldown {
+          color: v(cu-red);
+
+
+          .fa-chevron-right {
+            transform: scale(1.2);
+            transition: all 0.175s ease-in-out;
+            animation-delay: 500ms;
+
+            &:after {
+              animation: 1s fadeIn forwards;
+              content: "\f054";
+              font-family: "Font Awesome 5 Free";
+              font-weight: 900;
+              @include qbal-fade-enter;
+              @include qbal-slideRight-exit;
+              animation-delay: 900ms;
+              animation-duration: 300ms;
+              position: absolute;
+            }
+          }
+
+          @keyframes fadein {
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+          @-moz-keyframes fadein {
+
+            /* Firefox */
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+          @-webkit-keyframes fadein {
+
+            /* Safari and Chrome */
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+          @-o-keyframes fadein {
+
+            /* Opera */
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+        }
       }
 
       &:focus {
@@ -651,6 +723,34 @@ ORDER: Base + typography > general layout + grid > page layout > components
       align-items: center;
       position: relative;
       width: 7rem;
+
+      &:hover {
+        color: v(cu-red);
+        transform: scale(1.2);
+        transition: all 0.175s ease-in-out;
+        animation-delay: 500ms;
+
+        &:after {
+          opacity: 0;
+          content: "\f054";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          @include qbal-fade-enter;
+          @include qbal-slideRight-exit;
+          animation-delay: 900ms;
+          animation-duration: 300ms;
+          position: absolute;
+          transform: scale(.8);
+        }
+
+        .fas {
+          color: v(cu-red);
+
+          &:hover {
+            color: v(cu-red);
+          }
+        }
+      }
 
       .fas {
         display: flex;
