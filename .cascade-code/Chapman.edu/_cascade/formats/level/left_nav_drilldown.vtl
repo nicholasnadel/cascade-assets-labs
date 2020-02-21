@@ -1,0 +1,16 @@
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro ( buildLeftNav )
+    #set ( $currentPathRoot = $currentPage.path.replaceAll('/(.*)', "") )
+    #if ( $currentPathRoot != "index" && $currentPathRoot != "")
+        #set ( $leftNavAssets = $_.locateFolder($currentPathRoot) )
+        
+        <div id="left-column-navigation" class="left-nav-drilldown">
+            <ul class="root-left-nav">
+                #foreach( $asset in $leftNavAssets.children)
+                 #buildDrillDownList($asset)
+                #end
+            </ul>
+        </div>
+    #end
+#end

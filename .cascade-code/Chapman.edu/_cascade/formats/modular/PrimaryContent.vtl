@@ -1,4 +1,5 @@
 ##Import all the widget formats
+#import( "/_cascade/formats/modular/widgets/Program Events" )
 #import( "/_cascade/formats/modular/widgets/Banner Notification" )
 #import( "/_cascade/formats/modular/widgets/Carousel" )
 #import( "/_cascade/formats/modular/widgets/Collapsibles" )
@@ -39,7 +40,15 @@
     ##
     #set ($widgetType = $widget.getChild('widgetType').value )
     <!-- in forEach loop for $widgetType widget -->
-    ##    
+    ##
+    #if ($widgetType == 'Program Events')
+      #set ($displayWidget = $widget.getChild('programEvents').getChild('display').value)
+      #if ($displayWidget == 'Yes')
+          #outputProgramEventsWidget($widget)
+      #end
+    #end
+    ##
+    ##
     #if ($widgetType == 'Banner Notification')
         #set ($displayWidget = $widget.getChild('bannerNotificationWidget').getChild('display').value)
         #if ($displayWidget == 'Yes')

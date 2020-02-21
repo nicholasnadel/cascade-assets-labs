@@ -106,8 +106,8 @@ html {
 #uninav {
   display: grid;
   grid-template-areas:
-    "logo secondaryLogo utility"
-    "global global cta";
+  "logo secondaryLogo utility utility"
+  "global global global cta";
   grid-template-columns: 1fr;
   background-color: $white;
   top: 0;
@@ -591,6 +591,16 @@ html {
 }
 
 // MEDIA QUERIES
+
+@media only screen and (max-width: 1420px)  {
+
+  .uninav__utility-nav--audiences-container {
+    @include qbal-slideLeft-exit;
+
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 1300px) {
   #uninav {
     grid-template-columns: repeat(2, 1fr);
@@ -1072,3 +1082,4 @@ html.off-canvas__blur {
     display: grid !important;
   }
 }
+
