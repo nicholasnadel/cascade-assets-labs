@@ -637,6 +637,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       &:focus {
         color: v(cu-red);
         font-weight: bold;
+        white-space: nowrap;
       }
 
       &:focus {
