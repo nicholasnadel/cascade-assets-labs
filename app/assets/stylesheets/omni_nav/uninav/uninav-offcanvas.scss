@@ -79,9 +79,7 @@
       }
 
       &:focus {
-        outline-color: $cu-red;
-        outline-style: auto;
-        outline-width: 5px;
+        outline: none;
       }
     }
 
@@ -318,12 +316,11 @@
       padding-left: 10px;
       transition: .40s all;
       animation: radar 5s;
-      animation-iteration-count: 2;
-      animation-iteration-count: unset;
+      animation-iteration-count: 3;
 
       &:hover,
       &:focus {
-        background-color: $cu-red;
+        background-color: rgba($cu-red, 1);
         transition: 150s;
         -webkit-transition: 150s;
         -moz-transition: 150s;
