@@ -657,6 +657,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 
         a {
+          color: v(white);
           font-weight: bold;
           text-transform: uppercase;
           font-size: 1.4rem;
