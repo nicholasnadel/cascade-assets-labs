@@ -76,7 +76,8 @@
 					<text help-text="Preheader" identifier="preheader" label="Preheader (Optional)"/>
 					<text help-text="Headline" identifier="headline" label="Headline" multi-line="true"/>
 					<text identifier="copy" label="Copy" wysiwyg="true"/>
-				</group>
+				</group>tiles-bars
+        
 				<group identifier="links" label="Links">
 					<group identifier="link" label="Link" multiple="true">
 						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
@@ -138,11 +139,33 @@
 				</text>
 			</group>
 			<group collapsed="true" identifier="contact" label="Department Contact">
-				<text default="Yes" identifier="display-contact" label="Show" required="true" type="radiobutton">
+				<shared-field identifier="display" path="display"/>
+				<shared-field identifier="bgColor" path="background-color"/>
+				<asset help-text="Find department blocks under //_shared-content/departments/" identifier="info" label="Contact Block" render-content-depth="2" required="true" type="block"/>
+				<text default="Yes" identifier="show-department" label="Show Department Name" required="true" type="radiobutton">
 					<radio-item value="Yes"/>
 					<radio-item value="No"/>
 				</text>
-				<asset identifier="info" label="Contact Block" render-content-depth="2" required="true" type="block"/>
+				<text default="Yes" identifier="show-phone" label="Show Phone" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-email" label="Show Email" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-hours" label="Show Hours" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-address" label="Show Address" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-social" label="Show Social Links" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
 			</group>
 		</group>
 	</group>
@@ -151,7 +174,9 @@
 		<group identifier="widget" label="Widgets" multiple="true">
 			<text default="(choose one)" help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
 				<dropdown-item value="(select one)"/>
+				<dropdown-item show-fields="primaryContent/widget/programEvents" value="Program Events"/>
 				<dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
+				<dropdown-item show-fields="primaryContent/widget/careerBlockWidget" value="Career Block"/>
 				<dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
 				<dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
 				<dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
@@ -175,10 +200,26 @@
 				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 				<dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
 			</text>
+			<group collapsed="true" identifier="programEvents" label="Program Events">
+				<shared-field identifier="display" path="display"/>
+				<text default="tiles" identifier="tilesBars" label="Program Events Display" required="true" type="radiobutton">
+					<radio-item label="Tiles" value="tiles"/>
+					<radio-item label="Bars" value="bars"/>
+				</text>
+				<text identifier="feedUrl" label="Feed Url" required="true"/>
+				<text identifier="text" label="Text" required="true" wysiwyg="true"/>
+			</group>
 			<group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
 				<shared-field identifier="display" path="display"/>
 				<shared-field identifier="bgColor" path="background-color"/>
 				<text help-text="300 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="true"/>
+			</group>
+			<group collapsed="true" identifier="careerBlockWidget" label="Career Block">
+				<shared-field identifier="display" path="display"/>
+				<group identifier="block" label="Block" multiple="true">
+					<shared-field identifier="bgColor" path="background-color"/>
+					<text help-text="Copy and paste the respective 'O*NET-SOC Code' from https://www.onetonline.org/find/" identifier="careerCode" label="Career Code" required="true"/>
+				</group>
 			</group>
 			<group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
 				<shared-field identifier="display" path="display"/>
@@ -349,9 +390,9 @@
 					<dropdown-item value="Sand"/>
 					<dropdown-item value="White"/>
 				</text>
-				<group collapsed="false" identifier="fact" label="Fact" multiple="true" required="true">
-					<text help-text="Insert FontAwesome Icon from https://fontawesome.com/icons in the format: fas fa-lightbulb" identifier="icon" label="FontAwesome Icon" required="true" wysiwyg="False"/>
-					<text help-text="15 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="False"/>
+				<group identifier="fact" label="Fact" multiple="true">
+					<text help-text="Insert FontAwesome Icon from https://fontawesome.com/icons in the format: fas fa-lightbulb" identifier="icon" label="FontAwesome Icon" required="true"/>
+					<text identifier="text" label="Text" required="true"/>
 				</group>
 			</group>
 			<group collapsed="true" identifier="threePhotoCallout" label="Three Photo Callout">
@@ -757,7 +798,6 @@
 				<dropdown-item value="Dodge"/>
 				<dropdown-item value="Education"/>
 				<dropdown-item value="Information Systems"/>
-        
 				<dropdown-item value="Law"/>
 				<dropdown-item value="Pharmacy"/>
 				<dropdown-item value="Schmid"/>

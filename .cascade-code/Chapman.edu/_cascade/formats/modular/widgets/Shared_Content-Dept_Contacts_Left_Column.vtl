@@ -1,5 +1,167 @@
 #import( "/_cascade/formats/helpers.velocity" )
 
+## main function within this widget:
+#macro(displayContactsLeftCol $element)  
+##  
+  #set ($widgetXPath = 'contact')
+  #set ($widgetXPath = ${_EscapeTool.xml($widgetXPath)})
+
+    ##set($display =  $_XPathTool.selectSingleNode($element, "contact/display").value)
+    #set($contact = $_XPathTool.selectSingleNode($element, "contact/info/content/system-data-structure"))
+    
+    #set ($display = $element.getChild($widgetXPath).getChild('display').value)
+    #bgColorChooser($widgetXPath)
+    
+    ##fields
+    #set($dept = $_EscapeTool.xml($contact.getChild('dept').value))
+    #set($phone = $_EscapeTool.xml($contact.getChild('phone').value))
+    #set($sPhone = $phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
+    #set($email = $_EscapeTool.xml($contact.getChild('email').value)) 
+
+    #set($address = $contact.getChild('address'))
+    #set($building = $_EscapeTool.xml($address.getChild('building').value))
+    #set($line = $_EscapeTool.xml($address.getChild('line').value))
+    #set($line2 = $_EscapeTool.xml($address.getChild('line2').value))
+    #set($city = $_EscapeTool.xml($address.getChild('city').value))
+    #set($state = $_EscapeTool.xml($address.getChild('state').value))
+    #set($country = $_EscapeTool.xml($address.getChild('country').value))
+    #set($zip = $_EscapeTool.xml($address.getChild('zip').value))
+    #set($map = $_EscapeTool.xml($address.getChild('map').value))
+    #set($hours = $_SerializerTool.serialize($contact.getChild('hours'), true)) 
+    
+    #set($showDepartment = $element.getChild($widgetXPath).getChild('show-department').value.toLowerCase())
+    #set($showPhone = $element.getChild($widgetXPath).getChild('show-phone').value.toLowerCase())
+    #set($showEmail = $element.getChild($widgetXPath).getChild('show-email').value.toLowerCase())
+    #set($showHours = $element.getChild($widgetXPath).getChild('show-hours').value.toLowerCase())
+    #set($showAddress = $element.getChild($widgetXPath).getChild('show-address').value.toLowerCase())
+    #set($showSocial = $element.getChild($widgetXPath).getChild('show-social').value.toLowerCase())
+    
+    <div class="#escape($widgetXPath) $bgColor">
+      <h2>
+        #if($dept != '' and $showDepartment == 'yes')
+          ${dept}
+        #else
+          Contact Us
+        #end
+      </h2>
+
+      #if ($phone != '' and $showPhone == 'yes')
+          <div class="info-block">
+            <span class="info-header">Phone</span>
+            <a href="tel:${sPhone}">${phone}</a>
+          </div>
+      #end
+
+      #if ($email != '' and $showEmail == 'yes')
+        <div class="info-block">
+          <span class="info-header">Email</span>
+          <a href="mailto:${email}">${email}</a>
+        </div>
+      #end
+    
+      #if (($contact.getChild('hours').value != "" or $contact.getChild('hours').getChildren().size() > 0) and $showHours == 'yes')
+        <div class="info-block">
+          <span class="info-header">Hours</span>
+          ## hours is a wysiwyg so may already have P tags surrounding it (but may not also) so use div here:
+          <div>$hours</div>
+        </div>
+      #end
+    
+      #if (($building != "" or $address.getChild('map').value != "" or $line2 != "") and $showHours == 'yes')
+        <div class="info-block">
+          <span class="info-header">Address</span>
+            #if($building != "")
+              ${building} <br/>
+            #end
+              ${line}
+            #if($line2 != "")
+              <br/>${line2} 
+            #end
+              <br/>
+            #if($city != "")
+              ${city}, 
+            #end
+              ${state} ${zip}
+            #if($country != "")
+              <br/>$_EscapeTool.xml($country)
+            #end
+            #if($address.getChild('map').value != "")
+              #set($map = $_EscapeTool.xml($address.getChild('map').value))
+              <br/><a href="${map}">View Map</a>
+            #end
+        </div>
+    #end
+    
+    ## BEGIN OF Social FollowUs
+    #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+    #set ( $data        = $currentPage.getChild('system-data-structure') )
+    ## Get the data for the social accounts
+    ##
+    ## The modular templates social accounts use data defs at  //system-data-structure/meta/social_accounts
+    ## The standard templates social accounts use data defs at //system-data-structure/social_accounts
+    ##
+    ## this format used for both old templates and new Modular templates. 
+    ## New modular templates have social_accounts under a new parent node called meta so check for that before proceeding so get right node
+    ##
+    #if ($data.getChild('meta').getChild('social_accounts')) 
+        #set ( $social_node = $data.getChild('meta').getChild('social_accounts') )    
+    #else 
+        #set ( $social_node = $data.getChild('social_accounts') )
+    #end
+    ##
+    #set ( $accounts = $social_node.getChild('content').getChild('system-data-structure').getChildren('account') ) 
+    #set ( $length = $accounts.size() )
+    #set ( $socialAccounts = $social_node.getChild('path').value )
+    ##
+    ## Output the html for the accounts
+    ##
+    #if ( $accounts and $showSocial == 'yes')
+    <div class="info-block">
+        <span class="info-header">Follow Us</span>
+        <ul class="left-social-icons">
+            #foreach ($account in $accounts)
+                #set ( $name = $account.getChild('account_type').text )
+                #set ( $url = $_SerializerTool.serialize( $account.getChild('account_url'), true) )
+                ## facebook
+                ## twitter
+                ## instagram
+                ## linkedin
+                ## youtube
+                ## pinterest
+                ## vimeo
+                ## snapchat      
+                ## blog
+                ## flickr 
+                ####
+                #if ( $velocityCount == 1 and $length == 1)
+                    <li class="last">
+                #elseif ( $velocityCount == 1 )
+                    <li>
+                #elseif ( $velocityCount == $length)
+                    <li class="last">
+                #else
+                    <li>
+                #end
+                    <a href="$url" title="$name">
+                        <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                			<defs>
+                                ##calls macro to define SVG of specific social icon:
+                				#socialSVGicon($name, $url)                    
+                			</defs>
+            			</svg>
+            			<!--#protect<svg class="icon"><use xlink:href="#icon-${name}"></use></svg>#protect-->
+                    </a>
+                </li>
+            #end
+        </ul>
+    </div>
+    #end
+    ### END OF SOCIAL FOLLOWUS
+  </div>
+  ## End department-contact-widget
+##
+#end 
+
 ## additional function within this widget to create the markup for the various social follow-us icons (use unique SVG icons):
 #macro(socialSVGicon $account, $socialLink)
     #if ($account == "facebook")
@@ -55,162 +217,3 @@
     #end
 #end
 ## end socialLink macro
-
-## main function within this widget:
-#macro(displayContactsLeftCol $element)  
-##  
-  #set ($widgetXPath = 'contact')
-  #set ($widgetXPath = ${_EscapeTool.xml($widgetXPath)})
-
-    ##set($display =  $_XPathTool.selectSingleNode($element, "contact/display").value)
-    #set($contact = $_XPathTool.selectSingleNode($element, "contact/info/content/system-data-structure"))
-    
-    #set ($display = $element.getChild($widgetXPath).getChild('display').value)
-    #bgColorChooser($widgetXPath)
-    
-    ##fields
-    #set($dept = $_EscapeTool.xml($contact.getChild('dept').value))
-    #set($phone = $_EscapeTool.xml($contact.getChild('phone').value))
-    #set($sPhone = $phone.replace("(", "").replace(")", "").replace("-", "").replace(" ", ""))
-    #set($email = $_EscapeTool.xml($contact.getChild('email').value)) 
-
-    #set($address = $contact.getChild('address'))
-    #set($building = $_EscapeTool.xml($address.getChild('building').value))
-    #set($line = $_EscapeTool.xml($address.getChild('line').value))
-    #set($line2 = $_EscapeTool.xml($address.getChild('line2').value))
-    #set($city = $_EscapeTool.xml($address.getChild('city').value))
-    #set($state = $_EscapeTool.xml($address.getChild('state').value))
-    #set($country = $_EscapeTool.xml($address.getChild('country').value))
-    #set($zip = $_EscapeTool.xml($address.getChild('zip').value))
-    #set($map = $_EscapeTool.xml($address.getChild('map').value))
-    #set($hours = $_SerializerTool.serialize($contact.getChild('hours'), true)) 
-    
-    <div class="callout-box-widget--left callout callout-box-widget--contact-widget #escape($widgetXPath) $bgColor">
-        <div class="contact-widget">
-            <div class="editableContent">
-        
-      	      <div class="faux-h2">
-                #if($dept != '')
-                  ${dept}
-                #else
-                  Contact Us
-                #end
-              </div>
-        
-              #if ($phone != '')
-                  <div><strong>Phone</strong><br/>
-                    <a href="tel:${sPhone}">${phone}</a>
-                  </div>
-                  <br/>
-              #end
-        
-              #if ($email != '')
-                <div><strong>Email</strong><br/>
-                  <a href="mailto:${email}">${email}</a>
-                </div><br/>
-              #end
-            
-            ###if (!$_PropertyTool.isNull($contact.getChild('hours')))
-            #if ($contact.getChild('hours').value != "" or $contact.getChild('hours').getChildren().size() > 0)
-                <div><strong>Hours</strong></div>
-                ## hours is a wysiwyg so may already have P tags surrounding it (but may not also) so use div here:
-                <div>$hours</div><br/>
-            #end
-            
-            #if ($building != "" or $address.getChild('map').value != "" or $line2 != "")
-                <div><strong>Address</strong></div>
-                <div>
-                    #if($building != "")
-                        ${building} <br/>
-                    #end
-                    ${line}
-                    #if($line2 != "")
-                        <br/>${line2} 
-                    #end
-                    <br/>
-                    #if($city != "")
-                        ${city}, 
-                    #end
-                    ${state} ${zip}
-                    #if($country != "")
-                        <br/>$_EscapeTool.xml($country)
-                    #end
-                    #if($address.getChild('map').value != "")
-                        #set($map = $_EscapeTool.xml($address.getChild('map').value))
-                       <br/><a href="${map}">View Map</a>
-                    #end
-                </div><br/>
-            #end
-            
-            ## BEGIN OF Social FollowUs
-            #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
-            #set ( $data        = $currentPage.getChild('system-data-structure') )
-            ## Get the data for the social accounts
-            ##
-            ## The modular templates social accounts use data defs at  //system-data-structure/meta/social_accounts
-            ## The standard templates social accounts use data defs at //system-data-structure/social_accounts
-            ##
-            ## this format used for both old templates and new Modular templates. 
-            ## New modular templates have social_accounts under a new parent node called meta so check for that before proceeding so get right node
-            ##
-            #if ($data.getChild('meta').getChild('social_accounts')) 
-                #set ( $social_node = $data.getChild('meta').getChild('social_accounts') )    
-            #else 
-                #set ( $social_node = $data.getChild('social_accounts') )
-            #end
-            ##
-            #set ( $accounts = $social_node.getChild('content').getChild('system-data-structure').getChildren('account') ) 
-            #set ( $length = $accounts.size() )
-            #set ( $socialAccounts = $social_node.getChild('path').value )
-            ##
-            ## Output the html for the accounts
-            ##
-            #if ( $accounts )
-            <div class="social-follow-us">
-                <h3>Follow Us</h3>
-                    <ul class="left-social-icons">
-                    #foreach ($account in $accounts)
-                        #set ( $name = $account.getChild('account_type').text )
-                        #set ( $url = $_SerializerTool.serialize( $account.getChild('account_url'), true) )
-                        ## facebook
-                        ## twitter
-                        ## instagram
-                        ## linkedin
-                        ## youtube
-                        ## pinterest
-                        ## vimeo
-                        ## snapchat      
-                        ## blog
-                        ## flickr 
-                        ####
-                        #if ( $velocityCount == 1 and $length == 1)
-                            <li class="last">
-                        #elseif ( $velocityCount == 1 )
-                            <li>
-                        #elseif ( $velocityCount == $length)
-                            <li class="last">
-                        #else
-                            <li>
-                        #end
-                            <a href="$url" title="$name">
-                                <svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        			<defs>
-                                        ##calls macro to define SVG of specific social icon:
-                        				#socialSVGicon($name, $url)                    
-                        			</defs>
-                    			</svg>
-                    			<!--#protect<svg class="icon"><use xlink:href="#icon-${name}"></use></svg>#protect-->
-                            </a>
-                        </li>
-                    #end
-                </ul>
-            </div>
-            #end
-            ### END OF SOCIAL FOLLOWUS
-        </div> 
-        ### end editableContent         
-      </div> 
-      ## end contact-widget 
-    </div>
-##
-#end 

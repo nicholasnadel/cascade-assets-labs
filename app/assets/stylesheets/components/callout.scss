@@ -4,6 +4,11 @@
   }
 
   .callout {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     --ml: 16px;
     --text-light: $white;
     --text-dark: $panther-black;
