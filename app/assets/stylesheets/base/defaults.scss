@@ -637,6 +637,11 @@ html body {
       border: none;
     }
 
+    [class*='__bold'] {
+      font-weight: bold;
+    }
+
+    [class*='__buttons'] {
     [class*="__buttons"] {
       background-color: none;
       background: none;
@@ -770,5 +775,12 @@ html body {
 
   a {
     color: $cu-red;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    -webkit-animation: none !important;
   }
 }

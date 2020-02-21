@@ -64,23 +64,10 @@
     }
 
     &--stop-hint {
-      // animation: none;
       opacity: 0;
     }
 
     &:after {
-
-      // content: '↓ scroll ↓ ';
-      // content: '\f078';
-      // position: absolute;
-      // display: grid;
-      // justify-content: center;
-      // width: 300px;
-      // font-family: "Font Awesome 5 Free";
-      // font-weight: 900;
-      // content: "\f0d7";
-      // margin-left: 2px;
-      // font-size: 1.4rem;
       &:hover {
         &:after {
           content: 'scroll';
@@ -91,10 +78,6 @@
 
   &:hover,
   &:focus-within {
-    * {
-      // background-color: red !important
-    }
-
     &__scroll-indicator {
       animation: scrollHint 5s 3 ease-in-out;
     }
@@ -104,7 +87,6 @@
 
     20%,
     50% {
-      // -webkit-transform: translate(0)
       -webkit-transform: translate(0px, 1px)
     }
 
@@ -127,20 +109,8 @@
     animation-direction: forwards;
     -webkit-animation: fadein 3s forwards;
 
-
     &--scrollable {
-      &:hover {
-        // -webkit-line-clamp: 25;
-        // overflow-y: auto;
-      }
-
       &:after {
-
-        // content: '↓ scroll ↓ ';
-        // position: absolute;
-        // display: grid;
-        // justify-content: center;
-        // width: 300px;
         &:after {
           @include qbal-slideUp-enter;
         }
@@ -154,14 +124,6 @@
         display: none;
       }
     }
-
-    // &--no-scroll {
-
-    //   +.career-block-widget__scroll-indicator,
-    //   .fas {
-    //     // display: none;
-    //   }
-    // }
 
     &--line-clamp {
       display: -webkit-box;
@@ -178,12 +140,6 @@
       &:after {
         content: '';
         @include qbal-shrinkSubtle-exit;
-        // display: none;
-      }
-
-      +.career-block-widget__scroll-indicator .fas {
-        // @include qbal-shrinkSubtle-exit;
-        // animation: 300ms fadeOut forwards;
       }
     }
   }
@@ -243,7 +199,6 @@
     animation: 3s fadeOut linear forwards;
   }
 
-
   /* Add this attribute to the element that needs a tooltip */
   [data-tooltip] {
     position: relative;
@@ -254,8 +209,6 @@
   [data-tooltip]:before,
   [data-tooltip]:after {
     visibility: hidden;
-    // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
     pointer-events: none;
   }
@@ -302,16 +255,7 @@
   [data-tooltip]:hover:before,
   [data-tooltip]:hover:after {
     visibility: visible;
-    // -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    // filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
-  }
-
-  .fadeInUp {
-    // @include qbal-fade-enter;
-    // @include qbal-slideLeft-enter;
-    // @include qbal-grow-enter;
-    // @include qbal-slideDown-enter;
   }
 
   .staggerChildren {
@@ -345,8 +289,6 @@
   }
 
   @-webkit-keyframes fadein {
-
-    /* Safari and Chrome */
     from {
       opacity: 0;
     }
@@ -379,8 +321,6 @@
   }
 
   @-moz-keyframes fadeOut {
-
-    /* Firefox */
     from {
       opacity: 1;
     }
@@ -391,8 +331,6 @@
   }
 
   @-webkit-keyframes fadeOut {
-
-    /* Safari and Chrome */
     from {
       opacity: 1;
     }
@@ -403,8 +341,6 @@
   }
 
   @-o-keyframes fadeOut {
-
-    /* Opera */
     from {
       opacity: 1;
     }
@@ -413,5 +349,4 @@
       opacity: 0;
     }
   }
-
 }
