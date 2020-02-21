@@ -66,8 +66,12 @@
 
   //SHARED BY BOTH UMBRELLA AND MAIN
   .menu-header {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid v(cu-light-grey);
 
     .menu-label {
       &:hover {
@@ -82,7 +86,7 @@
     }
 
     .toggle-menu-label {
-      background: #231f20;
+      background: v(panther-black);
       padding: .5rem 1.5rem .5rem 1.5rem;
       margin: 0 0 0 1rem;
       color: white;
@@ -90,6 +94,13 @@
       font-size: 1.2rem;
       text-transform: uppercase;
       border-radius: .5rem;
+
+      &:after {
+        content: "\f064";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        margin-left: 8px;
+      }
 
       cursor: pointer;
 
@@ -277,7 +288,6 @@
         span.menu-label {
           font-weight: bold;
           color: $cu-red;
-          border-right: 1px solid #ccc;
           padding-right: 1rem;
         }
       }
@@ -307,9 +317,29 @@
       text-align: left;
       padding-left: 10px;
       transition: .40s all;
-      animation: pulse 5s;
+      animation: radar 5s;
       animation-iteration-count: 2;
+      animation-iteration-count: unset;
 
+      &:hover,
+      &:focus {
+        background-color: $cu-red;
+        transition: 150s;
+        -webkit-transition: 150s;
+        -moz-transition: 150s;
+        -ms-transition: 150s;
+        -o-transition: 150s;
+        background-color: v(panther-black);
+      }
+
+      ::not(:hover) {
+        animation-iteration-count: unset;
+
+      }
+
+      &:active {
+        background-color: v(panther-black)
+      }
 
       .section-menu-text {
         font-size: 1.4rem;
@@ -341,7 +371,7 @@
     }
 
 
-    @keyframes pulse {
+    @keyframes radar {
       0% {
         -moz-box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
         box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
