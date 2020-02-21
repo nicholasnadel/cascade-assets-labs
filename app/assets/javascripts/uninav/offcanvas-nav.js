@@ -277,6 +277,7 @@ $(document).ready( function() {
       $rootDrillDownNavUmbrella.find('.drilldown-menu.active').removeClass('active');
       $rootUmbrellaDiv.find('.root-umbrella-nav').css({ transform: "translateX(-" + menuVisibleXVal + "px" });
       $rootUmbrellaDiv.find('.drilldown-menu').hide();
+      $rootDrillDownNavUmbrella.removeClass('drilled-down')
 
       if ($rootDrillDownNavUmbrella.initialHeight + headerHeight >= $(window).height()) {
         $rootElement.css({ overflowY: 'scroll' });
@@ -290,6 +291,7 @@ $(document).ready( function() {
     $rootDrillDownNavMain.find('.drilldown-menu.active').removeClass('active');
     $rootMainDiv.find('.root-main-nav').css({ transform: "translateX(-" + menuVisibleXVal + "px"  });
     $rootMainDiv.find('.drilldown-menu').hide();
+    $rootDrillDownNavMain.removeClass('drilled-down');
 
     if ( $rootDrillDownNavMain.height() + headerHeight >= $(window).height()) {
       $rootElement.css({ overflowY: 'scroll' });
