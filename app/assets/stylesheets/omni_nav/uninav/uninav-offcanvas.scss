@@ -3,10 +3,6 @@
   $nav-width-mobile: 350px;
 
   //SHARED BY BOTH UMBRELLA AND MAIN
-
-
-
-
   .cu-off-canvas-header {
     // For menu-toggling
     width: 200%;
@@ -168,7 +164,6 @@
       grid-template-columns: 100%;
       grid-auto-rows: 0;
       grid-auto-columns: 0;
-
       @include drill-down-menu-style($nav-width);
 
       @include respond(phone) {
@@ -180,7 +175,6 @@
       .off-canvas-menu#off-canvas-umbrella+.off-canvas-menu#off-canvas-main {
         transform: translateX(-$nav-width);
         display: none;
-
         @include slide-in-out('out', 0px, -$nav-width, .40s);
         @include slide-in-out('in', -$nav-width, 0px, .40s);
 
@@ -199,7 +193,6 @@
         grid-column: 1 / span 1;
         background-color: $white;
         transition: all .5s;
-
         @include slide-in-out('out', 0px, -$nav-width, .40s);
         @include slide-in-out('in', -$nav-width, 0px, .40s);
 
@@ -222,7 +215,6 @@
               width: $nav-width-mobile;
             }
           }
-
 
           ul.root-umbrella-nav,
           ul.root-main-nav {
@@ -274,7 +266,6 @@
               }
             }
           }
-
         }
 
         #off-canvas-utility-item .off-canvas-menu-container,
@@ -304,7 +295,6 @@
     top: 15rem;
     display: flex;
 
-
     .umbrella-nav-toggle-button {
       color: $white;
       height: 16rem;
@@ -332,7 +322,6 @@
 
       ::not(:hover) {
         animation-iteration-count: unset;
-
       }
 
       &:active {
@@ -368,7 +357,6 @@
       }
     }
 
-
     @keyframes radar {
       0% {
         -moz-box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
@@ -386,13 +374,20 @@
       }
     }
 
-
     @include respond(tab-port) {
       display: none;
     }
   }
+}
 
+.off-canvas-menu-container {
+  .off-canvas-cta {
+    margin-left: 0;
 
+    a {
+      margin-left: 0;
+    }
+  }
 }
 
 html.two-column-template #uninav .uninav__umbrella-nav-button-container {

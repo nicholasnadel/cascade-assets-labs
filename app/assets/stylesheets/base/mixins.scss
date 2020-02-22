@@ -13,7 +13,6 @@
   transform: translate(-50%, -50%);
 }
 
-
 // MEDIA QUERY MANAGER
 /*
 0 - 600px:      Phone
@@ -71,7 +70,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 }
 
-
 // Breakpoint mixin
 //
 // There are some obvious problems with this. For example, we have a breakpoint defined
@@ -81,7 +79,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // In the future, let's clarify our device targets and try to adopt something more like this:
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
-
   @if $point==s {
 
     // Mobile
@@ -168,13 +165,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   // @if $point == highres {
   //   @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) { @content; }
   // }
-
   @if $point==print {
     @media only print {
       @content;
     }
   }
-
 }
 
 @mixin em_width($px, $default: $fontsize) {
@@ -218,7 +213,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 @mixin box_shadow($hoffset: 0, $voffset: 0, $blur: 0, $spread: 0, $color: $black, $inset: false) {
-
   @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
@@ -228,7 +222,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
-
 }
 
 @mixin vendorize($property, $value) {
@@ -241,7 +234,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin opacity($i) {
   $forie: $i * 100;
-
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
   filter: alpha(opacity=$forie);
   opacity: $i;
@@ -505,7 +497,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-transform: uppercase;
 }
 
-
 // write CSS variables without like "v(thevariable);"
 @function v($var) {
   @return var(--#{$var});
@@ -543,12 +534,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 }
 
-
 @mixin underline($color) {
   border-bottom: 2px dotted ($color);
-
 }
-
 
 // automatic text contrast https://codepen.io/kevinpowell/pen/45ed86610f4fbdb2d05c8d6261e45b75
 @function text($bg) {
@@ -577,7 +565,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 //   @include dc($bg);
 // }
 // }
-
 @mixin slide-in-out($type, $from, $to, $duration: 1s) {
   @if $type==in {
     &.slide-in {
@@ -613,7 +600,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 @mixin drill-down-menu-style($width: 410px) {
-
   li {
     &:hover {
       cursor: pointer;
@@ -642,7 +628,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
         &+.toggle-drilldown {
           color: v(cu-red);
-
 
           .fa-chevron-right {
             transform: scale(1.2);
@@ -707,13 +692,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
               opacity: 1;
             }
           }
-
         }
-      }
-
-      &:hover:not(.off-canvas-cta),
-      &:focus:not(.off-canvas-cta) {
-        margin-left: 0;
       }
 
       &:focus {
@@ -774,8 +753,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
       }
 
       li {
-
-
         a {
           color: v(white);
           font-weight: bold;
@@ -804,7 +781,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
       &.active {
         .drill-down-list-item {
-
           &:focus-within {
             outline-color: $cu-red;
             outline-style: auto;
@@ -877,5 +853,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
         }
       }
     }
+  }
+
+  .off-canvas-menu-container .off-canvas-cta a:hover {
+    margin-left: 0;
   }
 }
