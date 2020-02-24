@@ -4,6 +4,7 @@
   .currentPage {
     font-weight: 800;
   }
+
   .callout {
     @include bp(l) {
       -moz-box-sizing: border-box;
@@ -12,6 +13,7 @@
       width: 100%;
     }
   }
+
   @include media($medium-screen) {
     width: 25%;
     margin: 0 0 15px 0;
@@ -21,19 +23,25 @@
     float: left;
     display: inline-block;
   }
+  .leftNavSubContent~[class*="-widget"] {
+    margin-top: 30px;
+  }
 }
 
 .leftNav-sub {
   &.is-open {
     background: $white;
   }
+
   a {
     font-style: normal;
     color: #676767;
     margin-left: 0;
+
     &:hover {
       color: $cu-red;
     }
+
     .bullet {
       display: none;
     }
