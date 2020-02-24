@@ -178,6 +178,7 @@
         max-height: 300px;
       }
     }
+
     +[class*="-widget"] {
       margin: 20px 0 20px 0;
     }
@@ -348,4 +349,8 @@
       opacity: 0;
     }
   }
+}
+
+[class*="-widget"]+.career-block-widget__container {
+  margin-top: 35px;
 }
