@@ -516,9 +516,9 @@ module ContentTypes
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s %s %s %s %s %s %s",
-      render_static_partial("widgets/primary_content/banner_notification"),
-      render_static_partial("widgets/primary_content/testimonial_widget"),
-      render_static_partial("widgets/primary_content/career_blocks"),
+             render_static_partial("widgets/primary_content/career_blocks"),
+             render_static_partial("widgets/primary_content/banner_notification"),
+             render_static_partial("widgets/primary_content/testimonial_widget"),
              render_static_partial("widgets/primary_content/collapsables_3"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_2"),
