@@ -1,7 +1,6 @@
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree ../../../lib/assets/javascripts
 
-
 //= require _helpers/chapDOM
 //= require_tree ./widgets
 //= require_tree ./components
@@ -46,6 +45,8 @@
 //= require cascade/plugins/mousetrap
 //= require cascade/level/plugins/tipsy
 //= require cascade/level/accordion
+//= require cascade/level/career_blocks
+
 //= require cascade/level/degrees-programs
 //= require cascade/faculty-directory/main-listing
 //= require cascade/faculty-directory/school-listing

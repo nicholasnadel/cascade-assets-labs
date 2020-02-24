@@ -259,6 +259,12 @@ $omniNavHeightMobile: 123px;
   /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
   --omniNavHeightDesktop: 60px;
   --omniNavHeightMobile: 123px;
+  --zIndexTopmost: 9999999999999991;
+  --uninavZIndex: 999999999999999;
+  // TODO: there random, archaic elements with huge z-indices. Ideally uninav would just be 1 or 2. 
+  --zIndexMid: 2;
+  --zIndexBottom: 2;
+  --zIndexHidden: -999999999999999;
 }
 
 $slate: #666;
@@ -268,6 +274,7 @@ $slate: #666;
 $wmtop: 30px;
 $widget-margin-top: $wmtop;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
+
 $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
 $uninav-div-height: 60px;

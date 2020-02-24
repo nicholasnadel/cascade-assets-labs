@@ -13,7 +13,6 @@
   transform: translate(-50%, -50%);
 }
 
-
 // MEDIA QUERY MANAGER
 /*
 0 - 600px:      Phone
@@ -71,7 +70,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 }
 
-
 // Breakpoint mixin
 //
 // There are some obvious problems with this. For example, we have a breakpoint defined
@@ -81,7 +79,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // In the future, let's clarify our device targets and try to adopt something more like this:
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
-
   @if $point==s {
 
     // Mobile
@@ -168,13 +165,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   // @if $point == highres {
   //   @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) { @content; }
   // }
-
   @if $point==print {
     @media only print {
       @content;
     }
   }
-
 }
 
 @mixin em_width($px, $default: $fontsize) {
@@ -218,7 +213,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 @mixin box_shadow($hoffset: 0, $voffset: 0, $blur: 0, $spread: 0, $color: $black, $inset: false) {
-
   @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
@@ -228,7 +222,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
-
 }
 
 @mixin vendorize($property, $value) {
@@ -241,7 +234,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin opacity($i) {
   $forie: $i * 100;
-
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
   filter: alpha(opacity=$forie);
   opacity: $i;
@@ -505,7 +497,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-transform: uppercase;
 }
 
-
 // write CSS variables without like "v(thevariable);"
 @function v($var) {
   @return var(--#{$var});
@@ -543,12 +534,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 }
 
-
 @mixin underline($color) {
   border-bottom: 2px dotted ($color);
-
 }
-
 
 // automatic text contrast https://codepen.io/kevinpowell/pen/45ed86610f4fbdb2d05c8d6261e45b75
 @function text($bg) {
@@ -577,47 +565,135 @@ ORDER: Base + typography > general layout + grid > page layout > components
 //   @include dc($bg);
 // }
 // }
-
-@mixin slide-in-out($type, $from, $to, $duration: 1s ) {
-  @if $type == in {
+@mixin slide-in-out($type, $from, $to, $duration: 1s) {
+  @if $type==in {
     &.slide-in {
       animation: #{$type} $duration forwards;
+
       @keyframes #{$type} {
-        0% { transform: translateX($from); }
-        100% { transform: translateX($to); }
+        0% {
+          transform: translateX($from);
+        }
+
+        100% {
+          transform: translateX($to);
+        }
       }
     }
   }
 
-  @if $type == out {
+  @if $type==out {
     &.slide-out {
       animation: #{$type} $duration forwards;
 
       @keyframes #{$type} {
-        0% { transform: translateX($from); }
-        100% { transform: translateX($to); }
+        0% {
+          transform: translateX($from);
+        }
+
+        100% {
+          transform: translateX($to);
+        }
       }
     }
   }
 }
 
 @mixin drill-down-menu-style($width: 410px) {
-
   li {
-    &:hover { cursor: pointer; }
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   ul li {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #CFCFCF;
+    border-bottom: 1px solid v(cu-light-grey);
 
-    a, .drill-down-parent {
+    a,
+    .drill-down-parent {
       font-family: "futura-pt", arial, sans-serif;
       line-height: 1.8rem;
-      color: #231f20;
+      color: v(panther-black);
       padding: 15px 15px 15px 30px;
       width: 100%;
+
+      &:hover,
+      &:focus {
+        color: v(cu-red);
+        margin-left: 2px;
+        transition: all 0.175s ease-in-out;
+        animation-delay: -.75ms;
+
+        &+.toggle-drilldown {
+          color: v(cu-red);
+
+          .fa-chevron-right {
+            transform: scale(1.2);
+            transition: all 0.175s ease-in-out;
+            animation-delay: 500ms;
+
+            &:after {
+              animation: 1s fadeIn forwards;
+              content: "\f054";
+              font-family: "Font Awesome 5 Free";
+              font-weight: 900;
+              @include qbal-fade-enter;
+              @include qbal-slideRight-exit;
+              animation-delay: 900ms;
+              animation-duration: 300ms;
+              position: absolute;
+            }
+          }
+
+          @keyframes fadein {
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+          @-moz-keyframes fadein {
+
+            /* Firefox */
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+          @-webkit-keyframes fadein {
+
+            /* Safari and Chrome */
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+
+          @-o-keyframes fadein {
+
+            /* Opera */
+            from {
+              opacity: 0;
+            }
+
+            to {
+              opacity: 1;
+            }
+          }
+        }
+      }
 
       &:focus {
         outline: none;
@@ -631,10 +707,65 @@ ORDER: Base + typography > general layout + grid > page layout > components
       position: relative;
       width: 7rem;
 
+      &:hover {
+        color: v(cu-red);
+        transform: scale(1.2);
+        transition: all 0.175s ease-in-out;
+        animation-delay: 500ms;
+
+        &:after {
+          opacity: 0;
+          content: "\f054";
+          font-family: "Font Awesome 5 Free";
+          font-weight: 900;
+          @include qbal-fade-enter;
+          @include qbal-slideRight-exit;
+          animation-delay: 900ms;
+          animation-duration: 300ms;
+          position: absolute;
+          transform: scale(.8);
+        }
+
+        .fas {
+          color: v(cu-red);
+
+          &:hover {
+            color: v(cu-red);
+          }
+        }
+      }
+
       .fas {
         display: flex;
         font-weight: 900;
         font-size: 1.4rem;
+      }
+    }
+
+    #uninav-cta-visit:hover {
+      margin-left: 0;
+    }
+
+    ul.off-canvas-cta,
+    .off-canvas-cta a {
+      &:hover {
+        margin-left: none;
+      }
+
+      li {
+        a {
+          color: v(white);
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 1.4rem;
+          letter-spacing: .5px;
+          background-color: v(cu-red);
+
+          &:hover {
+            background-color: v(panther-black);
+            color: v(white);
+          }
+        }
       }
     }
 
@@ -650,7 +781,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
       &.active {
         .drill-down-list-item {
-
           &:focus-within {
             outline-color: $cu-red;
             outline-style: auto;
@@ -691,7 +821,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
     &.current {
       position: relative;
-      
+
       a,
       span {
         font-weight: 800;
@@ -709,10 +839,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
       background: $cu-red;
       font-weight: bold;
       color: $white;
+
       i {
         padding: 20px 0px 20px 30px;
       }
-      a { 
+
+      a {
         color: $white;
         padding: 20px 50px 20px 10px;
 
@@ -721,5 +853,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
         }
       }
     }
+  }
+
+  .off-canvas-menu-container .off-canvas-cta a:hover {
+    margin-left: 0;
   }
 }
