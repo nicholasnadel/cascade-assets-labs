@@ -25,7 +25,7 @@
     @include drill-down-menu-style(100%);
 
     @include respond(small) {
-      display: none;
+      display: none !important;
     }
   }
 }
