@@ -77,8 +77,6 @@
 					<text help-text="Headline" identifier="headline" label="Headline" multi-line="true"/>
 					<text identifier="copy" label="Copy" wysiwyg="true"/>
 				</group>tiles-bars
-        
-				
 				<group identifier="links" label="Links">
 					<group identifier="link" label="Link" multiple="true">
 						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
