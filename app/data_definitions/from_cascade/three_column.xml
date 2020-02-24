@@ -231,12 +231,21 @@
 				</group>
 			</group>
 			<group collapsed="true" identifier="carousel" label="Carousel">
-				<text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
-					<radio-item value="Yes"/>
-					<radio-item value="No"/>
-				</text>
-				<shared-field identifier="image" path="image" required="true"/>
-			</group>
+        <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <group identifier="image" label="Image" multiple="true">
+          <text identifier="headline" label="Headline"/>
+          <text identifier="caption" label="Caption" wysiwyg="true"/>
+          <text default="Internal Cascade Image" identifier="imageLink" label="Image Link" type="radiobutton">
+            <radio-item show-fields="primaryContent/widget/carousel/image/internalCascadeImage" value="Internal Cascade Image"/>
+            <radio-item show-fields="primaryContent/widget/carousel/image/externalImageURL" value="External Image URL"/>
+          </text>
+          <text identifier="externalImageURL" label="External Image URL (960x540)"/>
+          <asset identifier="internalCascadeImage" label="Internal Cascade Image  (960x540)" type="file"/>
+        </group>
+      </group>
 			<group collapsed="true" identifier="collapsibleRegions" label="Collapsible Regions">
 				<text default="Yes" identifier="display-collapsibles" label="Show" required="true" type="radiobutton">
 					<radio-item value="Yes"/>
