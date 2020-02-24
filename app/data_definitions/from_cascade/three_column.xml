@@ -138,11 +138,33 @@
 				</text>
 			</group>
 			<group collapsed="true" identifier="contact" label="Department Contact">
-				<text default="Yes" identifier="display-contact" label="Show" required="true" type="radiobutton">
+				<shared-field identifier="display" path="display"/>
+				<shared-field identifier="bgColor" path="background-color"/>
+				<asset help-text="Find department blocks under //_shared-content/departments/" identifier="info" label="Contact Block" render-content-depth="2" required="true" type="block"/>
+				<text default="Yes" identifier="show-department" label="Show Department Name" required="true" type="radiobutton">
 					<radio-item value="Yes"/>
 					<radio-item value="No"/>
 				</text>
-				<asset identifier="info" label="Contact Block" render-content-depth="2" required="true" type="block"/>
+				<text default="Yes" identifier="show-phone" label="Show Phone" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-email" label="Show Email" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-hours" label="Show Hours" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-address" label="Show Address" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<text default="Yes" identifier="show-social" label="Show Social Links" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
 			</group>
 		</group>
 	</group>
@@ -151,10 +173,9 @@
 		<group identifier="widget" label="Widgets" multiple="true">
 			<text help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
 				<dropdown-item value="(select one)"/>
-        <dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
-        <dropdown-item show-fields="primaryContent/widget/careerBlockWidget" value="Career Block"/>
-        <dropdown-item show-fields="primaryContent/widget/programEvents" value="Program Events"/>
+				<dropdown-item show-fields="primaryContent/widget/programEvents" value="Program Events"/>
 				<dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
+				<dropdown-item show-fields="primaryContent/widget/careerBlockWidget" value="Career Block"/>
 				<dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
 				<dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
 				<dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
@@ -164,7 +185,7 @@
 				<dropdown-item show-fields="primaryContent/widget/funnels-1up" value="Funnels 1up"/>
 				<dropdown-item show-fields="primaryContent/widget/logo-image-rotator" value="Logo Image Rotator"/>
 				<dropdown-item show-fields="primaryContent/widget/personnel" value="Personnel Table"/>
-        <dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
+				<dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
 				<dropdown-item show-fields="primaryContent/widget/tabs" value="Tabs"/>
 				<dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial"/>
 				<dropdown-item show-fields="primaryContent/widget/wysiwyg-editor" value="Text Editor"/>
@@ -175,9 +196,9 @@
 				<dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
 				<dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
 				<dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
-        <dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
+				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 			</text>
-      <group collapsed="true" identifier="programEvents" label="Program Events">
+			<group collapsed="true" identifier="programEvents" label="Program Events">
 				<shared-field identifier="display" path="display"/>
 				<text default="tiles" identifier="tilesBars" label="Program Events Display" required="true" type="radiobutton">
 					<radio-item label="Tiles" value="tiles"/>
@@ -190,8 +211,8 @@
 				<shared-field identifier="display" path="display"/>
 				<shared-field identifier="bgColor" path="background-color"/>
 				<text help-text="300 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="true"/>
-      </group>
-      <group collapsed="true" identifier="careerBlockWidget" label="Career Block">
+			</group>
+			<group collapsed="true" identifier="careerBlockWidget" label="Career Block">
 				<shared-field identifier="display" path="display"/>
 				<group identifier="block" label="Block" multiple="true">
 					<shared-field identifier="bgColor" path="background-color"/>
@@ -294,7 +315,7 @@
 				<text identifier="heading" label="Heading" required="true"/>
 				<text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
 				<shared-field identifier="link" path="cta"/>
-      </group>
+			</group>
 			<group collapsed="true" identifier="personnel" label="Personnel">
 				<text default="Yes" identifier="display-personnel" label="Show" required="true" type="radiobutton">
 					<radio-item value="Yes"/>
@@ -324,8 +345,8 @@
 						<text identifier="label" label="Link text (defaults to 'View Full Bio' if blank)"/>
 					</group>
 				</group>
-      </group>
-      <group collapsed="true" identifier="quickFactBlocksWidget" label="Quick Fact Blocks" multiple="true">
+			</group>
+			<group collapsed="true" identifier="quickFactBlocksWidget" label="Quick Fact Blocks" multiple="true">
 				<shared-field identifier="display" path="display"/>
 				<!-- Red was deliberately removed  normally use the shared bgColor field here -->
 				<text default="Black" identifier="bgColor" label="Background Color" type="dropdown">
