@@ -103,22 +103,20 @@ USAGE: #bgColorChooser('next-steps-widget'). $bgColor will result in a class suc
 #end
 
 #*
-
-#*
 --------------------------------------------------------------------------------
-BACKGROUND COLOR CHOOSER (IN A COLLECTION)
+BACKGROUND COLOR CHOOSER FOR ITEMS IN A LOOP (IN A COLLECTION)
 Outputs shared field 'background-color' for items in a loop.
 You just need to pass your respective top level path eg 'next-steps-widget'
 USAGE: #bgColorChooser('next-steps-widget'). $bgColor will result in a class such as 'next-steps-widget--red'. 
 --------------------------------------------------------------------------------
 *#
 
-#macro(bgColorChooserLoop $itemInLoop $xmlGroupName)
-    #set ($bgColor = $element.getChild($itemInLoop).getChild($xmlGroupName).getChild('bgColor').value.toLowerCase())
-    #camelToSnake($itemInLoop)
-    #set ($bgColor = $wxp + '--' + $bgColor)
+#macro(bgColorChooserLoop $itemInLoop)
+    #set ($bgColor = $itemInLoop.getChild('bgColor').value.toLowerCase())
+    #set ($bgColor = $widgetXPath + '--' + $bgColor)
 #end
 
+#*
 #*
 --------------------------------------------------------------------------------
 3 CTA BUTTONS
@@ -234,6 +232,7 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
   #end
 
   #if ($asset.assetType == "folder" && $isVisible)
+
     #set ( $visibleChildren = false )
     #foreach( $childAsset in $asset.children )
       #if ($visibleChildren == false)
@@ -274,9 +273,9 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
             #end
             
             #if ($childAsset.assetType == 'page' && $isVisible)
-              <li class="${isCurrentDrillDownPage}"><a href="/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
+              <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
             #elseif ($childAsset.assetType == 'symlink')
-              <li class="${isCurrentDrillDownPage}"><a href="/${childAsset.path}">${_EscapeTool.xml($childAsset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+              <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}>${_EscapeTool.xml($childAsset.label)} <span class="fas fa-external-link-alt"></span></a></li>
             #elseif ($childAsset.assetType == 'folder' && $isVisible)
               #buildDrillDownList($childAsset)
             #end
@@ -288,16 +287,25 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #if ($rootPageName == "index")
         <li class="${isCurrentDrillDownPage} home-menu">
             <i class="fas fa-home"></i>
-            <a href="/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #else
         <li class="${isCurrentDrillDownPage}">
-            <a href="/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #end
   #elseif ($asset.assetType == 'symlink')
-    <li class="${isCurrentDrillDownPage}"><a href="/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+    <li class="${isCurrentDrillDownPage}"><a href="${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
   #end
+#end
+
+#macro(addBackgroundImage $content)
+    #set ($linkUrl = $content.getChild('fileLink').getChild('path').value)
+    #if ($linkUrl != '')
+        "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
+    #else
+        ""
+    #end
 #end
 
 #macro(alert $v)
@@ -534,7 +542,7 @@ USAGE: #processAsset( $asset )
     #outputPageLink($asset, false)
   #elseif ( $asset.assetType == 'symlink' )
     #outputSymlinkLink($asset)
-  #elseif ( $asset.assetType == 'folder' && $isVisible )
-    #outputFolder($asset)
+##   #elseif ( $asset.assetType == 'folder' && $isVisible )
+##     #outputFolder($asset)
   #end
 #end
