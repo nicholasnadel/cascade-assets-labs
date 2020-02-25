@@ -637,7 +637,8 @@ p {
 }
 
 html body {
-  [class*="-widget"] {
+  [class*="-widget"],
+  :not([class*='__buttons']) {
     [class*="__button"] {
       border: none;
     }
@@ -646,10 +647,11 @@ html body {
       font-weight: bold;
     }
 
-    [class*='__buttons'] {
-      [class*="__buttons"] {
+    [class$="__buttons"]   {
+
         background-color: none;
-        background: none;
+        // override mixin
+        background: none !important;
 
         &:hover,
         &:focus,
@@ -657,7 +659,7 @@ html body {
           background-color: none;
           background: none;
         }
-      }
+
     }
   }
 

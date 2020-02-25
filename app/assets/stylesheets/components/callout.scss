@@ -4,6 +4,11 @@
   }
 
   .callout {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
     --ml: 16px;
     --text-light: $white;
     --text-dark: $panther-black;
@@ -337,9 +342,4 @@
 .rightColumn .callout-box-widget.styleTwo .editableContent,
 .rightColumn h2 {
   line-height: 1.2em;
-}
-
-.callout-box-widget--left.callout.callout-box-widget--contact-widget {
-  background-color: var(--cu-light-grey);
-  color: var(--panther-black);
 }
