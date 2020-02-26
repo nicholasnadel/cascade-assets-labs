@@ -3,6 +3,15 @@
     margin-bottom: 30px;
   }
 
+  .callout-box-widget {
+    .buttonLinks li:first-of-type {
+
+      margin-bottom: 5px !important;
+  
+  }
+  }
+
+
   .callout {
     display: -ms-grid;
     display: grid;
@@ -31,8 +40,10 @@
 
     h2 {
       font-weight: 500;
-      max-width: 200px;
+      max-width: 100%;
       line-height: 1.2em;
+      margin-top: 35px;
+      margin-bottom: 0;
     }
 
     hr {
@@ -48,6 +59,7 @@
       background-color: currentColor;
       color: currentColor;
     }
+    
 
     img {
       display: block;
@@ -58,8 +70,12 @@
       font-family: $futura;
       text-transform: uppercase;
       margin: 25px $base-spacing $base-spacing $base-spacing;
-    }
 
+      &+ h2 {
+        margin-top: initial;
+      }
+    }
+    
     @include respond(tab-port) {
       h2 {
         max-width: 100%;
@@ -102,8 +118,11 @@
     }
 
     .buttonLinks li {
+   
       margin-bottom: 20px;
-
+      &:first-of-type {
+        margin-bottom: 2px;
+      }
       a {
         color: $panther-black;
         @include button-bg($cu-light-grey);
