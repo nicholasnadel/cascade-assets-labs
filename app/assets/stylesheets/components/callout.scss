@@ -7,8 +7,8 @@
     .buttonLinks li:first-of-type {
 
       margin-bottom: 5px !important;
-  
-  }
+
+    }
   }
 
 
@@ -59,7 +59,7 @@
       background-color: currentColor;
       color: currentColor;
     }
-    
+
 
     img {
       display: block;
@@ -71,11 +71,11 @@
       text-transform: uppercase;
       margin: 25px $base-spacing $base-spacing $base-spacing;
 
-      &+ h2 {
+      &+h2 {
         margin-top: initial;
       }
     }
-    
+
     @include respond(tab-port) {
       h2 {
         max-width: 100%;
@@ -118,12 +118,14 @@
     }
 
     .buttonLinks li {
-   
+
       margin-bottom: 20px;
-        margin-bottom: 2px;
+      margin-bottom: 2px;
+
       &:last-of-type {
         margin-bottom: unset;
       }
+
       a {
         color: $panther-black;
         @include button-bg($cu-light-grey);
@@ -374,13 +376,6 @@
 
 .callout-box-widget {
   .editableContent {
-    margin-top: 0 !important;
-  }
-
-  h3 img,
-  strong img,
-  img {
-    width: 100%;
-    padding: 0;
+    margin-top: 0;
   }
 }
