@@ -127,6 +127,12 @@ html {
       white-space: nowrap;
       @include qbal-fade-enter;
 
+      &--primary {
+        a {
+          display: grid;
+        }
+      }
+
       &--secondary {
         font-weight: 800;
         font-size: 1.2em;
@@ -493,6 +499,7 @@ html {
 #uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
+  
 }
 
 // UNINAV STRUCTURE
@@ -839,7 +846,10 @@ html {
         align-items: center;
         justify-content: center;
         @include qbal-slideRight-enter;
-
+        .fas.fa-bars {
+          font-size: 2rem;
+        }
+        
         .hamburger-menu-button {
           background-color: $white;
           border: none;
@@ -952,7 +962,8 @@ html {
       }
 
       &__hamburger-menu {
-        justify-content: start;
+        justify-content: center;
+        
       }
     }
   }
