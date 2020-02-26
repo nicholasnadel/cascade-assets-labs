@@ -12,6 +12,7 @@
   &__text {
     font-weight: bold;
     max-width: 150px;
+    white-space: nowrap;
 
     .fas,
     [class*="-fa"] {
