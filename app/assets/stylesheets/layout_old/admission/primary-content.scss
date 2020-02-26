@@ -5,12 +5,11 @@
     display: inline-block;
     float: left;
     margin: 0px 20px 10px 0;
-    //border: 1px solid #c1c1c1;
-    padding: 10px;
-    background: #ffffff;
-    -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    width: max-content;
+    background: none ;
+    border: none;
+    box-shadow: none ;
   }
   section {
     .content {
