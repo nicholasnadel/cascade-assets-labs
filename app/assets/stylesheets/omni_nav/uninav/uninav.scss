@@ -106,8 +106,8 @@ html {
 #uninav {
   display: grid;
   grid-template-areas:
-  "logo secondaryLogo utility utility"
-  "global global global cta";
+    "logo secondaryLogo utility utility"
+    "global global global cta";
   grid-template-columns: 1fr;
   background-color: $white;
   top: 0;
@@ -124,7 +124,6 @@ html {
       align-items: center;
       border-bottom: 1px solid $cu-light-grey;
       padding-left: 2.5rem;
-      white-space: nowrap;
       @include qbal-fade-enter;
 
       &--primary {
@@ -499,7 +498,7 @@ html {
 #uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
-  
+
 }
 
 // UNINAV STRUCTURE
@@ -599,7 +598,7 @@ html {
 
 // MEDIA QUERIES
 
-@media only screen and (max-width: 1420px)  {
+@media only screen and (max-width: 1420px) {
 
   .uninav__utility-nav--audiences-container {
     @include qbal-slideLeft-exit;
@@ -663,18 +662,72 @@ html {
       &__cta {
         ul {
           @include qbal-slideUp-exit;
+          display: none;
         }
       }
     }
   }
 }
 
-@media only screen and (max-width: 1148px) {
-  #uninav {
+
+
+@media only screen and (max-width: 1300px) {
+
+  .uninav--has-secondary-menu {
     .uninav {
-      &__cta {
-        &--wrapper {
-          display: none;
+      &__utility-nav--search-wrapper {
+        margin-right: 0 !important;
+      }
+
+      &__search-input--desktop {
+        display: none;
+
+        &.slide-left {
+          // @include qbal-grow-enter;
+          @include qbal-slideLeft-enter;
+          // animation-delay: 150ms;
+          // animation-duration: 150ms;
+          margin-right: 15px;
+        }
+
+
+      }
+
+
+    }
+
+    .uninav__search-button--mobile {
+      width: 80px;
+      height: 60px;
+      border-left: 1px solid $cu-light-grey;
+      border-right: none !important;
+      display: grid;
+      cursor: pointer;
+
+      &:after {
+        // border-right-style: solid;
+        // border-right-width: 1px;
+        border-right: none;
+        display: grid;
+        content: "\f002";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        align-items: center;
+      }
+
+      &:active {
+        @include qbal-fade-exit;
+
+        animation-duration: 150ms;
+
+        &:after {
+          transform: rotate(-260deg);
+          transition-duration: 150ms;
+          border-right: none;
+          -webkit-transform: rotate(-260deg);
+          -moz-transform: rotate(-260deg);
+          -ms-transform: rotate(-260deg);
+          -o-transform: rotate(-260deg);
         }
       }
     }
@@ -846,10 +899,11 @@ html {
         align-items: center;
         justify-content: center;
         @include qbal-slideRight-enter;
+
         .fas.fa-bars {
           font-size: 2rem;
         }
-        
+
         .hamburger-menu-button {
           background-color: $white;
           border: none;
@@ -963,7 +1017,7 @@ html {
 
       &__hamburger-menu {
         justify-content: center;
-        
+
       }
     }
   }
@@ -1093,4 +1147,3 @@ html.off-canvas__blur {
     display: grid !important;
   }
 }
-
