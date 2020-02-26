@@ -120,8 +120,9 @@
     .buttonLinks li {
    
       margin-bottom: 20px;
-      &:first-of-type {
         margin-bottom: 2px;
+      &:last-of-type {
+        margin-bottom: unset;
       }
       a {
         color: $panther-black;
