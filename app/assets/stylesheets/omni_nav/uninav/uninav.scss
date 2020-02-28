@@ -59,7 +59,6 @@ html {
     &__logo {
       &--secondary {
         @include qbal-slideRight-exit;
-        // display: none;
       }
     }
 
@@ -130,6 +129,10 @@ html {
         a {
           display: grid;
         }
+      }
+
+      &--mobile {
+        display: none;
       }
 
       &--secondary {
@@ -737,6 +740,12 @@ html {
 // TABLET LANDSCAPE
 @include respond(tab-land) {
   #uninav {
+
+    .cta--underneath {
+      z-index: -1;
+      @include qbal-slideLeft-exit;
+    }
+
     .uninav {
       &__logo {
         width: 100%;
@@ -746,6 +755,7 @@ html {
           @include qbal-slideRight-exit;
         }
       }
+
 
       &__menu-item-dropdown-child:hover>ul {
         -webkit-box-orient: vertical;
@@ -988,16 +998,38 @@ html {
     grid-template-columns: 10% 2fr 1fr;
     grid-gap: 10px;
 
+    .logo--underneath {
+      @include qbal-slideLeft-exit;
+    }
+
     .uninav {
       &__global-nav {
         display: none;
       }
 
+
       &__logo {
         display: grid;
+        align-content: center;
 
         &--primary {
+          @include qbal-fade-exit;
+          animation-direction: forwards;
+          // display: none;
+
+          a {
+            display: none;
+          }
+        }
+
+
+        &--mobile {
+          @include qbal-fade-enter;
           display: grid;
+
+          svg {
+            max-width: 80%;
+          }
         }
 
         .chapman-logo {
@@ -1135,15 +1167,18 @@ html.off-canvas__blur {
   }
 }
 
+
+
 // END TABLET PORTRAIT
 // END MEDIA QUERIES
+#uninav {
+  .uninav {
+    &__hidden {
+      display: none !important;
+    }
 
-.uninav {
-  &__hidden {
-    display: none !important;
-  }
-
-  &__reveal {
-    display: grid !important;
+    &__reveal {
+      display: grid !important;
+    }
   }
 }
