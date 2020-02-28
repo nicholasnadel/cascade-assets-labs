@@ -520,7 +520,7 @@ USAGE: #processAsset( $asset )
 
   #if ( !$_PropertyTool.isEmpty($childrenHtml) )
     <li class="${linkClass}">
-      <span tabindex="0" class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
+      <span tabindex="0" class="drill-down-parent">Back</span>
       <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
       <ul class="drilldown-menu">
         <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)}</li>
