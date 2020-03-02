@@ -86,8 +86,8 @@ html {
   display: block;
   position: relative;
   width: 0;
-  height: $omniNavHeightDesktop;
-  margin-top: -$omniNavHeightDesktop;
+  height:  $uninav-total-height;
+  margin-top: - $uninav-total-height;
   z-index: -1;
 }
 
