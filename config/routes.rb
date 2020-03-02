@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'image_slider',           to: 'dashboard#image_slider'
   get 'uninav',                 to: 'uninav#uninav'
   get 'uninav/branded',         to: 'uninav#branded'
+  get 'uninav/anchor',             to: 'uninav#anchor'
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'
 

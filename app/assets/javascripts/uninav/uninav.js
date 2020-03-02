@@ -5,6 +5,7 @@ $(function () {
   toggleAriaExpandVal();
   handleEscapeKeypress();
   gs__setSearchResultsZIndex();
+  uninavSecondaryMenu();
 });
 
 function closePrevDropdownWhenFocusChanges() {
@@ -138,6 +139,15 @@ function gs__mobileReveal() {
       $(searchInputDesktop).find('input').val('');
     });
   });
+}
+
+function uninavSecondaryMenu() {
+  if ($('.uninav__logo--secondary').length < 0) {
+    console.log('yes');
+  }
+  else {
+    $('#uninav').addClass('uninav--has-secondary-menu')
+  }
 }
 
 function gs__setSearchResultsZIndex() {
