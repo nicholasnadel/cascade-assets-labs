@@ -91,10 +91,10 @@ html {
   z-index: -1;
 }
 
-@media (max-width: 1380px) and (min-width: 768px) {
+@include respond(tab-land) {
   :target:before {
-    height: $omniNavHeightMobile;
-    margin-top: -$omniNavHeightMobile;
+    height: $uninav-height-mobile;
+    margin-top: $uninav-height-mobile;
   }
 }
 
