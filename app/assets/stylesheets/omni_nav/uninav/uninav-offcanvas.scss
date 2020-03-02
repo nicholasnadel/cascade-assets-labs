@@ -299,7 +299,6 @@
       color: $white;
       height: 16rem;
       border-radius: 0 8rem 8rem 0;
-      border: none;
       width: 8rem;
       background-color: rgba($cu-red, .9);
       text-align: left;
@@ -308,16 +307,17 @@
       animation-delay: 10s;
       animation: radar 3s;
       animation-iteration-count: 2;
+      border: 1px solid v(cu-light-grey);
+      border-left: none;
 
       &:hover,
       &:focus {
-        background-color: rgba($cu-red, 1);
+        background-color: $cu-red;
         transition: 150s;
         -webkit-transition: 150s;
         -moz-transition: 150s;
         -ms-transition: 150s;
         -o-transition: 150s;
-        background-color: v(panther-black);
       }
 
       ::not(:hover) {
