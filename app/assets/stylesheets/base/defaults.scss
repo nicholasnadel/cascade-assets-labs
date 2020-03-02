@@ -86,15 +86,15 @@ html {
   display: block;
   position: relative;
   width: 0;
-  height: $omniNavHeightDesktop;
-  margin-top: -$omniNavHeightDesktop;
+  height:  $uninav-total-height;
+  margin-top: - $uninav-total-height;
   z-index: -1;
 }
 
-@media (max-width: 1380px) and (min-width: 768px) {
+@include respond(tab-land) {
   :target:before {
-    height: $omniNavHeightMobile;
-    margin-top: -$omniNavHeightMobile;
+    height: $uninav-height-mobile;
+    margin-top: $uninav-height-mobile;
   }
 }
 

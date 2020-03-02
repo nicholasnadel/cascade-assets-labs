@@ -12,6 +12,7 @@
   &__text {
     font-weight: bold;
     max-width: 150px;
+    white-space: nowrap;
 
     .fas,
     [class*="-fa"] {
@@ -22,8 +23,8 @@
   &__container {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr [4];
-    grid-template-columns: repeat(4, 1fr);
+    -ms-grid-columns: 1fr [3];
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 60px;
     grid-gap: 20px;
 

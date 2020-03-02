@@ -272,10 +272,11 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
               #set ( $isVisible = true )
             #end
             
-            #if ($childAsset.assetType == 'page' && $isVisible)
+#if ($childAsset.assetType == 'page' && $isVisible)
               <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
             #elseif ($childAsset.assetType == 'symlink')
-              <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}>${_EscapeTool.xml($childAsset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+              <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}>${_EscapeTool.xml($childAsset.label)} ">
+              <span class="fas fa-external-link-alt"></span></a></li>
             #elseif ($childAsset.assetType == 'folder' && $isVisible)
               #buildDrillDownList($childAsset)
             #end
