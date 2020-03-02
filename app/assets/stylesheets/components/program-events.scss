@@ -17,16 +17,22 @@
       font-size: 1.8rem;
       margin: 1rem 0;
       text-decoration: underline;
+      margin: 1rem 1rem 1rem 0;
     }
 
     &__date {
       color: $panther-black;
+      font-family: 'futura-pt';
+      font-weight: bold;
       font-size: 2rem;
     }
 
     &__time {
       color: $panther-black;
       font-size: 1.6rem;
+      line-height: 1.6rem;
+      padding-bottom: 2rem;
+      white-space: nowrap;
     }
   }
 
@@ -106,6 +112,13 @@
         align-items: center;
         height: 60%;
         width: 65%;
+        font-family: 'futura-pt';
+
+        @include respond(phone) {
+          & {
+            width: 55%;
+          }
+        }
       }
   
       &__date-container {
@@ -113,14 +126,20 @@
         align-items: center;
         height: 60%;
         width: 35%;
-        border-right: 1px solid black;
+        border-right: 1px solid #ccc;
         margin-right: 2rem;
         padding: 0 2rem;
         text-align: center;
+
+        @include respond(phone) {
+          & {
+            width: 45%;
+          }
+        }
       }
   
       &__date {
-        padding: 0;
+        padding: 2rem 0 0 0;
         margin-bottom: 5px;
       }
     }
@@ -129,8 +148,4 @@
 
 
   p { margin: 0; }
-
-  .program-event {
-    
-  }
 }
