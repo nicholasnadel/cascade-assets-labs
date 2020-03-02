@@ -2,9 +2,9 @@
   $nav-width: 410px;
   $nav-width-mobile: 350px;
 
-  //SHARED BY BOTH UMBRELLA AND MAIN
+  /*SHARED BY BOTH UMBRELLA AND MAIN*/
   .cu-off-canvas-header {
-    // For menu-toggling
+    /* For menu-toggling*/
     width: 200%;
     height: 60px;
     position: relative;
@@ -16,6 +16,7 @@
       position: relative;
 
       div.toggle-logo {
+        display: -webkit-box;
         display: flex;
         width: 50%;
         padding: 18px;
@@ -25,10 +26,14 @@
           display: block;
           height: 23px;
           width: 100%;
-          background: image-url('off-canvas-logo.png'); // IE 8
-          background: image-url('off-canvas-logo.svg'), linear-gradient(transparent, transparent);
+          background: image-url("off-canvas-logo.png");
+
+          /* IE 8*/
+          background: image-url("off-canvas-logo.svg"), -webkit-gradient(linear, left top, left bottom, from(transparent), to(transparent));
+          background: image-url("off-canvas-logo.svg"), linear-gradient(transparent, transparent);
           background-repeat: no-repeat;
           background-size: contain;
+
           /* WAVE error reports empty anchor tag because logo is a background image.
            * Use color:transparent to add text that users can't see, to give context. */
           color: transparent;
@@ -60,11 +65,14 @@
     }
   }
 
-  //SHARED BY BOTH UMBRELLA AND MAIN
+  /*SHARED BY BOTH UMBRELLA AND MAIN*/
   .menu-header {
+    display: -webkit-box;
     display: flex;
     align-content: center;
+    -webkit-box-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
     justify-content: space-between;
     padding: 10px;
     border-bottom: 1px solid v(cu-light-grey);
@@ -117,10 +125,13 @@
     background-color: v(white);
     border: 1px solid V(CU-LIGHT-GREY);
     overflow-x: hidden;
+    -webkit-transition: all .40s;
     transition: all .40s;
+    -webkit-transform: translateX(-$nav-width);
     transform: translateX(-$nav-width);
     z-index: 10;
-    //HIDE SCROLLBARS
+
+    /*HIDE SCROLLBARS*/
     -ms-overflow-style: none;
     scrollbar-width: none;
     overflow: -moz-scrollbars-none;
@@ -149,21 +160,27 @@
     @include respond(phone) {
       & {
         width: $nav-width-mobile;
+        -webkit-transform: translateX(-$nav-width-mobile);
         transform: translateX(-$nav-width-mobile);
       }
     }
+
 
     &::-webkit-scrollbar {
       display: none;
     }
 
-    //END HIDE SCROLLBARS
+    /*END HIDE SCROLLBARS*/
     .off-canvas-nav {
+      display: -ms-grid;
       display: grid;
+      -ms-grid-rows: 100%;
       grid-template-rows: 100%;
+      -ms-grid-columns: 100%;
       grid-template-columns: 100%;
       grid-auto-rows: 0;
       grid-auto-columns: 0;
+
       @include drill-down-menu-style($nav-width);
 
       @include respond(phone) {
@@ -172,16 +189,19 @@
         }
       }
 
-      .off-canvas-menu#off-canvas-umbrella+.off-canvas-menu#off-canvas-main {
+
+      .off-canvas-menu#off-canvas-umbrella + .off-canvas-menu#off-canvas-main {
+        -webkit-transform: translateX(-$nav-width);
         transform: translateX(-$nav-width);
         display: none;
-        @include slide-in-out('out', 0px, -$nav-width, .40s);
-        @include slide-in-out('in', -$nav-width, 0px, .40s);
+
+        @include slide-in-out("out", 0px, -$nav-width, 0.4s);
+        @include slide-in-out("in", -$nav-width, 0px, 0.4s);
 
         @include respond(phone) {
           & {
-            @include slide-in-out('out', 0px, -$nav-width-mobile, .40s);
-            @include slide-in-out('in', -$nav-width-mobile, 0px, .40s);
+            @include slide-in-out("out", 0px, -$nav-width-mobile, 0.4s);
+            @include slide-in-out("in", -$nav-width-mobile, 0px, 0.4s);
           }
         }
       }
@@ -189,21 +209,28 @@
       .off-canvas-menu#off-canvas-umbrella,
       .off-canvas-menu#off-canvas-main {
         position: relative;
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 1;
         grid-row: 1 / span 1;
+        -ms-grid-column: 1;
+        -ms-grid-column-span: 1;
         grid-column: 1 / span 1;
         background-color: $white;
+        -webkit-transition: all .5s;
         transition: all .5s;
-        @include slide-in-out('out', 0px, -$nav-width, .40s);
-        @include slide-in-out('in', -$nav-width, 0px, .40s);
+
+        @include slide-in-out("out", 0px, -$nav-width, 0.4s);
+        @include slide-in-out("in", -$nav-width, 0px, 0.4s);
 
         @include respond(phone) {
           & {
-            @include slide-in-out('out', 0px, -$nav-width-mobile, .40s);
-            @include slide-in-out('in', -$nav-width-mobile, 0px, .40s);
+            @include slide-in-out("out", 0px, -$nav-width-mobile, 0.4s);
+            @include slide-in-out("in", -$nav-width-mobile, 0px, 0.4s);
           }
         }
 
-        // display: none;
+
+        /* display: none;*/
         #off-canvas-umbrella-navigation,
         #off-canvas-main-navigation {
           position: relative;
@@ -216,10 +243,13 @@
             }
           }
 
+
           ul.root-umbrella-nav,
           ul.root-main-nav {
             height: 100%;
+            -webkit-transform: translateX(0);
             transform: translateX(0);
+            -webkit-transition: all .40s linear;
             transition: all .40s linear;
 
             .top-drill-down-list-item.drill-down-list-item {
@@ -293,39 +323,46 @@
     position: fixed;
     left: 0;
     top: 15rem;
+    display: -webkit-box;
     display: flex;
 
     .umbrella-nav-toggle-button {
       color: $white;
       height: 16rem;
       border-radius: 0 8rem 8rem 0;
+      border: none;
       width: 8rem;
-      background-color: rgba($cu-red, .9);
+      background-color: rgba($cu-red, 0.9);
       text-align: left;
       padding-left: 10px;
+      -webkit-transition: .40s all;
       transition: .40s all;
+      -webkit-animation-delay: 10s;
       animation-delay: 10s;
+      -webkit-animation: radar 3s;
       animation: radar 3s;
+      -webkit-animation-iteration-count: 2;
       animation-iteration-count: 2;
-      border: 1px solid v(cu-light-grey);
-      border-left: none;
+      box-shadow:1px 1px 3px 3px rgba(0,0,0,0.15);
 
       &:hover,
       &:focus {
-        background-color: $cu-red;
+        background-color: rgba($cu-red, 1);
         transition: 150s;
         -webkit-transition: 150s;
         -moz-transition: 150s;
         -ms-transition: 150s;
         -o-transition: 150s;
+        background-color: v(panther-black);
       }
 
       ::not(:hover) {
+        -webkit-animation-iteration-count: unset;
         animation-iteration-count: unset;
       }
 
       &:active {
-        background-color: v(panther-black)
+        background-color: v(panther-black);
       }
 
       .section-menu-text {
@@ -352,24 +389,38 @@
       }
 
       div {
+        display: -webkit-box;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
         flex-direction: column;
+      }
+    }
+
+    @-webkit-keyframes radar {
+      0% {
+        box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 30px rgba(165, 0, 52, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(165, 0, 52, 0);
       }
     }
 
     @keyframes radar {
       0% {
-        -moz-box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
         box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
       }
 
       70% {
-        -moz-box-shadow: 0 0 0 30px rgba(165, 0, 52, 0);
         box-shadow: 0 0 0 30px rgba(165, 0, 52, 0);
       }
 
       100% {
-        -moz-box-shadow: 0 0 0 0 rgba(165, 0, 52, 0);
         box-shadow: 0 0 0 0 rgba(165, 0, 52, 0);
       }
     }
