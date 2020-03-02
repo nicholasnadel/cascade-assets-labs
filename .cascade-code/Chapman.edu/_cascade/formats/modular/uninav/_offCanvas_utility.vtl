@@ -66,7 +66,7 @@
                         </span>
                         #offCanvasDrillDownIcon()
                         <ul class="drilldown-menu">
-                            #offCanvasMenuBackIcon(${_EscapeTool.xml($label)})
+                            #offCanvasMenuBackIcon()
                             <li class="${isCurrentPage} uninav__offCanvas-menu-item--audiences uninav__offCanvas-audiences-menu-item--${menuID} uninav__offCanvas-menu-item-audiences--${_MathTool.add($foreach.index, 1)} uninav__offCanvas-audiences-menu-item--dropdown-parent">
                                 <a id="uninav-OffCanvas-audiences-${menuID}" href="${_EscapeTool.xml($linkURL)}"
                                     #if ($iconType == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")

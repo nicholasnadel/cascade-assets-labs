@@ -43,7 +43,7 @@
                     #if ($submenuItems.size() != 0)
         		        #offCanvasDrillDownIcon()
         		        <ul class="drilldown-menu">
-        		            #offCanvasMenuBackIcon($menuItem.value)
+        		            #offCanvasMenuBackIcon()
         		            <li class="${isCurrentPage}"><a href="${menuItemLink.getChild('path').value}">${menuItem.value}</a></li>
                             ## Inner Loop (dropdown links for specific main menu item)
                             #foreach ($submenuItem in $submenuItems)
