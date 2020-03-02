@@ -1,203 +1,130 @@
-.leftNavSubContent {
-  width: 100%;
-  margin: 0 0 0 0;
-  float: left;
-  .social {
-    margin: 0 0 0 25px;
-  }
-  .newsEventsNav li.active {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .calls-to-action-widget a:focus {
-    outline-color: $cu-black;
-  }
-  .callout {
-    background-color:#d8d8d8;
-    border: 1px solid #c1c1c1;
-    vertical-align: top;
-    .border {
-      height: 7px;
-      background-color: #c1c1c1;
+.leftNav {
+  .contact {
+    display: -ms-grid;
+    display: grid;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 2rem 2rem 0;
+    
+    a {
+      text-decoration: underline;
     }
-    .contact-widget {
-      ul.left-social-icons {
-        background-color: transparent;
-        display: block;
-        width: 100%;
-        padding: 0;
-        margin-top: 0;
-        margin: 0 0 0 0;
-        float: left;
-        position: relative;
-        list-style: none;
-        li {
-          float: left;
-          position: relative;
-          padding-right: 12px;
-          font-size: 16px;
-          margin-bottom: 4px;
-          &.last {
-            padding-right:0;
-          }
-          a {
-            text-decoration: none;
-            border-bottom: none;
-          }
-          .icon {
-            display: inline-block;
-            color: $cu-red;
-            width: 1em;
-            height: 1em;
-            fill: currentColor;
-            padding: 0;
-          }
-        }
-      }
-      .view-more-expander {
-        line-height: 10px;
-        text-align:center;
-        padding: 0;
-        min-height: 35px;
-        cursor: pointer;
-        .active {
-          display:block;
-        }
-        .inactive {
-          display: none;
-        }
-        .view-more {
-          background-color: $cu-red;
-        }
-        .view-more-link {
-          height: 21px;
-          padding: 0 0 5px 0; 
-          margin: 0;
-          background-color: $cu-red;
-        }
-        .view-less-link {
-          height: 30px;
-          padding: 10px 0 0 0;
-          margin-bottom: -4px;
-          background-color: $cu-red;
-        }
-        a {
-          color: $white;
-          font-size: 1.6rem;
-          font-weight: 700;
-          letter-spacing: 1px;
-          text-transform:uppercase;
-          padding: 0;
-          &:hover  {
-            color: $cu-warm-light-grey;
-          }
-        }
-        .icon {
-          display: inline-block;
-          color: #444444;
-          width: 1em;
-          height: 1em;
-          fill: currentColor;
-          padding: 0;
-        }
-        .icon-triangle-down {
-          color: #d8d8d8;
-          font-size: 18px;
-          margin-top: -4px;
-        }
-        .icon-triangle-up {
-          color: $cu-red;
-          width:100%;
-          padding: 0;
-          font-size: 22px;
-          margin-bottom: -9px;
-        }
+    .info-block {
+      margin-bottom: 2rem;
+      
+      .info-header {
+        font-weight: 600;
       }
     }
-    .editableContent {
-      .inactive {
-        display: none;
-      }
-      .active {
-        display: block;
-      }
-      .social-follow-us {
-        margin-bottom: 65px;    
-        @include bp(l) {
-          margin-bottom: 38px;
-        }
-      }
-      a {
-        display: inline;
-      }
-      ul { 
-        margin-top :10px;
-      }
-      .buttonLinks > li > a {
-        display: inline-block;
-      }
-      ul.buttonLinks {
-        margin-left: 0;
-        padding: 0 0;
-        a {
-          border-bottom: none;
-        }
-      }
-      .redLeftColButton {
-        margin: 0 0 0 0;
-        ul {
-          list-style: none;
-          width: 234px;
-          margin: 0 0 0 -15px;
-          padding: 0;
-        }
-        li {
-          padding-bottom: 2px;
-        }
-        a {
-          position: relative;
-          text-align: right;
-          padding: 0 30px 0 5px;
-          color: $white;
-          text-transform: uppercase;
-          font-weight: 800;
-          line-height: 47px;
-          display: block;
-          border: 1px solid #e3cfd8;
-          background-color: #a12756;
-          background-image: -webkit-gradient(linear, left top, left bottom, from(#a12756), to($cu-red));
-          background-image: -webkit-linear-gradient(top, #a12756, $cu-red);
-          background-image: -moz-linear-gradient(top, #a12756, $cu-red);
-          background-image: -o-linear-gradient(top, #a12756, $cu-red);
-          background-image: linear-gradient(to bottom, #a12756, $cu-red);
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a12756', endColorstr='#{$cu-red}',GradientType=1 );
-          font-size: 1.1em;
-          .arrow {
-            position: absolute;
-            top: 50%;
-            right: 16px;
-            margin-top: -25px;
-          }
-          &:hover {
-            background: $cu-dark-red;
-            background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E2ZDBkZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM1MDliYjIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-            background: -moz-linear-gradient(top, $cu-dark-red 0%, $cu-red 100%);
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $cu-dark-red), color-stop(100%, $cu-red));
-            background: -webkit-linear-gradient(top, $cu-dark-red 0%, $cu-red 100%);
-            background: -o-linear-gradient(top, $cu-dark-red 0%, $cu-red 100%);
-            background: -ms-linear-gradient(top, $cu-dark-red 0%, $cu-red 100%);
-            background: linear-gradient(to bottom, $cu-dark-red 0%, $cu-red 100%);
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$cu-dark-red}', endColorstr='#{$cu-red}',GradientType=0 );
-          }
-          &.long {
-            line-height: 14px;
-            padding: 10px 30px 10px 5px;
-            .arrow {
-              margin-top: -12px;
-            }
-          }
-        }
-      } // end redleftbutton
-    } // end editableContent
-  } // end callout
-} //end leftnavsubcontent
+    ul.left-social-icons {
+      background-color: transparent;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul.left-social-icons li {
+      display: inline-block;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 2.4rem;
+      margin: 0;
+    }
+    ul.left-social-icons li .icon {
+      fill: currentColor;
+      font-size: 2.5rem;
+      margin-right: 1rem;
+      width: 1em;
+    }
+
+    h2 {
+      font-weight: 500;
+      margin-top: 0;
+      padding-bottom: 2rem;
+    }
+  }
+  
+  // RED
+  .contact--red {
+    $bg: $cu-red;
+    background-color: $bg;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ccc;
+      transition: all 0.3s ease;
+    }
+  }
+
+  // BLACK
+  .contact--black {
+    background-color: $panther-black;
+    color: $white;
+
+    a {
+      color: $white;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ccc;
+      transition: all 0.3s ease;
+    }
+  }
+
+  // GREY
+  .contact--grey {
+    background-color: $cu-light-grey;
+    color: $panther-black;
+
+    a {
+      color: $cu-red;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ce0041;
+      transition: all 0.3s ease;
+    }
+  }
+
+  // SAND
+  .contact--sand {
+    --sand: #f6f2e8;
+    $bg: $sand;
+    @include dc($bg);
+  
+    a {
+      color: $cu-red;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ce0041;
+      transition: all 0.3s ease;
+    }
+  }
+
+  // WHITE
+  .contact--white {
+    $bg: $white;
+    border: 1px solid $cu-light-grey-2;
+    color: $panther-black;
+
+    a {
+      color: $cu-red;
+    }
+    a:hover,
+    a:active,
+    a:focus {
+      color: #ce0041;
+      transition: all 0.3s ease;
+    }
+  }
+}

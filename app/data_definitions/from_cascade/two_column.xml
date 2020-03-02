@@ -58,14 +58,23 @@
         <dropdown-item show-fields="leftColumn/widget/calloutBox" value="Callout Box"/>
         <dropdown-item show-fields="leftColumn/widget/FeaturedNewsEvents" value="Featured / News / Events"/>
         <dropdown-item show-fields="leftColumn/widget/contact" value="Department Contact Info"/>
+        <dropdown-item show-fields="leftColumn/widget/contact-profile-widget" value="Contact Profile"/>
       </text>
       <group collapsed="true" identifier="calloutBox" label="Callout Box">
         <text default="Yes" identifier="display-callout-box" label="Show" type="radiobutton">
           <radio-item value="Yes"/>
           <radio-item value="No"/>
         </text>
+        <text default="Grey" identifier="color-value" label="Color" type="dropdown">
+          <dropdown-item value="Grey"/>
+          <dropdown-item value="Red"/>
+          <dropdown-item value="Black"/>
+          <dropdown-item value="Sand"/>
+          <dropdown-item value="White"/>
+        </text>
         <group identifier="text" label="Text">
-          <text default="[headline]" identifier="headline" label="Headline" multi-line="true"/>
+          <text help-text="Preheader" identifier="preheader" label="Preheader (Optional)"/>
+          <text help-text="Headline" identifier="headline" label="Headline" multi-line="true"/>
           <text identifier="copy" label="Copy" wysiwyg="true"/>
         </group>
         <group identifier="links" label="Links">
@@ -81,6 +90,16 @@
             <text identifier="label" label="Label"/>
           </group>
         </group>
+      </group>
+      <group collapsed="true" identifier="contact-profile-widget" label="Contact Profile" multiple="true">
+        <shared-field identifier="display" path="display"/>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <shared-field identifier="image" path="image" required="true"/>
+        <text help-text="100 Character Max" identifier="heading" label="Heading" maxlength="100" required="true"/>
+        <text help-text="50 Character Maximum" identifier="name" label="Name" maxlength="50" required="true"/>
+        <text help-text="100 Character Max" identifier="dept" label="Department/Title" maxlength="100"/>
+        <text help-text="Format: 555-555-5555" identifier="phone" label="Phone"/>
+        <text help-text="Format: person@place.edu" identifier="email" label="Email"/>
       </group>
       <group collapsed="true" identifier="actionButtons" label="Buttons">
         <text default="Yes" identifier="display-action-buttons" label="Show" type="radiobutton">
@@ -119,11 +138,33 @@
         </text>
       </group>
       <group collapsed="true" identifier="contact" label="Department Contact">
-        <text default="Yes" identifier="display-contact" label="Show" required="true" type="radiobutton">
+        <shared-field identifier="display" path="display"/>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <asset help-text="Find department blocks under //_shared-content/departments/" identifier="info" label="Contact Block" render-content-depth="2" required="true" type="block"/>
+        <text default="Yes" identifier="show-department" label="Show Department Name" required="true" type="radiobutton">
           <radio-item value="Yes"/>
           <radio-item value="No"/>
         </text>
-        <asset identifier="info" label="Contact Block" render-content-depth="2" required="true" type="block"/>
+        <text default="Yes" identifier="show-phone" label="Show Phone" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Yes" identifier="show-email" label="Show Email" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Yes" identifier="show-hours" label="Show Hours" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Yes" identifier="show-address" label="Show Address" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Yes" identifier="show-social" label="Show Social Links" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
       </group>
     </group>
   </group>
@@ -132,6 +173,9 @@
     <group identifier="widget" label="Widgets" multiple="true">
       <text default="(choose one)" help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
         <dropdown-item value="(select one)"/>
+        <dropdown-item show-fields="primaryContent/widget/programEvents" value="Program Events"/>
+        <dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
+        <dropdown-item show-fields="primaryContent/widget/careerBlockWidget" value="Career Block"/>
         <dropdown-item show-fields="primaryContent/widget/carousel" value="Carousel"/>
         <dropdown-item show-fields="primaryContent/widget/collapsibleRegions" value="Collapsible Regions"/>
         <dropdown-item show-fields="primaryContent/widget/faculty" value="Faculty Info"/>
@@ -149,10 +193,44 @@
         <dropdown-item show-fields="primaryContent/widget/Calendar25Live" value="Calendar25Live"/>
         <dropdown-item show-fields="primaryContent/widget/AtoZListing" value="A to Z Listing"/>
         <dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
-        <!--<dropdown-item show-fields="primaryContent/widget/reserved-block-formats" value="Reserved Block-Formats"/>-->
+        <dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial"/>
         <dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
         <dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
+        <dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
+        <dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
       </text>
+      <group collapsed="true" identifier="programEvents" label="Program Events">
+        <shared-field identifier="display" path="display"/>
+        <text default="tiles" identifier="tilesBars" label="Program Events Display" required="true" type="radiobutton">
+          <radio-item label="Tiles" value="tiles"/>
+          <radio-item label="Bars" value="bars"/>
+        </text>
+        <text identifier="feedUrl" label="Feed Url" required="true"/>
+        <text identifier="text" label="Text" required="true" wysiwyg="true"/>
+      </group>
+      <group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
+        <shared-field identifier="display" path="display"/>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <text help-text="300 Characters Maximum" identifier="text" label="Text" maxlength="300" required="true" wysiwyg="true" wysiwyg-toolbar-remove="insert image,insert table,"/>
+      </group>
+      <group collapsed="true" identifier="careerBlockWidget" label="Career Block">
+        <shared-field identifier="display" path="display"/>
+        <group identifier="block" label="Block" multiple="true">
+          <shared-field identifier="bgColor" path="background-color"/>
+          <text help-text="Copy and paste the respective 'O*NET-SOC Code' from https://www.onetonline.org/find/" identifier="careerCode" label="Career Code" required="true"/>
+        </group>
+      </group>
+      <group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
+        <shared-field identifier="display" path="display"/>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <group identifier="testimonialSlide" label="Testimonial Slide" multiple="true">
+          <shared-field identifier="image" label="Headshot Image" maximum-number="1" path="image"/>
+          <text help-text="100 chracters max" identifier="endorserName" label="Endorser's Name" required="true"/>
+          <text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="endorserTitle" label="Endorser's Department/Title"/>
+          <text help-text="200 characters max" identifier="testimonyText" label="Testimonial Text" multi-line="true" required="true"/>
+          <shared-field identifier="link" path="cta"/>
+        </group>
+      </group>
       <group collapsed="true" identifier="carousel" label="Carousel">
         <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
@@ -270,6 +348,17 @@
           </group>
         </group>
       </group>
+      <group collapsed="true" identifier="next-steps-widget" label="Next Steps">
+        <shared-field identifier="display" path="display"/>
+        <text default="left-aligned" identifier="layout" label="Layout" type="radiobutton">
+          <radio-item label="Left Aligned" value="left-aligned"/>
+          <radio-item label="Centered" value="centered"/>
+        </text>
+        <shared-field identifier="bgColor" path="background-color"/>
+        <text identifier="heading" label="Heading" required="true"/>
+        <text help-text="500 characters maximum" identifier="body" label="Text" multi-line="true"/>
+        <shared-field identifier="link" path="cta"/>
+      </group>
       <group collapsed="true" identifier="personnel" label="Personnel">
         <text default="Yes" identifier="display-personnel" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
@@ -298,6 +387,20 @@
             <asset identifier="fileLink" label="File Link" type="file"/>
             <text identifier="label" label="Link text (defaults to 'View Full Bio' if blank)"/>
           </group>
+        </group>
+      </group>
+      <group collapsed="true" identifier="quickFactBlocksWidget" label="Quick Fact Blocks" multiple="true">
+        <shared-field identifier="display" path="display"/>
+        <!-- Red was deliberately removed  normally use the shared bgColor field here -->
+        <text default="Black" identifier="bgColor" label="Background Color" type="dropdown">
+          <dropdown-item value="Grey"/>
+          <dropdown-item value="Black"/>
+          <dropdown-item value="Sand"/>
+          <dropdown-item value="White"/>
+        </text>
+        <group identifier="fact" label="Fact" multiple="true">
+          <text help-text="Insert FontAwesome Icon from https://fontawesome.com/icons in the format: fas fa-lightbulb" identifier="icon" label="FontAwesome Icon" required="true"/>
+          <text identifier="text" label="Text" required="true"/>
         </group>
       </group>
       <group collapsed="true" identifier="threePhotoCallout" label="Three Photo Callout">
@@ -393,18 +496,7 @@
         </group>
       </group>
       <!--
-      <group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats">
-        <text default="Yes" identifier="display-reserved-block-formats" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <text default="A to Z Listing" help-text="identifies pre-paired block and formats of data" identifier="BlockFormatType" label="Block/Format Type" type="dropdown">
-          <dropdown-item value="University-wide Faculty By Rank Listing"/>
-          <dropdown-item value="University-wide Tenure/Tenure-Track Faculty Listing"/>
-          <dropdown-item value="University-wide Presidential Fellows Listing"/>
-          <dropdown-item value="A to Z Listing"/>
-        </text>
-      </group>
+      <group collapsed="true" identifier="reserved-block-formats" label="Reserved Block/Formats"><text default="Yes" identifier="display-reserved-block-formats" label="Show" required="true" type="radiobutton"><radio-item value="Yes"/><radio-item value="No"/></text><text default="A to Z Listing" help-text="identifies pre-paired block and formats of data" identifier="BlockFormatType" label="Block/Format Type" type="dropdown"><dropdown-item value="University-wide Faculty By Rank Listing"/><dropdown-item value="University-wide Tenure/Tenure-Track Faculty Listing"/><dropdown-item value="University-wide Presidential Fellows Listing"/><dropdown-item value="A to Z Listing"/></text></group>
       -->
       <group collapsed="true" identifier="wysiwyg-editor" label="Text Editor">
         <text default="Yes" identifier="display-wysiwyg-editor" label="Show" required="true" type="radiobutton">
@@ -553,7 +645,7 @@
         <text identifier="copy" label="Copy" wysiwyg="true"/>
         <text default="Individual Faculty" identifier="type" label="Display" required="true" type="radiobutton">
           <radio-item show-fields="primaryContent/widget/faculty/person" value="Individual Faculty"/>
-          <radio-item label="Faculty Listing" show-fields="primaryContent/widget/faculty/school, primaryContent/widget/faculty/dept, primaryContent/widget/faculty/filter, primaryContent/widget/faculty/facultyUnit, primaryContent/widget/faculty/photo, primaryContent/widget/faculty/bio-link, primaryContent/widget/faculty/short-bio, primaryContent/widget/faculty/office-info, primaryContent/widget/faculty/show-school-affiliations" value="Faculty Listing"/>
+          <radio-item label="Faculty Listing" show-fields="primaryContent/widget/faculty/school, primaryContent/widget/faculty/dept, primaryContent/widget/faculty/filter, primaryContent/widget/faculty/facultyUnit, primaryContent/widget/faculty/photo, primaryContent/widget/faculty/bio-link, primaryContent/widget/faculty/short-bio, primaryContent/widget/faculty/show-research-interests, primaryContent/widget/faculty/show-courses-taught, primaryContent/widget/faculty/office-info, primaryContent/widget/faculty/show-school-affiliations" value="Faculty Listing"/>
         </text>
         <group identifier="person" label="Person" multiple="true">
           <asset identifier="faculty-block" label="Faculty Member" required="true" type="block"/>
@@ -566,6 +658,14 @@
             <radio-item value="No"/>
           </text>
           <text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+          </text>
+          <text default="Yes" identifier="show-research-interests" label="Show Research Interests" required="true" type="radiobutton">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+          </text>
+          <text default="Yes" identifier="show-courses-taught" label="Show Courses Taught" required="true" type="radiobutton">
             <radio-item value="Yes"/>
             <radio-item value="No"/>
           </text>
@@ -590,7 +690,7 @@
           <dropdown-item label="Fowler School of Engineering" value="SENG"/>
           <dropdown-item label="Fowler Law" value="SOL"/>
           <dropdown-item label="Schmid College" value="COS"/>
-          <dropdown-item label="School of Communication" value="COMM"/>
+          <dropdown-item label="School of Communication" value="SOC"/>
         </text>
         <text default="All" identifier="dept" label="Dept Affiliation" type="dropdown">
           <dropdown-item value="All"/>
@@ -662,6 +762,14 @@
           <radio-item value="No"/>
         </text>
         <text default="No" identifier="short-bio" label="Show Short Bio" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Yes" identifier="show-research-interests" label="Show Research Interests" required="true" type="radiobutton">
+          <radio-item value="Yes"/>
+          <radio-item value="No"/>
+        </text>
+        <text default="Yes" identifier="show-courses-taught" label="Show Courses Taught" required="true" type="radiobutton">
           <radio-item value="Yes"/>
           <radio-item value="No"/>
         </text>

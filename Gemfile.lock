@@ -245,7 +245,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.5)
       tzinfo (>= 1.0.0)
-    uglifier (4.1.16)
+    uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.4.0)
     web-console (2.3.0)
@@ -290,7 +290,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   tzinfo-data
-  uglifier (~> 4.1.0)
+  uglifier (>= 4.2)
   web-console (~> 2.0)
   webmock
 

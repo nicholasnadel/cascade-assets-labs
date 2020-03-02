@@ -24,6 +24,20 @@
     .featureImage {
       text-align: center;
       line-height: 0;
+      
+      img {
+        height: 120px;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: center center;
+           object-position: center center;
+      }
+    }
+
+    h2 {
+      font-size: 2rem;
+      line-height: 2.4rem;
+      margin-top: .5rem;
     }
 
     h3 {
