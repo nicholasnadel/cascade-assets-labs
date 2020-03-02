@@ -4,12 +4,12 @@
   }
 
   .callout-box-widget {
-    .buttonLinks li:first-of-type {
 
-      margin-bottom: 5px !important;
-
+    .buttonLinks li {
+      margin-bottom: 5px ;
     }
   }
+  
 
 
   .callout {
@@ -96,6 +96,7 @@
         margin-top: 2%;
       }
     }
+    
   }
 
   // RED
@@ -119,8 +120,7 @@
 
     .buttonLinks li {
 
-      margin-bottom: 20px;
-      margin-bottom: 2px;
+      margin-bottom: 5px;
 
       &:last-of-type {
         margin-bottom: unset;
@@ -167,7 +167,7 @@
     }
 
     .buttonLinks li {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
 
       a {
         background-color: $cu-light-grey;
@@ -220,7 +220,7 @@
     }
 
     .buttonLinks li {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
 
       a {
         @include button-bg($cu-red);
@@ -269,7 +269,7 @@
     }
 
     .buttonLinks li {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
 
       a {
         @include button-bg($cu-red);
@@ -312,7 +312,7 @@
     }
 
     .buttonLinks li {
-      margin-bottom: 20px;
+      margin-bottom: 5px;
 
       a {
         @include button-bg($cu-red);
@@ -378,4 +378,5 @@
   .editableContent {
     margin-top: 0;
   }
+
 }
