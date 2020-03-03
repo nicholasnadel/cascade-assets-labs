@@ -1076,7 +1076,7 @@ html {
   #uninav {
     grid-template-areas: "logo hamburger utility";
     grid-template-rows: 60px;
-    grid-template-columns: 0.5fr 2fr 2fr;
+    grid-template-columns: 1fr 2fr 2fr;
 
     &.utility-only {
       grid-template-areas: "utility";
