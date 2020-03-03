@@ -24,7 +24,7 @@
             #else
                 
                 <li class="uninav__menu-item-cta">
-                    <a href="${_EscapeTool.xml($linkURL)}" id="uninav-cta-${_EscapeTool.xml($menuID)}"
+                    <a href="site://Chapman.edu/${_EscapeTool.xml($linkURL)}" id="uninav-cta-${_EscapeTool.xml($menuID)}"
                         #if ($iconType == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")
                             ## class="icon icon-${_EscapeTool.xml($menuItem.getChild('icon_cssClass').value)}"
                         #end
