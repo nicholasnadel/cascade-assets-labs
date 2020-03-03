@@ -256,7 +256,7 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
         <span tabindex="0" class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
         <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
         <ul class="drilldown-menu">
-          <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)}</li>
+          <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>Back</li>
           #foreach( $childAsset in $asset.children)
             #set ( $isVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes")
 
@@ -273,9 +273,9 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
             #end
             
 #if ($childAsset.assetType == 'page' && $isVisible)
-              <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
+              <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.metadata.displayName)}</a></li>
             #elseif ($childAsset.assetType == 'symlink')
-              <li class="${isCurrentDrillDownPage}"><a href="${childAsset.path}>${_EscapeTool.xml($childAsset.label)} ">
+              <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${childAsset.path}">${_EscapeTool.xml($childAsset.label)} ">
               <span class="fas fa-external-link-alt"></span></a></li>
             #elseif ($childAsset.assetType == 'folder' && $isVisible)
               #buildDrillDownList($childAsset)
@@ -288,15 +288,15 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #if ($rootPageName == "index")
         <li class="${isCurrentDrillDownPage} home-menu">
             <i class="fas fa-home"></i>
-            <a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href=href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #else
         <li class="${isCurrentDrillDownPage}">
-            <a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href=href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #end
   #elseif ($asset.assetType == 'symlink')
-    <li class="${isCurrentDrillDownPage}"><a href="${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+    <li class="${isCurrentDrillDownPage}"><a href=href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
   #end
 #end
 
@@ -524,7 +524,7 @@ USAGE: #processAsset( $asset )
       <span tabindex="0" class="drill-down-parent">Back</span>
       <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
       <ul class="drilldown-menu">
-        <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>${_EscapeTool.xml($asset.label)}</li>
+        <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>Back</li>
         ${childrenHtml}
       </ul>
     </li>
