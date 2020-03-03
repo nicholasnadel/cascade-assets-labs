@@ -427,12 +427,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   border: none;
   @include box-shadow;
 
-  &:after {
-    content: '»';
-    padding-left: 4px;
-    font-size: 16px;
-  }
-
   &:hover,
   &:focus {
     background-color: lighten($bg-color, 8%);
