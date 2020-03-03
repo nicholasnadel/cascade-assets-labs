@@ -288,15 +288,15 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #if ($rootPageName == "index")
         <li class="${isCurrentDrillDownPage} home-menu">
             <i class="fas fa-home"></i>
-            <a href=href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #else
         <li class="${isCurrentDrillDownPage}">
-            <a href=href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+            <a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a>
         </li>
     #end
   #elseif ($asset.assetType == 'symlink')
-    <li class="${isCurrentDrillDownPage}"><a href=href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
+    <li class="${isCurrentDrillDownPage}"><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.label)} <span class="fas fa-external-link-alt"></span></a></li>
   #end
 #end
 
