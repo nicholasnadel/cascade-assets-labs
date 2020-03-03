@@ -380,3 +380,12 @@
   }
 
 }
+
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .callout-box-widget {
+    display: block !important;
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+  }
