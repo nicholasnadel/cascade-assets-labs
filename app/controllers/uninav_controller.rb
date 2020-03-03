@@ -8,4 +8,7 @@ class UninavController < ApplicationController
 
   def anchor
   end
+
+  def three_column
+  end
 end

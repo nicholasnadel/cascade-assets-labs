@@ -1,7 +1,7 @@
 .simple-form-widget {
-  background-color: #d8d8d8;
-  border: 1px solid #c1c1c1; 
-  color: #313131;
+  padding: 1.6rem;
+  background-color: v(cu-light-grey);
+  color: v(panther-black);
 
   input[type="text"],
   textarea {
@@ -14,33 +14,84 @@
     margin-top: 10px;
   }
 
-  label {
-    /*display: inline;*/
+  label,
+  legend {
     margin-left: 2px;
-    margin-top:10px;
-    margin-bottom:2px;
+    margin-top: 1.6rem;
+    margin-bottom: 2px;
+    font-weight: 500;
+    font-family: $futura-regular;
+    line-height: 1.2em;
   }
 
-  legend {
-    font-weight: bold;
-    margin-top:10px;
-    margin-bottom:10px;
+  legend,
+  fieldset {
+    margin-top: 12px;
+    margin-bottom: 10px;
   }
+
+  select {
+    font-family: $futura-regular;
+    width: 100%;
+    height: 100%;
+  }
+
   input[type=radio]+label,
   input[type=checkbox]+label {
     font-weight: normal;
     display: inline;
-    margin-top:2px;
-    margin-botton:10px;
+    margin-top: 2px;
+    margin-botton: 1.2em;
   }
 
   h2 {
     padding: 0 4px;
+
+    &:after {
+      content: "";
+      display: block;
+      margin: 0;
+      width: 30%;
+      padding-top: 20px;
+      border-bottom: 3px solid v(panther-black);
+      left: 0;
+      justify-content: left;
+
+    }
   }
 
   .editableContent {
     padding: 2px 4px;
   }
 
-  padding: 16px;
+
+
+  input[type="submit"] {
+    @include button-bg($cu-red);
+    color: $white;
+    background-color: $cu-red;
+    text-align: center;
+    font-weight: 600;
+    font-family: $futura;
+    font-size: 1.8rem;
+  }
+
+
+}
+
+.callout.simple-form-widget {
+  h2 {
+    margin-top: 12px;
+  }
+
+  input[type="text"] {
+    height: 45px;
+  }
+
+  .editableContent {
+    padding: 2px 4px;
+    line-height: 2.2rem;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
 }

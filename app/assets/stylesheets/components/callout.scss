@@ -1,16 +1,14 @@
-.leftNav {
+.leftNav,
+.rightColumn {
   .callout-box-widget--left {
     margin-bottom: 30px;
   }
 
   .callout-box-widget {
-
     .buttonLinks li {
-      margin-bottom: 5px ;
+      margin-bottom: 5px;
     }
   }
-  
-
 
   .callout {
     display: -ms-grid;
@@ -41,7 +39,7 @@
     h2 {
       font-weight: 500;
       max-width: 100%;
-      line-height: 1.2em;
+      line-height: 1.4em;
       margin-top: 35px;
       margin-bottom: 10px;
     }
@@ -59,7 +57,6 @@
       background-color: currentColor;
       color: currentColor;
     }
-
 
     img {
       display: block;
@@ -96,7 +93,6 @@
         margin-top: 2%;
       }
     }
-    
   }
 
   // RED
@@ -119,7 +115,6 @@
     }
 
     .buttonLinks li {
-
       margin-bottom: 5px;
 
       &:last-of-type {
@@ -332,9 +327,31 @@
 }
 
 .rightColumn {
+
+  .callout.simple-form-widget .editableContent,
+  .callout.simple-form-widget h2 {
+    padding: 0;
+  }
+
   .callout-box-widget {
     margin-bottom: 20px;
     max-width: 206px;
+
+    h2 {
+      margin-top: 12px;
+
+      &:after {
+        content: "";
+        display: block;
+        margin: 0;
+        width: 35%;
+        padding-top: 20px;
+        border-bottom: 3px solid v(panther-black);
+        left: 0;
+        justify-content: left;
+
+      }
+    }
   }
 
   @media only screen and (max-width: 1024px) {
@@ -351,8 +368,6 @@
 
   .callout-box-widget.styleOne .editableContent,
   .callout-box-widget.styleTwo .editableContent,
-
-
   h2 {
     line-height: 20px;
     margin: 16px 0;
@@ -373,19 +388,17 @@
   line-height: 1.2em;
 }
 
-
 .callout-box-widget {
   .editableContent {
     margin-top: 0;
   }
-
 }
 
-
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+@media all and (-ms-high-contrast: none),
+(-ms-high-contrast: active) {
   .callout-box-widget {
     display: block !important;
     padding-top: 2%;
     padding-bottom: 2%;
   }
-  }
+}
