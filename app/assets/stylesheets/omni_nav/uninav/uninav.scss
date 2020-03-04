@@ -240,6 +240,7 @@ html {
         opacity: 1;
         transform: scale(1.5);
         background-image: none;
+        z-index: 1;
       }
 
       .gsc-results-close-btn.gsc-results-close-btn-visible:after {
