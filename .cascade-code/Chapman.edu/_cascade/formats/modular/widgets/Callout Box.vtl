@@ -1,50 +1,47 @@
 #macro(outputCalloutBox $element) 
-##    
-#set ($calloutBox = $element.getChild('calloutBox') )
-#set ($style = $calloutBox.getChild('style').value)
-#set ($imagePath = $calloutBox.getChild('image').getChild('path').value)
+
+#set ($callout = $element.getChild('calloutBox') )
+#set ($color = $callout.getChild('color-value').value.toLowerCase())
+#set ($headline = $callout.getChild('headline').value)
+#set ($preheader = $callout.getChild('preheader').value)
+#set ($content = $_SerializerTool.serialize($callout.getChild('copy'),true) )
+#set ($links = $_XPathTool.selectNodes($callout.getChild('links'), "link") )
+#set ($imagePath = $callout.getChild('image').getChild('path').value)
 #if ($calloutBox.getChild('altText').value != "")
     #set ($altText = $calloutBox.getChild('altText').value)
 #else
     #set ($altText = "")
 #end
-#set ($headline = $calloutBox.getChild('headline').value)
-#set ($content = $_SerializerTool.serialize($calloutBox.getChild('copy'),true) )
-##    
-## callout, photo, noPhoto, styleOne, styleTwo
-#if ($imagePath != '/')
-    #if ($style == 'One')
-        #set ($class = 'callout photo styleOne')
-    #else 
-        #set ($class = 'callout photo styleTwo')
-    #end
-#else
-    #if ($style == 'One')
-        #set ($class = 'callout noPhoto styleOne')
-    #else
-        #set ($class = 'callout noPhoto styleTwo')
-    #end
-#end
 
-### after Modular migration script some Callouts that had no content came over to new templates but don't want to show:
-#if ($calloutBox.getChild('copy').value == '' && $headline == '' && $imagePath == '/')
-    ### do nothing 
-    <!-- WIDGET-FIX: remove Callout in RC on this page -->
-#else
-    <div class="callout-box-widget ${class}">
-        #if ($imagePath == '/')
-            <div class="border"></div>
-        #end
+    <div class="callout-box-widget callout-box-widget--right callout callout-box-widget--$color">
         #if ($imagePath != '/')
-            <img alt="${altText}" src="${imagePath}" width="195"/>
+            <img alt="${_EscapeTool.xml($altText)}" src="${_EscapeTool.xml($imagePath)}" width="195"/>
+        #end
+        #if ($preheader != '')
+            <div class="preheader">${_EscapeTool.xml($preheader)}</div>
         #end
         #if ($headline != '')
             <h2>${_EscapeTool.xml($headline)}</h2>
         #end
-        #if (!$_PropertyTool.isNull($calloutBox.getChild('copy').value))
-            <div class="editableContent">$content</div>
-        #end
+        <div class="editableContent">$content</div>
+        <ul class="buttonLinks">
+            #foreach ($link in $links)
+                #set ($linkType = $link.getChild('linkType').value )
+                #if ($linkType == 'Internal Link')
+                    #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
+                    #elseif ($linkType == 'External Link')
+                    #set ($linkURL = $link.getChild('externalLink').value )
+                #else 
+                    #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
+                #end
+                #set ($label = $link.getChild('label').value )
+                #if ($linkURL != '' && $linkURL != '/')
+                    <li>
+                        <a href="${_EscapeTool.xml(${linkURL})}">${_EscapeTool.xml($label)}</a>
+                    </li>
+                #end
+            #end
+        </ul>
     </div>
-#end
-##    
+    
 #end 
