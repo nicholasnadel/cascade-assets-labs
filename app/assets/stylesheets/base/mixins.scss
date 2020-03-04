@@ -783,7 +783,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
           &.home-menu {
             &:focus-within {
-              outline-color: $cu-red;
+              outline-color: v(panther-black);
               outline-style: auto;
               outline-width: 5px;
             }
@@ -830,7 +830,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 
     &.home-menu {
-      background: $cu-red;
+      background: v(panther-black);
       font-weight: bold;
       color: $white;
 
