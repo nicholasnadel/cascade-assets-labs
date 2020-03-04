@@ -66,6 +66,10 @@ $tab-content-border-color: #c1c1c1;
   clear: both;
   @include bp(l) {
     padding: 0 0 10px 0;
+
+    li {
+      font-family: $futura-regular;
+    }
   }
   .no-js & {
     display: none;
