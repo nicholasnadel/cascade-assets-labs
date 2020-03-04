@@ -236,6 +236,23 @@ html {
         }
       }
 
+      .gsc-results-close-btn.gsc-results-close-btn-visible {
+        opacity: 1;
+        transform: scale(1.5);
+        background-image: none;
+      }
+
+      .gsc-results-close-btn.gsc-results-close-btn-visible:after {
+        content: "\f410";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 1.5em;
+        right: 1em;
+        position: relative;
+      }
+
+
+
       ul {
         display: flex;
         justify-content: flex-end;
@@ -1053,21 +1070,21 @@ html {
       }
     }
 
-#gsc-i-id1 {
-  width: auto !important;
-}
+    #gsc-i-id1 {
+      width: auto !important;
+    }
 
-.uninav__search-input.uninav__search-input--desktop.slide-left {
-  width: 100%;
+    .uninav__search-input.uninav__search-input--desktop.slide-left {
+      width: 100%;
 
-}
-
-
+    }
 
 
-#uninav .uninav__utility-nav--search-wrapper .gsc-input {
-  min-width: 100vw;
-}
+
+
+    #uninav .uninav__utility-nav--search-wrapper .gscb-input {
+      min-width: 100vw;
+    }
 
   }
 }
