@@ -794,7 +794,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .menu-back {
         justify-content: start;
         align-items: center;
-        background: $cu-red;
+        background: v(panther-black);
         color: $white;
         font-weight: bold;
         line-height: 1.6rem;
