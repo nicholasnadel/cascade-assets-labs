@@ -55,6 +55,11 @@ html {
     #uninav-logo .chapman-logo {
       width: 100%;
       border-bottom: none;
+        &__logo {
+      &--mobile {
+      display: none;
+      }
+      }
     }
 
     &__logo {

@@ -680,7 +680,7 @@ section li{
 */
 
 .newsEventsNav li {
-    background-color: #cfcfcf;
+    background-color: v(cu-light-grey);
     border-bottom: 1px solid #c1c1c1;
     font-size: 1.1em;
     font-style: normal;

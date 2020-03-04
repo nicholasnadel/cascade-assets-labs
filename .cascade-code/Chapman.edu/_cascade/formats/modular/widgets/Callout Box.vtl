@@ -1,50 +1,50 @@
-#macro(outputCalloutBox $element)  
+#macro(outputCalloutBox $element) 
 ##    
-    #set ($calloutBox = $element.getChild('calloutBox') )
-    #set ($style = $calloutBox.getChild('style').value)
-    #set ($imagePath = $calloutBox.getChild('image').getChild('path').value)
-    #if ($calloutBox.getChild('altText').value != "")
-         #set ($altText = $calloutBox.getChild('altText').value)
-    #else
-         #set ($altText = "")
-    #end
-    #set ($headline = $calloutBox.getChild('headline').value)
-    #set ($content = $_SerializerTool.serialize($calloutBox.getChild('copy'),true) )
+#set ($calloutBox = $element.getChild('calloutBox') )
+#set ($style = $calloutBox.getChild('style').value)
+#set ($imagePath = $calloutBox.getChild('image').getChild('path').value)
+#if ($calloutBox.getChild('altText').value != "")
+    #set ($altText = $calloutBox.getChild('altText').value)
+#else
+    #set ($altText = "")
+#end
+#set ($headline = $calloutBox.getChild('headline').value)
+#set ($content = $_SerializerTool.serialize($calloutBox.getChild('copy'),true) )
 ##    
-    ## callout, photo, noPhoto, styleOne, styleTwo
-    #if ($imagePath != '/')
-        #if ($style == 'One')
-            #set ($class = 'callout photo styleOne')
-        #else 
-            #set ($class = 'callout photo styleTwo')
-        #end
-    #else
-        #if ($style == 'One')
-            #set ($class = 'callout noPhoto styleOne')
-        #else
-            #set ($class = 'callout noPhoto styleTwo')
-        #end
+## callout, photo, noPhoto, styleOne, styleTwo
+#if ($imagePath != '/')
+    #if ($style == 'One')
+        #set ($class = 'callout photo styleOne')
+    #else 
+        #set ($class = 'callout photo styleTwo')
     #end
-    
-    ### after Modular migration script some Callouts that had no content came over to new templates but don't want to show:
-    #if ($calloutBox.getChild('copy').value == '' && $headline == '' && $imagePath == '/')
-        ### do nothing 
-        <!-- WIDGET-FIX: remove Callout in RC on this page -->
+#else
+    #if ($style == 'One')
+        #set ($class = 'callout noPhoto styleOne')
     #else
-        <div class="callout-box-widget ${class}">
-            #if ($imagePath == '/')
-                <div class="border"></div>
-            #end
-            #if ($imagePath != '/')
-                <img alt="${altText}" src="${imagePath}" width="195"/>
-            #end
-            #if ($headline != '')
-                <h2>${_EscapeTool.xml($headline)}</h2>
-            #end
-            #if (!$_PropertyTool.isNull($calloutBox.getChild('copy').value))
-                <div class="editableContent">$content</div>
-            #end
-        </div>
+        #set ($class = 'callout noPhoto styleTwo')
     #end
+#end
+
+### after Modular migration script some Callouts that had no content came over to new templates but don't want to show:
+#if ($calloutBox.getChild('copy').value == '' && $headline == '' && $imagePath == '/')
+    ### do nothing 
+    <!-- WIDGET-FIX: remove Callout in RC on this page -->
+#else
+    <div class="callout-box-widget ${class}">
+        #if ($imagePath == '/')
+            <div class="border"></div>
+        #end
+        #if ($imagePath != '/')
+            <img alt="${altText}" src="${imagePath}" width="195"/>
+        #end
+        #if ($headline != '')
+            <h2>${_EscapeTool.xml($headline)}</h2>
+        #end
+        #if (!$_PropertyTool.isNull($calloutBox.getChild('copy').value))
+            <div class="editableContent">$content</div>
+        #end
+    </div>
+#end
 ##    
 #end 

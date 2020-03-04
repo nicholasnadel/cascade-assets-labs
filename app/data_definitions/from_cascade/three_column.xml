@@ -210,7 +210,7 @@
 			<group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
 				<shared-field identifier="display" path="display"/>
 				<shared-field identifier="bgColor" path="background-color"/>
-				<text help-text="300 Characters Maximum" identifier="text" label="Text" required="true" wysiwyg="true"/>
+				<text help-text="300 Characters Maximum" identifier="text" label="Text" maxlength="300" required="true" wysiwyg="true" wysiwyg-toolbar-remove="insert image,insert table,"/>
 			</group>
 			<group collapsed="true" identifier="careerBlockWidget" label="Career Block">
 				<shared-field identifier="display" path="display"/>

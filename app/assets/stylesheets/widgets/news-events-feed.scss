@@ -66,6 +66,10 @@ $tab-content-border-color: #c1c1c1;
   clear: both;
   @include bp(l) {
     padding: 0 0 10px 0;
+
+    li {
+      font-family: $futura-regular;
+    }
   }
   .no-js & {
     display: none;
@@ -75,7 +79,7 @@ $tab-content-border-color: #c1c1c1;
 // The clickable tabs
 .newsEventsNav li {
   // When small, make the tabs collapse.
-  background-color: #cfcfcf;
+  background-color: v(cu-light-grey);
   color: #383838;
   font-size: 1em;
   padding: 0 17px 0 17px;
@@ -85,7 +89,7 @@ $tab-content-border-color: #c1c1c1;
   bottom: -1px; // Cover up the border of the primary content
   position: relative;
   border-top: 2px solid transparent;  // Keep text in same spot as active element
-  border-bottom: 1px solid #c1c1c1;
+  border-bottom: 1px solid v(cu-light-grey);
   list-style-type: none;
   margin: 0;
 
@@ -136,8 +140,7 @@ $tab-content-border-color: #c1c1c1;
 
 // The container of all content
 .newsEventsContent {
-  background-color: $tab-content-bg-color;
-  border: 1px solid $tab-content-border-color;
+  border: 1px solid v(cu-light-grey);
   position: relative;
   //color: $text-color;
   color: #383838;

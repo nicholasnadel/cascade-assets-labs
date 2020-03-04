@@ -16,7 +16,7 @@
 
     <div class="nav-container logo-container">
       <div class="cu-logo-wrapper">
-        <div class="uninav__logo--primary">
+        <div class="primary-logo">
           <a href="/" title="Chapman University Website Home Page">
             <svg class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.7 28.1">
               <defs>
@@ -29,7 +29,7 @@
         </div>
 
         <% if @page_umbrella_category.present? %>
-        <div class="uninav__logo--secondary">
+        <div class="secondary-logo">
           <a class="branded-logo" href="#"><%= @page_umbrella_category[1] %></a>
         </div>
         <% end %>
@@ -455,6 +455,7 @@
     <%= render 'omni_nav_v2/off_canvas_nav' %>
     <div id="search-results-overlay"></div>
   </div>
+  
 </div>
 
 <div class="noscript">

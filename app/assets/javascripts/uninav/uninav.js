@@ -5,6 +5,7 @@ $(function () {
   toggleAriaExpandVal();
   handleEscapeKeypress();
   gs__setSearchResultsZIndex();
+  uninavSecondaryMenu();
 });
 
 function closePrevDropdownWhenFocusChanges() {
@@ -126,18 +127,48 @@ $(window).on("load resize", function (e) {
 });
 
 function gs__mobileReveal() {
+  // forgive me, on a time crunch. would prefer to use DRY tasteful classes and not to use show() and hide()
   var searchInputDesktop = $(".uninav__search-input--desktop");
   var searchButtonMobile = $("#uninav__search-button--mobile");
   $(searchButtonMobile).click(function () {
     $(this).addClass('uninav__hidden');
+    $('#uninav').addClass('utility-only');
+    $('.uninav__logo, .uninav__hamburger-menu').addClass('logo--underneath');
+
+    $('.uninav__cta--wrapper').css('z-index', '-999');
+    $('.uninav__cta--wrapper').css('position', 'absolute');
+    $('.uninav__cta--wrapper').css('opacity', '0');
+    // $('.uninav__logo--secondary').hide();
+    $('.uninav__cta--wrapper').addClass('cta--underneath');
+
     $(searchInputDesktop).addClass('uninav__reveal').addClass('slide-left');
     $("#gsc-i-id1").focus();
     $(searchInputDesktop).focusout(function () {
+      $('#uninav').removeClass('utility-only');
       $(searchInputDesktop).removeClass('uninav__reveal');
+      $('.uninav__logo, .uninav__hamburger-menu').removeClass('logo--underneath');
+      // $('.uninav__cta').show();
+      $('.uninav__cta--wrapper').removeClass('cta--underneath');
+
+      // $('.uninav__logo--secondary').show();
+      $('.uninav__cta--wrapper').css('z-index', 'initial');
+      $('.uninav__cta--wrapper').css('position', 'initial');
+      $('.uninav__cta--wrapper').css('opacity', 'initial');
+
+
       $(searchButtonMobile).removeClass('uninav__hidden');
       $(searchInputDesktop).find('input').val('');
     });
   });
+}
+
+function uninavSecondaryMenu() {
+  if ($('.uninav__logo--secondary').length < 0) {
+    console.log('yes');
+  }
+  else {
+    $('#uninav').addClass('uninav--has-secondary-menu')
+  }
 }
 
 function gs__setSearchResultsZIndex() {

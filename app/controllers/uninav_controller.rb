@@ -5,4 +5,10 @@ class UninavController < ApplicationController
 
   def branded
   end
+
+  def anchor
+  end
+
+  def three_column
+  end
 end
