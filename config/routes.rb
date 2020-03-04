@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   get 'uninav/branded',         to: 'uninav#branded'
 get 'uninav/anchor',            to: 'uninav#anchor'
 get 'uninav/three_column',      to: 'uninav#three_column'
-
 get 'uninav/home_page',      to: 'uninav#home_page'
+get 'uninav/schools_colleges',      to: 'uninav#schools_colleges'
 
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'

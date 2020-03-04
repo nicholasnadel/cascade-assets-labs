@@ -4,32 +4,36 @@
  */
 
 .editableContent {
-  ul, ol {
+
+  ul,
+  ol {
     margin-left: $base-spacing*2;
   }
 
-  li ul, li ol {
+  li ul,
+  li ol {
     margin-top: 10px;
   }
 
   img {
     margin: 0 $base-spacing $base-spacing $base-spacing;
     padding: 10px;
-    background: #ffffff;
+
     -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    
+
     &[align="left"] {
       margin-left: 0;
     }
+
     &[align="right"] {
       margin-right: 0;
     }
   }
 
   .editableContent .noborder {
-  border: 0;
+    border: 0;
   }
 
   .video {
@@ -39,7 +43,9 @@
     overflow: hidden;
     margin-bottom: $base-spacing;
 
-    iframe, object, embed {
+    iframe,
+    object,
+    embed {
       position: absolute;
       top: 0;
       left: 0;
