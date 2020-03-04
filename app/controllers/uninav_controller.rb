@@ -11,4 +11,7 @@ class UninavController < ApplicationController
 
   def three_column
   end
+
+  def home_page
+  end
 end
