@@ -9,15 +9,21 @@
 ##    
 ## callout, photo, noPhoto, styleOne, styleTwo
 <div class="callout-box-widget--left callout callout-box-widget--$color">
+
+    <div class="editableContent">
+    
     #if ($preheader != '')
         <div class="preheader">${_EscapeTool.xml($preheader)}</div>
     #end
     #if ($headline != '')
         <h2>${_EscapeTool.xml($headline)}</h2>
     #end
-    <hr/>
-    <div class="editableContent">$content</div>
-    <ul class="buttonLinks">
+        #if (($preheader != '') || ($headline != ''))
+            <hr/>
+        #end
+    
+      <div>$content</div>
+      <ul class="buttonLinks">
         #foreach ($link in $links)
             #set ($linkType = $link.getChild('linkType').value )
             #if ($linkType == 'Internal Link')
@@ -34,7 +40,9 @@
                 </li>
             #end
         #end
-    </ul>
+      </ul>
+    </div>
+
 </div>
 ##    
 #end 
