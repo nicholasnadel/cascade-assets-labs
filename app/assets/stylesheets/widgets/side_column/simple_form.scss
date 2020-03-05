@@ -80,8 +80,17 @@
 }
 
 .callout.simple-form-widget {
+  
+  font-size: 1.4rem;
+  
   h2 {
     margin-top: 12px;
+  }
+
+  input[type="Submit"] {
+    margin-bottom: 2rem;  
+    padding: .5rem 2rem;
+    text-align: left;
   }
 
   input[type="text"] {
@@ -89,9 +98,8 @@
   }
 
   .editableContent {
-    padding: 2px 4px;
-    line-height: 2.2rem;
-    font-size: 1.6rem;
+    line-height: 2rem;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
   }
 }
