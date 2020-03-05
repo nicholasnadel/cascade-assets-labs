@@ -20,4 +20,7 @@ class UninavController < ApplicationController
 
   def our_faculty
   end
+
+  def home_page
+  end
 end
