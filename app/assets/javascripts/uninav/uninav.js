@@ -131,7 +131,7 @@ function gs__mobileReveal() {
   $(searchButtonMobile).click(function () {
     $(this).addClass('uninav__hidden');
     $(searchInputDesktop).addClass('uninav__reveal').addClass('slide-left');
-    $(".gsst_a").show();
+    $('.gsst_a').show()
     $("#gsc-i-id1").focus();
     
     $('#gs_st50, .gsc-results-close-btn').click(function () {
