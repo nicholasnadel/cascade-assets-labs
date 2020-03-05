@@ -205,4 +205,22 @@
       }
     }
   }
+
+
+
+
+.gs-result .gs-title, .gs-result .gs-title * {
+  color: var(--cu-red);
+}
+
+
+
+.gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
+  color: var(--panther-black);
+}
+
+.gsc-results-wrapper-overlay.gsc-results-wrapper-visible {
+  font-family: $futura-regular;
+}
+
 }
