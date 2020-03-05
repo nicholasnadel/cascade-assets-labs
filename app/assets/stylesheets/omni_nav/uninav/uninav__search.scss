@@ -103,38 +103,12 @@
       // animation-delay: 1s;
       // animation-iteration-count: 1;
     }
-
-    .gsst_a {
-      display: none;
-    }
-
-    // @keyframes fadeInPlaceholder {
-    //   0% {
-    //     opacity: 0;
-    //   }
-    //   /* Finish changes by here */
-    //   20% {
-    //     opacity: 0.2;
-    //   }
-    //   50% {
-    //     opacity: 0.5;
-    //   }
-    //   100% {
-    //     opacity: 1
-    //   }
-    // }
-    // inserts icon into google search
-    // #gs_st50::before {
-    //   content: "\f002";
-    //   font-family: 'Font Awesome 5 Free';
-    //   font-weight: 900;
-    // }
   }
 
-  .gsc-search-box-tools .gsc-clear-button {
-    // display: block;
-  }
-
+  .gsst_a .gscb_a {
+    color: v(panther-black);
+    cursor: pointer;
+}
   .gstl_50.gssb_c {
     // @include qbal-stagger-children;
     @include qbal-slideUp-enter;

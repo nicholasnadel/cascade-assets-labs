@@ -43,6 +43,7 @@ $large-screen: 1130px;
       font-weight: 800;
       text-align: center;
       padding-bottom: 5px;
+      color: v(white);
 
       @include media($medium-screen) {
         text-align: left;
@@ -75,7 +76,9 @@ $large-screen: 1130px;
           line-height: 22px;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
           font-family: $font-stack-body;
           margin: 0 0 15px 0;
           font-size: 18px;
@@ -84,9 +87,10 @@ $large-screen: 1130px;
 
       &.alert-link {
         padding-top: 20px;
+
         a {
           color: $white;
-          border-bottom: 2px dotted rgba(255,255,255,0.5);
+          border-bottom: 2px dotted rgba(255, 255, 255, 0.5);
         }
       }
     }
