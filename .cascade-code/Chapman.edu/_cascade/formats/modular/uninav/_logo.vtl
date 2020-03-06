@@ -20,7 +20,7 @@
 #end
     <div class="uninav__logo--primary" id="uninav__logo--primary">
           #if ($linkURL != '' && $linkURL != '/')
-              <a id="uninav-logo-${_EscapeTool.xml($menuID)}" href="${_EscapeTool.xml($linkURL)}" 
+              <a id="uninav-logo-${_EscapeTool.xml($menuID)}" href="site://Chapman.edu/${_EscapeTool.xml($linkURL)}" 
                   title="${_EscapeTool.xml($linkTitle)}"
                   #if ($iconType == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")
                       class="icon icon-${_EscapeTool.xml($logoContainer.getChild('icon_cssClass').value)}"
