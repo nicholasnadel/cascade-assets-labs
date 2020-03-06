@@ -1101,7 +1101,16 @@ html {
         -webkit-box-pack: center;
         justify-content: center;
       }
+      &__search-input--desktop {
+        display: none;
+
+        &.slide-left {
+          @include qbal-slideLeft-enter;
+
+          margin-right: 0;
+        }
     }
+    
   }
 
   &__utility-nav--wrapper {
