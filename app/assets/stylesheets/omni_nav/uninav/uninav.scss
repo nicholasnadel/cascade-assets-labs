@@ -1114,6 +1114,10 @@ html {
       }
     }
   }
+
+  #uninav .uninav__search-input--desktop.slide-left {
+    margin-right: 0;
+  }
 }
 
 @media only screen and (max-width: 300px) {
