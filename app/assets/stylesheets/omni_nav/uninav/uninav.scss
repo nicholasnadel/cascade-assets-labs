@@ -1086,7 +1086,10 @@ html {
     #uninav .uninav__utility-nav--search-wrapper .gscb-input {
       min-width: 100vw;
     }
+  }
 
+  #uninav .uninav__search-input--desktop.slide-left {
+    margin-right: 0;
   }
 }
 
@@ -1113,10 +1116,6 @@ html {
         justify-content: center;
       }
     }
-  }
-
-  #uninav .uninav__search-input--desktop.slide-left {
-    margin-right: 0;
   }
 }
 
