@@ -1088,8 +1088,19 @@ html {
     }
   }
 
-  #uninav .uninav__search-input--desktop.slide-left {
-    margin-right: 0;
+  .uninav {
+    &__utility-nav--search-wrapper {
+      margin-right: 10px;
+
+      .uninav__search-button--mobile {
+        border-right: none;
+      }
+    }
+  }
+
+  .uninav__utility-nav--search-wrapper .gsc-input {
+    min-width: auto;
+    padding-right: 0;
   }
 }
 
@@ -1116,7 +1127,19 @@ html {
         justify-content: center;
       }
     }
+
+    .uninav {
+      &__utility-nav--search-wrapper {
+        margin-right: 0;
+
+        .uninav__search-button--mobile {
+          border-right: none;
+        }
+      }
+    }
   }
+
+
 }
 
 @media only screen and (max-width: 300px) {
