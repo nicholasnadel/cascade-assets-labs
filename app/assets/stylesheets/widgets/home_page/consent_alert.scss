@@ -1,8 +1,4 @@
-.optanon-alert-box-wrapper {
 
-  border-top: 1px solid black;
-
-}
 .optanon-alert-box-wrapper .optanon-alert-box-button-middle {
   background-color: v(cu-red);
   border: v(cu-red);
@@ -15,9 +11,7 @@ padding-top: 8px;
 padding-bottom: 8px;
 font-size: 1.6rem;
 }
-.optanon-alert-box-wrapper {
-  background-color: v(panther-black);
-}
+
 optanon-alert-box-body {
   display: flex;
   justify-content: space-between;
