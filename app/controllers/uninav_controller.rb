@@ -23,4 +23,7 @@ class UninavController < ApplicationController
 
   def home_page
   end
+
+  def a_z 
+  end
 end
