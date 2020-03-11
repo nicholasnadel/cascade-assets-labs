@@ -2,38 +2,42 @@
   //margin: 15px 0 5px 0;
   margin: 0 0 20px 0;
   text-align: center;
+
   .photoCallout {
     display: inline-block;
     float: none;
     margin: 0 0 20px 12px;
     border: 0;
-    padding: 10px;
     background: #ffffff;
-    -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+
     position: relative;
     word-wrap: normal;
     width: 160px;
+
     &:hover {
       text-decoration: none;
       cursor: hand;
       cursor: pointer;
     }
+
     &:first-child {
       // margin: 0 0 20px 0;
       // width: 160px;
     }
+
     .image-container {
       height: 130px;
     }
+
     img {
       max-width: 100%;
     }
+
     .caption {
       height: 50px;
       background-color: $cu-red;
       top: 0px;
+
       .text {
         text-align: center;
         text-transform: uppercase;
@@ -43,6 +47,7 @@
         padding: 0px;
       }
     }
+
     @include bp(wildcard-min, 500px) {
       margin: 0 0 20px 8px;
       // float: left;

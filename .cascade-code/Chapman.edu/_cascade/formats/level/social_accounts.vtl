@@ -1,3 +1,5 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet"/>
+
 #* 
  * This block is used for the social "Follow Us" ribbon at the top of pages.
  *
@@ -48,13 +50,15 @@
             #elseif ( $name == 'flickr')
                 #set ( $fontAwesomeClass = "fab fa-flickr")
             #elseif ( $name == 'instagram')
-                #set ( $fontAwesomeClass = "fab fa-instagram")
+                #set ( $fontAwesomeClass = "fab fa-instagram-square")
             #elseif ( $name == 'twitter')
                 #set ( $fontAwesomeClass = "fab fa-twitter-square")
             #elseif ( $name == 'vimeo')
                 #set ( $fontAwesomeClass = "fab fa-vimeo-square")    
             #elseif ( $name == 'youtube')
                 #set ( $fontAwesomeClass = "fab fa-youtube-square")   
+            #elseif ( $name == 'youtube')
+                #set ( $fontAwesomeClass = "fab fa-youtube-square")  
             #elseif ( $name == 'linkedin')
                 #set ( $fontAwesomeClass = "fab fa-linkedin")  
             #elseif ( $name == 'blog')
@@ -63,13 +67,13 @@
         
             #set ( $url = $_SerializerTool.serialize( $account.getChild('account_url'), true) )
             #if ( $velocityCount == 1 and $length == 1)
-                <a href="$url"><li class="$name $fontAwesomeClass first-last"></li></a>
+                <a aria-label="$name" href="$url"><li class="$name $fontAwesomeClass first-last"></li></a>
             #elseif ( $velocityCount == 1 )
-                <a href="$url"><li class="$name ${_EscapeTool.xml($fontAwesomeClass)} first"></li></a>
+                <a aria-label="$name"  href="$url"><li class="$name ${_EscapeTool.xml($fontAwesomeClass)} first"></li></a>
             #elseif ( $velocityCount == $length)
-                <a href="$url"><li class="$name $fontAwesomeClass last"></li></a>
+                <a aria-label="$name"  href="$url"><li class="$name $fontAwesomeClass last"></li></a>
             #else
-                <a href="$url"><li class="$name $fontAwesomeClass"></li></a>
+                <a aria-label="$name"  href="$url"><li class="$name $fontAwesomeClass"></li></a>
             #end
         #end
     </ul>

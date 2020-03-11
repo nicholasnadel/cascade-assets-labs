@@ -17,4 +17,13 @@ class UninavController < ApplicationController
 
   def schools_colleges
   end
+
+  def our_faculty
+  end
+
+  def home_page
+  end
+
+  def a_z 
+  end
 end

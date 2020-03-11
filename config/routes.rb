@@ -16,7 +16,9 @@ get 'uninav/anchor',            to: 'uninav#anchor'
 get 'uninav/three_column',      to: 'uninav#three_column'
 get 'uninav/home_page',      to: 'uninav#home_page'
 get 'uninav/schools_colleges',      to: 'uninav#schools_colleges'
-
+get 'uninav/our_faculty',    to: 'uninav#our_faculty'
+get 'uninav/home_page', to: 'uninav#home_page'
+get 'uninav/a_z', to: 'uninav#a_z'
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'
 
