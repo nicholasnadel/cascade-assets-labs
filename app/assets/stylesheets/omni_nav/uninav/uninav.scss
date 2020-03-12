@@ -1259,6 +1259,8 @@ html.off-canvas__blur {
 .uninav__global-nav > ul > li {
 
   flex: unset;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
 }
 
 .uninav__global-nav a {
@@ -1268,9 +1270,9 @@ html.off-canvas__blur {
 /* Inline #20 | http://localhost:5000/uninav/home_page */
 
 .uninav__dropdown--parent {
-  margin-left: 10px !important;
-  margin-right: 10px !important;
-  flex-basis: 100%;
+  // margin-left: 10px !important;
+  // margin-right: 10px !important;
+  // flex-basis: 100%;
 }
 
 #uninav-global-campus-life {
@@ -1284,10 +1286,10 @@ html.off-canvas__blur {
 
 }
 
-#uninav__pipe {
+.uninav__pipe {
 
-  max-height: 30px;
-  color: yellow !important;
-  fill: yellow;
+  border-right: 1px solid var(--cu-light-grey);
+  width: auto;
+  height: 25px;
 
 }
