@@ -33,8 +33,10 @@ function toggleAriaExpandVal() {
       var menuItem = $(e.currentTarget);
       if (menuItem.attr("aria-expanded") === "true") {
         $(this).attr("aria-expanded", "false");
+        $(this).find('.uninav__dropdown--child').addClass('uninav__dropdown--child--collapse')
       } else {
         $(this).attr("aria-expanded", "true");
+        $(this).find('.uninav__dropdown--child').removeClass('uninav__dropdown--child--collapse')
       }
     }
   });
