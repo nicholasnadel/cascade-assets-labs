@@ -835,14 +835,18 @@ html {
 
 
         &.slide-left {
-          // @include qbal-grow-enter;
           @include qbal-slideLeft-enter;
-          // animation-delay: 150ms;
-          // animation-duration: 150ms;
           margin-right: 15px;
         }
       }
     }
+    .uninav__global-nav > ul > li {
+
+      flex: 100%;
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+    
 
     .uninav__search-button--mobile {
       width: 80px;
@@ -853,8 +857,6 @@ html {
       cursor: pointer;
 
       &:after {
-        // border-right-style: solid;
-        // border-right-width: 1px;
         border-right: none;
         display: grid;
         content: "\f002";
