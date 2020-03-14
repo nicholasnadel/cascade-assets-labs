@@ -208,40 +208,6 @@ On a page level, configure via:
       #import ( "/_cascade/formats/modular/uninav/_global.vtl" )
 #end
 
-#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink)
-  ## Law global nav dropdowns don't have icons
-  #if( $umbrellaDirectory != 'law' )
-    #set ( $overviewIconClass = "icon-file-text" )
-  #else
-    #set ( $overviewIconClass = "" )
-  #end
-
-  <div class="global-nav-dropdown">
-    <ul>
-      #foreach( $dropdownLink in $dropdownLinks )
-        #set ($defaultLinkName = "${_EscapeTool.xml( $dropdownLink.text )}")
-          <li>
-          #if($dropdownLink.link.toString().contains("http"))
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">
-          #elseif($dropdownLink.link.toString().contains("alumni/events/index"))
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link" aria-label="Alumni events">
-          #elseif($dropdownLink.link.toString().contains("alumni/get-involved/index"))
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link" aria-label="Alumni: Get Involved">
-          #elseif($dropdownLink.link.toString().contains("support-chapman/get-involved"))
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link" aria-label="Support Chapman: Get Involved">
-          #elseif($dropdownLink.link.toString().contains("about/connect/index"))
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link" aria-label="Connect with Chapman">
-          #else
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
-          #end
-            ${_EscapeTool.xml( $dropdownLink.text )}
-          </a>
-        </li>
-      #end
-    </ul>
-  </div>
-#end
-
 ##
 ## Utility Nav Macros
 ##
@@ -314,7 +280,7 @@ On a page level, configure via:
 #macro ( buildOffCanvasNavMenus )
   ## For umbrella cats, build secondary menu.
   <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-    #buildOffCanvasLeftNav()
+    #buildOffCanvasDirectoryMenu()
     #buildOffCanvasNavMainMenu()
   </div>
 #end
