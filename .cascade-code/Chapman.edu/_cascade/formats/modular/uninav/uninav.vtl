@@ -308,16 +308,18 @@ On a page level, configure via:
   #set ( $currentPathRoot = $currentPage.path.replaceAll('/(.*)', "") )
 
   #if ( $currentPathRoot != "index" && $currentPathRoot != "")
-      #set ( $offCanvasAssets = $_.locateFolder($currentPathRoot) )
+      #set ( $offCanvasNavAssets = $_.locateFolder($currentPathRoot) )
+      #set ( $offCanvasLabel = $offCanvasNavAssets.label)
+      
       <div id="off-canvas-umbrella" class="off-canvas-menu">
         <div class="menu-header">
-          <span tabindex="0" class="menu-label">${currentPathRoot}</span>
+          <span tabindex="0" class="menu-label">${offCanvasLabel}</span>
           <span tabindex="0" class="toggle-menu-label">Chapman Menu</span>
         </div>
         
         <div id="off-canvas-umbrella-navigation" class="off-canvas-menu">
             <ul class="root-umbrella-nav">
-                #foreach( $asset in $offCanvasAssets.children)
+                #foreach( $asset in $offCanvasNavAssets.children)
                   #buildDrillDownList($asset)
                 #end
             </ul>
