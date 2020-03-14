@@ -31,11 +31,6 @@
     font-size: 1em;
     clear: both;
 
-    &:after {
-      content: '»';
-      margin-left: 3px;
-    }
-
     &:hover {
       background: $red-hover;
     }

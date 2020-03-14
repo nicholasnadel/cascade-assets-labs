@@ -1,30 +1,30 @@
 .primaryContent .main {
   max-width: none !important;
   width: 100%;
+
   .featureImage {
     display: inline-block;
     float: left;
     margin: 0px 20px 10px 0;
-    //border: 1px solid #c1c1c1;
-    padding: 10px;
     background: #ffffff;
-    -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
   }
+
   section {
     .content {
       float: left;
       width: 100%;
+
       .linkList {
         padding: 0;
         list-style-type: none;
         float: left;
+
         li {
           margin: 0 0 5px 0;
         }
       }
     }
+
     h3 {
       clear: both;
       color: $cu-red;

@@ -59,7 +59,6 @@ html {
     &__logo {
       &--secondary {
         @include qbal-slideRight-exit;
-        // display: none;
       }
     }
 
@@ -106,8 +105,8 @@ html {
 #uninav {
   display: grid;
   grid-template-areas:
-  "logo secondaryLogo utility utility"
-  "global global global cta";
+    "logo secondaryLogo utility utility"
+    "global global global cta";
   grid-template-columns: 1fr;
   background-color: $white;
   top: 0;
@@ -124,8 +123,17 @@ html {
       align-items: center;
       border-bottom: 1px solid $cu-light-grey;
       padding-left: 2.5rem;
-      white-space: nowrap;
       @include qbal-fade-enter;
+
+      &--primary {
+        a {
+          display: grid;
+        }
+      }
+
+      &--mobile {
+        display: none;
+      }
 
       &--secondary {
         font-weight: 800;
@@ -227,6 +235,24 @@ html {
           height: 38px !important;
         }
       }
+
+      .gsc-results-close-btn.gsc-results-close-btn-visible {
+        opacity: 1;
+        transform: scale(1.5);
+        background-image: none;
+        z-index: 1;
+      }
+
+      .gsc-results-close-btn.gsc-results-close-btn-visible:after {
+        content: "\f00d";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 1.5em;
+        right: 1.4rem;
+        position: relative;
+      }
+
+
 
       ul {
         display: flex;
@@ -493,6 +519,7 @@ html {
 #uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
+
 }
 
 // UNINAV STRUCTURE
@@ -592,7 +619,7 @@ html {
 
 // MEDIA QUERIES
 
-@media only screen and (max-width: 1420px)  {
+@media only screen and (max-width: 1420px) {
 
   .uninav__utility-nav--audiences-container {
     @include qbal-slideLeft-exit;
@@ -656,18 +683,72 @@ html {
       &__cta {
         ul {
           @include qbal-slideUp-exit;
+          display: none;
         }
       }
     }
   }
 }
 
-@media only screen and (max-width: 1148px) {
-  #uninav {
+
+
+@media only screen and (max-width: 1300px) {
+
+  .uninav--has-secondary-menu {
     .uninav {
-      &__cta {
-        &--wrapper {
-          display: none;
+      &__utility-nav--search-wrapper {
+        margin-right: 0 !important;
+      }
+
+      &__search-input--desktop {
+        display: none;
+
+        &.slide-left {
+          // @include qbal-grow-enter;
+          @include qbal-slideLeft-enter;
+          // animation-delay: 150ms;
+          // animation-duration: 150ms;
+          margin-right: 15px;
+        }
+
+
+      }
+
+
+    }
+
+    .uninav__search-button--mobile {
+      width: 80px;
+      height: 60px;
+      border-left: 1px solid $cu-light-grey;
+      border-right: none !important;
+      display: grid;
+      cursor: pointer;
+
+      &:after {
+        // border-right-style: solid;
+        // border-right-width: 1px;
+        border-right: none;
+        display: grid;
+        content: "\f002";
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        align-items: center;
+      }
+
+      &:active {
+        @include qbal-fade-exit;
+
+        animation-duration: 150ms;
+
+        &:after {
+          transform: rotate(-260deg);
+          transition-duration: 150ms;
+          border-right: none;
+          -webkit-transform: rotate(-260deg);
+          -moz-transform: rotate(-260deg);
+          -ms-transform: rotate(-260deg);
+          -o-transform: rotate(-260deg);
         }
       }
     }
@@ -677,6 +758,12 @@ html {
 // TABLET LANDSCAPE
 @include respond(tab-land) {
   #uninav {
+
+    .cta--underneath {
+      z-index: -1;
+      @include qbal-slideLeft-exit;
+    }
+
     .uninav {
       &__logo {
         width: 100%;
@@ -686,6 +773,7 @@ html {
           @include qbal-slideRight-exit;
         }
       }
+
 
       &__menu-item-dropdown-child:hover>ul {
         -webkit-box-orient: vertical;
@@ -840,6 +928,10 @@ html {
         justify-content: center;
         @include qbal-slideRight-enter;
 
+        .fas.fa-bars {
+          font-size: 2rem;
+        }
+
         .hamburger-menu-button {
           background-color: $white;
           border: none;
@@ -924,16 +1016,38 @@ html {
     grid-template-columns: 10% 2fr 1fr;
     grid-gap: 10px;
 
+    .logo--underneath {
+      @include qbal-slideLeft-exit;
+    }
+
     .uninav {
       &__global-nav {
         display: none;
       }
 
+
       &__logo {
         display: grid;
+        align-content: center;
 
         &--primary {
+          @include qbal-fade-exit;
+          animation-direction: forwards;
+          // display: none;
+
+          a {
+            display: none;
+          }
+        }
+
+
+        &--mobile {
+          @include qbal-fade-enter;
           display: grid;
+
+          svg {
+            max-width: 80%;
+          }
         }
 
         .chapman-logo {
@@ -953,8 +1067,40 @@ html {
 
       &__hamburger-menu {
         justify-content: center;
+
       }
     }
+
+    #gsc-i-id1 {
+      width: auto !important;
+    }
+
+    .uninav__search-input.uninav__search-input--desktop.slide-left {
+      width: 100%;
+
+    }
+
+
+
+
+    #uninav .uninav__utility-nav--search-wrapper .gscb-input {
+      min-width: 100vw;
+    }
+  }
+
+  .uninav {
+    &__utility-nav--search-wrapper {
+      margin-right: 10px;
+
+      .uninav__search-button--mobile {
+        border-right: none;
+      }
+    }
+  }
+
+  .uninav__utility-nav--search-wrapper .gsc-input {
+    min-width: auto;
+    padding-right: 0;
   }
 }
 
@@ -962,7 +1108,15 @@ html {
   #uninav {
     grid-template-areas: "logo hamburger utility";
     grid-template-rows: 60px;
-    grid-template-columns: 0.5fr 2fr 2fr;
+    grid-template-columns: 1fr 2fr 2fr;
+
+    &.utility-only {
+      grid-template-areas: "utility";
+
+      .uninav__utility-nav--wrapper {
+        width: 100vw;
+      }
+    }
 
     .uninav {
       &__global-nav {
@@ -973,7 +1127,19 @@ html {
         justify-content: center;
       }
     }
+
+    .uninav {
+      &__utility-nav--search-wrapper {
+        margin-right: 0;
+
+        .uninav__search-button--mobile {
+          border-right: none;
+        }
+      }
+    }
   }
+
+
 }
 
 @media only screen and (max-width: 300px) {
@@ -1070,68 +1236,18 @@ html.off-canvas__blur {
   }
 }
 
+
+
 // END TABLET PORTRAIT
 // END MEDIA QUERIES
-
-.uninav {
-  &__hidden {
-    display: none !important;
-  }
-
-  &__reveal {
-    display: grid !important;
-  }
-}
-// navsNoJs Directory
-.no-js {
-.uninav__dropdown--parent {
-  display: block;
-  flex-direction: column;
-  position: relative;
-
-  &[aria-expanded="false"] {
-    .uninav {
-      &__dropdown-wrapper {
-        &>a {
-          &:after {
-            content: "\f0d7";
-            transform: rotate(0deg);
-            transition: all linear 0.25s;
-          }
-        }
-      }
-    }
-  }
-
-  &[aria-expanded="true"], &:hover, &:focus {
-    .uninav {
-      &__dropdown-wrapper {
-        &>a {
-          &:after {
-            content: "\f0d7";
-            transform: rotate(180deg) translateX(-1rem);
-            transition: all linear 0.25s;
-          }
-        }
-      }
+#uninav {
+  .uninav {
+    &__hidden {
+      display: none !important;
     }
 
-    .uninav__dropdown--child {
-      z-index: 99999999;
-      display: flex;
-      @include qbal-dropdown-enter;
+    &__reveal {
+      display: grid !important;
     }
   }
-
-  &[aria-expanded="false"], &:not(:hover) {
-
-    // TODO: refactor first .uninav__dropdown--child... display: none is not animitable.
-    .uninav__dropdown--parent,
-    .uninav__dropdown--child {
-      // @include qbal-shrink-exit;
-      animation: unset;
-    }
-  }
-}
-
 }

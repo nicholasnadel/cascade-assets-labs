@@ -21,17 +21,26 @@ $tab-content-border-color: #c1c1c1;
   clear: both;
   display: inline-block;
 
-  a { border-bottom: none; text-decoration: none;}
+  a {
+    border-bottom: none;
+    text-decoration: none;
+  }
+
   // Non-Featured Story titles
   div.news div.title,
   div.events div.title {
     margin: 10px 0 0 0;
+
     a {
       font-weight: normal;
       font-size: 14px;
       color: $text-color;
-      &:hover { color: $link-color; }
+
+      &:hover {
+        color: $link-color;
+      }
     }
+
     .bullet {
       font-size: 12px;
       position: relative;
@@ -39,14 +48,19 @@ $tab-content-border-color: #c1c1c1;
       display: none;
     }
   }
+
   // The links at the bottom of the page
-  .allNews, .allEvents, .readMore {
+  .allNews,
+  .allEvents,
+  .readMore {
     margin-top: 25px;
     display: block;
   }
+
   .no-js-link {
     display: none;
     padding-left: 10px !important;
+
     .no-js & {
       display: block;
     }
@@ -64,9 +78,15 @@ $tab-content-border-color: #c1c1c1;
   display: block;
   height: auto;
   clear: both;
+
   @include bp(l) {
     padding: 0 0 10px 0;
+
+    li {
+      font-family: $futura-regular;
+    }
   }
+
   .no-js & {
     display: none;
   }
@@ -75,7 +95,7 @@ $tab-content-border-color: #c1c1c1;
 // The clickable tabs
 .newsEventsNav li {
   // When small, make the tabs collapse.
-  background-color: #cfcfcf;
+  background-color: v(cu-light-grey);
   color: #383838;
   font-size: 1em;
   padding: 0 17px 0 17px;
@@ -84,30 +104,35 @@ $tab-content-border-color: #c1c1c1;
   cursor: pointer;
   bottom: -1px; // Cover up the border of the primary content
   position: relative;
-  border-top: 2px solid transparent;  // Keep text in same spot as active element
-  border-bottom: 1px solid #c1c1c1;
+  border-top: 2px solid transparent; // Keep text in same spot as active element
+  border-bottom: 1px solid v(cu-light-grey);
   list-style-type: none;
   margin: 0;
 
   // When its a news-events-widget item, or
   // when if it is in the left-nav,
   // make the tabs look like normal tabs.
-  .news-events-widget &, .leftNav & {
+  .news-events-widget &,
+  .leftNav & {
     margin: 0 2px 0 0;
     float: left;
     transition: padding 200ms;
   }
+
   // When big screen, make the tabs look like tabs
   @include bp(l) {
     margin: 0 2px 0 0;
     float: left;
     transition: padding 200ms;
   }
+
   &:hover {
     background-color: #d8d8d8;
     color: $link-color;
   }
-  &.active { // The selected tab
+
+  &.active {
+    // The selected tab
     padding: 0 15px;
     background-color: $tab-content-bg-color;
     font-weight: 600;
@@ -116,8 +141,12 @@ $tab-content-border-color: #c1c1c1;
     border-right: 1px solid $tab-content-border-color;
     border-left: 1px solid $tab-content-border-color;
     border-bottom: 1px solid $tab-content-bg-color;
-    @include bp(l) { padding: 0 40px 0 40px; }
+
+    @include bp(l) {
+      padding: 0 40px 0 40px;
+    }
   }
+
   &:focus {
     outline: 2px dotted $cu-red;
     outline-offset: 5px;
@@ -136,17 +165,24 @@ $tab-content-border-color: #c1c1c1;
 
 // The container of all content
 .newsEventsContent {
-  background-color: $tab-content-bg-color;
-  border: 1px solid $tab-content-border-color;
+  border: 1px solid v(cu-light-grey);
   position: relative;
   //color: $text-color;
   color: #383838;
   clear: both;
   padding: 20px;
-  div { margin: 0; }
-  > li { display: none; }
-  > li.active {
+
+  div {
+    margin: 0;
+  }
+
+  >li {
+    display: none;
+  }
+
+  >li.active {
     display: block;
+
     .no-js & {
       display: none;
     }
@@ -155,25 +191,28 @@ $tab-content-border-color: #c1c1c1;
 
 // The featured tab content
 .newsEventsContent .featured {
-  position:   relative;
-  overflow:   auto;
+  position: relative;
+  overflow: auto;
   overflow-x: hidden;
+
   .title {
     margin: 5px 0 10px 0;
     font-weight: bold;
     font-size: 1.1em;
     line-height: 1.1em;
   }
+
   .description {
     clear: left;
   }
+
   .image {
     margin: 1px 20px 20px 1px;
-    padding: 10px;
     background: #ffffff;
     height: auto;
-    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+
   }
+
   .col1 {
     float: left;
   }
@@ -181,7 +220,10 @@ $tab-content-border-color: #c1c1c1;
 
 // The news and events tabs content
 .newsEventsContent .story {
-  a { border-bottom: none; }
+  a {
+    border-bottom: none;
+  }
+
   display: inline-block;
   vertical-align: top;
   border-bottom: 1px solid #ded3bb;
@@ -190,6 +232,7 @@ $tab-content-border-color: #c1c1c1;
   height: 100%;
   position: relative;
   padding: 15px 0px 15px 0px;
+
   @include bp(l) {
     border: none;
     border-right: 1px solid #dfd3bc;
@@ -231,18 +274,21 @@ $tab-content-border-color: #c1c1c1;
     height: 25px;
     width: 85px;
     position: relative;
+
     .day {
       font-size: 30px;
       position: absolute;
       top: 7px;
       left: 0;
     }
+
     .month {
       font-size: 12px;
       position: absolute;
       top: 0;
       left: 40px;
     }
+
     .year {
       font-size: 12px;
       position: absolute;
@@ -254,8 +300,12 @@ $tab-content-border-color: #c1c1c1;
 
 // Styles for the today and tomorrow texts (hidden by default, and shown with js)
 .newsEvents .story {
-  .todayTomorrow { height: 20px; }
-  .today, .tomorrow {
+  .todayTomorrow {
+    height: 20px;
+  }
+
+  .today,
+  .tomorrow {
     display: none;
     font-weight: bold;
   }

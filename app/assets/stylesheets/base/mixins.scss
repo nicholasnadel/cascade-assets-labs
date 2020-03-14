@@ -427,12 +427,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   border: none;
   @include box-shadow;
 
-  &:after {
-    content: '»';
-    padding-left: 4px;
-    font-size: 16px;
-  }
-
   &:hover,
   &:focus {
     background-color: lighten($bg-color, 8%);
@@ -789,7 +783,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
           &.home-menu {
             &:focus-within {
-              outline-color: $cu-red;
+              outline-color: v(panther-black);
               outline-style: auto;
               outline-width: 5px;
             }
@@ -800,7 +794,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .menu-back {
         justify-content: start;
         align-items: center;
-        background: $cu-red;
+        background: v(panther-black);
         color: $white;
         font-weight: bold;
         line-height: 1.6rem;
@@ -836,7 +830,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 
     &.home-menu {
-      background: $cu-red;
+      background: v(panther-black);
       font-weight: bold;
       color: $white;
 

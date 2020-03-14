@@ -210,7 +210,7 @@
 			<group collapsed="true" identifier="bannerNotificationWidget" label="Banner Notification">
 				<shared-field identifier="display" path="display"/>
 				<shared-field identifier="bgColor" path="background-color"/>
-				<text help-text="300 Characters Maximum" identifier="text" label="Text" maxlength="300" required="true" wysiwyg="true" wysiwyg-toolbar-remove="insert image,insert table,"/>
+				<text identifier="text" label="Text" required="true" wysiwyg="true"/>
 			</group>
 			<group collapsed="true" identifier="careerBlockWidget" label="Career Block">
 				<shared-field identifier="display" path="display"/>
@@ -787,14 +787,31 @@
 					<radio-item value="Yes"/>
 					<radio-item value="No"/>
 				</text>
-				<text default="One" identifier="style" label="Style" required="true" type="radiobutton">
-					<radio-item label="One (light background)" value="One"/>
-					<radio-item label="Two (dark background)" value="Two"/>
+				<text default="Grey" identifier="color-value" label="Color" type="dropdown">
+					<dropdown-item value="Grey"/>
+					<dropdown-item value="Red"/>
+					<dropdown-item value="Black"/>
+					<dropdown-item value="Sand"/>
+					<dropdown-item value="White"/>
 				</text>
+				<text help-text="Preheader" identifier="preheader" label="Preheader (Optional)"/>
+				<text help-text="Headline" identifier="headline" label="Headline" multi-line="true"/>
+				<text identifier="copy" label="Copy" wysiwyg="true"/>
 				<asset identifier="image" label="Image (206px wide)" type="file"/>
 				<text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text"/>
-				<text identifier="headline" label="Headline"/>
-				<text identifier="copy" label="Copy" wysiwyg="true"/>
+				<group identifier="links" label="Links">
+					<group identifier="link" label="Link" multiple="true">
+						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+							<radio-item show-fields="rightColumn/widget/calloutBox/links/link/internalLink" value="Internal Link"/>
+							<radio-item show-fields="rightColumn/widget/calloutBox/links/link/externalLink" value="External Link"/>
+							<radio-item show-fields="rightColumn/widget/calloutBox/links/link/fileLink" value="File Link"/>
+						</text>
+						<text identifier="externalLink" label="External Link"/>
+						<asset identifier="internalLink" label="Internal Link" type="page"/>
+						<asset identifier="fileLink" label="File Link" type="file"/>
+						<text identifier="label" label="Label"/>
+					</group>
+				</group>
 			</group>
 			<group collapsed="true" identifier="simpleForm" label="Form">
 				<text default="Yes" identifier="display-form" label="Show" required="true" type="radiobutton">

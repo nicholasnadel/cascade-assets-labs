@@ -23,7 +23,7 @@
                     #set( $isCurrentPage = "drill-down-list-item")
                 #end
                 <li class="${isCurrentPage} uninav__menu-item-cta uninav__cta-menu-item--$menuID uninav__cta-menu-item--${_MathTool.add($foreach.index, 1)}">
-                    <a href="${_EscapeTool.xml($linkURL)}" id="uninav-cta-${_EscapeTool.xml($menuID)}"
+                    <a href="site://Chapman.edu/${_EscapeTool.xml($linkURL)}" id="uninav-cta-${_EscapeTool.xml($menuID)}"
                         #if ($iconType == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")
                             ## class="icon icon-${_EscapeTool.xml($menuItem.getChild('icon_cssClass').value)}"
                         #end
@@ -43,7 +43,7 @@
             #set( $isCurrentPage = "drill-down-list-item")
         #end
         <li class="${isCurrentPage} uninav__menu-item-cta uninav__cta-menu-item--$menuID uninav__cta-menu-item--${_MathTool.add($foreach.index, 1)}">
-            <a href="${_EscapeTool.xml($linkURL)}" id="uninav-cta-${_EscapeTool.xml($menuID)}"
+            <a href="site://Chapman.edu/${_EscapeTool.xml($linkURL)}" id="uninav-cta-${_EscapeTool.xml($menuID)}"
                 #if ($iconType == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")
                     ## class="icon icon-${_EscapeTool.xml($menuItem.getChild('icon_cssClass').value)}"
                 #end

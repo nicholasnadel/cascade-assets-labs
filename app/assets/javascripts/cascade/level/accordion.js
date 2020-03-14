@@ -51,10 +51,8 @@ $(function () {
         introText                 = ' .editableContent.summaryText',
         currentIntroText          = currentCollapsibleWidget + introText,
         currentIntroTextHeight    = $(currentIntroText).height(),
-        omniHeight                = $('#omni-nav-v2').height();
+        omniHeight                = $('#uninav').height();
 
-    //console.log('currentinrotext: ' + currentIntroText);
-    //console.log('currentintrotextheight: ' + currentIntroTextHeight);
     // EXPAND
     if ($(currentToggle).hasClass('expand')) {
       $(content).fadeIn('fast');
@@ -68,11 +66,6 @@ $(function () {
       if ((currentAccordion).length > 1) {
         $(currentToggle).text('Collapse');
       }
-      //console.log(currentIntroTextHeight);
-      //console.log('omniheight: ' + omniHeight);
-      $('html, body').animate({
-        scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
-      }, 100);
     }
     // HANDLE COLLAPSE TOGGLES
     else if ($(currentToggle).hasClass('collapse')) {
@@ -86,9 +79,6 @@ $(function () {
       if ((currentAccordion).length > 1) {
         $(currentToggle).text('Expand');
       }
-      $('html, body').animate({
-        scrollTop: $(currentCollapsibleWidget).offset().top - omniHeight
-      }, 100);
     }
   });
 });
