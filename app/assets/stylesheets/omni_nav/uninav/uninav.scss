@@ -1210,11 +1210,6 @@ html.off-canvas__blur {
   #main {
     // @include qbal-slideRight-exit;
   }
-  // navsNoJs Directory
-
-  
-
-  
 }
 
 .uninav__animation--exit {
@@ -1300,62 +1295,3 @@ html.off-canvas__blur {
   height: 25px;
 
 }
-
-
-
-
-
-
-
-
-
-
-.uninav__dropdown--parent {
-
-    &[aria-expanded="false"] {
-      .uninav {
-        &__dropdown-wrapper {
-          &>a {
-            &:after {
-              content: "\f0d7";
-              transform: rotate(0deg);
-              transition: all linear 0.25s;
-            }
-          }
-        }
-      }
-    }
-  
-    &[aria-expanded="true"], &:hover, &:focus, &:focus-within {
-      .uninav {
-        &__dropdown-wrapper {
-          &>a {
-            &:after {
-              content: "\f0d7";
-              transform: rotate(180deg) translateX(-1rem);
-              transition: all linear 0.25s;
-            }
-          }
-        }
-      }
-  
-      .uninav__dropdown--child {
-        z-index: 99999999;
-        display: flex;
-        @include qbal-dropdown-enter;
-      }
-    }
-  
-    &[aria-expanded="false"], &:not(:hover), &:focus-within {
-  
-      // TODO: refactor first .uninav__dropdown--child... display: none is not animitable.
-      .uninav__dropdown--parent,
-      .uninav__dropdown--child {
-        // @include qbal-shrink-exit;
-        animation: unset;
-      }
-    }
-    .uninav__dropdown--child--collapse {
-      display: none !important;
-    }
-  }
