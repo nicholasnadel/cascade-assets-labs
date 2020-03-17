@@ -397,8 +397,8 @@ html {
 
       >ul>li {
         flex: unset;
-        margin-left: 15px !important;
-        margin-right: 15px !important;
+        margin-left: 15px;
+        margin-right: 15px;
       }
 
       a {
@@ -832,9 +832,9 @@ html {
     }
 
     .uninav__global-nav>ul>li {
-      flex: unset;
-      margin-left: 15px;
-      margin-right: 15px !important;
+      flex: 100%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .uninav__search-button--mobile {
