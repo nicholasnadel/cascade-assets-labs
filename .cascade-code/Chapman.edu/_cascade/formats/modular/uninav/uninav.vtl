@@ -95,7 +95,7 @@ On a page level, configure via:
     #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[1] )
 
     #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
-    #setUmbrellaAssets()
+
     #set ( $brandClass = 'branded' )
   #else
     #set ( $brandClass = 'unbranded' )
@@ -144,46 +144,6 @@ On a page level, configure via:
   #end
 #end
 
-#macro ( setUmbrellaAssets )
-  ## umbrellaAssets equal Umbrella directory's visible (non-index) children. These
-  ## are used in OffCanvasNav secondary menu. This must be called after
-  ## $umbrellaDirectoryPath is set.
-  #set ( $umbrellaFolder = $_.locateFolder($umbrellaDirectoryPath) )
-  
-  #foreach( $childAsset in $umbrellaFolder.children )
-    #set ( $isAssetInCurrentPath = $_StringTool.substringAfter($currentPage.path, $childAsset.path).length())
-    ## When the 'Hide from navigation' box is not checked, and it has never been checked, the metadata
-    ## field doesn't exist for that asset. When the box is not checked, but it was at one point, it exists with a value of ''.
-    ## See Github issue: https://github.com/chapmanu/cascade-assets/issues/262
-    ## By default, set visibility to false
-    #set ( $isVisibleChild = false )
-    ## Since a symLink (External Link added to folders) can't be set by user to Hidden, set visibility to true:
-    #if ( $childAsset.assetType == 'symlink' )
-        #set ( $isVisibleChild = true ) 
-    #end
-    #if ( $childAsset.assetType == 'folder')
-      ## Both the folder and index page must be visible
-      #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-      #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
-      #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-      
-      #if ($isAssetInCurrentPath > 0)
-       #set ( $folderVisible = true )
-       #set ( $folderIndexVisible = true )
-      #end
-
-      #if ( $folderIndexVisible && $folderVisible )
-          #set ( $isVisibleChild = true )
-      #end
-    #elseif ( $childAsset.assetType == 'page' )
-      #set ( $isVisibleChild = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-    #end
-
-    #if ( $isVisibleChild )
-      #set ( $discard = $umbrellaAssets.add($childAsset) )
-    #end
-  #end
-#end
 ##
 ## Template Macros
 ##
@@ -206,40 +166,10 @@ On a page level, configure via:
 #uninavGlobal()
 #uninavCTA()
 
-
   <!-- Page overlay for when search results are displayed -->
   <div id="search-results-overlay"></div>
 </nav>
 #end
-
-
-##
-## Primary Nav Macros
-##
-## #macro ( buildPrimaryNav )
-  
-##     #buildPrimaryNavLeftContainer()
-##     #buildPrimaryNavLogoContainer()
-    
-##     #buildPrimaryNavRightContainer()
-    
-##     #buildGlobalNav()
-    
-##     #buildPrimaryNavSearchBox()
-  
-## #end
-
-## #macro ( buildPrimaryNavLogoContainer )
-
-##       #import ( "/_cascade/formats/modular/uninav/_logo_container.vtl" )
-
-##       #if ( $isUmbrellaCategory )
-##       <div class="secondary-logo">
-##         <a class="branded-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
-##       </div>
-##       #end
-
-## #end
 
 #macro (uninavUmbrellaToggleButton)
     #if ( $isUmbrellaCategory )
@@ -276,104 +206,6 @@ On a page level, configure via:
 
 #macro ( uninavGlobal ) 
       #import ( "/_cascade/formats/modular/uninav/_global.vtl" )
-#end
-
-## #macro ( buildPrimaryNavRightContainer )
-## <div class="uninav__utility-nav--wrapper">
-##   <div class="uninav__utility-nav">
-##     <ul class="uninav__menu-item-flex">
-##       <li class="uninav__menu-item--audiences"><a href="#">Students</a></li>
-##       <li class="uninav__menu-item--audiences"><a href="#">Staff</a></li>
-##       <li class="uninav__menu-item--audiences"><a href="#">Faculty</a></li>
-##       <li class="uninav__menu-item--audiences"><a href="#">Industry Partners</a></li>
-##       <span class="uninav__utility-nav--search-wrapper">
-##         <li class="uninav__search-input uninav__search-input--desktop">
-##           <div class="gcse-search"></div>
-##           <!-- <div class="gcse-searchresults-only"></div> -->
-##         </li>
-##       </span>
-##       <li class="uninav__menu-item-dropdown-parent" tabindex="0"><span class="uninav__menu-item-login">
-##           <i class="fas fa-paw"></i>
-##         </span>
-##         <div class="uninav__menu-item-dropdown-child uninav__login-button">
-##           <ul>
-
-##         #import("/_cascade/formats/modular/uninav/_login.vtl" )
-
-
-
-##           </ul>
-##         </div>
-##       </li>
-
-
-##     </ul>
-##   </div>
-## </div>
-## #end
-
-## #macro ( buildPrimaryNavSearchBox )
-##   <div class="nav-container" id="primary-nav-search">
-##     #buildSearchBox()
-##   </div>
-## #end
-
-##
-## Global Nav Macros
-##
-## #macro( buildGlobalNav )
-##   #import( "/_cascade/formats/modular/uninav/_globalNav_menu.vtl" )
-## #end
-
-#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink)
-  ## Law global nav dropdowns don't have icons
-  #if( $umbrellaDirectory != 'law' )
-    #set ( $overviewIconClass = "icon-file-text" )
-  #else
-    #set ( $overviewIconClass = "" )
-  #end
-
-  <div class="global-nav-dropdown">
-    <ul>
-      ## First list item is always Overview
-      ## REMOVING THIS UNTIL WE CAN ADD ICON TO FIRST ITEM
-    ##   <li>
-    ##     #set ( $parentPage = "" )
-    ##         #foreach ( $word in $overviewLink.split("/")[1].split("-") )
-    ##           #if ( $parentPage != "" )
-    ##             #set ( $parentPage = $parentPage + " " )
-    ##           #end
-          
-    ##         #if( $umbrellaDirectory != 'law' )
-    ##           #set ( $parentPage = $parentPage + $word.substring(0,1).toUpperCase() + $word.substring(1) )
-    ##         #else
-    ##           #set ( $parentPage = $link.sectionTitle )
-    ##         #end
-    ##     #end
-    ##     <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">$parentPage Overview</a>
-    ##   </li>
-      #foreach( $dropdownLink in $dropdownLinks )
-        #set ($defaultLinkName = "${_EscapeTool.xml( $dropdownLink.text )}")
-          <li>
-          #if($dropdownLink.link.toString().contains("http"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
-          #elseif($dropdownLink.link.toString().contains("alumni/events/index"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Alumni events">
-          #elseif($dropdownLink.link.toString().contains("alumni/get-involved/index"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Alumni: Get Involved">
-          #elseif($dropdownLink.link.toString().contains("support-chapman/get-involved"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Support Chapman: Get Involved">
-          #elseif($dropdownLink.link.toString().contains("about/connect/index"))
-            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link" aria-label="Connect with Chapman">
-          #else
-            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
-          #end
-            ${_EscapeTool.xml( $dropdownLink.text )}
-          </a>
-        </li>
-      #end
-    </ul>
-  </div>
 #end
 
 ##
@@ -448,22 +280,22 @@ On a page level, configure via:
 #macro ( buildOffCanvasNavMenus )
   ## For umbrella cats, build secondary menu.
   <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-    #if ( $isUmbrellaCategory )
-      #buildOffCanvasNavSecondaryMenu()
-      
-    #end
-
+    #buildOffCanvasDirectoryMenu()
     #buildOffCanvasNavMainMenu()
   </div>
 #end
 
 #macro ( buildOffCanvasNavMainMenu )
+  #set ( $currentPathRoot = $currentPage.path.replaceAll('/(.*)', "") )
+
   <div id="off-canvas-main" class="off-canvas-menu">
     <div class="menu-header">
       <span tabindex="0" class="menu-label">Chapman Menu</span>
 
       #if ( $isUmbrellaCategory )
         <span tabindex="0" class="toggle-menu-label">${umbrellaLabel} Menu</span>
+      #else
+        <span tabindex="0" class="toggle-menu-label">${currentPathRoot} Menu</span>
       #end
     </div>
     
@@ -472,21 +304,28 @@ On a page level, configure via:
   </div>
 #end
 
-#macro ( buildOffCanvasNavSecondaryMenu )
-  <div id="off-canvas-umbrella" class="off-canvas-menu">
-    <div class="menu-header">
-      <span tabindex="0" class="menu-label">${umbrellaLabel}</span>
-      <span tabindex="0" class="toggle-menu-label">Chapman Menu</span>
-    </div>
+#macro ( buildOffCanvasDirectoryMenu )
+  #set ( $currentPathRoot = $currentPage.path.replaceAll('/(.*)', "") )
 
-    <div id="off-canvas-umbrella-navigation">
-        <ul class="root-umbrella-nav">
-          #foreach ( $asset in $umbrellaAssets )
-            #buildDrillDownList( $asset )
-          #end
-        </ul>
-    </div>
-  </div>
+  #if ( $currentPathRoot != "index" && $currentPathRoot != "")
+      #set ( $offCanvasNavAssets = $_.locateFolder($currentPathRoot) )
+      #set ( $offCanvasLabel = $offCanvasNavAssets.label)
+      
+      <div id="off-canvas-umbrella" class="off-canvas-menu">
+        <div class="menu-header">
+          <span tabindex="0" class="menu-label">${offCanvasLabel}</span>
+          <span tabindex="0" class="toggle-menu-label">Chapman Menu</span>
+        </div>
+        
+        <div id="off-canvas-umbrella-navigation" class="off-canvas-menu">
+            <ul class="root-umbrella-nav">
+                #foreach( $asset in $offCanvasNavAssets.children)
+                  #buildDrillDownList($asset)
+                #end
+            </ul>
+        </div>
+      </div>
+  #end
 #end
 
 #import ( "/_cascade/formats/modular/uninav/_buildToggleIcon_macro.vtl")
