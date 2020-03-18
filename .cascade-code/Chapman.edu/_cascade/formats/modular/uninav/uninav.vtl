@@ -280,14 +280,14 @@ On a page level, configure via:
 #macro ( buildOffCanvasNavMenus )
   ## For umbrella cats, build secondary menu.
   <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-    #buildOffCanvasDirectoryMenu()
-    #buildOffCanvasNavMainMenu()
+      #buildOffCanvasDirectoryMenu()
+      #buildOffCanvasNavMainMenu()
   </div>
 #end
 
 #macro ( buildOffCanvasNavMainMenu )
   #set ( $currentPathRoot = $currentPage.path.replaceAll('/(.*)', "") )
-
+  
   <div id="off-canvas-main" class="off-canvas-menu">
     <div class="menu-header">
       <span tabindex="0" class="menu-label">Chapman Menu</span>
@@ -313,7 +313,7 @@ On a page level, configure via:
       
       <div id="off-canvas-umbrella" class="off-canvas-menu">
         <div class="menu-header">
-          <span tabindex="0" class="menu-label">${offCanvasLabel}</span>
+          <span tabindex="0" class="menu-label">${_EscapeTool.xml($offCanvasLabel)}</span>
           <span tabindex="0" class="toggle-menu-label">Chapman Menu</span>
         </div>
         
@@ -359,4 +359,3 @@ On a page level, configure via:
 ##
 #setVars()
 #buildOmniNav()
-

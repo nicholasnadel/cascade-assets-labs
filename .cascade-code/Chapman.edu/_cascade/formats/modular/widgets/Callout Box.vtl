@@ -7,7 +7,7 @@
 #set ($content = $_SerializerTool.serialize($callout.getChild('copy'),true) )
 #set ($links = $_XPathTool.selectNodes($callout.getChild('links'), "link") )
 #set ($imagePath = $callout.getChild('image').getChild('path').value)
-#if ($calloutBox.getChild('altText').value != "")
+#if ($callout.getChild('altText').value != "")
     #set ($altText = $callout.getChild('altText').value)
 #else
     #set ($altText = "")
