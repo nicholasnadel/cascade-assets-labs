@@ -6,8 +6,6 @@
 //= require_tree ./components
 //= require_tree ./regions
 //= require_tree ./uninav
-
-//= require cascade/analytics
 //= require cascade/carousel
 //= require cascade/back-to-top
 //= require cascade/collapsed-nav
