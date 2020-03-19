@@ -1,7 +1,9 @@
 ## GLOBAL NAV:
-#set ( $menuItems = $_XPathTool.selectNodes($contentRoot, "/system-data-structure/uninav/globalNav/menuItem/label") )
+#set ( $menuItems = $_XPathTool.selectNodes($contentRoot,
+"/system-data-structure/uninav/globalNav/menuItem/label") )
 #set ($pageTitle = $currentPage.metadata.title )
-#set ($pageTitle = $pageTitle.replaceAll(" ", "-").replaceAll("[^a-zA-Z-]", "").replaceAll("--", "-").toLowerCase() )
+#set ($pageTitle = $pageTitle.replaceAll(" ", "-").replaceAll("[^a-zA-Z-]", "").replaceAll("--",
+"-").toLowerCase() )
 
 <div class="uninav__global-nav">
     <ul class="uninav__include-in-mobile-menu">
@@ -11,13 +13,16 @@
         #if ($menuItems.size() >= 1)
             ## Outer Loop (main menu items)
             #foreach ($menuItem in $menuItems)
-                #set ( $menuID = $menuItem.value.replaceAll(" ", "-").replaceAll("[^a-zA-Z-]", "").replaceAll("--", "-").toLowerCase() )
+                #set ( $menuID = $menuItem.value.replaceAll(" ", "-").replaceAll("[^a-zA-Z-]", "").replaceAll("--",
+                "-").toLowerCase() )
                 ## main link for this menu item. If menu has dropdowns then it will be used as first "Overview" link in dropdown
                 ## but if main link has no dropdown then the main menu item becomes a link to that page eg Arts:
-                #set ($menuItemLink = $_XPathTool.selectSingleNode($menuItems, "//menuItem[label='${menuItem.value}']/menuLink") )
+                #set ($menuItemLink = $_XPathTool.selectSingleNode($menuItems,
+                "//menuItem[label='${menuItem.value}']/menuLink") )
 
                 ##before do primary-link OR dropdown, find out if there are submenu items:
-                #set ($submenuItems = $_XPathTool.selectNodes($menuItems, "//menuItem[label='${menuItem.value}']/submenuItem[label!='']") )
+                #set ($submenuItems = $_XPathTool.selectNodes($menuItems,
+                "//menuItem[label='${menuItem.value}']/submenuItem[label!='']") )
 
                 #if ($submenuItems.size() == 0)
                     ##main menu item with no dropdown eg Arts:
@@ -28,6 +33,7 @@
                             href="site://Chapman.edu/${menuItemLink.getChild('path').value}">
                             <span class="uninav__underline--center">${menuItem.value}</span></a>
                     </li>
+                    <span class="uninav__pipe"></span>
                 #else
                 ## main menu item eg. About, Academics followed by dropdown of sub items:
                     <li
@@ -70,7 +76,7 @@
                                             <a
                                                id="uninav-global-${_EscapeTool.xml($menuID)}"
                                                 class="icon icon-$iconClass"
-                                                href="site://Chapman.edu/${_EscapeTool.xml($linkURL)}">
+                                                href="${_EscapeTool.xml($linkURL)}">
                                                 <span class="uninav__underline--center">${_EscapeTool.xml($label)}</span>
                                             </a>
                                         </li>
@@ -79,6 +85,7 @@
                             </ul>
                         </div>
                     </li>
+                    <span class="uninav__pipe"></span>
                 #end
             #end
         #end

@@ -80,8 +80,6 @@ html {
   z-index: $uninavZindex;
   border-bottom: 1px solid $cu-light-grey;
 
-  // debug
-
   .gssb_c,
   .gssb_c[style] {
     // z-index: var(--uninavZindex) ;
@@ -160,8 +158,6 @@ html {
       align-content: center;
       align-items: center;
 
-      // @include qbal-stagger-children;
-      // @include uninav-border-bottom;
       ul {
         display: flex;
 
@@ -251,8 +247,6 @@ html {
         right: 1.4rem;
         position: relative;
       }
-
-
 
       ul {
         display: flex;
@@ -401,9 +395,22 @@ html {
       width: 900px;
       border-bottom: none;
 
+      >ul>li {
+        flex: unset;
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+
       a {
         color: $panther-black;
+        border-right: none;
       }
+    }
+
+    &__pipe {
+      border-right: 1px solid var(--cu-light-grey);
+      width: auto;
+      height: 25px;
     }
 
     &__dropdown {
@@ -519,7 +526,6 @@ html {
 #uninav>div.uninav__logo--primary {
   width: 300px;
   grid-area: logo;
-
 }
 
 // UNINAV STRUCTURE
@@ -618,12 +624,9 @@ html {
 }
 
 // MEDIA QUERIES
-
 @media only screen and (max-width: 1420px) {
-
   .uninav__utility-nav--audiences-container {
     @include qbal-slideLeft-exit;
-
     display: none;
   }
 }
@@ -690,10 +693,7 @@ html {
   }
 }
 
-
-
 @media only screen and (max-width: 1300px) {
-
   .uninav--has-secondary-menu {
     .uninav {
       &__utility-nav--search-wrapper {
@@ -710,11 +710,7 @@ html {
           // animation-duration: 150ms;
           margin-right: 15px;
         }
-
-
       }
-
-
     }
 
     .uninav__search-button--mobile {
@@ -738,7 +734,6 @@ html {
 
       &:active {
         @include qbal-fade-exit;
-
         animation-duration: 150ms;
 
         &:after {
@@ -758,7 +753,6 @@ html {
 // TABLET LANDSCAPE
 @include respond(tab-land) {
   #uninav {
-
     .cta--underneath {
       z-index: -1;
       @include qbal-slideLeft-exit;
@@ -773,7 +767,6 @@ html {
           @include qbal-slideRight-exit;
         }
       }
-
 
       &__menu-item-dropdown-child:hover>ul {
         -webkit-box-orient: vertical;
@@ -828,20 +821,20 @@ html {
       }
 
       &__search-input--desktop {
-
         // @include qbal-slideLeft-enter;
         display: none;
 
-
-
         &.slide-left {
-          // @include qbal-grow-enter;
           @include qbal-slideLeft-enter;
-          // animation-delay: 150ms;
-          // animation-duration: 150ms;
           margin-right: 15px;
         }
       }
+    }
+
+    .uninav__global-nav>ul>li {
+      flex: 100%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .uninav__search-button--mobile {
@@ -853,8 +846,6 @@ html {
       cursor: pointer;
 
       &:after {
-        // border-right-style: solid;
-        // border-right-width: 1px;
         border-right: none;
         display: grid;
         content: "\f002";
@@ -865,7 +856,6 @@ html {
 
       &:active {
         @include qbal-fade-exit;
-
         animation-duration: 150ms;
 
         &:after {
@@ -1025,7 +1015,6 @@ html {
         display: none;
       }
 
-
       &__logo {
         display: grid;
         align-content: center;
@@ -1033,13 +1022,11 @@ html {
         &--primary {
           @include qbal-fade-exit;
           animation-direction: forwards;
-          // display: none;
 
           a {
             display: none;
           }
         }
-
 
         &--mobile {
           @include qbal-fade-enter;
@@ -1067,7 +1054,6 @@ html {
 
       &__hamburger-menu {
         justify-content: center;
-
       }
     }
 
@@ -1077,11 +1063,7 @@ html {
 
     .uninav__search-input.uninav__search-input--desktop.slide-left {
       width: 100%;
-
     }
-
-
-
 
     #uninav .uninav__utility-nav--search-wrapper .gscb-input {
       min-width: 100vw;
@@ -1138,8 +1120,6 @@ html {
       }
     }
   }
-
-
 }
 
 @media only screen and (max-width: 300px) {
@@ -1235,8 +1215,6 @@ html.off-canvas__blur {
     }
   }
 }
-
-
 
 // END TABLET PORTRAIT
 // END MEDIA QUERIES
