@@ -2,8 +2,6 @@
   margin: 0 0 10px 0;
   padding-top: $base-spacing;
   text-align: left;
-  display: -webkit-box;
-  display: flex;
 
   @include bp(l) {
     padding-top: 0;
@@ -101,13 +99,4 @@
     margin-top: 45px;
     padding-right: 0;
   }
-  @include respond(tab-land) { 
-    display: -webkit-box; 
-    display: flex;
-    max-width: 25%;
-  }
-  @media only screen and (max-width: 768px)  {
-    max-width: 100%;
-  }
-  
 }
