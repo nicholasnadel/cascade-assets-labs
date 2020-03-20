@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'uninav/branded',         to: 'uninav#branded'
 get 'uninav/anchor',            to: 'uninav#anchor'
 get 'uninav/three_column',      to: 'uninav#three_column'
+get 'uninav/two_column',      to: 'uninav#two_column'
 get 'uninav/home_page',      to: 'uninav#home_page'
 get 'uninav/schools_colleges',      to: 'uninav#schools_colleges'
 get 'uninav/our_faculty',    to: 'uninav#our_faculty'

@@ -1,6 +1,6 @@
 .leftNav {
   text-align: left;
-
+  float: left;
   .currentPage {
     font-weight: 800;
   }
@@ -17,6 +17,7 @@
   @include media($medium-screen) {
     width: 25%;
     margin: 0 0 15px 0;
+    float: left;
   }
 
   @include media($large-screen) {

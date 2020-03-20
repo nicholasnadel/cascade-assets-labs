@@ -9,6 +9,9 @@ class UninavController < ApplicationController
   def anchor
   end
 
+  def two_column
+  end
+
   def three_column
   end
 
