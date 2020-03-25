@@ -1,5 +1,6 @@
 .leftNav {
   text-align: left;
+  float: left;
 
   .currentPage {
     font-weight: 800;
@@ -17,12 +18,14 @@
   @include media($medium-screen) {
     width: 25%;
     margin: 0 0 15px 0;
+    float: left;
   }
 
   @include media($large-screen) {
     float: left;
     display: inline-block;
   }
+
   .leftNavSubContent~[class*="-widget"] {
     margin-top: 30px;
   }
@@ -45,5 +48,12 @@
     .bullet {
       display: none;
     }
+  }
+}
+
+.two-column-template,
+.three-column-template {
+  .leftNav {
+    float: left;
   }
 }
