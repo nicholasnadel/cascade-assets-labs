@@ -1,6 +1,7 @@
 .leftNav {
   text-align: left;
   float: left;
+
   .currentPage {
     font-weight: 800;
   }
@@ -24,6 +25,7 @@
     float: left;
     display: inline-block;
   }
+
   .leftNavSubContent~[class*="-widget"] {
     margin-top: 30px;
   }
@@ -46,5 +48,12 @@
     .bullet {
       display: none;
     }
+  }
+}
+
+.two-column-template,
+.three-column-template {
+  .leftNav {
+    float: left;
   }
 }
