@@ -6,9 +6,87 @@
       cu_hero_area.initialize();
       //cu_stories_area.initialize();
       cu_admission_area.initialize();
+      smc_cta_tracker.initialize();
       heroModalViewer.initialize();
     }
   });
+  // SMC CTA tracker
+  var smc_cta_tracker = {
+    callback_url: 'http://smc_cta_tracker.meteor.com/track',
+    initialize: function () {
+      // $('.smc-cta').on('click', smc_cta_tracker.trackAction);
+      $('body').on('click', '.smc-cta', smc_cta_tracker.trackAction);
+    }, // end initialize
+    trackAction: function (e) {
+      smc_cta_tracker.trackWithGoogleAnalytics(e);
+      //this was calling a meteor app that suddenly stopped working in early Nov. 2016
+      //for details see https://github.com/chapmanu/cascade-assets/issues/93
+      //smc_cta_tracker.trackWithSmcCtaTracker(e);
+      // If we have a URL to navigate to, prevent default
+      var modifierKey = e.metaKey || e.ctrlKey;
+      var href_url = $(e.currentTarget).attr('href') || false;
+      // This code was in the original tracker that worked with meteor tracking site. It
+      // makes no sense because it blocks browser from redirecting to a tags with href. Maybe
+      // the redirect was somehow dependent on the AJAX call, which is still crazy. So I am
+      // disabling this but not removing it because maybe it had some cryptic unexplained
+      // purpose I don't understand.
+      //if (href_url && !modifierKey) {
+      //  e.preventDefault();
+      //  return false;
+      //}
+    },
+    trackWithSmcCtaTracker: function (e) {
+      var modifierKey = e.metaKey || e.ctrlKey;
+      var ok_to_navigate_away = true;
+      var href_url = $(e.currentTarget).attr('href') || false;
+      var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
+      var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
+      // If has quickview html
+      if (
+        $(e.currentTarget).attr('data-quickview-content') !== undefined &&
+        !modifierKey &&
+        cu_window_manager.windowWidth > 640
+      ) {
+        ok_to_navigate_away = false;
+      }
+      // Track w/ SMC tracking
+      $.ajax({
+        url: smc_cta_tracker.callback_url,
+        type: 'GET',
+        cache: false,
+        timeout: 350,
+        // jsonpCallback: "complete",
+        data: {
+          campaign_id: cta_id,
+          campaign_label: cta_label
+        },
+        dataType: 'jsonp',
+        complete: function () {
+          // Navigate to the URL
+          if (ok_to_navigate_away && !modifierKey) {
+            window.location.href = href_url;
+          }
+        }
+      });
+    },
+    trackWithGoogleAnalytics: function (e) {
+      var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
+      var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
+      // Figure out the category for Google Analytics
+      var category = 'Home Page General Click';
+      if ($(e.currentTarget).parents('#hero').length > 0) {
+        category = 'Home Page Hero CTA';
+      } else if ($(e.currentTarget).parents('#undergraduateAdmission').length > 0) {
+        category = 'Home Page Undergraduate CTA';
+      } else if ($(e.currentTarget).parents('#graduateAdmission').length > 0) {
+        category = 'Home Page Graduate CTA';
+      } else if ($(e.currentTarget).parents('#featured_stories').length > 0) {
+        category = 'Home Page Blog Stories';
+      }
+      // Track Google Analytics
+      if (typeof ga !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
+    }
+  };
   // A class to manage window resizer and scroller functions
   var cu_window_manager = {
     // Manual Configs
@@ -237,6 +315,7 @@
           cu_parallax_fx.animateSingleNumber($bigstat);
           increaseOpactiyWhenVisible();
         }, 100 * Math.floor(Math.random() * 10 + 1));
+
         function increaseOpactiyWhenVisible() {
           $(window).scroll(function () {
             var scrollTop = $('#undergraduateAdmission').scrollTop();
@@ -306,6 +385,63 @@
     currentCampaign: null, // int - the position in the pastCampaigns array
     videoTransitionTimeout: null,
     isChanging: false,
+    initialize: function () {
+      var requested_story_slug = (location.hash.match(/story-([\w-]+)/) || [])[1]; // undefined, or a string with the story slug
+      // Check if we want to start with an older story
+      if (requested_story_slug) {
+        // Mask the hero space while we load
+        $('#mastheadNavigation').hide();
+        $('#hero').css('visibility', 'hidden'); // we hide this so it does not fade in on the transition
+      } else {
+        // Set up the current content
+        cu_hero_area.setupContent($('#hero'));
+        cu_hero_area.queueExcerptEntrance(100);
+      }
+      // Fetch past content
+      $.getJSON(cu_hero_area.hero_stories_html_dir + 'listing_order.json.txt', function (data) {
+        cu_hero_area.currentCampaign = 0;
+        cu_hero_area.pastCampaigns = [];
+        var keys = data ? Object.keys(data) : [];
+        keys.forEach(function (key) {
+          /* jshint -W069: ['foo'] is better written in dot notation. */
+          // set the slug for this stage
+          data[key]['slug'] = data[key]['filename'].substr(0, data[key]['filename'].indexOf('.'));
+          // Add to our array
+          cu_hero_area.pastCampaigns.push(data[key]);
+          // If an older story was requested
+          if (requested_story_slug) {
+            // Look for the slug filename
+            if (data[key]['slug'] == requested_story_slug) {
+              cu_hero_area.currentCampaign = cu_hero_area.pastCampaigns.length - 1;
+            }
+          }
+          /* jshint -W069 */
+        });
+        // If an older story is found and can be loaded
+        if (cu_hero_area.currentCampaign != 0) {
+          cu_hero_area.processNavigation(cu_hero_area.currentCampaign);
+        } else {
+          // The older story was requested, but we did not find it. Load default content.
+          $('#mastheadNavigation').show();
+          $('#hero').css('visibility', '');
+          cu_hero_area.setupContent($('#hero'));
+          cu_hero_area.queueExcerptEntrance(100);
+        }
+        if (cu_hero_area.pastCampaigns.length > 1) $('#showOlderContent').removeClass('disabled');
+        $('#showOlderContent').hammer().on('tap', function (e) {
+          cu_hero_area.processNavigation('older');
+          // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "older"]);
+          if (typeof ga !== 'undefined')
+            ga('send', 'event', 'Homepage UI Interaction', 'Switch hero story', 'older');
+        });
+        $('#showNewerContent').hammer().on('tap', function (e) {
+          cu_hero_area.processNavigation('newer');
+          // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "newer"]);
+          if (typeof ga !== 'undefined')
+            ga('send', 'event', 'Homepage UI Interaction', 'Switch hero story', 'newer');
+        });
+      });
+    },
     /***************************************************
      * This function resizes the HTML5 video so that it covers the entire #mastheadBackground element.
      * This simulates the property background-size:cover;
@@ -805,6 +941,7 @@ if (!Array.prototype.forEach) {
     var original_num = $elem.attr('data-count');
   }
 }
+
 // FIX MOBILE UNDERGRADUATE SECTION
 if ($(window).width() < 678 && $('.homepage').length > 0) {
   $(window).on('scroll', function () {
