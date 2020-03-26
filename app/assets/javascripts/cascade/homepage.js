@@ -6,87 +6,11 @@
       cu_hero_area.initialize();
       //cu_stories_area.initialize();
       cu_admission_area.initialize();
-      smc_cta_tracker.initialize();
+
       heroModalViewer.initialize();
     }
   });
-  // SMC CTA tracker
-  var smc_cta_tracker = {
-    callback_url: 'http://smc_cta_tracker.meteor.com/track',
-    initialize: function () {
-      // $('.smc-cta').on('click', smc_cta_tracker.trackAction);
-      $('body').on('click', '.smc-cta', smc_cta_tracker.trackAction);
-    }, // end initialize
-    trackAction: function (e) {
-      smc_cta_tracker.trackWithGoogleAnalytics(e);
-      //this was calling a meteor app that suddenly stopped working in early Nov. 2016
-      //for details see https://github.com/chapmanu/cascade-assets/issues/93
-      //smc_cta_tracker.trackWithSmcCtaTracker(e);
-      // If we have a URL to navigate to, prevent default
-      var modifierKey = e.metaKey || e.ctrlKey;
-      var href_url = $(e.currentTarget).attr('href') || false;
-      // This code was in the original tracker that worked with meteor tracking site. It
-      // makes no sense because it blocks browser from redirecting to a tags with href. Maybe
-      // the redirect was somehow dependent on the AJAX call, which is still crazy. So I am
-      // disabling this but not removing it because maybe it had some cryptic unexplained
-      // purpose I don't understand.
-      //if (href_url && !modifierKey) {
-      //  e.preventDefault();
-      //  return false;
-      //}
-    },
-    trackWithSmcCtaTracker: function (e) {
-      var modifierKey = e.metaKey || e.ctrlKey;
-      var ok_to_navigate_away = true;
-      var href_url = $(e.currentTarget).attr('href') || false;
-      var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
-      var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
-      // If has quickview html
-      if (
-        $(e.currentTarget).attr('data-quickview-content') !== undefined &&
-        !modifierKey &&
-        cu_window_manager.windowWidth > 640
-      ) {
-        ok_to_navigate_away = false;
-      }
-      // Track w/ SMC tracking
-      $.ajax({
-        url: smc_cta_tracker.callback_url,
-        type: 'GET',
-        cache: false,
-        timeout: 350,
-        // jsonpCallback: "complete",
-        data: {
-          campaign_id: cta_id,
-          campaign_label: cta_label
-        },
-        dataType: 'jsonp',
-        complete: function () {
-          // Navigate to the URL
-          if (ok_to_navigate_away && !modifierKey) {
-            window.location.href = href_url;
-          }
-        }
-      });
-    },
-    trackWithGoogleAnalytics: function (e) {
-      var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
-      var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
-      // Figure out the category for Google Analytics
-      var category = 'Home Page General Click';
-      if ($(e.currentTarget).parents('#hero').length > 0) {
-        category = 'Home Page Hero CTA';
-      } else if ($(e.currentTarget).parents('#undergraduateAdmission').length > 0) {
-        category = 'Home Page Undergraduate CTA';
-      } else if ($(e.currentTarget).parents('#graduateAdmission').length > 0) {
-        category = 'Home Page Graduate CTA';
-      } else if ($(e.currentTarget).parents('#featured_stories').length > 0) {
-        category = 'Home Page Blog Stories';
-      }
-      // Track Google Analytics
-      if (typeof ga !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
-    }
-  };
+
   // A class to manage window resizer and scroller functions
   var cu_window_manager = {
     // Manual Configs
