@@ -13,12 +13,8 @@
   width: 100%;
   -webkit-box-pack: center;
   justify-content: center;
-  padding: 2% 0 2% 0;
+  padding: 25px 0 25px 0;
   flex-wrap: wrap;
-
-  &>div {
-    // display: flex;
-  }
 
   li {
     list-style: none;
@@ -131,6 +127,7 @@
     &__inner {
       flex-wrap: wrap;
       width: 90%;
+      justify-content: space-between;
 
       &>div:first-child {
         -webkit-box-flex: 1 !important;
@@ -141,11 +138,7 @@
         flex-direction: row;
         -webkit-box-pack: justify;
         justify-content: space-between;
-      }
-
-      &>div+div {
-        -webkit-box-flex: 1;
-        flex: 1;
+        padding: 25px 0 25px 0;
       }
     }
 
@@ -228,9 +221,7 @@
 
     &__copyright-social {
       display: block;
-      font-size: 4rem;
       margin-left: .5rem;
-
 
       .fab {
         margin-left: 0;
@@ -243,7 +234,7 @@
     &__social {
       display: block;
       margin-left: 0;
-      line-height: 1.2em;
+      line-height: 5rem;
       padding-top: 1em;
     }
 
@@ -251,13 +242,9 @@
       max-height: 50px;
     }
   }
-
-
 }
 
-
 // Microsoft ie 10 & 11
-// https://www.chapman.edu/upgrade-browser.aspx requires supporting 11
 .ie {
   .footer {
     background-color: $panther-black; //ie fallback
@@ -273,15 +260,15 @@
     width: 100%;
     -webkit-box-pack: center;
     justify-content: center;
-    padding: 2% 0 2% 0;
+    padding: 25px 0 25px 0;
     flex-wrap: wrap;
-  }
 
-  &__addresses,
-  &__get-started,
-  &__row {
-    -webkit-box-flex: 1;
-    flex: 1;
-    flex-basis: 0 0 100%;
+    @include respond(tab-land) {
+      &__faux-button {
+        +.footer__faux-button {
+          margin-left: 0;
+        }
+      }
+    }
   }
 }
