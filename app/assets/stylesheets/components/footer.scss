@@ -65,6 +65,21 @@
     padding-top: 1em;
     padding-bottom: 1em;
     cursor: pointer;
+    color: $white;
+
+    &:hover {
+      background-color: lighten($panther-black, 20%);
+      color: $white;
+    }
+
+    &:focus,
+    &:focus-within {
+      outline-color: $white;
+      outline-offset: 3px;
+      color: $white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+    }
 
     &:last-child {
       margin-bottom: 0;
@@ -74,6 +89,20 @@
   .button--red {
     border: 1px solid $cu-red;
     max-height: 50px;
+
+    &:hover {
+      background-color: lighten($panther-black, 20%);
+      color: $white;
+    }
+
+    &:focus,
+    &:focus-within {
+      outline-color: $white;
+      outline-offset: 3px;
+      color: $white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+    }
   }
 
   &__address {
