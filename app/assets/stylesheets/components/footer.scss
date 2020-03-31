@@ -1,5 +1,4 @@
 // ---------- Main Footer Styles ---------- //
-
 .footer {
   background-color: $panther-black; //ie fallback
   background-color: v(panther-black);
@@ -7,15 +6,16 @@
   color: v(white);
   font-family: $futura-regular;
   font-size: 1.6rem;
+  display: -webkit-box;
   display: flex;
   width: 100%;
+  -webkit-box-pack: center;
   justify-content: center;
   padding: 2% 0 2% 0;
   flex-wrap: wrap;
 
   &>div {
     // display: flex;
-
   }
 
   li {
@@ -29,16 +29,19 @@
     }
   }
 
-
   &__inner {
+    display: -webkit-box;
     display: flex;
     width: 100%;
     width: 80%;
+    -webkit-box-pack: center;
     justify-content: center;
     justify-items: center;
 
     &>div {
       width: 20%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
       flex-direction: column;
     }
   }
@@ -49,10 +52,9 @@
     text-transform: uppercase;
   }
 
-  &__buttons {
-    padding-top: 10px;
+  &__faux-buttons {
+    padding-top: .5rem;
   }
-
 
   &__faux-button {
     margin-bottom: 1em;
@@ -64,6 +66,7 @@
     width: 80%;
     padding-top: 1em;
     padding-bottom: 1em;
+    cursor: pointer;
 
     &:last-child {
       margin-bottom: 0;
@@ -72,45 +75,188 @@
 
   .button--red {
     border: 1px solid $cu-red;
+    max-height: 50px;
   }
 
   &__address {
     line-height: 2.4rem;
 
-
     &:nth-child(2) {
-
       margin-top: 2rem;
-
     }
   }
 
   &__row {
     width: 80%;
+    display: -webkit-box;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: 5rem;
   }
 
   &__logo {
-    width: 228px;
-    margin-bottom: 5px;
+    width: 22.8rem;
+    margin-bottom: .5rem;
 
     path {
-
-      fill: v(white);
+      fill: $white;
     }
   }
 
-  &__copyright {
+  &__copyright-social {
+    -webkit-box-align: center;
     align-items: center;
+    display: -webkit-box;
     display: flex;
     font-family: $futura-regular;
+    font-size: 1.6rem;
 
     .fab {
       font-size: 2rem;
-      margin-left: 10px;
+      margin-left: .5rem;
     }
   }
 
+  &__social {
+    margin-left: 2em;
+  }
+}
+
+@include respond(tab-land) {
+  .footer {
+    &__inner {
+      flex-wrap: wrap;
+      width: 90%;
+
+      &>div:first-child {
+        -webkit-box-flex: 1 !important;
+        flex: 1 0 100% !important;
+        width: 100%;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+      }
+
+      &>div+div {
+        -webkit-box-flex: 1;
+        flex: 1;
+      }
+    }
+
+    &__row {
+      width: 90%;
+    }
+
+    &__faux-buttons {
+      -webkit-box-flex: 1;
+      flex: 1 0 100%;
+      width: 100%;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      flex-direction: row;
+      display: -webkit-box;
+      display: flex;
+    }
+
+    &__faux-button {
+      -webkit-box-pack: space-evenly;
+      justify-content: space-evenly;
+      max-height: 50px;
+
+      +.footer__faux-button {
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+@include respond(phone) {
+  .footer {
+    &__inner {
+      flex-wrap: wrap;
+
+      &>div:first-child {
+        -webkit-box-flex: 1 !important;
+        flex: 1 0 100% !important;
+        width: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+      }
+
+      &>div+div {
+        -webkit-box-flex: 100%;
+        flex: 100%;
+        margin-top: 20px;
+      }
+    }
+
+    &__faux-buttons {
+      -webkit-box-flex: 1;
+      flex: 1 0 100%;
+      width: 100%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+      display: -webkit-box;
+      display: flex;
+    }
+
+    &__faux-button {
+      -webkit-box-pack: space-evenly;
+      justify-content: space-evenly;
+      max-height: -webkit-max-content;
+      max-height: -moz-max-content;
+      max-height: max-content;
+      width: 100%;
+      max-width: 100%;
+
+      +.footer__faux-button {
+        margin-left: unset;
+      }
+    }
+
+    &__logo {
+      margin-bottom: .5rem;
+    }
+
+    &__copyright-social {
+      display: block;
+      font-size: 4rem;
+      margin-left: .5rem;
+
+
+      .fab {
+        margin-left: 0;
+        margin-right: 1rem;
+        font-size: 3.5rem;
+        margin-right: 1.5rem;
+      }
+    }
+
+    &__social {
+      display: block;
+      margin-left: 0;
+      line-height: 1.2em;
+      padding-top: 1em;
+    }
+
+    .button--red {
+      max-height: 50px;
+    }
+  }
+
+
+}
+
+// Microsoft ie 10 & 11
+// https://www.chapman.edu/upgrade-browser.aspx requires supporting 11
+.ie {
+  .footer {
+    display: block;
+  }
 }
