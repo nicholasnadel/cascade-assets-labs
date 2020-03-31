@@ -8,6 +8,8 @@
   font-size: 1.6rem;
   display: -webkit-box;
   display: flex;
+  -webkit-box-flex: 1;
+  flex: 1;
   width: 100%;
   -webkit-box-pack: center;
   justify-content: center;
@@ -253,10 +255,33 @@
 
 }
 
+
 // Microsoft ie 10 & 11
 // https://www.chapman.edu/upgrade-browser.aspx requires supporting 11
 .ie {
   .footer {
-    display: block;
+    background-color: $panther-black; //ie fallback
+    background-color: v(panther-black);
+    color: $white;
+    color: v(white);
+    font-family: $futura-regular;
+    font-size: 1.6rem;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex: 1;
+    width: 100%;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 2% 0 2% 0;
+    flex-wrap: wrap;
+  }
+
+  &__addresses,
+  &__get-started,
+  &__row {
+    -webkit-box-flex: 1;
+    flex: 1;
+    flex-basis: 0 0 100%;
   }
 }
