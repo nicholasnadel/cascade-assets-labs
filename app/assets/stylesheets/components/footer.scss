@@ -25,6 +25,18 @@
       color: $white;
       color: v(white);
     }
+
+    a {
+
+      &:focus,
+      &:focus-within {
+        outline: $white;
+      }
+
+      &:hover {
+        @include underline($white);
+      }
+    }
   }
 
   &__inner {
@@ -70,6 +82,7 @@
     &:hover {
       background-color: lighten($panther-black, 20%);
       color: $white;
+      border: 1px lighten($panther-black, 20%);
     }
 
     &:focus,
@@ -93,6 +106,7 @@
     &:hover {
       background-color: lighten($panther-black, 20%);
       color: $white;
+      border: 1px lighten($panther-black, 20%);
     }
 
     &:focus,
