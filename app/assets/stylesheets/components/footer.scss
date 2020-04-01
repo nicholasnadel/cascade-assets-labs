@@ -41,6 +41,7 @@
     width: 80%;
     justify-content: center;
     justify-items: center;
+    padding-top: 2rem;
 
     &>div {
       width: 20%;
@@ -127,6 +128,19 @@
   &__address {
     line-height: 2.4rem;
 
+    a,
+    a:visited,
+    a:hover {
+      color: $white;
+    }
+
+    a:visited,
+    a:hover,
+    a:focus,
+    a:focus-within {
+      @include underline($white);
+    }
+
     &:nth-child(2) {
       margin-top: 2rem;
     }
@@ -146,10 +160,10 @@
   &__logo {
     width: 22.8rem;
     margin-bottom: .5rem;
-    display: -ms-grid;
-    display: grid;
+    display: block;
     width: auto;
-    max-width: 300px;
+    max-width: 30rem;
+    width: 100%;
 
     path {
       fill: $white;
@@ -161,7 +175,7 @@
     display: flex;
     font-family: $futura-regular;
     font-size: 1.6rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
 
     .fab {
       font-size: 2rem;
