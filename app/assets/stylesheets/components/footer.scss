@@ -336,3 +336,39 @@
     }
   }
 }
+
+
+#back2top {
+  position: fixed;
+  font-size: 1.2em;
+  right: 0;
+  margin-right: 50px;
+  bottom: 50px;
+  z-index: 33;
+  color: $white;
+
+  .circle-bg {
+
+    background-color: $cu-red;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+
+    &:hover {
+      background-color: lighten($cu-red, 8%);
+      transition: 300ms;
+      -webkit-transition: 300ms;
+      -moz-transition: 300ms;
+      -ms-transition: 300ms;
+      -o-transition: 300ms;
+    }
+
+  }
+}
+
+span.fa.fa-chevron-up {
+  color: $white;
+}
