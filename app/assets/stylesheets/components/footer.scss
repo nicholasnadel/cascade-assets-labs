@@ -97,7 +97,11 @@
       outline-offset: 3px;
       color: $white;
       border: 1px solid rgba(255, 255, 255, 0.25);
+    }
 
+    &:visited {
+      color: $white;
+      border: initial;
     }
 
     &:last-child {
