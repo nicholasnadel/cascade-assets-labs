@@ -75,21 +75,19 @@
       background-color: lighten($panther-black, 20%);
       color: $white;
       border: 1px solid lighten($panther-black, 20%);
-      transition: 300ms all;
+      transition: 250ms all;
       margin-bottom: 1em;
       border-radius: 3px;
-      max-width: 230px;
       display: block;
       text-align: center;
-      width: 80%;
       padding-top: 1em;
       padding-bottom: 1em;
       cursor: pointer;
       color: $white;
-      -webkit-transition: 300ms all;
-      -moz-transition: 300ms all;
-      -ms-transition: 300ms all;
-      -o-transition: 300ms all;
+      -webkit-transition: 250ms all;
+      -moz-transition: 250ms all;
+      -ms-transition: 250ms all;
+      -o-transition: 250ms all;
     }
 
     &:focus,
@@ -112,9 +110,8 @@
 
     &:hover {
       background-color: transparentize($cu-red, .5);
-      border: transparentize($cu-red, .5);
+      border: 1px solid transparentize($cu-red, .5);
       color: $white;
-
     }
 
     &:focus,
