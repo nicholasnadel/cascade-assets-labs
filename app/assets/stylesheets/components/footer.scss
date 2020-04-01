@@ -1,20 +1,17 @@
 // ---------- Main Footer Styles ---------- //
+/* autoprefixer grid: autoplace */
 .footer {
-  background-color: $panther-black; //ie fallback
-  background-color: v(panther-black);
+  background-color: $panther-black;
   color: $white;
-  color: v(white);
   font-family: $futura-regular;
   font-size: 1.6rem;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-flex: 1;
   flex: 1;
   width: 100%;
-  -webkit-box-pack: center;
   justify-content: center;
   padding: 25px 0 25px 0;
   flex-wrap: wrap;
+  position: absolute;
 
   li {
     list-style: none;
@@ -23,7 +20,6 @@
     a,
     li {
       color: $white;
-      color: v(white);
     }
 
     a {
@@ -40,18 +36,14 @@
   }
 
   &__inner {
-    display: -webkit-box;
     display: flex;
     width: 100%;
     width: 80%;
-    -webkit-box-pack: center;
     justify-content: center;
     justify-items: center;
 
     &>div {
       width: 20%;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
       flex-direction: column;
     }
   }
@@ -82,7 +74,22 @@
     &:hover {
       background-color: lighten($panther-black, 20%);
       color: $white;
-      border: 1px lighten($panther-black, 20%);
+      border: 1px solid lighten($panther-black, 20%);
+      transition: 300ms all;
+      margin-bottom: 1em;
+      border-radius: 3px;
+      max-width: 230px;
+      display: block;
+      text-align: center;
+      width: 80%;
+      padding-top: 1em;
+      padding-bottom: 1em;
+      cursor: pointer;
+      color: $white;
+      -webkit-transition: 300ms all;
+      -moz-transition: 300ms all;
+      -ms-transition: 300ms all;
+      -o-transition: 300ms all;
     }
 
     &:focus,
@@ -104,9 +111,10 @@
     max-height: 50px;
 
     &:hover {
-      background-color: lighten($panther-black, 20%);
+      background-color: transparentize($cu-red, .5);
+      border: transparentize($cu-red, .5);
       color: $white;
-      border: 1px lighten($panther-black, 20%);
+
     }
 
     &:focus,
@@ -129,17 +137,22 @@
 
   &__row {
     width: 80%;
-    display: -webkit-box;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    flex-direction: column;
+    display: -ms-grid;
+    display: grid;
+    justify-items: center;
+    display: grid;
+    width: auto;
     margin-top: 5rem;
+
   }
 
   &__logo {
     width: 22.8rem;
     margin-bottom: .5rem;
+    display: -ms-grid;
+    display: grid;
+    width: auto;
+    max-width: 300px;
 
     path {
       fill: $white;
@@ -147,16 +160,16 @@
   }
 
   &__copyright-social {
-    -webkit-box-align: center;
     align-items: center;
-    display: -webkit-box;
     display: flex;
     font-family: $futura-regular;
     font-size: 1.6rem;
+    margin-top: 1rem;
 
     .fab {
       font-size: 2rem;
       margin-left: .5rem;
+      color: $white;
     }
   }
 
@@ -173,13 +186,9 @@
       justify-content: space-between;
 
       &>div:first-child {
-        -webkit-box-flex: 1 !important;
         flex: 1 0 100% !important;
         width: 100%;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
         flex-direction: row;
-        -webkit-box-pack: justify;
         justify-content: space-between;
         padding: 25px 0 25px 0;
       }
@@ -190,18 +199,13 @@
     }
 
     &__faux-buttons {
-      -webkit-box-flex: 1;
       flex: 1 0 100%;
       width: 100%;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
       flex-direction: row;
-      display: -webkit-box;
       display: flex;
     }
 
     &__faux-button {
-      -webkit-box-pack: space-evenly;
       justify-content: space-evenly;
       max-height: 50px;
 
@@ -218,34 +222,25 @@
       flex-wrap: wrap;
 
       &>div:first-child {
-        -webkit-box-flex: 1 !important;
         flex: 1 0 100% !important;
         width: 100%;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
         flex-direction: column;
       }
 
       &>div+div {
-        -webkit-box-flex: 100%;
         flex: 100%;
         margin-top: 20px;
       }
     }
 
     &__faux-buttons {
-      -webkit-box-flex: 1;
       flex: 1 0 100%;
       width: 100%;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
       flex-direction: column;
-      display: -webkit-box;
       display: flex;
     }
 
     &__faux-button {
-      -webkit-box-pack: space-evenly;
       justify-content: space-evenly;
       max-height: -webkit-max-content;
       max-height: -moz-max-content;
@@ -263,8 +258,11 @@
     }
 
     &__copyright-social {
-      display: block;
+      display: -ms-grid;
+      display: grid;
       margin-left: .5rem;
+      justify-content: center;
+      justify-items: center;
 
       .fab {
         margin-left: 0;
@@ -290,21 +288,29 @@
 // Microsoft ie 10 & 11
 .ie {
   .footer {
-    background-color: $panther-black; //ie fallback
-    background-color: v(panther-black);
+    background-color: $panther-black;
     color: $white;
-    color: v(white);
     font-family: $futura-regular;
     font-size: 1.6rem;
-    display: -webkit-box;
     display: flex;
-    -webkit-box-flex: 1;
     flex: 1;
     width: 100%;
-    -webkit-box-pack: center;
     justify-content: center;
     padding: 25px 0 25px 0;
     flex-wrap: wrap;
+
+    &__logo {
+      width: 300px;
+    }
+
+    &__row,
+    &__logo,
+    &__copyright-social {
+      display: block;
+      width: 100%;
+      margin: auto;
+      text-align: center;
+    }
 
     @include respond(tab-land) {
       &__faux-button {
