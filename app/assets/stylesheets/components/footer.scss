@@ -356,19 +356,8 @@
     display: grid;
     justify-content: center;
     align-content: center;
-
-
-
     display: -ms-flexbox;
-
-
-    /* Center vertically */
     align-items: center;
-
-    /*Center horizontaly */
-    justify-content: center;
-
-    /*Center horizontaly ie */
     -ms-flex-pack: center;
 
     &:hover {
