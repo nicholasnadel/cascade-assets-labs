@@ -294,7 +294,7 @@ On a page level, configure via:
 
       #if ( $isUmbrellaCategory )
         <span tabindex="0" class="toggle-menu-label">${umbrellaLabel} Menu</span>
-      #else
+      #elseif ( $currentPathRoot != "index" && $currentPathRoot != "")
         <span tabindex="0" class="toggle-menu-label">${currentPathRoot} Menu</span>
       #end
     </div>

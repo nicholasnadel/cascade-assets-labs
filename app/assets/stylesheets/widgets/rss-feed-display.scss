@@ -1,0 +1,31 @@
+.rss-feed-display-widget {
+  
+  .text--link {
+    border-bottom: 2px solid currentColor;
+
+    &:after {
+      content: '-';
+      padding: 0 .5em;
+    }
+  }
+
+  .rss-feed-item {
+    &__container {
+      display: flex;
+    }
+
+    &__description-container {}
+
+    &__description-text {
+      display: inline;
+    }
+
+    &__link {}
+
+    &__date-container {}
+
+    &__date {}
+
+    &__time {}
+  }
+}
