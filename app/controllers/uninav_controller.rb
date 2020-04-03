@@ -29,4 +29,7 @@ class UninavController < ApplicationController
 
   def a_z 
   end
+  
+  def law 
+  end
 end
