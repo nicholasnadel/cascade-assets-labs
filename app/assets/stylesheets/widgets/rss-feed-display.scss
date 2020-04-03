@@ -50,6 +50,9 @@
     }
 
     &__link {
+      font-weight: bold;
+      border-bottom: 2px dotted currentColor;
+
       &:after {
         content: '-';
         padding: 0 4px;
@@ -59,7 +62,7 @@
     &__date-container {
       justify-content: center;
       align-items: center;
-      height: 60%;
+      height: 45%;
       width: 20%;
       border-right: 1px solid #ccc;
       margin: auto 0;      
@@ -77,7 +80,7 @@
     }
 
     &__date {
-      margin-bottom: 5px;
+      margin: 0;
 
       @include respond(phone) {
         & {
@@ -87,6 +90,8 @@
     }
 
     &__time {
+      font-family: futura-pt;
+
       @include respond(phone) {
         & {
           margin-bottom: 0;
@@ -97,6 +102,8 @@
   }
 
   &__button {
+    font-family: futura-pt; 
+    font-weight: bold;
     width: 100%;
     height: 6rem;
     border-radius: 5px;
