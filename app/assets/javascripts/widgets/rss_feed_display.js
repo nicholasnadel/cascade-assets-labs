@@ -1,17 +1,12 @@
 $(document).ready(function() {
   var $rssFeedContainer = document.querySelector('.rss-feed-display-widget'),
   rssFeedItemColor      = $rssFeedContainer.getAttribute('data-bg-color'),
-  rssFeedUrl             = $rssFeedContainer.getAttribute('data-rss-feed');
+  rssFeedUrl            = $rssFeedContainer.getAttribute('data-rss-feed');
 
+  // NO RSS FEED WIDGET ON PAGE
   if (!rssFeedUrl.length) return;
 
-  function decodeEntities(encodedString) {
-    var textArea = document.createElement('textarea');
-    textArea.innerHTML = encodedString;
-
-    return textArea.value;
-  }
-
+  // SHOULD BUILD OUT FOR MORE ROBUST DATES CURRENTLY ONLY ACCEPTS WORDPRESS STYLE RSS FEED DATE FORMAT NOT SURE WHAT RSS FEED STANDARD IS FOR pun
   function createFeedItemDateTime(rssFeedItemDate, type) {
     switch(type) {
       case 'wordpress':
@@ -32,15 +27,6 @@ $(document).ready(function() {
         return rssFeedItemDate;
     }
   }
-
-  // function trimContent(content, length) {
-  //   if (content.length > length) {
-  //     content = content.substring(0, content.indexOf(" ", length) < 0 ? length + 1 : content.indexOf(" ", length));
-  //     content = content + '...'
-  //   }
-
-  //   return content
-  // }
 
   function displayMoreRssItems() {
     var hiddenRssItems = $rssFeedContainer.querySelectorAll('.hidden-rss-item'),
@@ -71,6 +57,7 @@ $(document).ready(function() {
     return textArea.value;
   }
 
+  // GET RSS FEED DATA FROM NODE PARSER APPLICATION
   $.getJSON("https://social04.chapman.edu:4040/data?url=" + rssFeedUrl, function (data) {
     var feedItems      = data[0].item;
     $rssFeedItemButton = document.createElement('button');
