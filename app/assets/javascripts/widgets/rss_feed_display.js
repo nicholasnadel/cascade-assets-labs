@@ -6,7 +6,7 @@ $(document).ready(function() {
   // NO RSS FEED WIDGET ON PAGE
   if (!rssFeedUrl.length) return;
 
-  // SHOULD BUILD OUT FOR MORE ROBUST DATES CURRENTLY ONLY ACCEPTS WORDPRESS STYLE RSS FEED DATE FORMAT NOT SURE WHAT RSS FEED STANDARD IS FOR pun
+  // SHOULD BUILD OUT FOR MORE ROBUST DATES CURRENTLY ONLY ACCEPTS WORDPRESS STYLE RSS FEED DATE FORMAT NOT SURE WHAT RSS FEED STANDARD IS FOR pubDate
   function createFeedItemDateTime(rssFeedItemDate, type) {
     switch(type) {
       case 'wordpress':
@@ -93,13 +93,13 @@ $(document).ready(function() {
       $feedItemDescription.className          = 'rss-feed-item__description-text';
       $feedItemLink.className                 = 'rss-feed-item__link text--link';
       $feedItemDateContainer.className        = 'rss-feed-item__date-container';
+      $feedItemDate.className                 = 'rss-feed-item__date text__bold';
+      $feedItemTime.className                 = 'rss-feed-item__time';
 
       // ADDED INNER TEXT, DATE, AND TIME TO APPOPRIATE RSS DISPLAY ELEMENTS
       $feedItemDescription.innerHTML  = feedItemDescription;
       $feedItemLink.innerHTML         = feedItem.title[0];
-      $feedItemDate.className         = 'rss-feed-item__date text__bold';
       $feedItemDate.innerHTML         = feedItemDate.date;
-      $feedItemTime.className         = 'rss-feed-item__time';
       $feedItemTime.innerHTML         = feedItemDate.time;
 
       $feedItemLink.setAttribute('href', feedItem.link[0]);
