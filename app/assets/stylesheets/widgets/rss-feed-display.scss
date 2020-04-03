@@ -7,6 +7,7 @@
   .rss-feed-item {
     &__container {
       display: flex;
+      align-items: center;
       height: 10rem;
       margin: 2rem 0;
       width: 100%;
@@ -21,9 +22,8 @@
 
     &__description-container {
       align-items: center;
-      margin: 1.5rem 0 0 2rem;
-      height: 80%;
-      width: 65%;
+      margin: 0 0 0 2rem;
+      width: 70%;
       font-family: 'futura-pt';
 
       @include respond(phone) {
@@ -56,41 +56,43 @@
     }
 
     &__date-container {
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
-      height: 45%;
+      height: 65%;
       width: 20%;
       border-right: 1px solid #ccc;
-      margin: auto 0;      
       text-align: center;
 
       @include respond(phone) {
         & {
           width: 100%;
-          margin: 2rem 0 0 0;
-          display: flex;
-          justify-content: flex-start;
+          display: block;
           padding: 0 2rem;
+          margin: 1.5rem 0 0 0;
+          text-align: start;
         }
       }
     }
 
     &__date {
       margin: 0;
+      font-family: futura-pt;
 
       @include respond(phone) {
         & {
-          margin-bottom: 0;
+          display: inline;
         }
       }
     }
 
     &__time {
       font-family: futura-pt;
+      margin-bottom: 0;
 
       @include respond(phone) {
         & {
-          margin-bottom: 0;
+          display: inline;
           margin-left: 1rem;
         }
       }
