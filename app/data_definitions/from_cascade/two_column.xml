@@ -202,6 +202,7 @@
 			</text>
 			<group collapsed="true" identifier="rssFeedDisplay" label="RSS Feed Display">
 				<shared-field identifier="display" path="display"/>
+				<text identifier="feedTitle" label="Feed Title" required="true"/>
 				<text default="Sand" identifier="bgColor" label="Background Color" type="dropdown">
 					<dropdown-item label="Sand" value="sand"/>
 					<dropdown-item label="Grey" value="grey"/>
