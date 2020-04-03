@@ -1,5 +1,8 @@
 <system-xml>    
-<!-- <%= "Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p')  -%> -->
+
+<![CDATA[#protect
+  <!-- <%= "Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%> -->
+#protect]]> 
  
   <!-- Preload CSS & JS -->
   <%= stylesheet_link_tag 'master', rel: 'preload', as: 'style', media: 'all' %>

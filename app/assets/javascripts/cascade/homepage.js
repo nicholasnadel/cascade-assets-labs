@@ -6,9 +6,11 @@
       cu_hero_area.initialize();
       //cu_stories_area.initialize();
       cu_admission_area.initialize();
+
       heroModalViewer.initialize();
     }
   });
+
   // A class to manage window resizer and scroller functions
   var cu_window_manager = {
     // Manual Configs
@@ -237,6 +239,7 @@
           cu_parallax_fx.animateSingleNumber($bigstat);
           increaseOpactiyWhenVisible();
         }, 100 * Math.floor(Math.random() * 10 + 1));
+
         function increaseOpactiyWhenVisible() {
           $(window).scroll(function () {
             var scrollTop = $('#undergraduateAdmission').scrollTop();
@@ -306,6 +309,63 @@
     currentCampaign: null, // int - the position in the pastCampaigns array
     videoTransitionTimeout: null,
     isChanging: false,
+    initialize: function () {
+      var requested_story_slug = (location.hash.match(/story-([\w-]+)/) || [])[1]; // undefined, or a string with the story slug
+      // Check if we want to start with an older story
+      if (requested_story_slug) {
+        // Mask the hero space while we load
+        $('#mastheadNavigation').hide();
+        $('#hero').css('visibility', 'hidden'); // we hide this so it does not fade in on the transition
+      } else {
+        // Set up the current content
+        cu_hero_area.setupContent($('#hero'));
+        cu_hero_area.queueExcerptEntrance(100);
+      }
+      // Fetch past content
+      $.getJSON(cu_hero_area.hero_stories_html_dir + 'listing_order.json.txt', function (data) {
+        cu_hero_area.currentCampaign = 0;
+        cu_hero_area.pastCampaigns = [];
+        var keys = data ? Object.keys(data) : [];
+        keys.forEach(function (key) {
+          /* jshint -W069: ['foo'] is better written in dot notation. */
+          // set the slug for this stage
+          data[key]['slug'] = data[key]['filename'].substr(0, data[key]['filename'].indexOf('.'));
+          // Add to our array
+          cu_hero_area.pastCampaigns.push(data[key]);
+          // If an older story was requested
+          if (requested_story_slug) {
+            // Look for the slug filename
+            if (data[key]['slug'] == requested_story_slug) {
+              cu_hero_area.currentCampaign = cu_hero_area.pastCampaigns.length - 1;
+            }
+          }
+          /* jshint -W069 */
+        });
+        // If an older story is found and can be loaded
+        if (cu_hero_area.currentCampaign != 0) {
+          cu_hero_area.processNavigation(cu_hero_area.currentCampaign);
+        } else {
+          // The older story was requested, but we did not find it. Load default content.
+          $('#mastheadNavigation').show();
+          $('#hero').css('visibility', '');
+          cu_hero_area.setupContent($('#hero'));
+          cu_hero_area.queueExcerptEntrance(100);
+        }
+        if (cu_hero_area.pastCampaigns.length > 1) $('#showOlderContent').removeClass('disabled');
+        $('#showOlderContent').hammer().on('tap', function (e) {
+          cu_hero_area.processNavigation('older');
+          // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "older"]);
+          if (typeof ga !== 'undefined')
+            ga('send', 'event', 'Homepage UI Interaction', 'Switch hero story', 'older');
+        });
+        $('#showNewerContent').hammer().on('tap', function (e) {
+          cu_hero_area.processNavigation('newer');
+          // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "newer"]);
+          if (typeof ga !== 'undefined')
+            ga('send', 'event', 'Homepage UI Interaction', 'Switch hero story', 'newer');
+        });
+      });
+    },
     /***************************************************
      * This function resizes the HTML5 video so that it covers the entire #mastheadBackground element.
      * This simulates the property background-size:cover;
@@ -805,6 +865,7 @@ if (!Array.prototype.forEach) {
     var original_num = $elem.attr('data-count');
   }
 }
+
 // FIX MOBILE UNDERGRADUATE SECTION
 if ($(window).width() < 678 && $('.homepage').length > 0) {
   $(window).on('scroll', function () {
