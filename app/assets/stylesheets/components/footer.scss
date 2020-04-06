@@ -35,6 +35,19 @@
     }
   }
 
+  ul.link-list li {
+    a {
+
+      &:focus,
+      &:focus-within {
+
+        outline: 2px dotted $white;
+        outline-offset: 3px;
+        color: $white;
+      }
+    }
+  }
+
   &__inner {
     display: flex;
     width: 100%;
@@ -138,10 +151,16 @@
     }
 
     a:visited,
-    a:hover,
+    a:hover {
+      outline-color: white;
+      @include underline($white);
+    }
+
     a:focus,
     a:focus-within {
-      @include underline($white);
+      outline-color: $white;
+      outline-offset: 3px;
+      color: $white;
     }
 
     &:nth-child(2) {
@@ -157,6 +176,16 @@
     display: grid;
     width: auto;
     margin-top: 5rem;
+
+    a {
+      &:focus {
+        outline-color: $white;
+      }
+
+      &:visited {
+        color: $white;
+      }
+    }
 
   }
 
