@@ -124,6 +124,9 @@
   .button--red {
     border: 1px solid $cu-red;
     max-height: 50px;
+    display: grid;
+    align-content: center;
+    align-items: center;
 
     &:hover {
       background-color: transparentize($cu-red, .5);
