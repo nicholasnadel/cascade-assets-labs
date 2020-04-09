@@ -1,9 +1,12 @@
 $(document).ready(function() {
-  var $rssFeedContainer = document.querySelector('.rss-feed-display-widget'),
-  rssFeedItemColor      = $rssFeedContainer.getAttribute('data-bg-color'),
-  rssFeedUrl            = $rssFeedContainer.getAttribute('data-rss-feed');
+  var $rssFeedContainer = document.querySelector('.rss-feed-display-widget')
 
   // NO RSS FEED WIDGET ON PAGE
+  if (!$rssFeedContainer) return;
+
+  var rssFeedItemColor = $rssFeedContainer.getAttribute('data-bg-color'),
+  rssFeedUrl           = $rssFeedContainer.getAttribute('data-rss-feed');
+
   if (!rssFeedUrl.length) return;
 
   // SHOULD BUILD OUT FOR MORE ROBUST DATES CURRENTLY ONLY ACCEPTS WORDPRESS STYLE RSS FEED DATE FORMAT NOT SURE WHAT RSS FEED STANDARD IS FOR pubDate
