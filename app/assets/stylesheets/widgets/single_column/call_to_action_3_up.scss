@@ -16,7 +16,7 @@
     line-height: 1em;
     text-align: center;
   }
-    
+
   .column {
     margin-bottom: $base-spacing*3;
 
@@ -91,9 +91,14 @@
       content: " »"
     }
   }
+
   span.underline {
-      border-bottom: 1px dotted #a50034;
-      line-height: 1.2em;
+    border-bottom: 1px dotted #a50034;
+    line-height: 1.2em;
+  }
+
+  ul {
+    margin-left: 32px;
   }
 }
 
