@@ -3,5 +3,5 @@
     #set ( $rssFeedUrl      = $rssFeedDisplay.getChild('feedUrl').value)
     #set ( $backgroundColor = $rssFeedDisplay.getChild('bgColor').value)
     <div class="props">${_PropertyTool.outputProperties($rssFeedDisplay)}</div>
-    <div data-rss-feed="${_EscapeTool.xml($rssFeedUrl)}" data-bg-color="${backgroundColor}  class="rss-feed-display-widget"></div>
+    <div data-rss-feed="${_EscapeTool.xml($rssFeedUrl)}" data-bg-color="${backgroundColor}"  class="rss-feed-display-widget"></div>
 #end
