@@ -173,6 +173,7 @@
 		<group identifier="widget" label="Widgets" multiple="true">
 			<text help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
 				<dropdown-item value="(select one)"/>
+				<dropdown-item show-fields="primaryContent/widget/rssFeedDisplay" value="RSS Feed Display"/>
 				<dropdown-item show-fields="primaryContent/widget/programEvents" value="Program Events"/>
 				<dropdown-item show-fields="primaryContent/widget/bannerNotificationWidget" value="Banner Notification"/>
 				<dropdown-item show-fields="primaryContent/widget/careerBlockWidget" value="Career Block"/>
@@ -198,6 +199,15 @@
 				<dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
 				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 			</text>
+			<group collapsed="true" identifier="rssFeedDisplay" label="RSS Feed Display">X
+				<shared-field identifier="display" path="display"/>
+				<text identifier="feedTitle" label="Feed Title" required="true"/>
+				<text default="Sand" identifier="bgColor" label="Background Color" type="dropdown">
+					<dropdown-item label="Sand" value="sand"/>
+					<dropdown-item label="Grey" value="grey"/>
+				</text>
+				<text identifier="feedUrl" label="Feed Url" required="true"/>
+			</group>
 			<group collapsed="true" identifier="programEvents" label="Program Events">
 				<shared-field identifier="display" path="display"/>
 				<text default="tiles" identifier="tilesBars" label="Program Events Display" required="true" type="radiobutton">

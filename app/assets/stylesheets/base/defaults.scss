@@ -689,12 +689,12 @@ html body {
     }
 
     .text--link {
-      color: $cu-red;
-      @include underline($cu-red);
+      color: $white;
+      @include underline($white);
 
       &:hover,
       &:focus {
-        color: lighten($cu-red, 8%);
+        color: lighten($white, 8%);
         @include underline(currentColor);
         transition: all 0.3s ease;
       }
