@@ -11,7 +11,7 @@ $(document).ready(function() {
     switch(type) {
       case 'wordpress':
         var months  = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'],
-        date        = Date.parse(rssFeedItemDate.substring(0, rssFeedItemDate.indexOf('+'))),
+        date        = Date.parse(rssFeedItemDate),
         month       = months[new Date(date).getMonth()],
         dayOfMonth  = new Date(date).getDate(),
         year        = new Date(date).getFullYear(),
