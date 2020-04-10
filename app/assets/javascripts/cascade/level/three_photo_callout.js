@@ -1,9 +1,23 @@
 $(document).ready(function () {
-    size_li = $(".three-photo-callout-widget__container > a").size();
-    x = 3;
-    $('.three-photo-callout-widget__container > a:lt(' + x + ')').show();
+    numberOfPhotos = $(".three-photo-callout-widget__container > a").size();
+    x = 6;
+    var count = 0;
+    $('.three-photo-callout-widget__container > a:lt(' + x + ')').show(0);
     $('#three-photo-callout-widget__load-more').click(function () {
-        x = (x + 6 <= size_li) ? x + 6 : size_li;
-        $('.three-photo-callout-widget__container > a:lt(' + x + ')').show();
+        count += 1;
+        console.log('count ' + count);
+
+        if (count < 2) {
+            // condition ? value-if-true : value-if-false
+            x = (x + 3 <= numberOfPhotos) ? x + 3 : numberOfPhotos;
+            $('.three-photo-callout-widget__container > a:lt(' + x + ')').show(0);
+        } else if (count == 2) {
+            $('#three-photo-callout-widget__load-more').text('Load All')
+            x = (x + 3 <= numberOfPhotos) ? x + 3 : numberOfPhotos;
+            $('.three-photo-callout-widget__container > a:lt(' + x + ')').show(0);
+        } else if (count > 2) {
+            $('.three-photo-callout-widget__container > a').show(0);
+            $('#three-photo-callout-widget__load-more').fadeOut('slow');
+        }
     });
 });
