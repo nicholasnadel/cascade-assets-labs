@@ -518,7 +518,7 @@ module ContentTypes
       format("%s %s %s %s %s %s %s %s %s %s %s %s",
              render_static_partial("widgets/primary_content/three_photo_callout_1"),
              render_static_partial("widgets/primary_content/banner_notification"),
-             render_static_partial("widgets/primary_content/testimonial_widget"),
+             render_static_partial("widgets/primary_content/three_photo_callout_2"),
              render_static_partial("widgets/primary_content/collapsables_3"),
              render_static_partial("widgets/primary_content/collapsables_2"),
              render_static_partial("widgets/primary_content/collapsables_2"),
