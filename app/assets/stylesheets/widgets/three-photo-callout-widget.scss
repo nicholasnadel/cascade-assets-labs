@@ -1,0 +1,97 @@
+/* autoprefixer grid: autoplace */
+.three-photo-callout-widget {
+    border: none;
+    // @include qbal-fade-enter;
+    @include qbal-slideUp-enter;
+
+    img {
+        width: 100%;
+
+        @include respond(phone) {
+            display: none;
+        }
+
+    }
+
+    &__container {
+        display              : -ms-grid;
+        display              : grid;
+        -ms-grid-columns     : 1fr 25px 1fr 25px 1fr;
+        grid-template-columns: repeat(3, 1fr);
+        -ms-grid-rows        : auto;
+        grid-template-rows   : auto;
+        grid-gap             : 2rem;
+
+        +[class*="-widget"] {
+            margin: 20px 0 20px 0;
+        }
+
+        @include respond(tab-port) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include respond(phone) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    &__container>*:nth-child(1) {
+        -ms-grid-row   : 1;
+        -ms-grid-column: 1
+    }
+
+    &__container>*:nth-child(2) {
+        -ms-grid-row   : 1;
+        -ms-grid-column: 3
+    }
+
+    &__container>*:nth-child(3) {
+        -ms-grid-row   : 1;
+        -ms-grid-column: 5
+    }
+
+    &__text {
+        background-color: $cu-red;
+        color           : $white;
+        display         : -ms-grid;
+        display         : grid;
+        justify-content : center;
+        align-content   : center;
+        padding         : 4%;
+        font-weight     : bold;
+        text-transform  : uppercase;
+        text-align      : center;
+        min-height      : 86px;
+
+        p {
+            margin-bottom: 0;
+            font-weight  : bold;
+        }
+    }
+
+    &__button {
+        width            : 100%;
+        height           : 5.0rem;
+        color            : var(--cu-red);
+        font-family      : $futura-regular;
+        font-weight      : bold;
+        grid-column-start: 1;
+        grid-column-end  : 4;
+
+        +[class*="-widget"] {
+            margin-bottom: 20px;
+        }
+    }
+
+
+}
+
+a.three-photo-callout-widget {
+    border: none;
+}
+
+a.three-photo-callout-widget:nth-child(n+7) {
+
+    display: none;
+
+}
