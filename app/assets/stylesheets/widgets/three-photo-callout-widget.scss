@@ -35,6 +35,10 @@
         @include respond(phone) {
             grid-template-columns: repeat(1, 1fr);
         }
+
+
+
+
     }
 
     &__container>*:nth-child(1) {
@@ -97,8 +101,10 @@ a.three-photo-callout-widget:nth-child(n+4) {
 
 }
 
-.three-photo-callout-widget>a {
 
-    display: none;
+.no-js {
+    a.three-photo-callout-widget:nth-child(n+4) {
+        display: grid;
+    }
 
 }
