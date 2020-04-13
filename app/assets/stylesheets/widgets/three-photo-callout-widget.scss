@@ -4,6 +4,41 @@
     // @include qbal-fade-enter;
     @include qbal-slideUp-enter;
 
+    &:hover {
+        transition: 300ms linear;
+    }
+
+    &--sand {
+        &:hover {
+            background-color: lighten($sand, 2%);
+        }
+    }
+
+    &--red {
+        &:hover {
+            background-color: lighten($cu-red, 8%);
+        }
+    }
+
+    &--black {
+        &:hover {
+            background-color: darken($panther-black, 8%);
+        }
+    }
+
+    &--white {
+        &:hover {
+            background-color: darken($sand, 2%);
+        }
+    }
+
+    &:hover {
+        img {
+            filter    : brightness(80%);
+            transition: 300ms linear;
+        }
+    }
+
     img {
         width: 100%;
 
