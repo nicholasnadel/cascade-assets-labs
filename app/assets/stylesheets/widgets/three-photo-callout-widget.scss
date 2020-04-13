@@ -10,7 +10,6 @@
         @include respond(phone) {
             display: none;
         }
-
     }
 
     &__container {
@@ -35,10 +34,6 @@
         @include respond(phone) {
             grid-template-columns: repeat(1, 1fr);
         }
-
-
-
-
     }
 
     &__container>*:nth-child(1) {
@@ -87,8 +82,6 @@
             margin-bottom: 20px;
         }
     }
-
-
 }
 
 a.three-photo-callout-widget {
@@ -96,15 +89,11 @@ a.three-photo-callout-widget {
 }
 
 a.three-photo-callout-widget:nth-child(n+4) {
-
     display: none;
-
 }
-
 
 .no-js {
     a.three-photo-callout-widget:nth-child(n+4) {
         display: grid;
     }
-
 }

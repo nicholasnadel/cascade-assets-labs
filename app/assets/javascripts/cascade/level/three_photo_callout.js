@@ -10,10 +10,22 @@ $(document).ready(function () {
         console.log("'" + currentButton + "'");
         var numberOfPhotosToReveal = 3;
         $('#' + currentWidgetContainer + ' > a:lt(' + 3 + ')').show();
+        var count = 0;
         $(currentButton).click(function () {
+            count += 1;
             var currentVisible = $('#' + currentWidgetContainer + ' a:visible').size()
             numberOfPhotosToReveal = (numberOfPhotosToReveal + 3);
             $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotosToReveal + ')').show();
+            if (count < 2) {
+                // condition ? value-if-true : value-if-false
+                $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotosToReveal + ')').show();
+            } else if (count == 2) {
+                $(currentButton).text('Load All')
+                $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotosToReveal + ')').show();
+            } else if (count > 2) {
+                $('#' + currentWidgetContainer + ' > a').show(0);
+                $(currentButton).fadeOut();
+            }
         });
     });
 });
