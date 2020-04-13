@@ -91,7 +91,13 @@ a.three-photo-callout-widget {
     border: none;
 }
 
-a.three-photo-callout-widget:nth-child(n+7) {
+a.three-photo-callout-widget:nth-child(n+4) {
+
+    display: none;
+
+}
+
+.three-photo-callout-widget>a {
 
     display: none;
 
