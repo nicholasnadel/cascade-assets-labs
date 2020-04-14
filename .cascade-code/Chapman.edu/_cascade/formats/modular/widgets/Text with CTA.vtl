@@ -1,9 +1,29 @@
 #macro(outputTextWithCTA $element)
-    #set ( $rssFeedDisplay  = $_XPathTool.selectSingleNode($element, 'rssFeedDisplay') )
-    #set ( $rssFeedUrl      = $rssFeedDisplay.getChild('feedUrl').value)
-    #set ( $backgroundColor = $rssFeedDisplay.getChild('bgColor').value)
-    #set ( $title           = $rssFeedDisplay.getChild('feedTitle').value)
-    <div data-rss-feed="${_EscapeTool.xml($rssFeedUrl)}" data-bg-color="${backgroundColor}" class="rss-feed-display-widget">
-        <h2 class="rss-feed-display____title">${_EscapeTool.xml($title)}</h2>
+    #set ( $textWithCTA  = $_XPathTool.selectSingleNode($element, 'textWithCTA') )
+    #set ( $title        = $textWithCTA.getChild('textWithCTATitle').value)
+    #set ( $text         = $textWithCTA.getChild('text').value)
+    #set ( $ctaButtons   = $_XPathTool.selectNodes($element, 'textWithCTA/textWithCTAButton'))
+    <div class="text-with-cta-widget">
+        <div class="text-with-cta__text-container">
+            <h2 class="text-with-cta__title">${_EscapeTool.xml($title)}</h2>
+            <div class="text-with-cta__buttons">
+                #foreach ( $button in $ctaButtons )
+                    #set ( $link        = $button.getChild('link') )
+                    #set ( $linkType    = $link.getChild('linkType').value )
+                    #set ( $buttonText  = $link.getChild('label').value )
+                    #set ( $buttonColor = $link.getChild('buttonColor').value )
+                    #if ($linkType == 'Internal Link')
+                        #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
+                    #elseif ($linkType == 'External Link')
+                        #set ($linkURL = $link.getChild('externalLink').value )
+                    #else 
+                        #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
+                    #end
+                    <button class="text-with-cta__button color--${buttonColor}"><a href="${_EscapeTool.xml($linkURL)}">${_EscapeTool.xml($buttonText)}</a></button>
+                #end
+            </div>
+            <p class="text-with-cta__text">${_EscapeTool.xml($text)}</p>
+        </div>
+
     </div>
 #end
