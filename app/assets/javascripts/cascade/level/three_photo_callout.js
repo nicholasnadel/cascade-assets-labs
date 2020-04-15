@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.each($('.three-photo-callout-widget__container'), function (ind) {
+    $.each($('.three-photo-callout-widget__container'), function (ind, showLoadMoreButton) {
         $(this).attr('id', 'three-photo-callout-widget__container__' + parseInt(ind + 1));
         var currentWidgetContainer = $(this).closest('.three-photo-callout-widget__container').attr('id');
         console.log(currentWidgetContainer)
@@ -10,27 +10,40 @@ $(document).ready(function () {
         console.log("'" + currentButton + "'");
         var numberOfPhotosToReveal = 3;
         $('#' + currentWidgetContainer + ' > a:lt(' + 3 + ')').show();
-        var count = 0;
+        var buttonClickCounter = 0;
+
+
+        if (numberOfPhotos > 3) {
+            $(currentButton).show();
+        }
+
         $(currentButton).click(function () {
-            count += 1;
+            buttonClickCounter += 1;
             var currentVisible = $('#' + currentWidgetContainer + ' a:visible').size()
             numberOfPhotosToReveal = (numberOfPhotosToReveal + 3);
             $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotosToReveal + ')').show();
-            if (count < 2) {
-                // condition ? value-if-true : value-if-false
+            if (buttonClickCounter < 2) {
                 $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotosToReveal + ')').show();
-            } else if (count == 2) {
+            } else if (buttonClickCounter == 2 && numberOfPhotos > 6) {
                 $(currentButton).text('Load All')
                 $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotosToReveal + ')').show();
-            } else if (count > 2) {
+            } else if (buttonClickCounter > 2) {
                 $('#' + currentWidgetContainer + ' > a').show(0);
-                $(currentButton).fadeOut();
+                $(currentButton).text('All Photos Loaded')
+                // $(currentButton).fadeOut(5000);
             }
+
+            if (currentVisible == numberOfPhotos) {
+                $(currentButton).text('All Photos Loaded')
+                // $(currentButton).fadeOut(5000);
+            }
+            debugger;
         });
     });
+
 });
 
-function resetCounter() {
-    var count = 0;
-    console.log('count ' + count);
+function resetbuttonClickCounterer() {
+    var buttonClickCounter = 0;
+    console.log('buttonClickCounter ' + buttonClickCounter);
 }

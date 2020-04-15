@@ -40,11 +40,11 @@
     }
 
     img {
+        --imgSize: 150px;
         width: 100%;
-
-        @include respond(phone) {
-            display: none;
-        }
+        object-fit: cover;
+        width: 100%;
+        height: var(--imgSize);
     }
 
     &__container {
@@ -62,6 +62,17 @@
             margin-bottom: 20px;
         }
 
+        &--2-col {
+        grid-template-columns: repeat(2, 1fr);
+        }
+
+        &--hide-img-mobile {
+            img {
+            @include respond(phone) {
+                display: none;
+            }
+        }
+        }
         @include respond(tab-port) {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -112,6 +123,7 @@
         border-radius    : 4px;
         grid-column-start: 1;
         grid-column-end  : 4;
+        display: none;
 
         +[class*="-widget"] {
             margin-bottom: 20px;
