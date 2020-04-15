@@ -45,6 +45,7 @@
         object-fit: cover;
         width: 100%;
         height: var(--imgSize);
+        border-bottom: 2px solid $white;
     }
 
     &__container {

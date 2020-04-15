@@ -196,7 +196,7 @@
 				<dropdown-item show-fields="primaryContent/widget/testimonial-widget" value="Testimonial"/>
 				<dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
 				<dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
-				<dropdown-item show-fields="primaryContent/widget/photo-callout-widget" value="Photo Callout"/>
+				<dropdown-item show-fields="primaryContent/widget/photoCalloutWidget" value="Photo Callout"/>
 				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 				<dropdown-item show-fields="primaryContent/widget/quickFactBlocksWidget" value="Quick Fact Blocks"/>
 			</text>
@@ -362,11 +362,23 @@
 			</group>
 			<group collapsed="true" identifier="photoCalloutWidget" label="Photo Callout">
 				<shared-field identifier="display" path="display"/>
+				<text default="Three Column Layout" identifier="numberOfColumns" label="Desktop Layout" type="radiobutton">
+					<radio-item value="Three Column Layout"/>
+					<radio-item value="Two Column Layout"/>
+				</text>
+				<text default="Show Images" identifier="hideImagesOnMobile" label="Mobile Layout" type="radiobutton">
+					<radio-item value="Show Images"/>
+					<radio-item value="Hide Images"/>
+				</text>
+				<text default="No" help-text="Disabling links will remove the option to wrap each photo block in a link" identifier="enableLinks" label="Make each photo block a link?" type="radiobutton">
+					<radio-item show-fields="primaryContent/widget/photoCalloutWidget/block/link" value="Enable Links"/>
+					<radio-item value="Disable Links"/>
+				</text>
 				<shared-field identifier="bgColor" path="background-color"/>
-				<group identifier="block" label="Block" multiple="true">
-					<shared-field identifier="image" path="image" required="true"/>
+				<group identifier="block" label="Photo Block" multiple="true">
+					<shared-field identifier="image" maximum-number="1" path="image__rectangle-only--required" required="true"/>
 					<text help-text="50 Characters Max" identifier="text" label="Text" maxlength="50" required="true"/>
-					<group identifier="link" label="Link" multiple="false">
+					<group identifier="link" label="Link">
 						<text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
 							<radio-item show-fields="primaryContent/widget/photoCalloutWidget/block/link/internalLink" value="Internal Link"/>
 							<radio-item show-fields="primaryContent/widget/photoCalloutWidget/block/link/externalLink" value="External Link"/>
