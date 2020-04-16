@@ -3,43 +3,13 @@
     border: none;
     // @include qbal-fade-enter;
     @include qbal-slideUp-enter;
-
-    &:hover {
-        transition: 300ms linear;
-    }
-
-    &--sand {
-        &:hover {
-            background-color: lighten($sand, 2%);
-            @debug "sand hover: #{$sand}";
-        }
-    }
-
-    &--red {
-        &:hover {
-            background-color: lighten($cu-red, 8%);
-        }
-    }
-
-    &--black {
-        &:hover {
-            background-color: darken($panther-black, 8%);
-        }
-    }
-
-    &--white {
-        &:hover {
-            background-color: darken($sand, 2%);
-        }
-    }
-
+    @extend %color-hover;
     &:hover {
         img {
             filter    : brightness(80%);
-            transition: 300ms linear;
+            transition: 250ms linear;
         }
     }
-
     img {
         --imgSize: 150px;
         width: 100%;
@@ -49,7 +19,6 @@
         border-bottom: 2px solid $white;
         @include qbal-fade-enter;
     }
-
     &__container {
         display              : -ms-grid;
         display              : grid;
@@ -58,16 +27,13 @@
         -ms-grid-rows        : auto;
         grid-template-rows   : auto;
         grid-gap             : 2rem;
-
         +[class*="-widget"] {
             margin-top   : 20px;
             margin-bottom: 20px;
         }
-
         &--2-col {
         grid-template-columns: repeat(2, 1fr);
         }
-
         &--hide-img-mobile {
             img {
             @include respond(phone) {
@@ -78,27 +44,22 @@
         @include respond(tab-port) {
             grid-template-columns: repeat(2, 1fr);
         }
-
         @include respond(phone) {
             grid-template-columns: repeat(1, 1fr);
         }
     }
-
     &__container>*:nth-child(1) {
         -ms-grid-row   : 1;
         -ms-grid-column: 1
     }
-
     &__container>*:nth-child(2) {
         -ms-grid-row   : 1;
         -ms-grid-column: 3
     }
-
     &__container>*:nth-child(3) {
         -ms-grid-row   : 1;
         -ms-grid-column: 5
     }
-
     &__text {
         display        : -ms-grid;
         display        : grid;
@@ -109,9 +70,10 @@
         text-transform : uppercase;
         text-align     : center;
         min-height     : 86px;
-
         &--left-aligned {
             text-align: left;
+            display: grid;
+            justify-content: start;
         }
         p {
             margin-bottom: 0;
@@ -119,7 +81,6 @@
             font-family: $futura-regular;
         }
     }
-
     &__button {
         width            : 100%;
         height           : 5.0rem;
@@ -131,19 +92,16 @@
         grid-column-end  : 4;
         display: none;
         margin-bottom: 20px;
-
         +[class*="-widget"] {
             margin-top   : 20px;
             margin-bottom: 20px;
         }
-
+        @extend %color-hover;
     }
 }
-
 a.three-photo-callout-widget {
     border: none;
 }
-
 a.three-photo-callout-widget:nth-child(n+4) {
     display: none;
 }
@@ -156,5 +114,35 @@ div.three-photo-callout-widget:nth-child(n+4) {
     }
     div.three-photo-callout-widget:nth-child(n+4) {
         display: grid;
+    }
+}
+%color-hover {
+    &:hover {
+        transition: 250ms linear;
+    }
+    +[class*="--sand"] {
+        &:hover {
+            background-color: lighten($sand, 2%);
+        }
+    }
+    +[class*="--red"] {
+        &:hover {
+            background-color: lighten($cu-red, 8%);
+        }
+    }
+    +[class*="--black"] {
+        &:hover {
+            background-color: black;
+        }
+    }
+    +[class*="--white"] {
+        &:hover {
+            background-color: darken($white, 2%);
+        }
+    }
+    +[class*="--grey"] {
+        &:hover {
+            background-color: lighten($grey, 8%);
+        }
     }
 }

@@ -786,6 +786,35 @@ html body {
     }
   }
 
+  button:hover {
+    transition: 150ms ease all;
+    margin-bottom: 2px;
+   }
+
+button[class*="--sand"]:hover {
+  background-color: lighten($sand, 2%);
+
+}
+
+button[class*="--white"] {
+  border: 1px solid $cu-light-grey !important;
+  &:hover {
+  background-color: darken($white, 2%);
+  border: 1px solid $cu-light-grey-2 !important;
+}
+}
+button[class*="--grey"]:hover {
+  background-color: lighten($cu-light-grey, 4%);
+
+}
+button[class*="--red"]:hover {
+  background-color: lighten($cu-red, 8%);
+}
+button[class*="--black"]:hover {
+  background-color: black;
+}
+
+
   @media (prefers-reduced-motion: reduce) {
     * {
       animation        : none !important;
