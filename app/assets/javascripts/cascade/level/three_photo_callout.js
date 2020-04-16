@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    $.each($('.three-photo-callout-widget__container'), function (ind) {
+    $.each($('.photo-callout-widget__container'), function (ind) {
         $(this).attr('id', 'three-photo-callout-widget__container__' + parseInt(ind + 1));
-        var currentWidgetContainer = $(this).closest('.three-photo-callout-widget__container').attr('id');
+        var currentWidgetContainer = $(this).closest('.photo-callout-widget__container').attr('id');
         console.log(currentWidgetContainer)
-        var numberOfPhotos = $('#' + currentWidgetContainer + " img").size()
-        console.log(currentWidgetContainer + numberOfPhotos);
-        var loadMoreButtonButton = ' + .three-photo-callout-widget__button';
+        var currentTotalNumberOfPhotos = $('#' + currentWidgetContainer + " img").size()
+        console.log(currentWidgetContainer + currentTotalNumberOfPhotos);
+        var loadMoreButtonButton = ' + .photo-callout-widget__button';
         var currentButton = '#' + currentWidgetContainer + loadMoreButtonButton;
         console.log("'" + currentButton + "'");
         var numberOfPhotoLinksToReveal = 3;
@@ -13,8 +13,8 @@ $(document).ready(function () {
         $('#' + currentWidgetContainer + ' > a:lt(' + 3 + ')').show();
         $('#' + currentWidgetContainer + ' > div:lt(' + 3 + ')').show();
         var buttonClickCounter = 0;
-        console.log('number photos: ' + numberOfPhotos)
-        if (numberOfPhotos > 3) {
+        console.log('number photos: ' + currentTotalNumberOfPhotos)
+        if (currentTotalNumberOfPhotos > 3) {
             $(currentButton).show();
             console.log('revealing each load more button');
         }
@@ -25,7 +25,7 @@ $(document).ready(function () {
             if (buttonClickCounter < 2) {
                 $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotoLinksToReveal + ')').show();
                 $('#' + currentWidgetContainer + ' > div:lt(' + numberOfPhotoLinksToReveal + ')').show();
-            } else if (buttonClickCounter == 2 && numberOfPhotos > 6) {
+            } else if (buttonClickCounter == 2 && currentTotalNumberOfPhotos > 6) {
                 $(currentButton).text('Load All')
                 $('#' + currentWidgetContainer + ' > a:lt(' + numberOfPhotoLinksToReveal + ')').show();
                 $('#' + currentWidgetContainer + ' > div:lt(' + numberOfPhotoLinksToReveal + ')').show();
@@ -36,18 +36,18 @@ $(document).ready(function () {
                 $(currentButton).text('All Photos Loaded')
                 $(currentButton).fadeOut(0);
             }
-            var currentVisible = $('#' + currentWidgetContainer + ' .three-photo-callout-widget:visible').size()
+            var currentVisible = $('#' + currentWidgetContainer + ' .photo-callout-widget:visible').size()
 
-            console.log('currentVisible: ' + currentWidgetContainer + ' ' + currentVisible + 'number of photos: ' + numberOfPhotos)
+            console.log('currentVisible: ' + currentWidgetContainer + ' ' + currentVisible + 'number of photos: ' + currentTotalNumberOfPhotos)
 
 
-            if (currentVisible == numberOfPhotos) {
+            if (currentVisible == currentTotalNumberOfPhotos) {
                 console.log('currentVisible: ' + currentWidgetContainer + ' ' + currentVisible)
                 console.log('number of photo links to reveal: ' + currentWidgetContainer + ' ' + numberOfPhotoLinksToReveal)
                 $(currentButton).text('All Photos Loaded')
                 $(currentButton).fadeOut(0);
             }
-            console.log('number of photos: ' + currentWidgetContainer + ' ' + numberOfPhotos)
+            console.log('number of photos: ' + currentWidgetContainer + ' ' + currentTotalNumberOfPhotos)
         });
     });
 });
