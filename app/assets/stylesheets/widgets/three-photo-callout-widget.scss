@@ -11,6 +11,7 @@
     &--sand {
         &:hover {
             background-color: lighten($sand, 2%);
+            @debug "sand hover: #{$sand}";
         }
     }
 
@@ -109,9 +110,13 @@
         text-align     : center;
         min-height     : 86px;
 
+        &--left-aligned {
+            text-align: left;
+        }
         p {
             margin-bottom: 0;
             font-weight  : bold;
+            font-family: $futura-regular;
         }
     }
 
@@ -126,6 +131,11 @@
         grid-column-end  : 4;
         display: none;
         margin-bottom: 20px;
+
+        +[class*="-widget"] {
+            margin-top   : 20px;
+            margin-bottom: 20px;
+        }
 
     }
 }
