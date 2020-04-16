@@ -1,9 +1,16 @@
 /* autoprefixer grid: autoplace */
-.three-photo-callout-widget {
+.photo-callout-widget {
     border: none;
     // @include qbal-fade-enter;
     @include qbal-slideUp-enter;
     @extend %color-hover;
+
+&--red{
+        &:hover {
+            background-color: lighten($cu-red, 8%);
+        }
+    }
+
     &:hover {
         img {
             filter    : brightness(80%);
@@ -31,6 +38,7 @@
             margin-top   : 20px;
             margin-bottom: 20px;
         }
+        
         &--2-col {
         grid-template-columns: repeat(2, 1fr);
         }
@@ -99,20 +107,20 @@
         @extend %color-hover;
     }
 }
-a.three-photo-callout-widget {
+a.photo-callout-widget {
     border: none;
 }
-a.three-photo-callout-widget:nth-child(n+4) {
+a.photo-callout-widget:nth-child(n+4) {
     display: none;
 }
-div.three-photo-callout-widget:nth-child(n+4) {
+div.photo-callout-widget:nth-child(n+4) {
     display: none;
 }
 .no-js {
-    a.three-photo-callout-widget:nth-child(n+4) {
+    a.photo-callout-widget:nth-child(n+4) {
         display: grid;
     }
-    div.three-photo-callout-widget:nth-child(n+4) {
+    div.photo-callout-widget:nth-child(n+4) {
         display: grid;
     }
 }
