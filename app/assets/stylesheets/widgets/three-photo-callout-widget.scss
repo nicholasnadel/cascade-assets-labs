@@ -76,6 +76,7 @@
         text-transform: uppercase;
         text-align: center;
         min-height: 86px;
+
         &--left-aligned {
             text-align: left;
             display: grid;
@@ -85,6 +86,18 @@
             margin-bottom: 0;
             font-weight: bold;
             font-family: $futura-regular;
+        }
+        &--white,
+        &--sand {
+            p {
+                color: $cu-red;
+
+                &:hover,
+                &:focus {
+                    color: lighten($cu-red, 8%);
+                    transition: 250ms linear;
+                }
+            }
         }
     }
     &__button {
@@ -97,6 +110,11 @@
         grid-column-end: 4;
         display: none;
         margin-bottom: 20px;
+
+        &--sand {
+            color: $cu-red;
+        }
+
         + [class*="-widget"] {
             margin-top: 20px;
             margin-bottom: 20px;
@@ -108,7 +126,8 @@
     }
 }
 
-a.photo-callout-widget {
+a.photo-callout-widget,
+button.photo-callout-widget__load-more {
     border: none;
     &:hover,
     &:focus,
@@ -144,12 +163,12 @@ a.photo-callout-widget {
     &[class*="--white"]:hover,
     &[class*="--white"]:focus,
     &[class*="--white"]:focus-within {
-        background-color: lighten($white, 2%);
+        background-color: darken($white, 2%);
     }
     &[class*="--white"]:hover .photo-callout-widget__text,
     &[class*="--white"]:focus .photo-callout-widget__text,
     &[class*="--white"]:focus-within .photo-callout-widget__text {
-        background-color: lighten($white, 2%);
+        background-color: darken($white, 2%);
     }
 
     &[class*="--black"]:hover,
@@ -227,4 +246,8 @@ div.photo-callout-widget:nth-child(n + 4) {
             display: flex;
         }
     }
+}
+
+.photo-callout-widget__text.photo-callout-widget__text--white {
+    border-top: transparent;
 }
