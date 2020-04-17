@@ -1,9 +1,46 @@
+
 /* autoprefixer grid: autoplace */
+
 .photo-callout-widget {
     border: none;
     // @include qbal-fade-enter;
     @include qbal-slideUp-enter;
-    @extend %color-hover;
+
+
+    &[class*="--sand"]:hover {
+        background-color: lighten($sand, 2%);
+    }
+    &[class*="--sand"]:hover .photo-callout-widget__text {
+        background-color: lighten($sand, 2%);
+    }
+
+    &[class*="--red"]:hover {
+        background-color: lighten($cu-red, 8%);
+    }
+    &[class*="--red"]:hover .photo-callout-widget__text {
+        background-color: lighten($cu-red, 8%);
+    }
+
+    &[class*="--white"]:hover {
+        background-color: darken($white, 2%);
+    }
+    &[class*="--white"]:hover .photo-callout-widget__text {
+        background-color: darken($white, 2%);
+    }
+
+    &[class*="--black"]:hover {
+        background-color:  black;
+    }
+    &[class*="--black"]:hover .photo-callout-widget__text {
+        background-color:  black;
+    }
+
+    &[class*="--grey"]:hover {
+        background-color: lighten($grey, 8%);
+    }
+    &[class*="--grey"]:hover .photo-callout-widget__text {
+        background-color: lighten($grey, 8%);
+    }
 
 &--red{
         &:hover {
@@ -104,7 +141,6 @@
             margin-top   : 20px;
             margin-bottom: 20px;
         }
-        @extend %color-hover;
     }
 }
 a.photo-callout-widget {
@@ -122,35 +158,5 @@ div.photo-callout-widget:nth-child(n+4) {
     }
     div.photo-callout-widget:nth-child(n+4) {
         display: grid;
-    }
-}
-%color-hover {
-    &:hover {
-        transition: 250ms linear;
-    }
-    +[class*="--sand"] {
-        &:hover {
-            background-color: lighten($sand, 2%);
-        }
-    }
-    +[class*="--red"] {
-        &:hover {
-            background-color: lighten($cu-red, 8%);
-        }
-    }
-    +[class*="--black"] {
-        &:hover {
-            background-color: black;
-        }
-    }
-    +[class*="--white"] {
-        &:hover {
-            background-color: darken($white, 2%);
-        }
-    }
-    +[class*="--grey"] {
-        &:hover {
-            background-color: lighten($grey, 8%);
-        }
     }
 }
