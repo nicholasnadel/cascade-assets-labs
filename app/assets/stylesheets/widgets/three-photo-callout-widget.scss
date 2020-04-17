@@ -1,56 +1,14 @@
-
 /* autoprefixer grid: autoplace */
 
 .photo-callout-widget {
     border: none;
-    // @include qbal-fade-enter;
     @include qbal-slideUp-enter;
 
-
-    &[class*="--sand"]:hover {
-        background-color: lighten($sand, 2%);
-    }
-    &[class*="--sand"]:hover .photo-callout-widget__text {
-        background-color: lighten($sand, 2%);
-    }
-
-    &[class*="--red"]:hover {
-        background-color: lighten($cu-red, 8%);
-    }
-    &[class*="--red"]:hover .photo-callout-widget__text {
-        background-color: lighten($cu-red, 8%);
-    }
-
-    &[class*="--white"]:hover {
-        background-color: darken($white, 2%);
-    }
-    &[class*="--white"]:hover .photo-callout-widget__text {
-        background-color: darken($white, 2%);
-    }
-
-    &[class*="--black"]:hover {
-        background-color:  black;
-    }
-    &[class*="--black"]:hover .photo-callout-widget__text {
-        background-color:  black;
-    }
-
-    &[class*="--grey"]:hover {
-        background-color: lighten($grey, 8%);
-    }
-    &[class*="--grey"]:hover .photo-callout-widget__text {
-        background-color: lighten($grey, 8%);
-    }
-
-&--red{
-        &:hover {
-            background-color: lighten($cu-red, 8%);
-        }
-    }
-
-    &:hover {
+    &:hover,
+    &:focus,
+    &:focus-within {
         img {
-            filter    : brightness(80%);
+            filter: brightness(80%);
             transition: 250ms linear;
         }
     }
@@ -60,31 +18,35 @@
         object-fit: cover;
         width: 100%;
         height: var(--imgSize);
-        border-bottom: 2px solid $white;
+        @include qbal-fade-enter;
+    }
+    &__img {
+        background-color: $white;
+        max-height: 152px;
         @include qbal-fade-enter;
     }
     &__container {
-        display              : -ms-grid;
-        display              : grid;
-        -ms-grid-columns     : 1fr 25px 1fr 25px 1fr;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr 25px 1fr 25px 1fr;
         grid-template-columns: repeat(3, 1fr);
-        -ms-grid-rows        : auto;
-        grid-template-rows   : auto;
-        grid-gap             : 2rem;
-        +[class*="-widget"] {
-            margin-top   : 20px;
+        -ms-grid-rows: auto;
+        grid-template-rows: auto;
+        grid-gap: 2rem;
+        + [class*="-widget"] {
+            margin-top: 20px;
             margin-bottom: 20px;
         }
-        
+
         &--2-col {
-        grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
         &--hide-img-mobile {
             img {
-            @include respond(phone) {
-                display: none;
+                @include respond(phone) {
+                    display: none;
+                }
             }
-        }
         }
         @include respond(tab-port) {
             grid-template-columns: repeat(2, 1fr);
@@ -93,28 +55,28 @@
             grid-template-columns: repeat(1, 1fr);
         }
     }
-    &__container>*:nth-child(1) {
-        -ms-grid-row   : 1;
-        -ms-grid-column: 1
+    &__container > *:nth-child(1) {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
     }
-    &__container>*:nth-child(2) {
-        -ms-grid-row   : 1;
-        -ms-grid-column: 3
+    &__container > *:nth-child(2) {
+        -ms-grid-row: 1;
+        -ms-grid-column: 3;
     }
-    &__container>*:nth-child(3) {
-        -ms-grid-row   : 1;
-        -ms-grid-column: 5
+    &__container > *:nth-child(3) {
+        -ms-grid-row: 1;
+        -ms-grid-column: 5;
     }
     &__text {
-        display        : -ms-grid;
-        display        : grid;
+        display: -ms-grid;
+        display: grid;
         justify-content: center;
-        align-content  : center;
-        padding        : 4%;
-        font-weight    : bold;
-        text-transform : uppercase;
-        text-align     : center;
-        min-height     : 86px;
+        align-content: center;
+        padding: 4%;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        min-height: 86px;
         &--left-aligned {
             text-align: left;
             display: grid;
@@ -122,41 +84,104 @@
         }
         p {
             margin-bottom: 0;
-            font-weight  : bold;
+            font-weight: bold;
             font-family: $futura-regular;
         }
     }
     &__button {
-        width            : 100%;
-        height           : 5.0rem;
-        color            : var(--cu-red);
-        font-family      : $futura-regular;
-        font-weight      : bold;
-        border-radius    : 4px;
+        width: 100%;
+        height: 5rem;
+        font-family: $futura-regular;
+        font-weight: bold;
+        border-radius: 4px;
         grid-column-start: 1;
-        grid-column-end  : 4;
+        grid-column-end: 4;
         display: none;
         margin-bottom: 20px;
-        +[class*="-widget"] {
-            margin-top   : 20px;
+        + [class*="-widget"] {
+            margin-top: 20px;
             margin-bottom: 20px;
         }
     }
 }
+
 a.photo-callout-widget {
     border: none;
+    &:hover,
+    &:focus,
+    &:focus-within {
+        transition: 250ms linear;
+    }
+    &:focus,
+    &:focus-within {
+        @include focus($cu-red);
+    }
+
+    &[class*="--sand"]:hover,
+    &[class*="--sand"]:focus,
+    &[class*="--sand"]:focus-within {
+        background-color: lighten($sand, 2%);
+    }
+    &[class*="--sand"]:hover .photo-callout-widget__text,
+    &[class*="--sand"]:focus .photo-callout-widget__text,
+    &[class*="--sand"]:focus-within .photo-callout-widget__text {
+        background-color: lighten($sand, 2%);
+    }
+
+    &[class*="--cu-red"]:hover,
+    &[class*="--cu-red"]:focus,
+    &[class*="--cu-red"]:focus-within {
+        background-color: lighten($cu-red, 8%);
+    }
+    &[class*="--cu-red"]:hover .photo-callout-widget__text,
+    &[class*="--cu-red"]:focus .photo-callout-widget__text,
+    &[class*="--cu-red"]:focus-within .photo-callout-widget__text {
+        background-color: lighten($cu-red, 8%);
+    }
+    &[class*="--white"]:hover,
+    &[class*="--white"]:focus,
+    &[class*="--white"]:focus-within {
+        background-color: lighten($white, 2%);
+    }
+    &[class*="--white"]:hover .photo-callout-widget__text,
+    &[class*="--white"]:focus .photo-callout-widget__text,
+    &[class*="--white"]:focus-within .photo-callout-widget__text {
+        background-color: lighten($white, 2%);
+    }
+
+    &[class*="--black"]:hover,
+    &[class*="--black"]:focus,
+    &[class*="--black"]:focus-within {
+        background-color: lighten($black, 2%);
+    }
+    &[class*="--black"]:hover .photo-callout-widget__text,
+    &[class*="--black"]:focus .photo-callout-widget__text,
+    &[class*="--black"]:focus-within .photo-callout-widget__text {
+        background-color: lighten($black, 2%);
+    }
+
+    &[class*="--grey"]:hover,
+    &[class*="--grey"]:focus,
+    &[class*="--grey"]:focus-within {
+        background-color: lighten($grey, 2%);
+    }
+    &[class*="--grey"]:hover .photo-callout-widget__text,
+    &[class*="--grey"]:focus .photo-callout-widget__text,
+    &[class*="--grey"]:focus-within .photo-callout-widget__text {
+        background-color: lighten($grey, 2%);
+    }
 }
-a.photo-callout-widget:nth-child(n+4) {
+a.photo-callout-widget:nth-child(n + 4) {
     display: none;
 }
-div.photo-callout-widget:nth-child(n+4) {
+div.photo-callout-widget:nth-child(n + 4) {
     display: none;
 }
 .no-js {
-    a.photo-callout-widget:nth-child(n+4) {
+    a.photo-callout-widget:nth-child(n + 4) {
         display: grid;
     }
-    div.photo-callout-widget:nth-child(n+4) {
+    div.photo-callout-widget:nth-child(n + 4) {
         display: grid;
     }
 }

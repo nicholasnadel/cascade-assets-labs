@@ -532,6 +532,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
   border-bottom: 2px dotted ($color);
 }
 
+@mixin focus($color) {
+  outline: 2px dotted ($color);
+}
+
 // automatic text contrast https://codepen.io/kevinpowell/pen/45ed86610f4fbdb2d05c8d6261e45b75
 @function text($bg) {
   @if(lightness($bg) > 50) {
