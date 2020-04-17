@@ -9,11 +9,11 @@
 #set ($enableLinks = $element.getChild($widgetXPath).getChild('enableLinks').value)
 #set ($textAlignment = $element.getChild($widgetXPath).getChild('textAlignment').value)
 
-#bgColorChooser($widgetXPath)
+#set ($bgColor =  $element.getChild($widgetXPath).getChild('bgColor').value)
+
 #camelToSnake($widgetXPath)
 #set ( $widgetXPath = $snakeCase ) 
 #camelToSnake($widgetXPath)
-#bgColorChooser($widgetXPath)
 #set ( $widgetXPath = $snakeCase ) 
 
 ## override values in helpers.velocity macro
@@ -56,24 +56,25 @@
             #set ($linkURL = $block.getChild('link').getChild('fileLink').getChild('path').value )
         #end
         
+        
         ## STYLE
-        #bgColorChooserLoop($block)
+        
         
         #if ($enableLinks == 'Enable Links')
          
-	<a href="${_EscapeTool.xml($linkURL)}" class="photo-callout-widget $bgColor">
+	<a href="${_EscapeTool.xml($linkURL)}" class="photo-callout-widget__ photo-callout-widget--${_EscapeTool.xml($bgColor)}">
             #imageInCollection($block)
             
-		<div class="photo-callout-widget__text $textAlignment $">
+		<div class="photo-callout-widget__text $textAlignment photo-callout-widget__text-${_EscapeTool.xml($bgColor)}">
 			<p>${_EscapeTool.xml($text)}</p>
 		</div>
 	</a>
         #else 
         
-	<div href="${_EscapeTool.xml($linkURL)}" class="photo-callout-widget $bgColor">
+	<div href="${_EscapeTool.xml($linkURL)}" class="photo-callout-widget photo-callout-widget--${_EscapeTool.xml($bgColor)}" >
             #imageInCollection($block)
             
-		<div class="photo-callout-widget__text $textAlignment">
+		<div class="photo-callout-widget__text $textAlignment photo-callout-widget__text--${_EscapeTool.xml($bgColor)}">
 			<p>${_EscapeTool.xml($text)}</p>
 		</div>
 	</div>

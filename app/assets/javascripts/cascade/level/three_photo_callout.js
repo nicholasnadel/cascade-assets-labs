@@ -50,8 +50,38 @@ $(document).ready(function () {
             console.log('number of photos: ' + currentWidgetContainer + ' ' + currentTotalNumberOfPhotos)
         });
     });
+    objectFitFallBackForIe();
 });
 function resetbuttonClickCounterer() {
     var buttonClickCounter = 0;
     console.log('buttonClickCounter ' + buttonClickCounter);
+}
+
+
+
+// object-fit fallback for ie internet explorer
+function objectFitFallBackForIe() {
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+    if (
+        msie > 0 ||
+        (!!navigator.userAgent.match(/Trident.*rv\:11\./) &&
+            $(".photo-callout-widget__img").length)
+    ) {
+        $("img.photo-callout-widget__img").each(function () {
+            var t = $(this),
+                s = "url(" + t.attr("src") + ")",
+                p = t.parent(),
+                d = $("<div class='ie__fallback--object-fit'></div>");
+            t.hide();
+            p.append(d);
+            d.css({
+                height: 150,
+                "background-size": "cover",
+                "background-repeat": "no-repeat",
+                "background-position": "center",
+                "background-image": s
+            });
+        });
+    }
 }
