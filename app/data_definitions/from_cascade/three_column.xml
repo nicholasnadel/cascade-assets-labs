@@ -222,30 +222,30 @@
 			<group collapsed="true" identifier="testimonial-widget" label="Testimonial Widget">
 				<shared-field identifier="display" path="display"/>
 				<shared-field identifier="bgColor" path="background-color"/>
-				<group identifier="testimonial-widget__slide" label="Testimonial Slide" multiple="true">
-					<shared-field identifier="image" label="Headshot Image" path="image"/>
-					<text help-text="100 chracters max" identifier="testimonial-widget__faux-h2" label="Endorser's Name" required="true"/>
-					<text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="testimonial-widget__department-title" label="Endorser's Department/Title"/>
-					<text help-text="200 characters max" identifier="testimonial-widget__text" label="Testimonial Text" multi-line="true" required="true"/>
+				<group identifier="testimonialSlide" label="Testimonial Slide" multiple="true">
+					<shared-field identifier="image" label="Headshot Image" maximum-number="1" path="image"/>
+					<text help-text="100 chracters max" identifier="endorserName" label="Endorser's Name" required="true"/>
+					<text help-text="E.G. 'University Advancement' or 'Lead Engineer at SpaceX'" identifier="endorserTitle" label="Endorser's Department/Title"/>
+					<text help-text="200 characters max" identifier="testimonyText" label="Testimonial Text" multi-line="true" required="true"/>
 					<shared-field identifier="link" path="cta"/>
 				</group>
 			</group>
 			<group collapsed="true" identifier="carousel" label="Carousel">
-        <text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
-          <radio-item value="Yes"/>
-          <radio-item value="No"/>
-        </text>
-        <group identifier="image" label="Image" multiple="true">
-          <text identifier="headline" label="Headline"/>
-          <text identifier="caption" label="Caption" wysiwyg="true"/>
-          <text default="Internal Cascade Image" identifier="imageLink" label="Image Link" type="radiobutton">
-            <radio-item show-fields="primaryContent/widget/carousel/image/internalCascadeImage" value="Internal Cascade Image"/>
-            <radio-item show-fields="primaryContent/widget/carousel/image/externalImageURL" value="External Image URL"/>
-          </text>
-          <text identifier="externalImageURL" label="External Image URL (960x540)"/>
-          <asset identifier="internalCascadeImage" label="Internal Cascade Image  (960x540)" type="file"/>
-        </group>
-      </group>
+				<text default="Yes" identifier="display-carousel" label="Show" required="true" type="radiobutton">
+					<radio-item value="Yes"/>
+					<radio-item value="No"/>
+				</text>
+				<group identifier="image" label="Image" multiple="true">
+					<text identifier="headline" label="Headline"/>
+					<text identifier="caption" label="Caption" wysiwyg="true"/>
+					<text default="Internal Cascade Image" identifier="imageLink" label="Image Link" type="radiobutton">
+						<radio-item show-fields="primaryContent/widget/carousel/image/internalCascadeImage" value="Internal Cascade Image"/>
+						<radio-item show-fields="primaryContent/widget/carousel/image/externalImageURL" value="External Image URL"/>
+					</text>
+					<text identifier="externalImageURL" label="External Image URL (960x540)"/>
+					<asset identifier="internalCascadeImage" label="Internal Cascade Image  (960x540)" type="file"/>
+				</group>
+			</group>
 			<group collapsed="true" identifier="collapsibleRegions" label="Collapsible Regions">
 				<text default="Yes" identifier="display-collapsibles" label="Show" required="true" type="radiobutton">
 					<radio-item value="Yes"/>
