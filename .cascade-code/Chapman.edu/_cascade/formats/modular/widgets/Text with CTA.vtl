@@ -5,7 +5,9 @@
     #set ( $ctaButtons   = $_XPathTool.selectNodes($element, 'textWithCTA/textWithCTAButton'))
     <div class="text-with-cta-widget">
         <div class="text-with-cta__text-container">
-            <h2 class="text-with-cta__title">${_EscapeTool.xml($title)}</h2>
+            #if ($title != "")
+                <h2 class="text-with-cta__title">${_EscapeTool.xml($title)}</h2>
+            #end            
             <div class="text-with-cta__buttons">
                 #foreach ( $button in $ctaButtons )
                     #set ( $link        = $button.getChild('link') )
