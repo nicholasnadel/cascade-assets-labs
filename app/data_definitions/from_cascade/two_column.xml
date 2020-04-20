@@ -374,6 +374,10 @@
 					<radio-item show-fields="primaryContent/widget/photoCalloutWidget/block/link" value="Enable Links"/>
 					<radio-item value="Disable Links"/>
 				</text>
+				<text default="Paginate" identifier="overridePagination" label="Pagination" type="radiobutton">
+					<radio-item value="Load All Images"/>
+					<radio-item value="Paginate"/>
+				</text>
 				<shared-field identifier="bgColor" path="background-color"/>
 				<group identifier="block" label="Photo Block" multiple="true">
 					<shared-field identifier="image" maximum-number="1" path="image__rectangle-only--required" required="true"/>
