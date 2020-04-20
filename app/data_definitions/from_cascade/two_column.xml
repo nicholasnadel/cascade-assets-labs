@@ -203,7 +203,7 @@
 			</text>
 			<group collapsed="true" identifier="textWithCTA" label="Text with CTA">
 				<shared-field identifier="display" path="display"/>
-				<text identifier="textWithCTATitle" label="Title" required="true"/>
+				<text identifier="textWithCTATitle" label="Title"/>
 				<text identifier="text" label="Text" required="true" wysiwyg="true"/>
 				<group identifier="textWithCTAButton" label="CTA Button" maximum-number="3" multiple="true">
 					<group identifier="link" label="Call to Action">
