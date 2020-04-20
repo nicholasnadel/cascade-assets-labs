@@ -31,42 +31,32 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @mixin respond($breakpoint) {
   @if $breakpoint==phone {
     @media only screen and (max-width: 37.5em) {
-      @content
-    }
-
-    ; //600px
+      @content;
+    } //600px
   }
 
   @if $breakpoint==small {
     @media only screen and (max-width: 47em) {
-      @content
-    }
-
-    ; // 767px
+      @content;
+    } // 767px
   }
 
   @if $breakpoint==tab-port {
-    @media only screen and (max-width: 56.50em) {
-      @content
-    }
-
-    ; //900px
+    @media only screen and (max-width: 56.5em) {
+      @content;
+    } //900px
   }
 
   @if $breakpoint==tab-land {
     @media only screen and (max-width: 75em) {
-      @content
-    }
-
-    ; //1200px
+      @content;
+    } //1200px
   }
 
   @if $breakpoint==big-desktop {
     @media only screen and (min-width: 112.5em) {
-      @content
-    }
-
-    ; //1800
+      @content;
+    } //1800
   }
 }
 
@@ -80,7 +70,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
   @if $point==s {
-
     // Mobile
     @media (min-width: 420px) {
       @content;
@@ -88,7 +77,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==sx {
-
     // Mobile
     @media (max-width: 420px) {
       @content;
@@ -99,7 +87,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
   @if $point==m {
-
     // Medium
     @media (min-width: 780px) {
       @content;
@@ -107,7 +94,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==mx {
-
     // Medium
     @media (max-width: 767px) {
       @content;
@@ -115,7 +101,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==l {
-
     // Large
     @media (min-width: 1024px) {
       @content;
@@ -123,7 +108,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==lx {
-
     // Large
     @media (max-width: 1024px) {
       @content;
@@ -131,7 +115,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xl {
-
     // Extra-Large
     @media (min-width: 1200px) {
       @content;
@@ -139,7 +122,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xlx {
-
     // Extra-Large
     @media (max-width: 1200px) {
       @content;
@@ -147,7 +129,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-min {
-
     // Uses variable breakpoint.
     @media (min-width: #{$val}) {
       @content;
@@ -155,7 +136,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-max {
-
     // Uses variable breakpoint.
     @media (max-width: #{$val}) {
       @content;
@@ -196,12 +176,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
   min-height: #{$px / $default}em;
 }
 
-@mixin em_margin($top:0, $right:0, $bot:$top, $left:$right, $default: $fontsize) {
-  margin: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em
+@mixin em_margin($top: 0, $right: 0, $bot: $top, $left: $right, $default: $fontsize) {
+  margin: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em;
 }
 
-@mixin em_padding($top:0, $right:0, $bot:$top, $left:$right, $default: $fontsize) {
-  padding: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em
+@mixin em_padding($top: 0, $right: 0, $bot: $top, $left: $right, $default: $fontsize) {
+  padding: #{$top / $default}em #{$right / $default}em #{$bot / $default}em #{$left / $default}em;
 }
 
 @mixin em_fontsize($px) {
@@ -216,9 +196,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
-  }
-
-  @else {
+  } @else {
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
@@ -234,7 +212,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin opacity($i) {
   $forie: $i * 100;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $forie + ")";
   filter: alpha(opacity=$forie);
   opacity: $i;
 }
@@ -255,11 +233,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-top: 12px;
   margin-bottom: 24px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -278,11 +254,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 32px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -294,11 +268,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-size: 22px;
   line-height: 26px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -317,11 +289,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 18px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -332,11 +302,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 14px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -380,7 +348,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin fluid-width-video-container() {
   position: relative;
-  padding-bottom: 56.50%;
+  padding-bottom: 56.5%;
   /* 16:9 */
   height: 0;
 
@@ -440,7 +408,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 @mixin transition($property) {
-  transition: $property .4s;
+  transition: $property 0.4s;
 }
 
 @mixin ellipsis {
@@ -475,7 +443,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   .theme-text-color {
-    color: $primary
+    color: $primary;
   }
 
   @include media($large-screen) {
@@ -501,8 +469,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background-position: $position;
   background-repeat: repeat-x;
   background-size: $spacing 5px;
-  background-image: linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1.0) 0%);
-  background-image: -webkit-linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1.0) 0%);
+  background-image: linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1) 0%);
+  background-image: -webkit-linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1) 0%);
 }
 
 // button mixin
@@ -534,11 +502,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 // automatic text contrast https://codepen.io/kevinpowell/pen/45ed86610f4fbdb2d05c8d6261e45b75
 @function text($bg) {
-  @if(lightness($bg) > 50) {
+  @if (lightness($bg) > 50) {
     @return $panther-black;
-  }
-
-  @else {
+  } @else {
     @return $white;
   }
 }
@@ -549,7 +515,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   color: text($color);
 }
 
-// example: 
+// example:
 // $bg: white;
 // body {
 //   height: 100vh;
@@ -618,9 +584,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
         color: v(cu-red);
         margin-left: 2px;
         transition: all 0.175s ease-in-out;
-        animation-delay: -.75ms;
+        animation-delay: -0.75ms;
 
-        &+.toggle-drilldown {
+        & + .toggle-drilldown {
           color: v(cu-red);
 
           .fa-chevron-right {
@@ -652,7 +618,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-moz-keyframes fadein {
-
             /* Firefox */
             from {
               opacity: 0;
@@ -664,7 +629,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-webkit-keyframes fadein {
-
             /* Safari and Chrome */
             from {
               opacity: 0;
@@ -676,7 +640,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-o-keyframes fadein {
-
             /* Opera */
             from {
               opacity: 0;
@@ -717,7 +680,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
           animation-delay: 900ms;
           animation-duration: 300ms;
           position: absolute;
-          transform: scale(.8);
+          transform: scale(0.8);
         }
 
         .fas {
@@ -752,7 +715,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
           font-weight: bold;
           text-transform: uppercase;
           font-size: 1.4rem;
-          letter-spacing: .5px;
+          letter-spacing: 0.5px;
           background-color: v(cu-red);
 
           &:hover {
@@ -771,7 +734,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       left: $width;
       top: 0;
       transform: translateX(0);
-      transition: all .40s;
+      transition: all 0.4s;
 
       &.active {
         .drill-down-list-item {
@@ -834,7 +797,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
       font-weight: bold;
       color: $white;
 
-      i {
+      i,
+      span {
         padding: 20px 0px 20px 30px;
       }
 
