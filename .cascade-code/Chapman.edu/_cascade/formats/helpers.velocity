@@ -495,7 +495,7 @@ USAGE: #processAsset( $asset )
   #set ( $homeIconHtml = "" )
   #if ($page.name == "index")
     #set ( $linkClass = "${linkClass} home-link" )
-    #set ( $homeIconHtml = "<i class='fas fa-home'></i>" )
+    #set ( $homeIconHtml = "<span class='fas fa-home'></span>" )
   #end
   <li class="${linkClass}">${homeIconHtml}<a href="${page.link}">${_EscapeTool.xml($page.label)}</a></li>
 #end
