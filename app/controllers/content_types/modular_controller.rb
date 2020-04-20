@@ -495,45 +495,24 @@ module ContentTypes
     def render_static_one_column_primary_content_subbrand
       # This reproduces content from static sample version
       format("%s %s %s",
-             # render_static_partial('widgets/single_column/google_map_address'),
              render_static_partial("widgets/single_column/messaging_1_column_facts"),
              render_static_partial("widgets/single_column/image_slider_2018"),
              render_static_partial("widgets/single_column/campus_map"),
              render_static_partial("widgets/single_column/google_map"),
-             # render_static_partial('widgets/single_column/google_map_embed'),
              render_static_partial("widgets/single_column/messaging_1_column_text_left_grad"),
              render_static_partial("widgets/single_column/messaging_1_column_video_grad"),
              render_static_partial("widgets/single_column/messaging_1_column_text_left_grad"),
              render_static_partial("widgets/single_column/messaging_1_column_video_grad"),
              render_static_partial("widgets/single_column/cta_footer_grad"))
-      #  render_static_partial('widgets/single_column/call_to_action_block'),
-      #  render_static_partial('widgets/single_column/chapman_events_feed'),
-      #  render_static_partial('widgets/single_column/messaging_1_column_facts'),
-      #  render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
-      #  render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
     end
 
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s %s %s %s %s %s %s %s %s",
-             render_static_partial("widgets/primary_content/career_blocks"),
-             render_static_partial("widgets/primary_content/banner_notification"),
+      format("%s %s %s %s",
+             render_static_partial("widgets/primary_content/text_with_cta"),
+             render_static_partial("widgets/primary_content/rss_feed_display"),
              render_static_partial("widgets/primary_content/testimonial_widget"),
-             render_static_partial("widgets/primary_content/collapsables_3"),
-             render_static_partial("widgets/primary_content/collapsables_2"),
-             render_static_partial("widgets/primary_content/collapsables_2"),
-             render_static_partial("widgets/primary_content/collapsables_2"),
-             #  render_static_partial("widgets/primary_content/collapsables_3"),
-             #  render_static_partial("widgets/primary_content/funnel_1up_boxes_1"),
-             #  render_static_partial("widgets/primary_content/funnel_2up_boxes_1"),
-             render_static_partial("widgets/primary_content/collapsables_2"),
-             #  render_static_partial("widgets/primary_content/personnel_region_1"),
-             #  render_static_partial("widgets/primary_content/personnel_region_2"),
-             render_static_partial("widgets/primary_content/form_1"),
-             render_static_partial("widgets/primary_content/logo_image_rotator_1"),
-             render_static_partial("widgets/primary_content/featured_news_events_feed_1"),
-            #  render_static_partial("widgets/primary_content/wysiwyg_anchor_links"),
-             render_static_partial("widgets/primary_content/program_events"))
+             render_static_partial("widgets/primary_content/featured_news_events_feed_1"))
     end
 
     def render_static_two_column_left_column

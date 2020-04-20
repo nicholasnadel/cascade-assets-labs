@@ -513,7 +513,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-size: 2rem;
   font-family: $futura-regular;
   font-weight: 400;
-  padding-top: 15px;
+  padding-top: 10px;
   padding-bottom: 15px;
   @include dc($bg);
 
@@ -631,7 +631,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
             &:after {
               animation: 1s fadeIn forwards;
               content: "\f054";
-              font-family: "Font Awesome 5 Free";
+              font-family: "Font Awesome 5 Pro";
               font-weight: 900;
               @include qbal-fade-enter;
               @include qbal-slideRight-exit;
@@ -710,7 +710,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         &:after {
           opacity: 0;
           content: "\f054";
-          font-family: "Font Awesome 5 Free";
+          font-family: "Font Awesome 5 Pro";
           font-weight: 900;
           @include qbal-fade-enter;
           @include qbal-slideRight-exit;
