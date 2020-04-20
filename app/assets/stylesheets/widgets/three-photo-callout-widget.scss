@@ -24,6 +24,7 @@
         max-height: 152px;
         @include qbal-fade-enter;
     }
+
     &__container {
         display: -ms-grid;
         display: grid;
@@ -37,6 +38,11 @@
             margin-bottom: 20px;
         }
 
+        &--no-paginate {
+            & + button {
+                display: none !important;
+            }
+        }
         &--2-col {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -75,7 +81,7 @@
         font-weight: bold;
         text-transform: uppercase;
         text-align: center;
-        min-height: 86px;
+        min-height: 66px;
 
         &--left-aligned {
             text-align: left;
@@ -86,6 +92,8 @@
             margin-bottom: 0;
             font-weight: bold;
             font-family: $futura-regular;
+            line-height: 1.6rem;
+            font-size: 1.5rem;
         }
         &--white,
         &--sand {
@@ -150,14 +158,14 @@ button.photo-callout-widget__load-more {
         background-color: lighten($sand, 2%);
     }
 
-    &[class*="--cu-red"]:hover,
-    &[class*="--cu-red"]:focus,
-    &[class*="--cu-red"]:focus-within {
+    &[class*="--red"]:hover,
+    &[class*="--red"]:focus,
+    &[class*="--red"]:focus-within {
         background-color: lighten($cu-red, 8%);
     }
-    &[class*="--cu-red"]:hover .photo-callout-widget__text,
-    &[class*="--cu-red"]:focus .photo-callout-widget__text,
-    &[class*="--cu-red"]:focus-within .photo-callout-widget__text {
+    &[class*="--red"]:hover .photo-callout-widget__text,
+    &[class*="--red"]:focus .photo-callout-widget__text,
+    &[class*="--red"]:focus-within .photo-callout-widget__text {
         background-color: lighten($cu-red, 8%);
     }
     &[class*="--white"]:hover,
@@ -174,31 +182,51 @@ button.photo-callout-widget__load-more {
     &[class*="--black"]:hover,
     &[class*="--black"]:focus,
     &[class*="--black"]:focus-within {
-        background-color: lighten($black, 2%);
+        background-color: darken($panther-black, 100%);
     }
     &[class*="--black"]:hover .photo-callout-widget__text,
     &[class*="--black"]:focus .photo-callout-widget__text,
     &[class*="--black"]:focus-within .photo-callout-widget__text {
-        background-color: lighten($black, 2%);
+        background-color: darken($panther-black, 100%);
     }
 
     &[class*="--grey"]:hover,
     &[class*="--grey"]:focus,
     &[class*="--grey"]:focus-within {
-        background-color: lighten($grey, 2%);
+        background-color: lighten($cu-light-grey, 2%);
     }
     &[class*="--grey"]:hover .photo-callout-widget__text,
     &[class*="--grey"]:focus .photo-callout-widget__text,
     &[class*="--grey"]:focus-within .photo-callout-widget__text {
-        background-color: lighten($grey, 2%);
+        background-color: lighten($cu-light-grey, 2%);
     }
 }
-a.photo-callout-widget:nth-child(n + 4) {
-    display: none;
+:not(.photo-callout-widget__container--2-col) {
+    a.photo-callout-widget:nth-child(n + 7) {
+        display: none;
+    }
+    div.photo-callout-widget:nth-child(n + 7) {
+        display: none;
+    }
 }
-div.photo-callout-widget:nth-child(n + 4) {
-    display: none;
+
+.photo-callout-widget__container--2-col {
+    a.photo-callout-widget:nth-child(n + 3) {
+        display: none;
+    }
+    div.photo-callout-widget:nth-child(n + 3) {
+        display: none;
+    }
 }
+.no-paginate {
+    a.photo-callout-widget:nth-child(n + 4) {
+        display: grid;
+    }
+    div.photo-callout-widget:nth-child(n + 4) {
+        display: grid;
+    }
+}
+
 .no-js {
     a.photo-callout-widget:nth-child(n + 4) {
         display: grid;
