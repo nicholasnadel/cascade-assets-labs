@@ -1,7 +1,7 @@
 #macro(outputTextWithCTA $element)
     #set ( $textWithCTA  = $_XPathTool.selectSingleNode($element, 'textWithCTA') )
     #set ( $title        = $textWithCTA.getChild('textWithCTATitle').value)
-    #set ( $text         = $textWithCTA.getChild('text').value)
+    #set ( $text         = $_SerializerTool.serialize($textWithCTA.getChild('text'), true))
     #set ( $ctaButtons   = $_XPathTool.selectNodes($element, 'textWithCTA/textWithCTAButton'))
     <div class="text-with-cta-widget">
         <div class="text-with-cta__text-container">
@@ -24,7 +24,7 @@
                     <button class="text-with-cta__button color--${buttonColor}"><a href="${_EscapeTool.xml($linkURL)}">${_EscapeTool.xml($buttonText)}</a></button>
                 #end
             </div>
-            <p class="text-with-cta__text">${_EscapeTool.xml($text)}</p>
+            <p class="text-with-cta__text">$text</p>
         </div>
 
     </div>
