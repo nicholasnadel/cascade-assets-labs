@@ -374,7 +374,7 @@
 					<radio-item show-fields="primaryContent/widget/photoCalloutWidget/block/link" value="Enable Links"/>
 					<radio-item value="Disable Links"/>
 				</text>
-				<text default="Paginate" identifier="overridePagination" label="Pagination" type="radiobutton">
+				<text default="Paginate" identifier="pagination" label="Pagination" type="radiobutton">
 					<radio-item value="Load All Images"/>
 					<radio-item value="Paginate"/>
 				</text>

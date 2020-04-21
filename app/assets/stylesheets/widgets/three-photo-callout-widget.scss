@@ -218,7 +218,7 @@ button.photo-callout-widget__load-more {
         display: none;
     }
 }
-.no-paginate {
+.photo-callout-widget__container--no-paginate {
     a.photo-callout-widget:nth-child(n + 4) {
         display: grid;
     }

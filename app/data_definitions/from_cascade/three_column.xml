@@ -328,7 +328,7 @@
 					<radio-item value="Show Images"/>
 					<radio-item value="Hide Images"/>
 				</text>
-				<text default="Paginate" identifier="overridePagination" label="Pagination" type="radiobutton">
+				<text default="Paginate" identifier="pagination" label="Pagination" type="radiobutton">
 					<radio-item value="Load All Images"/>
 					<radio-item value="Paginate"/>
 				</text>
