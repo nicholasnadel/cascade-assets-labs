@@ -10,27 +10,29 @@
 
   margin-top: $wmtop;
 
-
   .faux-h2.next-steps-widget__heading {
     justify-self: center;
     color: $cu-red;
     margin-top: 0;
     padding-top: $defaultPadding;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
 
-    &~.next-steps-widget__text {
+    & ~ .next-steps-widget__text {
       justify-self: center;
 
-      &~.next-steps-widget__buttons {
+      & ~ .next-steps-widget__buttons {
         padding-top: unset;
       }
     }
 
-    &~.next-steps-widget__buttons {
-
+    & ~ .next-steps-widget__buttons {
       padding-top: 10px;
       padding-bottom: $defaultPadding;
       padding-right: $defaultPadding;
+
+      a {
+        line-height: 3rem;
+      }
     }
   }
 
@@ -56,7 +58,6 @@
     border: none;
   }
 
-
   &.next-steps-widget--left-aligned {
     $defaultPadding: 32px;
     display: grid;
@@ -72,22 +73,21 @@
       padding-top: $defaultPadding;
       padding-left: $defaultPadding;
 
-      &~.next-steps-widget__text {
+      & ~ .next-steps-widget__text {
         // padding-top: 2.$defaultPadding;
         max-width: unset;
         justify-self: flex-start;
         padding-left: $defaultPadding;
 
-        &~.next-steps-widget__buttons {
+        & ~ .next-steps-widget__buttons {
           padding-top: unset;
         }
       }
 
-      &~.next-steps-widget__buttons {
+      & ~ .next-steps-widget__buttons {
         padding-left: $defaultPadding;
         padding-top: $defaultPadding;
         padding-bottom: $defaultPadding;
-
       }
     }
 
@@ -147,7 +147,6 @@
         }
       }
     }
-
   }
 
   &.next-steps-widget--grey {
