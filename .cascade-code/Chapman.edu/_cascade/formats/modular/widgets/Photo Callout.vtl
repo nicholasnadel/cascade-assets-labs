@@ -25,7 +25,7 @@
 #if ($numberOfColumns == 'Two Column Layout')
     #set ($columnOverride = 'photo-callout-widget__container--2-col' )
 #else 
-    #set ($columnOverride = '' )
+    #set ($columnOverride = 'photo-callout-widget__container--3-col' )
 #end
 
 #if ($textAlignment == 'Left Aligned Text')
@@ -47,6 +47,7 @@
     #set ($pagination = 'photo-callout-widget__container--no-paginate' )
     #set ($buttonPaginate = 'photo-callout-widget__button--no-paginate')
 #end
+
 
 
 <div class="photo-callout-widget__container $columnOverride $mobileImagOptions $pagination">
@@ -71,24 +72,29 @@
         
         #if ($enableLinks == 'Enable Links')
          
+	
 	<a href="${_EscapeTool.xml($linkURL)}" class="photo-callout-widget photo-callout-widget--$bgColor">
             #imageInCollection($block)
             
+		
 		<div class="photo-callout-widget__text $textAlignment photo-callout-widget__text--$bgColor">
 			<p>${_EscapeTool.xml($text)}</p>
 		</div>
 	</a>
         #else 
         
+	
 	<div href="${_EscapeTool.xml($linkURL)}" class="photo-callout-widget photo-callout-widget--$bgColor">
             #imageInCollection($block)
             
+		
 		<div class="photo-callout-widget__text $textAlignment photo-callout-widget__text--$bgColor">
 			<p>${_EscapeTool.xml($text)}</p>
 		</div>
 	</div>
         #end
     #end
+
 </div>
 <button id="photo-callout-widget__load-more"
     class="photo-callout-widget__button photo-callout-widget__button--$bgColor $buttonPaginate" aria-role="button"
