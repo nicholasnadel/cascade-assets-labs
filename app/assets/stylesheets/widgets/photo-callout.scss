@@ -279,3 +279,14 @@ button.photo-callout-widget__load-more {
 .photo-callout-widget__text.photo-callout-widget__text--white {
     border-top: transparent;
 }
+
+@include respond(desktop) {
+
+    .threeColumns {
+        .photo-callout-widget__container--3-col p {
+            font-size: 1.3rem;
+            line-height: 1.4rem;
+        }
+    }
+
+}

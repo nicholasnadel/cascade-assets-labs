@@ -53,6 +53,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
     } //1200px
   }
 
+  @if $breakpoint==desktop {
+    @media only screen and (min-width: 75.062em) {
+      @content;
+    } //1201
+  }
   @if $breakpoint==big-desktop {
     @media only screen and (min-width: 112.5em) {
       @content;
