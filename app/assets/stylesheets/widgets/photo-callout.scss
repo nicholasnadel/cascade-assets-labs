@@ -1,5 +1,6 @@
 /* autoprefixer grid: autoplace */
 .photo-callout-widget {
+    
     border: none;
     @include qbal-slideUp-enter;
 
@@ -24,6 +25,9 @@
     }
 
     &__container {
+        --marginTop: 20px;
+        --marginBottom: 20px;
+
         display: -ms-grid;
         display: grid;
         -ms-grid-columns: 1fr 25px 1fr 25px 1fr;
@@ -31,6 +35,10 @@
         -ms-grid-rows: auto;
         grid-template-rows: auto;
         grid-gap: 2rem;
+
+        [class*="--white"] {
+            border-color:  #cfcfcf;
+        }
         
         @for $i from 1 through 6 {
             :nth-child(#{$i}) {
@@ -45,8 +53,8 @@
         }
 
         + [class*="-widget"] {
-            margin-top: 20px;
-            margin-bottom: 20px;
+            margin-top: v(marginTop);
+            margin-bottom: v(marginBottom);
         }
 
         &--no-paginate {
@@ -123,8 +131,15 @@
                 }
             }
         }
+
+        &--white {
+                border: none !important;
+        }
     }
     &__button {
+        --marginTop: 20px;
+        --marginBottom: 20px;
+        
         width: 100%;
         height: 5rem;
         font-family: $futura-regular;
@@ -140,8 +155,8 @@
         }
 
         + [class*="-widget"] {
-            margin-top: 20px;
-            margin-bottom: 20px;
+            --marginTop: 20px;
+            --marginBottom: 20px;
         }
     }
     .ie__fallback--object-fit {
@@ -292,9 +307,6 @@ button.photo-callout-widget__load-more {
     }
 }
 
-.photo-callout-widget__text.photo-callout-widget__text--white {
-    border-top: transparent;
-}
 
 @include respond(desktop) {
 
