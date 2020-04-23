@@ -254,9 +254,9 @@ LOG VELOCITY VARIABLES IN THE BROWSER CONSOLE ON DEV
     #if ($visibleChildren)
       <li class="${isCurrentDrillDownPage}">
         <span tabindex="0" class="drill-down-parent">${_EscapeTool.xml($asset.metadata.displayName)}</span>
-        <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
+        <span class="toggle-drilldown"><span class="fas fa-chevron-right"></span></span>
         <ul class="drilldown-menu">
-          <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>Back</li>
+          <li tabindex="0" class="menu-back"><span class="fas fa-chevron-left"></span>Back</li>
           #foreach( $childAsset in $asset.children)
             #set ( $isVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes")
 
@@ -522,9 +522,9 @@ USAGE: #processAsset( $asset )
   #if ( !$_PropertyTool.isEmpty($childrenHtml) )
     <li class="${linkClass}">
       <span tabindex="0" class="drill-down-parent">Back</span>
-      <span class="toggle-drilldown"><i class="fas fa-chevron-right"></i></span>
+      <span class="toggle-drilldown"><span class="fas fa-chevron-right"></span></span>
       <ul class="drilldown-menu">
-        <li tabindex="0" class="menu-back"><i class="fas fa-chevron-left"></i>Back</li>
+        <li tabindex="0" class="menu-back"><span class="fas fa-chevron-left"></span>Back</li>
         ${childrenHtml}
       </ul>
     </li>
