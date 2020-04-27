@@ -1,12 +1,8 @@
 .homepage-masthead__container {
   width: 100%;
-  float: left;
-  max-height: 80vh;
+  // float: left;
+  // max-height: 80vh;
 
-  div div {
-    padding: 10px;
-    /*overflow:scroll;*/
-  }
 
   .left {
     height: 100%;
@@ -32,9 +28,8 @@
 
   .red {
     // background: linear-gradient(to bottom, #a50034 0%, #a50034 17%, #a50034 33%, #a50034 67%, #a50034 83%, #a50034 100%);
-    background: $cu-red;
+    background: v(cu-red);
   }
-
 
   #polygon {
     padding-left: 20px;
@@ -42,11 +37,7 @@
     width: 100%;
   }
 
-
   /* videocontrols.css | chrome://global/skin/media/videocontrols.css */
-
-
-
 }
 
 .clickToPlay {
@@ -63,6 +54,171 @@
   opacity: 0.8;
   top: unset;
   bottom: 50;
-  position: absolute !important;
+  position: absolute;
   right: 0;
+}
+
+.homepage-masthead {
+  --textShadow: v(textShadow);
+
+  &__heading-container {
+    color: $white;
+    max-width: 50vw;
+
+    span {
+      display: flex;
+      justify-content: center;
+      -webkit-user-select: all;
+    }
+
+    h2 {
+      font-size: 13rem;
+      text-shadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
+      display: grid;
+      justify-content: center;
+      text-transform: uppercase;
+      line-height: 1em;
+      font-family: $futura-regular;
+      font-weight: 700;
+      -webkit-user-select: all;
+    }
+
+    .homepage-masthead__tagline {
+      font-size: 3rem;
+      line-height: 3rem;
+      text-shadow: v(textShadow);
+      font-weight: 700;
+      font-family: $futura-regular;
+    }
+  }
+
+  &__button-container {
+    // display: grid;
+    // justify-items: center;
+    // position: absolute;
+    // grid-template-columns: repeat(3, 1fr);
+    // grid-template-rows: 1fr;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: minmax(min-content, 200px) minmax(min-content, 200px) minmax(min-content, 200px);
+    max-width: 100%;
+    grid-gap: 12px;
+
+    &--fullwidth {
+      display: grid;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      display: grid;
+      justify-content: center;
+      align-content: space-evenly;
+      align-items: center;
+      height: 80vh;
+
+      .homepage-masthead {
+        .homepage a.button {
+          display: grid;
+        }
+
+        &__button,
+        .homepage a.button {
+          min-width: 254px;
+          background: unset;
+          display: grid;
+          justify-content: center;
+          align-content: center;
+          text-align: center;
+          background-color: v(cu-red);
+          color: $white;
+          font-family: $futura-regular;
+          text-transform: uppercase;
+          font-weight: bold;
+          padding: 4%;
+          border-radius: 4px;
+
+
+          &:hover,
+          &:focus,
+          &:focus-within {
+            background-color: transparentize($cu-red, .8) !important;
+          }
+
+          &:focus,
+          &:focus-within {
+            border: 2px dotted v(white);
+          }
+
+          --animationDelay: 2.5s;
+          --animation: backgroundColor;
+          --animationIterationCount: infinite;
+          --animationDuration: 30s;
+
+
+          &--red {
+            // background-color: v(cu-red);
+            background-color: v(panther-black);
+            color: v(white);
+
+            // animation: v(animationDelay) v(animationIterationCount) v(animation);
+            animation: 26s infinite backgroundColor;
+            animation-delay: 2.5s;
+            animation-fill-mode: forwards;
+
+            @keyframes backgroundColor {
+              --buttonStartColor: v(panther-black);
+              --buttonEndColor: v(cu-red);
+
+              0% {
+                background-color: v(buttonStartColor);
+                transition: 350ms ease;
+              }
+
+              2% {
+                background-color: $cu-red;
+              }
+
+
+              100% {
+                background-color: $cu-red;
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+
+  &__photo-grid {
+    --imgSize: 250px;
+    display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize));
+    grid-gap: 12px;
+
+    a {
+      &:first-child {
+        grid-row: 1 / span 2;
+        grid-column: 1 / span 2;
+      }
+
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+
+    &-container {
+      display: grid;
+      justify-content: center;
+    }
+  }
+
+
+}
+
+video {
+  object-fit: cover;
 }
