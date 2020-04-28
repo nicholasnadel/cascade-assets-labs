@@ -2,7 +2,12 @@
   width: 100%;
   // float: left;
   // max-height: 80vh;
-
+  height: 100vh;
+  background-color: $cu-red;
+  height: max-content;
+  display: grid;
+  align-content: space-evenly;
+  grid-gap: 25px;
 
   .left {
     height: 100%;
@@ -59,28 +64,27 @@
 }
 
 .homepage-masthead {
-  --textShadow: v(textShadow);
+  --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
 
   &__heading-container {
     color: $white;
-    max-width: 50vw;
 
     span {
       display: flex;
       justify-content: center;
-      -webkit-user-select: all;
+      -webkit-user-select: text;
     }
 
     h2 {
       font-size: 13rem;
-      text-shadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
+      text-shadow: v(textShadow);
       display: grid;
       justify-content: center;
       text-transform: uppercase;
       line-height: 1em;
       font-family: $futura-regular;
       font-weight: 700;
-      -webkit-user-select: all;
+      -webkit-user-select: text;
     }
 
     .homepage-masthead__tagline {
@@ -90,6 +94,7 @@
       font-weight: 700;
       font-family: $futura-regular;
     }
+
   }
 
   &__button-container {
@@ -103,89 +108,84 @@
     grid-template-columns: minmax(min-content, 200px) minmax(min-content, 200px) minmax(min-content, 200px);
     max-width: 100%;
     grid-gap: 12px;
+    display: grid;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: space-evenly;
+    align-items: center;
+    height: 80vh;
+    // rearranging video
+    position: relative;
+    height: auto;
 
-    &--fullwidth {
-      display: grid;
-      justify-content: center;
-      position: absolute;
-      width: 100%;
-      display: grid;
-      justify-content: center;
-      align-content: space-evenly;
-      align-items: center;
-      height: 80vh;
+    .homepage-masthead {
+      .homepage a.button {
+        display: grid;
+      }
 
-      .homepage-masthead {
-        .homepage a.button {
-          display: grid;
+      &__button,
+      .homepage a.button {
+        --buttonMinWidth: 350px;
+        min-width: v(buttonMinWidth);
+        background: unset;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+        background-color: v(cu-red);
+        color: $white;
+        font-family: $futura-regular;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 4%;
+        border-radius: 4px;
+
+        &:hover,
+        &:focus,
+        &:focus-within {
+          background-color: transparentize($cu-red, .8) !important;
         }
 
-        &__button,
-        .homepage a.button {
-          min-width: 254px;
-          background: unset;
-          display: grid;
-          justify-content: center;
-          align-content: center;
-          text-align: center;
-          background-color: v(cu-red);
-          color: $white;
-          font-family: $futura-regular;
-          text-transform: uppercase;
-          font-weight: bold;
-          padding: 4%;
-          border-radius: 4px;
+        &:focus,
+        &:focus-within {
+          border: 2px dotted v(white);
+        }
 
+        --animationDelay: 2.5s;
+        --animation: backgroundColor;
+        --animationIterationCount: infinite;
+        --animationDuration: 30s;
 
-          &:hover,
-          &:focus,
-          &:focus-within {
-            background-color: transparentize($cu-red, .8) !important;
-          }
+        &--red {
+          // background-color: v(cu-red);
+          background-color: v(panther-black);
+          color: v(white);
+          // animation: v(animationDelay) v(animationIterationCount) v(animation);
+          animation: 26s infinite backgroundColor;
+          animation-delay: 2.5s;
+          animation-fill-mode: forwards;
 
-          &:focus,
-          &:focus-within {
-            border: 2px dotted v(white);
-          }
+          @keyframes backgroundColor {
+            --buttonStartColor: v(panther-black);
+            --buttonEndColor: v(cu-red);
 
-          --animationDelay: 2.5s;
-          --animation: backgroundColor;
-          --animationIterationCount: infinite;
-          --animationDuration: 30s;
+            0% {
+              background-color: v(buttonStartColor);
+              transition: 350ms ease;
+            }
 
+            2% {
+              background-color: $cu-red;
+            }
 
-          &--red {
-            // background-color: v(cu-red);
-            background-color: v(panther-black);
-            color: v(white);
-
-            // animation: v(animationDelay) v(animationIterationCount) v(animation);
-            animation: 26s infinite backgroundColor;
-            animation-delay: 2.5s;
-            animation-fill-mode: forwards;
-
-            @keyframes backgroundColor {
-              --buttonStartColor: v(panther-black);
-              --buttonEndColor: v(cu-red);
-
-              0% {
-                background-color: v(buttonStartColor);
-                transition: 350ms ease;
-              }
-
-              2% {
-                background-color: $cu-red;
-              }
-
-
-              100% {
-                background-color: $cu-red;
-              }
+            100% {
+              background-color: $cu-red;
             }
           }
         }
-
-
       }
     }
   }
@@ -194,7 +194,7 @@
     --imgSize: 250px;
     display: grid;
     // grid-template-columns: repeat(4, 1fr);
-    grid-template-columns: minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize)) minmax(min-content, v(imgSize));
+    grid-template-columns: minmax(v(imgSize), v(imgSize)) minmax(v(imgSize), v(imgSize)) minmax(v(imgSize), v(imgSize)) minmax(v(imgSize), v(imgSize)) minmax(v(imgSize), v(imgSize));
     grid-gap: 12px;
 
     a {
@@ -209,16 +209,40 @@
       }
     }
 
-
     &-container {
       display: grid;
       justify-content: center;
     }
   }
-
-
 }
 
 video {
   object-fit: cover;
+}
+
+// attempet 2 with video as bg layer 
+video {
+  position: absolute;
+  z-index: 1;
+}
+
+
+/* master.css | http://localhost:5000/_assets/master.css */
+
+.homepage-masthead__container {
+  position: absolute;
+}
+
+.homepage-masthead__heading-container {
+  z-index: 2;
+}
+
+/* Inline #18 | http://localhost:5000/uninav/home_page */
+
+.homepage-masthead__button-container {
+  z-index: 2;
+}
+
+.homepage-masthead__photo-grid-container {
+  z-index: 2;
 }
