@@ -344,13 +344,16 @@ video {
 video {
   position: absolute;
   z-index: 1;
+  mask-image: image-url('masthead-wave');
+  -webkit-mask-image: image-url('masthead-wave');
+  -webkit-mask-size: 100% 100%;
 }
 
 
 /* master.css | http://localhost:5000/_assets/master.css */
 
 .homepage-masthead__container {
-  position: absolute;
+  position: relative;
 }
 
 .homepage-masthead__heading-container {
@@ -369,7 +372,51 @@ video {
 
 
 
-/* master.css | http://localhost:5000/_assets/master.css */
+
+.homepage-masthead__container {
+  @media only screen and (max-width: 1130px) {
+    .homepage-masthead {
+
+      &__heading-container {
+
+        h2 {
+          font-size: 10rem;
+        }
+
+        .homepage-masthead__tagline {
+          font-size: 2.5rem;
+          text-align: center;
+        }
+      }
+
+      &__heading-container,
+      &__photo-grid,
+      &__buttons {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+    }
+  }
+
+  @include respond(tab-port) {
+    .homepage-masthead__photos {
+      grid-template-columns: 2fr 2fr;
+    }
+  }
+
+  @include respond(phone) {
+    .homepage-masthead {
+      &__buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      &__photo-grid {
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    }
 
 
-/* Inline #19 | http://localhost:5000/uninav/home_page */
+  }
+}
