@@ -112,10 +112,11 @@
     // grid-template-rows: 1fr;
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 1130px;
-    max-width: 1130px;
-    justify-self: center;
+    grid-template-columns: 1fr;
+    // width: 1130px;
+    // max-width: 1130px;
+    // justify-self: center;
+    width: 100vw;
     grid-gap: 12px;
     display: grid;
     justify-content: center;
@@ -129,6 +130,14 @@
     position: relative;
     height: auto;
 
+    .homepage-masthead__buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      max-width: 1130px;
+      justify-self: center;
+      width: 100%;
+      grid-gap: 12px;
+    }
 
     .homepage-masthead {
       .homepage a.button {
@@ -138,7 +147,7 @@
       &__button,
       .homepage a.button {
         --buttonMinWidth: 350px;
-        min-width: v(buttonMinWidth);
+        // min-width: v(buttonMinWidth);
         background: unset;
         display: grid;
         justify-content: center;
@@ -216,8 +225,10 @@
     grid-template-rows: 200px 200px 200px 200px;
     justify-content: space-around;
     grid-gap: 12px;
-    width: 1130px;
+
     max-width: 1130px;
+    grid-template-columns: 1fr;
+    width: 100vw;
 
     h2 {
       color: v(white);
@@ -311,6 +322,18 @@
     }
 
   }
+
+  &__photos {
+    display: grid;
+    // grid-template-columns: repeat(4, 1fr);
+    // grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px 200px 200px;
+    justify-content: space-around;
+    grid-gap: 12px;
+
+    max-width: 1130px;
+  }
 }
 
 video {
@@ -343,3 +366,10 @@ video {
 .homepage-masthead__photo-grid-container {
   z-index: 2;
 }
+
+
+
+/* master.css | http://localhost:5000/_assets/master.css */
+
+
+/* Inline #19 | http://localhost:5000/uninav/home_page */
