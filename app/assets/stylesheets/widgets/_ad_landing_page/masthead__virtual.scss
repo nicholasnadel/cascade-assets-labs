@@ -65,42 +65,37 @@
 
   video::-webkit-media-controls-current-time-display {}
 
-  #homepage-masthead {
+  .homepage-masthead__toggle-play-button {
+    position: absolute;
+    height: 5rem;
+    right: 0;
+    z-index: 2;
+    display: grid;
+    align-self: start;
+    justify-self: end;
+    color: v(white);
+    padding-right: 2vw;
+    cursor: pointer;
+    top: calc(var(--videoHeight) - 12.5rem);
+    fill-opacity: .9;
 
-
-
-    &__pause-button,
-    &__play-button {
-      position: absolute;
-      height: 5rem;
-      right: 0;
-      z-index: 2;
-      display: grid;
-      align-self: start;
-      justify-self: end;
-      color: v(white);
-      padding-right: 2vw;
-      cursor: pointer;
-      top: calc(var(--videoHeight) - 12.5rem);
-      fill-opacity: .9;
-
-      &:focus,
-      &:focus-within,
-      &:hover {
-        // filter: drop-shadow(1px 0 2px var(--panther-black));
-        // color: v(panther-black);
-        // transform: translateY(-2px);
-        transition: 150ms linear;
-        fill-opacity: 1;
-      }
-    }
-
-    &__play-button {
-      display: none;
+    &:focus,
+    &:focus-within,
+    &:hover {
+      // filter: drop-shadow(1px 0 2px var(--panther-black));
+      // color: v(panther-black);
+      // transform: translateY(-2px);
+      transition: 150ms linear;
+      fill-opacity: 1;
     }
   }
 
+  #homepage-masthead__play-button {
+    display: none;
+  }
 }
+
+
 
 .clickToPlay {
   min-width: var(--clickToPlay-size);
@@ -439,6 +434,7 @@ video {
 
 .homepage-masthead__photo-grid-container {
   z-index: 2;
+  height: 500px;
 }
 
 .homepage-masthead__container {
@@ -464,7 +460,18 @@ video {
     }
   }
 
+
+  @media only screen and (max-width: 1330px) {
+
+    .homepage-masthead__toggle-play-button {
+      top: 2vh;
+      left: 2vh;
+    }
+  }
+
+
   @include respond(tab-port) {
+
     .homepage-masthead__photo-grid {
       padding-top: 60px;
     }
