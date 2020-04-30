@@ -1,14 +1,15 @@
 .homepage-masthead__container {
   --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
+  --videoHeight: 600px;
   width: 100vw;
   // float: left;
   // max-height: 80vh;
   // background-color: $cu-red;
-  height: 100vh;
   height: max-content;
   display: grid;
   align-content: space-evenly;
   grid-gap: 25px;
+  min-height: 800px;
 
   .homepage-masthead__max-width {
     // max-width: 1130px;
@@ -49,7 +50,56 @@
     width: 100%;
   }
 
-  /* videocontrols.css | chrome://global/skin/media/videocontrols.css */
+  video::-webkit-media-controls {
+    display: none;
+  }
+
+  /* Could Use thise as well for Individual Controls */
+  video::-webkit-media-controls-play-button {}
+
+  video::-webkit-media-controls-volume-slider {}
+
+  video::-webkit-media-controls-mute-button {}
+
+  video::-webkit-media-controls-timeline {}
+
+  video::-webkit-media-controls-current-time-display {}
+
+  #homepage-masthead {
+
+
+
+    &__pause-button,
+    &__play-button {
+      position: absolute;
+      height: 5rem;
+      right: 0;
+      z-index: 2;
+      display: grid;
+      align-self: start;
+      justify-self: end;
+      color: v(white);
+      padding-right: 2vw;
+      cursor: pointer;
+      top: calc(var(--videoHeight) - 12.5rem);
+      fill-opacity: .9;
+
+      &:focus,
+      &:focus-within,
+      &:hover {
+        // filter: drop-shadow(1px 0 2px var(--panther-black));
+        // color: v(panther-black);
+        // transform: translateY(-2px);
+        transition: 150ms linear;
+        fill-opacity: 1;
+      }
+    }
+
+    &__play-button {
+      display: none;
+    }
+  }
+
 }
 
 .clickToPlay {
@@ -76,6 +126,7 @@
   &__heading-container {
     color: $white;
     width: 100vw;
+    @include qbal-fade-enter;
 
     span {
       display: flex;
@@ -237,6 +288,12 @@
     grid-template-columns: 1fr;
     width: 100vw;
 
+    @for $i from 2 through 7 {
+      :nth-child(#{$i}) {
+        animation-delay: #{$i * .05s};
+      }
+    }
+
     h2 {
       color: v(white);
       font-family: v(--futura-condensed);
@@ -245,6 +302,7 @@
     a {
       background-color: v(cu-red);
       will-change: filter, brightness;
+      @include qbal-slideUp-enter;
 
       &:focus,
       &:focus-within {
@@ -340,6 +398,7 @@
 
 video {
   object-fit: cover;
+  height: 600px;
 }
 
 // attempt   2 with video as bg layer
@@ -349,11 +408,18 @@ video {
   mask-image: image-url("masthead-wave");
   -webkit-mask-image: image-url("masthead-wave");
   -webkit-mask-size: 100% 100%;
+  will-change: filter;
 
   .controlBar {
     display: none !important;
   }
 }
+
+// .homepage-masthead__video--paused {
+//   filter: brightness(.5);
+//   transition: 150ms linear;
+// }
+
 
 /* master.css | http://localhost:5000/_assets/master.css */
 
@@ -416,6 +482,7 @@ video {
     video {
       max-height: 88vh;
     }
+
     .homepage-masthead {
       &__buttons {
         grid-template-columns: 1fr 1fr;
@@ -428,4 +495,8 @@ video {
       }
     }
   }
+}
+
+#___gcse_0 {
+  display: none !important;
 }
