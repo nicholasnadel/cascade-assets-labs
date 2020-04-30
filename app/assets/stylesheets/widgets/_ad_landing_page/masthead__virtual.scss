@@ -59,20 +59,15 @@
   }
 
   /* Could Use thise as well for Individual Controls */
-  video::-webkit-media-controls-play-button {
-  }
+  video::-webkit-media-controls-play-button {}
 
-  video::-webkit-media-controls-volume-slider {
-  }
+  video::-webkit-media-controls-volume-slider {}
 
-  video::-webkit-media-controls-mute-button {
-  }
+  video::-webkit-media-controls-mute-button {}
 
-  video::-webkit-media-controls-timeline {
-  }
+  video::-webkit-media-controls-timeline {}
 
-  video::-webkit-media-controls-current-time-display {
-  }
+  video::-webkit-media-controls-current-time-display {}
 
   .homepage-masthead__toggle-play-button {
     position: absolute;
@@ -129,6 +124,7 @@
   --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
 
   &__heading-container {
+    margin-top: 7.5rem;
     color: $white;
     width: 100vw;
     @include qbal-fade-enter;
@@ -140,7 +136,7 @@
     }
 
     h2 {
-      font-size: 13rem;
+      font-size: 11rem;
       text-shadow: v(textShadow);
       display: -ms-grid;
       display: grid;
@@ -158,6 +154,8 @@
       text-shadow: v(textShadow);
       font-weight: 700;
       font-family: $futura-regular;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
   }
 
@@ -340,6 +338,8 @@
     h2 {
       color: v(white);
       font-family: v(--futura-condensed);
+      font-size: 2rem;
+      line-height: 2.2rem;
     }
 
     a {
@@ -438,122 +438,122 @@
     }
   }
 
-  &__photo-grid > *:nth-child(1) {
+  &__photo-grid>*:nth-child(1) {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(2) {
+  &__photo-grid>*:nth-child(2) {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(3) {
+  &__photo-grid>*:nth-child(3) {
     -ms-grid-row: 5;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(4) {
+  &__photo-grid>*:nth-child(4) {
     -ms-grid-row: 7;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(1) {
+  &__photo-grid>*:nth-child(1) {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(2) {
+  &__photo-grid>*:nth-child(2) {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
 
-  &__photo-grid > *:nth-child(3) {
+  &__photo-grid>*:nth-child(3) {
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
 
-  &__photo-grid > *:nth-child(4) {
+  &__photo-grid>*:nth-child(4) {
     -ms-grid-row: 1;
     -ms-grid-column: 7;
   }
 
-  &__photo-grid > *:nth-child(5) {
+  &__photo-grid>*:nth-child(5) {
     -ms-grid-row: 1;
     -ms-grid-column: 9;
   }
 
-  &__photo-grid > *:nth-child(6) {
+  &__photo-grid>*:nth-child(6) {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(7) {
+  &__photo-grid>*:nth-child(7) {
     -ms-grid-row: 3;
     -ms-grid-column: 3;
   }
 
-  &__photo-grid > *:nth-child(8) {
+  &__photo-grid>*:nth-child(8) {
     -ms-grid-row: 3;
     -ms-grid-column: 5;
   }
 
-  &__photo-grid > *:nth-child(9) {
+  &__photo-grid>*:nth-child(9) {
     -ms-grid-row: 3;
     -ms-grid-column: 7;
   }
 
-  &__photo-grid > *:nth-child(10) {
+  &__photo-grid>*:nth-child(10) {
     -ms-grid-row: 3;
     -ms-grid-column: 9;
   }
 
-  &__photo-grid > *:nth-child(11) {
+  &__photo-grid>*:nth-child(11) {
     -ms-grid-row: 5;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(12) {
+  &__photo-grid>*:nth-child(12) {
     -ms-grid-row: 5;
     -ms-grid-column: 3;
   }
 
-  &__photo-grid > *:nth-child(13) {
+  &__photo-grid>*:nth-child(13) {
     -ms-grid-row: 5;
     -ms-grid-column: 5;
   }
 
-  &__photo-grid > *:nth-child(14) {
+  &__photo-grid>*:nth-child(14) {
     -ms-grid-row: 5;
     -ms-grid-column: 7;
   }
 
-  &__photo-grid > *:nth-child(15) {
+  &__photo-grid>*:nth-child(15) {
     -ms-grid-row: 5;
     -ms-grid-column: 9;
   }
 
-  &__photo-grid > *:nth-child(16) {
+  &__photo-grid>*:nth-child(16) {
     -ms-grid-row: 7;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(17) {
+  &__photo-grid>*:nth-child(17) {
     -ms-grid-row: 7;
     -ms-grid-column: 3;
   }
 
-  &__photo-grid > *:nth-child(18) {
+  &__photo-grid>*:nth-child(18) {
     -ms-grid-row: 7;
     -ms-grid-column: 5;
   }
 
-  &__photo-grid > *:nth-child(19) {
+  &__photo-grid>*:nth-child(19) {
     -ms-grid-row: 7;
     -ms-grid-column: 7;
   }
 
-  &__photo-grid > *:nth-child(20) {
+  &__photo-grid>*:nth-child(20) {
     -ms-grid-row: 7;
     -ms-grid-column: 9;
   }
@@ -573,102 +573,102 @@
     max-width: 1130px;
   }
 
-  &__photos > *:nth-child(1) {
+  &__photos>*:nth-child(1) {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
 
-  &__photos > *:nth-child(2) {
+  &__photos>*:nth-child(2) {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
 
-  &__photos > *:nth-child(3) {
+  &__photos>*:nth-child(3) {
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
 
-  &__photos > *:nth-child(4) {
+  &__photos>*:nth-child(4) {
     -ms-grid-row: 1;
     -ms-grid-column: 7;
   }
 
-  &__photos > *:nth-child(5) {
+  &__photos>*:nth-child(5) {
     -ms-grid-row: 1;
     -ms-grid-column: 9;
   }
 
-  &__photos > *:nth-child(6) {
+  &__photos>*:nth-child(6) {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
   }
 
-  &__photos > *:nth-child(7) {
+  &__photos>*:nth-child(7) {
     -ms-grid-row: 3;
     -ms-grid-column: 3;
   }
 
-  &__photos > *:nth-child(8) {
+  &__photos>*:nth-child(8) {
     -ms-grid-row: 3;
     -ms-grid-column: 5;
   }
 
-  &__photos > *:nth-child(9) {
+  &__photos>*:nth-child(9) {
     -ms-grid-row: 3;
     -ms-grid-column: 7;
   }
 
-  &__photos > *:nth-child(10) {
+  &__photos>*:nth-child(10) {
     -ms-grid-row: 3;
     -ms-grid-column: 9;
   }
 
-  &__photos > *:nth-child(11) {
+  &__photos>*:nth-child(11) {
     -ms-grid-row: 5;
     -ms-grid-column: 1;
   }
 
-  &__photos > *:nth-child(12) {
+  &__photos>*:nth-child(12) {
     -ms-grid-row: 5;
     -ms-grid-column: 3;
   }
 
-  &__photos > *:nth-child(13) {
+  &__photos>*:nth-child(13) {
     -ms-grid-row: 5;
     -ms-grid-column: 5;
   }
 
-  &__photos > *:nth-child(14) {
+  &__photos>*:nth-child(14) {
     -ms-grid-row: 5;
     -ms-grid-column: 7;
   }
 
-  &__photos > *:nth-child(15) {
+  &__photos>*:nth-child(15) {
     -ms-grid-row: 5;
     -ms-grid-column: 9;
   }
 
-  &__photos > *:nth-child(16) {
+  &__photos>*:nth-child(16) {
     -ms-grid-row: 7;
     -ms-grid-column: 1;
   }
 
-  &__photos > *:nth-child(17) {
+  &__photos>*:nth-child(17) {
     -ms-grid-row: 7;
     -ms-grid-column: 3;
   }
 
-  &__photos > *:nth-child(18) {
+  &__photos>*:nth-child(18) {
     -ms-grid-row: 7;
     -ms-grid-column: 5;
   }
 
-  &__photos > *:nth-child(19) {
+  &__photos>*:nth-child(19) {
     -ms-grid-row: 7;
     -ms-grid-column: 7;
   }
 
-  &__photos > *:nth-child(20) {
+  &__photos>*:nth-child(20) {
     -ms-grid-row: 7;
     -ms-grid-column: 9;
   }
@@ -747,12 +747,13 @@ video {
     .homepage-masthead__toggle-play-button {
       top: 2vh;
       left: 2vh;
+      height: 3rem;
     }
   }
 
   @include respond(tab-port) {
     .homepage-masthead__photo-grid {
-      padding-top: 60px;
+      padding-top: 5px;
     }
 
     .homepage-masthead__photos {
@@ -768,6 +769,11 @@ video {
   @include respond(phone) {
     video {
       max-height: 88vh;
+    }
+
+    a.button,
+    .button.homepage-masthead__button {
+      margin-bottom: 0;
     }
 
     .homepage-masthead {
@@ -909,6 +915,7 @@ video {
     display: table;
     clear: both;
   }
+
   // .homepage-masthead__photo-grid-container,
   .homepage-masthead__photo-grid {
     display: -ms-grid;
