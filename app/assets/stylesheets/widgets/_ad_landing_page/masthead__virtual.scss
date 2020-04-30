@@ -1,4 +1,5 @@
 .homepage-masthead__container {
+  --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
   width: 100vw;
   // float: left;
   // max-height: 80vh;
@@ -159,12 +160,16 @@
         font-weight: bold;
         padding: 4%;
         border-radius: 4px;
+        transition: 300ms ease all;
 
         &:hover,
         &:focus,
         &:focus-within {
           background-color: lighten($cu-red, 8%) !important;
-          transition: 300ms ease all;
+          color: v(white);
+          animation-play-state: paused;
+          transform: translateY(-2px);
+          transition: 150ms;
         }
 
         &:focus,
@@ -175,18 +180,21 @@
         }
 
         --animationDelay: 2.5s;
-        --animation: backgroundColor;
+        // --animation: backgroundColor;
+        --animation: none;
         --animationIterationCount: infinite;
         --animationDuration: 30s;
 
         &--red {
-          // background-color: v(cu-red);
           background-color: v(white);
           color: v(panther-black);
-          // animation: v(animationDelay) v(animationIterationCount) v(animation);
           animation: 26s infinite backgroundColor;
-          animation-delay: 2.5s;
-          animation-fill-mode: forwards;
+          background-color: v(cu-red);
+          // animation: v(animationDelay) v(animationIterationCount) v(animation);
+          // animation-delay: 2.5s;
+          // animation-fill-mode: forwards;
+          color: v(white);
+          transition: 300ms linear;
 
           @keyframes backgroundColor {
             --buttonStartColor: v(white);
@@ -200,11 +208,13 @@
             2% {
               background-color: $cu-red;
               color: v(white);
+              transition: 300ms linear;
             }
 
             100% {
               background-color: $cu-red;
               color: v(white);
+              transition: 300ms linear;
             }
           }
         }
@@ -214,7 +224,6 @@
 
   &__photo-grid {
     --imgSize: 200px;
-    --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
 
     display: grid;
     // grid-template-columns: repeat(4, 1fr);
