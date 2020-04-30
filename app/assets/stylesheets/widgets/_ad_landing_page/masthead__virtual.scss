@@ -898,8 +898,7 @@ video {
     flex-wrap: wrap;
   }
 
-  /* Create three equal columns that floats next to each other */
-  .column {
+  .col-3 {
     float: left;
     width: 33.33%;
   }
@@ -909,5 +908,29 @@ video {
     content: "";
     display: table;
     clear: both;
+  }
+  // .homepage-masthead__photo-grid-container,
+  .homepage-masthead__photo-grid {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 12px;
+    -ms-grid-columns: 400px 200px 200px 200px;
+    grid-template-columns: 400px 200px 200px 200px;
+    -ms-grid-rows: 400px 200px 200px 200px;
+    grid-template-rows: 50px 50px;
+    background-color: #fff;
+    color: #444;
+  }
+
+  .col-4 {
+    float: left;
+    width: 25%;
+  }
+
+  .ie__photo-grid {
+    .row {
+      max-width: 1130px;
+      margin: auto;
+    }
   }
 }
