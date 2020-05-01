@@ -772,8 +772,14 @@ video {
     -ms-grid-rows: 200px 200px;
     grid-gap: 12px;
 
+    a {
+      display: inline-block;
+    }
+
     a,
     img {
+
+      display: inline;
 
       &:first-child {
         -ms-grid-row: 1;
@@ -830,6 +836,10 @@ video {
     }
 
     img+img {
+      margin-right: 12px;
+    }
+
+    a+a {
       margin-right: 12px;
     }
 

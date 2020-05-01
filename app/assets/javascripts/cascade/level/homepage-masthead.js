@@ -39,7 +39,7 @@ function ieObjectFitFallback() {
         (!!navigator.userAgent.match(/Trident.*rv\:11\./) &&
             $(".homepage-masthead__photo-grid img").length)
     ) {
-        $(".homepage-masthead__photo-grid img").each(function () {
+        $(".homepage-masthead__photo-grid img, .ie__homepage-masthead__photos img").each(function () {
             var t = $(this),
                 s = "url(" + t.attr("src") + ")",
                 p = t.parent(),
