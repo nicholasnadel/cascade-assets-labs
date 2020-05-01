@@ -40,6 +40,7 @@ function ieObjectFitFallback() {
             $(".homepage-masthead__photo-grid img").length)
     ) {
         $(".homepage-masthead__photo-grid img, .ie__homepage-masthead__photos img").each(function () {
+            console.log('object fit fallback');
             var t = $(this),
                 s = "url(" + t.attr("src") + ")",
                 p = t.parent(),
