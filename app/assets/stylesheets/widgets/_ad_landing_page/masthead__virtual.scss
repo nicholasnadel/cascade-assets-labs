@@ -128,7 +128,7 @@
     }
 
     h2 {
-      font-size: 11rem;
+      font-size: 13rem;
       text-shadow: v(textShadow);
       display: -ms-grid;
       display: grid;
@@ -316,9 +316,9 @@
 
     h2 {
       color: v(white);
-      font-family: v(--futura-condensed);
-      font-size: 2rem;
-      line-height: 2.2rem;
+      font-family: v(--futura-regular);
+      font-size: 1.8rem;
+      line-height: 2rem;
     }
 
     a {
