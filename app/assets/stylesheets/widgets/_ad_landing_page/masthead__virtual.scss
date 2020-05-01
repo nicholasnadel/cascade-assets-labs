@@ -545,10 +545,9 @@
     -ms-grid-columns: 2fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     -ms-grid-rows: 200px 12px 200px 12px 200px 12px 200px;
-    grid-template-rows: 1fr;
+    grid-template-rows: 200px 200px 200px 200px;
     justify-content: space-around;
     grid-gap: 12px;
-
     max-width: 1130px;
   }
 
