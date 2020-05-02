@@ -3,7 +3,6 @@ $(function () {
 
     $('.homepage video').removeAttr('controls');
 
-
     $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
         togglePlay();
     });
