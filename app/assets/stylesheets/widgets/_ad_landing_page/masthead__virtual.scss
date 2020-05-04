@@ -737,7 +737,18 @@ video {
     margin-top: 12px;
     display: -ms-grid;
     margin-right: 12px;
+    max-height: 190px;
 
+  }
+
+  .homepage-masthead__toggle-play-button {
+    display: block;
+    position: absolute;
+    width: 10vw;
+    right: 0;
+    float: right;
+    color: $white;
+    fill: $white;
   }
 
   .ie__homepage-masthead__photos,
