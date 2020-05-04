@@ -332,6 +332,7 @@
       background-color: v(cu-red);
       will-change: filter, brightness;
       @include qbal-slideUp-enter;
+      min-height: v(imgSize);
 
       &:focus,
       &:focus-within {
@@ -463,7 +464,7 @@
   -webkit-mask-image: image-url("masthead-wave");
   -webkit-mask-size: 100% 100%;
   will-change: filter;
-  height: 600px;
+  height: v(videoHeight);
   position: absolute;
   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) 100%);
 }
@@ -557,7 +558,8 @@ video {
     }
 
     video {
-      max-height: 60vh;
+      --videoHeight: 60vh;
+      max-height: v(--videoHeight);
     }
   }
 
@@ -938,7 +940,7 @@ video {
     -webkit-mask-image: image-url("masthead-wave");
     -webkit-mask-size: 100% 100%;
     will-change: filter;
-    height: 600px;
+    max-height: var(--videoHeight);
     position: absolute;
     background: none;
   }
