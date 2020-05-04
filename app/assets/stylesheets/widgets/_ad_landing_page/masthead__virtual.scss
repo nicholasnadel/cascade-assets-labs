@@ -462,12 +462,9 @@
   -webkit-mask-image: image-url("masthead-wave");
   -webkit-mask-size: 100% 100%;
   will-change: filter;
-
-
   height: 600px;
-
   position: absolute;
-  background: -webkit-radial-gradient(top center, ellipse cover, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) 100%);
 }
 
 video {
