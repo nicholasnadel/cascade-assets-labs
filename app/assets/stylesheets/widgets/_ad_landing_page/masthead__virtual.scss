@@ -440,7 +440,7 @@
     // grid-template-columns: repeat(4, 1fr);
     // grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 200px 200px 200px 200px;
+    grid-template-rows: 200px 200px;
     justify-content: space-around;
     grid-gap: 12px;
     max-width: 1130px;
@@ -700,7 +700,7 @@ video {
     &__photos {
       display: -ms-grid;
       // -ms-grid-columns: 2fr 1fr 1fr 1fr;
-      // -ms-grid-rows: 200px 200px 200px 200px;
+      // -ms-grid-rows: 200px 200px;
       position: relative;
       max-width: 1130px;
       // margin-top: 600px;
@@ -757,7 +757,7 @@ video {
   .ie__homepage-masthead__photos,
   .homepage-masthead__photos {
     display: -ms-grid;
-    -ms-grid-columns: 400px 200px 200px 200px 200px;
+    -ms-grid-columns: 400px 200px 200px;
     -ms-grid-rows: 200px 200px;
     grid-gap: 12px;
     position: relative;
