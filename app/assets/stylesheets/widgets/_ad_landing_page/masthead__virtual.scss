@@ -852,6 +852,8 @@ video {
     .homepage-masthead__photo-grid-container__text {
       color: $white;
       display: flex;
+      justify-content: space-around;
+      text-align: left;
 
       svg {
         width: 2rem;
