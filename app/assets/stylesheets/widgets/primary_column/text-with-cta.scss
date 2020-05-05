@@ -7,12 +7,14 @@ html {
         }
         
         &__text-container {
+
           @include respond(phone) {
             display: grid;
             grid-template-columns: 100%;
             grid-template-rows: repeat(3, auto);
             grid-auto-rows: 0;
             grid-auto-columns: 0;
+            margin-bottom: 2rem;
           }
         }
 
@@ -26,6 +28,7 @@ html {
         &__text {
           @include respond(phone) {
             grid-row: 2 / span 1;
+            margin-bottom: 1rem;
           }
         }
 
