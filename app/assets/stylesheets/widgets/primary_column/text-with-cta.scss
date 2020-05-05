@@ -2,6 +2,10 @@ html {
   body {
     .text-with-cta-widget {
       .text-with-cta {
+        ul {
+          margin-left: 4rem;
+        }
+        
         &__text-container {
           @include respond(phone) {
             display: grid;
