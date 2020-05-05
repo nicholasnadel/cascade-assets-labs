@@ -5,18 +5,7 @@ $(function () {
         togglePlay();
     });
     ieObjectFitFallback();
-    // setTabIndex();
 });
-
-function setTabIndex() {
-    var tabindex = 2;
-    $('.homepage-masthead__toggle-play-button path, .homepage-masthead__container a').each(function () {
-        var $tabbable = $(this);
-        $tabbable.attr("tabindex", tabindex);
-        tabindex++;
-    });
-    $('.homepage-masthead__toggle-play-button path').attr('tabindex', '1');
-}
 
 function togglePlay() {
     var vid = $("video#homepage-masthead__video");
