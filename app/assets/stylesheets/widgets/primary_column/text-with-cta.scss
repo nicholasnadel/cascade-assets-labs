@@ -1,11 +1,10 @@
 html {
   body {
     .text-with-cta-widget {
-      .text-with-cta {
-        ul {
-          margin-left: 4rem;
-        }
-        
+      ul {
+        margin-left: 4rem;
+      }
+      .text-with-cta { 
         &__text-container {
 
           @include respond(phone) {
