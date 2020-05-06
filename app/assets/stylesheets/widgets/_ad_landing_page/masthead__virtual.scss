@@ -707,9 +707,7 @@ video {
   }
 
   @include respond(phone) {
-    video {
-      max-height: 88vh;
-    }
+    --video: 88vh;
 
     a.button,
     .button.homepage-masthead__button {
