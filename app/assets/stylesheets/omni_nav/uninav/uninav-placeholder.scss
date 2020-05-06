@@ -32,6 +32,20 @@
         align-content: center;
         padding: 25px;
     }
+
+    #uninav {
+
+        .uninav__cta,
+        .uninav__logo,
+        .uninav__global-nav,
+        .uninav__utility-nav-wrapper,
+        .uninav__logo--contextual,
+        .uninav__menu-item-flex.uninav__menu-item-flex--utility {
+            @include qbal-fade-enter;
+            animation-delay: 3s;
+            animation-duration: 5s;
+        }
+    }
 }
 
 .three-column-template,
