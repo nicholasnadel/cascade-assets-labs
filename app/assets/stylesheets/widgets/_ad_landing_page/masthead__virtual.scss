@@ -51,20 +51,15 @@
   }
 
   /* Could Use thise as well for Individual Controls */
-  video::-webkit-media-controls-play-button {
-  }
+  video::-webkit-media-controls-play-button {}
 
-  video::-webkit-media-controls-volume-slider {
-  }
+  video::-webkit-media-controls-volume-slider {}
 
-  video::-webkit-media-controls-mute-button {
-  }
+  video::-webkit-media-controls-mute-button {}
 
-  video::-webkit-media-controls-timeline {
-  }
+  video::-webkit-media-controls-timeline {}
 
-  video::-webkit-media-controls-current-time-display {
-  }
+  video::-webkit-media-controls-current-time-display {}
 
   .homepage-masthead__toggle-play-button {
     position: absolute;
@@ -225,6 +220,8 @@
 
       &__button,
       .homepage a.button {
+
+        $bg: $cu-red;
         --buttonMinWidth: 350px;
         background: unset;
         display: -ms-grid;
@@ -233,6 +230,7 @@
         align-content: center;
         text-align: center;
         background-color: v(cu-red);
+        background-color: $bg;
         color: $white;
         font-family: v(futura-pt);
         text-transform: uppercase;
@@ -246,9 +244,8 @@
         &:focus,
         &:focus-within {
           background-color: lighten($cu-red, 8%) !important;
+          background-color: $red-hover !important;
           color: v(white);
-          -webkit-animation-play-state: paused;
-          animation-play-state: paused;
           transform: translateY(-2px);
           transition: 150ms;
         }
@@ -266,10 +263,7 @@
         --animationDuration: 30s;
 
         &--red {
-          background-color: v(white);
           color: v(panther-black);
-          -webkit-animation: 26s infinite backgroundColor;
-          animation: 26s infinite backgroundColor;
           background-color: v(cu-red);
           color: v(white);
           transition: 300ms linear;
@@ -475,32 +469,32 @@
     }
   }
 
-  &__photo-grid > *:nth-child(1) {
+  &__photo-grid>*:nth-child(1) {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(1) {
+  &__photo-grid>*:nth-child(1) {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
 
-  &__photo-grid > *:nth-child(2) {
+  &__photo-grid>*:nth-child(2) {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
 
-  &__photo-grid > *:nth-child(3) {
+  &__photo-grid>*:nth-child(3) {
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
 
-  &__photo-grid > *:nth-child(4) {
+  &__photo-grid>*:nth-child(4) {
     -ms-grid-row: 1;
     -ms-grid-column: 7;
   }
 
-  &__photo-grid > *:nth-child(5) {
+  &__photo-grid>*:nth-child(5) {
     -ms-grid-row: 1;
     -ms-grid-column: 9;
   }
@@ -519,52 +513,52 @@
     max-width: 1130px;
   }
 
-  &__photos > *:nth-child(1) {
+  &__photos>*:nth-child(1) {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
   }
 
-  &__photos > *:nth-child(2) {
+  &__photos>*:nth-child(2) {
     -ms-grid-row: 1;
     -ms-grid-column: 3;
   }
 
-  &__photos > *:nth-child(3) {
+  &__photos>*:nth-child(3) {
     -ms-grid-row: 1;
     -ms-grid-column: 5;
   }
 
-  &__photos > *:nth-child(4) {
+  &__photos>*:nth-child(4) {
     -ms-grid-row: 1;
     -ms-grid-column: 7;
   }
 
-  &__photos > *:nth-child(5) {
+  &__photos>*:nth-child(5) {
     -ms-grid-row: 1;
     -ms-grid-column: 9;
   }
 
-  &__photos > *:nth-child(6) {
+  &__photos>*:nth-child(6) {
     -ms-grid-row: 3;
     -ms-grid-column: 1;
   }
 
-  &__photos > *:nth-child(7) {
+  &__photos>*:nth-child(7) {
     -ms-grid-row: 3;
     -ms-grid-column: 3;
   }
 
-  &__photos > *:nth-child(8) {
+  &__photos>*:nth-child(8) {
     -ms-grid-row: 3;
     -ms-grid-column: 5;
   }
 
-  &__photos > *:nth-child(9) {
+  &__photos>*:nth-child(9) {
     -ms-grid-row: 3;
     -ms-grid-column: 7;
   }
 
-  &__photos > *:nth-child(10) {
+  &__photos>*:nth-child(10) {
     -ms-grid-row: 3;
     -ms-grid-column: 9;
   }
@@ -622,7 +616,7 @@
   background: -moz-linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
   background: -webkit-linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
   background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#000000",GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#000000", GradientType=1);
 }
 
 video {
@@ -696,7 +690,7 @@ video {
   }
 
   @include respond(tab-port) {
-    --videoHeight: 60vh;
+    --videoheight: 60vh;
 
     .homepage-masthead__photo-grid {
       padding-top: 5px;
@@ -708,7 +702,7 @@ video {
     }
 
     video {
-      max-height: v(--videoHeight);
+      max-height: v(videoHeight);
     }
   }
 
@@ -986,11 +980,11 @@ video {
       }
     }
 
-    img + img {
+    img+img {
       margin-right: 12px;
     }
 
-    a + a {
+    a+a {
       margin-right: 12px;
     }
 
@@ -1083,5 +1077,26 @@ video {
     max-height: var(--videoHeight);
     position: absolute;
     background: none;
+  }
+}
+
+html {
+
+  .homepage-masthead__button,
+  .homepage a.button {
+    $bg: $cu-red;
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      background-color: lighten($cu-red, 8%) !important;
+      background-color: $red-hover !important;
+      color: v(white);
+      -webkit-animation-play-state: paused;
+      animation-play-state: paused;
+      transform: translateY(-2px);
+      transition: 150ms;
+    }
+
   }
 }
