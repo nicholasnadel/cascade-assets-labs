@@ -42,3 +42,16 @@
         }
     }
 }
+
+
+.left-nav-drilldown-static-placeholder__notice {
+    position: absolute;
+    display: grid;
+    z-index: 2;
+    background-color: white;
+    height: 100%;
+    align-content: center;
+    padding: 25px;
+    font-weight: bold;
+    font-family: v(futura-regular);
+}
