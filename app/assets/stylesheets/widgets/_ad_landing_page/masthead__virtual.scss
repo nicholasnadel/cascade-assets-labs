@@ -160,7 +160,7 @@
       line-height: 3rem;
       text-shadow: v(textShadow);
       font-weight: 700;
-      font-family: $futura-regular;
+      font-family: v(futura-pt);
       margin-top: 2rem;
       margin-bottom: 2rem;
 
@@ -233,7 +233,7 @@
         text-align: center;
         background-color: v(cu-red);
         color: $white;
-        font-family: $futura-regular;
+        font-family: v(futura-pt);
         text-transform: uppercase;
         font-weight: bold;
         padding: 4%;
@@ -352,7 +352,7 @@
 
     h2 {
       color: v(white);
-      font-family: v(--futura-regular);
+      font-family: v(futura-pt);
       font-size: 1.8rem;
       line-height: 2rem;
     }
@@ -643,7 +643,7 @@ video {
       &__photo-grid {
         h2 {
           font-size: 2rem;
-          font-family: $futura-regular;
+          font-family: v(futura-pt);
           font-size: 1.8rem;
           line-height: 2rem;
           font-weight: bold;
