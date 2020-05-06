@@ -5,8 +5,6 @@
   --videoHeight: 600px;
   width: 100vw;
 
-
-
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -16,16 +14,15 @@
   grid-gap: 25px;
   min-height: 800px;
 
-
   .left {
     height: 100%;
-    width: 3v(defaultPadding);
+    width: 3v (defaultPadding);
     float: left;
   }
 
   .right {
     height: 200px;
-    width: 3v(defaultPadding);
+    width: 3v (defaultPadding);
     float: right;
   }
 
@@ -54,15 +51,20 @@
   }
 
   /* Could Use thise as well for Individual Controls */
-  video::-webkit-media-controls-play-button {}
+  video::-webkit-media-controls-play-button {
+  }
 
-  video::-webkit-media-controls-volume-slider {}
+  video::-webkit-media-controls-volume-slider {
+  }
 
-  video::-webkit-media-controls-mute-button {}
+  video::-webkit-media-controls-mute-button {
+  }
 
-  video::-webkit-media-controls-timeline {}
+  video::-webkit-media-controls-timeline {
+  }
 
-  video::-webkit-media-controls-current-time-display {}
+  video::-webkit-media-controls-current-time-display {
+  }
 
   .homepage-masthead__toggle-play-button {
     position: absolute;
@@ -141,16 +143,17 @@
       font-weight: 700;
       -webkit-user-select: text;
 
-
       .line-one {
         @include qbal-fade-enter;
         // animation-delay: 1s;
+        -webkit-animation-duration: 1s;
         animation-duration: 1s;
       }
 
       .line-two {
         @include qbal-fade-enter;
         // animation-delay: 2s;
+        -webkit-animation-duration: 1s;
         animation-duration: 1s;
       }
     }
@@ -164,19 +167,21 @@
       margin-top: 2rem;
       margin-bottom: 2rem;
 
-
       .line-one {
         @include qbal-fade-enter;
+        -webkit-animation-delay: 1s;
         animation-delay: 1s;
+        -webkit-animation-duration: 1s;
         animation-duration: 1s;
       }
 
       .line-two {
         @include qbal-fade-enter;
+        -webkit-animation-delay: 3s;
         animation-delay: 3s;
+        -webkit-animation-duration: 1s;
         animation-duration: 1s;
       }
-
     }
   }
 
@@ -200,7 +205,6 @@
     position: relative;
     height: auto;
 
-
     .homepage-masthead__buttons {
       display: -ms-grid;
       display: grid;
@@ -211,9 +215,6 @@
       justify-self: center;
       width: 100%;
       grid-gap: 12px;
-
-
-
     }
 
     .homepage-masthead {
@@ -329,9 +330,11 @@
     display: grid;
     // grid-template-columns: repeat(4, 1fr);
     // grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 2fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
     // -ms-grid-columns: 2fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
     // -ms-grid-rows: 200px 12px 200px 12px 200px 12px 200px;
+    -ms-grid-rows: fit-content(100%);
     grid-template-rows: fit-content(100%);
     justify-content: space-around;
     grid-gap: 12px;
@@ -339,16 +342,18 @@
     max-width: 1130px;
     -ms-grid-columns: 1fr;
     -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     width: 100vw;
+    -webkit-animation-delay: 5s;
     animation-delay: 5s;
 
-    @for $i from 2 through 7 {
-      :nth-child(#{$i}) {
-        -webkit-animation-delay: #{$i * 0.05s};
-        animation-delay: #{$i * 0.05s};
-      }
-    }
+    // @for $i from 2 through 7 {
+    //   :nth-child(#{$i}) {
+    //     -webkit-animation-delay: #{$i * 0.05s};
+    //     animation-delay: #{$i * 0.05s};
+    //   }
+    // }
 
     h2 {
       color: v(white);
@@ -470,17 +475,98 @@
     }
   }
 
+  &__photo-grid > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
 
+  &__photo-grid > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+
+  &__photo-grid > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+
+  &__photo-grid > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+
+  &__photo-grid > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+
+  &__photo-grid > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+  }
 
   &__photos {
+    display: -ms-grid;
     display: grid;
     // grid-template-columns: repeat(4, 1fr);
     // grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    -ms-grid-columns: 2fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: 200px 12px 200px;
     grid-template-rows: 200px 200px;
     justify-content: space-around;
     grid-gap: 12px;
     max-width: 1130px;
+  }
+
+  &__photos > *:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+
+  &__photos > *:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+  }
+
+  &__photos > *:nth-child(3) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 5;
+  }
+
+  &__photos > *:nth-child(4) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 7;
+  }
+
+  &__photos > *:nth-child(5) {
+    -ms-grid-row: 1;
+    -ms-grid-column: 9;
+  }
+
+  &__photos > *:nth-child(6) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+
+  &__photos > *:nth-child(7) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 3;
+  }
+
+  &__photos > *:nth-child(8) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 5;
+  }
+
+  &__photos > *:nth-child(9) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 7;
+  }
+
+  &__photos > *:nth-child(10) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 9;
   }
 }
 
@@ -492,9 +578,19 @@
   z-index: 1;
   width: 100vw;
   position: absolute;
+  -webkit-animation: 1s zIndex linear forwards;
   animation: 1s zIndex linear forwards;
 }
 
+@-webkit-keyframes zIndex {
+  from {
+    z-index: 1;
+  }
+
+  to {
+    z-index: -1;
+  }
+}
 
 @keyframes zIndex {
   from {
@@ -522,8 +618,11 @@
   will-change: filter;
   max-height: v(videoHeight);
   position: absolute;
-  background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.3) 30%, rgba(0, 0, 0, 0) var(--videoHeight));
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  // background: rgb(2,0,36);
+  background: -moz-linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
+  background: -webkit-linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
+  background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#000000",GradientType=1);
 }
 
 video {
@@ -544,12 +643,8 @@ video {
 }
 
 .videocontrols {
-
   background: linear-gradient(0deg, rgb(2, 0, 36) 0%, rgba(0, 0, 0, 0.052240964745273066) 33%);
-
 }
-
-
 
 .homepage-masthead__container {
   position: relative;
@@ -558,8 +653,6 @@ video {
 .homepage-masthead__heading-container {
   z-index: 3;
 }
-
-
 
 .homepage-masthead__button-container {
   z-index: 3;
@@ -617,10 +710,6 @@ video {
     video {
       max-height: v(--videoHeight);
     }
-
-    .homepage-masthead__video-overlay {
-      // top: 1.4rem;
-    }
   }
 
   @include respond(phone) {
@@ -653,7 +742,6 @@ video {
 }
 
 .ie {
-
   .homepage-masthead {
     &__container {
       display: block;
@@ -676,7 +764,6 @@ video {
     &__button-container {
       position: absolute;
       margin-top: 400px;
-
     }
 
     &__buttons {
@@ -742,6 +829,7 @@ video {
       max-width: 100%;
       -ms-grid-columns: 1fr;
       -ms-grid-rows: 1fr;
+      -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
       width: 100vw;
     }
@@ -749,8 +837,6 @@ video {
     &__photo-grid-container {
       display: -ms-grid;
       display: block;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
       justify-content: center;
       margin: auto;
       text-align: center;
@@ -801,7 +887,6 @@ video {
     display: -ms-grid;
     margin-right: 12px;
     max-height: 190px;
-
   }
 
   .homepage-masthead__toggle-play-button {
@@ -833,17 +918,14 @@ video {
       // min-width: 388px;
     }
 
-
     img {
       // handled by homepage-masthead.js object fit fallback
       -o-object-fit: cover;
       object-fit: cover;
     }
 
-
     a,
     img {
-
       display: inline;
 
       &:first-child {
@@ -904,11 +986,11 @@ video {
       }
     }
 
-    img+img {
+    img + img {
       margin-right: 12px;
     }
 
-    a+a {
+    a + a {
       margin-right: 12px;
     }
 
@@ -937,15 +1019,13 @@ video {
     }
 
     .diagonal:before {
-      content: '';
+      content: "";
       position: absolute;
       left: 20%;
       width: 100%;
       height: 200%;
       background-color: $white;
       top: 0;
-      -webkit-transform: rotate(45deg);
-      -moz-transform: rotate(45deg);
       transform: rotate(45deg);
     }
   }
