@@ -1,5 +1,5 @@
 $(function() {
-	$carousels = $('.carousel ul');
+	$carousels = $('#big-sponsor .carousel ul');
 
 	$carousels.each(function(index, carousel) {
 		var slideCount = $(carousel).find('li').length;
