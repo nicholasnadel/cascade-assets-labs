@@ -24,6 +24,11 @@
         background-color: rgba(255, 255, 255, 0.95);
         padding-left: 50px;
         padding-right: 50px;
+        flex-wrap: wrap;
+
+        .line-two {
+            font-weight: normal;
+        }
     }
 
     .off-canvas-umbrella-navigation-static__notice {
