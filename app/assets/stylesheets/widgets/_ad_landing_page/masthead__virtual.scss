@@ -507,7 +507,7 @@
 }
 
 .homepage-masthead__video-overlay {
-  z-index: 3;
+  z-index: 2;
   display: block;
   position: absolute;
   height: 100%;
@@ -516,7 +516,6 @@
   right: 0;
   background: rgba(0, 0, 0, 0.9);
   position: relative;
-  z-index: 1;
   mask-image: image-url("masthead-wave");
   -webkit-mask-image: image-url("masthead-wave");
   -webkit-mask-size: 100% 100%;
