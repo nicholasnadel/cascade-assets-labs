@@ -438,13 +438,15 @@
 
       h2 {
         text-transform: uppercase;
-        width: min-intrinsic;
-        width: -webkit-min-content;
-        width: -moz-min-content;
-        width: min-content;
+        width: 100%;
         display: table-caption;
         display: -ms-grid;
         -ms-grid-columns: min-content;
+
+        span {
+          width: 100%;
+          display: flex;
+        }
       }
     }
 
@@ -644,6 +646,7 @@ video {
           font-family: $futura-regular;
           font-size: 1.8rem;
           line-height: 2rem;
+          font-weight: bold;
         }
       }
     }
