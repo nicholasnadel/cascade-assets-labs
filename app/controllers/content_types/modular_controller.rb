@@ -303,8 +303,8 @@ module ContentTypes
         "TYPEKIT" => cascade_block("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("uninav/uninav"),
-        "GLOBAL FOOTER" => render_static_partial(footer_path),
+        # "OMNI-NAV" => render_static_partial("uninav/uninav"),
+        "GLOBAL FOOTER" => render_static_partial(footer_path)
       }
 
       render @configuration_set.template
@@ -508,10 +508,8 @@ module ContentTypes
 
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s",
-             render_static_partial("widgets/primary_content/next_steps_widget"),
-             render_static_partial("widgets/primary_content/rss_feed_display"),
-             render_static_partial("widgets/primary_content/testimonial_widget"),
+      format("%s %s",
+             render_static_partial("widgets/primary_content/logo_image_rotator_1"),
              render_static_partial("widgets/primary_content/featured_news_events_feed_1"))
     end
 
