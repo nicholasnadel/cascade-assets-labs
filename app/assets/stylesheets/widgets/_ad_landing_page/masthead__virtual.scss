@@ -367,7 +367,7 @@
       background-color: v(cu-red);
       will-change: filter, brightness;
       @include qbal-slideUp-enter;
-      min-height: v(imgSize);
+      max-height: 100%;
 
       &:focus,
       &:focus-within {
