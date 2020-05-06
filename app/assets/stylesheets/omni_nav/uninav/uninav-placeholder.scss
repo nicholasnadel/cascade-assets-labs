@@ -1,0 +1,12 @@
+.uninav-placeholder-modal {
+    position: absolute;
+    background-color: $white;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    align-content: center;
+    align-items: center;
+    z-index: 2;
+    font-weight: bold;
+}
