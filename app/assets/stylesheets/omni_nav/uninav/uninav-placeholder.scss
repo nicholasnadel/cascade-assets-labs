@@ -1,4 +1,12 @@
 #uninav-static-placeholder {
+
+    .uninav__logo,
+    .uninav__global-nav,
+    .uninav__utility-nav--wrapper,
+    .uninav__cta {
+        filter: blur(3px);
+    }
+
     .svg-inline--fa.fa-window-close.fa-w-16 {
         color: var(--pantherBlack);
         max-width: 25px;
