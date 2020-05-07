@@ -1077,24 +1077,3 @@ video {
     background: none;
   }
 }
-
-html {
-
-  .homepage-masthead__button,
-  .homepage a.button {
-    $bg: $cu-red;
-
-    &:hover,
-    &:focus,
-    &:focus-within {
-      background-color: lighten($cu-red, 8%) !important;
-      background-color: $red-hover !important;
-      color: v(white);
-      -webkit-animation-play-state: paused;
-      animation-play-state: paused;
-      transform: translateY(-2px);
-      transition: 150ms;
-    }
-
-  }
-}
