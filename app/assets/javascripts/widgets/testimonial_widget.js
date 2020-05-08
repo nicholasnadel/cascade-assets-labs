@@ -1,11 +1,12 @@
 $(function () {
   if ($('.testimonial-widget').length) {
     $('.testimonial-widget').slick({
-      arrows: false,
+      arrows: true,
       centerPadding: "0px",
-      dots: false,
+      dots: true,
       slidesToShow: 1,
-      infinite: true,
+      infinite: false,
+      adaptiveHeight: false,
       variableWidth: false,
     });
     $('.testimonial-widget__button--left').click(function () {

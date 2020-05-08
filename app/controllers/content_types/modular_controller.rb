@@ -247,7 +247,7 @@ module ContentTypes
         "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("/omni_nav_v2/omninav"),
+        "OMNI-NAV" => render_static_partial("/uninav/uninav"),
         "NAVIGATION" => render_static_partial(navigation_path),
         "GLOBAL FOOTER" => render_static_partial(footer_path),
       }

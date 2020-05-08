@@ -3,6 +3,7 @@
   .testimonial-widget {
     --imgSize: 200px;
     margin-top: 30px;
+    height: 304px;
 
     .slick__display-prop {
       display: -ms-inline-grid;
@@ -377,6 +378,7 @@
       }
     }
   }
+
 }
 
 // ie11 specific
@@ -440,4 +442,34 @@
     }
   }
 
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2.5rem;
+  background-color: var(--cu-red);
+  border-radius: 50%;
+}
+
+.slick-prev,
+.slick-next {
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 2;
+}
+
+.slick-list {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.slick-prev::before {
+  content: '\f054' !important;
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+}
+
+button[aria-disabled="true"] {
+  visibility: hidden;
 }
