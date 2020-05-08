@@ -26,6 +26,51 @@ h6,
 }
 
 .homepage {
+  a.button {
+    @include transition(background-color);
+
+    &:hover {
+      background-color: #ffffff;
+      text-decoration: none;
+    }
+
+    &:active {
+      background-color: #b8b8b8;
+      text-decoration: none;
+    }
+
+    &.red {
+      background: $cu-red no-repeat center;
+      color: #FFFFFF;
+
+      &:hover {
+        background-color: $red-button-hover;
+        text-decoration: none;
+      }
+
+      &:active {
+        background-color: $red-button-active;
+        text-decoration: none;
+      }
+    }
+
+
+    &.white {
+      background: #eaeaea no-repeat center;
+      color: #313131;
+
+      &:hover {
+        background-color: #ffffff;
+        text-decoration: none;
+      }
+
+      &:active {
+        background-color: #d8d8d8;
+        text-decoration: none;
+      }
+    }
+  }
+
   .maxWidth {
     margin: 0 15px;
   }
