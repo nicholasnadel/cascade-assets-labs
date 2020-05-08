@@ -31,7 +31,6 @@ function ieObjectFitFallback() {
             $(".homepage-masthead__photo-grid img").length)
     ) {
         $(".homepage-masthead__photo-grid img, .ie__homepage-masthead__photos img").each(function () {
-            console.log('object fit fallback');
             var t = $(this),
                 s = "url(" + t.attr("src") + ")",
                 p = t.parent(),
@@ -51,7 +50,6 @@ function ieObjectFitFallback() {
 }
 // KEYS 🎹
 function a11yClick(event) {
-    console.log('keypress')
     if (event.type === 'click') {
         togglePlay();
         return true;
