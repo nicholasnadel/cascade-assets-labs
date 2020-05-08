@@ -43,6 +43,7 @@
 //= require cascade/plugins/mousetrap
 //= require cascade/level/plugins/tipsy
 //= require cascade/level/accordion
+//= require cascade/level/homepage-masthead
 //= require cascade/level/career_blocks
 
 //= require cascade/level/degrees-programs
