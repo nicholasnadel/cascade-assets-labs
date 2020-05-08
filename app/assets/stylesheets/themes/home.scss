@@ -39,7 +39,8 @@ h6,
       text-decoration: none;
     }
 
-    &.red {
+    &.red,
+    [class*="--red"] {
       background: $cu-red no-repeat center;
       color: #FFFFFF;
 
