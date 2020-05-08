@@ -32,31 +32,41 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @if $breakpoint==phone {
     @media only screen and (max-width: 37.5em) {
       @content;
-    } //600px
+    }
+
+    //600px
   }
 
   @if $breakpoint==small {
     @media only screen and (max-width: 47em) {
       @content;
-    } // 767px
+    }
+
+    // 767px
   }
 
   @if $breakpoint==tab-port {
     @media only screen and (max-width: 56.5em) {
       @content;
-    } //900px
+    }
+
+    //900px
   }
 
   @if $breakpoint==tab-land {
     @media only screen and (max-width: 75em) {
       @content;
-    } //1200px
+    }
+
+    //1200px
   }
 
   @if $breakpoint==big-desktop {
     @media only screen and (min-width: 112.5em) {
       @content;
-    } //1800
+    }
+
+    //1800
   }
 }
 
@@ -70,6 +80,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
   @if $point==s {
+
     // Mobile
     @media (min-width: 420px) {
       @content;
@@ -77,6 +88,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==sx {
+
     // Mobile
     @media (max-width: 420px) {
       @content;
@@ -87,6 +99,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
   @if $point==m {
+
     // Medium
     @media (min-width: 780px) {
       @content;
@@ -94,6 +107,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==mx {
+
     // Medium
     @media (max-width: 767px) {
       @content;
@@ -101,6 +115,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==l {
+
     // Large
     @media (min-width: 1024px) {
       @content;
@@ -108,6 +123,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==lx {
+
     // Large
     @media (max-width: 1024px) {
       @content;
@@ -115,6 +131,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xl {
+
     // Extra-Large
     @media (min-width: 1200px) {
       @content;
@@ -122,6 +139,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xlx {
+
     // Extra-Large
     @media (max-width: 1200px) {
       @content;
@@ -129,6 +147,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-min {
+
     // Uses variable breakpoint.
     @media (min-width: #{$val}) {
       @content;
@@ -136,6 +155,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-max {
+
     // Uses variable breakpoint.
     @media (max-width: #{$val}) {
       @content;
@@ -196,7 +216,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
-  } @else {
+  }
+
+  @else {
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
@@ -212,7 +234,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin opacity($i) {
   $forie: $i * 100;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $forie + ")";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+ $forie + ")";
   filter: alpha(opacity=$forie);
   opacity: $i;
 }
@@ -233,9 +255,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-top: 12px;
   margin-bottom: 24px;
 
-  @if type-of($weight) ==string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -254,9 +278,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 32px;
 
-  @if type-of($weight) ==string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -268,9 +294,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-size: 22px;
   line-height: 26px;
 
-  @if type-of($weight) ==string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -289,9 +317,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 18px;
 
-  @if type-of($weight) ==string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -302,9 +332,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 14px;
 
-  @if type-of($weight) ==string {
+  @if type-of($weight)==string {
     font-weight: unquote($weight);
-  } @else {
+  }
+
+  @else {
     font-weight: $weight;
   }
 
@@ -504,7 +536,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @function text($bg) {
   @if (lightness($bg) > 50) {
     @return $panther-black;
-  } @else {
+  }
+
+  @else {
     @return $white;
   }
 }
@@ -586,7 +620,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         transition: all 0.175s ease-in-out;
         animation-delay: -0.75ms;
 
-        & + .toggle-drilldown {
+        &+.toggle-drilldown {
           color: v(cu-red);
 
           .fa-chevron-right {
@@ -618,6 +652,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-moz-keyframes fadein {
+
             /* Firefox */
             from {
               opacity: 0;
@@ -629,6 +664,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-webkit-keyframes fadein {
+
             /* Safari and Chrome */
             from {
               opacity: 0;
@@ -640,6 +676,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-o-keyframes fadein {
+
             /* Opera */
             from {
               opacity: 0;
@@ -815,5 +852,49 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
   .off-canvas-menu-container .off-canvas-cta a:hover {
     margin-left: 0;
+  }
+}
+
+// USAGE
+// .example-1
+// {
+//      animation: sonar-pulse 1s infinite;
+// }
+@keyframes sonar-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 0 35px rgba(0, 0, 0, 0);
+  }
+}
+
+// circular sonar pulse effect
+@-webkit-keyframes sonar-pulse-circular {
+  0% {
+    box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 30px rgba(165, 0, 52, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(165, 0, 52, 0);
+  }
+}
+
+@keyframes sonar-pulse-circular {
+  0% {
+    box-shadow: 0 0 0 0 rgba(165, 0, 52, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 30px rgba(165, 0, 52, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(165, 0, 52, 0);
   }
 }
