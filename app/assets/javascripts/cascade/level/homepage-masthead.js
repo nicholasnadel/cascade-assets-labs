@@ -46,6 +46,7 @@ function ieObjectFitFallback() {
                 "background-image": s
             });
         });
+        $('.ie__fallback-object-fit:first-of-type').css('height', '100%');
     }
 }
 // KEYS 🎹
