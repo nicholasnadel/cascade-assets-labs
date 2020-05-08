@@ -180,6 +180,7 @@
   color: $white;
 
   .preheader {
+    color: $white;
     color: v(preheaderLight);
   }
 
@@ -214,6 +215,7 @@
   color: $panther-black;
 
   .preheader {
+    color: $grey;
     color: v(preheaderDark);
   }
 
@@ -254,6 +256,7 @@
   @include dc($bg);
 
   .preheader {
+    color: $grey;
     color: v(preheaderDark);
   }
 

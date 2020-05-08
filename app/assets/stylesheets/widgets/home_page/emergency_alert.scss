@@ -43,6 +43,7 @@ $large-screen: 1130px;
       font-weight: 800;
       text-align: center;
       padding-bottom: 5px;
+      color: $white;
       color: v(white);
 
       @include media($medium-screen) {

@@ -412,6 +412,7 @@ html {
     }
 
     &__pipe {
+      border-right: 1px solid $cu-light-grey;
       border-right: 1px solid var(--cu-light-grey);
       width: auto;
       height: 25px;

@@ -49,6 +49,7 @@
       i {
         color: $cu-red;
         font-size: 2rem;
+        background-color: $white;
         background-color: v(white);
         border-radius: 50%;
       }
@@ -75,6 +76,7 @@
     -webkit-box-pack: justify;
     justify-content: space-between;
     padding: 10px;
+    border-bottom: 1px solid $cu-light-grey;
     border-bottom: 1px solid v(cu-light-grey);
 
     .menu-label {
@@ -88,9 +90,11 @@
     }
 
     .toggle-menu-label {
+      background: $panther-black;
       background: v(panther-black);
       padding: .5rem 1.5rem .5rem 1.5rem;
       margin: 0 0 0 1rem;
+      color: $white;
       color: v(white);
       font-weight: bold;
       font-size: 1.2rem;
@@ -122,7 +126,9 @@
     left: 0;
     height: 100vh;
     width: $nav-width;
+    background-color: $white;
     background-color: v(white);
+    border: 1px solid $cu-light-grey;
     border: 1px solid V(CU-LIGHT-GREY);
     overflow-x: hidden;
     -webkit-transition: all .40s;
@@ -139,18 +145,23 @@
 
     .off-canvas-cta {
       li {
+        color: $white;
         color: v(white);
 
         a {
+          color: $white;
           color: v(white);
           font-weight: bold;
           text-transform: uppercase;
           font-size: 1.4rem;
           letter-spacing: .5px;
+          background-color: $cu-red;
           background-color: v(cu-red);
+          color: $white;
           color: v(white);
 
           &:hover {
+            background-color: $panther-black;
             background-color: v(panther-black);
           }
         }
@@ -353,6 +364,7 @@
         -moz-transition: 150s;
         -ms-transition: 150s;
         -o-transition: 150s;
+        background-color: $panther-black;
         background-color: v(panther-black);
       }
 
@@ -362,6 +374,7 @@
       }
 
       &:active {
+        background-color: $panther-black;
         background-color: v(panther-black);
       }
 

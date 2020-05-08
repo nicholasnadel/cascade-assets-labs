@@ -569,24 +569,28 @@ ORDER: Base + typography > general layout + grid > page layout > components
   ul li {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid $cu-light-grey;
     border-bottom: 1px solid v(cu-light-grey);
 
     a,
     .drill-down-parent {
       font-family: "futura-pt", arial, sans-serif;
       line-height: 1.8rem;
+      color: $panther-black;
       color: v(panther-black);
       padding: 15px 15px 15px 30px;
       width: 100%;
 
       &:hover,
       &:focus {
+        color: $cu-red;
         color: v(cu-red);
         margin-left: 2px;
         transition: all 0.175s ease-in-out;
         animation-delay: -0.75ms;
 
         & + .toggle-drilldown {
+          color: $cu-red;
           color: v(cu-red);
 
           .fa-chevron-right {
@@ -665,6 +669,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       width: 7rem;
 
       &:hover {
+        color: $cu-red;
         color: v(cu-red);
         transform: scale(1.2);
         transition: all 0.175s ease-in-out;
@@ -684,9 +689,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
         }
 
         .fas {
+          color: $cu-red;
           color: v(cu-red);
 
           &:hover {
+            color: $cu-red;
             color: v(cu-red);
           }
         }
@@ -711,6 +718,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
       li {
         a {
+          color: $white;
           color: v(white);
           font-weight: bold;
           text-transform: uppercase;
@@ -719,7 +727,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
           background-color: v(cu-red);
 
           &:hover {
+            background-color: $panther-black;
             background-color: v(panther-black);
+            color: $white;
             color: v(white);
           }
         }
@@ -746,6 +756,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
           &.home-menu {
             &:focus-within {
+              outline-color: $panther-black;
               outline-color: v(panther-black);
               outline-style: auto;
               outline-width: 5px;
@@ -757,6 +768,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .menu-back {
         justify-content: start;
         align-items: center;
+        background: $panther-black;
         background: v(panther-black);
         color: $white;
         font-weight: bold;
@@ -793,6 +805,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 
     &.home-menu {
+      background: $panther-black;
       background: v(panther-black);
       font-weight: bold;
       color: $white;

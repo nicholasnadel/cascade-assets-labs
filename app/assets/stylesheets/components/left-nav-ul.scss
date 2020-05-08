@@ -2,7 +2,10 @@
 	> ul {
     float: left;
     width: 100%;
-    background-color: #d8d8d8;
+		background-color: #d8d8d8;
+		border-right: 1px solid $cu-light-grey;
+    border-bottom: 1px solid $cu-light-grey;
+    border-left: 1px solid $cu-light-grey;
     border-right: 1px solid v(cu-light-grey);
     border-bottom: 1px solid v(cu-light-grey);
     border-left: 1px solid v(cu-light-grey);
@@ -44,6 +47,7 @@
 	        }
 				}
 				a {
+					border-top: 1px solid $cu-light-grey;
 					border-top: 1px solid v(cu-light-grey);
 	        font-size: 16px;
           color: #383838;
@@ -132,7 +136,10 @@
         position: relative;
       	&:hover {
 	        	background-color: $white;
-	          	color: $cu-red;
+							color: $cu-red;
+							border-top: 1px solid $cu-light-grey;
+	          	border-left: 1px solid $cu-light-grey;
+	          	border-right: 1px solid $cu-light-grey;
 	          	border-top: 1px solid v(cu-light-grey);
 	          	border-left: 1px solid v(cu-light-grey);
 	          	border-right: 1px solid v(cu-light-grey);

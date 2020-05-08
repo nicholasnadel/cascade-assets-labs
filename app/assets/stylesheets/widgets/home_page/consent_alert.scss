@@ -1,15 +1,17 @@
 
 .optanon-alert-box-wrapper .optanon-alert-box-button-middle {
+  background-color: $cu-red;
   background-color: v(cu-red);
+  border: $cu-red;
   border: v(cu-red);
 }
 .optanon-alert-box-button-middle.accept-cookie-container {
   @include button-bg($cu-red);
   display: flex;
   font-family: $futura-regular;
-padding-top: 8px;
-padding-bottom: 8px;
-font-size: 1.6rem;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 1.6rem;
 }
 
 optanon-alert-box-body {

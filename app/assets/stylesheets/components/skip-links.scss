@@ -26,5 +26,6 @@ a.skip-link:hover {
   outline: none;
   overflow: visible;
   width: auto;
+  z-index: 9999999999999991;
   z-index: v(zIndexTopmost);
 }

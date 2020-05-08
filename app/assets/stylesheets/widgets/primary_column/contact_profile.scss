@@ -7,7 +7,9 @@
 .contact-profile-widget {
   --spacing: 20px;
   text-align: center;
+  margin-top: 20px;
   margin-top: v(spacing);
+  margin-bottom: 20px;
   margin-bottom: v(spacing);
   display: -ms-grid;
   display: grid;
@@ -69,6 +71,7 @@
     }
 
     &__email {
+      margin-bottom: 20px;
       margin-bottom: v(spacing);
       padding-bottom: 30px;
     }
