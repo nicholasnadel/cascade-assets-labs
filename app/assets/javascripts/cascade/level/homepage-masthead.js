@@ -1,10 +1,12 @@
 $(function () {
-    var vid = $("video#homepage-masthead__video");
-    $('.homepage video').removeAttr('controls');
-    $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
-        togglePlay();
-    });
-    ieObjectFitFallback();
+    if ($('video#homepage-masthead__video').length) {
+        var vid = $("video#homepage-masthead__video");
+        $('.homepage video').removeAttr('controls');
+        $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
+            togglePlay();
+        });
+        ieObjectFitFallback();
+    }
 });
 
 function togglePlay() {
