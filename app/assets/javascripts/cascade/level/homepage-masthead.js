@@ -10,17 +10,19 @@ $(function () {
 });
 
 function togglePlay() {
-    var vid = $("video#homepage-masthead__video");
-    if ($(vid).get(0).paused) {
-        vid.removeClass('homepage-masthead__play-video--paused')
-        $('#homepage-masthead__play-button').hide();
-        $('#homepage-masthead__pause-button').show();
-        $(vid).trigger('play');
-    } else {
-        vid.addClass('homepage-masthead__video--paused')
-        $('#homepage-masthead__pause-button').hide();
-        $('#homepage-masthead__play-button').show();
-        $(vid).trigger('pause');
+    if ($('video#homepage-masthead__video').length) {
+        var vid = $("video#homepage-masthead__video");
+        if ($(vid).get(0).paused) {
+            vid.removeClass('homepage-masthead__play-video--paused')
+            $('#homepage-masthead__play-button').hide();
+            $('#homepage-masthead__pause-button').show();
+            $(vid).trigger('play');
+        } else {
+            vid.addClass('homepage-masthead__video--paused')
+            $('#homepage-masthead__pause-button').hide();
+            $('#homepage-masthead__play-button').show();
+            $(vid).trigger('pause');
+        }
     }
 }
 
