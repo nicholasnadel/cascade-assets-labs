@@ -237,8 +237,7 @@ th.header-light {
 
 .tweetbox {
   color: $cu-light-grey;
-  border:1px solid $cu-light-grey;
-  border:1px solid v(cu-light-grey);
+  @include v(border, solid-grey);
   margin: 0 0 20px 0 ;
   iframe {
     width: 100% !important;

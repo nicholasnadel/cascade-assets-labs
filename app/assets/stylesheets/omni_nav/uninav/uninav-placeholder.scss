@@ -82,6 +82,5 @@
     align-content: center;
     padding: 25px;
     font-weight: bold;
-    font-family: $futura-regular;
-    font-family: v(futura-regular);
+    @include v(font-family, futura-regular);
 }

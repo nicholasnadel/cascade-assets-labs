@@ -3,12 +3,9 @@
     float: left;
     width: 100%;
 		background-color: #d8d8d8;
-		border-right: 1px solid $cu-light-grey;
-    border-bottom: 1px solid $cu-light-grey;
-    border-left: 1px solid $cu-light-grey;
-    border-right: 1px solid v(cu-light-grey);
-    border-bottom: 1px solid v(cu-light-grey);
-    border-left: 1px solid v(cu-light-grey);
+		@include v(border-right, solid-grey);
+		@include v(border-bottom, solid-grey);
+		@include v(border-left, solid-grey);
     position: relative;
     margin-bottom: 20px;
 
@@ -47,8 +44,7 @@
 	        }
 				}
 				a {
-					border-top: 1px solid $cu-light-grey;
-					border-top: 1px solid v(cu-light-grey);
+					@include v(border-top, solid-grey);
 	        font-size: 16px;
           color: #383838;
 	        padding: 7px 40px 7px 20px;
@@ -137,12 +133,9 @@
       	&:hover {
 	        	background-color: $white;
 							color: $cu-red;
-							border-top: 1px solid $cu-light-grey;
-	          	border-left: 1px solid $cu-light-grey;
-	          	border-right: 1px solid $cu-light-grey;
-	          	border-top: 1px solid v(cu-light-grey);
-	          	border-left: 1px solid v(cu-light-grey);
-	          	border-right: 1px solid v(cu-light-grey);
+							@include v(border-top, solid-grey);
+							@include v(border-left, solid-grey);
+							@include v(border-right, solid-grey);
 	          	border-bottom: 1px solid #f5f5f5;
             	}
       		}

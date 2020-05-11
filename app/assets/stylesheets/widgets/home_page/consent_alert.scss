@@ -1,9 +1,8 @@
 
 .optanon-alert-box-wrapper .optanon-alert-box-button-middle {
-  background-color: $cu-red;
-  background-color: v(cu-red);
-  border: $cu-red;
-  border: v(cu-red);
+  @include v(background-color, cu-red);
+  @include v(border, cu-red);
+  @include v(border, cu-red);
 }
 .optanon-alert-box-button-middle.accept-cookie-container {
   @include button-bg($cu-red);

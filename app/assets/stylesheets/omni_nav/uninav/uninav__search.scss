@@ -118,14 +118,12 @@
   }
 
   #gs_st50 {
-    border-right: 1px solid $cu-light-grey;
-    border-right: 1px solid v(cu-light-grey);
+    @include v(border-right, solid-grey);
     padding-right: 20px;
   }
 
   .gsst_a .gscb_a {
-    color: $panther-black;
-    color: v(panther-black);
+    @include v(color, panther-black);
     cursor: pointer;
     font-size: 1.6em;
     position: relative;
