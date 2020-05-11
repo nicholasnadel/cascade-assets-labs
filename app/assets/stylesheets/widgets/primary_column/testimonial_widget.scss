@@ -38,7 +38,7 @@
     }
 
     .testimonial-widget__slide {
-      grid-template-areas: "image text"". navButtons";
+      grid-template-areas: "image text"". cta";
       display: -ms-inline-grid;
       display: inline-grid;
       background-color: $white;
@@ -121,6 +121,12 @@
       margin-top: 0;
     }
 
+    .testimonial-widget__cta {
+      // grid-area: cta;
+      // -ms-grid-row: 3;
+      // -ms-grid-column: 2;
+    }
+
     .testimonial-widget__button,
     .button.testimonial-widget__button {
       margin-right: 2px;
@@ -178,6 +184,96 @@
         visibility: visible;
         font-weight: 900;
       }
+    }
+
+    .slick-prev,
+    .slick-next {
+      width: 2.5rem;
+      height: 2.5rem;
+      z-index: 2;
+      opacity: 1;
+      height: 43px;
+      width: 43px;
+      display: grid;
+      align-content: center;
+      border-radius: 50%;
+
+
+
+      &:before {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 2.5rem;
+        background-color: $cu-red;
+        background-color: var(--cu-red);
+        border-radius: 50%;
+        display: block;
+        height: 43px;
+        width: 43px;
+        display: grid;
+        align-content: center;
+        box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+        opacity: 1;
+        @include ripple($red-hover, $red-active);
+      }
+
+
+      &:hover,
+      &:focus,
+      &:focus-within {
+
+        &::before,
+        &::before {
+          // @include ripple($red-hover, $red-active);
+
+          background-color: $red-hover;
+          background-color: var(--red-hover);
+
+        }
+      }
+
+      &:focus,
+      &:focus-within {
+        outline: 2px dotted var(--cu-red);
+      }
+
+      &:active {
+
+        &::before,
+        &::before {
+
+          background-color: $red-active;
+          background-color: var(--red-active);
+
+        }
+      }
+    }
+
+    .slick-list {
+      width: 95%;
+      margin: 0 auto;
+    }
+
+    .slick-prev::before {
+      content: "\f053";
+      font-family: "Font Awesome 5 Pro";
+      font-weight: normal;
+      font-size: 1.4rem;
+    }
+
+    .slick-next::before {
+      content: "\f054";
+      font-family: "Font Awesome 5 Pro";
+      font-weight: normal;
+      font-size: 1.4rem;
+    }
+
+    button[aria-disabled="true"] {
+      visibility: hidden;
+    }
+
+    .ripple {
+      @include ripple($red-hover, $red-active);
+
     }
   }
 
@@ -278,6 +374,7 @@
     .testimonial-widget {
       display: block;
       text-align: center;
+      height: max-content;
 
       .slick__display-prop {
         display: block;
@@ -433,52 +530,4 @@
       }
     }
   }
-}
-
-.slick-prev::before,
-.slick-next::before {
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 2.5rem;
-  background-color: var(--cu-red);
-  border-radius: 50%;
-  display: block;
-  height: 43px;
-  width: 43px;
-  display: grid;
-  align-content: center;
-}
-
-.slick-prev,
-.slick-next {
-  width: 2.5rem;
-  height: 2.5rem;
-  z-index: 2;
-  opacity: 1;
-  height: 43px;
-  width: 43px;
-  background: var(--cu-red);
-  display: grid;
-  align-content: center;
-  right: 0 !important;
-}
-
-.slick-list {
-  width: 95%;
-  margin: 0 auto;
-}
-
-.slick-prev::before {
-  content: "\f053" !important;
-  font-family: "Font Awesome 5 Pro" !important;
-  font-weight: 900;
-}
-
-.slick-next::before {
-  content: "\f054" !important;
-  font-family: "Font Awesome 5 Pro" !important;
-  font-weight: 900;
-}
-
-button[aria-disabled="true"] {
-  visibility: hidden;
 }

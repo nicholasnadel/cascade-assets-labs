@@ -8,6 +8,7 @@ $(function () {
       infinite: false,
       adaptiveHeight: false,
       variableWidth: false,
+      accessibility: true
     });
     $('.testimonial-widget__button--left').click(function () {
       $(this).closest('.testimonial-widget').slick('slickPrev');
