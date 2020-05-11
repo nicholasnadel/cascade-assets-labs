@@ -38,7 +38,7 @@
     }
 
     .testimonial-widget__slide {
-      grid-template-areas: 'image text''. navButtons';
+      grid-template-areas: "image text"". navButtons";
       display: -ms-inline-grid;
       display: inline-grid;
       background-color: $white;
@@ -153,8 +153,8 @@
       justify-items: center;
 
       &:after {
-        content: '\f104';
-        font-family: 'Font Awesome 5 Pro';
+        content: "\f104";
+        font-family: "Font Awesome 5 Pro";
         visibility: visible;
         font-weight: 900;
       }
@@ -173,8 +173,8 @@
       justify-items: center;
 
       &:after {
-        content: '\f105';
-        font-family: 'Font Awesome 5 Pro';
+        content: "\f105";
+        font-family: "Font Awesome 5 Pro";
         visibility: visible;
         font-weight: 900;
       }
@@ -274,7 +274,6 @@
     border: 1px solid $cu-light-grey;
   }
 
-
   @include respond(tab-port) {
     .testimonial-widget {
       display: block;
@@ -329,7 +328,6 @@
     }
   }
 
-
   .three-column-template {
     .testimonial-widget {
       --imgSize: 150px;
@@ -378,15 +376,11 @@
       }
     }
   }
-
 }
 
 // ie11 specific
 @media all and (-ms-high-contrast: none) {
-
-
   .testimonial-widget {
-
     margin-bottom: 30px;
 
     &__img {
@@ -414,7 +408,6 @@
       display: flex;
       justify-content: center;
       margin-right: 5px;
-
     }
 
     &__cta {
@@ -423,10 +416,9 @@
     }
 
     .testimonial-widget__button--right {
-
       &:after {
-        content: '\f105';
-        font-family: 'Font Awesome 5 Pro';
+        content: "\f105";
+        font-family: "Font Awesome 5 Pro";
         visibility: visible;
         font-weight: 900;
       }
@@ -434,14 +426,13 @@
 
     .testimonial-widget__button--left {
       &:after {
-        content: '\f104';
-        font-family: 'Font Awesome 5 Pro';
+        content: "\f104";
+        font-family: "Font Awesome 5 Pro";
         visibility: visible;
         font-weight: 900;
       }
     }
   }
-
 }
 
 .slick-prev::before,
@@ -450,6 +441,11 @@
   font-size: 2.5rem;
   background-color: var(--cu-red);
   border-radius: 50%;
+  display: block;
+  height: 43px;
+  width: 43px;
+  display: grid;
+  align-content: center;
 }
 
 .slick-prev,
@@ -457,6 +453,13 @@
   width: 2.5rem;
   height: 2.5rem;
   z-index: 2;
+  opacity: 1;
+  height: 43px;
+  width: 43px;
+  background: var(--cu-red);
+  display: grid;
+  align-content: center;
+  right: 0 !important;
 }
 
 .slick-list {
@@ -465,8 +468,14 @@
 }
 
 .slick-prev::before {
-  content: '\f054' !important;
-  font-family: "Font Awesome 5 Pro";
+  content: "\f053" !important;
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 900;
+}
+
+.slick-next::before {
+  content: "\f054" !important;
+  font-family: "Font Awesome 5 Pro" !important;
   font-weight: 900;
 }
 
