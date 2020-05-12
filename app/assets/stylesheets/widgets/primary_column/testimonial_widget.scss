@@ -64,8 +64,7 @@
   }
 
   +[class*="-widget"] {
-    margin: 25px 0 52px 0;
-    margin-bottom: 52px !important;
+    margin: 25px 0 25px 0;
   }
 
   .slick-prev,
@@ -272,6 +271,9 @@
     }
   }
 
+  &__slick-dots--margin-bottom {
+    margin-bottom: 50px !important;
+  }
 }
 
 
