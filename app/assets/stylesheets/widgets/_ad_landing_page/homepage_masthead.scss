@@ -125,7 +125,7 @@
       line-height: 3rem;
       text-shadow: $mastheadTextShadow;
       font-weight: 700;
-      @include v(font-family, futura-pt);
+      @include v(font-family, futura-regular);
       margin-top: 2rem;
       margin-bottom: 2rem;
 
@@ -197,7 +197,7 @@
         text-align: center;
         @include v(background-color, cu-red);
         color: $white;
-        font-family: v(futura-pt);
+        @include v(font-family, futura-regular);
         text-transform: uppercase;
         font-weight: bold;
         padding: 4%;
@@ -304,7 +304,7 @@
 
     h2 {
       @include v(color, white);
-      @include v(font-family, futura-pt);
+      @include v(font-family, futura-regular);
       font-size: 1.8rem;
       line-height: 2rem;
     }
@@ -667,7 +667,7 @@ video {
       &__photo-grid {
         h2 {
           font-size: 2rem;
-          @include v(font-family, futura-pt);
+          @include v(font-family, futura-regular);
           font-size: 1.8rem;
           line-height: 2rem;
           font-weight: bold;

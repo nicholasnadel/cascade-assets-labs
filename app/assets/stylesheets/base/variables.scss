@@ -6,18 +6,11 @@ $utility-button-width: 60px;
 Typically, if a color is used more than once or twice,
 it should be added here as a variable. Changing the value
 of these variables will affect the colors sitewide. */
-$futura-regular: "futura-pt",
-Arial,
-sans-serif;
+$futura-regular: "futura-pt", Arial, sans-serif;
 $futura: $futura-regular;
-$futura-condensed: "futura-pt-condensed",
-Arial,
-sans-serif;
-$arial: Arial,
-sans-serif;
-$minion: "minion-pro",
-Arial,
-serif;
+$futura-condensed: "futura-pt-condensed", Arial, sans-serif;
+$arial: Arial, sans-serif;
+$minion: "minion-pro", Arial, serif;
 $font-stack-body: $arial;
 $font-stack-heading: $futura-regular;
 $font-stack-heading-emphasis: $futura-condensed;
