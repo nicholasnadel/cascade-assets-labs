@@ -6,11 +6,18 @@ $utility-button-width: 60px;
 Typically, if a color is used more than once or twice,
 it should be added here as a variable. Changing the value
 of these variables will affect the colors sitewide. */
-$futura-regular: "futura-pt", Arial, sans-serif;
+$futura-regular: "futura-pt",
+Arial,
+sans-serif;
 $futura: $futura-regular;
-$futura-condensed: "futura-pt-condensed", Arial, sans-serif;
-$arial: Arial, sans-serif;
-$minion: "minion-pro", Arial, serif;
+$futura-condensed: "futura-pt-condensed",
+Arial,
+sans-serif;
+$arial: Arial,
+sans-serif;
+$minion: "minion-pro",
+Arial,
+serif;
 $font-stack-body: $arial;
 $font-stack-heading: $futura-regular;
 $font-stack-heading-emphasis: $futura-condensed;
@@ -36,6 +43,7 @@ $line-height: 2.4rem;
 $red-button-hover: #c8003f;
 $red-button-active: #88002b;
 $white: #ffffff;
+$white-hover: darken($white, 8%);
 $brown: #896d49;
 $teal: #25b6a5;
 $teal-hover: #24d4bf;
@@ -45,7 +53,7 @@ $teal2-light: #a6ddd1;
 $red: $cu-red;
 $red-secondary: lighten($red, 8%);
 $red-tertiary: darken($red, 8%);
-$red-hover: #ba183e;
+$red-hover: #ce0041;
 $red-active: #7f0026;
 $grey: #2f2f2f;
 $grey-hover: #4c4b45;
@@ -177,7 +185,7 @@ $omniNavHeightMobile: 123px;
   --teal2-hover: #01cdd4;
   --teal2-light: #a6ddd1;
   --red: --cu-red;
-  --red-hover: #ba183e;
+  --red-hover: #ce0041;
   --red-active: #7f0026;
   --grey: #2f2f2f;
   --grey-hover: #4c4b45;
