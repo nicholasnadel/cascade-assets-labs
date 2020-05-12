@@ -64,7 +64,8 @@
   }
 
   +[class*="-widget"] {
-    margin: 20px 0 20px 0;
+    margin: 25px 0 52px 0;
+    margin-bottom: 52px !important;
   }
 
   .slick-prev,
@@ -146,6 +147,11 @@
   button[aria-disabled="true"] {
     visibility: hidden;
   }
+
+  button[aria-disabled="false"] {
+    @include qbal-fade-enter;
+  }
+
 
   .ripple {
     @include ripple($red-hover, $red-active);
@@ -237,11 +243,35 @@
 
   &--white,
   &--sand {
+
     .slick-next:hover::before {
       box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
     }
 
   }
+
+  &--sand {
+    .testimonial-widget {
+      &__department-title {
+        color: $grey2;
+      }
+    }
+  }
+
+  .slick-dots li button::before {
+    font-size: 5rem;
+    top: 5px;
+  }
+
+
+  .slick-dots li button {
+
+    &:focus,
+    &:focus-within {
+      border: 2px dotted $cu-red;
+    }
+  }
+
 }
 
 

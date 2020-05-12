@@ -25,6 +25,11 @@ $(function () {
         $(".testimonial-widget a").each(function (i) {
           $(this).attr('tabindex', '0');
         });
+
+        $(".testimonial-widget .slick-dots li button").each(function (i) {
+          $(this).attr('tabindex', '0');
+        });
+
       }
     });
   };
