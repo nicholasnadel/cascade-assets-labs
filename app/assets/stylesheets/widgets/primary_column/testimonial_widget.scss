@@ -1,4 +1,26 @@
 .testimonial-widget {
+  @mixin button-bg($bg) {
+    --padding: 15px;
+    background-color: $bg;
+    border-radius: 4px;
+    font-size: 1.8rem;
+    font-family: $futura-regular;
+    font-weight: 400;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    @include dc($bg);
+
+    &:hover {
+      background-color: lighten($bg, 8%);
+      transition: all 0.3s ease;
+    }
+
+    &:active {
+      background-color: lighten($bg, 25%);
+      @include dc($bg);
+    }
+  }
+
   $marginTop: 12px;
   height: 304px;
   display: grid;
@@ -27,9 +49,12 @@
     margin-top: 55px;
   }
 
-  .text--link {
+  .text--link,
+  &__button,
+  &[class*="__button"] {
+    $font-size: 1.2rem;
     font-family: $futura-regular;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   &__body {
@@ -459,4 +484,8 @@
       }
     }
   }
+}
+
+html body .button.testimonial-widget__button {
+  font-size: 1.8rem;
 }
