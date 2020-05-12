@@ -9,8 +9,7 @@
     }
 
     .svg-inline--fa.fa-window-close.fa-w-16 {
-        color: $panther-black;
-        color: var(--pantherBlack);
+        @include v(color, panther-black);
         max-width: 25px;
         float: left;
         position: absolute;

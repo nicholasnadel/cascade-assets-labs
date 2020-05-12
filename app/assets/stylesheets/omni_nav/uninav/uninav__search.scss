@@ -210,15 +210,13 @@
 
 
 .gs-result .gs-title, .gs-result .gs-title * {
-  color: $cu-red;
-  color: var(--cu-red);
+  @include v(color, cu-red);
 }
 
 
 
 .gs-bidi-start-align.gs-visibleUrl.gs-visibleUrl-long {
-  color: $panther-black;
-  color: var(--panther-black);
+  @include v(color, panther-black);
 }
 
 .gsc-results-wrapper-overlay.gsc-results-wrapper-visible {

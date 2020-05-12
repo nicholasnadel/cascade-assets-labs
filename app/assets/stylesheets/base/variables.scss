@@ -137,6 +137,7 @@ $sand-alpha: rgba($sand, 0.8);
 // spacing
 $widget-margin-top: 30px;
 $wmtop: $widget-margin-top;
+$smallImgSize: 200px;
 
 $red-dots: 2px dotted $cu-red;
 /* Omninav height. Be sure to cross reference getOmninavHeight() in omni-nav-2.js if changes are made to the height*/
@@ -144,6 +145,10 @@ $omniNavHeightDesktop: 60px;
 $omniNavHeightMobile: 123px;
 $uninav-total-height: 120px;
 $uninav-height-mobile: 60px;
+
+$standardPadding: 5%;
+$mastheadTextShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
+$mastheadVideoHeight: 600px;
 
 $zIndexTopmost: 9999999999999991;
 $uninavZIndex: 999999999999999;
@@ -289,7 +294,10 @@ $spaces: (
   content-padding: $content-padding,
   line-height: $line-height,
   medium-spacing: $medium-spacing,
-  zIndexTopmost: $zIndexTopmost
+  zIndexTopmost: $zIndexTopmost,
+  smallImgSize: $smallImgSize,
+  standardPadding: $standardPadding,
+  mastheadVideoHeight: $mastheadVideoHeight
 );
 
 $borders: (
@@ -303,8 +311,7 @@ $var-maps: (
   color: $colors,
   font: $font,
   space: $spaces,
-  border: $borders,
-
+  border: $borders
 );
 
 $props: (
@@ -321,6 +328,13 @@ $props: (
   margin-bottom:    space,
   margin-top:       space,
   margin-right:     space,
+  padding:          space,
+  padding-top:      space,
+  padding-bottom:   space,
+  padding-right:    space,
+  padding-left:     space,
+  height:           space,
+  width:            space,
   font-family:      (font, family),
   font-size:        (font, size),
   font-weight:      (font, weight),

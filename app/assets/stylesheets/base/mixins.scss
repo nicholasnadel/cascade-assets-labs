@@ -532,12 +532,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   #{$prop}: $var-output;
 }
 
-// write CSS variables without like "v(thevariable);"
-// @function v($var) {
-//   @return var(--#{$var});
-// }
-
-
 // @include dotted-underline($cu-red, 2px);
 @mixin dotted-underline($color, $spacing, $position: bottom) {
   background-position: $position;
