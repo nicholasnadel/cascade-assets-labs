@@ -64,7 +64,7 @@
     font-family: $futura-regular;
     font-size: 1.6rem;
     min-height: 80px;
-    align-content: center;
+    align-content: start;
     display: grid;
     display: -ms-grid;
     -ms-grid-column: 2;
@@ -315,6 +315,10 @@
 
   &__slick-dots--margin-bottom {
     margin-bottom: 50px !important;
+  }
+
+  .slick-slide img {
+    object-fit: cover;
   }
 }
 
