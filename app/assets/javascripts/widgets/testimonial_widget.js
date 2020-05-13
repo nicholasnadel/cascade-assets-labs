@@ -32,7 +32,7 @@ $(function () {
       $(this).parent().addClass('testimonial-widget__slick-dots--margin-bottom')
     });
   };
-
+  $('.testimonial-widget__cta:has(.button)').addClass('testimonial-widget__cta--button');
 
 
 });
