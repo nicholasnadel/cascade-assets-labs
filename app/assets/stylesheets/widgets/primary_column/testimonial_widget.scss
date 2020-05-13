@@ -314,7 +314,14 @@
   }
 }
 
-
+@include respond(tab-land) {
+  .testimonial-widget__cta {
+    position: relative;
+    margin-top: 12px;
+    bottom: 0;
+    padding-bottom: 20px;
+  }
+}
 
 @include respond(tab-port) {
   .testimonial-widget {
@@ -353,10 +360,6 @@
     }
 
     .testimonial-widget__text {
-      padding-top: 4rem;
-      padding-left: 4rem;
-      padding-right: 4rem;
-      padding-bottom: 2rem;
       min-width: unset;
     }
 
@@ -366,7 +369,9 @@
     }
 
     .testimonial-widget__body {
-      padding-top: 2rem;
+      padding-top: 0;
+      padding-left: 12px;
+      padding-right: 12px;
     }
   }
 
@@ -390,6 +395,14 @@
     margin-top: unset;
   }
 
+  .testimonial-widget__cta {
+    position: relative;
+    bottom: 0;
+    margin-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
 }
 
 .three-column-template {
@@ -397,48 +410,36 @@
     --imgSize: 150px;
   }
 
-  .testimonial-widget__slide {
-    padding-top: 4em;
-    padding-left: 2em;
-    padding-right: 2em;
-  }
+  /* Inline #2 | http://localhost:3000/modular/three_column */
 
-  .testimonial-widget__img {
-    margin-right: 15px;
+  .testimonial-widget__text {
+    margin-top: 12px;
   }
 
   .testimonial-widget__text {
-    padding-right: 1px;
+    display: grid;
+    align-content: center;
+    margin: 0;
+    width: 100%;
   }
 
-  .testimonial-widget__buttons {
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-top: 2em;
+  .testimonial-widget__text {
+    align-content: start;
+    margin-top: 20px;
   }
 
-  @include respond(tab-port) {
-    .testimonial-widget__slide {
-      padding-top: 2.5em;
-    }
+  /* master.css | http://localhost:3000/_assets/master.css */
 
-    .testimonial-widget__text {
-      padding-top: unset;
-      padding-top: 0;
-      padding-right: 2em;
-      padding-left: 2em;
-    }
-
-    .testimonial-widget {
-      --imgSize: 200px;
-    }
-
-    .testimonial-widget__buttons {
-      padding-top: 0;
-      margin-top: 0;
-      margin-bottom: 1em;
-    }
+  .testimonial-widget__body {
+    margin-right: 0;
   }
+
+  .testimonial-widget__cta {
+    /* bottom: 50px; */
+    bottom: 20px;
+  }
+
+
 
 }
 
@@ -470,6 +471,29 @@
     display: block;
     position: absolute;
     padding-top: 15px;
+  }
+
+  .three-column-template {
+
+    .testimonial-widget__cta {
+      bottom: auto;
+      margin-top: 10px;
+    }
+
+    .testimonial-widget__img {
+      width: 120px;
+    }
+
+    .testimonial-widget__slide {
+      width: 100%;
+      padding-top: 0px;
+    }
+
+    .testimonial-widget__text {
+      max-width: 330px;
+      margin-top: 20px;
+    }
+
   }
 }
 
