@@ -353,6 +353,10 @@
       opacity: 1;
     }
   }
+
+  @include respond(phone) {
+    height: 553px;
+  }
 }
 
 @include respond(tab-land) {
@@ -494,7 +498,7 @@
 
   @include respond(phone) {
     .testimonial-widget {
-      height: auto;
+      height: 500px;
 
       .testimonial-widget__text {
         margin-top: 12px;
