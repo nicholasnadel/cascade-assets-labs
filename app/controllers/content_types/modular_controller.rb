@@ -85,8 +85,7 @@ module ContentTypes
         "PAGE WRAPPER OPEN" => cascade_format("_cascade/formats/modular/page_wrapper_open"),
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("app/views/uninav/uninav"),
-        "NAVIGATION" => render_static_partial(navigation_path),
+        "OMNI-NAV" => render_static_partial("uninav/uninav"),
         "PRIMARY CONTENT" => render_static_one_column_primary_content,
         "GLOBAL FOOTER" => render_static_partial(footer_path),
       }
@@ -303,7 +302,7 @@ module ContentTypes
         "TYPEKIT" => cascade_block("_cascade/blocks/html/typekit"),
 
         # TODO: convert these to cascade_format action.
-        # "OMNI-NAV" => render_static_partial("uninav/uninav"),
+        "OMNI-NAV" => render_static_partial("uninav/uninav"),
         "GLOBAL FOOTER" => render_static_partial(footer_path)
       }
 
@@ -468,9 +467,10 @@ module ContentTypes
 
     def render_static_one_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s %s %s",
+      format("%s %s %s %s %s %s %s",
              render_static_partial("widgets/single_column/call_to_action_block"),
              render_static_partial("widgets/primary_content/multi_photo_callout"),
+             render_static_partial("widgets/single_column/by_the_numbers"),
              render_static_partial("widgets/single_column/chapman_events_feed"),
              render_static_partial("widgets/single_column/messaging_1_column_facts"),
              render_static_partial("widgets/single_column/campus_map"),
