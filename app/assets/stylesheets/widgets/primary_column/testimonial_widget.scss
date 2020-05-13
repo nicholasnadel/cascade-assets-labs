@@ -354,9 +354,6 @@
     }
   }
 
-  @include respond(phone) {
-    height: 553px;
-  }
 }
 
 @include respond(tab-land) {
@@ -371,7 +368,7 @@
   .testimonial-widget {
     display: block;
     text-align: center;
-    height: max-content;
+    height: 400px;
 
 
     .slick__display-prop {
@@ -453,6 +450,13 @@
 
 }
 
+
+@include respond(phone) {
+  .testimonial-widget {
+    height: 553px;
+  }
+}
+
 .three-column-template {
   .testimonial-widget {
     --imgSize: 150px;
@@ -498,7 +502,7 @@
 
   @include respond(phone) {
     .testimonial-widget {
-      height: 500px;
+      height: 600px;
 
       .testimonial-widget__text {
         margin-top: 12px;
