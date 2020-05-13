@@ -8,7 +8,6 @@
     font-weight: 400;
     padding-top: 10px;
     padding-bottom: 15px;
-    @include dc($bg);
 
     &:hover {
       background-color: lighten($bg, 8%);
@@ -27,8 +26,9 @@
   display: -ms-grid;
   align-content: center;
 
+
   .slick-slider {
-    display: grid !important;
+    display: grid !important
   }
 
   .faux-h2 {
@@ -36,6 +36,8 @@
     font-size: 2.8rem;
     font-family: $futura-regular;
     font-weight: 400;
+    @include qbal-fade-enter;
+    animation-duration: 300ms;
   }
 
   &__department-title {
@@ -48,6 +50,13 @@
     display: block;
     align-content: center;
     margin-top: 55px;
+    opacity: 0;
+    animation: fadein 1s forwards;
+    -moz-animation: fadein 1s forwards;
+    -webkit-animation: fadein 1s forwards;
+    -o-animation: fadein 1s forwards;
+    animation-direction: forwards;
+    -webkit-animation: fadein 1s forwards;
   }
 
   .text--link,
@@ -74,6 +83,13 @@
     // margin-top: $marginTop;
     position: absolute;
     bottom: 55px;
+    opacity: 0;
+    animation: fadein 1s forwards;
+    -moz-animation: fadein 1s forwards;
+    -webkit-animation: fadein 1s forwards;
+    -o-animation: fadein 1s forwards;
+    animation-direction: forwards;
+    -webkit-animation: fadein 1s forwards;
 
     &--button {
       bottom: 25px;
@@ -97,6 +113,13 @@
     display: -ms-grid;
     align-content: center;
     height: 304px;
+    opacity: 0;
+    animation: fadein 1s forwards;
+    -moz-animation: fadein 1s forwards;
+    -webkit-animation: fadein 1s forwards;
+    -o-animation: fadein 1s forwards;
+    animation-direction: forwards;
+    -webkit-animation: fadein 1s forwards;
 
     img {
       height: 140px;
@@ -319,6 +342,16 @@
 
   .slick-slide img {
     object-fit: cover;
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 }
 

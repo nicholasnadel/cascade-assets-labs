@@ -34,6 +34,5 @@ $(function () {
   };
   $('.testimonial-widget__cta:has(.button)').addClass('testimonial-widget__cta--button');
 
-
 });
 
