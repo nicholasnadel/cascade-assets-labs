@@ -24,6 +24,7 @@
   $marginTop: 12px;
   height: 304px;
   display: grid;
+  display: -ms-grid;
   align-content: center;
 
   .slick-slider {
@@ -65,6 +66,8 @@
     min-height: 80px;
     align-content: center;
     display: grid;
+    display: -ms-grid;
+    -ms-grid-column: 2;
   }
 
   &__cta {
@@ -76,13 +79,18 @@
 
   &__row {
     display: grid;
+    display: -ms-grid;
     grid-template-columns: 200px 1fr;
+    -ms-grid-columns: 200px 1fr;
     grid-template-rows: 1fr;
+    -ms-grid-rows: 1fr;
   }
 
   &__img {
     width: 100%;
     display: grid;
+    -ms-grid-column: 1;
+    display: -ms-grid;
     align-content: center;
     height: 304px;
 
@@ -436,58 +444,32 @@
 
 // ie11 specific
 @media all and (-ms-high-contrast: none) {
-  .testimonial-widget {
-    margin-bottom: 30px;
 
-    &__img {
-      height: 200px;
-      width: 200px;
-      display: block;
-      margin: 50px;
+  .testimonial-widget__text {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: block;
+    width: 500px;
+    height: 280px;
+    -ms-grid-column: 2;
+  }
 
-      img {
-        max-width: 200px;
-      }
-    }
+  .testimonial-widget__img {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -ms-grid;
+    height: auto;
+    width: 180px;
+    margin-top: 80px;
+    -ms-grid-column: 1;
+  }
 
-    &__text {
-      margin: 50px;
-    }
-
-    &__buttons {
-      display: flex;
-      margin-left: 50px;
-    }
-
-    &__button {
-      width: 50px;
-      display: flex;
-      justify-content: center;
-      margin-right: 5px;
-    }
-
-    &__cta {
-      margin-top: 50px;
-      margin-left: 50px;
-    }
-
-    .testimonial-widget__button--right {
-      &:after {
-        content: "\f105";
-        font-family: "Font Awesome 5 Pro";
-        visibility: visible;
-        font-weight: 900;
-      }
-    }
-
-    .testimonial-widget__button--left {
-      &:after {
-        content: "\f104";
-        font-family: "Font Awesome 5 Pro";
-        visibility: visible;
-        font-weight: 900;
-      }
-    }
+  .testimonial-widget .slick-prev::before,
+  .testimonial-widget .slick-next::before {
+    display: block;
+    position: absolute;
+    padding-top: 15px;
   }
 }
 

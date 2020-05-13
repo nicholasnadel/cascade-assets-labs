@@ -32,4 +32,8 @@ $(function () {
       $(this).parent().addClass('testimonial-widget__slick-dots--margin-bottom')
     });
   };
+
+
+
 });
+
