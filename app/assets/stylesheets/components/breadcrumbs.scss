@@ -16,6 +16,11 @@
     svg {
       width: 5px;
 
+      &.fa-home {
+        position: relative;
+        top: -1px;
+      }
+
       &.fa-caret-right {
         top: 2px;
         position: relative;
