@@ -99,11 +99,12 @@
 
 
 
-  .breadcrumbs ul:first-of-type li:not(:nth-last-child(2)) {
+  .breadcrumbs>ul:first-of-type li:not(:nth-last-child(2)) {
     display: none;
   }
 
-  .breadcrumbs ul:first-of-type li:last-child {
+  .breadcrumbs>ul:first-of-type a:last-child,
+  .breadcrumbs>ul:first-of-type li:last-child {
     display: inline;
   }
 
