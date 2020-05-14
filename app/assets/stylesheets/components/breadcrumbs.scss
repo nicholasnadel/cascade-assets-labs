@@ -15,6 +15,11 @@
 
     svg {
       width: 5px;
+
+      &.fa-caret-right {
+        top: 2px;
+        position: relative;
+      }
     }
   }
 
@@ -87,14 +92,21 @@
 //     }
 // }
 
-@include respond(tab-port) {
+@include respond(phone) {
+
+
+
 
   .breadcrumbs ul:first-of-type li:not(:nth-last-child(2)) {
     display: none;
   }
 
-  .breadcrumbs ul:first-of-type>li:first-of-type {
+  .breadcrumbs ul:first-of-type li:last-child {
     display: inline;
+  }
+
+  .breadcrumbs ul:first-of-type>li:first-of-type {
+    display: none;
   }
 
   #social_follow_us ul li {
@@ -105,5 +117,21 @@
     width: auto;
   }
 
+
+  // change order
+
+  .breadcrumbs.clearfix {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .breadcrumbs ul:first-of-type {
+    order: 2;
+  }
+
+  #social_follow_us {
+    justify-content: end;
+    display: flex;
+  }
 
 }
