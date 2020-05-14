@@ -231,7 +231,7 @@ module ContentTypes
         "ADDITIONAL HEAD" => "",
 
         # Dynamic Regions
-        "BREADCRUMBS" => "TODO: _cascade/formats/level/Breadcrumbs",
+        "BREADCRUMBS" =>  render_static_partial("/widgets/shared/breadcrumbs"),
         "CASCADE ASSETS" => cascade_block("_cascade/blocks/html/cascade_assets"),
         "FB_JS_SDK" => cascade_block("_cascade/blocks/html/facebook_javascript_sdk"),
         "GOOGLE_ANALYTICS" => "<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->",
@@ -247,7 +247,7 @@ module ContentTypes
         "SOCIAL ACCOUNTS" => "TODO: _cascade/formats/level/social_accounts",
 
         # TODO: convert these to cascade_format action.
-        "OMNI-NAV" => render_static_partial("/omni_nav_v2/omninav"),
+        "OMNI-NAV" => render_static_partial("/uninav/uninav"),
         "NAVIGATION" => render_static_partial(navigation_path),
         "GLOBAL FOOTER" => render_static_partial(footer_path),
       }
@@ -286,7 +286,7 @@ module ContentTypes
         "ADDITIONAL HEAD" => "",
 
         # Dynamic Regions
-        "BREADCRUMBS" => "TODO: _cascade/formats/level/Breadcrumbs",
+        "BREADCRUMBS" => render_static_partial("/widgets/shared/breadcrumbs"),
         "CASCADE ASSETS" => cascade_block("_cascade/blocks/html/cascade_assets"),
         "FB_JS_SDK" => cascade_block("_cascade/blocks/html/facebook_javascript_sdk"),
         "GOOGLE_ANALYTICS" => "<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->",
@@ -341,7 +341,7 @@ module ContentTypes
         "ADDITIONAL HEAD" => "",
 
         # Dynamic Regions
-        "BREADCRUMBS" => "TODO: _cascade/formats/level/Breadcrumbs",
+        "BREADCRUMBS" => render_static_partial("/widgets/shared/breadcrumbs"),
         "CASCADE ASSETS" => cascade_block("_cascade/blocks/html/cascade_assets"),
         "FB_JS_SDK" => cascade_block("_cascade/blocks/html/facebook_javascript_sdk"),
         "FEATURED NEWS EVENTS FEEDS" => "TODO: _cascade/formats/modular/meta/" \
@@ -390,7 +390,7 @@ module ContentTypes
         "ADDITIONAL HEAD" => "",
 
         # Dynamic Regions
-        "BREADCRUMBS" => "TODO: _cascade/formats/level/Breadcrumbs",
+        "BREADCRUMBS" => render_static_partial("/widgets/shared/breadcrumbs"),
         "CASCADE ASSETS" => cascade_block("_cascade/blocks/html/cascade_assets"),
         "FB_JS_SDK" => cascade_block("_cascade/blocks/html/facebook_javascript_sdk"),
         "FEATURED NEWS EVENTS FEEDS" => "TODO: _cascade/formats/modular/meta/" \
