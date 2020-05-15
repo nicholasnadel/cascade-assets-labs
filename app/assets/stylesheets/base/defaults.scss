@@ -86,7 +86,7 @@ html {
   display: block;
   position: relative;
   width: 0;
-  height:  $uninav-total-height;
+  height: $uninav-total-height;
   margin-top: - $uninav-total-height;
   z-index: -1;
 }
@@ -637,6 +637,7 @@ p {
 }
 
 html body {
+
   [class*="-widget"],
   :not([class*='__buttons']) {
     [class*="__button"] {
@@ -647,18 +648,18 @@ html body {
       font-weight: bold;
     }
 
-    [class$="__buttons"]   {
+    [class$="__buttons"] {
 
+      background-color: none;
+      // override mixin
+      background: none !important;
+
+      &:hover,
+      &:focus,
+      &:focus-within {
         background-color: none;
-        // override mixin
-        background: none !important;
-
-        &:hover,
-        &:focus,
-        &:focus-within {
-          background-color: none;
-          background: none;
-        }
+        background: none;
+      }
 
     }
   }
@@ -789,6 +790,8 @@ html body {
     * {
       animation: none !important;
       -webkit-animation: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
     }
   }
 }
