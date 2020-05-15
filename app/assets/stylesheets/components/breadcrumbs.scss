@@ -6,7 +6,7 @@
   font-family: $futura-regular;
   font-size: 1.6rme;
 
-  >ul {
+  > ul {
     width: 100%;
     float: left;
     text-align: left;
@@ -16,7 +16,7 @@
     }
 
     svg {
-      width: 5px;
+      width: 4px;
 
       &.fa-caret-right {
         top: 2px;
@@ -82,7 +82,6 @@
   }
 }
 
-
 // .breadcrumbs {
 //     ul:first-of-type {
 //       width: 500px;
@@ -94,35 +93,8 @@
 //     }
 // }
 
-@include respond(phone) {
-
-
-
-
-  .breadcrumbs>ul:first-of-type li:not(:nth-last-child(2)) {
-    display: none;
-  }
-
-  .breadcrumbs>ul:first-of-type a:last-child,
-  .breadcrumbs>ul:first-of-type li:last-child {
-    display: inline;
-  }
-
-  .breadcrumbs ul:first-of-type>li:first-of-type {
-    display: none;
-  }
-
-  #social_follow_us ul li {
-    display: inline;
-  }
-
-  .breadcrumbs>ul {
-    width: auto;
-  }
-
-
+@include respond(tab-port) {
   // change order
-
   .breadcrumbs.clearfix {
     display: flex;
     flex-direction: column;
@@ -136,5 +108,27 @@
     justify-content: end;
     display: flex;
   }
+}
+@include respond(phone) {
+  .breadcrumbs > ul:first-of-type li:not(:nth-last-child(2)),
+  .breadcrumbs > ul:first-of-type li:not(:nth-last-child(1)) svg {
+    display: none;
+  }
 
+  .breadcrumbs > ul:first-of-type a:last-child,
+  .breadcrumbs > ul:first-of-type li:last-child {
+    display: inline;
+  }
+
+  .breadcrumbs ul:first-of-type > li:first-of-type {
+    display: none;
+  }
+
+  #social_follow_us ul li {
+    display: inline;
+  }
+
+  .breadcrumbs > ul {
+    width: auto;
+  }
 }
