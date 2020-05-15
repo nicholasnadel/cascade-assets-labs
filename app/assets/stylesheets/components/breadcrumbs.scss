@@ -1,7 +1,6 @@
 .breadcrumbs {
   clear: both;
   margin: 15px 0 10px 0;
-  // display: inline;
   vertical-align: middle;
   font-family: $futura-regular;
   font-size: 1.6rme;
@@ -81,17 +80,6 @@
     margin: 0 6px;
   }
 }
-
-// .breadcrumbs {
-//     ul:first-of-type {
-//       width: 500px;
-//       white-space: nowrap;
-//     }
-
-//     ul li a {
-//       white-space: nowrap;
-//     }
-// }
 
 @include respond(tab-port) {
   // change order
