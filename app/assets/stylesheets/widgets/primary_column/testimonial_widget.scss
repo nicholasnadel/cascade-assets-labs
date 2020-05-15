@@ -354,6 +354,12 @@
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 }
 
 @include respond(tab-land) {

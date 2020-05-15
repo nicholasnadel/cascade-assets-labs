@@ -788,10 +788,8 @@ html body {
 
   @media (prefers-reduced-motion: reduce) {
     * {
-      animation: none !important;
-      -webkit-animation: none !important;
-      opacity: 1 !important;
-      visibility: visible !important;
+      animation: none;
+      -webkit-animation: none;
     }
   }
 }
