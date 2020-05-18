@@ -26,7 +26,6 @@
   display: -ms-grid;
   align-content: center;
 
-
   .slick-slider {
     display: grid !important
   }
@@ -47,9 +46,11 @@
   }
 
   &__text {
+    display: grid;
+    align-content: center;
+    grid-gap: 8px;
     display: block;
     align-content: center;
-    margin-top: 55px;
     opacity: 0;
     animation: fadein 1s forwards;
     -moz-animation: fadein 1s forwards;
@@ -68,11 +69,9 @@
   }
 
   &__body {
-    margin-top: 12px;
     margin-right: 60px;
     font-family: $futura-regular;
     font-size: 1.6rem;
-    min-height: 80px;
     align-content: start;
     display: grid;
     display: -ms-grid;
@@ -80,9 +79,6 @@
   }
 
   &__cta {
-    // margin-top: $marginTop;
-    position: absolute;
-    bottom: 55px;
     opacity: 0;
     animation: fadein 1s forwards;
     -moz-animation: fadein 1s forwards;
@@ -90,12 +86,7 @@
     -o-animation: fadein 1s forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 1s forwards;
-
-    &--button {
-      bottom: 25px;
-    }
   }
-
 
   &__row {
     display: grid;
@@ -120,6 +111,10 @@
     -o-animation: fadein 1s forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 1s forwards;
+
+    &--square img {
+      border-radius: 0;
+    }
 
     img {
       height: 140px;
@@ -216,7 +211,6 @@
     @include qbal-fade-enter;
   }
 
-
   .ripple {
     @include ripple($red-hover, $red-active);
   }
@@ -238,7 +232,6 @@
       &:hover,
       &:focus,
       &:focus-within {
-
         &::before {
           background: $white;
         }
@@ -257,9 +250,6 @@
         }
       }
     }
-
-
-
   }
 
   &--white {
@@ -275,7 +265,6 @@
 
     .slick-prev,
     .slick-next {
-
       &:before {
         background: $white;
         color: $grey2-hover;
@@ -284,7 +273,6 @@
       &:hover,
       &:focus,
       &:focus-within {
-
         &::before {
           background: $white;
         }
@@ -307,11 +295,9 @@
 
   &--white,
   &--sand {
-
     .slick-next:hover::before {
       box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
     }
-
   }
 
   &--sand {
@@ -326,7 +312,6 @@
     font-size: 4rem;
     top: 5px;
   }
-
 
   .slick-dots li button {
     width: 10px;
@@ -366,8 +351,9 @@
 @include respond(tab-land) {
   .testimonial-widget__cta {
     position: relative;
-    margin-top: 12px;
-    bottom: 0;
+    height: min-content;
+    min-height: 48px;
+    padding-top: 4px;
   }
 }
 
@@ -418,6 +404,7 @@
       padding-top: 0;
       padding-left: 12px;
       padding-right: 12px;
+      padding-bottom: 0;
     }
   }
 
@@ -444,17 +431,14 @@
   .testimonial-widget__cta {
     position: relative;
     bottom: 0;
-    margin-top: 12px;
     padding-left: 12px;
     padding-right: 12px;
 
     &--button {
-      bottom: 10px;
+      margin-bottom: 12px;
     }
   }
-
 }
-
 
 @include respond(phone) {}
 
@@ -464,11 +448,7 @@
     display: grid;
   }
 
-
-  .testimonial-widget__text {
-    margin-top: 12px;
-    height: 300px;
-  }
+  .testimonial-widget__text {}
 
   .testimonial-widget__text {
     display: grid;
@@ -496,9 +476,7 @@
 
   @include respond(phone) {
     .testimonial-widget {
-
       .testimonial-widget__text {
-        margin-top: 12px;
         height: auto;
       }
 
@@ -507,30 +485,40 @@
       }
     }
   }
-
-
 }
 
 // ie11 specific
-@media all and (-ms-high-contrast: none) {
+.ie {
+  .testimonial-widget {
+    height: 304px;
+    display: flex;
+    align-items: center;
+  }
+
+  .testimonial-widget__body {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  .testimonial-widget__row {
+    display: flex;
+    align-items: center;
+  }
 
   .testimonial-widget__text {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    display: block;
+    flex-direction: column;
     width: 500px;
-    height: 280px;
-    -ms-grid-column: 2;
+    height: auto;
   }
 
   .testimonial-widget__img {
-    display: -webkit-box;
+    display: flex;
     display: -ms-flexbox;
-    display: -ms-grid;
     height: auto;
     width: 180px;
-    margin-top: 80px;
+    margin-top: unset;
+    align-content: center;
     -ms-grid-column: 1;
   }
 
@@ -542,7 +530,6 @@
   }
 
   .three-column-template {
-
     .testimonial-widget__cta {
       bottom: auto;
       margin-top: 10px;
@@ -561,9 +548,9 @@
       max-width: 330px;
       margin-top: 20px;
     }
-
   }
 }
+
 
 html body .button.testimonial-widget__button {
   font-size: 1.8rem;
@@ -583,4 +570,57 @@ html body .button.testimonial-widget__button {
 
 .testimonial-widget {
   height: max-content;
+}
+
+// refactor
+.testimonial-widget__text {
+  display: grid;
+  align-content: space-evenly;
+  height: max-content;
+}
+
+.testimonial-widget__cta--button {
+  position: static;
+}
+
+.testimonial-widget__text {
+  /* height: max-content; */
+  height: 100%;
+  align-content: space-evenly;
+}
+
+.testimonial-widget__body {
+  margin: 0;
+}
+
+/* Inline #17 | http://localhost:3000/modular/two_column/ */
+.testimonial-widget__cta.testimonial-widget__cta--button {}
+
+.testimonial-widget__text {
+  align-content: space-evenly;
+  // max-height: 266px;
+}
+
+.testimonial-widget__col-2 {
+  align-content: center;
+  display: grid;
+}
+
+.testimonial-widget__text {
+  /* max-height: 266px; */
+}
+
+.testimonial-widget__body {
+  // padding-top: 12px;
+  // padding-bottom: 12px;
+}
+
+.testimonial-widget__text {
+  height: min-content;
+  align-self: center;
+}
+
+
+h1+.testimonial-widget {
+  margin-top: 20px;
 }
