@@ -6,7 +6,7 @@
     font-size: 1.8rem;
     font-family: $futura-regular;
     font-weight: 400;
-    padding-top: 10px;
+    padding-top: 12px;
     padding-bottom: 15px;
 
     &:hover {
@@ -21,7 +21,7 @@
   }
 
   $marginTop: 12px;
-  height: 304px;
+  height: max-content;
   display: grid;
   display: -ms-grid;
   align-content: center;
@@ -323,12 +323,13 @@
   }
 
   .slick-dots li button::before {
-    font-size: 5rem;
+    font-size: 4rem;
     top: 5px;
   }
 
 
   .slick-dots li button {
+    width: 10px;
 
     &:focus,
     &:focus-within {
@@ -374,8 +375,6 @@
   .testimonial-widget {
     display: block;
     text-align: center;
-    height: 400px;
-
 
     .slick__display-prop {
       display: block;
@@ -457,16 +456,11 @@
 }
 
 
-@include respond(phone) {
-  .testimonial-widget {
-    height: 553px;
-  }
-}
+@include respond(phone) {}
 
 .three-column-template {
   .testimonial-widget {
     --imgSize: 150px;
-    height: 380px;
     display: grid;
   }
 
@@ -497,18 +491,11 @@
   }
 
   @include respond(tab-port) {
-    .testimonial-widget {
-      height: 450px;
-
-      .testimonial-widget__cta {
-        // bottom: 30px;
-      }
-    }
+    .testimonial-widget {}
   }
 
   @include respond(phone) {
     .testimonial-widget {
-      height: 600px;
 
       .testimonial-widget__text {
         margin-top: 12px;
@@ -592,4 +579,8 @@ html body .button.testimonial-widget__button {
 .testimonial-widget.slick-initialized {
   visibility: visible;
   opacity: 1;
+}
+
+.testimonial-widget {
+  height: max-content;
 }
