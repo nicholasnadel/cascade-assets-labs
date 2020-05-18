@@ -52,7 +52,9 @@ html {
 
         &__button {
           border: 1px solid $bg-silver-gray;
-          height: 4rem;
+          min-height: 4rem;
+          height: auto;
+          padding: 10px;
           border-radius: 5px;
           font-family: $futura;
           margin: 0 0 .5rem 0;
