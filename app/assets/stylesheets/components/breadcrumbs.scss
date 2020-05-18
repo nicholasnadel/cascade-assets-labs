@@ -36,6 +36,13 @@
 
     .bullet {
       margin: 0;
+      height: 5px;
+      display: inline;
+
+      svg {
+        height: 5px;
+        display: inline-block;
+      }
 
       @include bp(wildcard-min, 767px) {
         margin: 0 5px;
@@ -97,6 +104,7 @@
     justify-content: flex-end;
     display: flex;
   }
+
 }
 
 @include respond(phone) {
@@ -121,5 +129,19 @@
 
   .breadcrumbs>ul {
     width: auto;
+  }
+}
+
+.ie {
+
+  .bullet {
+    height: 5px;
+    display: inline;
+
+    svg.fa-caret-right {
+      display: inline;
+      height: 5px;
+      display: inline-block;
+    }
   }
 }
