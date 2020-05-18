@@ -47,11 +47,14 @@
 
   &__text {
     display: grid;
-    align-content: center;
+    align-content: space-evenly;
+    height: max-content;
     grid-gap: 8px;
-    display: block;
-    align-content: center;
     opacity: 0;
+    height: 100%;
+    align-content: space-evenly;
+    height: min-content;
+    align-self: center;
     animation: fadein 1s forwards;
     -moz-animation: fadein 1s forwards;
     -webkit-animation: fadein 1s forwards;
@@ -86,6 +89,10 @@
     -o-animation: fadein 1s forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 1s forwards;
+
+    &--button {
+      position: static;
+    }
   }
 
   &__row {
@@ -449,7 +456,6 @@
     display: grid;
   }
 
-  .testimonial-widget__text {}
 
   .testimonial-widget__text {
     display: grid;
@@ -573,38 +579,12 @@ html body .button.testimonial-widget__button {
   height: max-content;
 }
 
-// refactor
-.testimonial-widget__text {
-  display: grid;
-  align-content: space-evenly;
-  height: max-content;
-}
+
 
 .testimonial-widget__cta--button {
   position: static;
 }
 
-.testimonial-widget__text {
-  /* height: max-content; */
-  height: 100%;
-  align-content: space-evenly;
-}
-
-.testimonial-widget__body {
-  margin: 0;
-}
-
-
-.testimonial-widget__text {
-  align-content: space-evenly;
-  height: min-content;
-  align-self: center;
-}
-
-.testimonial-widget__col-2 {
-  align-content: center;
-  display: grid;
-}
 
 
 
