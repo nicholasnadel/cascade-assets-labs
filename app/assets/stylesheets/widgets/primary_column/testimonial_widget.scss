@@ -588,6 +588,13 @@
   }
 }
 
+html body .button.testimonial-widget__button {
+  --font-size: 1.8rem;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --font-size: 1.8rem;
+}
+
 .testimonial-widget {
   opacity: 0;
   visibility: hidden;
@@ -612,10 +619,4 @@
 
 h1+.testimonial-widget {
   margin-top: 20px;
-}
-
-html body .button.testimonial-widget__button [class*="__button"] {
-  font-size: 1.8rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }

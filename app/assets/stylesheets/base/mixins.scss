@@ -508,13 +508,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // button mixin
 @mixin button-bg($bg) {
   --padding: 15px;
+  --border-radius: 4px;
+  --font-weight: 400;
+  --font-size: 2rem;
+  --font-family: 400;
+  --padding-top: 10px;
+  --padding-bottom: 15px;
+
   background-color: $bg;
-  border-radius: 4px;
-  font-size: 2rem;
-  font-family: $futura-regular;
-  font-weight: 400;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  font-family: var(--futura-regular);
+  font-weight: var(--font-weight);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
   @include dc($bg);
 
   &:hover {
