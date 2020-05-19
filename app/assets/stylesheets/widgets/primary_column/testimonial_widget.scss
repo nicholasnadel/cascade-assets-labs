@@ -539,6 +539,8 @@
     flex-direction: column;
     width: 500px;
     height: auto;
+    max-height: 304px;
+    padding-left: 25px;
   }
 
   .testimonial-widget__img {
@@ -546,6 +548,8 @@
     display: -ms-flexbox;
     height: auto;
     width: 180px;
+    height: 150px;
+    margin-left: 25px;
     margin-top: unset;
     align-content: center;
     -ms-grid-column: 1;
