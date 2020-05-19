@@ -102,6 +102,8 @@
     &--button {
       position: static;
       margin-top: 12px;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
   }
 
@@ -141,7 +143,7 @@
     }
   }
 
-  + [class*="-widget"] {
+  +[class*="-widget"] {
     margin: 25px 0 25px 0;
   }
 
@@ -180,6 +182,7 @@
     &:focus,
     &:focus-within {
       -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
+
       &::before,
       &::before {
         box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
@@ -195,6 +198,7 @@
     }
 
     &:active {
+
       &::before,
       &::before {
         background-color: $red-active;
@@ -262,6 +266,7 @@
       }
 
       &:active {
+
         &::before,
         &::before {
           background: $white-hover;
@@ -280,6 +285,7 @@
 
   &--red,
   &--black {
+
     .slick-prev,
     .slick-next {
       &:before {
@@ -301,6 +307,7 @@
       }
 
       &:active {
+
         &::before,
         &::before {
           background: $white-hover;
@@ -469,8 +476,7 @@
   }
 }
 
-@include respond(phone) {
-}
+@include respond(phone) {}
 
 .three-column-template {
   .testimonial-widget {
@@ -499,8 +505,7 @@
   }
 
   @include respond(tab-port) {
-    .testimonial-widget {
-    }
+    .testimonial-widget {}
   }
 
   @include respond(phone) {
@@ -610,6 +615,6 @@ html body .button.testimonial-widget__button {
   position: static;
 }
 
-h1 + .testimonial-widget {
+h1+.testimonial-widget {
   margin-top: 20px;
 }
