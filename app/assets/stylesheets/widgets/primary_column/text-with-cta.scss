@@ -38,10 +38,6 @@ html {
           width: 25%;
           margin: 0 0 0 2rem;
 
-          @include respond(tab-land) {
-            max-height: 13rem;
-          }
-
           @include respond(phone) {
             float: none;
             grid-row: 3 / span 1;
@@ -61,7 +57,7 @@ html {
 
           a {
             border-bottom: none;
-            font-weight: bold;
+            font-weight: normal;
             color: $panther-black;
           }
 
