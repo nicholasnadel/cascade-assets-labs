@@ -21,13 +21,15 @@
   }
 
   $marginTop: 12px;
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
   display: grid;
   display: -ms-grid;
   align-content: center;
 
   .slick-slider {
-    display: grid !important
+    display: grid !important;
   }
 
   .faux-h2 {
@@ -36,6 +38,7 @@
     font-family: $futura-regular;
     font-weight: 400;
     @include qbal-fade-enter;
+    -webkit-animation-duration: 300ms;
     animation-duration: 300ms;
   }
 
@@ -48,17 +51,22 @@
   &__text {
     display: grid;
     align-content: space-evenly;
+    height: -webkit-max-content;
+    height: -moz-max-content;
     height: max-content;
     grid-gap: 8px;
     opacity: 0;
     height: 100%;
     align-content: space-evenly;
+    height: -webkit-min-content;
+    height: -moz-min-content;
     height: min-content;
     align-self: center;
     animation: fadein 1s forwards;
     -moz-animation: fadein 1s forwards;
     -webkit-animation: fadein 1s forwards;
     -o-animation: fadein 1s forwards;
+    -webkit-animation-direction: forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 1s forwards;
   }
@@ -87,6 +95,7 @@
     -moz-animation: fadein 1s forwards;
     -webkit-animation: fadein 1s forwards;
     -o-animation: fadein 1s forwards;
+    -webkit-animation-direction: forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 1s forwards;
 
@@ -117,6 +126,7 @@
     -moz-animation: fadein 1s forwards;
     -webkit-animation: fadein 1s forwards;
     -o-animation: fadein 1s forwards;
+    -webkit-animation-direction: forwards;
     animation-direction: forwards;
     -webkit-animation: fadein 1s forwards;
 
@@ -131,7 +141,7 @@
     }
   }
 
-  +[class*="-widget"] {
+  + [class*="-widget"] {
     margin: 25px 0 25px 0;
   }
 
@@ -147,6 +157,7 @@
     align-content: center;
     border-radius: 50%;
     will-change: box-shadow;
+    -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
 
     &:before {
       color: rgba(255, 255, 255, 0.9);
@@ -160,6 +171,7 @@
       display: grid;
       align-content: center;
       box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+
       opacity: 1;
       @include ripple($red-hover, $red-active);
     }
@@ -167,7 +179,7 @@
     &:hover,
     &:focus,
     &:focus-within {
-
+      -webkit-box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
       &::before,
       &::before {
         box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
@@ -183,7 +195,6 @@
     }
 
     &:active {
-
       &::before,
       &::before {
         background-color: $red-active;
@@ -251,7 +262,6 @@
       }
 
       &:active {
-
         &::before,
         &::before {
           background: $white-hover;
@@ -270,7 +280,6 @@
 
   &--red,
   &--black {
-
     .slick-prev,
     .slick-next {
       &:before {
@@ -292,7 +301,6 @@
       }
 
       &:active {
-
         &::before,
         &::before {
           background: $white-hover;
@@ -305,6 +313,7 @@
   &--sand {
     .slick-next:hover::before {
       box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
+      -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.4);
     }
   }
 
@@ -335,7 +344,18 @@
   }
 
   .slick-slide img {
+    -o-object-fit: cover;
     object-fit: cover;
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes fadein {
@@ -359,6 +379,8 @@
 @include respond(tab-land) {
   .testimonial-widget__cta {
     position: relative;
+    height: -webkit-min-content;
+    height: -moz-min-content;
     height: min-content;
     min-height: 48px;
     padding-top: 4px;
@@ -383,7 +405,6 @@
     }
 
     .testimonial-widget__buttons {
-      -webkit-box-pack: center;
       justify-content: center;
     }
 
@@ -448,14 +469,14 @@
   }
 }
 
-@include respond(phone) {}
+@include respond(phone) {
+}
 
 .three-column-template {
   .testimonial-widget {
     --imgSize: 150px;
     display: grid;
   }
-
 
   .testimonial-widget__text {
     display: grid;
@@ -478,7 +499,8 @@
   }
 
   @include respond(tab-port) {
-    .testimonial-widget {}
+    .testimonial-widget {
+    }
   }
 
   @include respond(phone) {
@@ -558,7 +580,6 @@
   }
 }
 
-
 html body .button.testimonial-widget__button {
   font-size: 1.8rem;
 }
@@ -576,19 +597,15 @@ html body .button.testimonial-widget__button {
 }
 
 .testimonial-widget {
+  height: -webkit-max-content;
+  height: -moz-max-content;
   height: max-content;
 }
-
-
 
 .testimonial-widget__cta--button {
   position: static;
 }
 
-
-
-
-
-h1+.testimonial-widget {
+h1 + .testimonial-widget {
   margin-top: 20px;
 }
