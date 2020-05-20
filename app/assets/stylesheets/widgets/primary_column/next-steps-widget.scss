@@ -17,15 +17,15 @@
     padding-top: $defaultPadding;
     margin-bottom: 0.5rem;
 
-    & ~ .next-steps-widget__text {
+    &~.next-steps-widget__text {
       justify-self: center;
 
-      & ~ .next-steps-widget__buttons {
+      &~.next-steps-widget__buttons {
         padding-top: unset;
       }
     }
 
-    & ~ .next-steps-widget__buttons {
+    &~.next-steps-widget__buttons {
       padding-top: 10px;
       padding-bottom: $defaultPadding;
       padding-right: $defaultPadding;
@@ -73,18 +73,18 @@
       padding-top: $defaultPadding;
       padding-left: $defaultPadding;
 
-      & ~ .next-steps-widget__text {
+      &~.next-steps-widget__text {
         // padding-top: 2.$defaultPadding;
         max-width: unset;
         justify-self: flex-start;
         padding-left: $defaultPadding;
 
-        & ~ .next-steps-widget__buttons {
+        &~.next-steps-widget__buttons {
           padding-top: unset;
         }
       }
 
-      & ~ .next-steps-widget__buttons {
+      &~.next-steps-widget__buttons {
         padding-left: $defaultPadding;
         padding-top: $defaultPadding;
         padding-bottom: $defaultPadding;
@@ -155,5 +155,10 @@
     .faux-h2.next-steps-widget__heading {
       color: $panther-black;
     }
+  }
+
+
+  +[class*="-widget"] {
+    margin: 20px 0 20px 0;
   }
 }

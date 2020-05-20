@@ -60,6 +60,19 @@
             animation-duration: 5s;
         }
     }
+
+    @include respond(tab-port) {
+        .uninav-static-placeholder__notice {
+            font-size: 1.2rem;
+            height: 80px;
+            background-color: $white;
+        }
+
+        .line-two,
+        .fa-paw {
+            display: none !important;
+        }
+    }
 }
 
 .three-column-template,
