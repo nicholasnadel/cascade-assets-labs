@@ -106,14 +106,10 @@
     }
 
     input.gsc-input {
-      opacity: 0;
+      opacity: 1;
       text-indent: 0 !important;
       transition: all 1s;
       -webkit-transition: all 1s;
-
-      /* animation: fadeInPlaceholder 3s forwards;*/
-      /* animation-delay: 1s;*/
-      /* animation-iteration-count: 1;*/
     }
   }
 
@@ -219,8 +215,9 @@
   @include v(color, panther-black);
 }
 
-.gsc-results-wrapper-overlay.gsc-results-wrapper-visible {
-  font-family: $futura-regular;
-}
+
+  .gsc-results-wrapper-overlay.gsc-results-wrapper-visible {
+    font-family: $futura-regular;
+  }
 
 }
