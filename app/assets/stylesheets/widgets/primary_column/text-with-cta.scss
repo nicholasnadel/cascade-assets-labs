@@ -1,11 +1,10 @@
 html {
   body {
     .text-with-cta-widget {
-      .text-with-cta {
-        ul {
-          margin-left: 4rem;
-        }
-        
+      ul {
+        margin-left: 4rem;
+      }
+      .text-with-cta { 
         &__text-container {
 
           @include respond(phone) {
@@ -39,10 +38,6 @@ html {
           width: 25%;
           margin: 0 0 0 2rem;
 
-          @include respond(tab-land) {
-            max-height: 13rem;
-          }
-
           @include respond(phone) {
             float: none;
             grid-row: 3 / span 1;
@@ -53,14 +48,16 @@ html {
 
         &__button {
           border: 1px solid $bg-silver-gray;
-          height: 4rem;
+          min-height: 4rem;
+          height: auto;
+          padding: 10px;
           border-radius: 5px;
           font-family: $futura;
           margin: 0 0 .5rem 0;
 
           a {
             border-bottom: none;
-            font-weight: bold;
+            font-weight: normal;
             color: $panther-black;
           }
 
