@@ -1,8 +1,6 @@
 /* autoprefixer grid: autoplace */
 .homepage-masthead__container {
   --defaultPadding: 5%;
-  --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
-  --videoHeight: 600px;
   width: 100vw;
 
   height: -webkit-max-content;
@@ -16,12 +14,14 @@
 
   .left {
     height: 100%;
+    // Not sure what this is doing or how to replace the css variable I am leaving it
     width: 3v (defaultPadding);
     float: left;
   }
 
   .right {
     height: 200px;
+    // Not sure what this is doing or how to replace the css variable I am leaving it
     width: 3v (defaultPadding);
     float: right;
   }
@@ -37,7 +37,7 @@
   }
 
   .red {
-    background: v(cu-red);
+    @include v(background, cu-red);
   }
 
   #polygon {
@@ -61,10 +61,10 @@
     align-self: start;
     -ms-grid-column-align: end;
     justify-self: end;
-    color: v(white);
+    @include v(color, white);
     padding-right: 2vw;
     cursor: pointer;
-    top: calc(var(--videoHeight) - 12.5rem);
+    top: calc(600px - 12.5rem);
     fill-opacity: 0.9;
     bottom: 60px;
 
@@ -83,7 +83,6 @@
 
 
 .homepage-masthead {
-  --textShadow: rgba(0, 0, 0, 0.5) 6.5px 6.5px 13px;
 
   &__heading-container {
     margin-top: 7.5rem;
@@ -98,13 +97,13 @@
 
     h2 {
       font-size: 13rem;
-      text-shadow: v(textShadow);
+      text-shadow: $mastheadTextShadow;
       display: -ms-grid;
       display: grid;
       justify-content: center;
       text-transform: uppercase;
       line-height: 0.8em;
-      font-family: v(futura-condensed);
+      @include v(font-family, futura-condensed);
       font-weight: 700;
       -webkit-user-select: text;
 
@@ -124,9 +123,9 @@
     .homepage-masthead__tagline {
       font-size: 3rem;
       line-height: 3rem;
-      text-shadow: v(textShadow);
+      text-shadow: $mastheadTextShadow;
       font-weight: 700;
-      font-family: v(futura-pt);
+      @include v(font-family, futura-regular);
       margin-top: 2rem;
       margin-bottom: 2rem;
 
@@ -196,10 +195,9 @@
         justify-content: center;
         align-content: center;
         text-align: center;
-        background-color: v(cu-red);
-        background-color: $bg;
+        @include v(background-color, cu-red);
         color: $white;
-        font-family: v(futura-pt);
+        @include v(font-family, futura-regular);
         text-transform: uppercase;
         font-weight: bold;
         padding: 4%;
@@ -212,14 +210,14 @@
         &:focus-within {
           background-color: lighten($cu-red, 8%) !important;
           background-color: $red-hover !important;
-          color: v(white);
+          @include v(color, white);
           transform: translateY(-2px);
           transition: 150ms;
         }
 
         &:focus,
         &:focus-within {
-          color: v(white);
+          @include v(color, white);
           outline: 2px dotted currentColor;
           mix-blend-mode: difference;
         }
@@ -230,51 +228,47 @@
         --animationDuration: 30s;
 
         &--red {
-          color: v(panther-black);
-          background-color: v(cu-red);
-          color: v(white);
+          @include v(color, panther-black);
+          @include v(background-color, cu-red);
+          @include v(color, white);
           transition: 300ms linear;
 
           @-webkit-keyframes backgroundColor {
-            --buttonStartColor: v(white);
-            --buttonEndColor: v(cu-red);
 
             0% {
-              background-color: v(buttonStartColor);
+              background-color: $white;
               transition: 350ms ease;
             }
 
             2% {
               background-color: $cu-red;
-              color: v(white);
+              @include v(color, white);
               transition: 300ms linear;
             }
 
             100% {
               background-color: $cu-red;
-              color: v(white);
+              @include v(color, white);
               transition: 300ms linear;
             }
           }
 
           @keyframes backgroundColor {
-            --buttonStartColor: v(white);
-            --buttonEndColor: v(cu-red);
 
             0% {
-              background-color: v(buttonStartColor);
+              background-color: $white;
               transition: 350ms ease;
             }
 
             2% {
               background-color: $cu-red;
-              color: v(white);
+              @include v(color, white);
               transition: 300ms linear;
             }
 
             100% {
               background-color: $cu-red;
-              color: v(white);
+              @include v(color, white);
               transition: 300ms linear;
             }
           }
@@ -284,8 +278,6 @@
   }
 
   &__photo-grid {
-    --imgSize: 200px;
-
     display: -ms-grid;
 
     display: grid;
@@ -311,8 +303,8 @@
 
 
     h2 {
-      color: v(white);
-      font-family: v(futura-pt);
+      @include v(color, white);
+      @include v(font-family, futura-regular);
       font-size: 1.8rem;
       line-height: 2rem;
     }
@@ -324,21 +316,21 @@
     }
 
     a {
-      background-color: v(cu-red);
+      @include v(background-color, cu-red);
       will-change: filter, brightness;
       @include qbal-slideUp-enter;
       max-height: 100%;
 
       &:focus,
       &:focus-within {
-        outline-color: v(white);
+        outline-color: $white;
       }
 
       &:hover,
       &:focus,
       &:focus-within {
-        -webkit-filter: drop-shadow(v(textShadow));
-        filter: drop-shadow(v(textShadow));
+        -webkit-filter: drop-shadow($mastheadTextShadow);
+        filter: drop-shadow($mastheadTextShadow);
         transition: 150ms ease;
         background-color: lighten($cu-red, 8%);
         transition: 300ms ease all;
@@ -375,7 +367,7 @@
       .diagonal {
         height: 200px;
         width: 200px;
-        background-color: v(white);
+        @include v(background-color, white);
       }
 
       img {
@@ -388,7 +380,7 @@
       }
 
       .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
-        color: v(white);
+        @include v(color, white);
         max-width: 25px;
         -ms-grid-row-align: end;
         align-self: end;
@@ -523,7 +515,7 @@
 }
 
 .homepage-masthead__video-placeholder {
-  height: v(videoHeight);
+  height: $mastheadVideoHeight;
   z-index: 1;
   width: 100vw;
   position: absolute;
@@ -565,7 +557,7 @@
   -webkit-mask-image: image-url("masthead-wave");
   -webkit-mask-size: 100% 100%;
   will-change: filter;
-  max-height: v(videoHeight);
+  max-height: $mastheadVideoHeight;
   position: absolute;
   background: -moz-linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
   background: -webkit-linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(1, 0, 17, 1) 10%, rgba(0, 0, 0, 0) 300px);
@@ -576,7 +568,7 @@
 video {
   -o-object-fit: cover;
   object-fit: cover;
-  height: v(videoHeight);
+  height: $mastheadVideoHeight;
   background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjEuMiwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MDQwLjEgMjYyOS41IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MDQwLjEgMjYyOS41OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+Cgkuc3Qwe2ZpbGw6I0E1MDAzNDt9Cjwvc3R5bGU+CjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0wLDB2MTgzMi44YzAsMCwxMzc0LjQsMTU3LjYsMjYxNS42LDE1LjhjMTIzMC4xLTE0MC41LDI0NDEuMi0xNS44LDI0NDEuMi0xNS44VjBIMHoiLz4KPC9zdmc+Cg==");
   position: absolute;
   z-index: 1;
@@ -609,7 +601,7 @@ video {
 .homepage-masthead__photo-grid-container {
   z-index: 3;
   height: 100%;
-  padding-bottom: v(defaultPadding);
+  padding-bottom: 3%;
 }
 
 .homepage-masthead__container {
@@ -629,8 +621,8 @@ video {
       &__heading-container,
       &__photo-grid,
       &__buttons {
-        padding-left: v(defaultPadding);
-        padding-right: v(defaultPadding);
+        padding-left: 3%;
+        padding-right: 3%;
       }
     }
   }
@@ -644,8 +636,6 @@ video {
   }
 
   @include respond(tab-port) {
-    --videoheight: 60vh;
-
     .homepage-masthead__photo-grid {
       padding-top: 5px;
     }
@@ -656,7 +646,7 @@ video {
     }
 
     video {
-      max-height: v(videoHeight);
+      max-height: 60vh;
     }
   }
 
@@ -677,7 +667,7 @@ video {
       &__photo-grid {
         h2 {
           font-size: 2rem;
-          font-family: v(futura-pt);
+          @include v(font-family, futura-regular);
           font-size: 1.8rem;
           line-height: 2rem;
           font-weight: bold;
@@ -1044,7 +1034,7 @@ video {
     -webkit-mask-image: image-url("masthead-wave");
     -webkit-mask-size: 100% 100%;
     will-change: filter;
-    max-height: var(--videoHeight);
+    max-height: $mastheadVideoHeight;
     position: absolute;
     background: none;
   }

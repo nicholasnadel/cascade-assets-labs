@@ -491,9 +491,45 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-transform: uppercase;
 }
 
-// write CSS variables without like "v(thevariable);"
-@function v($var) {
-  @return var(--#{$var});
+// the variable mixin takes a property and variable name 
+// and an optional override to hide the fallback
+@mixin v($prop, $var, $show-fall: true) {
+  // get the property's map name(s)
+  $map-name: map-get($props, $prop);
+  $nest-name: null;
+  $nest-map-name: null;
+  $map: null;
+  $var-fall: null;
+  $var-output: null;
+  // if a list, we need to go deeper
+  @if type-of($map-name) == list {
+    $nest-name: nth($map-name, 1);
+    $nest-map-name: nth($map-name, 2);
+  }
+  // if it is a nested map
+  @if $nest-name {
+    // get the map from nested map-name
+    $map: map-get($var-maps, $nest-name);
+    // get the nested map
+    $nest-map: map-get($map, $nest-map-name);
+    // fallback value, get the var value from the nested map
+    $var-fall: map-get($nest-map, $var);
+    // our css4 variable output
+    $var-output: var(--#{$nest-name}-#{$nest-map-name}-#{$var});
+  } @else {
+    // get the map from map name
+    $map: map-get($var-maps, $map-name);
+    // fallback value, grab the variable's value from the map
+    $var-fall: map-get($map, $var);
+    // our css4 variable output
+    $var-output: var(--#{$map-name}-#{$var});
+  }
+  // if show fallback is not overridden to be null
+  @if $show-fall {
+    #{$prop}: $var-fall;
+  }
+  // css4 variable output
+  #{$prop}: $var-output;
 }
 
 // @include dotted-underline($cu-red, 2px);
@@ -603,25 +639,25 @@ ORDER: Base + typography > general layout + grid > page layout > components
   ul li {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid v(cu-light-grey);
+    @include v(border-bottom, solid-grey);
 
     a,
     .drill-down-parent {
       font-family: "futura-pt", arial, sans-serif;
       line-height: 1.8rem;
-      color: v(panther-black);
+      @include v(color, panther-black);
       padding: 15px 15px 15px 30px;
       width: 100%;
 
       &:hover,
       &:focus {
-        color: v(cu-red);
+        @include v(color, cu-red);
         margin-left: 2px;
         transition: all 0.175s ease-in-out;
         animation-delay: -0.75ms;
 
         &+.toggle-drilldown {
-          color: v(cu-red);
+          @include v(color, cu-red);
 
           .fa-chevron-right {
             transform: scale(1.2);
@@ -702,7 +738,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       width: 7rem;
 
       &:hover {
-        color: v(cu-red);
+        @include v(color, cu-red);
         transform: scale(1.2);
         transition: all 0.175s ease-in-out;
         animation-delay: 500ms;
@@ -721,10 +757,10 @@ ORDER: Base + typography > general layout + grid > page layout > components
         }
 
         .fas {
-          color: v(cu-red);
+          @include v(color, cu-red);
 
           &:hover {
-            color: v(cu-red);
+            @include v(color, cu-red);
           }
         }
       }
@@ -748,16 +784,16 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
       li {
         a {
-          color: v(white);
+          @include v(color, white);
           font-weight: bold;
           text-transform: uppercase;
           font-size: 1.4rem;
           letter-spacing: 0.5px;
-          background-color: v(cu-red);
+          @include v(background-color, cu-red);
 
           &:hover {
-            background-color: v(panther-black);
-            color: v(white);
+            @include v(background-color, panther-black);
+            @include v(color, white);
           }
         }
       }
@@ -783,7 +819,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
           &.home-menu {
             &:focus-within {
-              outline-color: v(panther-black);
+              @include v(outline-color, panther-black);
               outline-style: auto;
               outline-width: 5px;
             }
@@ -794,7 +830,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
       .menu-back {
         justify-content: start;
         align-items: center;
-        background: v(panther-black);
+        @include v(background-color, panther-black);
         color: $white;
         font-weight: bold;
         line-height: 1.6rem;
@@ -830,7 +866,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     }
 
     &.home-menu {
-      background: v(panther-black);
+      @include v(background, panther-black);
       font-weight: bold;
       color: $white;
 

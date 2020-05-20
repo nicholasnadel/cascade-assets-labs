@@ -9,7 +9,7 @@
     }
 
     .svg-inline--fa.fa-window-close.fa-w-16 {
-        color: var(--pantherBlack);
+        @include v(color, panther-black);
         max-width: 25px;
         float: left;
         position: absolute;
@@ -94,5 +94,5 @@
     align-content: center;
     padding: 25px;
     font-weight: bold;
-    font-family: v(futura-regular);
+    @include v(font-family, futura-regular);
 }
