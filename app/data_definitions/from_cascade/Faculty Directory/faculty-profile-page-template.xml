@@ -3,7 +3,7 @@
     <!-- Masthead Options -->
     <!-- radio-item show-fields map to groups below -->
     <!-- radio-item values map to Masthead format selectors -->
-    <text help-text="these are the new wider mastheads available" identifier="mastheadType" label="Masthead Type" type="radiobutton">
+    <text field-id="ff6bcc5bc0a81e5f43ef9b370c7d4c14" help-text="these are the new wider mastheads available" identifier="mastheadType" label="Masthead Type" type="radiobutton">
       <radio-item show-fields="masthead/branded201611" value="Branded - New"/>
       <radio-item show-fields="masthead/slider201611" value="Slider - New"/>
       <radio-item show-fields="masthead/boxes" value="Boxes"/>
@@ -16,50 +16,50 @@
     <!-- New masthead formats (Nov 2016): Branded and Slider -->
     <!-- These should mirror groups in three_column.xml -->
     <group identifier="branded201611" label="Branded - New">
-      <text identifier="header" label="Title" required="true"/>
-      <asset identifier="image" label="Image (780x260)" required="true" type="file"/>
-      <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b372b04bc1b" identifier="header" label="Title" required="true"/>
+      <asset field-id="ff6bcc5bc0a81e5f43ef9b37ea143785" identifier="image" label="Image (780x260)" required="true" type="file"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b379516d9b8" help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
     </group>
     <group identifier="slider201611" label="Slider - New">
-      <text identifier="header" label="Title" required="true"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b37f2e2f388" identifier="header" label="Title" required="true"/>
       <group identifier="slides" label="Slides">
         <group identifier="slide" label="Slide" maximum-number="10" minimum-number="1" multiple="true">
-          <asset identifier="image" label="Image (780x440)" required="true" type="file"/>
-          <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
-          <text identifier="subTitle" label="subTitle"/>
-          <text help-text="short caption (70 chars max including blanks) to show on photo eg. Photo By: or other text" identifier="photoCaption" label="Caption (optional. 70 chars max)" maxlength="70"/>
+          <asset field-id="ff6bcc5bc0a81e5f43ef9b378b04fe8e" identifier="image" label="Image (780x440)" required="true" type="file"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b373a02a054" help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b378e97dce5" identifier="subTitle" label="subTitle"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b37af9b5404" help-text="short caption (70 chars max including blanks) to show on photo eg. Photo By: or other text" identifier="photoCaption" label="Caption (optional. 70 chars max)" maxlength="70"/>
         </group>
       </group>
     </group>
     <group identifier="branded-masthead" label="Branded Masthead">
-      <text default="No" identifier="display-image" label="Show" required="true" type="radiobutton">
+      <text default="No" field-id="ff6bcc5bc0a81e5f43ef9b370d38d7aa" identifier="display-image" label="Show" required="true" type="radiobutton">
         <radio-item value="Yes"/>
         <radio-item value="No"/>
       </text>
-      <text identifier="header" label="Title"/>
-      <text identifier="sub-title" label="subTitle"/>
-      <asset identifier="image" label="Image (1130x220)" type="file"/>
-      <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b37f2c7af9b" identifier="header" label="Title"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b372e65cb54" identifier="sub-title" label="subTitle"/>
+      <asset field-id="ff6bcc5bc0a81e5f43ef9b3704ccaed5" identifier="image" label="Image (1130x220)" type="file"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b3722411fc2" help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
     </group>
     <group identifier="boxes" label="Boxes">
-      <text default="No" identifier="show" label="Show" required="true" type="radiobutton">
+      <text default="No" field-id="ff6bcc5bc0a81e5f43ef9b37fc8a50ef" identifier="show" label="Show" required="true" type="radiobutton">
         <radio-item value="Yes"/>
         <radio-item value="No"/>
       </text>
-      <text identifier="autoRotate" label="Auto Rotate" type="checkbox">
+      <text field-id="ff6bcc5bc0a81e5f43ef9b37a49fbaf6" identifier="autoRotate" label="Auto Rotate" type="checkbox">
         <checkbox-item value="On"/>
       </text>
-      <text help-text="Accepts an integer corresponding to slide number" identifier="startingSlideNumber" label="Starting Slide Number"/>
-      <text help-text="Number of seconds it takes a slide to auto rotate. If no value is entered, slides will rotate every ten seconds." identifier="speed" label="Speed"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b37550c754e" help-text="Accepts an integer corresponding to slide number" identifier="startingSlideNumber" label="Starting Slide Number"/>
+      <text field-id="ff6bcc5bc0a81e5f43ef9b37307078ec" help-text="Number of seconds it takes a slide to auto rotate. If no value is entered, slides will rotate every ten seconds." identifier="speed" label="Speed"/>
       <group identifier="slides" label="Slides">
         <group identifier="slide" label="Slide" minimum-number="4" multiple="true">
-          <asset identifier="image" label="Image (266x220)" type="file"/>
-          <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
-          <text default="[header]" identifier="header" label="Header" maxlength="35" required="true"/>
-          <text default="[description]" identifier="description" label="Description (25 words max)" multi-line="true" required="true"/>
-          <text help-text="full url (including http) to page outside of Cascade" identifier="link" label="External Link"/>
-          <asset identifier="internalLink" label="Or Internal Link" type="page"/>
-          <text default="Same Window" help-text="open link in New Tab or stay in same browser (default)" identifier="linkTarget" label="Target" type="dropdown">
+          <asset field-id="ff6bcc5bc0a81e5f43ef9b37ee243d0f" identifier="image" label="Image (266x220)" type="file"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b3755a5fe7f" help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+          <text default="[header]" field-id="ff6bcc5bc0a81e5f43ef9b37f16c0b58" identifier="header" label="Header" maxlength="35" required="true"/>
+          <text default="[description]" field-id="ff6bcc5bc0a81e5f43ef9b37e85572c2" identifier="description" label="Description (25 words max)" multi-line="true" required="true"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b3759e5cb57" help-text="full url (including http) to page outside of Cascade" identifier="link" label="External Link"/>
+          <asset field-id="ff6bcc5bc0a81e5f43ef9b379e28346b" identifier="internalLink" label="Or Internal Link" type="page"/>
+          <text default="Same Window" field-id="ff6bcc5bc0a81e5f43ef9b3701f30402" help-text="open link in New Tab or stay in same browser (default)" identifier="linkTarget" label="Target" type="dropdown">
             <dropdown-item value="Same Window"/>
             <dropdown-item value="New Window"/>
           </text>
@@ -67,73 +67,74 @@
       </group>
     </group>
     <group identifier="slider" label="Slider (for landing pages only)">
-      <text default="No" identifier="display-slider" label="Show" required="true" type="radiobutton">
+      <text default="No" field-id="ff6bcc5bc0a81e5f43ef9b37eb063c39" identifier="display-slider" label="Show" required="true" type="radiobutton">
         <radio-item value="Yes"/>
         <radio-item value="No"/>
       </text>
       <group identifier="slides" label="Slides">
         <group identifier="slide" label="Slide" maximum-number="10" minimum-number="1" multiple="true">
-          <text identifier="header" label="Title"/>
-          <text identifier="sub-title" label="subTitle"/>
-          <text identifier="description" label="Description"/>
-          <asset identifier="image" label="Image (1130x440)" type="file"/>
-          <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
-          <text help-text="Will only display if the slide type is set to Quote" identifier="quote-author" label="Author Attribution"/>
-          <text default="Transparent Black" identifier="text-background" label="Text Background" type="dropdown">
+          <text field-id="ff6bcc5bc0a81e5f43ef9b375f9b9c64" identifier="header" label="Title"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b37d93355b0" identifier="sub-title" label="subTitle"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b37e11f666f" identifier="description" label="Description"/>
+          <asset field-id="ff6bcc5bc0a81e5f43ef9b3704108c74" identifier="image" label="Image (1130x440)" type="file"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b37d96cce30" help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text" required="true"/>
+          <text field-id="ff6bcc5bc0a81e5f43ef9b37651660ca" help-text="Will only display if the slide type is set to Quote" identifier="quote-author" label="Author Attribution"/>
+          <text default="Transparent Black" field-id="ff6bcc5bc0a81e5f43ef9b37a7915a9e" identifier="text-background" label="Text Background" type="dropdown">
             <dropdown-item value="Transparent Black"/>
             <dropdown-item value="Solid Red"/>
           </text>
-          <text default="bottom-left" help-text="This will align the quote box relative to the masthead. This will only work with the slide type of quote." identifier="align" label="Slide Align" type="dropdown">
+          <text default="bottom-left" field-id="ff6bcc5bc0a81e5f43ef9b37c594b04b" help-text="This will align the quote box relative to the masthead. This will only work with the slide type of quote." identifier="align" label="Slide Align" type="dropdown">
             <dropdown-item value="bottom-left"/>
             <dropdown-item value="bottom-right"/>
           </text>
           <group identifier="link" label="Link">
-            <text help-text="full url (including http) to page outside of Cascade" identifier="link" label="External Link"/>
-            <asset identifier="internalLink" label="Or Internal Link" type="page"/>
-            <asset identifier="fileLink" label="Or File Link" type="file"/>
+            <text field-id="ff6bcc5bc0a81e5f43ef9b370aa89d5e" help-text="full url (including http) to page outside of Cascade" identifier="link" label="External Link"/>
+            <asset field-id="ff6bcc5bc0a81e5f43ef9b3733b25f03" identifier="internalLink" label="Or Internal Link" type="page"/>
+            <asset field-id="ff6bcc5bc0a81e5f43ef9b37258c265e" identifier="fileLink" label="Or File Link" type="file"/>
           </group>
         </group>
       </group>
     </group>
-    <text default="No" help-text="Becoming obsolete. Only here for legacy pages" identifier="showMasthead" label="Show Masthead" type="radiobutton">
+    <text default="No" field-id="ff6bcc5bc0a81e5f43ef9b375d836719" help-text="Becoming obsolete. Only here for legacy pages" identifier="showMasthead" label="Show Masthead" type="radiobutton">
       <radio-item value="Yes"/>
       <radio-item value="No"/>
     </text>
-    <text default="No" help-text="for OLD Masthead. Indicates to use Image below instead of default image" identifier="showImage" label="Custom Image" type="radiobutton">
+    <text default="No" field-id="ff6bcc5bc0a81e5f43ef9b3780ef50d5" help-text="for OLD Masthead. Indicates to use Image below instead of default image" identifier="showImage" label="Custom Image" type="radiobutton">
       <radio-item value="Yes"/>
       <radio-item value="No"/>
     </text>
-    <asset help-text="for OLD Masthead. Large image to replace small default image" identifier="image" label="Image (1024x260)" type="file"/>
-    <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text"/>
-    <text help-text="for OLD Masthead. Visible caption under masthead image" identifier="description" label="Description" maxlength="150"/>
+    <asset field-id="ff6bcc5bc0a81e5f43ef9b3768e52cdd" help-text="for OLD Masthead. Large image to replace small default image" identifier="image" label="Image (1024x260)" type="file"/>
+    <text field-id="ff6bcc5bc0a81e5f43ef9b37fffb964d" help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text"/>
+    <text field-id="ff6bcc5bc0a81e5f43ef9b373e0e05d4" help-text="for OLD Masthead. Visible caption under masthead image" identifier="description" label="Description" maxlength="150"/>
   </group>
   <group collapsed="true" identifier="rightColumn" label="Right Column">
     <group identifier="widget" label="Widgets" multiple="true">
-      <text help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
+      <text field-id="ff6bcc5bc0a81e5f43ef9b379f0ec902" help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
         <dropdown-item value="(select one)"/>
         <dropdown-item show-fields="rightColumn/widget/calloutBox" value="Callout Box"/>
       </text>
       <group collapsed="true" identifier="calloutBox" label="Callout Box">
-        <text default="Yes" identifier="display-callout-box" label="Show" required="true" type="radiobutton">
+        <text default="Yes" field-id="ff6bcc5bc0a81e5f43ef9b379e352887" identifier="display-callout-box" label="Show" required="true" type="radiobutton">
           <radio-item value="Yes"/>
           <radio-item value="No"/>
         </text>
-        <text default="One" identifier="style" label="Style" required="true" type="radiobutton">
+        <text default="One" field-id="ff6bcc5bc0a81e5f43ef9b375b77642e" identifier="style" label="Style" required="true" type="radiobutton">
           <radio-item value="One"/>
           <radio-item value="Two"/>
         </text>
-        <asset identifier="image" label="Image (206px wide)" type="file"/>
-        <text identifier="altText" label="Image Alt Text"/>
-        <text identifier="headline" label="Headline"/>
-        <text identifier="copy" label="Copy" wysiwyg="true"/>
+        <asset field-id="ff6bcc5bc0a81e5f43ef9b37fc38b321" identifier="image" label="Image (206px wide)" type="file"/>
+        <text field-id="ff6bcc5bc0a81e5f43ef9b3767d167b3" identifier="altText" label="Image Alt Text"/>
+        <text field-id="3d459899c0a81e5f43ef9b3773f7b4f6" help-text="Preheader" identifier="preheader" label="Preheader (Optional)"/>
+        <text field-id="ff6bcc5bc0a81e5f43ef9b3737868e47" identifier="headline" label="Headline"/>
+        <text field-id="ff6bcc5bc0a81e5f43ef9b37baaa541c" identifier="copy" label="Copy" wysiwyg="true"/>
       </group>
     </group>
   </group>
   <group collapsed="true" identifier="sharing" label="Sharing ">
-    <asset help-text="Image used for sharing on facebook (130px w, 110px h exactly)" identifier="og_image" label="OG Image" type="file"/>
-    <text help-text="Overrides title for when page is shared to facebook (defaults to Display Name)" identifier="og_title" label="OG Title"/>
-    <text help-text="Overrides description when page is shared to facebook" identifier="og_description" label="OG Description"/>
-    <text help-text="The text that prepopulates on twitter (followed by URL and hashtags)" identifier="twitter_text" label="Twitter Share Text"/>
-    <text help-text="Hastags to get appended to tweet (no #!)" identifier="twitter_hashtag" label="Twitter Hashtag" maximum-number="3" multiple="true"/>
+    <asset field-id="ff6bcc5bc0a81e5f43ef9b37bd6c5b2f" help-text="Image used for sharing on facebook (130px w, 110px h exactly)" identifier="og_image" label="OG Image" type="file"/>
+    <text field-id="ff6bcc5bc0a81e5f43ef9b371eee38a4" help-text="Overrides title for when page is shared to facebook (defaults to Display Name)" identifier="og_title" label="OG Title"/>
+    <text field-id="ff6bcc5bc0a81e5f43ef9b37ae1745fb" help-text="Overrides description when page is shared to facebook" identifier="og_description" label="OG Description"/>
+    <text field-id="ff6bcc5bc0a81e5f43ef9b371c836bd9" help-text="The text that prepopulates on twitter (followed by URL and hashtags)" identifier="twitter_text" label="Twitter Share Text"/>
+    <text field-id="ff6bcc5bc0a81e5f43ef9b37d2df6154" help-text="Hastags to get appended to tweet (no #!)" identifier="twitter_hashtag" label="Twitter Hashtag" maximum-number="3" multiple="true"/>
   </group>
 </system-data-structure>
