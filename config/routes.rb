@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get 'uninav/a_z', to: 'uninav#a_z'
   get 'uninav/font-awesome', to: 'uninav#font_awesome'
   get 'uninav/law', to: 'uninav#law'
-
+  get 'uninav/diversity', to: 'uninav#diversity'
+  get 'uninav/about', to: 'uninav#about'
+  
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'
 

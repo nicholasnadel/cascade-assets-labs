@@ -32,4 +32,10 @@ class UninavController < ApplicationController
 
   def font_awesome 
   end
+
+  def diversity
+  end
+
+  def about
+  end
 end
