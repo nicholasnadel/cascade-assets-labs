@@ -851,6 +851,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         line-height: 1.6rem;
         font-family: $futura-regular;
         padding: 20px 15px 20px 20px;
+        border-color: var(--color-cu-white);
 
         .fas {
           margin-right: 2rem;
@@ -858,7 +859,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
         &:focus {
           outline-color: $cu-red;
-          outline-style: auto;
+          outline-style: none;
           outline-width: 5px;
         }
       }
