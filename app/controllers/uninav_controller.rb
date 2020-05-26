@@ -47,4 +47,7 @@ class UninavController < ApplicationController
 
   def graduate
   end
+
+  def student_life
+  end
 end

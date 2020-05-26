@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'uninav/undergrad', to: 'uninav#undergrad'
   get 'uninav/grad', to: 'uninav#graduate'
   get 'uninav/afford', to: 'uninav#afford'
+  get 'uninav/student-life', to: 'uninav#student_life'
+
 
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'
