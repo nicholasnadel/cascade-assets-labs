@@ -38,4 +38,7 @@ class UninavController < ApplicationController
 
   def about
   end
+
+  def undergrad
+  end
 end

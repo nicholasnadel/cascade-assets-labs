@@ -501,11 +501,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   $map: null;
   $var-fall: null;
   $var-output: null;
+
   // if a list, we need to go deeper
-  @if type-of($map-name) == list {
+  @if type-of($map-name)==list {
     $nest-name: nth($map-name, 1);
     $nest-map-name: nth($map-name, 2);
   }
+
   // if it is a nested map
   @if $nest-name {
     // get the map from nested map-name
@@ -516,7 +518,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
     $var-fall: map-get($nest-map, $var);
     // our css4 variable output
     $var-output: var(--#{$nest-name}-#{$nest-map-name}-#{$var});
-  } @else {
+  }
+
+  @else {
     // get the map from map name
     $map: map-get($var-maps, $map-name);
     // fallback value, grab the variable's value from the map
@@ -524,10 +528,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     // our css4 variable output
     $var-output: var(--#{$map-name}-#{$var});
   }
+
   // if show fallback is not overridden to be null
   @if $show-fall {
     #{$prop}: $var-fall;
   }
+
   // css4 variable output
   #{$prop}: $var-output;
 }
@@ -640,6 +646,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     display: flex;
     justify-content: space-between;
     @include v(border-bottom, solid-grey);
+
+    &:focus,
+    &:focus-within {
+      border: 2px dotted $cu-red;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
 
     a,
     .drill-down-parent {
@@ -813,7 +827,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
         .drill-down-list-item {
           &:focus-within {
             outline-color: $cu-red;
-            outline-style: auto;
             outline-width: 5px;
           }
 
@@ -821,6 +834,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
             &:focus-within {
               @include v(outline-color, panther-black);
               outline-style: auto;
+              outline-width: 5px;
+              outline-color: $cu-red;
               outline-width: 5px;
             }
           }
