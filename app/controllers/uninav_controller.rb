@@ -41,4 +41,7 @@ class UninavController < ApplicationController
 
   def undergrad
   end
+
+  def afford
+  end
 end
