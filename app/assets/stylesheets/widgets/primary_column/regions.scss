@@ -81,4 +81,12 @@ div.four-col-float {
       }
     }
   }
+
+  a {
+
+    &:focus,
+    &:focus-within {
+      outline-offset: 1px;
+    }
+  }
 }
