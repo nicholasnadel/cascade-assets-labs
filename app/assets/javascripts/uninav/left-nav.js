@@ -9,7 +9,6 @@ $(document).ready(function () {
       ulCurrentPos = getTranslateXVal($rootDrillDownNav),
       translateXVal = ulCurrentPos - widthAmount;
     $menuToDrillDownTo.show();
-    $rootDrillDownNav.addClass('fade-in');
     $rootDrillDownNav.css({ transform: "translateX(" + translateXVal + "px)" });
 
     // buttery smooth + performant: https://developer.mozilla.org/en-US/docs/Web/CSS/will-change
@@ -23,7 +22,7 @@ $(document).ready(function () {
       $(this).css('will-change', 'auto')
     });
     $('.root-left-nav').blur(function () {
-      $(this).css('will-change', 'transform')
+      $(this).css('will-change', 'auto')
     });
 
     $rootElement.css({ height: $menuToDrillDownTo.height() });
