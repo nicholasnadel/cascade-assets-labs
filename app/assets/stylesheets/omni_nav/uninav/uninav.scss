@@ -247,6 +247,13 @@ html {
         position: relative;
       }
 
+      #uninav__label-search {
+        display: inline;
+        z-index: -1;
+        position: absolute;
+
+      }
+
       ul {
         display: flex;
         justify-content: flex-end;
