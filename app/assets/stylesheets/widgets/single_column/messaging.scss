@@ -99,6 +99,7 @@
       }
     }
   }
+
 }
 
 /* One Column Variation */
@@ -145,6 +146,7 @@
       width: 75%;
     }
   }
+
   @include media($large-screen) {
     .text-column {
       width: 60%;
@@ -182,6 +184,11 @@
   .theme-button {
     text-align: center;
     width: 100%;
+
+    &:focus-within,
+    &:focus {
+      outline: 2px dotted v(color, cu-red);
+    }
   }
 
   &.messaging-widget__has-fact-cards {
@@ -209,6 +216,7 @@
 
   /* Text Right Variation */
   &.messaging-widget__text-right {
+
     /* Medium Screen */
     @include media($medium-screen) {
       .media-column {
@@ -241,6 +249,7 @@
   /* Text Left Variation */
   &.messaging-widget__text-left {
     @include direction-context(right-to-left) {
+
       /* Medium Screen */
       @include media($medium-screen) {
         .media-column {
@@ -337,6 +346,7 @@
   .text-widget-select {
     .select-button {
       border: $white;
+
       #theme & {
         @include dc($white);
 
@@ -385,6 +395,7 @@
 
 /* Circle image with Text */
 .primary-content.one-column {
+
   .messaging-widget.messaging-widget__2-column.messaging-widget__text-right.circle,
   .messaging-widget.messaging-widget__2-column.messaging-widget__text-left.circle,
   .messaging-widget.messaging-widget__1-column.messaging-widget__text-right.circle,

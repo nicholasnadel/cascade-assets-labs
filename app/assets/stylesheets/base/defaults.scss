@@ -14,7 +14,8 @@
     }
 
     &:focus {
-      outline: 2px dotted #333;
+      --outlineColor: #333;
+      outline: 2px dotted var(color, outlineColor);
     }
 
     a {
