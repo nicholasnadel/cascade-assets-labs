@@ -13,9 +13,9 @@
       background-color: $red-button-active;
     }
 
-    &:focus {
-      --outlineColor: #333;
-      outline: 2px dotted var(color, outlineColor);
+    &:focus,
+    &:focus-within {
+      @include v(outline-color, $grey);
     }
 
     a {

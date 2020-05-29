@@ -100,6 +100,15 @@
     }
   }
 
+  .theme-button {
+    text-align: center;
+    width: 100%;
+
+    &:focus-within,
+    &:focus {
+      outline: 2px dotted v(color, cu-red);
+    }
+  }
 }
 
 /* One Column Variation */
@@ -184,11 +193,6 @@
   .theme-button {
     text-align: center;
     width: 100%;
-
-    &:focus-within,
-    &:focus {
-      outline: 2px dotted v(color, cu-red);
-    }
   }
 
   &.messaging-widget__has-fact-cards {
@@ -379,6 +383,7 @@
       color: $cu-red;
     }
   }
+
 }
 
 /* Fact Card Media */
@@ -522,6 +527,16 @@
         &:hover {
           color: rgba(255, 255, 255, 0.8);
         }
+      }
+    }
+
+    .theme-button {
+      text-align: center;
+      width: 100%;
+
+      &:focus-within,
+      &:focus {
+        @include v(outline-color, $white);
       }
     }
   }
