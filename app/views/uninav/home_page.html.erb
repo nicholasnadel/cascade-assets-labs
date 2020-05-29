@@ -1346,3 +1346,40 @@
                 </div>
             </div>
         </section>
+
+
+        <div class="optanon-alert-box-wrapper  hide-cookie-setting-button" role="alertdialog"
+            aria-labelledby="alert-box-title" aria-describedby="alert-box-message" style="display:none">
+            <div class="optanon-alert-box-bottom-top">
+                <div class="optanon-alert-box-corner-close"><button class="optanon-alert-box-close banner-close-button"
+                        aria-label="Close" title="Close"
+                        onclick="Optanon.TriggerGoogleAnalyticsEvent('OneTrust Cookie Consent', 'Banner Close Button');"
+                        tabindex="3"></button></div>
+            </div>
+            <div class="optanon-alert-box-bg">
+                <div class="optanon-alert-box-logo"> </div>
+                <div class="optanon-alert-box-body">
+                    <p class="optanon-alert-box-title legacy-banner-title sr-only" id="alert-box-title" role="heading"
+                        aria-level="2">Cookie Notice</p>
+                    <p class="banner-content" id="alert-box-message">We use cookies to offer you a better browsing
+                        experience, analyze site traffic, and personalize content per the Chapman University Privacy
+                        Policy. If you continue to use this site, you consent to our use of cookies. <a
+                            href="https://www.chapman.edu/campus-services/information-systems/policies-and-procedures/privacy-policy.aspx"
+                            class="banner-policy-link" tabindex="1" aria-label="Privacy Policy">Privacy Policy</a></p>
+                </div>
+                <div class="optanon-clearfix"></div>
+                <div class="optanon-alert-box-button-container">
+                    <div class="optanon-alert-box-button optanon-button-close">
+                        <div class="optanon-alert-box-button-middle"><button class="optanon-alert-box-close"
+                                aria-label="Close">Close</button></div>
+                    </div>
+                    <div class="optanon-alert-box-button optanon-button-allow">
+                        <div class="optanon-alert-box-button-middle accept-cookie-container"><button
+                                class="optanon-allow-all accept-cookies-button" title="GOT IT" aria-label="GOT IT"
+                                onclick="Optanon.TriggerGoogleAnalyticsEvent('OneTrust Cookie Consent', 'Banner Accept Cookies');"
+                                tabindex="2">GOT IT</button></div>
+                    </div>
+                </div>
+                <div class="optanon-clearfix optanon-alert-box-bottom-padding"></div>
+            </div>
+        </div>
