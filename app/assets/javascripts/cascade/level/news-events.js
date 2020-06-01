@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
   //used with News/Events widget in 2 and 3 Column Modular templates
   //
   // Make it work with old code.
@@ -9,7 +9,7 @@ $(function() {
   // as a category element. The problem is that sometimes category is a string with timestamp
   // value and sometimes an array where one of items is timestamp value. For more info, see
   // https://github.com/chapmanu/cascade-assets/issues/160
-  var categoryToDatestamp = function(category) {
+  var categoryToDatestamp = function (category) {
     // Sample category datestamp: "2017/03/06 (Mon)"
     var datestamp = null;
 
@@ -50,8 +50,8 @@ $(function() {
 
     //default is NewsAndStories:
     var newsFeedUrl =
-        "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
-      newsYqlUrl = function() {
+      "https://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
+      newsYqlUrl = function () {
         return "https://social04.chapman.edu:4040/data?url=" + newsFeedUrl;
       },
       newsFeedOptions = $(".newsFeed").text();
@@ -137,13 +137,13 @@ $(function() {
       .siblings(".story")
       .css("visibility", "hidden");
 
-    var updateNewsWidget = function(data) {
+    var updateNewsWidget = function (data) {
       var newsData = data[0];
       if (newsData) {
-        $(" .newsEvents").each(function() {
+        $(" .newsEvents").each(function () {
           $(this)
             .find(".news .story")
-            .each(function(i) {
+            .each(function (i) {
               var $this = $(this);
               if (newsData.item[i].pubDate) {
                 //Month
@@ -168,7 +168,7 @@ $(function() {
               //Title
               $this.find(".title>a").html(newsData.item[i].title[0]);
               //Links
-              $this.find(".title>a, .readMore").each(function() {
+              $this.find(".title>a, .readMore").each(function () {
                 $(this).attr("href", newsData.item[i].link[0]);
               });
 
@@ -183,21 +183,21 @@ $(function() {
       } else {
         $(".news").html(
           "<p>Oops, <a href='" +
-            newsFeedUrl +
-            "'>" +
-            newsFeedUrl +
-            "</a> appears to be unresponsive or is not returning anything to display at the moment.</p>"
+          newsFeedUrl +
+          "'>" +
+          newsFeedUrl +
+          "</a> appears to be unresponsive or is not returning anything to display at the moment.</p>"
         );
       }
     };
 
-    $.getJSON(newsYqlUrl(), function(data) {
+    $.getJSON(newsYqlUrl(), function (data) {
       updateNewsWidget(data);
     })
-      .done(function(data) {
+      .done(function (data) {
         updateNewsWidget(data);
       })
-      .fail(function(data) {
+      .fail(function (data) {
         $(".news").html(
           "<p>There are no news articles found or the news feed is temporarily down.</p>"
         );
@@ -208,7 +208,7 @@ $(function() {
     if ($(".events").length) {
       //sample: eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
       var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
-        eventsYqlUrl = function() {
+        eventsYqlUrl = function () {
           return "https://social04.chapman.edu:4040/data?url=" + eventsFeedUrl;
         },
         eventsFeedOptions = $(".eventsFeed").text();
@@ -355,13 +355,13 @@ $(function() {
           break;
       }
 
-      var updateEventsWidget = function(data) {
+      var updateEventsWidget = function (data) {
         var eventsData = data[0];
         if (eventsData) {
-          $(".newsEvents").each(function() {
+          $(".newsEvents").each(function () {
             $(this)
               .find(".events .story")
-              .each(function(i) {
+              .each(function (i) {
                 var $this = $(this);
                 var rssitem;
                 var maxloop;
@@ -378,7 +378,7 @@ $(function() {
                   $this.find(" .title>a").html(rssitem.title[0]);
 
                   // Links
-                  $this.find(" .title>a, .readMore").each(function() {
+                  $this.find(" .title>a, .readMore").each(function () {
                     $(this).attr("href", rssitem.link[0]);
                   });
 
@@ -414,10 +414,10 @@ $(function() {
         } else {
           $(" .events").html(
             "<p>There are no events found (or <a href='" +
-              eventsFeedUrl +
-              "'>" +
-              eventsFeedUrl +
-              "</a> is temporarily down).</p>"
+            eventsFeedUrl +
+            "'>" +
+            eventsFeedUrl +
+            "</a> is temporarily down).</p>"
           );
           //$(".events").html("<p>No events found at this time.</p>");
         }
@@ -426,13 +426,13 @@ $(function() {
       $(".events .loading")
         .siblings(".story")
         .css("visibility", "hidden");
-      $.getJSON(eventsYqlUrl(), function(data) {
+      $.getJSON(eventsYqlUrl(), function (data) {
         updateEventsWidget(data);
       })
-        .done(function(data) {
+        .done(function (data) {
           updateEventsWidget(data);
         })
-        .fail(function(data) {
+        .fail(function (data) {
           $(".events").html(
             "<p>There are no events found or the events feed is temporarily down).</p>"
           );
@@ -442,7 +442,7 @@ $(function() {
     /* Switch news events tabs
     ------------------------------------------------------------------------------------------------*/
 
-    $(".newsEventsNav li").click(function() {
+    $(".newsEventsNav li").click(function () {
       var $this = $(this),
         i = $this.index();
       $this
@@ -460,7 +460,7 @@ $(function() {
       if ($ellipsis) $ellipsis.ellipsis();
     });
 
-    $(".newsEventsNav li").keydown(function(e) {
+    $(".newsEventsNav li").keydown(function (e) {
       if (e.keyCode === 32 || e.keyCode === 13) {
         var $this = $(this),
           i = $this.index();
@@ -482,7 +482,7 @@ $(function() {
       return true;
     });
 
-    $(".tabNav li").click(function() {
+    $(".tabNav li").click(function () {
       var $this = $(this),
         i = $this.index();
       $this
@@ -501,11 +501,11 @@ $(function() {
     });
 
     // Apply user selected options
-    (function() {
+    (function () {
       var newsEventsOptions = [
-          $(".newsEventsOptions").html(),
-          $(".leftColumnNewsEventsOptions").html()
-        ],
+        $(".newsEventsOptions").html(),
+        $(".leftColumnNewsEventsOptions").html()
+      ],
         $featureTab = [
           $(".main .newsEventsNav li:first-child"),
           $(".leftNav .newsEventsNav li:first-child")
@@ -599,7 +599,7 @@ $(function() {
     })();
 
     // Show today label if appropriate
-    var todayLabel = function() {
+    var todayLabel = function () {
       var today = new Date(),
         tomorrow = new Date(),
         month = [
@@ -618,7 +618,7 @@ $(function() {
       tomorrow.setDate(tomorrow.getDate() + 1);
 
       // Today
-      $(".newsEvents .date").each(function(index) {
+      $(".newsEvents .date").each(function (index) {
         if (
           today.getFullYear() ===
           parseInt(
@@ -653,7 +653,7 @@ $(function() {
       });
 
       // Tomorrow
-      $(".newsEvents .date").each(function(index) {
+      $(".newsEvents .date").each(function (index) {
         if (
           tomorrow.getFullYear() ===
           parseInt(
@@ -688,7 +688,7 @@ $(function() {
       });
     };
 
-    $(".events .copy").each(function(index) {
+    $(".events .copy").each(function (index) {
       $(this).html($(this).text());
     });
 
@@ -697,7 +697,7 @@ $(function() {
   }
 });
 
-$(function() {
+$(function () {
   if ($(".rssfeed").length) {
     addTitleToReadMoreText();
     addUniqueIdToEachPost();
@@ -705,25 +705,25 @@ $(function() {
 });
 
 addTitleToReadMoreText();
-addUniqueIdToPosts();
+addUniqueIdToEachPost();
 function addTitleToReadMoreText() {
-  $( ".post" ).each(function() {
+  $(".post").each(function () {
     var title = $(this).find('strong').text();
-		var readMoreLink = $(this).find('a').text();
-		
-		if ($(readMoreLink).text().indexOf('read more')) {
-				$(this).find('a').text(title)
-		}
+    var readMoreLink = $(this).find('a').text();
+
+    if ($(readMoreLink).text().indexOf('read more')) {
+      $(this).find('a').text(title)
+    }
   });
 }
 
 function addUniqueIdToEachPost() {
-	        $.each($('.post'), function (ind) {
-          var title = $(this).find('strong');
-          $(this).attr('id', 'post-' + parseInt(ind + 1));
-          $(title).attr('id', 'post-' + parseInt(ind + 1) + '__title');
-          var titleID = $(this).find('strong').attr('id');
-          var id = $(this).attr('id');
-          $(this).find('a').attr('aria-labelledby', titleID)
-      });
+  $.each($('.post'), function (ind) {
+    var title = $(this).find('strong');
+    $(this).attr('id', 'post-' + parseInt(ind + 1));
+    $(title).attr('id', 'post-' + parseInt(ind + 1) + '__title');
+    var titleID = $(this).find('strong').attr('id');
+    var id = $(this).attr('id');
+    $(this).find('a').attr('aria-labelledby', titleID)
+  });
 }
