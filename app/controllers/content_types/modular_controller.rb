@@ -550,12 +550,12 @@ module ContentTypes
     def render_static_three_column_left_column
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s",
+      render_static_partial("widgets/left_column/news_events_1"),
              render_static_partial("widgets/left_column/callout_1"),
              render_static_partial("widgets/left_column/callout_2"),
              render_static_partial("widgets/left_column/callout_3"),
              render_static_partial("widgets/left_column/calls_to_action_1"),
-             render_static_partial("widgets/left_column/calls_to_action_2"),
-             render_static_partial("widgets/left_column/news_events_1"))
+             render_static_partial("widgets/left_column/calls_to_action_2"))  
     end
 
     def render_static_three_column_right_column

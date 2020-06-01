@@ -700,12 +700,14 @@ $(function () {
 $(function () {
   if ($(".rssfeed").length) {
     addTitleToReadMoreText();
+
+
     addUniqueIdToEachPost();
+    addUniqueIdToEachNewsEvents();
   }
 });
 
-addTitleToReadMoreText();
-addUniqueIdToEachPost();
+
 function addTitleToReadMoreText() {
   $(".post").each(function () {
     var title = $(this).find('strong').text();
@@ -725,5 +727,27 @@ function addUniqueIdToEachPost() {
     var titleID = $(this).find('strong').attr('id');
     var id = $(this).attr('id');
     $(this).find('a').attr('aria-labelledby', titleID)
+  });
+}
+
+
+function addUniqueIdToEachNewsEvents() {
+  $.each($('.newsEvents'), function (ind) {
+    $(this).attr('id', 'newsEvents-' + parseInt(ind + 1));
+
+    var title = $('.newsEventsContent .title a');
+    $(title).attr('id', 'newsEvents-' + parseInt(ind + 1) + '__title');
+    var link = $(this).find('.title a').attr('href');
+    $(this).find('.featured .col2').wrap('<a class="newsEvents__wrapper-link" href="' + link + '"></a>');
+    var wrapperLink = $(this).find('.featured a.newsEvents__wrapper-link');
+    $(wrapperLink).attr('id', 'newsEvents-' + parseInt(ind + 1) + '__wrapper');
+
+    var titleID = $(this).find('.title a').attr('id');
+    var id = $(this).attr('id');
+
+    $(this).find('.title a').replaceWith(function () {
+      return $('<span>', { html: $(this).html() });
+    });
+
   });
 }
