@@ -6,6 +6,9 @@ function renameTempscript() {
   if ($('noscript:contains("googletagmanager")').length > 0) {
     $("noscript").attr("aria-hidden", "true");
   }
+  else if ($('noscript:contains("facebook")').length > 0) {
+    $("noscript").attr("aria-hidden", "true");
+  }
 }
 function addiFrameTitle() {
   var attr = $(this).attr('title');
