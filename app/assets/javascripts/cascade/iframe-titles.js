@@ -1,14 +1,41 @@
-function renameNoscript() {
-  $('noscript').replaceWith('<tempscript>' + $('noscript').html() + '</tempscript>');
-}
-function renameTempscript() {
-  $('tempscript').replaceWith('<noscript>' + $('tempscript').html() + '</noscript>');
+$(window).load(function (callback) {
+  if ($('noscript').length) {
+    renameNoscript();
+    addiFrameTitle();
+    addAriaHiddenToNoScript();
+
+
+    try {
+    } catch (ignore) { }
+  }
+  renameTempscript();
+  // setTimeout(function () {
+  //   addAriaHiddenToNoScript();
+  // }, 1000);
+
+  function callIframe(url, callback) {
+    $('iframe').attr('src', url);
+    $('iframe').load(function () {
+      renameNoscript(this);
+    });
+  }
+});
+function addAriaHiddenToNoScript() {
+  console.log('adding aria-hidden')
   if ($('noscript:contains("googletagmanager")').length > 0) {
     $("noscript").attr("aria-hidden", "true");
   }
   else if ($('noscript:contains("facebook")').length > 0) {
     $("noscript").attr("aria-hidden", "true");
   }
+}
+function renameNoscript() {
+  $('noscript').replaceWith('<tempscript>' + $('noscript').html() + '</tempscript>');
+  addiFrameTitle();
+  renameTempscript();
+}
+function renameTempscript() {
+  $('tempscript').replaceWith('<noscript>' + $('tempscript').html() + '</noscript>');
 }
 function addiFrameTitle() {
   var attr = $(this).attr('title');
@@ -20,97 +47,3 @@ function addiFrameTitle() {
 }
 renameNoscript();
 addiFrameTitle();
-(function ($, document, undefined) {
-  if ($('noscript').length) {
-    $.fn["iready"] = function (callback) {
-      var ifr = this.filter("iframe"),
-        arg = arguments,
-        src = this,
-        clc = null, // collection
-        lng = 5, // length of time to wait between intervals
-        ivl = -1, // interval id
-        chk = function (ifr) {
-          try {
-            var cnt = ifr.contents(),
-              doc = cnt[0],
-              src = ifr.attr("src"),
-              url = doc.URL;
-            switch (doc.readyState) {
-              case "complete":
-                if (!src || src === "about:blank") {
-                  // we don't care about empty iframes
-                  ifr.data("ready", "true");
-                } else if (!url || url === "about:blank") {
-                  // empty document still needs loaded
-                  ifr.data("ready", undefined);
-                } else {
-                  // not an empty iframe and not an empty src
-                  // should be loaded
-                  ifr.data("ready", true);
-                }
-                break;
-              case "interactive":
-                ifr.data("ready", "true");
-                break;
-              case "loading":
-              default:
-                // still loading
-                break;
-            }
-          } catch (ignore) {
-            // as far as we're concerned the iframe is ready
-            // since we won't be able to access it cross domain
-            ifr.data("ready", "true");
-          }
-          return ifr.data("ready") === "true";
-        };
-      if (ifr.length) {
-        ifr.each(function () {
-          if (!$(this).data("ready")) {
-            // add to collection
-            clc = (clc) ? clc.add($(this)) : $(this);
-          }
-        });
-        if (clc) {
-          ivl = setInterval(function () {
-            var rd = true;
-            clc.each(function () {
-              if (!$(this).data("ready")) {
-                if (!chk($(this))) {
-                  rd = false;
-                }
-              }
-            });
-            if (rd) {
-              clearInterval(ivl);
-              clc = null;
-              callback.apply(src, arg);
-            }
-          }, lng);
-        } else {
-          clc = null;
-          callback.apply(src, arg);
-        }
-      } else {
-        clc = null;
-        callback.apply(this, arguments);
-      }
-      return this;
-    };
-  }
-}
-  (jQuery, document));
-$(window).load(function (callback) {
-  if ($('noscript').length) {
-    renameNoscript();
-    addiFrameTitle();
-    $("iframe").iready(function (callback) {
-      renameNoscript();
-      addiFrameTitle();
-      renameTempscript();
-    });
-    try {
-    } catch (ignore) { }
-  }
-});
-renameTempscript();
