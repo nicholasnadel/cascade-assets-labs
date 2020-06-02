@@ -9,9 +9,6 @@ $(window).load(function (callback) {
     } catch (ignore) { }
   }
   renameTempscript();
-  // setTimeout(function () {
-  //   addAriaHiddenToNoScript();
-  // }, 1000);
 
   function callIframe(url, callback) {
     $('iframe').attr('src', url);
@@ -21,7 +18,6 @@ $(window).load(function (callback) {
   }
 });
 function addAriaHiddenToNoScript() {
-  console.log('adding aria-hidden')
   if ($('noscript:contains("googletagmanager")').length > 0) {
     $("noscript").attr("aria-hidden", "true");
   }
