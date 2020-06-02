@@ -526,6 +526,7 @@ module ContentTypes
     def render_static_three_column_primary_content
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
+      render_static_partial("widgets/primary_content/featured_news_events_feed_1"),
              render_static_partial("widgets/primary_content/next_steps_widget"),
              render_static_partial("widgets/primary_content/text_with_cta"),
              render_static_partial("widgets/primary_content/collapsables_1"),
@@ -540,8 +541,7 @@ module ContentTypes
              render_static_partial("widgets/primary_content/tabs_1"),
              render_static_partial("widgets/primary_content/three_photo_callout_1"),
              render_static_partial("widgets/primary_content/twitter_feed_1"),
-             render_static_partial("widgets/primary_content/logo_image_rotator_1"),
-             render_static_partial("widgets/primary_content/featured_news_events_feed_1"))
+             render_static_partial("widgets/primary_content/logo_image_rotator_1"))
 
     end
 
@@ -555,7 +555,7 @@ module ContentTypes
              render_static_partial("widgets/left_column/callout_2"),
              render_static_partial("widgets/left_column/callout_3"),
              render_static_partial("widgets/left_column/calls_to_action_1"),
-             render_static_partial("widgets/left_column/calls_to_action_2"))  
+             render_static_partial("widgets/left_column/calls_to_action_2")) 
     end
 
     def render_static_three_column_right_column
