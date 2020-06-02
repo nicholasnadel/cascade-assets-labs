@@ -133,11 +133,11 @@ function gs__mobileReveal() {
     $('#uninav').addClass('utility-only');
     $('.uninav__logo, .uninav__hamburger-menu').addClass('logo--underneath');
 
-    $('.uninav__cta--wrapper').css('z-index', '-999');
-    $('.uninav__cta--wrapper').css('position', 'absolute');
-    $('.uninav__cta--wrapper').css('opacity', '0');
+    // $('.uninav__cta--wrapper').css('z-index', '-999');
+    // $('.uninav__cta--wrapper').css('position', 'absolute');
+    // $('.uninav__cta--wrapper').css('opacity', '0');
     // $('.uninav__logo--secondary').hide();
-    $('.uninav__cta--wrapper').addClass('cta--underneath');
+    // $('.uninav__cta--wrapper').addClass('cta--underneath');
 
     $(searchInputDesktop).addClass('uninav__reveal').addClass('slide-left');
     $("#gsc-i-id1").focus();

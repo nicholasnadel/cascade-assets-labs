@@ -100,14 +100,21 @@ html {
 // END RESETS
 // UNINAV STRUCTURE
 #uninav {
-  display: grid;
-  grid-template-areas:
-    "logo secondaryLogo utility utility"
-    "global global global cta";
-  grid-template-columns: 1fr;
+  // display: grid;
+  // grid-template-areas:
+  //   "logo secondaryLogo utility utility"
+  //   "global global global cta";
+  // grid-template-columns: 1fr;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   background-color: $white;
   top: 0;
   z-index: 999999999;
+
+  @include respond(phone) {
+    flex-wrap: nowrap;
+  }
 
   .uninav {
     &__hamburger-menu {
@@ -118,7 +125,8 @@ html {
       display: flex;
       justify-content: start;
       align-items: center;
-      border-bottom: 1px solid $cu-light-grey;
+      width: 40%;
+      height: 60px;
       padding-left: 2.5rem;
       @include qbal-fade-enter;
 
@@ -150,36 +158,54 @@ html {
     }
 
     &__cta {
-      grid-area: cta;
-      width: 100%;
+      // grid-area: cta;
+      // width: 100%;
+      width: 20%;
       display: grid;
       justify-content: flex-end;
       align-content: center;
       align-items: center;
+      margin-left: auto;
+      
+      @include respond(tab-land) {
+        width: 10%;
+        // margin-left: auto;
+      }
 
       ul {
         display: flex;
 
+        &::after {
+          content: '|';
+          color: #CFCFCF;
+        }
+
         &>li {
-          flex: 1 100%;
-          list-style: none;
-          color: $panther-black;
-          @include uninav-drop-shadow;
+          // flex: 1 100%;
+          // list-style: none;
+          // color: $panther-black;
+          // @include uninav-drop-shadow;
           // @include qbal-slideLeft-enter;
 
+          &:last-child {
+            margin-right: 20px;
+          }
+
           a {
-            @include button($red);
+            // @include button($red);
             @include futura-pt;
-            padding: 5px;
-            margin-right: 10px;
+            // padding: 5px;
+            // margin-right: 10px;
+            margin: 0 5px;
             display: block;
             text-align: center;
             font-weight: 300;
             transition: 250ms ease-in-out;
             will-change: background-color;
             font-weight: 600;
-            min-width: 120px;
+            // min-width: 120px;
             animation-duration: 3s;
+            text-transform: uppercase;
 
             @for $i from 1 to 5 {
               &:nth-child(#{$i}) {
@@ -192,32 +218,47 @@ html {
     }
 
     &__utility-nav--wrapper {
-      grid-area: utility;
-      width: 100%;
-      height: 100%;
-      display: grid;
-      justify-content: flex-end;
-      border-bottom: 1px solid $cu-light-grey;
+      // grid-area: utility;
+      // width: 100%;
+      width: 40%;
+      // height: 100%;
+      // display: grid;
+      // justify-content: flex-end;
+      // border-bottom: 1px solid $cu-light-grey;
       height: $uninav-div-height;
       align-items: center;
+
+      @media only screen and (min-width: 90em) {
+        width: auto;
+      }
+
+      @include respond(tab-land) {
+        width: auto;
+        max-width: 50%
+      }
+
+      @include respond(phone) {
+        max-width: none;
+      }
 
       .uninav {
         &__menu-item--audiences {
           a {
             color: $panther-black;
-            padding-left: 1.5em;
-            padding-right: 1.5em;
+            // padding-left: 1.5em;
+            // padding-right: 1.5em;
           }
 
-          &:nth-child(4),
-          &:nth-child(5) {
-            border-right: none;
-            padding-left: 20px;
-            padding-right: 20px;
-          }
+          // &:nth-child(4),
+          // &:nth-child(5) {
+          //   border-right: none;
+          //   padding-left: 20px;
+          //   padding-right: 20px;
+          // }
         }
 
         &__utility-nav--search-wrapper {
+          // width: 65%;
           margin-right: 1.5rem;
         }
       }
@@ -249,18 +290,26 @@ html {
 
       ul {
         display: flex;
-        justify-content: flex-end;
+        // justify-content: flex-end;
+        justify-content: space-between;
         align-items: center;
 
         li {
-          flex-grow: 1;
-          flex-basis: auto;
-          text-align: center;
-          border-right: 1px solid $cu-light-grey;
+          // flex-grow: 1;
+          // flex-basis: auto;
+          // text-align: center;
+          // border-right: 1px solid $cu-light-grey;
 
           &:last-of-type {
             flex-grow: 0;
             flex-basis: unset;
+            margin-left: auto;
+
+            @include respond(phone) {
+              & {
+                margin-left: 0;
+              }
+            }
           }
         }
 
@@ -283,7 +332,7 @@ html {
 
         &:focus,
         &:focus-within {
-          border: 2px dotted $cu-red;
+          outline: 2px dotted $cu-red;
         }
 
         li {
@@ -351,7 +400,7 @@ html {
       color: $cu-light-grey;
       text-align: center;
       height: 50px;
-      display: grid;
+      display: flex;
       justify-content: center;
       align-items: center;
       @include linear-300;
@@ -385,29 +434,82 @@ html {
       }
     }
 
-    &__utility-nav--audiences-container {
-      display: flex;
-      align-items: center;
+    &__utility-nav--audiences {
+        &-container {
+          display: flex;
+          align-items: center;
+          position: relative;
+          margin: 0 2rem;
 
-      li:last-of-type {
-        border-right: none;
-      }
+          @include respond(tab-port) {
+            display: none;
+          }
+
+          li:last-of-type {
+            border-right: none;
+          }
+
+          p {
+            margin-bottom: 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:focus {
+              outline: 2px dotted $cu-red;
+            }
+
+            &::after {
+              font-family: "Font Awesome 5 Pro";
+              font-weight: 900;
+              content: "\f0d7";
+              padding-left: 1rem;
+              font-size: 1.4rem;
+            }
+          }
+        }
+
+        &-menu {
+          flex-direction: column;
+          align-items: flex-start;
+          position: absolute;
+          width: 25rem;
+          top: 0;
+          right: 21rem;
+          background-color: #ffffff;
+          border: 1px solid #CFCFCF;
+
+          li {
+            width: 100%;
+            padding: 15px 15px 15px 30px;
+            line-height: 1.8rem;
+            border-bottom: 1px solid #CFCFCF;
+          }
+        }
     }
 
     // global nav
     &__global-nav {
-      width: 900px;
+      width: 100%;
+      border-top: 1px solid $cu-light-grey;
       border-bottom: none;
 
       >ul>li {
         flex: unset;
-        margin-left: 15px;
-        margin-right: 15px;
+        margin-left: 30px;
+        margin-right: 30px;
       }
 
       a {
         color: $panther-black;
         border-right: none;
+      }
+
+      @include respond(tab-port) {
+        & {
+          display: none;
+        }
       }
     }
 
@@ -480,7 +582,7 @@ html {
 }
 
 .uninav__global-nav {
-  grid-area: global;
+  // grid-area: global;
   height: $uninav-div-height;
   @include uninav-border-top;
 
@@ -500,6 +602,7 @@ html {
 
   &>ul {
     display: flex;
+    justify-content: center;
     align-items: center;
     height: 100%;
 
@@ -520,16 +623,16 @@ html {
 }
 
 #uninav>nav {
-  grid-area: nav;
+  // grid-area: nav;
 }
 
 #uninav>global {
-  grid-area: global;
+  // grid-area: global;
 }
 
 #uninav>div.uninav__logo--primary {
   width: 300px;
-  grid-area: logo;
+  // grid-area: logo;
 }
 
 // UNINAV STRUCTURE
@@ -630,14 +733,14 @@ html {
 // MEDIA QUERIES
 @media only screen and (max-width: 1420px) {
   .uninav__utility-nav--audiences-container {
-    @include qbal-slideLeft-exit;
+    // @include qbal-slideLeft-exit;
     display: none;
   }
 }
 
 @media only screen and (max-width: 1300px) {
   #uninav {
-    grid-template-columns: repeat(2, 1fr);
+    // grid-template-columns: repeat(2, 1fr);
   }
 
   .uninav__logo {
@@ -657,10 +760,10 @@ html {
   }
 
   #uninav {
-    display: grid;
-    grid-template-areas:
-      "logo cta utility"
-      "global global global";
+    // display: grid;
+    // grid-template-areas:
+    //   "logo cta utility"
+    //   "global global global";
     background-color: $white;
 
     .uninav__global-nav {
@@ -689,8 +792,8 @@ html {
     .uninav {
       &__cta {
         ul {
-          @include qbal-slideUp-exit;
-          display: none;
+          // @include qbal-slideUp-exit;
+          // display: none;
         }
       }
     }
@@ -758,14 +861,14 @@ html {
 @include respond(tab-land) {
   #uninav {
     .cta--underneath {
-      z-index: -1;
-      @include qbal-slideLeft-exit;
+      // z-index: -1;
+      // @include qbal-slideLeft-exit;
     }
 
     .uninav {
       &__logo {
-        width: 100%;
-        height: $uninav-div-height;
+        // width: 100%;
+        // height: $uninav-div-height;
 
         &--secondary {
           @include qbal-slideRight-exit;
@@ -856,6 +959,7 @@ html {
         font-family: "Font Awesome 5 Pro";
         font-weight: 900;
         align-items: center;
+        margin: auto;
       }
 
       &:active {
@@ -892,16 +996,17 @@ html {
 // TABLET PORTRAIT
 @include respond(tab-port) {
   #uninav {
-    grid-template-areas: "hamburger logo utility";
-    grid-template-columns: 10% 40% 50%;
-    -ms-grid-columns: .25fr 1fr 1fr;
-    height: 60px;
+    // grid-template-areas: "hamburger logo utility";
+    // grid-template-columns: 10% 40% 50%;
+    // -ms-grid-columns: .25fr 1fr 1fr;
+    // height: 60px;
 
     .uninav {
       &__logo {
-        width: 100%;
+        // width: 100%;
         margin-left: 0;
-        padding-left: 0;
+        margin-right: auto;
+        padding-left: 20px;
         @include qbal-fade-enter;
       }
 
@@ -913,11 +1018,11 @@ html {
         align-self: center;
         margin-left: 2rem;
         padding-left: 2rem;
-        grid-area: secondaryLogo;
+        // grid-area: secondaryLogo;
       }
 
       &__hamburger-menu {
-        grid-area: "hamburger";
+        // grid-area: "hamburger";
         display: grid;
         -ms-grid-column: 1;
         align-items: center;
@@ -987,10 +1092,6 @@ html {
       display: none;
     }
 
-    &__global-nav {
-      display: none;
-    }
-
     &__utility-nav--wrapper ul li {
       border-right: none;
     }
@@ -1015,17 +1116,17 @@ html {
 
 @include respond(phone) {
   #uninav {
-    grid-template-columns: 10% 2fr 1fr;
-    grid-gap: 10px;
+    // grid-template-columns: 10% 2fr 1fr;
+    // grid-gap: 10px;
 
     .logo--underneath {
       @include qbal-slideLeft-exit;
     }
 
     .uninav {
-      &__global-nav {
-        display: none;
-      }
+      // &__global-nav {
+      //   display: none;
+      // }
 
       &__logo {
         display: grid;

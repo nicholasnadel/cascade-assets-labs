@@ -304,6 +304,20 @@
           width: 100%;
         }
 
+        .off-canvas-utility>li.drill-down-list-item {
+          background-color: #242020;
+
+          &>.drill-down-parent, a, .toggle-drilldown { 
+            color: white;
+            font-weight: bold;
+          }
+
+          .drilldown-menu.active a {
+            color: black;
+            font-weight: normal;
+          }
+        }
+
         span.menu-label {
           font-weight: bold;
           color: $cu-red;
