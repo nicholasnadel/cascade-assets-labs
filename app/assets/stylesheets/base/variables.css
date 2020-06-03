@@ -72,7 +72,7 @@ of these variables will affect the colors sitewide. */
   --color-cu-black: #231f20;
   --color-red-button-hover: #c8003f;
   --color-red-button-active: #88002b;
-  --color-white: #ffffff;
+  --color-white: white;
   --color-brown: #896d49;
   --color-teal: #25b6a5;
   --color-teal-hover: #24d4bf;

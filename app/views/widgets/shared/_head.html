@@ -1,5 +1,4 @@
 <head>
-    <![CDATA[#protect 
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <title><%= params[:page].to_s.titleize %></title>
@@ -14,6 +13,7 @@
     <!-- scripts -->
     <link href="https://use.typekit.net/eyn5jyy.css" rel="stylesheet" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/69750d1513.js" crossorigin="anonymous"></script>
     <%= javascript_include_tag 'master' %>
 
     <!--[if lt IE 7 ]>
@@ -22,8 +22,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag 'master', media: 'all' %>
-    <link rel="preload" href="https://www.chapman.edu/_files/img/hero-panels/fallback-images/masthead-wave-gradient.png"
-        as="image">
+
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -89,5 +88,4 @@
             })
             (window, document, 'script', 'dataLayer', 'GTM-MSC27D');
     </script>
-    #protect]]>
 </head>
