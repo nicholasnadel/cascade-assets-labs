@@ -28,7 +28,7 @@
   display: -ms-grid;
   align-content: center;
 
-  .slick-slider {
+  &.slick-slider {
     display: grid !important;
   }
 
