@@ -148,8 +148,8 @@
     }
 
     &__button {
-        --marginTop: 20px;
-        --marginBottom: 20px;
+
+
 
         width: 100%;
         height: 5rem;
@@ -159,8 +159,8 @@
         grid-column-start: 1;
         grid-column-end: 4;
         display: none;
-        margin-top: var(--marginTop);
-        margin-bottom: var(--marginBottom);
+
+
 
         &--sand,
         &--white {
