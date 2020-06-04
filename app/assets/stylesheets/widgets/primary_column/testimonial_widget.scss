@@ -9,6 +9,7 @@
     padding-top: 12px;
     padding-bottom: 15px;
 
+
     &:hover {
       background-color: lighten($bg, 8%);
       transition: all 0.3s ease;
@@ -27,8 +28,9 @@
   display: grid;
   display: -ms-grid;
   align-content: center;
+  min-height: 306px;
 
-  .slick-slider {
+  &.slick-slider {
     display: grid !important;
   }
 
