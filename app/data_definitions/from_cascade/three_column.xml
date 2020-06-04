@@ -196,6 +196,7 @@
 				<dropdown-item show-fields="primaryContent/widget/html-block" value="Html Block"/>
 				<dropdown-item show-fields="primaryContent/widget/contact" value="Department Contact Info"/>
 				<dropdown-item show-fields="primaryContent/widget/degree" value="Degree Info"/>
+				<dropdown-item show-fields="primaryContent/widget/photoCalloutWidget" value="Photo Callout"/>
 				<dropdown-item show-fields="primaryContent/widget/next-steps-widget" value="Next Steps"/>
 			</text>
 			<group collapsed="true" identifier="programEvents" label="Program Events">
