@@ -247,6 +247,13 @@ html {
         position: relative;
       }
 
+      #uninav__label-search {
+        display: inline;
+        z-index: -1;
+        position: absolute;
+
+      }
+
       ul {
         display: flex;
         justify-content: flex-end;
@@ -1031,13 +1038,9 @@ html {
         display: grid;
         align-content: center;
 
-        &--primary {
+        &--desktop {
           @include qbal-fade-exit;
-          animation-direction: forwards;
-
-          a {
-            display: none;
-          }
+          display: none;
         }
 
         &--mobile {

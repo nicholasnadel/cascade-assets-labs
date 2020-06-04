@@ -18,10 +18,17 @@ Rails.application.routes.draw do
   get 'uninav/home_page',      to: 'uninav#home_page'
   get 'uninav/schools_colleges',      to: 'uninav#schools_colleges'
   get 'uninav/our_faculty',    to: 'uninav#our_faculty'
-  get 'uninav/home_page', to: 'uninav#home_page'
   get 'uninav/a_z', to: 'uninav#a_z'
   get 'uninav/font-awesome', to: 'uninav#font_awesome'
   get 'uninav/law', to: 'uninav#law'
+  get 'uninav/diversity', to: 'uninav#diversity'
+  get 'uninav/about', to: 'uninav#about'
+  get 'uninav/disability', to: 'uninav#disability'
+  get 'uninav/undergrad', to: 'uninav#undergrad'
+  get 'uninav/grad', to: 'uninav#graduate'
+  get 'uninav/afford', to: 'uninav#afford'
+  get 'uninav/student-life', to: 'uninav#student_life'
+
 
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'

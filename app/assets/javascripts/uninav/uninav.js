@@ -119,6 +119,9 @@ function gs__customPlaceholder() {
 $(window).load(function () {
   $("#gsc-i-id1").on("input focus click", function () {
     gs__blurBg();
+
+    // Google Search Table - add aria role
+    $('table.gstl_50:not([role])').attr('role', 'presentation');
   });
 });
 $(window).on("load resize", function (e) {
@@ -157,7 +160,7 @@ function gs__mobileReveal() {
 
 
       $(searchButtonMobile).removeClass('uninav__hidden');
-      
+
       $(searchInputDesktop).removeClass('uninav__reveal');
       $(searchButtonMobile).removeClass('uninav__hidden');
       $(searchInputDesktop).find('input').val('');

@@ -32,4 +32,22 @@ class UninavController < ApplicationController
 
   def font_awesome 
   end
+
+  def diversity
+  end
+
+  def about
+  end
+
+  def undergrad
+  end
+
+  def afford
+  end
+
+  def graduate
+  end
+
+  def student_life
+  end
 end
