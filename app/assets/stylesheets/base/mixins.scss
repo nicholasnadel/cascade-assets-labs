@@ -965,6 +965,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
 
 // Ripple effect for clicks (https://codepen.io/finnhvman/post/pure-css-ripple-with-minimal-effort)
 @mixin ripple($focus-color, $active-color) {
