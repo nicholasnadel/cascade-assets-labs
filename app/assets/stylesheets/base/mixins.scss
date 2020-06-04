@@ -547,16 +547,25 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background-image: -webkit-linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1) 0%);
 }
 
+
+
 // button mixin
 @mixin button-bg($bg) {
   --padding: 15px;
+  --border-radius: 4px;
+  --font-weight: 400;
+  --font-size: 2rem;
+  --font-family: 400;
+  --padding-top: 10px;
+  --padding-bottom: 15px;
+
   background-color: $bg;
-  border-radius: 4px;
-  font-size: 2rem;
-  font-family: $futura-regular;
-  font-weight: 400;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  font-family: var(--futura-regular);
+  font-weight: var(--font-weight);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
   @include dc($bg);
 
   &:hover {
@@ -956,4 +965,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+
+// Ripple effect for clicks (https://codepen.io/finnhvman/post/pure-css-ripple-with-minimal-effort)
+@mixin ripple($focus-color, $active-color) {
+  background-position: center;
+  transition: background 0.5s;
+
+  &:hover {
+    background: $focus-color radial-gradient(circle, transparent 1%, $focus-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $active-color;
+    background-size: 100%;
+    transition: background 0s;
+  }
+
 }
