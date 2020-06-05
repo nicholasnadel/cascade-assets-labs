@@ -80,7 +80,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
   @if $point==s {
-
     // Mobile
     @media (min-width: 420px) {
       @content;
@@ -88,7 +87,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==sx {
-
     // Mobile
     @media (max-width: 420px) {
       @content;
@@ -99,7 +97,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
   @if $point==m {
-
     // Medium
     @media (min-width: 780px) {
       @content;
@@ -107,7 +104,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==mx {
-
     // Medium
     @media (max-width: 767px) {
       @content;
@@ -115,7 +111,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==l {
-
     // Large
     @media (min-width: 1024px) {
       @content;
@@ -123,7 +118,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==lx {
-
     // Large
     @media (max-width: 1024px) {
       @content;
@@ -131,7 +125,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xl {
-
     // Extra-Large
     @media (min-width: 1200px) {
       @content;
@@ -139,7 +132,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xlx {
-
     // Extra-Large
     @media (max-width: 1200px) {
       @content;
@@ -147,7 +139,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-min {
-
     // Uses variable breakpoint.
     @media (min-width: #{$val}) {
       @content;
@@ -155,7 +146,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-max {
-
     // Uses variable breakpoint.
     @media (max-width: #{$val}) {
       @content;
@@ -216,9 +206,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
-  }
-
-  @else {
+  } @else {
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
@@ -234,7 +222,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin opacity($i) {
   $forie: $i * 100;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+ $forie + ")";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $forie + ")";
   filter: alpha(opacity=$forie);
   opacity: $i;
 }
@@ -255,11 +243,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-top: 12px;
   margin-bottom: 24px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -278,11 +264,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 32px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -294,11 +278,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-size: 22px;
   line-height: 26px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -317,11 +299,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 18px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -332,11 +312,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 14px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -491,7 +469,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-transform: uppercase;
 }
 
-// the variable mixin takes a property and variable name 
+// the variable mixin takes a property and variable name
 // and an optional override to hide the fallback
 @mixin v($prop, $var, $show-fall: true) {
   // get the property's map name(s)
@@ -503,7 +481,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   $var-output: null;
 
   // if a list, we need to go deeper
-  @if type-of($map-name)==list {
+  @if type-of($map-name) ==list {
     $nest-name: nth($map-name, 1);
     $nest-map-name: nth($map-name, 2);
   }
@@ -518,9 +496,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     $var-fall: map-get($nest-map, $var);
     // our css4 variable output
     $var-output: var(--#{$nest-name}-#{$nest-map-name}-#{$var});
-  }
-
-  @else {
+  } @else {
     // get the map from map name
     $map: map-get($var-maps, $map-name);
     // fallback value, grab the variable's value from the map
@@ -546,8 +522,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   background-image: linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1) 0%);
   background-image: -webkit-linear-gradient(to right, $color 10%, rgba(165, 0, 52, 1) 0%);
 }
-
-
 
 // button mixin
 @mixin button-bg($bg) {
@@ -587,9 +561,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @function text($bg) {
   @if (lightness($bg) > 50) {
     @return $panther-black;
-  }
-
-  @else {
+  } @else {
     @return $white;
   }
 }
@@ -679,7 +651,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         transition: all 0.175s ease-in-out;
         animation-delay: -0.75ms;
 
-        &+.toggle-drilldown {
+        & + .toggle-drilldown {
           @include v(color, cu-red);
 
           .fa-chevron-right {
@@ -711,7 +683,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-moz-keyframes fadein {
-
             /* Firefox */
             from {
               opacity: 0;
@@ -723,7 +694,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-webkit-keyframes fadein {
-
             /* Safari and Chrome */
             from {
               opacity: 0;
@@ -735,7 +705,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-o-keyframes fadein {
-
             /* Opera */
             from {
               opacity: 0;
@@ -965,6 +934,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
 
 // Ripple effect for clicks (https://codepen.io/finnhvman/post/pure-css-ripple-with-minimal-effort)
 @mixin ripple($focus-color, $active-color) {
@@ -980,5 +950,4 @@ ORDER: Base + typography > general layout + grid > page layout > components
     background-size: 100%;
     transition: background 0s;
   }
-
 }

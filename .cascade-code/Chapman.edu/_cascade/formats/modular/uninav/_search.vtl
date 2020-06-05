@@ -6,6 +6,7 @@
                 opacity: 1 !important;
                 box-shadow: none !important;
             }
+
         </style>
     #end
     #if ($pagePath.contains('navsNoJs'))
@@ -60,6 +61,11 @@
             margin-top: 1rem;
             margin-bottom: 1rem;
         }
+                    .uninav__search-input label {
+    visibility: hidden;
+    position: absolute;
+    z-index: -999;
+}
     </style>
     <li class="uninav__search-button--mobile" id="uninav__search-button--mobile"></li>
     <div class="uninav__search-input uninav__search-input--desktop">
