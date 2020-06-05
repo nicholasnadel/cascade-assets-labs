@@ -473,6 +473,8 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
   border-color: gray;
+  overflow: auto;
+  height: auto;
 
   button,
   input {
