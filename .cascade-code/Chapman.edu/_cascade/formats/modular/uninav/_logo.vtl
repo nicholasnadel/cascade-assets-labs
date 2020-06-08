@@ -1,39 +1,75 @@
-## LOGO:
-#set ( $logoContainer = $_XPathTool.selectSingleNode($contentRoot, "/system-data-structure/omninav/logo") )
+#set ( $pagePath = $currentPage.path )
+<span class="uninav__utility-nav--search-wrapper">
+    #if ($pagePath.contains('header_latest'))
+        <style>
+            .gsc-input {
+                opacity: 1 !important;
+                box-shadow: none !important;
+            }
+            .uninav__search-input label {
+    visibility: hidden;
+    position: absolute;
+    z-index: -999;
+}
+        </style>
+    #end
+    #if ($pagePath.contains('navsNoJs'))
+        <style>
+            .uninav__utility-nav--search-wrapper {
+                display: none;
+            }
+        </style>
+    #end 
 
+    <style>
+    input.gsc-input {
+      opacity: 1 !important;
+    }
+        .gssb_c,
+        .gssb_c[style] {
+            z-index: 99999999999999999999999;
+        }
 
-#set ($linkTitle = $logoContainer.getChild('title').value )
-#set ( $menuID = $linkTitle.replaceAll(" ", "-").replaceAll("[^a-zA-Z-]", "").replaceAll("--", "-").toLowerCase() )
-#set ($linkType = $logoContainer.getChild('linkType').value )
-#if ($linkType == 'Internal Link')
-    #set ($linkURL = $logoContainer.getChild('internalLink').getChild('path').value )
-#elseif ($linkType == 'External Link')
-    #set ($linkURL = $logoContainer.getChild('externalLink').value )
-#else 
-    #set ($linkURL = $logoContainer.getChild('fileLink').getChild('path').value )
-#end
-#set ($iconType = $logoContainer.getChild('icon').value )
+        #gsc-i-id1 {
+            font-family: "futura-pt", Arial, sans-serif;
+        }
 
-#if ( $isUmbrellaCategory )
-  <div class="uninav__logo uninav__logo--contextual">
-#else 
-  <div class="uninav__logo">
-#end
-    <div class="uninav__logo--primary" id="uninav__logo--primary">
-          #if ($linkURL != '' && $linkURL != '/')
-              <a id="uninav-logo-${_EscapeTool.xml($menuID)}" href="site://Chapman.edu/${_EscapeTool.xml($linkURL)}" 
-                  title="${_EscapeTool.xml($linkTitle)}"
-                  #if ($iconType == "CSS Class" && $menuItem.getChild('icon_cssClass').value != "")
-                      class="icon icon-${_EscapeTool.xml($logoContainer.getChild('icon_cssClass').value)}"
-                  #end
-              >
-              #if ($iconType == "SVG" && $logoContainer.getChild('icon_svg').value != "")
-                  $logoContainer.getChild('icon_svg').value
-              #else
-                  ${_EscapeTool.xml($linkTitle)}
-              #end
-              </a>
-          #end
-      </div>
-  </div>
-## LOGO (END)
+        .gssb_c[style] .gsc-completion-container {
+            font-size: 1.2em;
+            font-family: "futura-pt", Arial, sans-serif !important;
+            margin-bottom: 2rem !important;
+        }
+
+        input#gsc-i-id1 {
+            height: 30px !important;
+            box-shadow: none !important;
+        }
+
+        .gsc-overflow-hidden ul li div {
+            text-align: left;
+        }
+
+        .gssb_e {
+
+            box-shadow: none;
+
+        }
+
+        .gstl_50.gssb_c {
+            display: block !important;
+        }
+
+        .gssb_a table,
+        .gssb_a table tr,
+        .gssb_a table tr td {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+    <li class="uninav__search-button--mobile" id="uninav__search-button--mobile"></li>
+    <div class="uninav__search-input uninav__search-input--desktop">
+     <label for="gsc-i-id1"><span class="sr-only">Search</span></label>
+        <script async="true" src="https://cse.google.com/cse.js?cx=015856566681218627934:2ndbiubovo4"></script>
+        <div class="gcse-search"></div>
+    </div>
+</span>
