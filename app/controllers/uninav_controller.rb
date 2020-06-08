@@ -50,4 +50,7 @@ class UninavController < ApplicationController
 
   def student_life
   end
+
+  def tuition
+  end
 end
