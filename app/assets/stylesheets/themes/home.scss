@@ -275,7 +275,6 @@ h6,
     background: #eaeaea;
 
     .third {
-      padding: 10px;
       padding-right: 0;
       overflow: hidden;
       -moz-box-sizing: border-box;
@@ -645,4 +644,43 @@ a.button.smc-cta {
   @include focus($white, $red-button-hover);
   transform: translateY(-5px);
   transition: 150ms;
+}
+
+
+
+/* master.css | http://localhost:5000/_assets/master.css */
+
+@media only screen and (min-width: 680px) {
+  .homepage .section .third {
+    /* float: left; */
+    /* width: 33%; */
+    width: auto;
+  }
+}
+
+/* Inline #19 | http://localhost:5000/uninav/home_page */
+
+.homepage-news__grid-wrapper {
+  width: 1130px;
+}
+
+.third {
+  background-color: white;
+}
+
+.undergraduate-card__text {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+/* Inline #19 | http://localhost:5000/uninav/home_page */
+
+.third {
+  height: max-content;
+}
+
+.story {
+  padding-bottom: 0;
+  margin-bottom: 0 !important;
 }

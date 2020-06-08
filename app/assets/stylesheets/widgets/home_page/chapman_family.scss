@@ -7,10 +7,13 @@
     .third {
       display: none;
     }
+
     .third:last-of-type {
       display: block;
     }
-    h2, .faux-h2 {
+
+    h2,
+    .faux-h2 {
       margin-top: 0;
       font-size: 24px;
     }
@@ -23,15 +26,20 @@
       .third {
         display: block;
       }
+
       .story {
         display: block;
+
         &.big .story-bg {
           min-height: 200px;
         }
       }
+
       .third:nth-of-type(3) {
         padding-left: 20px;
+        background-color: unset;
       }
+
       .heading {
         font-size: 40px;
         line-height: 40px;
