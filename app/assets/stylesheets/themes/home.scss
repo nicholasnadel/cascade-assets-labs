@@ -489,7 +489,7 @@ h6,
 
 /* End of file */
 
-/* master.css | http://localhost:5000/_assets/master.css */
+
 
 .homepage .section {
   /* background: #eaeaea; */
@@ -501,7 +501,7 @@ h6,
 }
 
 
-/* master.css | http://localhost:5000/_assets/master.css */
+
 
 .homepage .stories .story .story-bg {
   /* margin-top: 15px; */
@@ -512,7 +512,7 @@ h6,
   /* padding-left: 25px; */
 }
 
-/* Inline #19 | http://localhost:5000/uninav/home_page */
+
 
 .story_footer {}
 
@@ -544,9 +544,6 @@ h6,
   padding: 0 25px 0 25px;
 }
 
-
-/* Inline #19 | http://localhost:5000/uninav/home_page */
-
 .announcement.news-loaded {
   padding: unset !important;
 }
@@ -556,8 +553,6 @@ h6,
   padding-right: 0;
 }
 
-
-/* Inline #19 | http://localhost:5000/uninav/home_page */
 
 .details {
   display: grid;
@@ -592,7 +587,6 @@ h6,
 }
 
 
-/* Inline #19 | http://localhost:5000/uninav/home_page */
 
 .arrow-right {
   display: flex;
@@ -607,10 +601,6 @@ h6,
 }
 
 
-
-/* Inline #19 | http://localhost:5000/uninav/home_page */
-
-.smc-cta {}
 
 .arrow-right {
   display: grid;
@@ -632,7 +622,6 @@ h6,
   font-size: 1.6rem;
   min-width: 272px;
   @include focus($white, $red-button-hover);
-  // transform: translateY(-5px);
 }
 
 a.button.smc-cta:hover {
@@ -640,12 +629,9 @@ a.button.smc-cta:hover {
   transition: 150ms linear;
 }
 
-/* master.css | http://localhost:5000/_assets/master.css */
 
 @media only screen and (min-width: 680px) {
   .homepage .section .third {
-    /* float: left; */
-    /* width: 33%; */
     width: auto;
   }
 }
@@ -660,8 +646,6 @@ a.button.smc-cta:hover {
   padding-right: 20px;
 }
 
-
-/* Inline #19 | http://localhost:5000/uninav/home_page */
 
 .third {
   height: max-content;
