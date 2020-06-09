@@ -494,6 +494,10 @@ h6,
 .homepage .section {
   /* background: #eaeaea; */
   background: var(--color-sand);
+
+  @media all and (-ms-high-contrast:none) {
+    background: $sand;
+  }
 }
 
 .announcement.news-loaded {
@@ -522,7 +526,7 @@ h6,
   display: grid;
   justify-content: left;
 
-  .ie {
+  @media all and (-ms-high-contrast:none) {
     display: block;
   }
 }
@@ -542,6 +546,10 @@ h6,
   display: grid;
   align-content: center;
   padding: 0 25px 0 25px;
+
+  @media all and (-ms-high-contrast:none) {
+    display: block;
+  }
 }
 
 .announcement.news-loaded {
@@ -561,11 +569,43 @@ h6,
   margin: unset !important;
   align-content: start;
   margin-top: 30px !important;
+
+  @media all and (-ms-high-contrast:none) {
+    display: block;
+  }
+}
+
+.tag {
+  @media all and (-ms-high-contrast:none) {
+    display: block;
+    margin-left: 25px;
+  }
 }
 
 .homepage-news__grid-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+
+  @media all and (-ms-high-contrast:none) {
+    display: -ms-grid;
+
+    >.third {
+      &:first-child {
+        -ms-grid-column: 1;
+        margin-right: 20px;
+      }
+
+      &:nth-child(2n) {
+        -ms-grid-column: 2;
+        margin-right: 20px;
+      }
+
+      &:nth-child(3n) {
+        -ms-grid-column: 3;
+        margin-right: 20px;
+      }
+    }
+  }
 }
 
 .third.news-loaded {
@@ -584,6 +624,10 @@ h6,
   grid-template-columns: 1fr .5fr;
   align-items: end;
   justify-items: end;
+
+  @media all and (-ms-high-contrast:none) {
+    display: block;
+  }
 }
 
 
@@ -606,10 +650,18 @@ h6,
   display: grid;
   align-self: end;
   align-content: end;
+
+  @media all and (-ms-high-contrast:none) {
+    display: block;
+  }
 }
 
 .smc-cta {
   display: grid;
+
+  @media all and (-ms-high-contrast:none) {
+    display: block;
+  }
 }
 
 
@@ -691,4 +743,19 @@ p#featured-description {
   padding-bottom: 3px;
   text-decoration: none;
   fill: var(--color-cu-red);
+}
+
+
+.ie {
+
+
+  .smc-cta {
+    display: -ms-grid;
+    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    align-self: flex-end;
+  }
+
 }

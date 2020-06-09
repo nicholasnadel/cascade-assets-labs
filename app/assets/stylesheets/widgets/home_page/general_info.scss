@@ -15,6 +15,10 @@
   #generalInformation {
     .homepage-news__grid-wrapper {
       grid-template-columns: repeat(3, 1fr);
+
+      @media all and (-ms-high-contrast:none) {
+        display: block;
+      }
     }
 
     .undergraduate-card__text {
@@ -36,6 +40,10 @@
   #generalInformation {
     .homepage-news__grid-wrapper {
       grid-template-columns: repeat(1, 1fr);
+
+      @media all and (-ms-high-contrast:none) {
+        display: block;
+      }
     }
 
     .undergraduate-card__text {

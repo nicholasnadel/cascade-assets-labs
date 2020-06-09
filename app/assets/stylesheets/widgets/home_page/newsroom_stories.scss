@@ -3,6 +3,12 @@
   #featured_newsroom_stories {
     padding-bottom: 40px;
 
+    @media all and (-ms-high-contrast:none) {
+      .third {
+        width: 95% !important;
+      }
+    }
+
     .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
       width: 40px;
       height: 40px;
