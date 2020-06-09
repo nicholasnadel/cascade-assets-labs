@@ -195,10 +195,8 @@
     .story {
       width: 100%;
       margin-bottom: 15px;
-      border: 1px solid #d8d8d8;
       color: $cu-red;
-      background: #FFFFFF;
-      box-shadow: 0 rgba(0, 0, 0, 0.1);
+      background: $white;
       border-radius: 3px;
 
       .story_footer {

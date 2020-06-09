@@ -226,6 +226,7 @@ h6,
     }
 
     .actions {
+      margin-top: 20px;
       padding-top: 20px;
       text-align: center;
       clear: both;
@@ -634,19 +635,21 @@ h6,
 }
 
 
-a.button.smc-cta {
+#featured_newsroom_stories a.button.smc-cta {
   background-color: var(--color-cu-red);
   color: var(--color-white);
   text-transform: uppercase;
   font-family: $futura-regular;
   font-weight: 800;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   @include focus($white, $red-button-hover);
-  transform: translateY(-5px);
+  // transform: translateY(-5px);
   transition: 150ms;
 }
 
-
+a.button.smc-cta:hover {
+  transform: translateY(-2px);
+}
 
 /* master.css | http://localhost:5000/_assets/master.css */
 
