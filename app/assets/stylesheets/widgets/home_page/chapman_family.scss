@@ -15,7 +15,7 @@
     h2,
     .faux-h2 {
       margin-top: 0;
-      font-size: 24px;
+      line-height: 2.4rem;
     }
 
     @include respond(tab-port) {
@@ -89,8 +89,8 @@
       }
 
       .heading {
-        font-size: 40px;
-        line-height: 40px;
+        font-size: 4.0rem;
+        line-height: 4.0rem;
       }
     }
   }

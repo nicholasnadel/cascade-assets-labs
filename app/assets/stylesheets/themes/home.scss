@@ -179,14 +179,14 @@ h6,
     position: relative;
 
     .heading {
-      font-size: 34px;
-      line-height: 34px;
+      font-size: 3.4rem;
+      font-size: 3.4rem;
       margin: 0 15px 15px;
     }
 
     .subheading {
-      font-size: 22px;
-      line-height: 22px;
+      font-size: 2.2rem;
+      font-size: 2.2rem;
       text-transform: none;
       margin: 0;
       font-weight: 400;
@@ -292,8 +292,8 @@ h6,
         font-weight: 800;
         padding: 0;
         margin: 0 0 10px 0;
-        font-size: 18px;
-        line-height: 18px;
+        font-size: 1.8rem;
+        font-size: 1.8rem;
       }
 
       img {
@@ -329,13 +329,13 @@ h6,
   .homepage {
     .section {
       .heading {
-        font-size: 42px;
-        line-height: 42px;
+        font-size: 4.2rem;
+        line-height: 4.2rem;
       }
 
       .subheading {
-        font-size: 26px;
-        line-height: 34px;
+        font-size: 2.6rem;
+        font-size: 3.4rem;
       }
 
       &.light-bg {
@@ -356,13 +356,13 @@ h6,
       padding: 60px 0;
 
       .heading {
-        font-size: 62px;
-        line-height: 62px;
+        font-size: 6.2rem;
+        line-height: 6.2rem;
       }
 
       .subheading {
-        font-size: 28px;
-        line-height: 40px;
+        line-height: 2.8rem;
+        line-height: 4.0rem;
       }
 
       &.light-bg {
@@ -388,13 +388,13 @@ h6,
       padding: 75px 0;
 
       .heading {
-        font-size: 68px;
-        line-height: 68px;
+        font-size: 6.8rem;
+        line-height: 6.8rem;
       }
 
       .subheading {
-        font-size: 40px;
-        line-height: 48px;
+        line-height: 4.0rem;
+        line-height: 4.8rem;
       }
     }
   }
@@ -668,11 +668,6 @@ a.button.smc-cta:hover {
   }
 }
 
-/* Inline #19 | http://localhost:5000/uninav/home_page */
-
-.homepage-news__grid-wrapper {
-  // width: 1130px;
-}
 
 .third {
   background-color: white;
