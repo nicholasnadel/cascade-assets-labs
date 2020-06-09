@@ -27,6 +27,7 @@ h6,
 
 .homepage {
   a.button {
+    height: 54px;
     @include transition(background-color);
 
     &:hover {
@@ -71,6 +72,12 @@ h6,
       }
     }
   }
+
+
+  .undergraduate-card__text {
+    @include qbal-slideUp-enter;
+  }
+
 
   .maxWidth {
     margin: 0 15px;
@@ -180,7 +187,7 @@ h6,
 
     .heading {
       font-size: 3.4rem;
-      font-size: 3.4rem;
+      line-height: 3.4rem;
       margin: 0 15px 15px;
     }
 
@@ -237,6 +244,9 @@ h6,
         padding-left: 25px;
         padding-right: 25px;
         margin: 5px;
+        font-family: $futura-regular;
+        text-transform: uppercase;
+        font-weight: 800;
 
         .apply {
           background-image: image-url('file6_white_15.png');
@@ -506,9 +516,12 @@ h6,
   margin: unset;
   display: grid;
   justify-content: left;
+
+  .ie {
+    display: block;
+  }
 }
 
-.title {}
 
 .title {
   padding: unset;
@@ -582,24 +595,6 @@ h6,
   margin-top: 20px;
 }
 
-.svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
-  width: 30px;
-  height: 30px;
-  margin-right: 25px;
-  margin-bottom: 25px;
-  cursor: pointer;
-
-  path {
-    fill: var(--color-cu-red);
-  }
-
-  &:hover {
-    path {
-      fill: var(--color-red-hover);
-      transition: 150ms ease all;
-    }
-  }
-}
 
 
 .homepage-news__two-col {
@@ -712,4 +707,15 @@ a.button.smc-cta:hover {
 
 p#featured-description {
   color: var(--color-panther-black);
+  margin-top: 12px;
+}
+
+.wavy-underline {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  background-position: 0 23px;
+  background-size: auto 3px;
+  background-repeat: repeat-x;
+  padding-bottom: 3px;
+  text-decoration: none;
+  fill: var(--color-cu-red);
 }
