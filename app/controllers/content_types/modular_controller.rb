@@ -515,11 +515,8 @@ module ContentTypes
 
     def render_static_two_column_left_column
       # This reproduces content from the static sample version
-      format("%s %s %s",
-             render_static_partial("widgets/left_column/left_nav"),
-             render_static_partial("widgets/left_column/callout_2"),
-             render_static_partial("widgets/left_column/contact_profile"),
-             render_static_partial("widgets/left_column/news_event_left_col"))
+      format("%s",
+             render_static_partial("widgets/left_column/left_nav"))
     end
 
     # rubocop:disable Metrics/AbcSize

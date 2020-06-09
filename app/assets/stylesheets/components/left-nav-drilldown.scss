@@ -20,6 +20,12 @@
       list-style: none;
       font-family: "futura-pt", arial, sans-serif;
       will-change: background-color;
+
+      &:focus-within {
+        outline-color: $cu-red;
+        outline-style: auto;
+        outline-width: 5px;
+      }
     }
 
     @include drill-down-menu-style(100%);
