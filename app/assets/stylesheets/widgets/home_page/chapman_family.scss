@@ -17,8 +17,57 @@
       margin-top: 0;
       font-size: 24px;
     }
+
+    @include respond(tab-port) {
+
+      .third {
+        padding-left: 0;
+      }
+
+      .homepage-news__grid-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .homepage-story__text {
+        min-height: 200px;
+      }
+
+      .third.news-loaded:nth-child(3n) {
+        display: none;
+      }
+
+      .details {
+        margin-left: 20px !important;
+      }
+
+    }
+
+  }
+
+  @include respond(phone) {
+    #chapmanFamily {
+      .homepage-news__grid-wrapper {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .third {
+        padding: 20px;
+      }
+
+      .undergraduate-card__text {
+
+        min-height: unset;
+      }
+
+      .third.news-loaded:nth-child(3n) {
+        display: unset;
+      }
+    }
   }
 }
+
+
+
 
 @media only screen and (min-width: 680px) {
   .homepage {
@@ -36,7 +85,6 @@
       }
 
       .third:nth-of-type(3) {
-        padding-left: 20px;
         background-color: unset;
       }
 

@@ -10,6 +10,49 @@
   }
 }
 
+
+@include respond(tab-port) {
+  #generalInformation {
+    .homepage-news__grid-wrapper {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .undergraduate-card__text {
+
+      min-height: 570px;
+    }
+
+    .third.news-loaded:nth-child(3n) {
+      display: none;
+    }
+
+    .details {
+      margin-left: 20px !important;
+    }
+  }
+}
+
+@include respond(phone) {
+  #generalInformation {
+    .homepage-news__grid-wrapper {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .undergraduate-card__text {
+
+      min-height: unset;
+    }
+
+    .third.news-loaded:nth-child(3n) {
+      display: none;
+    }
+
+    .details {
+      margin-left: 20px !important;
+    }
+  }
+}
+
 @media only screen and (min-width: 680px) {
   #generalInformation {
     .heading {

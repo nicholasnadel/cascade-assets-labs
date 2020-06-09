@@ -270,6 +270,12 @@ h6,
           background-image: none, image-url('calendar4_white.svg');
         }
       }
+
+
+      @include respond(phone) {
+        margin-top: 0;
+        padding-top: 0;
+      }
     }
 
     overflow: auto;
@@ -514,7 +520,7 @@ h6,
 }
 
 .homepage-story__text {
-  height: 150px;
+  min-height: 150px;
   display: grid;
   align-content: center;
   padding: 0 25px 0 25px;
@@ -642,13 +648,14 @@ h6,
   font-family: $futura-regular;
   font-weight: 800;
   font-size: 1.6rem;
+  min-width: 272px;
   @include focus($white, $red-button-hover);
   // transform: translateY(-5px);
-  transition: 150ms;
 }
 
 a.button.smc-cta:hover {
   transform: translateY(-2px);
+  transition: 150ms linear;
 }
 
 /* master.css | http://localhost:5000/_assets/master.css */
@@ -664,7 +671,7 @@ a.button.smc-cta:hover {
 /* Inline #19 | http://localhost:5000/uninav/home_page */
 
 .homepage-news__grid-wrapper {
-  width: 1130px;
+  // width: 1130px;
 }
 
 .third {
@@ -686,4 +693,28 @@ a.button.smc-cta:hover {
 .story {
   padding-bottom: 0;
   margin-bottom: 0 !important;
+}
+
+@include respond(tab-port) {
+  .homepage-news__grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .third.news-loaded:nth-child(3n) {
+    display: none;
+  }
+
+  .details {
+    margin-left: 20px !important;
+  }
+}
+
+@include respond(phone) {
+  .undergraduate-card__text {
+    padding-top: 20px;
+  }
+}
+
+p#featured-description {
+  color: var(--color-panther-black);
 }
