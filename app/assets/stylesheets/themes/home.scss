@@ -74,6 +74,11 @@ h6,
   }
 
 
+  p {
+    font-family: $futura-regular;
+    font-size: 1.8rem;
+  }
+
   .undergraduate-card__text {
     @include qbal-slideUp-enter;
   }
@@ -384,8 +389,8 @@ h6,
       }
 
       .third h3 {
-        font-size: 24px;
-        line-height: 26px;
+        font-size: 2.4rem;
+        line-height: 2.6rem;
       }
     }
 
