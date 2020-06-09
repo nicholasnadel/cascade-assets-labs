@@ -563,24 +563,6 @@ h6,
   margin-top: 30px !important;
 }
 
-/* master.css | http://localhost:5000/_assets/master.css */
-
-.homepage #featured_newsroom_stories.editors-picks .maxWidth .announcement .details {
-  /* width: 30%; */
-  // width: 45%;
-}
-
-
-
-/* Inline #19 | http://localhost:5000/uninav/home_page */
-
-// .announcement.news-loaded {
-//   /* grid-template-columns: repeat\); */
-//   /* grid-template-columns: repeat3\); */
-//   display: grid !important;
-//   grid-template-columns: repeat(3, 1fr);
-// }
-
 .homepage-news__grid-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -696,6 +678,8 @@ a.button.smc-cta:hover {
 
   .details {
     margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: auto !important;
   }
 }
 

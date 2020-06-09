@@ -2,6 +2,26 @@
 
   #featured_newsroom_stories {
     padding-bottom: 40px;
+
+    .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
+      width: 40px;
+      height: 40px;
+      margin-right: 25px;
+      margin-bottom: 25px;
+      cursor: pointer;
+
+
+      path {
+        fill: var(--color-cu-red);
+        transition: 150ms linear;
+      }
+
+      &:hover {
+        path {
+          fill: var(--color-red-hover);
+        }
+      }
+    }
   }
 
   #featured_newsroom_stories.editors-picks .maxWidth {
