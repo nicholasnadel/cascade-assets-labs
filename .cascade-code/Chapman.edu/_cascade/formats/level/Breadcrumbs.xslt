@@ -31,11 +31,6 @@
 									<xsl:value-of select="//system-folder[@current]/display-name"/>
 								</li>
 							</xsl:when>
-							<xsl:when test="system-page[@current]/name = 'BA Psychology'">
-								<li>
-							        I really hate cascade
-							    </li>
-							</xsl:when>
 							<xsl:otherwise>
 								<li>
 									<span class="bullet ">

@@ -34,4 +34,15 @@
       display: none !important;
     }
   }
+
+  .sf-hidden {
+    opacity: 0;
+    animation-delay: 150ms;
+    animation: fadein 150ms forwards;
+    -moz-animation: fadein 150ms forwards;
+    -webkit-animation: fadein 150ms forwards;
+    -o-animation: fadein 150ms forwards;
+    animation-direction: forwards;
+    -webkit-animation: fadein 150ms forwards;
+  }
 }
