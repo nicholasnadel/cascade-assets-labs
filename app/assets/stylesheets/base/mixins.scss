@@ -80,7 +80,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
   @if $point==s {
-
     // Mobile
     @media (min-width: 420px) {
       @content;
@@ -88,7 +87,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==sx {
-
     // Mobile
     @media (max-width: 420px) {
       @content;
@@ -99,7 +97,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
   @if $point==m {
-
     // Medium
     @media (min-width: 780px) {
       @content;
@@ -107,7 +104,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==mx {
-
     // Medium
     @media (max-width: 767px) {
       @content;
@@ -115,7 +111,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==l {
-
     // Large
     @media (min-width: 1024px) {
       @content;
@@ -123,7 +118,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==lx {
-
     // Large
     @media (max-width: 1024px) {
       @content;
@@ -131,7 +125,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xl {
-
     // Extra-Large
     @media (min-width: 1200px) {
       @content;
@@ -139,7 +132,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==xlx {
-
     // Extra-Large
     @media (max-width: 1200px) {
       @content;
@@ -147,7 +139,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-min {
-
     // Uses variable breakpoint.
     @media (min-width: #{$val}) {
       @content;
@@ -155,7 +146,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
   }
 
   @if $point==wildcard-max {
-
     // Uses variable breakpoint.
     @media (max-width: #{$val}) {
       @content;
@@ -216,9 +206,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   @if $inset==false {
     -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
     box-shadow: $hoffset $voffset $blur $spread $color;
-  }
-
-  @else {
+  } @else {
     -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
     box-shadow: inset $hoffset $voffset $blur $spread $color;
   }
@@ -234,7 +222,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin opacity($i) {
   $forie: $i * 100;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+ $forie + ")";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $forie + ")";
   filter: alpha(opacity=$forie);
   opacity: $i;
 }
@@ -255,11 +243,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   margin-top: 12px;
   margin-bottom: 24px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -278,11 +264,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 32px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -294,11 +278,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-size: 22px;
   line-height: 26px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -317,11 +299,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 18px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -332,11 +312,9 @@ ORDER: Base + typography > general layout + grid > page layout > components
   font-family: $font-stack-heading;
   font-size: 14px;
 
-  @if type-of($weight)==string {
+  @if type-of($weight) ==string {
     font-weight: unquote($weight);
-  }
-
-  @else {
+  } @else {
     font-weight: $weight;
   }
 
@@ -491,7 +469,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
   text-transform: uppercase;
 }
 
-// the variable mixin takes a property and variable name 
+// the variable mixin takes a property and variable name
 // and an optional override to hide the fallback
 @mixin v($prop, $var, $show-fall: true) {
   // get the property's map name(s)
@@ -501,11 +479,13 @@ ORDER: Base + typography > general layout + grid > page layout > components
   $map: null;
   $var-fall: null;
   $var-output: null;
+
   // if a list, we need to go deeper
-  @if type-of($map-name) == list {
+  @if type-of($map-name) ==list {
     $nest-name: nth($map-name, 1);
     $nest-map-name: nth($map-name, 2);
   }
+
   // if it is a nested map
   @if $nest-name {
     // get the map from nested map-name
@@ -524,10 +504,12 @@ ORDER: Base + typography > general layout + grid > page layout > components
     // our css4 variable output
     $var-output: var(--#{$map-name}-#{$var});
   }
+
   // if show fallback is not overridden to be null
   @if $show-fall {
     #{$prop}: $var-fall;
   }
+
   // css4 variable output
   #{$prop}: $var-output;
 }
@@ -544,13 +526,20 @@ ORDER: Base + typography > general layout + grid > page layout > components
 // button mixin
 @mixin button-bg($bg) {
   --padding: 15px;
+  --border-radius: 4px;
+  --font-weight: 400;
+  --font-size: 2rem;
+  --font-family: 400;
+  --padding-top: 10px;
+  --padding-bottom: 15px;
+
   background-color: $bg;
-  border-radius: 4px;
-  font-size: 2rem;
-  font-family: $futura-regular;
-  font-weight: 400;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  font-family: var(--futura-regular);
+  font-weight: var(--font-weight);
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
   @include dc($bg);
 
   &:hover {
@@ -572,9 +561,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 @function text($bg) {
   @if (lightness($bg) > 50) {
     @return $panther-black;
-  }
-
-  @else {
+  } @else {
     @return $white;
   }
 }
@@ -641,6 +628,14 @@ ORDER: Base + typography > general layout + grid > page layout > components
     justify-content: space-between;
     @include v(border-bottom, solid-grey);
 
+    &:focus,
+    &:focus-within {
+      border: 2px dotted $cu-red;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
     a,
     .drill-down-parent {
       font-family: "futura-pt", arial, sans-serif;
@@ -656,7 +651,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         transition: all 0.175s ease-in-out;
         animation-delay: -0.75ms;
 
-        &+.toggle-drilldown {
+        & + .toggle-drilldown {
           @include v(color, cu-red);
 
           .fa-chevron-right {
@@ -688,7 +683,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-moz-keyframes fadein {
-
             /* Firefox */
             from {
               opacity: 0;
@@ -700,7 +694,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-webkit-keyframes fadein {
-
             /* Safari and Chrome */
             from {
               opacity: 0;
@@ -712,7 +705,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
           }
 
           @-o-keyframes fadein {
-
             /* Opera */
             from {
               opacity: 0;
@@ -813,7 +805,6 @@ ORDER: Base + typography > general layout + grid > page layout > components
         .drill-down-list-item {
           &:focus-within {
             outline-color: $cu-red;
-            outline-style: auto;
             outline-width: 5px;
           }
 
@@ -821,6 +812,8 @@ ORDER: Base + typography > general layout + grid > page layout > components
             &:focus-within {
               @include v(outline-color, panther-black);
               outline-style: auto;
+              outline-width: 5px;
+              outline-color: $cu-red;
               outline-width: 5px;
             }
           }
@@ -836,6 +829,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
         line-height: 1.6rem;
         font-family: $futura-regular;
         padding: 20px 15px 20px 20px;
+        border-color: var(--color-cu-white);
 
         .fas {
           margin-right: 2rem;
@@ -843,7 +837,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
         &:focus {
           outline-color: $cu-red;
-          outline-style: auto;
+          outline-style: none;
           outline-width: 5px;
         }
       }
@@ -932,5 +926,28 @@ ORDER: Base + typography > general layout + grid > page layout > components
 
   100% {
     box-shadow: 0 0 0 0 rgba(165, 0, 52, 0);
+  }
+}
+
+@mixin outline {
+  border: 2px dotted var(--color-cu-red);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// Ripple effect for clicks (https://codepen.io/finnhvman/post/pure-css-ripple-with-minimal-effort)
+@mixin ripple($focus-color, $active-color) {
+  background-position: center;
+  transition: background 0.5s;
+
+  &:hover {
+    background: $focus-color radial-gradient(circle, transparent 1%, $focus-color 1%) center/15000%;
+  }
+
+  &:active {
+    background-color: $active-color;
+    background-size: 100%;
+    transition: background 0s;
   }
 }
