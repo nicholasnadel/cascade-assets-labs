@@ -542,7 +542,7 @@ h6,
 }
 
 .homepage-story__text {
-  min-height: 150px;
+  min-height: 125px;
   display: grid;
   align-content: center;
   padding: 0 25px 0 25px;
@@ -585,6 +585,7 @@ h6,
 .homepage-news__grid-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  width: 100%;
 
   @media all and (-ms-high-contrast:none) {
     display: -ms-grid;

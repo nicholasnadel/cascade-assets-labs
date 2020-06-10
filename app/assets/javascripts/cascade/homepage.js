@@ -8,9 +8,21 @@
       cu_admission_area.initialize();
 
       heroModalViewer.initialize();
+
+      setGeneralInfoMinHeight();
     }
   });
 
+  function setGeneralInfoMinHeight() {
+    var minHeight = 0;
+
+    $('#generalInformation .third').each(function () {
+      var thisH = $(this).height();
+      if (thisH > minHeight) { minHeight = thisH; }
+    });
+
+    $('#generalInformation .third').height(minHeight);
+  }
   // A class to manage window resizer and scroller functions
   var cu_window_manager = {
     // Manual Configs
@@ -853,7 +865,7 @@ if (!Object.keys) {
 }
 // Array.forEach pollyfill for older IE
 if (!Array.prototype.forEach) {
-  Array.prototype.forEach = function (fun /*, thisp*/ ) {
+  Array.prototype.forEach = function (fun /*, thisp*/) {
     var len = this.length;
     if (typeof fun != 'function') throw new TypeError();
     var thisp = arguments[1];
