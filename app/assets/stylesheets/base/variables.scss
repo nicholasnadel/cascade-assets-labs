@@ -6,11 +6,18 @@ $utility-button-width: 60px;
 Typically, if a color is used more than once or twice,
 it should be added here as a variable. Changing the value
 of these variables will affect the colors sitewide. */
-$futura-regular: "futura-pt", Arial, sans-serif;
+$futura-regular: "futura-pt",
+Arial,
+sans-serif;
 $futura: $futura-regular;
-$futura-condensed: "futura-pt-condensed", Arial, sans-serif;
-$arial: Arial, sans-serif;
-$minion: "minion-pro", Arial, serif;
+$futura-condensed: "futura-pt-condensed",
+Arial,
+sans-serif;
+$arial: Arial,
+sans-serif;
+$minion: "minion-pro",
+Arial,
+serif;
 $font-stack-body: $arial;
 $font-stack-heading: $futura-regular;
 $font-stack-heading-emphasis: $futura-condensed;
@@ -34,6 +41,7 @@ $line-height: 2.4rem;
 $red-button-hover: #c8003f;
 $red-button-active: #88002b;
 $white: #ffffff;
+$white-hover: darken($white, 8%);
 $brown: #896d49;
 $teal: #25b6a5;
 $teal-hover: #24d4bf;
@@ -43,7 +51,7 @@ $teal2-light: #a6ddd1;
 $red: $cu-red;
 $red-secondary: lighten($red, 8%);
 $red-tertiary: darken($red, 8%);
-$red-hover: #ba183e;
+$red-hover: #ce0041;
 $red-active: #7f0026;
 $grey: #2f2f2f;
 $grey-hover: #4c4b45;
@@ -120,6 +128,7 @@ $cardinal: #a50034;
 $cardinal-alpha: rgba(165, 0, 52, .5);
 $pillar: #686259;
 $panther-black: #231f20;
+$white: rgba(255, 255, 255, 255);
 $white-alpha: rgba(255, 255, 240, 0.8);
 $white-alpha-50: rgba(255, 255, 240, 0.5);
 $panther-black-alpha: rgba($panther-black, 0.8);
@@ -153,8 +162,7 @@ $slate: #666;
 /* Borders */
 $solid-light-grey-border: 1px solid $cu-light-grey;
 
-$colors: (
-  cu-red: $cu-red,
+$colors: (cu-red: $cu-red,
   cu-red-rgb-transparent: $cu-red-rgb-transparent,
   cu-dark-red: $cu-dark-red,
   cu-off-white: $cu-off-white,
@@ -191,19 +199,19 @@ $colors: (
   sand: $sand,
   sand-alpha: rgba($sand, 0.8),
   slate: $slate,
-    /* These are colors of common elements or states. */
+  /* These are colors of common elements or states. */
   cu-font-color: $cu-font-color,
   cu-link-hover: $cu-link-hover,
   cu-link-down: $cu-dark-red,
   cu-form-shadow: $cu-form-shadow,
   cu-border: $cu-border,
-    /* These colors are specifically for the class "newbutton". */
+  /* These colors are specifically for the class "newbutton". */
   new-button-primary: $teal2-hover,
   new-button-secondary: $teal2,
   new-button-hover-primary: $teal2-light,
   new-button-hover-secondary: $teal2,
-    // Theme Specific Colors
-    /* These are theme specific colors. I moved them here
+  // Theme Specific Colors
+  /* These are theme specific colors. I moved them here
     to make it easier to edit the colors for each theme
     all in one place. Variables prefixed with "theme" are
     colors found in multiple themes. The others are specific
@@ -254,16 +262,11 @@ $colors: (
   law-secondary: $cardinal-hover,
 );
 
-$font: (
-  size: (
-    html: 62.5%,
+$font: (size: (html: 62.5%,
     body: 1.6rem,
   ),
-  leading: (
-    body: 2.4rem
-  ),
-  family: (
-    futura-regular: $futura-regular,
+  leading: (body: 2.4rem),
+  family: (futura-regular: $futura-regular,
     futura: $futura-regular,
     futura-condensed: $futura-condensed,
     arial: $arial,
@@ -274,8 +277,7 @@ $font: (
   ),
 );
 
-$spaces: (
-  uninav-div-height: $uninav-div-height,
+$spaces: (uninav-div-height: $uninav-div-height,
   utility-button-width: $utility-button-width,
   base-spacing: $base-spacing,
   widget-margin-top: $widget-margin-top,
@@ -290,65 +292,67 @@ $spaces: (
   zIndexTopmost: $zIndexTopmost,
   smallImgSize: $smallImgSize,
   standardPadding: $standardPadding,
-  mastheadVideoHeight: $mastheadVideoHeight
-);
+  mastheadVideoHeight: $mastheadVideoHeight);
 
-$borders: (
-  red-dots: $red-dots,
+$borders: (red-dots: $red-dots,
   solid-grey: $solid-light-grey-border,
   medium-solid-panther-black: 3px solid $panther-black,
-  cu-red: $cu-red
-);
+  cu-red: $cu-red);
 
-$var-maps: (
-  color: $colors,
+$var-maps: (color: $colors,
   font: $font,
   space: $spaces,
-  border: $borders
-);
+  border: $borders);
 
-$props: (
-  background:       color,
+$props: (background: color,
   background-color: color,
-  color:            color,
-  outline-color:    color,
-  border:           border,
-  border-right:     border,
-  border-top:       border,
-  border-bottom:    border,
-  border-left:      border,
-  margin:           space,
-  margin-bottom:    space,
-  margin-top:       space,
-  margin-right:     space,
-  padding:          space,
-  padding-top:      space,
-  padding-bottom:   space,
-  padding-right:    space,
-  padding-left:     space,
-  height:           space,
-  width:            space,
-  font-family:      (font, family),
-  font-size:        (font, size),
-  font-weight:      (font, weight),
-  line-height:      (font, leading),
-  z-index:          space
-);
+  color: color,
+  outline-color: color,
+  border: border,
+  border-right: border,
+  border-top: border,
+  border-bottom: border,
+  border-left: border,
+  margin: space,
+  margin-bottom: space,
+  margin-top: space,
+  margin-right: space,
+  padding: space,
+  padding-top: space,
+  padding-bottom: space,
+  padding-right: space,
+  padding-left: space,
+  height: space,
+  width: space,
+  font-family: (font, family),
+  font-size: (font, size),
+  font-weight: (font, weight),
+  line-height: (font, leading),
+  z-index: space);
 
 // css vars
 :root {
+
   // for each variable map
-  @each $var-map-name, $var-map in $var-maps {
+  @each $var-map-name,
+  $var-map in $var-maps {
+
     // for each variable in the variable map
-    @each $var, $val in $var-map {
+    @each $var,
+    $val in $var-map {
+
       // if it is a map, go another level deep
-      @if type-of($val) == map {
+      @if type-of($val)==map {
+
         // each in the map
-        @each $var-n, $val-n in $val {
+        @each $var-n,
+        $val-n in $val {
           // do the definition
           #{--$var-map-name}-#{$var}-#{$var-n}: $val-n;
         }
-      } @else {
+      }
+
+      @else {
         // do the definition
         #{--$var-map-name}-#{$var}: $val;
       }

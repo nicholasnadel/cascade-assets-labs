@@ -269,6 +269,13 @@ html {
         position: relative;
       }
 
+      #uninav__label-search {
+        display: inline;
+        z-index: -1;
+        position: absolute;
+
+      }
+
       ul {
         display: flex;
         justify-content: space-between;
@@ -1060,13 +1067,9 @@ html {
         align-content: center;
         width: auto;
 
-        &--primary {
+        &--desktop {
           @include qbal-fade-exit;
-          animation-direction: forwards;
-
-          a {
-            display: none;
-          }
+          display: none;
         }
 
         &--mobile {
