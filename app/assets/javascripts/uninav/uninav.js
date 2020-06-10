@@ -133,12 +133,6 @@ function gs__mobileReveal() {
     $('#uninav').addClass('utility-only');
     $('.uninav__logo, .uninav__hamburger-menu').addClass('logo--underneath');
 
-    // $('.uninav__cta--wrapper').css('z-index', '-999');
-    // $('.uninav__cta--wrapper').css('position', 'absolute');
-    // $('.uninav__cta--wrapper').css('opacity', '0');
-    // $('.uninav__logo--secondary').hide();
-    // $('.uninav__cta--wrapper').addClass('cta--underneath');
-
     $(searchInputDesktop).addClass('uninav__reveal').addClass('slide-left');
     $("#gsc-i-id1").focus();
     $('.gsst_a').show()
@@ -147,10 +141,7 @@ function gs__mobileReveal() {
       $('#uninav').removeClass('utility-only');
       $(searchInputDesktop).removeClass('uninav__reveal');
       $('.uninav__logo, .uninav__hamburger-menu').removeClass('logo--underneath');
-      // $('.uninav__cta').show();
       $('.uninav__cta--wrapper').removeClass('cta--underneath');
-
-      // $('.uninav__logo--secondary').show();
       $('.uninav__cta--wrapper').css('z-index', 'initial');
       $('.uninav__cta--wrapper').css('position', 'initial');
       $('.uninav__cta--wrapper').css('opacity', 'initial');
