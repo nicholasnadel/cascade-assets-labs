@@ -305,11 +305,11 @@
         }
 
         .off-canvas-utility>li.drill-down-list-item {
-          background-color: #242020;
+          background-color: #DDD;
 
           &>.drill-down-parent, a, .toggle-drilldown { 
-            color: white;
-            font-weight: bold;
+            color: $black;
+            font-weight: normal;
           }
 
           .drilldown-menu.active a {
