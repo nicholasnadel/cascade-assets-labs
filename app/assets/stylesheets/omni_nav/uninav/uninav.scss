@@ -165,6 +165,7 @@ html {
       align-content: center;
       align-items: center;
       margin-left: auto;
+      border-bottom: none;
       
       @include respond(tab-land) {
         width: 10%;
@@ -182,7 +183,7 @@ html {
 
           a {
             @include futura-pt;
-            margin: 0 5px;
+            margin: 0 7px;
             display: block;
             text-align: center;
             font-size: 1.4rem;
@@ -199,6 +200,11 @@ html {
               }
             }
           }
+
+          &:last-child {
+            padding-right: 1rem;
+          }
+          
         }
       }
     }
@@ -732,7 +738,7 @@ html {
     }
 
     #uninav__cta {
-      @include uninav-border-bottom;
+      // @include uninav-border-bottom;
       @include qbal-drop-enter;
     }
   }
