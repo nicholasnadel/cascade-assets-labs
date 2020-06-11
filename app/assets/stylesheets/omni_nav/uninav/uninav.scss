@@ -48,7 +48,11 @@ html {
     padding-top: $uninav-div-height;
   }
 
+
   .uninav {
+    uninav-logo--mobile {
+      display: none;
+    }
 
     &__logo,
     #uninav-logo .chapman-logo {
@@ -1021,6 +1025,10 @@ html {
 }
 
 @include respond(phone) {
+  #uninav__logo--primary {
+    display: none;
+  }
+
   #uninav {
     grid-template-columns: 10% 2fr 1fr;
     grid-gap: 10px;
