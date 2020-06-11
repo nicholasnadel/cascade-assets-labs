@@ -12,9 +12,6 @@
 
     <!-- scripts -->
     <link href="https://use.typekit.net/eyn5jyy.css" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/69750d1513.js" crossorigin="anonymous"></script>
-    <%= javascript_include_tag 'master' %>
 
     <!--[if lt IE 7 ]>
     <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
@@ -22,6 +19,9 @@
     <![endif]-->
 
     <%= stylesheet_link_tag 'master', media: 'all' %>
+    <link rel="preload" href="https://www.chapman.edu/_files/img/hero-panels/fallback-images/masthead-wave-gradient.png"
+        as="image">
+        <script crossorigin="anonymous" src="https://kit.fontawesome.com/69750d1513.js"></script>
 
     <script>
         window.fbAsyncInit = function () {

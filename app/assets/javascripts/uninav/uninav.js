@@ -117,9 +117,14 @@ function gs__customPlaceholder() {
 }
 // TODO: iOS style frosted/blurred background. CSS filter: blur(2px) performance is terrible
 $(window).load(function () {
-  $("#gsc-i-id1").on("input focus click", function () {
-    gs__blurBg();
-  });
+  if ($('table.gstl_50').length) {
+    $('table.gstl_50:not([role])').attr('role', 'presentation');
+    $("#gsc-i-id1").on("input focus click", function () {
+      gs__blurBg();
+      // Google Search Table - add aria role
+      $('table.gstl_50:not([role])').attr('role', 'presentation');
+    });
+  }
 });
 $(window).on("load resize", function (e) {
   gs__mobileReveal();
@@ -133,12 +138,6 @@ function gs__mobileReveal() {
     $('#uninav').addClass('utility-only');
     $('.uninav__logo, .uninav__hamburger-menu').addClass('logo--underneath');
 
-    $('.uninav__cta--wrapper').css('z-index', '-999');
-    $('.uninav__cta--wrapper').css('position', 'absolute');
-    $('.uninav__cta--wrapper').css('opacity', '0');
-    // $('.uninav__logo--secondary').hide();
-    $('.uninav__cta--wrapper').addClass('cta--underneath');
-
     $(searchInputDesktop).addClass('uninav__reveal').addClass('slide-left');
     $("#gsc-i-id1").focus();
     $('.gsst_a').show()
@@ -147,17 +146,14 @@ function gs__mobileReveal() {
       $('#uninav').removeClass('utility-only');
       $(searchInputDesktop).removeClass('uninav__reveal');
       $('.uninav__logo, .uninav__hamburger-menu').removeClass('logo--underneath');
-      // $('.uninav__cta').show();
       $('.uninav__cta--wrapper').removeClass('cta--underneath');
-
-      // $('.uninav__logo--secondary').show();
       $('.uninav__cta--wrapper').css('z-index', 'initial');
       $('.uninav__cta--wrapper').css('position', 'initial');
       $('.uninav__cta--wrapper').css('opacity', 'initial');
 
 
       $(searchButtonMobile).removeClass('uninav__hidden');
-      
+
       $(searchInputDesktop).removeClass('uninav__reveal');
       $(searchButtonMobile).removeClass('uninav__hidden');
       $(searchInputDesktop).find('input').val('');
