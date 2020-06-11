@@ -8,15 +8,68 @@
       cu_admission_area.initialize();
 
       heroModalViewer.initialize();
-
       setGeneralInfoMinHeight();
+      animateOnScroll();
     }
 
-    AOS.init();
+    function animateOnScroll() {
+      $('#generalInformation h2').attr({
+        'data-aos': "fade-up",
+        'data-aos-duration': "500",
+      });
+
+      $('#generalInformation .third:first-of-type').attr({
+        'data-aos': "fade-left",
+        'data-aos-duration': "500"
+      });
+
+      $('#generalInformation .third:nth-child(2n)').attr({
+        'data-aos': "fade-left",
+        'data-aos-duration': "500",
+        'data-aos-delay': '100'
+      });
+
+      $('#generalInformation .third:nth-child(3n)').attr({
+        'data-aos': "fade-left",
+        'data-aos-duration': "500",
+        'data-aos-delay': "200"
+      });
+      // chapmanFamily
+
+      $('#chapmanFamily h2').attr({
+        'data-aos': "zoom-in-up",
+        'data-aos-duration': "500",
+      });
+
+      $('#chapmanFamily .third:first-of-type').attr({
+        'data-aos': "zoom-in-right",
+        'data-aos-duration': "500"
+      });
+
+      $('#chapmanFamily .third:nth-child(2n)').attr({
+        'data-aos': "zoom-in-up",
+        'data-aos-duration': "500"
+      });
+
+
+      $('#chapmanFamily .third:nth-child(3n)').attr({
+        'data-aos': "zoom-in-left",
+        'data-aos-duration': "500"
+      });
+
+      $('#accessibility-statement').attr({
+        'data-aos': "fade-up",
+        'data-aos-duration': "500",
+      });
+
+      AOS.init();
+    }
+
 
     // You can also pass an optional settings object
     // below listed default settings
     AOS.init({
+
       // Global settings:
       disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
       startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
@@ -36,7 +89,6 @@
       once: false, // whether animation should happen only once - while scrolling down
       mirror: false, // whether elements should animate out while scrolling past them
       anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-
     });
   });
 

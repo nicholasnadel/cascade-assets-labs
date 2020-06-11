@@ -513,15 +513,10 @@ h6,
 }
 
 .homepage .stories .story .tag:hover {
-  /* padding-left: 25px; */
+  padding-left: 5px;
 }
 
-
-
-.story_footer {}
-
 #story-1 {
-  padding: unset;
   margin: unset;
   display: grid;
   justify-content: left;
@@ -675,6 +670,10 @@ h6,
   font-size: 1.6rem;
   min-width: 272px;
   @include focus($white, $red-button-hover);
+}
+
+#featured_newsroom_stories a.button.smc-cta:hover {
+  transform: translateY(-5px);
 }
 
 a.button.smc-cta:hover {
