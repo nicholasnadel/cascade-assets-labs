@@ -315,10 +315,10 @@ $(window).on('load', function() {
 
   // FINDING IFRAME TWITTER WIDGET AND ADDING HANDLER FOR 
   $('#twitter-widget-0').contents().find('a').last().on('keydown', function(e) {
-    if (e.key === "Enter" || e.key === " ") {
-
+    var keyCode = e.keyCode || e.which
+    
+    if (keyCode === 9) {
       e.preventDefault();
-
       var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
 
       $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus();
@@ -329,8 +329,9 @@ $(window).on('load', function() {
 
   $('#twitter-widget-0').on('load', function() {
     $('#twitter-widget-0').contents().find('a').last().on('keydown', function(e) {
-      if (e.key === "Enter" || e.key === " ") {
+      var keyCode = e.keyCode || e.which
 
+      if (keyCode === 9) {
         e.preventDefault();
         var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
     
