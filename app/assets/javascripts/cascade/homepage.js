@@ -92,7 +92,7 @@
   }
 
   function setGeneralInfoMinHeight() {
-    var minHeight = 'max-content';
+    var minHeight = 'auto';
 
     if ($(window).width() < 600) {
       $('#generalInformation .third').attr('height', 'max-content');
