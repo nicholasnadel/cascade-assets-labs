@@ -205,6 +205,15 @@
         transition: 300ms ease all;
         min-height: 54px;
 
+        @media not all and (min-resolution:.001dpcm) {
+          @supports (-webkit-appearance:none) {
+
+            display: flex;
+            align-items: center;
+
+          }
+        }
+
         &:hover,
         &:focus,
         &:focus-within {
