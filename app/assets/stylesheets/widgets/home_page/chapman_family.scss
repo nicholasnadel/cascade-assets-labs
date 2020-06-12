@@ -29,7 +29,8 @@
       }
 
       .homepage-story__text {
-        min-height: 200px;
+        display: block;
+        margin-top: 20px;
       }
 
       .third.news-loaded:nth-child(3n) {
