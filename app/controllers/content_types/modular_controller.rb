@@ -508,11 +508,8 @@ module ContentTypes
 
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s",
-      render_static_partial("widgets/primary_content/testimonial_widget"),
-             render_static_partial("widgets/primary_content/three_photo_callout_1"),
-             render_static_partial("widgets/primary_content/logo_image_rotator_1"),
-             render_static_partial("widgets/primary_content/featured_news_events_feed_1"))
+      format("%s",
+      render_static_partial("widgets/primary_content/twitter_feed_1"))
     end
 
     def render_static_two_column_left_column

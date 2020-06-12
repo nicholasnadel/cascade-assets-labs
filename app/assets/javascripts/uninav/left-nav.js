@@ -130,6 +130,24 @@ $(document).ready(function() {
     }
   });
 
+  $('#twitter-widget-0').on('load', function() {
+    $('#twitter-widget-0').contents().find('a').last().on('focusout', function(e) {
+      e.preventDefault();
+
+      var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
+
+      $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
+
+      return
+
+    });
+  });
+
+  $('.middleRightContainer').on('focusout', function(e) {
+    debugger
+    console.log("HELLO WORLD", e);
+  })
+
   // DRILLS DOWN MENU ON ENTER OR SPACE BY ADDING LISTENER TO DRILL DOWN PARENT MENU LI
   $rootDrillDownNav.on('keydown', '.drill-down-parent', function(e) {
     if (e.key === "Enter" || e.key === " ") {
@@ -201,6 +219,11 @@ $(document).ready(function() {
 
     // DETERMINES IF FOCUS IS COMING FROM MIDDLE CONTAINER OR BEFORE LEFT NAV IF SO SETS IT TO EITHER FIRST ITEM IN MENU OR DRILLED DOWN MENU
     if ($('.middleRightContainer').find(e.relatedTarget).length) {
+      $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
+      return;
+    }
+
+    if ($('.breadcrumbs').find(e.relatedTarget).length) {
       $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
       return;
     }
@@ -289,5 +312,31 @@ $(document).ready(function() {
 
   moveOffCanvasToCurrentPathItem();
   resizeRootDrillDown();
+
+});
+
+$(window).on('load', function() {
+  var $rootDrillDownNav   = $('#left-column-navigation .root-left-nav');
+
+  $('#twitter-widget-0').contents().find('a').last().on('keydown', function(e) {
+    e.preventDefault();
+
+    var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
+
+    $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
+
+    return;
+  });
+
+  $('#twitter-widget-0').on('load', function() {
+    $('#twitter-widget-0').contents().find('a').last().on('keydown', function(e) {
+      e.preventDefault();
+      var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
+  
+      $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
+  
+      return;
+    });
+  });
 
 });
