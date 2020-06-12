@@ -143,11 +143,6 @@ $(document).ready(function() {
     });
   });
 
-  $('.middleRightContainer').on('focusout', function(e) {
-    debugger
-    console.log("HELLO WORLD", e);
-  })
-
   // DRILLS DOWN MENU ON ENTER OR SPACE BY ADDING LISTENER TO DRILL DOWN PARENT MENU LI
   $rootDrillDownNav.on('keydown', '.drill-down-parent', function(e) {
     if (e.key === "Enter" || e.key === " ") {
@@ -318,23 +313,29 @@ $(document).ready(function() {
 $(window).on('load', function() {
   var $rootDrillDownNav   = $('#left-column-navigation .root-left-nav');
 
+  // FINDING IFRAME TWITTER WIDGET AND ADDING HANDLER FOR 
   $('#twitter-widget-0').contents().find('a').last().on('keydown', function(e) {
-    e.preventDefault();
+    if (e.key === "Enter" || e.key === " ") {
 
-    var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
+      e.preventDefault();
 
-    $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
+      var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
+
+      $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus();
+    }
 
     return;
   });
 
   $('#twitter-widget-0').on('load', function() {
     $('#twitter-widget-0').contents().find('a').last().on('keydown', function(e) {
-      e.preventDefault();
-      var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
-  
-      $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus()
-  
+      if (e.key === "Enter" || e.key === " ") {
+
+        e.preventDefault();
+        var $drillDownFirstItem  = $rootDrillDownNav.find('.drilldown-menu.active').children('.menu-back');
+    
+        $drillDownFirstItem.length ? $drillDownFirstItem.focus() : $rootDrillDownNav.find('li').first().focus();
+      }
       return;
     });
   });
