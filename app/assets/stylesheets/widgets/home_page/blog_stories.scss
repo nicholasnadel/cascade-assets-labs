@@ -243,6 +243,10 @@
         margin: 0 20px 0 20px;
         font-size: 1.8rem;
 
+        @media all and (-ms-high-contrast:none) {
+          margin: 0;
+        }
+
         .beginning:after {
           content: "Ã¢â‚¬Â¦";
         }

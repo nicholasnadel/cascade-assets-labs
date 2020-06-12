@@ -530,6 +530,10 @@ h6,
 .title {
   padding: unset;
   margin: unset !important;
+
+  @media all and (-ms-high-contrast:none) {
+    margin: 0;
+  }
 }
 
 .story_footer {
