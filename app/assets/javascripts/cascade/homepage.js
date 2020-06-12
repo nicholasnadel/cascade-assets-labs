@@ -11,8 +11,10 @@
       setGeneralInfoMinHeight();
       animateOnScroll();
     }
+  });
 
-
+  $(window).on("resize", function (e) {
+    setGeneralInfoMinHeight();
   });
 
   function animateOnScroll() {
@@ -71,10 +73,15 @@
   function setGeneralInfoMinHeight() {
     var minHeight = 0;
 
-    $('#generalInformation .third').each(function () {
-      var thisH = $(this).height();
-      if (thisH > minHeight) { minHeight = thisH; }
-    });
+    if ($(window).width() < 600) {
+      $('#generalInformation .third').attr('height', 'max-content');
+    }
+    else {
+      $('#generalInformation .third').each(function () {
+        var thisH = $(this).height();
+        if (thisH > minHeight) { minHeight = thisH; }
+      });
+    }
 
     $('#generalInformation .third').height(minHeight);
   }
