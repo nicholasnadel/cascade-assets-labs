@@ -27,7 +27,9 @@ h6,
 
 .homepage {
   a.button {
-    height: 54px;
+    height: auto;
+    padding-top: 18px;
+    padding-bottom: 18px;
     @include transition(background-color);
 
     &:hover {
