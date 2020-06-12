@@ -52,6 +52,8 @@
         font-size: 2.2rem;
         line-height: 2.6rem;
         margin: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
       }
 
       .source {
@@ -243,10 +245,6 @@
         margin: 0 20px 0 20px;
         font-size: 1.8rem;
 
-        @media all and (-ms-high-contrast:none) {
-          margin: 0;
-        }
-
         .beginning:after {
           content: "Ã¢â‚¬Â¦";
         }
@@ -271,7 +269,6 @@
 
       .tag {
         display: inline-block;
-        padding: 0 10px 5px 0;
         margin: 0 0 0 0;
         color: #62605a;
         text-decoration: none;
@@ -282,12 +279,25 @@
         -o-transition: all 0.1s ease-out;
         transition: all 0.1s ease-out;
 
-        &:hover {
-          background: #d8d8d8;
-          color: #313131;
-          padding-left: 5px;
+
+        &:hover,
+        &:focus,
+        &:focus-within {
+          color: var(--color-panther-black);
+
+          span.wavy-underline {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+            background-position: 0 18px;
+            background-size: auto 3px;
+            background-repeat: repeat-x;
+            padding-bottom: 5ffpx;
+            text-decoration: none;
+            fill: var(--color-cu-red);
+          }
         }
       }
+
+
     }
 
     .story-bg {
@@ -558,6 +568,16 @@
       -moz-transition: all 0.1s ease-out;
       -o-transition: all 0.1s ease-out;
       transition: all 0.1s ease-out;
+    }
+  }
+}
+
+@include respond(phone) {
+
+  #generalInformation {
+    .third {
+      background-color: var(--color-sand);
+
     }
   }
 }
