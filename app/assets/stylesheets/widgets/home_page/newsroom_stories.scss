@@ -64,6 +64,8 @@
 
         @include respond(tab-port) {
           width: auto;
+          margin-left: 20px;
+          margin-top: 20px;
         }
 
         a.tag {

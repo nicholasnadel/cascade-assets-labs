@@ -563,10 +563,10 @@ h6,
 .details {
   display: grid;
   align-content: center;
-  padding: unset !important;
-  margin: unset !important;
+  // padding: unset !important;
+  // margin: unset !important;
   align-content: start;
-  margin-top: 30px !important;
+  // margin-top: 30px !important;
 
   @media all and (-ms-high-contrast:none) {
     display: block;
@@ -721,8 +721,8 @@ a.button.smc-cta:hover {
   }
 
   .details {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
