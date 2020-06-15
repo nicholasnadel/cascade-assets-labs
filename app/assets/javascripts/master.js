@@ -26,6 +26,8 @@
 // don't require cascade/shortcuts
 
 //= require cascade/plugins/amplify
+//= require cascade/plugins/aos
+
 //= require cascade/plugins/cookie
 //= require cascade/plugins/ellipsis
 //= require cascade/plugins/flexslider
