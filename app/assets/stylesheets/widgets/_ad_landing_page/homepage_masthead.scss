@@ -2,7 +2,6 @@
 .homepage-masthead__container {
   --defaultPadding: 5%;
   width: 100vw;
-
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -81,9 +80,7 @@
   }
 }
 
-
 .homepage-masthead {
-
   &__heading-container {
     margin-top: 7.5rem;
     color: $white;
@@ -186,7 +183,6 @@
 
       &__button,
       .homepage a.button {
-
         $bg: $cu-red;
         --buttonMinWidth: 350px;
         background: unset;
@@ -207,10 +203,8 @@
 
         @media not all and (min-resolution:.001dpcm) {
           @supports (-webkit-appearance:none) {
-
             display: flex;
             align-items: center;
-
           }
         }
 
@@ -243,7 +237,6 @@
           transition: 300ms linear;
 
           @-webkit-keyframes backgroundColor {
-
             0% {
               background-color: $white;
               transition: 350ms ease;
@@ -263,7 +256,6 @@
           }
 
           @keyframes backgroundColor {
-
             0% {
               background-color: $white;
               transition: 350ms ease;
@@ -288,19 +280,13 @@
 
   &__photo-grid {
     display: -ms-grid;
-
     display: grid;
-
-
     -ms-grid-columns: 2fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
     grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-
-
     -ms-grid-rows: fit-content(100%);
     grid-template-rows: fit-content(100%);
     justify-content: space-around;
     grid-gap: 12px;
-
     max-width: 1130px;
     -ms-grid-columns: 1fr;
     -ms-grid-rows: 1fr;
@@ -309,7 +295,6 @@
     width: 100vw;
     -webkit-animation-delay: 5s;
     animation-delay: 5s;
-
 
     h2 {
       @include v(color, white);
@@ -647,6 +632,20 @@ video#homepage-masthead__video {
   @include respond(tab-port) {
     .homepage-masthead__photo-grid {
       padding-top: 5px;
+
+      a .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
+        /* max-width: 25px; */
+        max-width: 4rem;
+        font-size: 46px !important;
+        width: 46px !important;
+      }
+
+      .homepage-masthead__photo-grid-container__text {
+        h2 {
+          font-size: 2.5rem !important;
+          line-height: 2.5rem !important;
+        }
+      }
     }
 
     .homepage-masthead__photos {
@@ -787,7 +786,6 @@ video#homepage-masthead__video {
       }
 
       .ie__fallback--object-fit {
-
         &:first-of-type {
           height: 100% !important;
           width: 100% !important;
@@ -812,16 +810,12 @@ video#homepage-masthead__video {
 
     &__photos {
       display: -ms-grid;
-
-
       position: relative;
       max-width: 1130px;
-
       display: -ms-grid;
       -ms-grid-columns: 400px 200px 200px 200px;
       -ms-grid-rows: 200px 200px;
       grid-gap: 12px;
-
       z-index: 3;
       max-width: 1130px;
       margin: auto;
@@ -1002,7 +996,6 @@ video#homepage-masthead__video {
     background-color: $white;
     width: 100vw;
     height: auto;
-
     position: absolute;
     top: 0;
     left: 0;
