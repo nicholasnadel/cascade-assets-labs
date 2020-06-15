@@ -634,7 +634,6 @@ video#homepage-masthead__video {
       padding-top: 5px;
 
       a .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
-        /* max-width: 25px; */
         max-width: 4rem;
         font-size: 46px !important;
         width: 46px !important;
@@ -642,8 +641,8 @@ video#homepage-masthead__video {
 
       .homepage-masthead__photo-grid-container__text {
         h2 {
-          font-size: 2.5rem !important;
-          line-height: 2.5rem !important;
+          font-size: 2.5rem;
+          line-height: 2.5rem;
         }
       }
     }
@@ -679,6 +678,23 @@ video#homepage-masthead__video {
           font-size: 1.8rem;
           line-height: 2rem;
           font-weight: bold;
+        }
+      }
+    }
+
+    .homepage-masthead__photo-grid {
+      padding-top: 5px;
+
+      a .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {
+        max-width: 4rem;
+        font-size: initial;
+        width: initial;
+      }
+
+      .homepage-masthead__photo-grid-container__text {
+        h2 {
+          font-size: initial;
+          line-height: initial;
         }
       }
     }
