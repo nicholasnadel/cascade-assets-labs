@@ -51,8 +51,13 @@
 
       .imagerotator {
         height: 375px;
-        min-width: 60%;
+        min-width: 55%;
+        max-width: 55%;
         overflow-y: hidden;
+
+        @include respond(tab-port) {
+          max-width: 100%;
+        }
 
         img {
           position: relative;

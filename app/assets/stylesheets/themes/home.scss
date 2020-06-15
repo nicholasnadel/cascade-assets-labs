@@ -79,6 +79,11 @@ h6,
 
   .undergraduate-card__text {
     @include qbal-slideUp-enter;
+
+
+    @include respond(phone) {
+      padding-top: 12px;
+    }
   }
 
   .maxWidth {
@@ -340,11 +345,10 @@ h6,
 
       .subheading {
         font-size: 2.6rem;
-        font-size: 3.4rem;
+        line-height: 3.4rem;
       }
 
       &.light-bg {
-        .heading {}
 
         .subheading {
           margin: 0 0 75px 0;
@@ -652,12 +656,6 @@ h6,
     .details {
       margin-left: 20px;
       margin-right: 20px;
-    }
-  }
-
-  @include respond(phone) {
-    .undergraduate-card__text {
-      padding-top: 20px;
     }
   }
 
