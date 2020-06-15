@@ -520,7 +520,7 @@ h6,
   }
 
   .homepage-story__text {
-    min-height: 125px;
+    min-height: max-content;
     display: flex;
     flex-direction: column;
     padding-left: 25px;
