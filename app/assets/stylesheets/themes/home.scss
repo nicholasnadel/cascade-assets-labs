@@ -80,7 +80,6 @@ h6,
   .undergraduate-card__text {
     @include qbal-slideUp-enter;
 
-
     @include respond(phone) {
       padding-top: 12px;
     }
@@ -349,7 +348,6 @@ h6,
       }
 
       &.light-bg {
-
         .subheading {
           margin: 0 0 75px 0;
           font-weight: 800;
@@ -495,10 +493,6 @@ h6,
   .stories .story .story-bg {
     /* margin-top: 15px; */
     margin-top: 0;
-  }
-
-  .stories .story .tag:hover {
-    padding-left: 5px;
   }
 
   #story-1 {
@@ -682,6 +676,13 @@ h6,
   a.button.smc-cta:hover {
     transform: translateY(-2px);
     transition: 150ms linear;
+  }
+
+  .squiggle-2-2 {
+    &:after {
+      bottom: -1px;
+      animation-duration: .3s;
+    }
   }
 }
 
