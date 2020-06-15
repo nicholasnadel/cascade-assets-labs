@@ -62,7 +62,7 @@
       .details {
         width: 30%;
 
-        @include respond(phone) {
+        @include respond(tab-port) {
           width: auto;
         }
 
