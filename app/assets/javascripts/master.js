@@ -12,7 +12,7 @@
 //= require cascade/console-log
 //= require cascade/footer
 //= require cascade/homepage
-//= require cascade/ie7
+//= require cascade/ie
 //= require cascade/main
 //= require cascade/form-validation
 //= require cascade/query-string
