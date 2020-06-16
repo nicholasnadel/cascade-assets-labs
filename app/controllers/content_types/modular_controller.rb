@@ -508,20 +508,14 @@ module ContentTypes
 
     def render_static_two_column_primary_content
       # This reproduces content from static sample version
-      format("%s %s %s %s",
-      render_static_partial("widgets/primary_content/testimonial_widget"),
-             render_static_partial("widgets/primary_content/three_photo_callout_1"),
-             render_static_partial("widgets/primary_content/logo_image_rotator_1"),
-             render_static_partial("widgets/primary_content/featured_news_events_feed_1"))
+      format("%s",
+      render_static_partial("widgets/primary_content/twitter_feed_1"))
     end
 
     def render_static_two_column_left_column
       # This reproduces content from the static sample version
-      format("%s %s %s",
-             render_static_partial("widgets/left_column/left_nav"),
-             render_static_partial("widgets/left_column/callout_2"),
-             render_static_partial("widgets/left_column/contact_profile"),
-             render_static_partial("widgets/left_column/news_event_left_col"))
+      format("%s",
+             render_static_partial("widgets/left_column/left_nav"))
     end
 
     # rubocop:disable Metrics/AbcSize
