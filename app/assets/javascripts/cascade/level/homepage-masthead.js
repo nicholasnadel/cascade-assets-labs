@@ -30,7 +30,11 @@ function getData() {
     $.ajax({
         url: 'https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6',
         type: 'GET',
-        success: handleData
+        success: handleData,
+        error: function (data, status, error) {
+            console.log('%c ERROR: level/homepage-masthead.js - could not load curator.io images' + data.responseText.error, 'background: #222; color: #bada55');
+            $('.homepage-masthead__photos img').addClass('fade-in');
+        }
 
     })
 }
