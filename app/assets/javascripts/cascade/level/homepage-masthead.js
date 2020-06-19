@@ -1,5 +1,6 @@
 $(function () {
     if ($('video#homepage-masthead__video').length) {
+        fetchCuratorIOImages();
         var vid = $("video#homepage-masthead__video");
         $('.homepage video').removeAttr('controls');
         $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
@@ -12,9 +13,6 @@ $(function () {
 function fetchCuratorIOImages() {
     $.ajax({
         url: "https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6", success: function (result) {
-            // console.log(result.posts[0].image)
-            // console.log(result.posts[1].image)
-            // console.log(result.posts[2].image)
 
             $('.homepage-masthead__photos img').each(function (index, value) {
                 console.log(`div${index}: ${this.id}`);
