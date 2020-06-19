@@ -18,12 +18,25 @@ function fetchCuratorIOImages() {
             $('.homepage-masthead__photos img').each(function (index, value) {
                 console.log(`div${index}: ${this.id}`);
                 $(this).attr('src', result.posts[index].image);
+                $(this).attr('data-post', result.posts[index].id);
             });
-
         }
     });
     $('.homepage-masthead__photos img').addClass('fade-in');
+}
 
+function clickMastheadPhotos() {
+    if (window.location.href.indexOf("#data-post") != -1) {
+        var url = window.location.hash
+        var pieces = url.split("/#data-post");
+
+        var ID = window.location.hash.split('=')[1];
+
+        var anchor = $('[data-post="' + ID + '"]')
+        console.log('anchor ' + anchor)
+
+        $('html,body').animate({ scrollTop: anchor.offset().top - 120 });
+    }
 }
 
 function getData() {
@@ -35,18 +48,16 @@ function getData() {
             console.log('%c ERROR: level/homepage-masthead.js - could not load curator.io images' + data.responseText.error, 'background: #222; color: #bada55');
             $('.homepage-masthead__photos img').addClass('fade-in');
         }
-
     })
 }
 
 function handleData(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
-        console.log(`div${index}: ${this.id}`);
         $(this).attr('src', data.posts[index].image);
+        $(this).parent('a').attr('href', 'https://www.chapman.edu/admission/social-media.aspx#data-post=' + data.posts[index].id);
+        $(this).attr('data-post', data.posts[index].id);
     }).then(
         $('.homepage-masthead__photos img').addClass('fade-in'));
-
-
 }
 function togglePlay() {
     if ($('video#homepage-masthead__video').length) {
