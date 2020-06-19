@@ -79,6 +79,102 @@
   #homepage-masthead__play-button {
     display: none;
   }
+
+  .fade-in {
+    opacity: 0;
+    animation-delay: 1s;
+    animation: fadein 3s forwards;
+    -moz-animation: fadein 3s forwards;
+    -webkit-animation: fadein 3s forwards;
+    -o-animation: fadein 3s forwards;
+    animation-direction: forwards;
+    -webkit-animation: fadein 3s forwards;
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes fadein {
+
+    /* Firefox */
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadein {
+
+    /* Opera */
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @-moz-keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @-webkit-keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @-o-keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
 }
 
 
@@ -377,6 +473,20 @@
         object-fit: cover;
         will-change: filter, background-color;
         transition: 150ms ease all;
+
+        opacity: 0;
+      }
+
+      .no-js {
+        img {
+          animation-delay: 300ms;
+          animation: fadein 3s forwards;
+          -moz-animation: fadein 3s forwards;
+          -webkit-animation: fadein 3s forwards;
+          -o-animation: fadein 3s forwards;
+          animation-direction: forwards;
+          -webkit-animation: fadein 3s forwards;
+        }
       }
 
       .svg-inline--fa.fa-chevron-circle-right.fa-w-16 {

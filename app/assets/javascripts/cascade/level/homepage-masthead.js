@@ -1,6 +1,7 @@
 $(function () {
     if ($('video#homepage-masthead__video').length) {
-        fetchCuratorIOImages();
+        // fetchCuratorIOImages();
+        getData();
         var vid = $("video#homepage-masthead__video");
         $('.homepage video').removeAttr('controls');
         $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
@@ -12,17 +13,38 @@ $(function () {
 
 function fetchCuratorIOImages() {
     $.ajax({
-        url: "https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6", success: function (result) {
-
+        url: "https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6",
+        success: function (result) {
             $('.homepage-masthead__photos img').each(function (index, value) {
                 console.log(`div${index}: ${this.id}`);
-                $(this).attr('src', result.posts[index].image)
+                $(this).attr('src', result.posts[index].image);
             });
 
         }
     });
+    $('.homepage-masthead__photos img').addClass('fade-in');
+
 }
 
+function getData() {
+    $.ajax({
+        url: 'https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6',
+        type: 'GET',
+        success: handleData
+
+    })
+}
+
+function handleData(data) {
+    $('.homepage-masthead__photos img').each(function (index, value) {
+        console.log(`div${index}: ${this.id}`);
+        $(this).attr('src', data.posts[index].image);
+    });
+
+    $('.homepage-masthead__photos img').addClass('fade-in');
+
+
+}
 function togglePlay() {
     if ($('video#homepage-masthead__video').length) {
         var vid = $("video#homepage-masthead__video");
