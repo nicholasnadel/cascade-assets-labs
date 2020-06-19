@@ -39,9 +39,8 @@ function handleData(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
         console.log(`div${index}: ${this.id}`);
         $(this).attr('src', data.posts[index].image);
-    });
-
-    $('.homepage-masthead__photos img').addClass('fade-in');
+    }).then(
+        $('.homepage-masthead__photos img').addClass('fade-in'));
 
 
 }

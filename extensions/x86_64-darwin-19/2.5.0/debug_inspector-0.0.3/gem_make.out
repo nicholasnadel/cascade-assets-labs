@@ -1,0 +1,15 @@
+current directory: /Users/nnadel/workspace/cascade-assets/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/nnadel/.asdf/installs/ruby/2.5.1/bin/ruby -I /Users/nnadel/.asdf/installs/ruby/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200617-74779-rfejb2.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 debug_inspector.bundle ./.gem.20200617-74779-umwwl

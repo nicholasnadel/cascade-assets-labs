@@ -1,0 +1,15 @@
+current directory: /Users/nnadel/workspace/cascade-assets/gems/websocket-driver-0.7.0/ext/websocket-driver
+/Users/nnadel/.asdf/installs/ruby/2.5.1/bin/ruby -I /Users/nnadel/.asdf/installs/ruby/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200617-74779-1xkxi5.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20200617-74779-kx5bxo

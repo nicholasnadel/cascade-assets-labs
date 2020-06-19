@@ -1,0 +1,16 @@
+current directory: /Users/nnadel/workspace/cascade-assets/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+/Users/nnadel/.asdf/installs/ruby/2.5.1/bin/ruby -I /Users/nnadel/.asdf/installs/ruby/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200617-74779-1a5n8rz.rb extconf.rb
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR="
+echo "Nada."
+Nada.
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/binding_of_caller-0.8.0/ext/binding_of_caller
+make "DESTDIR=" install
+echo "Nada."
+Nada.

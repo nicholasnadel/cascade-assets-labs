@@ -1,0 +1,16 @@
+current directory: /Users/nnadel/workspace/cascade-assets/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+/Users/nnadel/.asdf/installs/ruby/2.5.1/bin/ruby -I /Users/nnadel/.asdf/installs/ruby/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200617-74779-ulyxg3.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" clean
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR="
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.bundle
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 ruby_http_parser.bundle ./.gem.20200617-74779-6s6s1

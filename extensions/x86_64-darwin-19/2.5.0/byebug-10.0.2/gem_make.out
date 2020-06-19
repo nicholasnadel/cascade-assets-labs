@@ -1,0 +1,19 @@
+current directory: /Users/nnadel/workspace/cascade-assets/gems/byebug-10.0.2/ext/byebug
+/Users/nnadel/.asdf/installs/ruby/2.5.1/bin/ruby -I /Users/nnadel/.asdf/installs/ruby/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200617-74779-1u0d53u.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/local/bin/ginstall -c -m 0755 byebug.bundle ./.gem.20200617-74779-am5d6w/byebug

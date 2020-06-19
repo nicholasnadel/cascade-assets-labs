@@ -1,0 +1,13 @@
+current directory: /Users/nnadel/workspace/cascade-assets/gems/json-1.8.6/ext/json
+/Users/nnadel/.asdf/installs/ruby/2.5.1/bin/ruby -I /Users/nnadel/.asdf/installs/ruby/2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200617-74779-es1jfe.rb extconf.rb
+creating Makefile
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/nnadel/workspace/cascade-assets/gems/json-1.8.6/ext/json
+make "DESTDIR=" install
