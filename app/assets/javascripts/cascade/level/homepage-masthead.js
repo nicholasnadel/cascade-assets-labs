@@ -75,7 +75,7 @@ function getData() {
             console.log('%c ERROR: level/homepage-masthead.js - could not load curator.io images' + data.responseText.error, 'background: #222; color: #bada55');
             $('.homepage-masthead__photos img').addClass('fade-in');
         }
-    })
+    });
 }
 
 function handleData(data) {
@@ -89,9 +89,23 @@ function handleData(data) {
             $(this).parent('a').attr('href', 'http://localhost:3000/uninav/two_column#data-post=' + data.posts[index].id);
         }
         $(this).attr('data-post', data.posts[index].id);
-    }).then(
-        $('.homepage-masthead__photos img').addClass('fade-in'));
+
+
+
+    })
+
+    $('.homepage-masthead__photos img').load(function () {
+        var imageObj = $(this);
+        if (!(imageObj.width() == 1 && imageObj.height() == 1)) {
+            fadeInImages();
+        }
+    });
 }
+
+function fadeInImages() {
+    $('.homepage-masthead__photos img').addClass('fade-in');
+}
+
 function togglePlay() {
     if ($('video#homepage-masthead__video').length) {
         var vid = $("video#homepage-masthead__video");
