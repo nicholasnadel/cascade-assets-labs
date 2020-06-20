@@ -9,7 +9,9 @@ $(function () {
         });
         ieObjectFitFallback();
     }
+    clickMastheadPhotos();
 });
+
 
 function fetchCuratorIOImages() {
     $.ajax({
@@ -26,16 +28,41 @@ function fetchCuratorIOImages() {
 }
 
 function clickMastheadPhotos() {
-    if (window.location.href.indexOf("#data-post") != -1) {
-        var url = window.location.hash
-        var pieces = url.split("/#data-post");
+    // Inserts the data attribute ID from Curator's API. 
+    // It serves a double purpose to avoid 'Redundant Link' accessibility errors
+    // We're using it as an anchor ⚓️ via URL params, but we've gotta use MutationObserver to wait for Curator's embed to load
 
-        var ID = window.location.hash.split('=')[1];
+    if ($("#curator-feed-admissions-page-layout").children().length > 1) {
+        if (window.location.href.indexOf("#data-post") != -1) {
+            var observer = new MutationObserver(function (mutations) {
+                if ($('.crt-post-text').length) {
 
-        var anchor = $('[data-post="' + ID + '"]')
-        console.log('anchor ' + anchor)
+                    console.log('url contains data-post')
+                    var url = window.location.hash
+                    var pieces = url.split("/#data-post");
 
-        $('html,body').animate({ scrollTop: anchor.offset().top - 120 });
+                    var ID = window.location.hash.split('=')[1];
+
+                    var anchor = $('[data-post="' + ID + '"]')
+                    console.log('anchor ' + anchor)
+
+                    $('html,body').animate({ scrollTop: anchor.offset().top - 120 });
+                    $(anchor).find('.crt-post-text').trigger('click');
+
+                    observer.disconnect();
+                    // We can disconnect observer once the element exists, if we dont want observe more changes in the DOM
+                }
+            });
+
+            // Start observing
+            observer.observe(document.body, { //document.body is the node target to observe
+                childList: true, // This is a must have for the observer with subtree
+                subtree: true // Set to true if changes must also be observed in descendants.
+            });
+
+
+
+        }
     }
 }
 
@@ -55,6 +82,12 @@ function handleData(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
         $(this).attr('src', data.posts[index].image);
         $(this).parent('a').attr('href', 'https://www.chapman.edu/admission/social-media.aspx#data-post=' + data.posts[index].id);
+        if (window.location.href.indexOf("dev-www") != -1) {
+            $(this).parent('a').attr('href', 'https://dev-www.chapman.edu/test-section/nick-test/social-media.aspx#data-post=' + data.posts[index].id);
+        }
+        if (window.location.href.indexOf("localhost:3000") != -1) {
+            $(this).parent('a').attr('href', 'http://localhost:3000/uninav/two_column#data-post=' + data.posts[index].id);
+        }
         $(this).attr('data-post', data.posts[index].id);
     }).then(
         $('.homepage-masthead__photos img').addClass('fade-in'));
