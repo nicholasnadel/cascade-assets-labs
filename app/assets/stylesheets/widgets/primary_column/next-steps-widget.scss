@@ -1,5 +1,9 @@
 @import "base/base";
 
+h1+.next-steps-widget {
+  margin-top: 0;
+}
+
 .next-steps-widget {
   $defaultPadding: 32px;
 
