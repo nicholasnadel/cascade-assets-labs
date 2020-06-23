@@ -16,8 +16,10 @@ html {
             margin-bottom: 2rem;
           }
 
-          iframe {
-            width: 100%;
+          @include respond (tab-port) {
+            iframe {
+              width: 100%;
+            }
           }
         }
 
