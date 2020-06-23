@@ -10,7 +10,8 @@
       heroModalViewer.initialize();
       setGeneralInfoMinHeight();
       animateOnScroll();
-      addSquigglyUnderline();
+      setTimeout(function () { addSquigglyUnderline() }, 1000);
+
     }
   });
 
@@ -19,8 +20,11 @@
   });
 
   function addSquigglyUnderline() {
-    $('a.tag').wrapInner("<span class='squiggle squiggle-2-2'></span>");
+    if ($('a.tag').length > 1) {
+      $('a.tag').wrapInner("<span class='squiggle squiggle-2-2'></span>");
+    }
   }
+
   function animateOnScroll() {
     $('#generalInformation h2').attr({
       'data-aos': "fade-up",
