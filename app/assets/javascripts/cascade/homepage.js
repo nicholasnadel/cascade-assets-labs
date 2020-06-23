@@ -10,6 +10,7 @@
       heroModalViewer.initialize();
       setGeneralInfoMinHeight();
       animateOnScroll();
+      addSquigglyUnderline();
     }
   });
 
@@ -17,6 +18,9 @@
     setGeneralInfoMinHeight();
   });
 
+  function addSquigglyUnderline() {
+    $('a.tag').wrapInner("<span class='squiggle squiggle-2-2'></span>");
+  }
   function animateOnScroll() {
     $('#generalInformation h2').attr({
       'data-aos': "fade-up",
