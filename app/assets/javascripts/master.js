@@ -59,6 +59,7 @@
 //= require cascade/level/level
 //= require cascade/level/masthead
 //= require cascade/level/homepage-masthead
+//= require cascade/level/curatorio
 //= require cascade/level/mosaic
 //= require cascade/level/name-bar
 //= require cascade/level/news-events
