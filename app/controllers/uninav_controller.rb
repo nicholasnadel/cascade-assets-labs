@@ -53,4 +53,7 @@ class UninavController < ApplicationController
 
   def tuition
   end
+
+  def home_cascade
+  end
 end

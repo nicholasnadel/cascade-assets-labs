@@ -12,7 +12,7 @@
 //= require cascade/console-log
 //= require cascade/footer
 //= require cascade/homepage
-//= require cascade/ie7
+//= require cascade/ie
 //= require cascade/main
 //= require cascade/form-validation
 //= require cascade/query-string
@@ -26,6 +26,8 @@
 // don't require cascade/shortcuts
 
 //= require cascade/plugins/amplify
+//= require cascade/plugins/aos
+
 //= require cascade/plugins/cookie
 //= require cascade/plugins/ellipsis
 //= require cascade/plugins/flexslider
