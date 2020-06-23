@@ -8,9 +8,10 @@ $(function () {
             togglePlay();
         });
         ieObjectFitFallback();
+        // clickMastheadPhotos();
     }
-    clickMastheadPhotos();
 });
+
 
 
 function fetchCuratorIOImages() {
@@ -27,43 +28,45 @@ function fetchCuratorIOImages() {
     $('.homepage-masthead__photos img').addClass('fade-in');
 }
 
-function clickMastheadPhotos() {
-    // Inserts the data attribute ID from Curator's API. 
-    // It serves a double purpose to avoid 'Redundant Link' accessibility errors
-    // We're using it as an anchor ⚓️ via URL params, but we've gotta use MutationObserver to wait for Curator's embed to load
 
-    if ($("#curator-feed-admissions-page-layout").children().length > 1) {
-        if (window.location.href.indexOf("#data-post") != -1) {
-            var observer = new MutationObserver(function (mutations) {
-                if ($('.crt-post-text').length) {
-
-                    console.log('url contains data-post')
-                    var url = window.location.hash
-                    var pieces = url.split("/#data-post");
-
-                    var ID = window.location.hash.split('=')[1];
-
-                    var anchor = $('[data-post="' + ID + '"]')
-                    console.log('anchor ' + anchor)
-
-                    $('html,body').animate({ scrollTop: anchor.offset().top - 120 });
-                    $(anchor).find('.crt-post-text').trigger('click');
-
-                    observer.disconnect();
-                    // We can disconnect observer once the element exists, if we dont want observe more changes in the DOM
-                }
-            });
-
-            // Start observing
-            observer.observe(document.body, { //document.body is the node target to observe
-                childList: true, // This is a must have for the observer with subtree
-                subtree: true // Set to true if changes must also be observed in descendants.
-            });
+function addUniqueDataAttrsToCuratorPosts() {
+    console.log('adding UniqueDataAttrsToCuratorPosts')
+    $(".crt-grid-post").each(function () {
+        var bgUrl = $(this).find('.crt-grid-post-image').css("background-image");
+        var bgID = bgUrl.split('/p/')[1];
+        var pieces = bgUrl.split("/p/");
+        anchor = pieces[1].split("/");
+        console.log('anchor ' + anchor[0])
+        $(this).attr('data-fragment-id', anchor[0]);
+    });
 
 
+    var url = window.location.hash
+    var fragment = url.split("/#ig-fragment=");
+    console.log('fragment ' + fragment)
+    var currentAnchor = window.location.hash.split('=')[1];
+    console.log('current anchor ' + currentAnchor)
 
-        }
-    }
+    // setTimeout(function () {
+    //     $('html').animate({ scrollTop: $('[data-fragment-id="' + currentAnchor + '"]').offset().top - 120 }, 500);
+    // }, 1000);
+    $('html').animate({ scrollTop: $('[data-fragment-id="' + currentAnchor + '"]').offset().top - 120 });
+
+    setTimeout(function () { $('[data-fragment-id="' + currentAnchor + '"]').find('.crt-post-text').trigger('click') }, 1000);
+}
+
+function scrollToDataAttrAnchor() {
+    var url = window.location.hash
+    var fragment = url.split("/#ig-fragment=");
+    console.log('fragment ' + fragment)
+    var currentAnchor = window.location.hash.split('=')[1];
+    console.log('current anchor ' + currentAnchor)
+
+    // setTimeout(function () {
+    //     $('html').animate({ scrollTop: $('[data-fragment-id="' + currentAnchor + '"]').offset().top - 120 }, 500);
+    // }, 1000);
+    $('html').animate({ scrollTop: $('[data-fragment-id="' + currentAnchor + '"]').offset().top - 120 });
+    $('[data-fragment-id="' + currentAnchor + '"]').find('.crt-post-text').trigger('click');
 }
 
 function getData() {
@@ -77,23 +80,24 @@ function getData() {
         }
     });
 }
-
 function handleData(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
         $(this).attr('src', data.posts[index].image);
-        $(this).parent('a').attr('href', 'https://www.chapman.edu/admission/social-media.aspx#data-post=' + data.posts[index].id);
+        var url = $(this).attr('src')
+        console.log('url ' + url)
+        var ID = url.split('/p/')[1];
+        var pieces = url.split("/p/");
+        anchor = pieces[1].split("/");
+        console.log('anchor ' + anchor[0])
+        $(this).parent('a').attr('href', 'https://www.chapman.edu/admission/social-media.aspx#ig-fragment=' + anchor[0]);
         if (window.location.href.indexOf("dev-www") != -1) {
-            $(this).parent('a').attr('href', 'https://dev-www.chapman.edu/test-section/nick-test/social-media.aspx#data-post=' + data.posts[index].id);
+            $(this).parent('a').attr('href', 'https://dev-www.chapman.edu/test-section/nick-test/social-media.aspx#ig-fragment=' + anchor[0]);
         }
         if (window.location.href.indexOf("localhost:3000") != -1) {
-            $(this).parent('a').attr('href', 'http://localhost:3000/uninav/two_column#data-post=' + data.posts[index].id);
+            $(this).parent('a').attr('href', 'http://localhost:3000/uninav/two_column#ig-fragment=' + anchor[0]);
         }
         $(this).attr('data-post', data.posts[index].id);
-
-
-
     })
-
     $('.homepage-masthead__photos img').load(function () {
         var imageObj = $(this);
         if (!(imageObj.width() == 1 && imageObj.height() == 1)) {
@@ -101,11 +105,9 @@ function handleData(data) {
         }
     });
 }
-
 function fadeInImages() {
     $('.homepage-masthead__photos img').addClass('fade-in');
 }
-
 function togglePlay() {
     if ($('video#homepage-masthead__video').length) {
         var vid = $("video#homepage-masthead__video");
@@ -122,7 +124,6 @@ function togglePlay() {
         }
     }
 }
-
 function ieObjectFitFallback() {
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
