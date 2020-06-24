@@ -1,7 +1,6 @@
 $(function () {
     if ($('video#homepage-masthead__video').length) {
-        // fetchCuratorIOImages();
-        getData();
+        fetchCuratorImages();
         var vid = $("video#homepage-masthead__video");
         $('.homepage video').removeAttr('controls');
         $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
@@ -9,69 +8,13 @@ $(function () {
         });
         ieObjectFitFallback();
     }
-    clickMastheadPhotos();
 });
 
-
-function fetchCuratorIOImages() {
-    $.ajax({
-        url: "https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6",
-        success: function (result) {
-            $('.homepage-masthead__photos img').each(function (index, value) {
-                console.log(`div${index}: ${this.id}`);
-                $(this).attr('src', result.posts[index].image);
-                $(this).attr('data-post', result.posts[index].id);
-                $(this).attr('alt', result.posts[index].text);
-            });
-        }
-    });
-    $('.homepage-masthead__photos img').addClass('fade-in');
-}
-
-function clickMastheadPhotos() {
-    // Inserts the data attribute ID from Curator's API. 
-    // It serves a double purpose to avoid 'Redundant Link' accessibility errors
-    // We're using it as an anchor ⚓️ via URL params, but we've gotta use MutationObserver to wait for Curator's embed to load
-
-    if ($("#curator-feed-admissions-page-layout").children().length > 1) {
-        if (window.location.href.indexOf("#data-post") != -1) {
-            var observer = new MutationObserver(function (mutations) {
-                if ($('.crt-post-text').length) {
-
-                    console.log('url contains data-post')
-                    var url = window.location.hash
-                    var pieces = url.split("/#data-post");
-
-                    var ID = window.location.hash.split('=')[1];
-
-                    var anchor = $('[data-post="' + ID + '"]')
-                    console.log('anchor ' + anchor)
-
-                    $('html,body').animate({ scrollTop: anchor.offset().top - 120 });
-                    $(anchor).find('.crt-post-text').trigger('click');
-
-                    observer.disconnect();
-                    // We can disconnect observer once the element exists, if we dont want observe more changes in the DOM
-                }
-            });
-
-            // Start observing
-            observer.observe(document.body, { //document.body is the node target to observe
-                childList: true, // This is a must have for the observer with subtree
-                subtree: true // Set to true if changes must also be observed in descendants.
-            });
-
-
-
-        }
-    }
-}
-
-function getData() {
+function fetchCuratorImages() {
     $.ajax({
         url: 'https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6',
         type: 'GET',
-        success: handleData,
+        success: manipulateCuratorImages,
         error: function (data, status, error) {
             console.log('%c ERROR: level/homepage-masthead.js - could not load curator.io images' + data.responseText.error, 'background: #222; color: #bada55');
             $('.homepage-masthead__photos img').addClass('fade-in');
@@ -79,7 +22,7 @@ function getData() {
     });
 }
 
-function handleData(data) {
+function manipulateCuratorImages(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
         $(this).attr('src', data.posts[index].image);
         $(this).attr('alt', data.posts[index].text);
