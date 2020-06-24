@@ -1284,3 +1284,30 @@ html.off-canvas__blur {
 #uninav .uninav__search-input:focus-within .gsc-search-box-tools {
   border: 2px dotted var(--color-cu-red);
 }
+
+.uninav__dropdown--parent:hover .fas.fa-paw::before,
+.uninav__dropdown--parent:focus .fas.fa-paw::before,
+.uninav__dropdown--parent:focus-within .fas.fa-paw::before {
+  // content: "chapman systems login" !important;
+  font-family: $futura-regular;
+  font-size: 1.2rem;
+  word-break: break-word;
+  animation: changeLetter 1ms linear 1 forwards;
+
+  @keyframes changeLetter {
+
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: .5;
+    }
+
+    100% {
+      opacity: 1;
+      content: "Chapman Login";
+    }
+  }
+
+}
