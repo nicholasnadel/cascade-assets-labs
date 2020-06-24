@@ -133,6 +133,9 @@
             });
             contactElHidden = !contactElHidden;
             $("#covid-carot i").toggleClass('fa-caret-up fa-caret-down');
+            $("#covid19-learn-more-btn").attr('tabindex', function(index, attr){
+                return attr == 0 ? -1 : 0;
+            });
         }
 
         function _onScroll() {
@@ -1140,7 +1143,7 @@
                                         z-index: -999;
                                     }
                                 </style>
-                                <li class="uninav__search-button--mobile" id="uninav__search-button--mobile"></li>
+                                <li class="uninav__search-button--mobile" id="uninav__search-button--mobile" tabindex="0"></li>
                                 <div class="uninav__search-input uninav__search-input--desktop">
                                     <label for="gsc-i-id1"><span class="sr-only">Search</span></label>
                                     <script async="true"

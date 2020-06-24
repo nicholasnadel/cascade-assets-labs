@@ -1285,6 +1285,11 @@ html.off-canvas__blur {
   border: 2px dotted var(--color-cu-red);
 }
 
+.uninav__search-button--mobile:focus {
+  border: 2px dotted var(--color-cu-red);
+
+}
+
 .uninav__dropdown--parent:hover .fas.fa-paw::before,
 .uninav__dropdown--parent:focus .fas.fa-paw::before,
 .uninav__dropdown--parent:focus-within .fas.fa-paw::before {
