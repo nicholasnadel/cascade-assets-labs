@@ -998,11 +998,11 @@ ORDER: Base + typography > general layout + grid > page layout > components
 }
 
 // squiggly underline animation: https://codepen.io/kjbrum/pen/qVQRQW
-$max-width: 800px;
-$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-$cubic-transition: 0.55s $ease-in-out-cubic;
-$squiggle-width: 18px;
-$squiggle-height: 4px;
+$squiggle-max-width: 800px;
+$squiggle-ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$squiggle-cubic-transition: 0.55s $squiggle-ease-in-out-cubic;
+$squiggle-squiggle-width: 18px;
+$squiggle-squiggle-height: 4px;
 
 @keyframes squiggle-background {
   0% {
@@ -1010,7 +1010,7 @@ $squiggle-height: 4px;
   }
 
   100% {
-    background-position: $squiggle-width;
+    background-position: $squiggle-squiggle-width;
   }
 }
 
@@ -1021,7 +1021,7 @@ $squiggle-height: 4px;
     display: block;
     content: '';
     margin-top: 2px;
-    height: $squiggle-height;
+    height: $squiggle-squiggle-height;
 
     background: {
       image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iNCIgdmlld0JveD0iMCAwIDE4IDQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPnNxdWlnZ2xlLWZsYXQ8L3RpdGxlPjxwYXRoIGQ9Ik0wIDRWMS44NzNjMS42MTEgMCAyLjU5NS0uMjMgNC4zMjMtLjg3M2wuMzctLjEzN0M2LjM1MS4yNDggNy40MDUgMCA4Ljk0IDBjMS41MDggMCAyLjU2NS4yNDMgNC4xODIuODM1bC40NDYuMTY0YzEuNzM5LjY0IDIuNzY0Ljg3NCA0LjQzLjg3NFY0Yy0xLjk0NCAwLTMuMTg0LS4yODQtNS4xMjYtLjk5OWwtLjQ0My0uMTYzYy0xLjQxNC0uNTE3LTIuMjYtLjcxLTMuNDg5LS43MS0xLjI1IDAtMi4wOTMuMTk3LTMuNTQ4LjczNUw1LjAyNiAzQzMuMDkzIDMuNzIgMS44OTQgNCAwIDR6IiBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9IiNhNTAwMzQiLz48L3N2Zz4=');
