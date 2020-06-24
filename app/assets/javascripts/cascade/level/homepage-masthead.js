@@ -52,18 +52,25 @@ function ieObjectFitFallback() {
         $('.ie__fallback-object-fit:first-of-type').css('height', '100%');
     }
 }
+
 // KEYS 🎹
 function a11yClick(event) {
+
     if (event.type === 'click') {
-        togglePlay();
-        return true;
-    } else if (event.type === 'keypress') {
-        var code = event.charCode || event.keyCode;
-        if ((code === 32) || (code === 13)) {
+        if ($('#homepage-masthead__play-button, #homepage-masthead__pause-button').is(':focus')) {
             togglePlay();
             return true;
+        }
+    } else if (event.type === 'keypress') {
+        var code = event.charCode || event.keyCode;
+        if ($('#homepage-masthead__play-button, #homepage-masthead__pause-button').is(':focus')) {
+            if ((code === 32) || (code === 13)) {
+                togglePlay();
+                return true;
+            }
         }
     } else {
         return false;
     }
+
 }
