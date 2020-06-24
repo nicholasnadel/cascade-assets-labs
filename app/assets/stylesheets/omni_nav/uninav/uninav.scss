@@ -170,7 +170,7 @@ html {
       align-items: center;
       margin-left: auto;
       border-bottom: none;
-      
+
       @include respond(tab-land) {
         width: 10%;
       }
@@ -208,7 +208,7 @@ html {
           &:last-child {
             padding-right: 1rem;
           }
-          
+
         }
       }
     }
@@ -421,58 +421,58 @@ html {
     }
 
     &__utility-nav--audiences {
-        &-container {
-          display: flex;
-          align-items: center;
-          position: relative;
-          margin: 0 2rem;
+      &-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin: 0 2rem;
 
-          @include respond(tab-port) {
-            display: none;
+        @include respond(tab-port) {
+          display: none;
+        }
+
+        li:last-of-type {
+          border-right: none;
+        }
+
+        p {
+          margin-bottom: 0;
+          font-size: 1.4rem;
+          text-transform: uppercase;
+          font-weight: bold;
+          cursor: pointer;
+
+          &:focus {
+            outline: 2px dotted $cu-red;
           }
 
-          li:last-of-type {
-            border-right: none;
-          }
-
-          p {
-            margin-bottom: 0;
+          &::after {
+            font-family: "Font Awesome 5 Pro";
+            font-weight: 900;
+            content: "\f0d7";
+            padding-left: 1rem;
             font-size: 1.4rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
-
-            &:focus {
-              outline: 2px dotted $cu-red;
-            }
-
-            &::after {
-              font-family: "Font Awesome 5 Pro";
-              font-weight: 900;
-              content: "\f0d7";
-              padding-left: 1rem;
-              font-size: 1.4rem;
-            }
           }
         }
+      }
 
-        &-menu {
-          flex-direction: column;
-          align-items: flex-start;
-          position: absolute;
-          width: 25rem;
-          top: 0;
-          right: 21rem;
-          background-color: #ffffff;
-          border: 1px solid #CFCFCF;
+      &-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        width: 25rem;
+        top: 0;
+        right: 21rem;
+        background-color: #ffffff;
+        border: 1px solid #CFCFCF;
 
-          li {
-            width: 100%;
-            padding: 15px 15px 15px 30px;
-            line-height: 1.8rem;
-            border-bottom: 1px solid #CFCFCF;
-          }
+        li {
+          width: 100%;
+          padding: 15px 15px 15px 30px;
+          line-height: 1.8rem;
+          border-bottom: 1px solid #CFCFCF;
         }
+      }
     }
 
     // global nav
@@ -1279,4 +1279,8 @@ html.off-canvas__blur {
       display: grid !important;
     }
   }
+}
+
+#uninav .uninav__search-input:focus-within .gsc-search-box-tools {
+  border: 2px dotted var(--color-cu-red);
 }
