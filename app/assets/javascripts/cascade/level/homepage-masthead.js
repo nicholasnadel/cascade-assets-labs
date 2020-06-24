@@ -21,6 +21,7 @@ function fetchCuratorIOImages() {
                 console.log(`div${index}: ${this.id}`);
                 $(this).attr('src', result.posts[index].image);
                 $(this).attr('data-post', result.posts[index].id);
+                $(this).attr('alt', result.posts[index].text);
             });
         }
     });
@@ -81,6 +82,7 @@ function getData() {
 function handleData(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
         $(this).attr('src', data.posts[index].image);
+        $(this).attr('alt', data.posts[index].text);
         $(this).parent('a').attr('href', 'https://www.chapman.edu/admission/social-media.aspx#data-post=' + data.posts[index].id);
         if (window.location.href.indexOf("dev-www") != -1) {
             $(this).parent('a').attr('href', 'https://dev-www.chapman.edu/test-section/nick-test/social-media.aspx#data-post=' + data.posts[index].id);
