@@ -87,6 +87,13 @@
       opacity: 1;
     }
   }
+
+
+  .undergraduate-card__text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
 }
 
 @media only screen and (min-width: 680px) {
@@ -204,6 +211,26 @@
 * Undergraduate Admission Section
 ***************************************************/
 #undergraduateAdmission {
+
+  @include respond(tab-port) {
+    * {
+      -webkit-animation: fadeIn 1s linear forwards;
+      animation: fadeIn 1s linear forwards;
+    }
+  }
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0
+    }
+
+    to {
+      opacity: 1
+    }
+  }
+
+
   background: #111111 image-url('undergrad-admissions.jpg') no-repeat center;
   background-size: cover;
   color: #ffffff;
@@ -233,6 +260,10 @@
   background: #111 url(//www.chapman.edu/_assets/undergrad-admissions-6b05436c3ff08330a37837dcf25b8c5c1749cc7456f32c7383593726a4125407.jpg) no-repeat center;
   background-size: cover;
   color: #ffffff;
+
+  h2 {
+    margin-top: 12px;
+  }
 }
 
 .homepage ul.statistics li.fact1 {

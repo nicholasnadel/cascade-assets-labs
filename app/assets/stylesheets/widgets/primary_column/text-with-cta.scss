@@ -4,9 +4,9 @@ html {
       ul {
         margin-left: 4rem;
       }
-      .text-with-cta { 
-        &__text-container {
 
+      .text-with-cta {
+        &__text-container {
           @include respond(phone) {
             display: grid;
             grid-template-columns: 100%;
@@ -14,6 +14,12 @@ html {
             grid-auto-rows: 0;
             grid-auto-columns: 0;
             margin-bottom: 2rem;
+          }
+
+          @include respond (tab-port) {
+            iframe {
+              width: 100%;
+            }
           }
         }
 

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'uninav/afford', to: 'uninav#afford'
   get 'uninav/student-life', to: 'uninav#student_life'
   get 'uninav/tuition', to: 'uninav#tuition'
+  get 'uninav/home_cascade', to: 'uninav#home_cascade'
 
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'

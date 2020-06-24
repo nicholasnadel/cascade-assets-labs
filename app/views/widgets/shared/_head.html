@@ -1,5 +1,4 @@
 <head>
-    <![CDATA[#protect 
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <title><%= params[:page].to_s.titleize %></title>
@@ -22,8 +21,7 @@
     <![endif]-->
 
     <%= stylesheet_link_tag 'master', media: 'all' %>
-    <link rel="preload" href="https://www.chapman.edu/_files/img/hero-panels/fallback-images/masthead-wave-gradient.png"
-        as="image">
+
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -75,6 +73,7 @@
         }
     </script>
 
+
     <noscript>
         <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MSC27D" height="0" width="0"
             style="display:none;visibility:hidden"></iframe>
@@ -89,5 +88,4 @@
             })
             (window, document, 'script', 'dataLayer', 'GTM-MSC27D');
     </script>
-    #protect]]>
 </head>
