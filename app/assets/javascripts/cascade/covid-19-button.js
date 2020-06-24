@@ -18,6 +18,6 @@ $(function () {
                 return false;
             }
         }
-        $("#covid19-callout-box").detach().appendTo('#uninav')
+        $("#covid19-callout-box").detach().prependTo('#main');
     }
 });
