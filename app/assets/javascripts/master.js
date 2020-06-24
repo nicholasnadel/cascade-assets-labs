@@ -7,6 +7,7 @@
 //= require_tree ./regions
 //= require_tree ./uninav
 //= require cascade/carousel
+//= require cascade/covid-19-button
 //= require cascade/back-to-top
 //= require cascade/collapsed-nav
 //= require cascade/console-log
