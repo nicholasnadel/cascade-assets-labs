@@ -26,7 +26,7 @@ function handleEscapeKeypress() {
 }
 function toggleAriaExpandVal() {
   $("#uninav li").on("click keypress", function (e) {
-    if (a11yClick(event) === true) {
+    if (accessibleClick(event) === true) {
       var menuItem = $(e.currentTarget);
       if (menuItem.attr("aria-expanded") === "true") {
         $(this).attr("aria-expanded", "false");
@@ -97,43 +97,46 @@ $(function () {
       $('#off-canvas-umbrella #main-logo a:first-of-type').focus();
       // REMOVE TABINDEX FROM ALL <A> AND ANYTHING ELSE WITH A TABINDEX ATTR
       // $('a, button, *[tabindex], iframe').attr('tabindex', '-1');
-      $('*[tabindex]').each(function () {
-        console.log('removing tabindex')
-        if ($(this).attr('tabindex') >= 0) {
-          $(this).addClass('tabbable-disabled');
-          $(this).attr('tabindex', '-666');
-        }
-      })
-      $('a, button, iframe, input').addClass('tabbable-disabled');
-      $('a, button, iframe, input').attr('tabindex', '-1');
+      if ($('.umbrella-nav-button-toggle').length >= 0) {
+        $('*[tabindex]').each(function () {
+          console.log('removing tabindex')
+          if ($(this).attr('tabindex') >= 0) {
+            $(this).addClass('tabbable-disabled');
+            $(this).attr('tabindex', '-666');
+          }
+        })
+
+        $('a, button, iframe, input').addClass('tabbable-disabled');
+        $('a, button, iframe, input').attr('tabindex', '-1');
 
 
-      // RESET OFF CANVAS TABINDEX TO MAKE IT TABBABLE
-      $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0')
-      $('#js-off-canvas-nav-container .tabbable-disabled').addClass('tabbable').removeClass('tabbable-disabled')
-      $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus();
-      setTimeout(function () { $('#off-canvas-umbrella a.default').focus() }, 100);
-      $(document.activeElement).addClass('focus');
+        // RESET OFF CANVAS TABINDEX TO MAKE IT TABBABLE
+        $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0')
+        $('#js-off-canvas-nav-container .tabbable-disabled').addClass('tabbable').removeClass('tabbable-disabled')
+        $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus();
+        setTimeout(function () { $('#off-canvas-umbrella a.default').focus() }, 100);
+        $(document.activeElement).addClass('focus');
 
-      // CLOSE ON LAST VISIBLE TAB
-      $('#js-off-canvas-nav-container *[tabindex]:visible').last().on("keydown blur", function (e) {
-        // SHIFT KEY
-        if (e.keyCode === 9) {
-          $('.js-close-off-canvas-nav').click();
-          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-          $('.tabbable-disabled').attr('tabindex', '0');
+        // CLOSE ON LAST VISIBLE TAB
+        $('#js-off-canvas-nav-container *[tabindex]:visible').last().on("keydown blur", function (e) {
+          // SHIFT KEY
+          if (e.keyCode === 9) {
+            $('.js-close-off-canvas-nav').click();
+            // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+            $('.tabbable-disabled').attr('tabindex', '0');
 
-          $('.tabbable-disabled').each(function () {
-            $(this).addClass('tabbable');
-            $(this).removeClass('tabbable-disabled');
-          })
-        }
-      });
+            $('.tabbable-disabled').each(function () {
+              $(this).addClass('tabbable');
+              $(this).removeClass('tabbable-disabled');
+            })
+          }
+        });
+      }
     }
   });
 
   $('.js-close-off-canvas-nav').on("click keypress", function (e) {
-    if (a11yClick(event) === true) {
+    if (accessibleClick(event) === true) {
       $("html, #main").removeClass("off-canvas__blur");
       // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
       $('.tabbable-disabled').attr('tabindex', '0');
@@ -219,15 +222,15 @@ function gs__blurBg() {
 }
 
 
-function a11yClick(event) {
-  if (event.type === 'click') {
-    return true;
-  } else if (event.type === 'keypress') {
-    var code = event.charCode || event.keyCode;
-    if ((code === 32) || (code === 13)) {
-      return true;
-    }
-  } else {
-    return false;
-  }
-}
+// function a11yClick(event) {
+//   if (event.type === 'click') {
+//     return true;
+//   } else if (event.type === 'keypress') {
+//     var code = event.charCode || event.keyCode;
+//     if ((code === 32) || (code === 13)) {
+//       return true;
+//     }
+//   } else {
+//     return false;
+//   }
+// }
