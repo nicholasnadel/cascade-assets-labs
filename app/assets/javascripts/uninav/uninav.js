@@ -110,6 +110,7 @@ $(function () {
 
       // RESET OFF CANVAS TABINDEX TO MAKE IT TABBABLE
       $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0')
+      $('#js-off-canvas-nav-container .tabbable-disabled').addClass('tabbable').removeClass('tabbable-disabled')
       $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus();
       setTimeout(function () { $('#off-canvas-umbrella a.default').focus() }, 100);
       $(document.activeElement).addClass('focus');
@@ -121,14 +122,41 @@ $(function () {
           $('.js-close-off-canvas-nav').click();
           // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
           $('.tabbable-disabled').attr('tabindex', '0');
+
+          $('.tabbable-disabled').each(function () {
+            $(this).addClass('tabbable');
+            $(this).removeClass('tabbable-disabled');
+          })
         }
       });
     }
   });
+
+  $('.js-close-off-canvas-nav').on("click keypress", function (e) {
+    if (a11yClick(event) === true) {
+      $("html, #main").removeClass("off-canvas__blur");
+      // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+      $('.tabbable-disabled').attr('tabindex', '0');
+
+      $('.tabbable-disabled').each(function () {
+        $(this).addClass('tabbable');
+        $(this).removeClass('tabbable-disabled');
+      })
+    }
+  });
+
+
   $('.js-close-off-canvas-nav').on('click keydown', function (event) {
     if (accessibleClick(event)) {
+      debugger;
       $("html, #main").removeClass("off-canvas__blur");
-      $('a, *[tabindex]').attr('tabindex', 'initial');
+      // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+      $('.tabbable-disabled').attr('tabindex', '0');
+
+      $('.tabbable-disabled').each(function () {
+        $(this).addClass('tabbable');
+        $(this).removeClass('tabbable-disabled');
+      })
     }
   });
 });
@@ -189,4 +217,18 @@ function gs__blurBg() {
     "background-color",
     "rgba(255, 255, 255, 0.98)"
   );
+}
+
+
+function a11yClick(event) {
+  if (event.type === 'click') {
+    return true;
+  } else if (event.type === 'keypress') {
+    var code = event.charCode || event.keyCode;
+    if ((code === 32) || (code === 13)) {
+      return true;
+    }
+  } else {
+    return false;
+  }
 }

@@ -30,16 +30,8 @@ $(document).ready(function () {
   $(window).on('scroll', setSectionMenuButtonSize)
 
   //CLOSE OFF-CANVAS-NAV
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function () {
-    $offCanvasNavContainer.css({
-      transform: "translateX(-" + menuWidth + "px)",
-      visibility: 'hidden'
-    });
-    $offCanvasOverlay.hide();
-  });
-
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function (e) {
-    if (e.key === "Enter" || e.key === " ") {
+  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click keypress', function (e) {
+    if (a11yClick(event) === true) {
       e.preventDefault();
       $offCanvasNavContainer.css({
         transform: "translateX(-" + menuWidth + "px)",
