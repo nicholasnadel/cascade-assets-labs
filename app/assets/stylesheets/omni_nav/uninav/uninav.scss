@@ -1302,8 +1302,7 @@ html.off-canvas__blur {
 }
 
 .uninav__search-button--mobile:focus {
-  border: 2px dotted var(--color-cu-red);
-
+  border: 2px dotted var(--color-cu-red) !important;
 }
 
 .uninav__dropdown--parent:hover .fas.fa-paw::before,
