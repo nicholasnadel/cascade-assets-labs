@@ -104,8 +104,8 @@ $(function () {
           $(this).attr('tabindex', '-666');
         }
       })
-      $('a, button, iframe').addClass('tabbable-disabled');
-      $('a, button, iframe').attr('tabindex', '-1');
+      $('a, button, iframe, input').addClass('tabbable-disabled');
+      $('a, button, iframe, input').attr('tabindex', '-1');
 
 
       // RESET OFF CANVAS TABINDEX TO MAKE IT TABBABLE
@@ -148,7 +148,6 @@ $(function () {
 
   $('.js-close-off-canvas-nav').on('click keydown', function (event) {
     if (accessibleClick(event)) {
-      debugger;
       $("html, #main").removeClass("off-canvas__blur");
       // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
       $('.tabbable-disabled').attr('tabindex', '0');
