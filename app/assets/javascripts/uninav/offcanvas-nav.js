@@ -827,10 +827,13 @@ $(document).ready(function () {
 
 
         // RESET OFF CANVAS TABINDEX TO MAKE IT TABBABLE
-        $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0')
-        $('#js-off-canvas-nav-container .tabbable-disabled').addClass('tabbable').removeClass('tabbable-disabled')
-        $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus();
-        setTimeout(function () { $('#off-canvas-umbrella a.default').focus() }, 100);
+
+
+
+        setTimeout(function () {
+          $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0'), $('#js-off-canvas-nav-container .tabbable-disabled').addClass('tabbable').removeClass('tabbable-disabled'), $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus(),
+            $('#off-canvas-umbrella a.default').focus()
+        }, 100);
         $(document.activeElement).addClass('focus');
 
         // CLOSE ON LAST VISIBLE TAB
@@ -848,7 +851,7 @@ $(document).ready(function () {
             })
           }
         });
-        $('#js-off-canvas-nav-container .off-canvas-utility a').last().on("keydown blur", function (e) {
+        $('#js-off-canvas-nav-container .off-canvas-utility a').last().on("keydown", function (e) {
           // TAB KEY
           if (e.keyCode === 9) {
 
@@ -868,6 +871,22 @@ $(document).ready(function () {
             })
           }
         });
+        $('#js-off-canvas-nav-container .off-canvas-utility a').blur(function () {
+          $offCanvasNavContainer.css({
+            transform: "translateX(-" + menuWidth + "px)",
+            visibility: 'hidden'
+          });
+
+          $offCanvasOverlay.hide();
+          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+          $('.tabbable-disabled').attr('tabindex', '0');
+
+          $('.tabbable-disabled').each(function () {
+            $(this).addClass('tabbable');
+            $(this).removeClass('tabbable-disabled');
+          })
+        });
+
       }
     }
   });
