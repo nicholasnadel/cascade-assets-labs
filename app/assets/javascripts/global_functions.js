@@ -1,3 +1,5 @@
+
+
 function accessibleClick(event) {
     if (event.type === 'click') {
         return true;
@@ -20,3 +22,9 @@ if (window.location.href.indexOf("???") > -1) {
     }, true);
 
 }
+
+$(document).keydown(function (e) {
+    if (e.keyCode == 191) {
+        alert(e.which + " or slash was pressed");
+    }
+});
