@@ -97,16 +97,43 @@ function a11yClick(event) {
 // off-canvas overlay - add to main content when expanded
 $(function () {
   var sectionMenuButton = $("#section-menu-hamburger-icon");
-  $("#umbrella-nav-button-toggle, .uninav__hamburger-menu").on(
-    "click",
-    function () {
+  $('#umbrella-nav-button-toggle, .uninav__hamburger-menu').on('click keydown', function (event) {
+    if (accessibleClick(event)) {
       $("html, #main").addClass("off-canvas__blur");
+      $('#off-canvas-umbrella #main-logo a:first-of-type').focus();
+
+      // remove tabindex from all <a> and anything else with a tabindex attr
+
+      $('a, button, *[tabindex], iframe').attr('tabindex', '-1');
+      // $('a, button, *[tabindex="0"]').attr('tabindex', '-1');
+      // reset off canvas tabindex
+      $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0')
+      // $("#js-off-canvas-nav-container *[tabindex]").each(function (i) { $(this).attr('tabindex', i + 1); });
+
+      // $('#off-canvas-umbrella #main-logo a:first-of-type').addClass('focus').focus();
+      // $('.main-logo').click();
+      $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus();
+      setTimeout(function () { $('#off-canvas-umbrella a.default').focus(); console.log('focusing') }, 100);
+      $(document.activeElement).addClass('focus');
     }
-  );
-  $(".js-close-off-canvas-nav").on("click", function () {
-    $("html, #main").removeClass("off-canvas__blur");
+
   });
+  $('.js-close-off-canvas-nav').on('click keydown', function (event) {
+    if (accessibleClick(event)) {
+      $("html, #main").removeClass("off-canvas__blur");
+      $('a, *[tabindex]').attr('tabindex', 'initial');
+
+    }
+  });
+
 });
+
+
+
+
+
+
+
 // gs = Google Search
 // replace Google Custom Search default placeholder
 window.onload = gs__customPlaceholder;
@@ -114,6 +141,7 @@ window.onload = gs__customPlaceholder;
 function gs__customPlaceholder() {
   document.getElementById("gsc-i-id1").setAttribute("placeholder", "Search...");
   document.getElementById("gsc-i-id1").style.opacity = "1";
+  $('.gsc-search-button.gsc-search-button-v2').attr('tabindex', '-1');
 }
 // TODO: iOS style frosted/blurred background. CSS filter: blur(2px) performance is terrible
 $(window).load(function () {

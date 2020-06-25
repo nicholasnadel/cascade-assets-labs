@@ -6,8 +6,9 @@
 //= require_tree ./components
 //= require_tree ./regions
 //= require_tree ./uninav
+//= require global_functions
 //= require cascade/carousel
-//= require cascade/covid-19-button
+//= require cascade/covid-19-button 
 //= require cascade/back-to-top
 //= require cascade/collapsed-nav
 //= require cascade/console-log

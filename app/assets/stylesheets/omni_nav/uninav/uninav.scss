@@ -760,6 +760,13 @@ html {
   }
 }
 
+@media only screen and (min-width: 768px) {
+  #uninav__search-button--mobile {
+    display: none;
+  }
+}
+
+
 @media only screen and (max-width: 1300px) {
   .uninav--has-secondary-menu {
     .uninav {
@@ -776,6 +783,7 @@ html {
         }
       }
     }
+
 
     .uninav__search-button--mobile {
       width: 80px;
@@ -1281,8 +1289,16 @@ html.off-canvas__blur {
   }
 }
 
-#uninav .uninav__search-input:focus-within .gsc-search-box-tools {
-  border: 2px dotted var(--color-cu-red);
+#uninav .uninav__search-input {
+
+  &:focus,
+  &:focus-within {
+
+    .gsc-search-box-tools,
+    .sc-search-button {
+      border: 2px dotted var(--color-cu-red);
+    }
+  }
 }
 
 .uninav__search-button--mobile:focus {
@@ -1315,4 +1331,38 @@ html.off-canvas__blur {
     }
   }
 
+}
+
+
+#js-off-canvas-nav-container * {
+
+  &:focus,
+  &:focus-within {
+    outline: 2px dotted $red;
+  }
+}
+
+.focus {
+  &:focus {
+    outline: 2px dotted $red;
+  }
+}
+
+.debug {
+  animation: bgcolor;
+  animation-duration: 5s;
+
+  &:focus {
+    background-color: yellow;
+  }
+}
+
+@keyframes bgcolor {
+  0% {
+    background-color: yellow;
+  }
+
+  100% {
+    background-color: initial;
+  }
 }

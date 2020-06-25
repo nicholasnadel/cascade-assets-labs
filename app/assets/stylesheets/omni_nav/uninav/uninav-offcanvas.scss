@@ -472,3 +472,14 @@ html.school-dept-listing-template #uninav .uninav__umbrella-nav-button-container
 .uninav__umbrella-nav-button-container:focus-within {
   outline: 2px dotted $white;
 }
+
+#js-off-canvas-nav-container {
+  &:focus {
+    outline: 2px dotted $cu-red !important;
+  }
+
+  select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+  }
+}
