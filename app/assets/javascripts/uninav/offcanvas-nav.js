@@ -1,5 +1,9 @@
 $(document).ready(function () {
   handleCloseClick();
+
+
+
+
   var $offCanvasNavContainer = $('#uninav .off-canvas-nav-container'),
     menuVisibleXVal = 0,
     menuWidth = $(window).width() > 600 ? 410 : 350,
@@ -527,6 +531,33 @@ $(document).ready(function () {
       $sectionMenuButton.addClass('section-menu-small');
     }
   }
+
+
+  $('#js-off-canvas-nav-container').on('focusout', function (e) {
+    restoreOnCanvasTabindex();
+    $offCanvasOverlay.hide();
+  });
+
+
+  $("#js-off-canvas-nav-container").on("keydown", function (e) {
+    // Tab Key
+    if (e.keyCode === 9) {
+      $('.off-canvas-utility').find('*[tabindex]:visible').last().addClass('main__last-item')
+    }
+    $(".main__last-item").on("keydown blur", function (e) {
+      // SHIFT TAB KEY COMBO
+      if (e.keyCode === 9) {
+
+        $offCanvasNavContainer.css({
+          transform: "translateX(-" + menuWidth + "px)",
+          visibility: 'hidden'
+        });
+        restoreOnCanvasTabindex();
+        $offCanvasOverlay.hide();
+
+      }
+    });
+  });
 
   function selectLastDrillDownElement() {
     var $umbrellaLastItem = $rootDrillDownNavUmbrella.find('li').last(),
