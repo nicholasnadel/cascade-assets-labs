@@ -9,7 +9,6 @@ $(function () {
         ieObjectFitFallback();
     }
 });
-
 function fetchCuratorImages() {
     $.ajax({
         url: 'https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6',
@@ -21,11 +20,9 @@ function fetchCuratorImages() {
         }
     });
 }
-
 function manipulateCuratorImages(data) {
     $('.homepage-masthead__photos img').each(function (index, value) {
         $(this).attr('src', data.posts[index].image);
-        $(this).attr('alt', data.posts[index].text);
         $(this).parent('a').attr('href', 'https://www.chapman.edu/admission/social-media.aspx#data-post=' + data.posts[index].id);
         if (window.location.href.indexOf("dev-www") != -1) {
             $(this).parent('a').attr('href', 'https://dev-www.chapman.edu/test-section/nick-test/social-media.aspx#data-post=' + data.posts[index].id);
@@ -34,23 +31,20 @@ function manipulateCuratorImages(data) {
             $(this).parent('a').attr('href', 'http://localhost:3000/uninav/two_column#data-post=' + data.posts[index].id);
         }
         $(this).attr('data-post', data.posts[index].id);
-
-
-
     })
-
     $('.homepage-masthead__photos img').load(function () {
         var imageObj = $(this);
         if (!(imageObj.width() == 1 && imageObj.height() == 1)) {
             fadeInImages();
         }
     });
+    $('img[alt=""]').each(function (index, value) {
+        $(this).attr('alt', data.posts[index].text);
+    })
 }
-
 function fadeInImages() {
     $('.homepage-masthead__photos img').addClass('fade-in');
 }
-
 function togglePlay() {
     if ($('video#homepage-masthead__video').length) {
         var vid = $("video#homepage-masthead__video");
@@ -67,7 +61,6 @@ function togglePlay() {
         }
     }
 }
-
 function ieObjectFitFallback() {
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
