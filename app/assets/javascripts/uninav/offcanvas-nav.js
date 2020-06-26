@@ -32,13 +32,9 @@ $(document).ready(function () {
   //CLOSE OFF-CANVAS-NAV
   $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click keypress', function (e) {
     if (a11yClick(event) === true) {
-      e.preventDefault();
-      $offCanvasNavContainer.css({
-        transform: "translateX(-" + menuWidth + "px)",
-        visibility: 'hidden'
-      });
 
-      $offCanvasOverlay.hide();
+      e.preventDefault();
+      closeOffCanvasMenu($offCanvasNavContainer, menuWidth);
     }
   });
 
@@ -471,6 +467,7 @@ $(document).ready(function () {
 
       $rootMainDiv.show();
       $rootUmbrellaDiv.hide();
+
       $rootDrillDownNavMain.initialHeight = $('.root-umbrella-nav').height();
       $rootDrillDownNavMain.css({ transform: "translateX(-" + ((menuWidth * 2) * $drillDownParents.length) + "px" });
       $rootUmbrellaDiv.css({ transform: "translateX(-" + menuWidth + "px" });
@@ -533,12 +530,9 @@ $(document).ready(function () {
 
   function selectLastDrillDownElement() {
     var $umbrellaLastItem = $rootDrillDownNavUmbrella.find('li').last(),
-      $mainLastItem = $('.off-canvas-utility').find('a').last().addClass('nick'),
+      $mainLastItem = $('.off-canvas-utility').find('a').last(),
       $umbrellaDrillDownMenus = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
       $mainDrillDownMenus = $rootDrillDownNavMain.find('.drilldown-menu');
-    // debugger
-
-
 
     $umbrellaLastItem.addClass('umbrella__last-item');
     $mainLastItem.addClass('main__last-item');
@@ -665,7 +659,8 @@ $(document).ready(function () {
           transform: "translateX(-" + menuWidth + "px)",
           visibility: 'hidden'
         });
-        // $offCanvasOverlay.hide();
+
+        $offCanvasOverlay.hide();
       }
     });
 
@@ -681,7 +676,9 @@ $(document).ready(function () {
           transform: "translateX(-" + menuWidth + "px)",
           visibility: 'hidden'
         });
+        restoreOnCanvasTabindex();
         $offCanvasOverlay.hide();
+
       }
     });
   }
@@ -794,16 +791,19 @@ $(document).ready(function () {
       if (accessibleClick(e) === true) {
         $("html, #main").removeClass("off-canvas__blur");
         // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-        $('.tabbable-disabled').attr('tabindex', '0');
-
-        $('.tabbable-disabled').each(function () {
-          $(this).addClass('tabbable');
-          $(this).removeClass('tabbable-disabled');
-        })
+        restoreOnCanvasTabindex();
       }
     });
-  }
 
+
+  }
+  function restoreOnCanvasTabindex() {
+    $('.tabbable-disabled').attr('tabindex', '0');
+    $('.tabbable-disabled').each(function () {
+      $(this).addClass('tabbable');
+      $(this).removeClass('tabbable-disabled');
+    });
+  }
 
   // accessibility
 
@@ -852,7 +852,12 @@ $(document).ready(function () {
               $(this).addClass('tabbable');
               $(this).removeClass('tabbable-disabled');
             })
+            restoreOnCanvasTabindex();
+            closeOffCanvasMenu($offCanvasNavContainer, menuWidth);
+
           }
+          // if ($('#uninav-logo-chapman-university') != $(document.activeElement)) { $offCanvasOverlay.hide(); }
+
         });
         $('#js-off-canvas-nav-container .off-canvas-utility a').last().on("keydown", function (e) {
           // TAB KEY
@@ -863,32 +868,32 @@ $(document).ready(function () {
             //   visibility: 'hidden'
             // });
 
-            // $offCanvasOverlay.hide();
 
-            // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-            $('.tabbable-disabled').attr('tabindex', '0');
 
-            $('.tabbable-disabled').each(function () {
-              $(this).addClass('tabbable');
-              $(this).removeClass('tabbable-disabled');
-            })
+            restoreOnCanvasTabindex();
+
+            closeOffCanvasMenu($offCanvasNavContainer, menuWidth);
           }
+
+          console.log('last visible tabbable item: ' + $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().text())
         });
-        // $('#js-off-canvas-nav-container .off-canvas-utility a').blur(function () {
-        //   $offCanvasNavContainer.css({
-        //     transform: "translateX(-" + menuWidth + "px)",
-        //     visibility: 'hidden'
-        //   });
 
-        //   $offCanvasOverlay.hide();
-        //   // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-        //   $('.tabbable-disabled').attr('tabindex', '0');
 
-        //   $('.tabbable-disabled').each(function () {
-        //     $(this).addClass('tabbable');
-        //     $(this).removeClass('tabbable-disabled');
-        //   })
-        // });
+        $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().blur(function () {
+          $offCanvasNavContainer.css({
+            transform: "translateX(-" + menuWidth + "px)",
+            visibility: 'hidden'
+          });
+
+          $offCanvasOverlay.hide();
+          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+          $('.tabbable-disabled').attr('tabindex', '0');
+
+          $('.tabbable-disabled').each(function () {
+            $(this).addClass('tabbable');
+            $(this).removeClass('tabbable-disabled');
+          })
+        });
 
       }
     }
@@ -920,6 +925,16 @@ $(document).ready(function () {
   }
 });
 
+
+function closeOffCanvasMenu($offCanvasNavContainer, menuWidth) {
+  $offCanvasNavContainer.css({
+    transform: "translateX(-" + menuWidth + "px)",
+    visibility: 'hidden'
+  });
+
+
+  $offCanvasOverlay.hide();
+}
 
 function a11yClick(e) {
   if (event.type === 'click') {
