@@ -6,7 +6,7 @@ $(function () {
   handleEscapeKeypress();
   gs__setSearchResultsZIndex();
 
-  $('#off-canvas-umbrella-navigation .root-main-nav').find('*[tabindex]:visible').last().addClass('last-item');
+  // $('#off-canvas-umbrella-navigation .root-main-nav').find('*[tabindex]:visible').last().addClass('last-item');
 
 });
 function closePrevDropdownWhenFocusChanges() {

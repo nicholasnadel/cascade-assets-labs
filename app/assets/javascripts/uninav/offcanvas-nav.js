@@ -532,13 +532,16 @@ $(document).ready(function () {
   }
 
   function selectLastDrillDownElement() {
-    var $umbrellaLastItem = $rootDrillDownNavUmbrella.find('*[tabindex]:visible').last(),
-      $mainLastItem = $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().addClass('last-item'),
-
+    var $umbrellaLastItem = $rootDrillDownNavUmbrella.find('li').last(),
+      $mainLastItem = $('.off-canvas-utility').find('a').last().addClass('nick'),
       $umbrellaDrillDownMenus = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
       $mainDrillDownMenus = $rootDrillDownNavMain.find('.drilldown-menu');
     // debugger
 
+
+
+    $umbrellaLastItem.addClass('umbrella__last-item');
+    $mainLastItem.addClass('main__last-item');
     $umbrellaDrillDownMenus.each(function (idx, drillDownMenu) {
 
       $(drillDownMenu).children(':last-child').off('focusin').on('focusin', function (e) {
@@ -662,7 +665,7 @@ $(document).ready(function () {
           transform: "translateX(-" + menuWidth + "px)",
           visibility: 'hidden'
         });
-        $offCanvasOverlay.hide();
+        // $offCanvasOverlay.hide();
       }
     });
 
@@ -855,12 +858,12 @@ $(document).ready(function () {
           // TAB KEY
           if (e.keyCode === 9) {
 
-            $offCanvasNavContainer.css({
-              transform: "translateX(-" + menuWidth + "px)",
-              visibility: 'hidden'
-            });
+            // $offCanvasNavContainer.css({
+            //   transform: "translateX(-" + menuWidth + "px)",
+            //   visibility: 'hidden'
+            // });
 
-            $offCanvasOverlay.hide();
+            // $offCanvasOverlay.hide();
 
             // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
             $('.tabbable-disabled').attr('tabindex', '0');
@@ -871,21 +874,21 @@ $(document).ready(function () {
             })
           }
         });
-        $('#js-off-canvas-nav-container .off-canvas-utility a').blur(function () {
-          $offCanvasNavContainer.css({
-            transform: "translateX(-" + menuWidth + "px)",
-            visibility: 'hidden'
-          });
+        // $('#js-off-canvas-nav-container .off-canvas-utility a').blur(function () {
+        //   $offCanvasNavContainer.css({
+        //     transform: "translateX(-" + menuWidth + "px)",
+        //     visibility: 'hidden'
+        //   });
 
-          $offCanvasOverlay.hide();
-          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-          $('.tabbable-disabled').attr('tabindex', '0');
+        //   $offCanvasOverlay.hide();
+        //   // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+        //   $('.tabbable-disabled').attr('tabindex', '0');
 
-          $('.tabbable-disabled').each(function () {
-            $(this).addClass('tabbable');
-            $(this).removeClass('tabbable-disabled');
-          })
-        });
+        //   $('.tabbable-disabled').each(function () {
+        //     $(this).addClass('tabbable');
+        //     $(this).removeClass('tabbable-disabled');
+        //   })
+        // });
 
       }
     }
