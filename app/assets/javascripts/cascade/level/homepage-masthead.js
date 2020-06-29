@@ -1,5 +1,6 @@
 $(function () {
     if ($('video#homepage-masthead__video').length) {
+        fetchCuratorImages();
         var vid = $("video#homepage-masthead__video");
         $('.homepage video').removeAttr('controls');
         $('.homepage-masthead__toggle-play-button').on('click keydown', function (event) {
@@ -8,7 +9,35 @@ $(function () {
         ieObjectFitFallback();
     }
 });
-
+function fetchCuratorImages() {
+    $.ajax({
+        url: 'https://api.curator.io/v1/feeds/ef183959-c3ad-4f2d-b90e-390c5d766fac/posts?api_key=11a4445f-6005-4040-9ff2-fd90d3aaa8a6',
+        type: 'GET',
+        success: manipulateCuratorImages,
+        error: function (data, status, error) {
+            console.log('%c ERROR: level/homepage-masthead.js - could not load curator.io images' + data.responseText.error, 'background: #222; color: #bada55');
+            $('.homepage-masthead__photos img').addClass('fade-in');
+        }
+    });
+}
+function manipulateCuratorImages(data) {
+    $('.homepage-masthead__photos img').each(function (index, value) {
+        $(this).attr('src', data.posts[index].image);
+        $(this).attr('data-post', data.posts[index].id);
+    })
+    $('.homepage-masthead__photos img').load(function () {
+        var imageObj = $(this);
+        if (!(imageObj.width() == 1 && imageObj.height() == 1)) {
+            fadeInImages();
+        }
+    });
+    $('img[alt=""]').each(function (index, value) {
+        $(this).attr('alt', data.posts[index].text);
+    })
+}
+function fadeInImages() {
+    $('.homepage-masthead__photos img').addClass('fade-in');
+}
 function togglePlay() {
     if ($('video#homepage-masthead__video').length) {
         var vid = $("video#homepage-masthead__video");
@@ -25,7 +54,6 @@ function togglePlay() {
         }
     }
 }
-
 function ieObjectFitFallback() {
     var ua = window.navigator.userAgent;
     var msie = ua.indexOf("MSIE ");
