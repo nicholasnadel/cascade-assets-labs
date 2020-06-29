@@ -1,8 +1,13 @@
 $(document).ready(function () {
   handleCloseClick();
 
+  $('#uninav-logo-chapman-university-home-page').on("focus", function () {
+    $offCanvasNavContainer.css({
+      transform: "translateX(-" + menuWidth + "px)",
+      visibility: 'hidden'
+    });
 
-
+  });
 
   var $offCanvasNavContainer = $('#uninav .off-canvas-nav-container'),
     menuVisibleXVal = 0,
@@ -541,7 +546,8 @@ $(document).ready(function () {
 
   $("#js-off-canvas-nav-container").on("keydown", function (e) {
     // Tab Key
-    if (e.keyCode === 9) {
+    if (e.key === "tab" && e.key != "shift") {
+
       $('.off-canvas-utility').find('*[tabindex]:visible').last().addClass('main__last-item')
     }
     $(".main__last-item").on("keydown blur", function (e) {
@@ -875,7 +881,9 @@ $(document).ready(function () {
 
         $('#js-off-canvas-nav-container *[tabindex]:visible').last().on("keydown blur", function (e) {
           // TAB KEY
-          if (e.keyCode === 9) {
+          // Mousetrap.bind('shift+tab', function () { console.log('shift'); });
+          if (e.key === "tab" && e.key != "shift") {
+            debugger;
             // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
             $('.tabbable-disabled').attr('tabindex', '0');
 
@@ -892,7 +900,8 @@ $(document).ready(function () {
         });
         $('#js-off-canvas-nav-container .off-canvas-utility a').last().on("keydown", function (e) {
           // TAB KEY
-          if (e.keyCode === 9) {
+          if (e.key === "tab" && e.key != "shift") {
+
 
             // $offCanvasNavContainer.css({
             //   transform: "translateX(-" + menuWidth + "px)",
@@ -910,22 +919,24 @@ $(document).ready(function () {
         });
 
 
-        $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().blur(function () {
-          $offCanvasNavContainer.css({
-            transform: "translateX(-" + menuWidth + "px)",
-            visibility: 'hidden'
+        if (e.key === "tab" && e.key != "shift") {
+          debugger;
+          $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().blur(function () {
+            $offCanvasNavContainer.css({
+              transform: "translateX(-" + menuWidth + "px)",
+              visibility: 'hidden'
+            });
+
+            $offCanvasOverlay.hide();
+            // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+            $('.tabbable-disabled').attr('tabindex', '0');
+
+            $('.tabbable-disabled').each(function () {
+              $(this).addClass('tabbable');
+              $(this).removeClass('tabbable-disabled');
+            })
           });
-
-          $offCanvasOverlay.hide();
-          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-          $('.tabbable-disabled').attr('tabindex', '0');
-
-          $('.tabbable-disabled').each(function () {
-            $(this).addClass('tabbable');
-            $(this).removeClass('tabbable-disabled');
-          })
-        });
-
+        }
       }
     }
   });
