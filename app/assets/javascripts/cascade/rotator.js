@@ -1,7 +1,5 @@
 $(function () {
-  if ($('#uninav').length > 0) {
-    var uninavHeight = $('#uninav').outerHeight();
-  }
+
 
   if ($(".rotatorContainer").parent(".homepage").length > 0) {
     $('.flexslider').flexslider({
@@ -173,16 +171,11 @@ $(function () {
   }
 });
 $(function () {
+  if ($('#uninav').length > 0) {
+    var uninavHeight = $('#uninav').outerHeight();
+  }
+
   if ($(".miniRotatorNav, .slider.version-201611").length > 0) {
-    // Skip over carousel entirely
-    $('a.next-section').click(function () {
-      $('html, body').animate({
-        scrollTop: $("div.breadcrumbs").offset().top - uninavHeight
-      }, 500)
-      $(".breadcrumbs a:first-child").focus()
-    })
-    // Scroll to skip button when focus
-    $(window).scrollTop($('.peekaboo').position().top);
     // Pause carousel via button
     $('div.pause').click(function () {
       pauseAutoScroll();
