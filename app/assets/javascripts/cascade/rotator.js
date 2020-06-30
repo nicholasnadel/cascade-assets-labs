@@ -1,4 +1,8 @@
 $(function () {
+  if ($('#uninav').length > 0) {
+    var uninavHeight = $('#uninav').outerHeight();
+  }
+
   if ($(".rotatorContainer").parent(".homepage").length > 0) {
     $('.flexslider').flexslider({
       animation: "slide",
@@ -173,7 +177,7 @@ $(function () {
     // Skip over carousel entirely
     $('a.next-section').click(function () {
       $('html, body').animate({
-        scrollTop: $("div.breadcrumbs").offset().top - 100
+        scrollTop: $("div.breadcrumbs").offset().top - uninavHeight
       }, 500)
       $(".breadcrumbs a:first-child").focus()
     })
