@@ -76,6 +76,9 @@
             transition: 250ms ease-in-out;
             will-change: background-color;
         }
+        a#covid19-learn-more-btn:hover, a#covid19-learn-more-btn:focus, a#covid19-learn-more-btn:focus-within {
+outline: 2px dotted white;
+}
 
         #covid19-callout-box .covid19-btn-body .btn-primary:hover,
         #covid19-callout-box .covid19-btn-body .btn-primary:active,
@@ -85,7 +88,7 @@
             transition: background-color 1s linear;
         }
     </style><div id="covid19-callout-box" role="complementary"><div class="covid19-btn-opener" tabindex="0">Coronavirus Updates <span id="covid-carot"
-                style="margin-left: 5px;font-size: 1.8rem;"><i class="fas fa-caret-up" aria-hidden="true"></i></span></div><div class="covid19-btn-body"><h3>CU Safely Back: Chapman's Plans for Returning to Campus</h3><a id="covid19-learn-more-btn" class="btn btn-primary btn-block" aria-label="Learn more about Corona Virus"
+                style="margin-left: 5px;font-size: 1.8rem;"><i class="fas fa-caret-up" aria-hidden="true"></i></span></div><div class="covid19-btn-body"><h3>CU Safely Back: Chapman's Plans for Returning to Campus</h3><a tabindex="-1" id="covid19-learn-more-btn" class="btn btn-primary btn-block" aria-label="Learn more about Corona Virus"
                 href="https://news.chapman.edu/coronavirus/">Visit Website</a></div></div><script>
         var contactEl;
         var toggleBtn;
