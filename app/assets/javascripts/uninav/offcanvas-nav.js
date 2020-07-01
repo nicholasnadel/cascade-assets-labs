@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
   // Restructures toggle DOM order for immediate tabindex after Uninav. Remains the same visually.
@@ -700,28 +702,40 @@ $(document).ready(function () {
         $offCanvasOverlay.hide();
         focusMainContent();
       }
-
-      if (e.key === "tab" && e.key != "shift") {
-        debugger;
-        $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().blur(function () {
-          $offCanvasNavContainer.css({
-            transform: "translateX(-" + menuWidth + "px)",
-            visibility: 'hidden'
-          });
-
-          $offCanvasOverlay.hide();
-          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-          $('.tabbable-disabled').attr('tabindex', '0');
-
-          $('.tabbable-disabled').each(function () {
-            $(this).addClass('tabbable');
-            $(this).removeClass('tabbable-disabled');
-          })
-        });
-      }
-
     });
   }
+
+  $('.off-canvas-utility').on('focusin', function (e) {
+    console.log('focus')
+
+    $('.off-canvas-utility').find('*[tabindex]:visible').last().on("keydown", function (e) {
+      if (e.key === "Tab") {
+        console.log('tab')
+        if (e.shiftKey) {
+          return;
+        }
+
+        console.log('focus out')
+        $offCanvasNavContainer.css({
+          transform: "translateX(-" + menuWidth + "px)",
+          visibility: 'hidden'
+        });
+        $offCanvasOverlay.hide();
+        focusMainContent();
+      }
+
+
+
+    })
+
+  });
+
+  // $('.off-canvas-utility').find('*[tabindex]:visible').last().on("focusin", function (e) {
+  //   console.log('focus')
+
+
+  // })
+
 
 
   $offCanvasNavContainer.find('.toggle-menu-label').off('focusin').on('focusin', function () {
