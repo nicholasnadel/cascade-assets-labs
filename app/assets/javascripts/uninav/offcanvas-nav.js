@@ -1,13 +1,8 @@
 $(document).ready(function () {
-  handleCloseClick();
 
-  $('#uninav-logo-chapman-university-home-page').on("focus", function () {
-    $offCanvasNavContainer.css({
-      transform: "translateX(-" + menuWidth + "px)",
-      visibility: 'hidden'
-    });
+  // Restructures toggle DOM order for immediate tabindex after Uninav. Remains the same visually.
+  $(".uninav__umbrella-nav-button-container").detach().appendTo('nav#uninav');
 
-  });
 
   var $offCanvasNavContainer = $('#uninav .off-canvas-nav-container'),
     menuVisibleXVal = 0,
@@ -34,16 +29,35 @@ $(document).ready(function () {
       visibility: 'visible'
     });
     $offCanvasOverlay.show();
+
+    // shift focus
+    setTimeout(function () { $('#js-off-canvas-nav-container #main-logo a').focus() }, 100);
+
   });
 
   $(window).on('scroll', setSectionMenuButtonSize)
 
   //CLOSE OFF-CANVAS-NAV
-  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click keypress', function (e) {
-    if (a11yClick(event) === true) {
+  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('click', function () {
+    $offCanvasNavContainer.css({
+      transform: "translateX(-" + menuWidth + "px)",
+      visibility: 'hidden'
+    });
+    $offCanvasOverlay.hide();
+    setTimeout(function () { $('#main a').focus() }, 1000);
 
+  });
+
+  $offCanvasNavContainer.find('.close.js-close-off-canvas-nav').on('keydown', function (e) {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      closeOffCanvasMenu($offCanvasNavContainer, menuWidth);
+      $offCanvasNavContainer.css({
+        transform: "translateX(-" + menuWidth + "px)",
+        visibility: 'hidden'
+      });
+      $offCanvasOverlay.hide();
+      setTimeout(function () { $('#main a').focus() }, 1000);
+
     }
   });
 
@@ -476,7 +490,6 @@ $(document).ready(function () {
 
       $rootMainDiv.show();
       $rootUmbrellaDiv.hide();
-
       $rootDrillDownNavMain.initialHeight = $('.root-umbrella-nav').height();
       $rootDrillDownNavMain.css({ transform: "translateX(-" + ((menuWidth * 2) * $drillDownParents.length) + "px" });
       $rootUmbrellaDiv.css({ transform: "translateX(-" + menuWidth + "px" });
@@ -537,42 +550,13 @@ $(document).ready(function () {
     }
   }
 
-
-  $('#js-off-canvas-nav-container').on('focusout', function (e) {
-    restoreOnCanvasTabindex();
-    $offCanvasOverlay.hide();
-  });
-
-
-  $("#js-off-canvas-nav-container").on("keydown", function (e) {
-    // Tab Key
-    if (e.key === "tab" && e.key != "shift") {
-
-      $('.off-canvas-utility').find('*[tabindex]:visible').last().addClass('main__last-item')
-    }
-    $(".main__last-item").on("keydown blur", function (e) {
-      // SHIFT TAB KEY COMBO
-      if (e.keyCode === 9) {
-
-        $offCanvasNavContainer.css({
-          transform: "translateX(-" + menuWidth + "px)",
-          visibility: 'hidden'
-        });
-        restoreOnCanvasTabindex();
-        $offCanvasOverlay.hide();
-
-      }
-    });
-  });
-
   function selectLastDrillDownElement() {
-    var $umbrellaLastItem = $rootDrillDownNavUmbrella.find('li').last(),
-      $mainLastItem = $('.off-canvas-utility').find('a').last(),
+    var $umbrellaLastItem = $('#js-off-canvas-nav-container *[tabindex]:visible').last();
+    $mainLastItem = $('.off-canvas-utility *[tabindex]:visible').last(),
       $umbrellaDrillDownMenus = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
       $mainDrillDownMenus = $rootDrillDownNavMain.find('.drilldown-menu');
+    // debugger
 
-    $umbrellaLastItem.addClass('umbrella__last-item');
-    $mainLastItem.addClass('main__last-item');
     $umbrellaDrillDownMenus.each(function (idx, drillDownMenu) {
 
       $(drillDownMenu).children(':last-child').off('focusin').on('focusin', function (e) {
@@ -696,8 +680,8 @@ $(document).ready(function () {
           transform: "translateX(-" + menuWidth + "px)",
           visibility: 'hidden'
         });
-
         $offCanvasOverlay.hide();
+        focusMainContent();
       }
     });
 
@@ -713,10 +697,29 @@ $(document).ready(function () {
           transform: "translateX(-" + menuWidth + "px)",
           visibility: 'hidden'
         });
-        restoreOnCanvasTabindex();
         $offCanvasOverlay.hide();
-
+        focusMainContent();
       }
+
+      if (e.key === "tab" && e.key != "shift") {
+        debugger;
+        $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().blur(function () {
+          $offCanvasNavContainer.css({
+            transform: "translateX(-" + menuWidth + "px)",
+            visibility: 'hidden'
+          });
+
+          $offCanvasOverlay.hide();
+          // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
+          $('.tabbable-disabled').attr('tabindex', '0');
+
+          $('.tabbable-disabled').each(function () {
+            $(this).addClass('tabbable');
+            $(this).removeClass('tabbable-disabled');
+          })
+        });
+      }
+
     });
   }
 
@@ -819,190 +822,22 @@ $(document).ready(function () {
   addTopLevelDrillDownClasses();
   selectLastDrillDownElement();
   moveToCurrentSetHeight();
-
-  $(".uninav__umbrella-nav-button-container").detach().appendTo('nav#uninav');
-
-
-  function handleCloseClick() {
-    $('.js-close-off-canvas-nav').on("click keypress", function (e) {
-      if (accessibleClick(e) === true) {
-        $("html, #main").removeClass("off-canvas__blur");
-        // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-        restoreOnCanvasTabindex();
-      }
-    });
-
-
-  }
-  function restoreOnCanvasTabindex() {
-    $('.tabbable-disabled').attr('tabindex', '0');
-    $('.tabbable-disabled').each(function () {
-      $(this).addClass('tabbable');
-      $(this).removeClass('tabbable-disabled');
-    });
-  }
-
-  // accessibility
-
-  // off-canvas overlay - add to main content when expanded
-
-  var sectionMenuButton = $("#section-menu-hamburger-icon");
-  $('#umbrella-nav-button-toggle, .uninav__hamburger-menu').on('click keydown', function (e) {
-    if (accessibleClick(e)) {
-      $("html, #main").addClass("off-canvas__blur");
-      $('#off-canvas-umbrella #main-logo a:first-of-type').focus();
-      // REMOVE TABINDEX FROM ALL <A> AND ANYTHING ELSE WITH A TABINDEX ATTR
-      // $('a, button, *[tabindex], iframe').attr('tabindex', '-1');
-      if ($('.umbrella-nav-button-toggle').length >= 0) {
-        $('*[tabindex]').each(function () {
-          console.log('removing tabindex')
-          if ($(this).attr('tabindex') >= 0) {
-            $(this).addClass('tabbable-disabled');
-            $(this).attr('tabindex', '-666');
-          }
-        })
-
-        $('a, button, iframe, input').addClass('tabbable-disabled');
-        $('a, button, iframe, input').attr('tabindex', '-1');
-
-
-        // RESET OFF CANVAS TABINDEX TO MAKE IT TABBABLE
-
-
-
-        setTimeout(function () {
-          $('#js-off-canvas-nav-container *[tabindex]').attr('tabindex', '0'), $('#js-off-canvas-nav-container .tabbable-disabled').addClass('tabbable').removeClass('tabbable-disabled'), $('#js-off-canvas-nav-container a.off-logo').addClass('focus').focus(),
-            $('#off-canvas-umbrella a.default').focus()
-        }, 100);
-        $(document.activeElement).addClass('focus');
-
-        // CLOSE ON LAST VISIBLE TAB
-        $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().addClass('last-item');
-
-        $('#js-off-canvas-nav-container *[tabindex]:visible').last().on("keydown blur", function (e) {
-          // TAB KEY
-          // Mousetrap.bind('shift+tab', function () { console.log('shift'); });
-          if (e.key === "tab" && e.key != "shift") {
-            debugger;
-            // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-            $('.tabbable-disabled').attr('tabindex', '0');
-
-            $('.tabbable-disabled').each(function () {
-              $(this).addClass('tabbable');
-              $(this).removeClass('tabbable-disabled');
-            })
-            restoreOnCanvasTabindex();
-            closeOffCanvasMenu($offCanvasNavContainer, menuWidth);
-
-          }
-          // if ($('#uninav-logo-chapman-university') != $(document.activeElement)) { $offCanvasOverlay.hide(); }
-
-        });
-        $('#js-off-canvas-nav-container .off-canvas-utility a').last().on("keydown", function (e) {
-          // TAB KEY
-          if (e.key === "tab" && e.key != "shift") {
-
-
-            // $offCanvasNavContainer.css({
-            //   transform: "translateX(-" + menuWidth + "px)",
-            //   visibility: 'hidden'
-            // });
-
-
-
-            restoreOnCanvasTabindex();
-
-            closeOffCanvasMenu($offCanvasNavContainer, menuWidth);
-          }
-
-          console.log('last visible tabbable item: ' + $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().text())
-        });
-
-
-        if (e.key === "tab" && e.key != "shift") {
-          debugger;
-          $('#js-off-canvas-nav-container').find('*[tabindex]:visible').last().blur(function () {
-            $offCanvasNavContainer.css({
-              transform: "translateX(-" + menuWidth + "px)",
-              visibility: 'hidden'
-            });
-
-            $offCanvasOverlay.hide();
-            // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-            $('.tabbable-disabled').attr('tabindex', '0');
-
-            $('.tabbable-disabled').each(function () {
-              $(this).addClass('tabbable');
-              $(this).removeClass('tabbable-disabled');
-            })
-          });
-        }
-      }
-    }
-  });
-
-
-
-  $('.js-close-off-canvas-nav').on('click keydown', function (e) {
-    if (accessibleClick(e) === true) {
-
-      $("html, #main").removeClass("off-canvas__blur");
-      // RESTORE TABINDEX ON AFOREMENTIONED ELEMENTS
-      $('.tabbable-disabled').attr('tabindex', '0');
-
-      $('.tabbable-disabled').each(function () {
-        $(this).addClass('tabbable');
-        $(this).removeClass('tabbable-disabled');
-      })
-    }
-  });
-
-  function _umbrellaHandleEscapeKeypress() {
-    document.onkeydown = function (evt) {
-      evt = evt || window.event;
-      if (evt.keyCode == 27) {
-        $(".uninav__dropdown--parent").attr("aria-expanded", "false");
-      }
-    };
-  }
 });
 
 
-function closeOffCanvasMenu($offCanvasNavContainer, menuWidth) {
-  $offCanvasNavContainer.css({
-    transform: "translateX(-" + menuWidth + "px)",
-    visibility: 'hidden'
-  });
 
-
-  $offCanvasOverlay.hide();
-}
-
-function a11yClick(e) {
-  if (event.type === 'click') {
-    return true;
-  } else if (event.type === 'keypress') {
-    var code = event.charCode || event.keyCode;
-    if ((code === 32) || (code === 13)) {
-      return true;
+function focusMainContent() {
+  var scrollTarget = $('#main').length ? $('#main').first() : $('h1').first();
+  if (scrollTarget.is(":hidden")) {
+    if ($('#scrollToMe').length == 0) {
+      scrollTarget.after("<div id='scrollToMe'></div>");
     }
-  } else {
-    return false;
+    scrollTarget = $("#scrollToMe");
   }
+  $('html,body').animate({ scrollTop: scrollTarget.offset().top + 100 }, 500);
+  scrollTarget.attr('tabindex', -1).on('blur focusout', function () {
+    // when focus leaves this element, remove the tabindex attribute
+    $(this).removeAttr('tabindex');
+  }).focus(); // focus on the content container
+  return false;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
