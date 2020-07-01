@@ -1,13 +1,13 @@
 {
-  "application.js": "/_packs/js/application-0e4844fd147fb887abd1.js",
-  "application.js.map": "/_packs/js/application-0e4844fd147fb887abd1.js.map",
+  "application.js": "/_packs/master-webpack.js",
+  "application.js.map": "/_packs/master-webpack.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/_packs/js/application-0e4844fd147fb887abd1.js"
+        "/_packs/master-webpack.js"
       ],
       "js.map": [
-        "/_packs/js/application-0e4844fd147fb887abd1.js.map"
+        "/_packs/master-webpack.js.map"
       ]
     }
   }
