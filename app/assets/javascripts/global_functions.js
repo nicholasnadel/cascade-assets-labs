@@ -1,5 +1,3 @@
-
-
 function accessibleClick(event) {
     if (event.type === 'click') {
         return true;
@@ -13,18 +11,3 @@ function accessibleClick(event) {
     }
 }
 
-// global debug
-if (window.location.href.indexOf("???") > -1) {
-    // log and highlight the element with focus
-    document.addEventListener('focus', function () {
-        console.log('%c focused:  ', 'background: #222; color: yellow', document.activeElement);
-        $(document.activeElement).addClass('debug');
-    }, true);
-
-}
-
-$(document).keydown(function (e) {
-    if (e.keyCode == 191) {
-        alert(e.which + " or slash was pressed");
-    }
-});
