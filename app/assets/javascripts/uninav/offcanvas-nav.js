@@ -557,7 +557,6 @@ $(document).ready(function () {
     $mainLastItem = $('.off-canvas-utility *[tabindex]:visible').last(),
       $umbrellaDrillDownMenus = $rootDrillDownNavUmbrella.find('.drilldown-menu'),
       $mainDrillDownMenus = $rootDrillDownNavMain.find('.drilldown-menu');
-    // debugger
 
     $umbrellaDrillDownMenus.each(function (idx, drillDownMenu) {
 
@@ -799,7 +798,7 @@ $(document).ready(function () {
       $mainActiveDrillDown = $rootDrillDownNavMain.find('.drilldown-menu.active'),
       umbrellaActiveDrillDownParents = $umbrellaActiveDrillDown.parents('.drilldown-menu').length,
       mainActiveDrillDownParents = $mainActiveDrillDown.parents('.drilldown-menu').length;
-    // debugger
+
     if ($(window).width() < 600) {
       menuWidth = 350;
     } else {
