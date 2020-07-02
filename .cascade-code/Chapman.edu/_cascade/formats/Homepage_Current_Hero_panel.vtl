@@ -1,12 +1,12 @@
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
 #set ( $heroPanel = $currentPage.getChild('system-data-structure').getChild('heroPanel') )
-#set ( $altText1 = $familyData.getChild('image-1').value )
-#set ( $altText2 = $familyData.getChild('image-2').value )
-#set ( $altText3 = $familyData.getChild('image-3').value )
-#set ( $altText4 = $familyData.getChild('image-4').value )
-#set ( $altText5 = $familyData.getChild('image-5').value )
+#set ( $altText1 = $heroPanel.getChild('image-1').value )
+#set ( $altText2 = $heroPanel.getChild('image-2').value )
+#set ( $altText3 = $heroPanel.getChild('image-3').value )
+#set ( $altText4 = $heroPanel.getChild('image-4').value )
+#set ( $altText5 = $heroPanel.getChild('image-5').value )
 
-
+<div class="hidden">alt text $altText1</div>
 <div class="homepage-masthead__container">
 	<div class="homepage-masthead__heading-container">
 		<!-- Heading -->
