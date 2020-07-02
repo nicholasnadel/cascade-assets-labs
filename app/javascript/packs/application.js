@@ -17,6 +17,8 @@
 
 
 console.log('Hello World from Webpacker')
-import testMe from '../src/test';
+import uninav from '../src/navigation/uninav';
+import leftNav from '../src/navigation/leftnav';
 
-testMe();
+leftNav();
+uninav();
