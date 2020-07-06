@@ -216,6 +216,7 @@ textarea {
   -o-animation: fadein 3s forwards;
   animation-direction: forwards;
   -webkit-animation: fadein 3s forwards;
+  animation-fill-mode: forwards !important;
 }
 
 
