@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.1'
+ruby '2.7.0'
 
 gem 'autoprefixer-rails', '~> 6.4'
 gem 'awesome_print'
@@ -10,7 +10,7 @@ gem 'rubyzip'
 gem 'tzinfo-data'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.8'
+# gem 'rails', '~> 4.2.8'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
