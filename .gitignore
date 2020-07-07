@@ -19,7 +19,9 @@
 .dev/
 .pseudo/
 .sass-cache/
-dist/
+dist/production/*
+dist/staging/*
+!dist/staging/_netlify
 node_modules
 /tmp/
 /public/_assets
