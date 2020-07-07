@@ -228,3 +228,7 @@ def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
   zf.write
 end
+
+desc "Trigger Netlify deploy"
+task netlify: :environment do
+end
