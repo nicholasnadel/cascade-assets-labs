@@ -1,130 +1,5 @@
 require 'zip_file_generator'
 
-# rubocop:disable Metrics/BlockLength
-namespace :build do
-  namespace :omninav do
-    #
-    # Build static version: rake build:omninav:static
-    #
-    desc "Build static OmniNav navbar assets and markup."
-    task static: :environment do
-      # Params
-      target = 'static'
-
-      # Prep Builder
-      builder = Omninav::Builder.new(target: target)
-      builder.prep_build
-      builder.deploy_map = {
-        'omni-nav-*.css' => 'omni-nav.min.css',
-        'omni-nav-*.js' => 'omni-nav.min.js',
-        'omni-nav-*.css.gz' => 'omni-nav.css.gz',
-        'omni-nav-*.js.gz' => 'omni-nav.js.gz',
-        'omni-nav.html' => 'omni-nav.html'
-      }
-      puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
-
-      # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
-      # See http://stackoverflow.com/a/1090319/6763239.
-      system("rake build:omninav:assets RAILS_ENV=production")
-
-      builder.generate_markup_file
-      builder.move_output_files_to_build_directory
-      builder.cleanup
-
-      # Report
-      puts format("\nBuild complete. Find files in %s.", builder.output_dir)
-    end
-
-    #
-    # Build blogs version: rake build:omninav:blogs
-    #
-    # Blogs expects files here:
-    # https://github.com/chapmanu/blogs/tree/development/content/plugins/cu-wp-customization/omni-nav
-    #
-    # Loaded at runtime here:
-    # https://github.com/chapmanu/blogs/blob/development/content/plugins/cu-wp-customization/cu-wp-customization.php#L243
-    #
-    desc "Build OmniNav navbar assets and markup for Blogs site."
-    task blogs: :environment do
-      # Params
-      target = 'blogs'
-
-      # Prep Builder
-      builder = Omninav::Builder.new(target: target)
-      builder.prep_build
-      puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
-
-      # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
-      # See http://stackoverflow.com/a/1090319/6763239.
-      system("rake build:omninav:assets RAILS_ENV=production")
-
-      builder.generate_markup_file
-      builder.move_output_files_to_build_directory
-      builder.cleanup
-
-      # Report
-      puts format("\nBuild complete. Find files in %s.", builder.output_dir)
-    end
-
-    #
-    # Build inside version: rake build:omninav:inside
-    #
-    # Inside expects files here:
-    # https://github.com/chapmanu/inside/tree/development/lib/assets/omni-nav
-    #
-    # Loaded at runtime here:
-    # https://github.com/chapmanu/inside/blob/development/app/assets/javascripts/inside.js#L23
-    # https://github.com/chapmanu/inside/blob/development/app/assets/stylesheets/inside.css.scss#L2
-    #
-    desc "Build OmniNav navbar assets and markup for Inside site."
-    task inside: :environment do
-      # Params
-      target = 'inside'
-
-      # Prep Builder
-      builder = Omninav::Builder.new(target: target)
-      builder.prep_build
-      puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
-
-      # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
-      # See http://stackoverflow.com/a/1090319/6763239.
-      system("rake build:omninav:assets RAILS_ENV=production")
-
-      builder.generate_markup_file
-      builder.move_output_files_to_build_directory
-      builder.cleanup
-
-      # Report
-      puts format("\nBuild complete. Find files in %s.", builder.output_dir)
-    end
-
-    desc "Build OmniNav navbar assets."
-    task assets: :environment do
-      # Configure the asset pipeline to compile minified files.
-      # NOTE: Sprockets only minifies files in production environment so this assumes
-      # RAILS_ENV is set to production on the command line.
-      Rails.application.config.assets.prefix = "../build/omninav/staging"
-      Rails.application.config.assets.paths = [Rails.root.join('app', 'assets', 'javascripts'),
-                                               Rails.root.join('app', 'assets', 'stylesheets')]
-      Rails.application.config.assets.precompile -= ['master.js', 'master.css']
-      Rails.application.config.assets.precompile += ['omni-nav.js', 'omni-nav.css']
-
-      # Let it rip.
-      Rake::Task['assets:clobber'].invoke
-      Rake::Task['assets:precompile'].invoke
-    end
-  end
-
-  #
-  # Build all versions: rake build:omninav
-  #
-  desc "Build OmniNav navbar assets and markup for various Chapman websites."
-  task omninav: :environment do
-    Rake::Task['build:omninav:static'].invoke
-    Rake::Task['build:omninav:blogs'].invoke
-    Rake::Task['build:omninav:inside'].invoke
-  end
-end
 # rubocop:enable Metrics/BlockLength
 
 desc "Build assets for deployment to Cascade."
@@ -146,10 +21,10 @@ task build: :environment do
     include RenderAnywhere
 
     prep_dist
-
     zip rails_asset_path, dist_assets_path
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
+  
   end
 end
 
@@ -179,8 +54,8 @@ task :changelog do
     f.puts "--------------------------------------------------------------------------"
     f.puts `git status`
     }
-  `open -g #{git_log}`
-  system %(open -g "./dist")
+  # `open -g #{git_log}`
+  # system %(open -g "./dist")
 end 
 
 ####################
@@ -191,8 +66,14 @@ def prep_dist
   FileUtils.mkdir('dist') unless File.directory?('dist')
   FileUtils.rm_rf dist_folder
   FileUtils.mkdir dist_folder
+  prep_netlify
+
 end
 
+def prep_netlify
+  File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
+  File.rename(netlify_erb, netlify_index)
+end
 
 def rails_asset_path
   Rails.root.join('public', '_assets')
@@ -206,8 +87,17 @@ def dist_assets_path
   Rails.root.join('dist', Rails.env, '_assets.zip')
 end
 
+
 def dist_cascade_block_path
   Rails.root.join('dist', Rails.env, 'cascade-assets.xml')
+end
+
+def netlify_erb
+  Rails.root.join('dist', Rails.env, 'netlify.html.erb')
+end
+
+def netlify_index
+  Rails.root.join('dist', Rails.env, 'index.html')
 end
 
 def preload_js_link(*sources)
@@ -228,3 +118,18 @@ def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
   zf.write
 end
+
+
+
+def extract_zip(file, destination)
+  FileUtils.mkdir_p(destination)
+
+  Zip::File.open(file) do |zip_file|
+    zip_file.each do |f|
+      fpath = File.join(destination, f.name)
+      FileUtils.mkdir_p(File.dirname(fpath))
+      zip_file.extract(f, fpath) unless File.exist?(fpath)
+    end
+  end
+end
+
