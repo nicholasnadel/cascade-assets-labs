@@ -9,17 +9,36 @@
     <link rel="stylesheet" href="style.js">
 </head>
 
+<style>
+    .main {
+        display: grid;
+        place-content: center;
+    }
+
+    code {
+        background-color: black;
+        color: lime;
+        padding: 0 5px 0 5px;
+    }
+</style>
+
 <body>
-    <h1>Cascade Assets - CDN Proof of Concept</h1>
-    <p>This simply serves as a dev CDN. Style.css and style.js are accessible via</p>
-    <ul>
-        <li><a
-                href="https://vibrant-kirch-0c0f4d.netlify.app/style.css">https://vibrant-kirch-0c0f4d.netlify.app/style.css</a>
-        </li>
-        <li><a
-                href="https://vibrant-kirch-0c0f4d.netlify.app/style.js">https://vibrant-kirch-0c0f4d.netlify.app/style.js</a>
-        </li>
-    </ul>
+    <div class="main">
+        <h1>Cascade Assets - CDN Proof of Concept</h1>
+        </p>
+        <p>This simply serves as a dev CDN.
+        <p><code>rake netlify</code> triggers pushing from the GitHub branch to Netlify</p>
+        <p><code>style.css</code> and <code>style.js</code> are accessible via:</p>
+        <ul>
+            <li><a
+                    href="https://vibrant-kirch-0c0f4d.netlify.app/style.css">https://vibrant-kirch-0c0f4d.netlify.app/style.css</a>
+            </li>
+            <li><a
+                    href="https://vibrant-kirch-0c0f4d.netlify.app/style.js">https://vibrant-kirch-0c0f4d.netlify.app/style.js</a>
+            </li>
+        </ul>
+        <p>You can reference the above assets in any <code>cascade-assets</code> XML block</p>
+    </div>
 </body>
 
 </html>
