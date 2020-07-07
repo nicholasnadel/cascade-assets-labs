@@ -22,6 +22,8 @@ task build: :environment do
 
     prep_dist
     zip rails_asset_path, dist_assets_path
+    extract_zip('dist/staging/_assets.zip', 'dist/staging/_assets')
+
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
   
@@ -75,6 +77,13 @@ def prep_netlify
   File.rename(netlify_erb, netlify_index)
 end
 
+def netlify_erb
+  Rails.root.join('dist', Rails.env, 'netlify.html.erb')
+end
+
+def netlify_index
+  Rails.root.join('dist', Rails.env, 'index.html')
+end
 def rails_asset_path
   Rails.root.join('public', '_assets')
 end
@@ -92,13 +101,6 @@ def dist_cascade_block_path
   Rails.root.join('dist', Rails.env, 'cascade-assets.xml')
 end
 
-def netlify_erb
-  Rails.root.join('dist', Rails.env, 'netlify.html.erb')
-end
-
-def netlify_index
-  Rails.root.join('dist', Rails.env, 'index.html')
-end
 
 def preload_js_link(*sources)
   options = sources.extract_options!.stringify_keys
@@ -118,7 +120,6 @@ def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
   zf.write
 end
-
 
 
 def extract_zip(file, destination)
