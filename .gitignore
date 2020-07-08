@@ -23,7 +23,7 @@
 # !/dist/staging/_netlify/**
 dist/production/*
 dist/staging/*
-!dist/netlify/
+!dist/netlify/*
 !dist/netlify/_netlify
 node_modules
 /tmp/
