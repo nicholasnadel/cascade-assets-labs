@@ -19,10 +19,12 @@
 .dev/
 .pseudo/
 .sass-cache/
+# /dist/staging/
+# !/dist/staging/_netlify/**
 dist/production/*
 dist/staging/*
-!dist/netlify/*
-!dist/netlify/_netlify/*
+!dist/netlify/
+!dist/netlify/_netlify
 node_modules
 /tmp/
 /public/_assets
