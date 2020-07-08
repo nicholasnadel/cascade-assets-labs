@@ -13,9 +13,25 @@
     <%= stylesheet_link_tag 'master', media: 'all' %>
     <%= javascript_include_tag 'master', defer: true %>
 </head>
+<style>
+    body {
+        display: grid;
+        place-content: center;
+    }
+
+    code {
+        background-color: black;
+        color: lime;
+        padding: 0 5px 0 5px;
+    }
+</style>
 
 <body>
-    <%= "Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%>
+    <h1>Cascade Assets - CDN Proof of Concept</h1>
+    </p>
+    <p>This simply serves as a dev CDN.
+    <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
+    <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
 </body>
 
 </html>
