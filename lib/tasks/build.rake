@@ -128,7 +128,6 @@ def zip(input_folder, output_name)
   zf.write
 end
 
-
 def extract_zip(file, destination)
   FileUtils.mkdir_p(destination)
 
@@ -143,3 +142,7 @@ def extract_zip(file, destination)
   netlify_move_index
 end
 
+
+task netlify: :environment do
+  puts "deploying assets to https://cucdn.xyz/"
+end
