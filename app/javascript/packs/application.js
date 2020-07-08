@@ -16,9 +16,10 @@
 // const imagePath = (name) => images(name, true)
 
 
-console.log('Hello World from Webpacker')
+console.log('Hello World from Webpacker!')
 import uninav from '../src/navigation/uninav';
 import leftNav from '../src/navigation/leftnav';
+import '../src/master.scss';
 
 leftNav();
 uninav();

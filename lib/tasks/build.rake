@@ -135,21 +135,11 @@ task build: :environment do
     puts "  rake build RAILS_ENV=staging"
     puts "  rake build RAILS_ENV=production"
   else
-    # FIXME
-    # This is only needed here (AFAICT) and breaks things in test and elsewhere because it
-    # overrides the behavior of render. For more info, see
-    # http://stackoverflow.com/q/39396601/1093087.
-    #
-    # Bigger question: do we really need this gem just for this one call? Can't we leverage
-    # something already in Rails?
-    require 'render_anywhere'
-    include RenderAnywhere
-
     prep_dist
 
     zip rails_asset_path, dist_assets_path
     Rake::Task['changelog'].invoke
-    File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
+    File.write(dist_cascade_block_path, ApplicationController.renderer.render(file: 'layouts/cascade-assets.xml'))
   end
 end
 

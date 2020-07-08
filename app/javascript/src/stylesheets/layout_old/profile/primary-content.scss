@@ -1,0 +1,8 @@
+.primaryContent .main {
+  min-height: 230px;
+  width:100%;
+
+  @include bp(l) {
+    width: 70%;
+  }
+}

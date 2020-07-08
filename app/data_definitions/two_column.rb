@@ -13,7 +13,7 @@ module DataDefinitions
     DEFAULTS = {
       XPATH[:masthead_type] => 'Branded Masthead',
       XPATH[:branded_header] => 'A Brand New Branded Masthead',
-      XPATH[:branded_image_path] => '/_assets/mastheads/branded-new.jpg',
+      XPATH[:branded_image_path] => '/imgages/branded-new.jpg',
       XPATH[:branded_alt_text] => 'Branded - New alt text',
       XPATH[:v201611_header] => 'Campus Life at Chapman University'
     }.freeze
