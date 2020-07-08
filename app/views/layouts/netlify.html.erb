@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDN - Cascade Assets</title>
     <system-xml>
-
         <![CDATA[#protect
           <!-- <%= "Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%> -->
         #protect]]>
@@ -18,7 +17,6 @@
         <!-- Carry on -->
         <%= stylesheet_link_tag 'master', media: 'all' %>
         <%= javascript_include_tag 'master', defer: true %>
-
     </system-xml>
 
 </head>
