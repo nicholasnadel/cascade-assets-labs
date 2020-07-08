@@ -21,11 +21,14 @@
 .sass-cache/
 dist/production/*
 dist/staging/*
-!dist/staging/_netlify
+!dist/staging/
+!dist/netlify/*
+!dist/netlify/_assets/*
 node_modules
 /tmp/
 /public/_assets
 /public/_files
+/public/
 
 # Miscellaneous Files
 *.DS_Store
