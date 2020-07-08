@@ -32,6 +32,8 @@
     <p>This simply serves as a dev CDN.
     <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
     <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
+    <p> <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%>
+    </p>
 </body>
 
 </html>
