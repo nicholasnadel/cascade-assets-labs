@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN - Cascade Assets</title>
+    <system-xml>
+
+        <![CDATA[#protect
+          <!-- Branch: netlify-deploy-rails-4-keep-ruby-version Build: 12:12PM 07-08-2020 -->
+        #protect]]>
+
+        <!-- Preload CSS & JS -->
+        <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master-0649162270bf23f28c1c66ceb46f1dfb91fa67e745b2a0f67517b32da41098b7.css" as="style" />
+        <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" as="script" />
+
+        <!-- Carry on -->
+        <link rel="stylesheet" media="all" href="https://cucdn.xyz/_assets/master-0649162270bf23f28c1c66ceb46f1dfb91fa67e745b2a0f67517b32da41098b7.css" />
+        <script src="https://cucdn.xyz/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" defer="defer"></script>
+
+    </system-xml>
+
+</head>
+<style>
+    body {
+        display: grid;
+        place-content: center;
+    }
+
+    code {
+        background-color: black;
+        color: lime;
+        padding: 0 5px 0 5px;
+    }
+</style>
+
+<body>
+    <h1>Cascade Assets - CDN Proof of Concept</h1>
+    </p>
+    <p>This simply serves as a dev CDN.
+    <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
+    <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
+
+    <h1>Cascade Assets - CDN Proof of Concept</h1>
+    <p>This simply serves as a dev CDN.</p>
+    <p> Current Branch: netlify-deploy-rails-4-keep-ruby-version Build: 12:12PM 07-08-2020    </p>
+</body>
+
+</html>
