@@ -1,36 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN - Cascade Assets</title>
+    <system-xml></system-xml>
 
-    <meta property="og:title" content="Sample Page" />
-    <meta property="og:description" content="Description of sample page" />
-    <meta property="og:url" content="https://www.chapman.edu/sample-page.aspx" />
-    <meta property="og:image" content="https://www.chapman.edu/_files/img/open-graph-cu-logo.png" />
-
-    <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport" />
-
-    <!-- scripts -->
-    <link href="https://use.typekit.net/eyn5jyy.css" rel="stylesheet" />
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="//www.chapman.edu/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js"></script>
-
-    <!--[if lt IE 7 ]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-    <![endif]-->
-    <!-- Branch: netlify-deploy-rails-4-keep-ruby-version Build: 09:48AM 07-08-2020 -->
-    #protect]]>
+    <![CDATA[#protect
+          <!-- Branch: netlify-deploy-rails-4-keep-ruby-version Build: 09:57AM 07-08-2020 -->
+        #protect]]>
 
     <!-- Preload CSS & JS -->
-    <link rel="preload" media="all" href="//www.chapman.edu/_assets/master-c7e092cb6d79250b90b3c0185b57739f40f41ccb501006827702e71aea3f627a.css" as="style" />
-    <link rel="preload" media="all" href="//www.chapman.edu/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" as="script" />
+    <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master-c7e092cb6d79250b90b3c0185b57739f40f41ccb501006827702e71aea3f627a.css" as="style" />
+    <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" as="script" />
 
     <!-- Carry on -->
-    <link rel="stylesheet" media="all" href="//www.chapman.edu/_assets/master-c7e092cb6d79250b90b3c0185b57739f40f41ccb501006827702e71aea3f627a.css" />
-    <script src="//www.chapman.edu/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" defer="defer"></script>
-</head>
+    <link rel="stylesheet" media="all" href="https://cucdn.xyz/_assets/master-c7e092cb6d79250b90b3c0185b57739f40f41ccb501006827702e71aea3f627a.css" />
+    <script src="https://cucdn.xyz/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" defer="defer"></script>
+    </system-xml>
+    </system-xml>
 
+</head>
 <style>
     body {
         display: grid;
@@ -44,13 +35,16 @@
     }
 </style>
 
+<body>
+    <h1>Cascade Assets - CDN Proof of Concept</h1>
+    </p>
+    <p>This simply serves as a dev CDN.
+    <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
+    <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
 
-<h1>Cascade Assets - CDN Proof of Concept</h1>
-</p>
-<p>This simply serves as a dev CDN.
-<p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
-<p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
+    <h1>Cascade Assets - CDN Proof of Concept</h1>
+    <p>This simply serves as a dev CDN.</p>
+    <p> Current Branch: netlify-deploy-rails-4-keep-ruby-version Build: 09:57AM 07-08-2020    </p>
+</body>
 
-<h1>Cascade Assets - CDN Proof of Concept</h1>
-<p>This simply serves as a dev CDN.</p>
-<p> Current Branch: netlify-deploy-rails-4-keep-ruby-version Build: 09:48AM 07-08-2020</p>
+</html>
