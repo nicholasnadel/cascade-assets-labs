@@ -26,7 +26,6 @@ task build: :environment do
 
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
-  
   end
 end
 
@@ -73,7 +72,7 @@ end
 def prep_assets
   File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
   File.rename(netlify_erb, netlify_index)
-  puts "moving netlify index.html to _assets"
+  # puts "moving netlify index.html to _assets"
   # FileUtils.mv(netlify_index, './dist/netlify/_assets/')
 end
 
@@ -149,7 +148,7 @@ def extract_zip(file, destination)
     end
   end
 
-  netlify_move_index
+  # netlify_move_index
 end
 
 task netlify: :environment do
