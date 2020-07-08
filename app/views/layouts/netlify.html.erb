@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<%= render 'widgets/shared/head' %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CDN - Cascade Assets</title>
-    <!-- Preload CSS & JS -->
-    <%= stylesheet_link_tag 'master', rel: 'preload', as: 'style', media: 'all' %>
-    <%= preload_js_link 'master', rel: 'preload', as: 'script', media: 'all'  %>
-
-    <!-- Carry on -->
-    <%= stylesheet_link_tag 'master', media: 'all' %>
-    <%= javascript_include_tag 'master', defer: true %>
-</head>
 <style>
     body {
         display: grid;
@@ -26,14 +13,14 @@
     }
 </style>
 
-<body>
-    <h1>Cascade Assets - CDN Proof of Concept</h1>
-    </p>
-    <p>This simply serves as a dev CDN.
-    <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
-    <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
-    <p> <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%>
-    </p>
-</body>
 
-</html>
+<h1>Cascade Assets - CDN Proof of Concept</h1>
+</p>
+<p>This simply serves as a dev CDN.
+<p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
+<p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
+
+<h1>Cascade Assets - CDN Proof of Concept</h1>
+<p>This simply serves as a dev CDN.</p>
+<p> <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%>
+</p>

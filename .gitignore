@@ -21,7 +21,7 @@
 .sass-cache/
 dist/production/*
 dist/staging/*
-!dist/staging/_netlify
+!dist/netlify/_netlify/*
 node_modules
 /tmp/
 /public/_assets

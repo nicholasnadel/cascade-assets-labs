@@ -1,0 +1,14 @@
+<system-xml>    
+
+<![CDATA[#protect
+  <!-- Branch: netlify-deploy-rails-4-keep-ruby-version Build: 09:47AM 07-08-2020 -->
+#protect]]> 
+ 
+  <!-- Preload CSS & JS -->
+  <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master-0649162270bf23f28c1c66ceb46f1dfb91fa67e745b2a0f67517b32da41098b7.css" as="style" />
+  <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" as="script" />
+ 
+  <!-- Carry on -->
+  <link rel="stylesheet" media="all" href="https://cucdn.xyz/_assets/master-0649162270bf23f28c1c66ceb46f1dfb91fa67e745b2a0f67517b32da41098b7.css" />
+  <script src="https://cucdn.xyz/_assets/master-b5aa0615578b267d73e393eb8e59e815b4fbc100bbc21491505ebb76b6ce3860.js" defer="defer"></script>
+</system-xml>

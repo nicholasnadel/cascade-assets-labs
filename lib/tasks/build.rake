@@ -22,7 +22,7 @@ task build: :environment do
 
     prep_dist
     zip rails_asset_path, dist_assets_path
-    extract_zip('dist/staging/_assets.zip', 'dist/staging/_netlify')
+    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_netlify')
 
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
@@ -56,8 +56,6 @@ task :changelog do
     f.puts "--------------------------------------------------------------------------"
     f.puts `git status`
     }
-  # `open -g #{git_log}`
-  # system %(open -g "./dist")
 end 
 
 ####################
@@ -76,7 +74,7 @@ def prep_netlify
   File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
   File.rename(netlify_erb, netlify_index)
   puts "moving netlify index.html to _netlify"
-  # FileUtils.mv(netlify_index, './dist/staging/_netlify/')
+  # FileUtils.mv(netlify_index, './dist/netlify/_netlify/')
 end
 
 def netlify_erb
@@ -88,7 +86,19 @@ def netlify_index
 end
 
 def netlify_move_index
-  FileUtils.mv(netlify_index, 'dist/staging/_netlify/')
+  FileUtils.mv(netlify_index, 'dist/netlify/_netlify/')
+  netlify_rename_asset_paths
+end
+
+def netlify_rename_asset_paths
+  full_path_to_read = File.expand_path('dist/netlify/_netlify/index.html')
+  
+  # File.open(full_path_to_read) do |source_file|
+  #   contents = source_file.read
+  #   contents.gsub!(/chapman.edu/, 'BAR')
+  #   File.open(full_path_to_read, "w+") { |f| f.write(contents) }
+  # end
+
 end
 
 def rails_asset_path
@@ -142,7 +152,14 @@ def extract_zip(file, destination)
   netlify_move_index
 end
 
-
 task netlify: :environment do
+  `rake build RAILS_ENV=netlify`
+  # `git add dist/netlify/_netlify`
+  # `git commit -m 'add updated CDN assets'`
+  # `git push`
+  # system %(git push)
   puts "deploying assets to https://cucdn.xyz/"
+end
+
+task nick: :environment do 
 end
