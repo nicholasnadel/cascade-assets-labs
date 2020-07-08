@@ -149,15 +149,15 @@ def extract_zip(file, destination)
     end
   end
 
-  netlify_move_index
+  # netlify_move_index
 end
 
 task netlify: :environment do
-  # `rake build RAILS_ENV=netlify`
-  # `git add dist/netlify/_netlify/ .`
-  # `git commit -m 'add updated CDN assets'`
-  # `git push`
-  # system %(git push)
+  `rake build RAILS_ENV=netlify`
+  `git add dist/netlify/_netlify/ .`
+  `git commit -m 'add updated CDN assets'`
+  `git push`
+  system %(git push)
   puts "deploying assets to https://cucdn.xyz/"
 end
 
