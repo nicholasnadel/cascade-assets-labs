@@ -1,6 +1,10 @@
 Rails.application.configure do
     # Settings specified here will take precedence over those in config/application.rb.
     config.action_controller.asset_host = "https://cucdn.xyz/"
+    # config.assets.fingerprinting.enabled = false
+    config.assets.digest = false  
+    ActionController::Base.helpers.asset_path('master.js', digest: false)
+    ActionController::Base.helpers.asset_path('master.css', digest: false)
     # config.assets.prefix = "/"
 
     # Code is not reloaded between requests.
@@ -78,5 +82,7 @@ Rails.application.configure do
   
     # Use default logging formatter so that PID and timestamp are not suppressed.
     config.log_formatter = ::Logger::Formatter.new
+    config.assets.digest = false
+
   end
   
