@@ -22,7 +22,7 @@ task build: :environment do
 
     prep_dist
     zip rails_asset_path, dist_assets_path
-    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_netlify')
+    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/')
 
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
