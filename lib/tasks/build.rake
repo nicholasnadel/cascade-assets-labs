@@ -74,7 +74,7 @@ def prep_netlify
   File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
   File.rename(netlify_erb, netlify_index)
   puts "moving netlify index.html to _netlify"
-  # FileUtils.mv(netlify_index, './dist/netlify/_netlify/')
+  # FileUtils.mv(netlify_index, './dist/netlify/_assets/')
 end
 
 def netlify_erb
@@ -86,12 +86,12 @@ def netlify_index
 end
 
 def netlify_move_index
-  FileUtils.mv(netlify_index, 'dist/netlify/_netlify/')
+  FileUtils.mv(netlify_index, 'dist/netlify/_assets/')
   netlify_rename_asset_paths
 end
 
 def netlify_rename_asset_paths
-  full_path_to_read = File.expand_path('dist/netlify/_netlify/index.html')
+  full_path_to_read = File.expand_path('dist/netlify/_assets/index.html')
   
   # File.open(full_path_to_read) do |source_file|
   #   contents = source_file.read
@@ -154,7 +154,7 @@ end
 
 task netlify: :environment do
   `rake build RAILS_ENV=netlify`
-  `git add dist/netlify/_assets/ .`
+  `git add dist/netlify/ .`
   `git commit -m 'add updated CDN assets'`
   `git push`
   # system %(git push)
