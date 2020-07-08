@@ -22,7 +22,7 @@ task build: :environment do
 
     prep_dist
     zip rails_asset_path, dist_assets_path
-    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_netlify')
+    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_assets')
 
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
@@ -66,14 +66,14 @@ def prep_dist
   FileUtils.mkdir('dist') unless File.directory?('dist')
   FileUtils.rm_rf dist_folder
   FileUtils.mkdir dist_folder
-  prep_netlify
+  prep_assets
   # netlify_move_index
 end
 
-def prep_netlify
+def prep_assets
   File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
   File.rename(netlify_erb, netlify_index)
-  puts "moving netlify index.html to _netlify"
+  puts "moving netlify index.html to _assets"
   # FileUtils.mv(netlify_index, './dist/netlify/_assets/')
 end
 
@@ -149,7 +149,7 @@ def extract_zip(file, destination)
     end
   end
 
-  netlify_move_index
+  # netlify_move_index
 end
 
 task netlify: :environment do
