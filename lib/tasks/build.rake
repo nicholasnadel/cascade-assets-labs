@@ -149,7 +149,7 @@ def extract_zip(file, destination)
     end
   end
 
-  # netlify_move_index
+  netlify_move_index
 end
 
 task netlify: :environment do
