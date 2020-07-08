@@ -22,7 +22,7 @@ task build: :environment do
 
     prep_dist
     zip rails_asset_path, dist_assets_path
-    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/')
+    extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_netlify')
 
     Rake::Task['changelog'].invoke
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
@@ -149,15 +149,15 @@ def extract_zip(file, destination)
     end
   end
 
-  # netlify_move_index
+  netlify_move_index
 end
 
 task netlify: :environment do
   `rake build RAILS_ENV=netlify`
-  `git add dist/netlify/_netlify/ .`
+  `git add dist/netlify/_assets/ .`
   `git commit -m 'add updated CDN assets'`
   `git push`
-  system %(git push)
+  # system %(git push)
   puts "deploying assets to https://cucdn.xyz/"
 end
 
