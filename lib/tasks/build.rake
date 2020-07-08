@@ -70,7 +70,7 @@ def prep_dist
 end
 
 def prep_assets
-  File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: true))
+  File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
   File.rename(netlify_erb, netlify_index)
   # puts "moving netlify index.html to _assets"
   # FileUtils.mv(netlify_index, './dist/netlify/_assets/')
