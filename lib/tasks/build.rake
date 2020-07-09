@@ -1,5 +1,6 @@
 require 'zip_file_generator'
-
+require 'render_anywhere'
+include RenderAnywhere
 # rubocop:enable Metrics/BlockLength
 
 desc "Build assets for deployment to Cascade."
@@ -10,16 +11,6 @@ task build: :environment do
     puts "  rake build RAILS_ENV=staging"
     puts "  rake build RAILS_ENV=production"
   else
-    # FIXME
-    # This is only needed here (AFAICT) and breaks things in test and elsewhere because it
-    # overrides the behavior of render. For more info, see
-    # http://stackoverflow.com/q/39396601/1093087.
-    #
-    # Bigger question: do we really need this gem just for this one call? Can't we leverage
-    # something already in Rails?
-    require 'render_anywhere'
-    include RenderAnywhere
-
     prep_dist
     zip rails_asset_path, dist_assets_path
     extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_assets')
@@ -143,17 +134,16 @@ def extract_zip(file, destination)
 end
 
 
+
 task netlify: :environment do
-  # system('RAILS_ENV=netlify bin/build assets:precompile')
-    Rake::Task['assets:clobber'].invoke
-    Rake::Task['assets:precompile'].invoke
+  Rake::Task['assets:clobber'].invoke
+  Rake::Task['assets:precompile'].invoke
 
-    `git add dist/netlify . `
-    `git commit -m 'netlify assets - add changes'`
-    `git push`
+  prep_netlify
 
-  
-    
+  `git add dist/netlify .`
+  `git commit -m 'netlify assets - add changes'`
+  `git push`
 
-  puts "deploying assets to https://cucdn.xyz/"
+puts "deploying assets to https://cucdn.xyz/"
 end
