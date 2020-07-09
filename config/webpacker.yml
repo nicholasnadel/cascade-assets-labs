@@ -17,6 +17,7 @@ default: &default
 
   # Extract and emit a css file
   extract_css: true
+  
 
   static_assets_extensions:
     - .jpg
