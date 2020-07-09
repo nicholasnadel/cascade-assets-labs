@@ -45,7 +45,9 @@
 
 <body>
     <h1>Cascade Assets - CDN</h1>
-    <code>  <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y') %> </code>
+    <p>Current Branch:
+        <code><%= `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y') %> </code>
+    </p>
     <ul>
         <li>
             Pushed branches automatically deploy to <code>https://branch-name--chapman.netlify.app</code> eg:
