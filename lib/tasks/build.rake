@@ -149,7 +149,7 @@ task netlify: :environment do
 
 
   `git add dist/netlify .`
-  `git commit -m 'netlify assets - add changes'`
+  `git commit -m 'rake netlify - add dist/netlify changes'`
   `git push`
 
 puts "deploying assets to http://cucdn.netlify.app"
