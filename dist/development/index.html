@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDN - Cascade Assets</title>
     <system-xml>
-        <!-- Branch: new-test-branch Build: 12:55PM 07-09-2020 -->
+        <!-- Branch: new-test-branch Build: 12:57PM 07-09-2020 -->
 
         <!-- Preload CSS & JS -->
-        <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master.css" as="style" />
-        <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master.js" as="script" />
+        <link rel="preload" media="all" href="/_assets/master.css" as="style" />
+        <link rel="preload" media="all" href="/_assets/master.js" as="script" />
 
         <!-- Carry on -->
-        <link rel="stylesheet" media="all" href="https://cucdn.xyz/_assets/master.css" />
-        <script src="https://cucdn.xyz/_assets/master.js" defer="defer"></script>
+        <link rel="stylesheet" media="all" href="/_assets/master.css" />
+        <script src="/_assets/master.js" defer="defer"></script>
     </system-xml>
 </head>
 <style>
@@ -32,7 +32,7 @@
 
 <body>
     <h1>Cascade Assets - CDN Proof of Concept</h1>
-    <code> Current Branch: new-test-branch Build: 12:55PM 07-09-2020    </code>
+    <code> Current Branch: new-test-branch Build: 12:57PM 07-09-2020    </code>
     <p>This simply serves as a dev CDN.</p>
     <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
     <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
