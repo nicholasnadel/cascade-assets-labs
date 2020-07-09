@@ -138,8 +138,8 @@ end
 task netlify: :environment do
   Rake::Task['assets:clobber'].invoke
   Rake::Task['assets:precompile'].invoke
+  # prep_netlify
 
-  prep_netlify
 
   `git add dist/netlify .`
   `git commit -m 'netlify assets - add changes'`

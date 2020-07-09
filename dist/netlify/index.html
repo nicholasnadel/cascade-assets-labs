@@ -6,81 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CDN - Cascade Assets</title>
     <system-xml>
-        <!-- Branch: netlify-troubleshoot Build: 11:12AM 07-09-2020 -->
+        <!-- Branch: netlify-troubleshoot Build: 01:57PM 07-09-2020 -->
 
         <!-- Preload CSS & JS -->
-        <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master.css" as="style" />
-        <link rel="preload" media="all" href="https://cucdn.xyz/_assets/master.js" as="script" />
+        <link rel="preload" media="all" href="https://chapman.netlify.app/_assets/master.css" as="style" />
+        <link rel="preload" media="all" href="https://chapman.netlify.app/_assets/master.js" as="script" />
 
         <!-- Carry on -->
-        <link rel="stylesheet" media="all" href="https://cucdn.xyz/_assets/master.css" />
-        <script src="https://cucdn.xyz/_assets/master.js" defer="defer"></script>
+        <link rel="stylesheet" media="all" href="https://chapman.netlify.app/_assets/master.css" />
+        <script src="https://chapman.netlify.app/_assets/master.js" defer="defer"></script>
     </system-xml>
 </head>
 <style>
     body {
         display: grid;
         place-content: center;
+        font-size: 16px;
     }
 
     code {
-        background-color: rgb(235 235 235);
-        /* background-color: var(--color-panther-black); */
+        background-color: var(--color-panther-black);
+        color: lime;
         padding: 0 5px 0 5px;
-        color: var(--color-panther-black);
-        font-weight: regular;
         font-family: monospace;
+        font-weight: regular;
         width: max-content;
-    }
-
-    .animated {
-        border-right: solid 3px var(--color-panther-black);
-        white-space: nowrap;
-        overflow: hidden;
-        margin: 0 auto;
-        padding-right: 2px;
-        animation: animated-text 2s steps(29, end) 1s 1 normal both,
-            animated-cursor 600ms steps(10, end) infinite;
-    }
-
-
-
-    /* text animation */
-
-    @keyframes animated-text {
-        from {
-            width: 0;
-        }
-
-        to {
-            width: 100%;
-        }
-    }
-
-    /* cursor animations */
-
-    @keyframes animated-cursor {
-        from {
-            border-right-color: var(--color-panther-black);
-        }
-
-        to {
-            border-right-color: transparent;
-        }
     }
 </style>
 
 <body>
     <h1>Cascade Assets - CDN Proof of Concept</h1>
-
+    <code> Current Branch: netlify-troubleshoot Build: 01:57PM 07-09-2020    </code>
     <ul>
-        <li><code> Current Branch: netlify-troubleshoot Build: 11:12AM 07-09-2020    </code></li>
-        <li><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</li>
-        <li><a href="./_assets/master.css"> /_assets/master.css</a> and <a href="./_assets/master.js">
-                /_assets/master.js</a> may be referenced in a Cascade-Assets.xml block</li>
+        <li>
+            <code>rake netlify</code> pushes the current branch <code>dist/netlify</code> assets and index to:
+            <a
+                href='https://netlify-troubleshoot--chapman.netlify.app/'>https://netlify-troubleshoot--chapman.netlify.app/</a>
+        </li>
+        <li>
+            Deploy status can be inspected at: <a
+                href="https://app.netlify.com/sites/chapman/deploys">https://app.netlify.com/sites/chapman/deploys</a>
+        </li>
+        <li>
+            <a href="./_assets/master.css">./_assets/master.css</a>
+        </li>
+        <li>
+            <a href="./_assets/master.js">./_assets/master.js</a>
+        </li>
     </ul>
-
-
 </body>
 
 </html>
