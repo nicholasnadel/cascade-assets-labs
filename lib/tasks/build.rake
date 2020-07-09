@@ -144,6 +144,16 @@ end
 
 
 task netlify: :environment do
-  `RAILS_ENV=netlify bin/build assets:precompile`
+  # system('RAILS_ENV=netlify bin/build assets:precompile')
+    Rake::Task['assets:clobber'].invoke
+    Rake::Task['assets:precompile'].invoke
+
+    `git add dist/netlify . `
+    `git commit -m 'netlify assets - add changes'`
+    `git push`
+
+  
+    
+
   puts "deploying assets to https://cucdn.xyz/"
 end
