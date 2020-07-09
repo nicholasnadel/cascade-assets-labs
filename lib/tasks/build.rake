@@ -138,11 +138,11 @@ end
 task netlify: :environment do
   # Rake::Task['assets:clobber'].invoke
   # Rake::Task['assets:precompile'].invoke
-  # prep_netlify
 
   prep_dist
   zip rails_asset_path, dist_assets_path
   extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_assets')
+  prep_netlify
 
   Rake::Task['changelog'].invoke
   File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
