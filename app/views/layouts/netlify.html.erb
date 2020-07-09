@@ -21,12 +21,16 @@
     body {
         display: grid;
         place-content: center;
+        font-size: 16px;
     }
 
     code {
-        background-color: black;
+        background-color: var(--color-panther-black);
         color: lime;
         padding: 0 5px 0 5px;
+        font-family: monospace;
+        font-weight: regular;
+        width: max-content;
     }
 </style>
 
@@ -34,9 +38,19 @@
     <h1>Cascade Assets - CDN Proof of Concept</h1>
     <code> <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%>
     </code>
-    <p>This simply serves as a dev CDN.</p>
-    <p><code>rake netlify</code> triggers pushing assets from the GitHub branch to Netlify</p>
-    <p><code>master.css</code> and <code>master.js</code> are in the DOM <code>head</code></p>
+    <ul>
+        <li>
+            <code>rake netlify</code> pushes the current branch <code>dist/netlify</code> assets and index to:
+            <a
+                href='<%="https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/" %>'><%="https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/" %></a>
+        </li>
+        <li>
+            <a href="./_assets/master.css">./_assets/master.css</a>
+        </li>
+        <li>
+            <a href="./_assets/master.js">./_assets/master.js</a>
+        </li>
+    </ul>
 </body>
 
 </html>

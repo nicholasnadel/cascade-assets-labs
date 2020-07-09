@@ -145,5 +145,5 @@ task netlify: :environment do
   `git commit -m 'netlify assets - add changes'`
   `git push`
 
-puts "deploying assets to https://cucdn.xyz/"
+puts "deploying assets to http://cucdn.netlify.app"
 end
