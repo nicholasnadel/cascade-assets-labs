@@ -1,11 +1,12 @@
 Rails.application.configure do
     # Settings specified here will take precedence over those in config/application.rb.
-    config.action_controller.asset_host = "https://cucdn.xyz/"
+    config.action_controller.asset_host = "https://cucdn.xyz/_assets/"
     # config.assets.fingerprinting.enabled = false
     config.assets.digest = false  
     ActionController::Base.helpers.asset_path('master.js', digest: false)
     ActionController::Base.helpers.asset_path('master.css', digest: false)
-    # config.assets.prefix = "/"
+    # config.assets.prefix = "/_assets"
+
 
     # Code is not reloaded between requests.
     config.cache_classes = true
