@@ -1,6 +1,8 @@
 Rails.application.configure do
     # Settings specified here will take precedence over those in config/application.rb.
-    config.action_controller.asset_host = "https://chapman.netlify.app/"
+    # config.action_controller.asset_host = "https://chapman.netlify.app/"
+    config.action_controller.asset_host = "https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/"
+    
     # Rails.application.config.action_controller.asset_path = "_assets"
     # config.relative_url_root = "_assets"
     Rails.application.config.relative_url_root = "/_assets"

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- THIS FILE IS COMPILED VIA `BIN/BUILD` AND MOVED TO DIST/NETLIFY/INDEX.HTML -->
 <html lang="en">
 
 <head>
@@ -25,34 +26,50 @@
     }
 
     code {
-        background-color: var(--color-panther-black);
-        color: lime;
-        padding: 0 5px 0 5px;
-        font-family: monospace;
+        color: var(--color-cu-red);
+        padding: 5px;
+        margin: 5px 0 5px 0;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: regular;
         width: max-content;
+    }
+
+    ul ul {
+        margin-left: 1em;
+    }
+
+    ul ul {
+        margin-left: 2em;
     }
 </style>
 
 <body>
-    <h1>Cascade Assets - CDN Proof of Concept</h1>
-    <code> <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y')  -%>
-    </code>
+    <h1>Cascade Assets - CDN</h1>
+    <code>  <%= "Current Branch: " + `git rev-parse --abbrev-ref HEAD`.strip + " Build: " + Time.now.strftime('%I:%M%p %m-%d-%Y') %> </code>
     <ul>
         <li>
-            <code>rake netlify</code> pushes the current branch <code>dist/netlify</code> assets and index to:
-            <a
-                href='<%="https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/" %>'><%="https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/" %></a>
+            Pushed branches automatically deploy to <code>https://branch-name--chapman.netlify.app</code> eg:
+            <ul>
+                <li>
+                    <a
+                        href='<%="https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/" %>'><%="https://" + `git rev-parse --abbrev-ref HEAD`.strip + "--chapman.netlify.app/" %></a>
+                </li>
+                <ul>
+                    <li>
+                        <a href="./_assets/master.css">./_assets/master.css</a>
+                    </li>
+                    <li>
+                        <a href="./_assets/master.js">./_assets/master.js</a>
+                    </li>
+                </ul>
+            </ul>
+        </li>
+        <li>
+            <code>dist/netlify/cascade-assets.xml</code> references the above asset files
         </li>
         <li>
             Deploy status can be inspected at: <a
                 href="https://app.netlify.com/sites/chapman/deploys">https://app.netlify.com/sites/chapman/deploys</a>
-        </li>
-        <li>
-            <a href="./_assets/master.css">./_assets/master.css</a>
-        </li>
-        <li>
-            <a href="./_assets/master.js">./_assets/master.js</a>
         </li>
     </ul>
 </body>
