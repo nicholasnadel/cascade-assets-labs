@@ -1,12 +1,14 @@
 Rails.application.configure do
     # Settings specified here will take precedence over those in config/application.rb.
-    config.action_controller.asset_host = "https://cucdn.xyz/_assets/"
+    config.action_controller.asset_host = "https://cucdn.xyz/"
+    # Rails.application.config.action_controller.asset_path = "_assets"
+    # config.relative_url_root = "_assets"
+    Rails.application.config.relative_url_root = "/_assets"
     # config.assets.fingerprinting.enabled = false
     config.assets.digest = false  
-    ActionController::Base.helpers.asset_path('master.js', digest: false)
-    ActionController::Base.helpers.asset_path('master.css', digest: false)
-    # config.assets.prefix = "/_assets"
-
+    config.assets.prefix = "/_assets"   
+    # Rails.application.config.action_controller.asset_path("master.js", skip_pipeline: true)                 # => "master.js"
+    # Rails.application.config.action_controller.asset_path("master.css", skip_pipeline: true)                 # => "master.css"
 
     # Code is not reloaded between requests.
     config.cache_classes = true
@@ -32,14 +34,13 @@ Rails.application.configure do
     config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
   
   
-  
     # Compress JavaScripts and CSS.
     config.assets.js_compressor = Uglifier.new(harmony: true) #compressed with ES6 support
     # config.assets.js_compressor = :uglifier #without es6
     # config.assets.css_compressor = :sass
   
     # Do not fallback to assets pipeline if a precompiled asset is missed.
-    config.assets.compile = false
+    config.assets.compile = true
   
     # Asset digests allow you to set far-future HTTP expiration dates on all assets,
     # yet still be able to expire them through the digest params.

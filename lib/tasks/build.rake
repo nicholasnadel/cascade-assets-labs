@@ -144,5 +144,6 @@ end
 
 
 task netlify: :environment do
+  `RAILS_ENV=netlify bin/build assets:precompile`
   puts "deploying assets to https://cucdn.xyz/"
 end
