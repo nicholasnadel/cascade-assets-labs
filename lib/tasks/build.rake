@@ -47,8 +47,6 @@ task :changelog do
     f.puts "--------------------------------------------------------------------------"
     f.puts `git status`
     }
-  # `open -g #{git_log}`
-  # system %(open -g "./dist")
 end 
 
 ####################
@@ -75,7 +73,7 @@ def netlify_erb
 end
 
 def netlify_index
-  Rails.root.join('dist', Rails.env, 'index.html')
+  Rails.root.join('dist', 'netlify', 'index.html')
 end
 
 def netlify_move_index
@@ -94,11 +92,9 @@ def dist_assets_path
   Rails.root.join('dist', Rails.env, '_assets.zip')
 end
 
-
 def dist_cascade_block_path
   Rails.root.join('dist', Rails.env, 'cascade-assets.xml')
 end
-
 
 def preload_js_link(*sources)
   options = sources.extract_options!.stringify_keys
@@ -129,11 +125,7 @@ def extract_zip(file, destination)
       zip_file.extract(f, fpath) unless File.exist?(fpath)
     end
   end
-
-  # netlify_move_index
 end
-
-
 
 task netlify: :environment do
   Rake::Task['assets:clobber'].invoke
@@ -146,7 +138,6 @@ task netlify: :environment do
 
   Rake::Task['changelog'].invoke
   File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
-
 
   `git add dist/netlify .`
   `git commit -m 'rake netlify - add dist/netlify changes'`
