@@ -152,5 +152,5 @@ task netlify: :environment do
   `git commit -m 'rake netlify - add dist/netlify changes'`
   `git push`
 
-puts "deploying assets to http://cucdn.netlify.app"
+puts "deploying assets to http://chapman.netlify.app"
 end
