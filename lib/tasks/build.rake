@@ -136,21 +136,21 @@ end
 
 
 task netlify: :environment do
-  # Rake::Task['assets:clobber'].invoke
-  # Rake::Task['assets:precompile'].invoke
+  Rake::Task['assets:clobber'].invoke
+  Rake::Task['assets:precompile'].invoke
 
-  # prep_dist
-  # zip rails_asset_path, dist_assets_path
-  # extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_assets')
-  # prep_netlify
+  prep_dist
+  zip rails_asset_path, dist_assets_path
+  extract_zip('dist/netlify/_assets.zip', 'dist/netlify/_assets')
+  prep_netlify
 
-  # Rake::Task['changelog'].invoke
-  # File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
+  Rake::Task['changelog'].invoke
+  File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
 
 
-  # `git add dist/netlify .`
-  # `git commit -m 'rake netlify - add dist/netlify changes'`
-  # `git push`
+  `git add dist/netlify .`
+  `git commit -m 'rake netlify - add dist/netlify changes'`
+  `git push`
 
 puts "deploying assets to http://cucdn.netlify.app"
 end
