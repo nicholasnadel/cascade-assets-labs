@@ -60,18 +60,15 @@ def prep_dist
   FileUtils.rm_rf dist_folder
   FileUtils.mkdir dist_folder
   prep_netlify
-  # netlify_move_index
 end
 
 def prep_netlify
   File.write(netlify_erb, render(file: 'layouts/netlify.html.erb', layout: false))
   File.rename(netlify_erb, netlify_index)
-  # puts "moving netlify index.html to _netlify"
-  # FileUtils.mv('.dist/netlify', './dist/netlify/_assets/')
 end
 
 def netlify_erb
-  Rails.root.join('dist', Rails.env, 'netlify.html.erb')
+  Rails.root.join('dist', 'netlify', 'netlify.html.erb')
 end
 
 def netlify_index
