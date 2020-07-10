@@ -1,0 +1,14 @@
+<system-xml>    
+
+<![CDATA[#protect
+  <!-- Branch: netlify Build: 11:16AM 07-10-2020 -->
+#protect]]> 
+ 
+  <!-- Preload CSS & JS -->
+  <link rel="preload" media="all" href="/_assets/master.css" as="style" />
+  <link rel="preload" media="all" href="/_assets/master.js" as="script" />
+ 
+  <!-- Carry on -->
+  <link rel="stylesheet" media="all" href="/_assets/master.css" />
+  <script src="/_assets/master.js" defer="defer"></script>
+</system-xml>
