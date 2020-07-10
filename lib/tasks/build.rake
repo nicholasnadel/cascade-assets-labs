@@ -77,6 +77,7 @@ def prep_netlify
             -app/views/layouts/netlify.html.erb
             -lib/tasks/build.rake
             -dist/netlify
+            -bin/build
     
         1) Netlify (https://app.netlify.com/sites/chapman/overview) automatically builds the changes in dist/netlify for each branch push.
         2) https://chapman.netlify.app/ is the base URL. Individual branches are available at https://branch-name--chapman.netlify.app/
