@@ -31,27 +31,25 @@ task edit_cascade_assets: :environment do
    # https://dev-cascade.chapman.edu/api/v1/read/folder/Chapman.edu/_cascade/formats/modular/widgets/foldername?u=username&p=password
  
    url = base_url + rest_action + asset_type + asset_path + cascade_username + cascade_password
- 
    puts url
  
+  # Inspect response for required details below 👇
    response = HTTParty.get(url)
    puts response.body
 
    response_xml = response["asset"]["xmlBlock"]["xml"]
    puts response_xml
 
-   cascade_assets_changes='dist/staging/cascade-assets.xml'
-
+  cascade_assets_changes='dist/staging/cascade-assets.xml'
   data = File.read(cascade_assets_changes)
   puts data
-
   response_body = data
 
+  # Change URL for edit request
   url_post = base_url + 'edit/' + asset_type + asset_path + cascade_username + cascade_password
 
   # 👹Editing assets unfortunately requires PATH, SITENAME, ID. This can be obtained by reading the asset's response.body 👆
   HTTParty.post(url_post, body: { asset: { xmlBlock: { xml: data, path: "_cascade/blocks/html/0-write-test", parentFolderId: "8516f0a9c04d744c610b81da2d21be44", siteName: "Chapman.edu", id: "365ae5dec0a81e8a20b1d746fd3e0778" } } }.to_json)
-  
 end
 
 desc "Pulls staging velocity formats to local machine"
