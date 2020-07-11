@@ -7,6 +7,7 @@
 
 
 # USAGE: rake publish TYPE=page/ PATH=Chapman.edu/test-section/nick-test/test-publish
+# 👹note the trailing slash on the TYPE
 task :publish do
    # * 1) BASE URL 
    base_url = 'https://dev-cascade.chapman.edu/api/v1/'.to_s
