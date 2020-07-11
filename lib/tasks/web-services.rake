@@ -1,7 +1,49 @@
+# https://www.hannonhill.com/cascadecms/latest/developing-in-cascade/rest-api/index.html
+
 # todo: pass arguments (https://cobwwweb.com/4-ways-to-pass-arguments-to-a-rake-task) such as: 
 # ☐ pull(single_widget) 
 # ☐ pull(1colwidgets, 2colwidgets, 3colwidgets)
 # ☐ push changes back
+
+
+# USAGE: rake publish TYPE=page/ PATH=Chapman.edu/test-section/nick-test/test-publish
+task :publish do
+   # * 1) BASE URL 
+   base_url = 'https://dev-cascade.chapman.edu/api/v1/'.to_s
+
+   # * 2) REST API ACTION
+   # https://wimops.chapman.edu/wiki/WWW#Key_Links
+   # https://www.hannonhill.com/cascadecms/latest/developing-in-cascade/rest-api/index.html
+   rest_action = "publish/".to_s # ! KEEP TRAILING SLASH
+ 
+   # * 3) ASSET TYPE
+   # this is easy to find in cascade's edit/preview url.
+   # ie https://dev-cascade.chapman.edu/entity/open.act?id=7f74b81ec04d744c7345a74906ded22a&type=page
+   ENV['TYPE'] # ! KEEP TRAILING SLASH 
+ 
+   # * 4) ASSET PATH OR ID
+   # you can also use its path (ie "Chapman.edu/_cascade/formats/modular/widgets/1-column")... but.. whitespace.
+   ENV['PATH'] # ! NO TRAILING SLASH
+ 
+   # * 5) SECRETS
+   # set these in application.yml (a la figaro 🐈)
+   cascade_username = '?u=' + ENV['CASCADE_USERNAME']
+   cascade_password = '&p=' + ENV['CASCADE_PASSWORD']
+ 
+   # the constructed url should look something like:
+   # https://dev-cascade.chapman.edu/api/v1/read/folder/Chapman.edu/_cascade/formats/modular/widgets/foldername?u=username&p=password
+ 
+   url = base_url + rest_action + ENV['TYPE'] + ENV['PATH'] + cascade_username + cascade_password
+   puts url
+ 
+  # Inspect response for required details below 👇
+   response = HTTParty.get(url)
+   puts response.body
+
+
+
+end
+
 
 desc "Updates dev Chapman.edu/_cascade/blocks/html/cascade-assets with dist/staging/cascade-assets.xml"
 task edit_cascade_assets: :environment do
