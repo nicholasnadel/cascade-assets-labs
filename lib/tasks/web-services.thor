@@ -1,13 +1,13 @@
 class Cascade < Thor
     require 'httparty'
-    desc "publish asset_type asset_path", "Publish any Cascade Asset via CLI!!! 🖕Remember to `export CASCADE_USERNAME=foo` and `export CASCADE_PASSWORD=bar"
     # method_option :asset_type, :aliases => "-t", :desc => "page/block/structureddatadefinition/etc | NOTE: KEEP trailing slash"
     # method_option :asset_path, :aliases => "-p", :desc => "eg Chapman.edu/_cascade/formats/modular/widgets/1-column | NOTE: no trailing slash"
-
+    
     # ---------------------------------------------------------------------------- #
     #                                    PUBLISH                                   #
     # ---------------------------------------------------------------------------- #
     # USAGE: thor cascade:publish page Chapman.edu/test-section/nick-test/test-publish
+    desc "publish asset_type asset_path", "Publish any Cascade Asset via CLI!!! 🖕Remember to `export CASCADE_USERNAME=foo` and `export CASCADE_PASSWORD=bar"
     def publish(asset_type, asset_path)
         puts "asset type: #{asset_type}"
         puts "asset type: #{asset_path}"
@@ -45,7 +45,56 @@ class Cascade < Thor
         # Inspect response for required details below 👇
         response = HTTParty.get(url)
         puts response.body
+
+        puts "Visit https:dev-www." + asset_path + ".aspx"
+    end
+
+
+    desc "download HTML from URL", "USAGE: thor cascade:download https://www.chapman.edu"
+    def download(url)
+        puts "url " + url
+        require 'nokogiri'
+        require 'fileutils'
+        # url = Nokogiri::HTML(URI.open('https://www.chapman.edu'))
+
+        url_path = URI.parse(url).path  
+        puts "url_path: " + url_path
+
+        static_directory = "app/views/static"+ File.dirname(url_path) 
+        static_filename= url_path.gsub(".aspx", ".html.erb")
+        
+        puts 'static directory: ' + static_directory
+        puts 'stsatic filename: ' + static_filename
+        
+        html =  Nokogiri::HTML(URI.open(url, read_timeout: 300))
+        body = html.css('body')
+        # static_path = "app/views/static" + url_path.gsub(".aspx", ".html.erb")
+
+        File.write('app/views/static' + static_filename , body)
+        
+        puts 'static path: ' + static_directory 
+        
+        FileUtils.mkdir(static_directory) unless File.directory?(static_directory)
+        puts File.basename(url_path).gsub(".aspx", ".html.erb")
+        # File.write(static_directory + "/" + File.basename(url_path).gsub(".aspx", ".html.erb"))
+        # File.write(static_directory, html)
+
+
+        # FileUtils.touch(`~/download/test.html`)
+        # File.write(`~/download/test.html`, html)
+
+        # FileUtils.mkdir_p static_path
+
+        # File.open(yourfile, 'w') { |file| file.write("your text") }
+
+        # File.write('~/Downloads/hello.txt', 'Some glorious content')
+        # FileUtils.mkdir(static_path) unless File.directory?(static_path)
+        # FileUtils.touch(static_path) unless File.directory?(static_path)
+
+        # File.write(static_path, html)
+
     end
 end
+
 
 
