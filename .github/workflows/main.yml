@@ -1,0 +1,19 @@
+- name: HTTP Request Action
+  uses: fjogeleit/http-request-action@v1.3.1
+  with:
+    # Request URL
+    url: 
+    # Request Method
+    method: # optional, default is POST
+    # Content Type
+    contentType: # optional, default is application/json
+    # Request Body as JSON String
+    data: # optional, default is {}
+    # Auth Username
+    username: # optional
+    # Auth Password
+    password: # optional
+    # Request Timeout in Sec
+    timeout: # optional, default is 5000
+    # Bearer Authentication Token
+    bearerToken: # optional
